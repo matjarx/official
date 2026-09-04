@@ -296,6 +296,8 @@ textarea.input {
 .footer-link { transition: color 160ms ease; }
 .footer-link:hover { color: var(--butter); }
 
+.pricing-call-cta:hover { background: var(--navy) !important; color: #FFFFFF; }
+
 /* Editor Showcase overlay hover states */
 .showcase-overlay-1:hover { box-shadow: 0 26px 56px rgba(0,8,18,0.5) !important; }
 .showcase-overlay-2:hover { border-color: var(--butter) !important; }
