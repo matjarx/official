@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
 import LocationContent from '@/components/locations/LocationContent'
+import { CITY_DATA } from '@/lib/location-data'
+
+const city = CITY_DATA['karachi']
 
 export const metadata: Metadata = {
-  title: 'Website Design Karachi',
-  description: '2,400+ Karachi businesses online with MatjarX. Websites designed, written and launched in 7 days — office in Clifton, in-person meetings available.',
+  title: city.metaTitle,
+  description: city.metaDesc,
 }
 
 export default function Page() {
