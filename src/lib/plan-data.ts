@@ -116,7 +116,7 @@ export const PLAN_DATA: Record<PlanKey, {
     ],
     compareWith: 'Platinum',
     compareTitle: 'Growth grows your business. Platinum rebuilds it from scratch.',
-    compareBody: 'Growth runs on our themes, tuned for your brand. If you need a fully custom design, a full webstore with unlimited products, subscriptions or multi-seat bookings, that&apos;s Platinum.',
+    compareBody: "Growth runs on our themes, tuned for your brand. If you need a fully custom design, a full webstore with unlimited products, subscriptions or multi-seat bookings, that's Platinum.",
     deltas: [
       { label: 'Growth: theme-based design — Platinum: custom design in our own tool', icon: ICONS.plus, ink: 'var(--moss-light)' },
       { label: 'Growth: advanced store — Platinum: full webstore, unlimited products', icon: ICONS.plus, ink: 'var(--moss-light)' },
