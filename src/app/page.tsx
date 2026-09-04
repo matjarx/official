@@ -1,6 +1,7 @@
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
+import EditorShowcase from '@/components/EditorShowcase'
 
 export default function HomePage() {
   return (
@@ -8,8 +9,8 @@ export default function HomePage() {
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="home" />
-        <div style={{ padding: '80px 24px', textAlign: 'center' }}>
-          <p>Home page — under construction.</p>
+        <div style={{ padding: '80px 24px', maxWidth: 1240, margin: '0 auto' }}>
+          <EditorShowcase />
         </div>
         <SiteFooter />
       </div>
