@@ -265,6 +265,19 @@ textarea.input {
   overflow-x: auto;
 }
 
+/* Category marquee (Home) — a doubled list translated by exactly half its
+   own width, so the loop is seamless. */
+.mx-marquee {
+  animation: mxslide 38s linear infinite;
+}
+@keyframes mxslide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mx-marquee { animation: none; }
+}
+
 /* Site Header hover states — inline styles can't express :hover, so these
    pair with the header's inline base styles. */
 .nav-link-light:hover { background: rgba(255,255,255,0.75); color: #04121F; }
