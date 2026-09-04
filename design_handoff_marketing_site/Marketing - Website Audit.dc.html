@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+  input::placeholder { color: #90A2B1; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="services" hint-size="100%,120px"></dc-import>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 60px 24px 0; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
+    <span style="display: flex; align-items: center; gap: 9px; padding: 8px 16px 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.66); border: 1px solid rgba(255,255,255,0.9); backdrop-filter: blur(20px); box-shadow: 0 10px 26px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); font-size: 12.5px; font-weight: 600; color: #3B5063;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background: #707538;"></span>
+      Free for the first 100 businesses this month
+    </span>
+
+    <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5.4vw, 56px); line-height: 1.08; letter-spacing: -2px; color: #04121F; text-wrap: balance;">Find out exactly why your website isn't <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone;">bringing you customers</span></h1>
+
+    <p style="margin: 0; max-width: 36em; font-size: clamp(14.5px, 1.7vw, 17.5px); line-height: 1.6; color: #435A70;">We run a full technical and search audit on your site, then send the report straight to your WhatsApp or inbox as a PDF. No jargon &mdash; just what's broken and what it's costing you.</p>
+
+    <div style="width: min(620px, 100%); display: flex; flex-direction: column; gap: 12px; padding: 20px; border-radius: 22px; background: rgba(255,255,255,0.66); border: 1px solid rgba(255,255,255,0.9); backdrop-filter: blur(22px); box-shadow: 0 18px 44px rgba(4,18,31,0.08), inset 0 1px 0 rgba(255,255,255,0.9);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 10px;">
+        <input type="text" value="yourbusiness.pk" style="width: 100%; padding: 15px 16px; border-radius: 13px; font-family: 'Open Sans', sans-serif; font-size: 14.5px; color: #0B2135; background: #FCFAF3; border: 1.5px solid rgba(4,18,31,0.13); outline: none;">
+        <input type="tel" placeholder="WhatsApp number" style="width: 100%; padding: 15px 16px; border-radius: 13px; font-family: 'Open Sans', sans-serif; font-size: 14.5px; color: #0B2135; background: #FCFAF3; border: 1.5px solid rgba(4,18,31,0.13); outline: none;">
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <span style="font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: #6A7F92; font-weight: 600;">Send it to me on</span>
+        <div style="display: flex; gap: 6px; padding: 4px; border-radius: 999px; background: #F2EEE2; border: 1px solid rgba(4,18,31,0.08);">
+          <sc-for list="{{ channels }}" as="c" hint-placeholder-count="2">
+            <button type="button" onClick="{{ c.go }}" style="all: unset; cursor: pointer; padding: 9px 18px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13px; color: {{ c.ink }}; background: {{ c.bg }}; transition: background 160ms ease;">{{ c.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <button type="button" style="all: unset; cursor: pointer; text-align: center; padding: 17px 22px; border-radius: 14px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.6px; text-transform: uppercase; color: #16210B; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: 0 14px 30px rgba(244,242,174,0.4), inset 0 1px 0 rgba(255,255,255,0.7);" style-hover="background: #FFFDD8;">Run my free audit</button>
+      <span style="font-size: 12px; line-height: 1.5; color: #6A7F92;">Report delivered within one working day. We never share your data or add you to a list.</span>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 60px 24px 0;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-bottom: 40px;">
+      <span style="font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">What we check</span>
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(26px, 4.2vw, 38px); line-height: 1.14; letter-spacing: -1.2px; color: #04121F; text-wrap: balance;">Nine checks, run by hand and by tool</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 20px;">
+      <sc-for list="{{ checks }}" as="c" hint-placeholder-count="9">
+        <div style="padding: 26px 26px 28px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 13px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="width: 42px; height: 42px; flex: 0 0 auto; border-radius: 13px; background: #003366; display: grid; place-items: center;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F4F2AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.icon }}"></path></svg>
+            </span>
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 13px; letter-spacing: -0.2px; color: #A08A5E;">{{ c.n }}</span>
+          </div>
+          <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 18.5px; letter-spacing: -0.35px; color: #04121F; text-wrap: pretty;">{{ c.title }}</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4B5D6E; text-wrap: pretty;">{{ c.body }}</p>
+          <span style="margin-top: auto; padding-top: 10px; font-size: 12px; font-weight: 600; color: #707538;">{{ c.output }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="padding: clamp(26px, 3.6vw, 44px); border-radius: 30px; background: linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96)); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(26px); box-shadow: 0 34px 76px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.2); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(26px, 4vw, 44px); align-items: center;">
+
+      <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+        <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Your report</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(25px, 3.8vw, 36px); line-height: 1.14; letter-spacing: -1.2px; color: #FFFFFF; text-wrap: balance;">A plain-English PDF, on your WhatsApp by tomorrow</h2>
+        <div style="display: flex; flex-direction: column; gap: 11px;">
+          <sc-for list="{{ reportPoints }}" as="p" hint-placeholder-count="4">
+            <span style="display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; line-height: 1.55; color: rgba(233,239,245,0.84);">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#C6CB8A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px;"><path d="m5 12.5 4.5 4.5L19 7"></path></svg>
+              {{ p.label }}
+            </span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="min-width: 0; display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 22px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(22px); box-shadow: 0 20px 46px rgba(0,10,25,0.28), inset 0 1px 0 rgba(255,255,255,0.2);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="width: 40px; height: 40px; flex: 0 0 auto; border-radius: 12px; background: rgba(37,211,102,0.16); border: 1px solid rgba(37,211,102,0.34); display: grid; place-items: center;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="#25D366"><path d="M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z"></path></svg>
+          </span>
+          <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+            <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #FFFFFF;">MatjarX Audits</span>
+            <span style="font-size: 11.5px; color: rgba(226,236,245,0.5);">Delivered 2 minutes ago</span>
+          </div>
+        </div>
+
+        <div style="padding: 15px 17px; border-radius: 16px 16px 16px 5px; background: rgba(37,211,102,0.13); border: 1px solid rgba(37,211,102,0.22); display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-size: 13.5px; line-height: 1.55; color: rgba(233,239,245,0.9);">Salaam Ahmed &mdash; your audit for <strong style="color: #FFFFFF;">alfalahtraders.pk</strong> is ready. Overall score <strong style="color: #F4F2AE;">54 / 100</strong>. Six things are costing you traffic.</span>
+          <div style="display: flex; align-items: center; gap: 11px; padding: 11px 13px; border-radius: 12px; background: rgba(0,17,32,0.4); border: 1px solid rgba(255,255,255,0.12);">
+            <span style="width: 34px; height: 34px; flex: 0 0 auto; border-radius: 9px; background: #C4262E; display: grid; place-items: center; font-family: Lato, sans-serif; font-weight: 900; font-size: 9.5px; color: #FFFFFF;">PDF</span>
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 12.5px; font-weight: 600; color: #E9EFF5;">alfalahtraders-audit.pdf</span>
+              <span style="font-size: 11px; color: rgba(226,236,245,0.45);">14 pages &middot; 1.2 MB</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px; padding-top: 4px;">
+          <sc-for list="{{ scoreRows }}" as="r" hint-placeholder-count="5">
+            <div style="display: flex; align-items: center; gap: 11px;">
+              <span style="font-size: 12.5px; color: rgba(226,236,245,0.7); min-width: 118px;">{{ r.label }}</span>
+              <span style="flex: 1; height: 6px; border-radius: 999px; background: rgba(0,17,32,0.45); overflow: hidden;">
+                <span style="display: block; height: 100%; width: {{ r.pct }}; border-radius: 999px; background: {{ r.fill }};"></span>
+              </span>
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 12.5px; color: {{ r.ink }}; min-width: 28px; text-align: right;">{{ r.score }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-bottom: 36px;">
+      <span style="font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">How it works</span>
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(26px, 4.2vw, 38px); line-height: 1.14; letter-spacing: -1.2px; color: #04121F;">Four steps, one working day</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 20px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="padding: 28px 26px; border-radius: 22px; background: rgba(242,238,226,0.6); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 40px; line-height: 1; letter-spacing: -1.8px; color: #C6CB8A;">{{ s.n }}</span>
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.35px; color: #04121F;">{{ s.title }}</span>
+          <span style="font-size: 14px; line-height: 1.6; color: #4B5D6E;">{{ s.body }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 34px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.14; letter-spacing: -1.1px; color: #04121F;">Audit <span style="background: #F4F2AE; padding: 0 8px; border-radius: 3px;">questions</span></h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #435A70;">Anything else, ask us on WhatsApp &mdash; a real person answers.</p>
+        <a href="https://wa.me/923033720953" style="align-self: flex-start; margin-top: 6px; padding: 14px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #04121F; background: rgba(255,255,255,0.66); border: 1.5px solid rgba(255,255,255,0.9); backdrop-filter: blur(20px);" style-hover="border-color: #707538; color: #04121F;">Ask on WhatsApp</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+          <div style="border-radius: 18px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); overflow: hidden;">
+            <button type="button" onClick="{{ q.toggle }}" style="all: unset; cursor: pointer; box-sizing: border-box; width: 100%; display: flex; align-items: flex-start; gap: 14px; padding: 19px 22px;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; line-height: 1.35; color: #04121F; margin-right: auto; text-align: left;">{{ q.question }}</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px; transform: {{ q.rotate }}; transition: transform 200ms ease;"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <sc-if value="{{ q.open }}">
+              <p style="margin: 0; padding: 0 22px 21px; font-size: 14.5px; line-height: 1.68; color: #435A70; text-wrap: pretty;">{{ q.answer }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height: 70px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { channel: "WhatsApp", openFaq: 0 };
+
+  renderVals() {
+    const ch = this.state.channel;
+
+    const faqData = [
+      { question: "What does the audit cost?", answer: "Nothing for the first 100 businesses each month. After that it's Rs. 7,500 as a one-off, and we credit it in full against any MatjarX plan you take within thirty days." },
+      { question: "Do I need to give you access to my website?", answer: "No. Everything we check is publicly visible \u2014 your pages, your meta data, your sitemap, your Google listings and your backlinks. We only need the domain name." },
+      { question: "How long does it take?", answer: "One working day for the report. If your site has more than 200 pages we'll tell you up front and it may take two." },
+      { question: "Will you just try to sell me a new website?", answer: "The report says what's wrong and what to do about it, whether or not we're the ones doing it. Plenty of the fixes you can make yourself, and we'll say which ones." },
+      { question: "What if my site is built on WordPress, Shopify or Wix?", answer: "Doesn't matter. The audit is platform-independent \u2014 we're looking at what Google and your customers see, not at how the site was assembled." },
+      { question: "Can you audit a competitor's site instead?", answer: "Yes, and it's one of the more useful things we do. Send us their domain alongside yours and the report compares the two side by side." }
+    ];
+
+    return {
+      channels: ["WhatsApp", "Email"].map(c => ({
+        label: c,
+        go: () => this.setState({ channel: c }),
+        bg: ch === c ? "#003366" : "transparent",
+        ink: ch === c ? "#FFFFFF" : "#4B5D6E"
+      })),
+
+      checks: [
+        { n: "01", title: "Heading structure", output: "Page-by-page H1\u2013H6 map",
+          body: "Every page should have exactly one H1 and a logical order below it. We map yours and flag missing, duplicated and out-of-order headings.",
+          icon: "M5 5v14M5 12h9M14 5v14M18.5 8v11M18.5 8h2.5" },
+        { n: "02", title: "Meta data on every page", output: "Title & description table",
+          body: "Titles and descriptions decide whether anyone clicks your result. We list every page's meta data, its length, and the ones that are missing or duplicated.",
+          icon: "M4 5.5h16v13H4zM4 10h16M8 14h8" },
+        { n: "03", title: "Image optimisation", output: "Weight & alt-text audit",
+          body: "Oversized images are the most common reason a Pakistani site loads slowly on mobile data. We list every image, its file size, and whether it has alt text.",
+          icon: "M4 5.5h16v13H4zM8.3 10.6a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM4 16.2l4.6-4.2 4.4 3.9 2.6-2.4L20 17" },
+        { n: "04", title: "Sitemap & robots.txt", output: "Crawlability check",
+          body: "If your sitemap is missing or your robots.txt is blocking the wrong thing, Google can't index you properly. We check both and show what's excluded.",
+          icon: "M12 3.5v6M12 14.5v6M5.5 12h13M8 6.5 12 9.5l4-3M8 17.5 12 14.5l4 3" },
+        { n: "05", title: "llms.txt for AI search", output: "AI-readiness check",
+          body: "AI answer engines increasingly decide who gets found. We check whether you have an llms.txt, and write you one if you don't.",
+          icon: "M7 3.5h10v17H7zM10 8h4M10 12h4M10 16h2" },
+        { n: "06", title: "Indexed pages on Google", output: "site: search results",
+          body: "We run site:yourdomain.com and compare what Google actually has against what you think is live. Orphaned and de-indexed pages show up here.",
+          icon: "M11 4.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM16 16l4.5 4.5" },
+        { n: "07", title: "Backlink profile", output: "Referring domains list",
+          body: "Who links to you, how many domains, and whether any of them are doing you harm. We also show what your closest competitor has that you don't.",
+          icon: "M9.5 14.5 14.5 9.5M8 12l-2 2a3.5 3.5 0 0 0 5 5l2-2M16 12l2-2a3.5 3.5 0 0 0-5-5l-2 2" },
+        { n: "08", title: "Domain authority", output: "Score + competitor gap",
+          body: "A single number for how much weight your domain carries in search, benchmarked against three businesses in your category and city.",
+          icon: "M4 20V6M4 6l7 4 9-5v9l-9 5-7-4Z" },
+        { n: "09", title: "Speed & mobile", output: "Core Web Vitals",
+          body: "How fast your site loads on a 4G phone in Pakistan, not on a fibre connection in California. Plus the specific things making it slow.",
+          icon: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM12 8v4.5l3 2" }
+      ],
+
+      reportPoints: [
+        { label: "One overall score out of 100, and what a good score looks like in your trade" },
+        { label: "Every issue ranked by what it's actually costing you \u2014 not by how technical it is" },
+        { label: "A fix for each item, marked as do-it-yourself or needs-a-developer" },
+        { label: "Delivered to your " + (ch === "WhatsApp" ? "WhatsApp as a PDF" : "inbox as a PDF") + ", so you can forward it to whoever built your site" }
+      ],
+
+      scoreRows: [
+        { label: "Headings & meta", score: "38", pct: "38%", fill: "linear-gradient(90deg, #C4262E, #E5A97F)", ink: "#E5A97F" },
+        { label: "Images", score: "42", pct: "42%", fill: "linear-gradient(90deg, #C4262E, #E5A97F)", ink: "#E5A97F" },
+        { label: "Crawlability", score: "71", pct: "71%", fill: "linear-gradient(90deg, #8A7A12, #F4F2AE)", ink: "#F4F2AE" },
+        { label: "Backlinks", score: "24", pct: "24%", fill: "linear-gradient(90deg, #C4262E, #E5A97F)", ink: "#E5A97F" },
+        { label: "Domain authority", score: "18", pct: "18%", fill: "linear-gradient(90deg, #C4262E, #E5A97F)", ink: "#E5A97F" },
+        { label: "Speed on mobile", score: "83", pct: "83%", fill: "linear-gradient(90deg, #707538, #C6CB8A)", ink: "#C6CB8A" }
+      ],
+
+      steps: [
+        { n: "1", title: "Send us your domain", body: "That's all we need. No logins, no access, no forms to chase." },
+        { n: "2", title: "We run the checks", body: "Nine areas, half by tool and half by a specialist reading your pages." },
+        { n: "3", title: "We write it in plain words", body: "A 12 to 16 page PDF you can actually act on, ranked by impact." },
+        { n: "4", title: "It lands on your " + (ch === "WhatsApp" ? "WhatsApp" : "email"), body: "Within one working day, with a 15-minute call offered to walk you through it." }
+      ],
+
+      faqs: faqData.map((f, i) => ({
+        question: f.question,
+        answer: f.answer,
+        open: this.state.openFaq === i,
+        rotate: this.state.openFaq === i ? "rotate(180deg)" : "rotate(0deg)",
+        toggle: () => this.setState({ openFaq: this.state.openFaq === i ? -1 : i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

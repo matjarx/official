@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="company" hint-size="100%,120px"></dc-import>
+
+  <section style="background: #003366; padding: 60px 24px 52px;">
+    <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+      <span style="font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Careers at MatjarX</span>
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5.6vw, 50px); line-height: 1.08; letter-spacing: -1.7px; color: #FFFFFF; text-wrap: pretty;">Build things that put real businesses <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 3px;">on the map</span></h1>
+      <p style="margin: 0; max-width: 34em; font-size: 17px; line-height: 1.62; color: rgba(255,255,255,0.72); text-wrap: pretty;">Every site we ship belongs to someone who runs a shop, a clinic or a factory. The work lands somewhere you can point at.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1140px; margin: 0 auto; padding: 48px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 18px;">
+      <sc-for list="{{ perks }}" as="p" hint-placeholder-count="4">
+        <div style="padding: 26px 26px 28px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 12px;">
+          <span style="width: 42px; height: 42px; border-radius: 12px; background: #F4F2AE; display: grid; place-items: center;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3D3A08" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ p.icon }}"></path></svg>
+          </span>
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.3px; color: #04121F;">{{ p.title }}</span>
+          <span style="font-size: 13.5px; line-height: 1.6; color: #4B5D6E;">{{ p.body }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1140px; margin: 0 auto; padding: 66px 24px 0;">
+    <div style="display: flex; align-items: flex-end; gap: 22px; flex-wrap: wrap; margin-bottom: 28px;">
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-right: auto;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(25px, 4.2vw, 36px); line-height: 1.14; letter-spacing: -1.2px; color: #04121F;">Open roles</h2>
+        <p style="margin: 0; font-size: 15.5px; color: #435A70;">{{ roleCount }}</p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <button type="button" onClick="{{ f.go }}" style="all: unset; cursor: pointer; padding: 10px 17px; border-radius: 999px; font-size: 13px; font-weight: 600; white-space: nowrap; color: {{ f.color }}; background: {{ f.bg }}; border: 1.5px solid {{ f.border }};">{{ f.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+        <div style="border-radius: 20px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); overflow: hidden;">
+          <button type="button" onClick="{{ r.toggle }}" style="all: unset; cursor: pointer; box-sizing: border-box; width: 100%; display: flex; align-items: center; gap: 18px; padding: 24px 26px; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; gap: 6px; margin-right: auto; min-width: 0; text-align: left;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.35px; color: #04121F;">{{ r.title }}</span>
+              <span style="font-size: 13px; color: #6A7F92;">{{ r.team }} &middot; {{ r.location }} &middot; {{ r.type }}</span>
+            </div>
+            <span style="font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 999px; color: #3D3A08; background: #F4F2AE; white-space: nowrap;">{{ r.level }}</span>
+            <span style="width: 30px; height: 30px; flex: 0 0 auto; border-radius: 50%; background: rgba(242,238,226,0.6); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); display: grid; place-items: center;">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#04121F" stroke-width="2.4" stroke-linecap="round" style="transform: {{ r.rotate }}; transition: transform 200ms ease;"><path d="M12 5v14M5 12h14"></path></svg>
+            </span>
+          </button>
+          <sc-if value="{{ r.open }}">
+            <div style="padding: 0 26px 26px; display: flex; flex-direction: column; gap: 18px;">
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.68; color: #33485B; text-wrap: pretty;">{{ r.summary }}</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 24px;">
+                <div style="display: flex; flex-direction: column; gap: 11px; min-width: 0;">
+                  <span style="font-size: 11.5px; letter-spacing: 1.3px; text-transform: uppercase; color: #8A7A5E; font-weight: 600;">What you'll do</span>
+                  <sc-for list="{{ r.duties }}" as="d" hint-placeholder-count="4">
+                    <span style="display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.58; color: #3B5063;">
+                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#707538" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px;"><path d="m5 12.5 4.5 4.5L19 7"></path></svg>
+                      {{ d.label }}
+                    </span>
+                  </sc-for>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 11px; min-width: 0;">
+                  <span style="font-size: 11.5px; letter-spacing: 1.3px; text-transform: uppercase; color: #8A7A5E; font-weight: 600;">What we're looking for</span>
+                  <sc-for list="{{ r.needs }}" as="n" hint-placeholder-count="4">
+                    <span style="display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.58; color: #3B5063;">
+                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#707538" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px;"><path d="m5 12.5 4.5 4.5L19 7"></path></svg>
+                      {{ n.label }}
+                    </span>
+                  </sc-for>
+                </div>
+              </div>
+              <a href="mailto:careers@matjarx.com" style="align-self: flex-start; padding: 14px 26px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #FFFFFF; background: #003366;" style-hover="background: #00274E; color: #FFFFFF;">Apply for this role</a>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1140px; margin: 0 auto; padding: 66px 24px 74px;">
+    <div style="padding: clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px); border-radius: 26px; background: #04121F; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 36px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 13px; min-width: 0;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(23px, 3.6vw, 30px); line-height: 1.18; letter-spacing: -1px; color: #FFFFFF; text-wrap: pretty;">Nothing fits, but you'd be good here?</h2>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.62; color: rgba(255,255,255,0.65); text-wrap: pretty;">Send us your work and tell us what you'd want to do. We've hired several people who wrote in before a role existed.</p>
+      </div>
+      <a href="mailto:careers@matjarx.com" style="justify-self: start; padding: 16px 28px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #16210B; background: #F4F2AE;" style-hover="background: #FFFDD8; color: #16210B;">careers@matjarx.com</a>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { filter: "All", open: 0 };
+
+  renderVals() {
+    const all = [
+      { title: "Web Designer (Business Themes)", team: "Design", location: "Lahore", type: "Full-time", level: "Mid", cat: "Design",
+        summary: "You'll design and build client sites on our platform \u2014 typically two to three a week across trades like textiles, food, clinics and trades services. Not agency-slow, not template-fast: a real design decision on every page, made quickly.",
+        duties: ["Design and assemble client websites on our own platform", "Adapt category themes to each client's brand and photography", "Work from the client questionnaire without needing hand-holding", "Join launch calls to present the site to the client"],
+        needs: ["Three or more years designing for web, with a portfolio", "Strong eye for type and layout on small screens", "Comfortable working fast without dropping quality", "Urdu and English fluency"] },
+      { title: "Copywriter (English & Urdu)", team: "Content", location: "Lahore / Remote", type: "Full-time", level: "Mid", cat: "Content",
+        summary: "You'll write the words on client websites \u2014 homepages, service pages, product descriptions and Google Business copy. Plain, useful writing that sells without shouting.",
+        duties: ["Write full site copy from a short client questionnaire", "Adapt tone across trades, from law firms to burger shops", "Write SEO-aware copy without keyword stuffing", "Produce 2,000 words of monthly content for Growth clients"],
+        needs: ["Two or more years writing commercial copy", "Native-level English plus strong Urdu", "Able to interview a client and extract what matters", "Samples of business writing, not just blog posts"] },
+      { title: "SEO Specialist", team: "Growth", location: "Lahore", type: "Full-time", level: "Senior", cat: "Growth",
+        summary: "You'll own local and national search for our client base \u2014 Google Business Profiles, Maps, technical SEO and the monthly reporting clients actually read.",
+        duties: ["Set up and verify Google Business Profiles at scale", "Run technical audits and fix what you find", "Own keyword tracking and monthly client reports", "Advise the design team on structure before build, not after"],
+        needs: ["Four or more years in SEO, with local SEO depth", "Hands-on with Search Console, GA4 and a rank tracker", "Able to explain results to a shop owner in plain words", "Experience in Pakistani or Gulf markets preferred"] },
+      { title: "Client Concierge", team: "Client Success", location: "Karachi", type: "Full-time", level: "Junior\u2013Mid", cat: "Client Success",
+        summary: "You are the person our clients message. You'll handle edit requests, answer questions, and make small changes yourself \u2014 within four working hours, every working day.",
+        duties: ["Own a portfolio of clients as their named concierge", "Make content and image edits in our editor", "Triage anything that needs design or dev help", "Spot upgrade opportunities without being pushy"],
+        needs: ["Excellent written Urdu and English", "Patient with people who aren't technical", "Organised enough to never let a request go cold", "Prior support or account management experience"] },
+      { title: "Full-Stack Engineer (Node / TypeScript)", team: "Engineering", location: "Lahore / Remote", type: "Full-time", level: "Senior", cat: "Engineering",
+        summary: "You'll work on the platform itself \u2014 the editor our clients use, the dashboard they log into, and the systems our own team builds sites with.",
+        duties: ["Build features in the client dashboard and theme editor", "Improve site performance and Core Web Vitals across all client sites", "Integrate local payment gateways: JazzCash, Easypaisa, PayFast", "Work directly with design on how features should feel"],
+        needs: ["Five or more years with Node.js and TypeScript", "Strong front-end fundamentals, not just framework knowledge", "Experience with multi-tenant systems", "Pragmatic about shipping"] }
+    ];
+
+    const cats = ["All", "Design", "Content", "Growth", "Client Success", "Engineering"];
+    const f = this.state.filter;
+    const shown = f === "All" ? all : all.filter(x => x.cat === f);
+
+    return {
+      roleCount: shown.length + (shown.length === 1 ? " role open" : " roles open") + (f === "All" ? " across five teams" : " in " + f),
+      filters: cats.map(c => ({
+        label: c,
+        go: () => this.setState({ filter: c, open: -1 }),
+        bg: f === c ? "#003366" : "#FFFFFF",
+        color: f === c ? "#FFFFFF" : "#3B5063",
+        border: f === c ? "#003366" : "rgba(4,18,31,0.14)"
+      })),
+      roles: shown.map((r, i) => Object.assign({}, r, {
+        open: this.state.open === i,
+        rotate: this.state.open === i ? "rotate(45deg)" : "rotate(0deg)",
+        toggle: () => this.setState({ open: this.state.open === i ? -1 : i }),
+        duties: r.duties.map(l => ({ label: l })),
+        needs: r.needs.map(l => ({ label: l }))
+      })),
+      perks: [
+        { title: "Work you can point at", body: "Real businesses, real owners, real revenue. Nothing you build disappears into a backlog.", icon: "M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" },
+        { title: "Ship every week", body: "No six-month projects. You'll see something you made go live most weeks.", icon: "M12 3.5 5 7v10l7 3.5 7-3.5V7ZM12 12l7-4M12 12v8.5M12 12 5 8" },
+        { title: "Learn the whole stack", body: "Designers learn SEO. Writers learn conversion. Nobody is boxed into one lane.", icon: "M5 4.5h14v15H5zM8.5 8h7M8.5 12h7M8.5 16h4" },
+        { title: "Paid learning budget", body: "Courses, conferences and tools, on us. We'd rather you got better here than elsewhere.", icon: "M12 4l2.4 5.2 5.6.5-4.3 3.7 1.3 5.6L12 16l-5 3 1.3-5.6L4 9.7l5.6-.5Z" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

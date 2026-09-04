@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1450px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="services" hint-size="100%,120px"></dc-import>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 44px 24px 0;">
+    <div style="display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 12.5px; color: #6A7F92;">
+      <a href="Marketing - Home.dc.html">Home</a>
+      <span>/</span>
+      <a href="Marketing - Services.dc.html">Industries</a>
+      <span>/</span>
+      <span style="font-weight: 600; color: #04121F;">{{ industryName }}</span>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 28px 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(30px, 4vw, 52px); align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+      <span style="align-self: flex-start; display: flex; align-items: center; gap: 9px; padding: 8px 16px 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.66); border: 1px solid rgba(255,255,255,0.9); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); font-size: 12.5px; font-weight: 600; color: #3B5063;">
+        <span style="width: 7px; height: 7px; border-radius: 50%; background: #707538;"></span>
+        {{ builtCount }}
+      </span>
+
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5vw, 52px); line-height: 1.06; letter-spacing: -1.9px; color: #04121F; text-wrap: balance;">Websites for <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone;">{{ industryLower }}</span> &mdash; built in 7 days</h1>
+
+      <p style="margin: 0; max-width: 34em; font-size: clamp(14.5px, 1.7vw, 17.5px); line-height: 1.6; color: #435A70; text-wrap: pretty;">{{ subhead }}</p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px;">
+        <a href="Marketing - Pricing.dc.html" style="padding: 16px 30px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.8px; text-transform: uppercase; color: #16210B; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: 0 14px 30px rgba(244,242,174,0.4), inset 0 1px 0 rgba(255,255,255,0.7);" style-hover="background: #FFFDD8; color: #16210B;">Start my website</a>
+        <a href="Marketing - Website Examples.dc.html" style="padding: 16px 28px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.8px; text-transform: uppercase; color: #04121F; background: rgba(255,255,255,0.66); border: 1.5px solid rgba(255,255,255,0.9); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);" style-hover="border-color: #707538; color: #04121F;">See real examples</a>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 10px 26px; padding-top: 6px;">
+        <sc-for list="{{ heroTicks }}" as="t" hint-placeholder-count="3">
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #435A70;">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#707538" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="m5 12.5 4.5 4.5L19 7"></path></svg>
+            {{ t.label }}
+          </span>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="min-width: 0; position: relative;">
+      <div style="position: absolute; inset: -14px -10px -18px -10px; border-radius: 32px; background: {{ heroTint }}; box-shadow: 0 40px 90px rgba(4,18,31,0.28); z-index: 0;"></div>
+      <div style="position: relative; z-index: 1; padding: 3px;">
+        <div style="border-radius: 18px; overflow: hidden; background: #FFFCF5; box-shadow: 0 24px 54px rgba(0,8,18,0.34);">
+          <div style="display: flex; align-items: center; gap: 7px; padding: 9px 13px; background: #0B1B27;">
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.16);"></span>
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.16);"></span>
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.16);"></span>
+            <span style="margin: 0 auto; padding: 4px 14px; border-radius: 999px; font-size: 10px; color: rgba(226,236,245,0.6); background: rgba(255,255,255,0.07);">{{ sampleDomain }}</span>
+          </div>
+          <div style="position: relative; min-height: 236px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 40px 26px; text-align: center; background: {{ heroTint }};">
+            <span style="font-size: 9px; letter-spacing: 2.4px; text-transform: uppercase; color: rgba(255,255,255,0.72); font-weight: 600;">{{ sampleKicker }}</span>
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 28px; line-height: 1.08; letter-spacing: -1px; color: #FFFFFF; text-shadow: 0 2px 14px rgba(0,0,0,0.34);">{{ sampleName }}</span>
+            <span style="max-width: 24em; font-size: 11.5px; line-height: 1.6; color: rgba(255,255,255,0.82);">{{ sampleBlurb }}</span>
+            <span style="margin-top: 8px; padding: 10px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 11.5px; color: #14210b; background: linear-gradient(160deg, #F7F5C0, #E7E49B);">{{ sampleCta }}</span>
+          </div>
+          <div style="padding: 16px 18px 20px; background: #FFFCF5; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <sc-for list="{{ sampleTiles }}" as="t" hint-placeholder-count="3">
+              <span style="display: flex; flex-direction: column; gap: 6px;">
+                <span style="height: 52px; border-radius: 9px; background: {{ t.tint }};"></span>
+                <span style="font-size: 8.5px; font-weight: 600; color: #1B2C3A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ t.label }}</span>
+              </span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-bottom: 38px;">
+      <span style="font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">What your site needs</span>
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(25px, 4vw, 38px); line-height: 1.14; letter-spacing: -1.2px; color: #04121F; text-wrap: balance;">{{ needsTitle }}</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+        <div style="padding: 26px 26px 28px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 12px;">
+          <span style="width: 42px; height: 42px; border-radius: 13px; background: #003366; display: grid; place-items: center;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F4F2AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ f.icon }}"></path></svg>
+          </span>
+          <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.35px; color: #04121F; text-wrap: pretty;">{{ f.title }}</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4B5D6E; text-wrap: pretty;">{{ f.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="padding: clamp(26px, 3.6vw, 44px); border-radius: 30px; background: linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96)); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(26px); box-shadow: 0 34px 76px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.2); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(26px, 4vw, 42px); align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <span style="font-size: 15px; letter-spacing: 2.5px; color: #F4F2AE;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p style="margin: 0; font-size: clamp(15px, 1.8vw, 17px); line-height: 1.62; color: rgba(255,255,255,0.9); text-wrap: pretty;">&ldquo;{{ quote }}&rdquo;</p>
+        <div style="display: flex; align-items: baseline; gap: 9px; padding-top: 4px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #F4F2AE;">{{ quoteName }}</span>
+          <span style="font-size: 13px; color: rgba(255,255,255,0.55);">{{ quoteCompany }}</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+        <sc-for list="{{ resultStats }}" as="r" hint-placeholder-count="3">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(24px, 3vw, 30px); letter-spacing: -0.9px; color: #FFFFFF;">{{ r.value }}</span>
+            <span style="font-size: 13px; color: rgba(226,236,245,0.6);">{{ r.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 34px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.14; letter-spacing: -1.1px; color: #04121F;">{{ industryName }} <span style="background: #F4F2AE; padding: 0 8px; border-radius: 3px;">questions</span></h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #435A70;">Call +92 303 372 0953 and ask for someone who has built for {{ industryLower }} before.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+          <div style="border-radius: 18px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); overflow: hidden;">
+            <button type="button" onClick="{{ q.toggle }}" style="all: unset; cursor: pointer; box-sizing: border-box; width: 100%; display: flex; align-items: flex-start; gap: 14px; padding: 19px 22px;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; line-height: 1.35; color: #04121F; margin-right: auto; text-align: left;">{{ q.question }}</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px; transform: {{ q.rotate }}; transition: transform 200ms ease;"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <sc-if value="{{ q.open }}">
+              <p style="margin: 0; padding: 0 22px 21px; font-size: 14.5px; line-height: 1.68; color: #435A70; text-wrap: pretty;">{{ q.answer }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 24px 0;">
+    <span style="display: block; margin-bottom: 20px; font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">Other industries we build for</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <sc-for list="{{ otherIndustries }}" as="o" hint-placeholder-count="8">
+        <a href="{{ o.href }}" style="padding: 11px 18px; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: #3B5063; background: rgba(255,255,255,0.62); border: 1.5px solid rgba(255,255,255,0.85); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); white-space: nowrap;" style-hover="border-color: #707538; color: #04121F;">{{ o.label }}</a>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="height: 70px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;industry&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;restaurants&quot;,&quot;boutiques&quot;,&quot;clinics&quot;],&quot;default&quot;:&quot;boutiques&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Industry&quot;}}">
+class Component extends DCLogic {
+  state = { openFaq: 0 };
+
+  renderVals() {
+    const key = this.props.industry ?? "boutiques";
+
+    const icons = {
+      book: "M5 5.5h14v14H5zM5 10h14M9 3.5v4M15 3.5v4",
+      menu: "M4 6h16M4 12h10M4 18h13",
+      cart: "M4 6h2.2l2.3 9.5h9L20 8H7M9.5 20a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z",
+      pin: "M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
+      star: "M12 4l2.4 5.2 5.6.5-4.3 3.7 1.3 5.6L12 16l-5 3 1.3-5.6L4 9.7l5.6-.5Z",
+      gallery: "M4 5.5h16v13H4zM8.3 10.6a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM4 16.2l4.6-4.2 4.4 3.9 2.6-2.4L20 17",
+      whatsapp: "M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z",
+      form: "M4 5.5h16v13H4zM8 9.5h8M8 13h5",
+      phone: "M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z",
+      doc: "M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4",
+      truck: "M3.5 7h10v9h-10zM13.5 11h4l3 3v2h-7zM7 19a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8Zm10 0a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8Z",
+      shield: "M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5Z"
+    };
+
+    const data = {
+      restaurants: {
+        name: "Restaurants", lower: "restaurants", built: "1,240 restaurant websites built",
+        subhead: "Table bookings, a menu people can actually read on a phone, and a Google listing that shows you're open. Built by a team that has done it for over a thousand restaurants.",
+        ticks: [{ label: "Online table bookings" }, { label: "Live menu, edit any time" }, { label: "Google Maps + reviews" }],
+        tint: "linear-gradient(150deg, #8E1B22, #2A0709)",
+        sample: { domain: "celestialdelicacies.pk", kicker: "Now taking reservations", name: "Celestial Delicacies", blurb: "Fine dining in Clifton. Reserve a table, or let us cater your next event.", cta: "Book a table",
+          tiles: [{ label: "Menu", tint: "linear-gradient(150deg, #E8C48D, #C89A5C)" }, { label: "Gallery", tint: "linear-gradient(150deg, #C0392B, #5B140D)" }, { label: "Book", tint: "linear-gradient(150deg, #707538, #C6CB8A)" }] },
+        needsTitle: "Six things every restaurant website has to get right",
+        features: [
+          { title: "Bookings that reach you", body: "A reservation form that lands in your inbox and on your phone, with the covers, time and any note the guest left.", icon: icons.book },
+          { title: "A menu, not a PDF", body: "Prices and dishes you can change yourself in seconds. No pinch-and-zoom on a photographed laminate sheet.", icon: icons.menu },
+          { title: "Photos that sell the food", body: "Gallery layouts built for food photography, and we'll tell you honestly if your current photos are letting you down.", icon: icons.gallery },
+          { title: "Google Maps and reviews", body: "Verified listing, opening hours that are actually right, and your best reviews pulled onto the homepage.", icon: icons.pin },
+          { title: "Online ordering", body: "Cash on delivery, JazzCash and Easypaisa built in, with 0% commission from us \u2014 unlike the delivery apps.", icon: icons.cart },
+          { title: "WhatsApp enquiries", body: "A tappable button so a customer asking about a large booking reaches you in one move, not three.", icon: icons.whatsapp }
+        ],
+        quote: "Bookings went up three times over in the first two months. The menu I can change myself in a minute, which matters when prices move.",
+        quoteName: "Celestial Delicacies", quoteCompany: "Karachi",
+        results: [{ value: "3\u00d7", label: "increase in table bookings" }, { value: "142", label: "Google profile views a week" }, { value: "7 days", label: "from brief to live site" }],
+        faqs: [
+          ["Can customers order food directly from the site?", "Yes. You can take orders with cash on delivery, JazzCash, Easypaisa or PayFast, and we charge no commission on any of it."],
+          ["How do bookings reach me?", "By email and WhatsApp the moment they come in, and they appear in your dashboard under Leads so nothing gets lost during service."],
+          ["Can I change the menu myself?", "Yes, in seconds, from your phone. Or send it to your concierge and we'll do it \u2014 unlimited on Boost and above."],
+          ["Do you photograph the food?", "Not directly, but we'll tell you what shots you need and can recommend a food photographer in your city."]
+        ]
+      },
+
+      boutiques: {
+        name: "Boutiques", lower: "boutiques", built: "3,600 boutique and retail websites built",
+        subhead: "A webstore that handles unstitched suits, size guides, colour variants and cash on delivery \u2014 with 0% commission and an Instagram feed that keeps itself current.",
+        ticks: [{ label: "Full webstore" }, { label: "COD, JazzCash, Easypaisa" }, { label: "Instagram feed built in" }],
+        tint: "linear-gradient(150deg, #7A2E6B, #2A0F24)",
+        sample: { domain: "eleganceembroidery.pk", kicker: "New winter collection", name: "Elegance Embroidery", blurb: "Hand-embroidered suits and dupattas, delivered nationwide with cash on delivery.", cta: "Shop now",
+          tiles: [{ label: "Chikankari", tint: "linear-gradient(150deg, #E8B4C8, #B0708C)" }, { label: "Dupattas", tint: "linear-gradient(150deg, #C8B4E8, #7A5EB0)" }, { label: "Sale", tint: "linear-gradient(150deg, #C4262E, #6B0F14)" }] },
+        needsTitle: "What a boutique site has to do that a template won't",
+        features: [
+          { title: "Variants that make sense", body: "Colour, size and fabric handled properly, with stock per variant so you're not selling something you ran out of last week.", icon: icons.cart },
+          { title: "Cash on delivery, done right", body: "COD is most of Pakistani online retail. We set it up with order confirmation so your RTO rate stays low.", icon: icons.truck },
+          { title: "Size guides that reduce returns", body: "Clear measurements per garment, in inches and centimetres, shown at the point of decision rather than buried in a policy page.", icon: icons.doc },
+          { title: "Instagram feed built in", body: "Your latest posts on the homepage automatically, so the site never looks abandoned between collections.", icon: icons.gallery },
+          { title: "Wholesale and retail pricing", body: "Two price tiers if you sell both ways, with a bulk enquiry form for shop buyers.", icon: icons.form },
+          { title: "Reviews that build trust", body: "Verified customer reviews per product, collected automatically after delivery.", icon: icons.star }
+        ],
+        quote: "Third repeat order from the same buyers. Having the sizes and the colours right on the page stopped most of the WhatsApp back-and-forth.",
+        quoteName: "Elegance Embroidery", quoteCompany: "Zainab Market, Karachi",
+        results: [{ value: "400+", label: "products listed" }, { value: "0%", label: "commission on sales" }, { value: "6 days", label: "to launch" }],
+        faqs: [
+          ["How many products can I list?", "Up to 100 comfortably on Growth, and unlimited on Platinum. We load the first batch for you from your photos and price list."],
+          ["Does it work with cash on delivery?", "Yes, and we set up order confirmation to cut down on refused deliveries \u2014 the single biggest cost in Pakistani online retail."],
+          ["Can I sell wholesale and retail from one site?", "Yes. Two price tiers with a separate bulk enquiry route for shop buyers."],
+          ["What about Instagram?", "Your feed embeds on the homepage and product pages, and we can syndicate your catalogue to Instagram Shopping on Boost and above."]
+        ]
+      },
+
+      clinics: {
+        name: "Clinics", lower: "clinics and doctors", built: "890 clinic and practice websites built",
+        subhead: "Appointment booking, doctor profiles, and the trust signals patients look for before they call. Built to load fast on a phone and rank for your area.",
+        ticks: [{ label: "Appointment booking" }, { label: "Doctor profiles" }, { label: "Local SEO for your area" }],
+        tint: "linear-gradient(150deg, #1B5E6E, #062730)",
+        sample: { domain: "sacredwellness.pk", kicker: "Appointments open this week", name: "Sacred Wellness Clinic", blurb: "Consultations, physiotherapy and wellness programmes in Model Town, Lahore.", cta: "Book an appointment",
+          tiles: [{ label: "Services", tint: "linear-gradient(150deg, #8FB4C8, #4E7E96)" }, { label: "Our doctors", tint: "linear-gradient(150deg, #C6CB8A, #707538)" }, { label: "Contact", tint: "linear-gradient(150deg, #2E6EA8, #10365A)" }] },
+        needsTitle: "What patients look for before they pick up the phone",
+        features: [
+          { title: "Appointment booking", body: "Patients pick a doctor, a day and a slot. You get it by email and WhatsApp; they get a confirmation.", icon: icons.book },
+          { title: "Doctor profiles", body: "Qualifications, specialisms and languages spoken. This is the page patients read most and most clinic sites don't have it.", icon: icons.form },
+          { title: "Services and fees", body: "Clear consultation fees and what's included. Being upfront reduces no-shows and time-wasting calls.", icon: icons.doc },
+          { title: "Found in your area", body: "Verified Google Maps listing with correct hours, so \u201cclinic near me\u201d searches actually find you.", icon: icons.pin },
+          { title: "Patient reviews", body: "Collected after visits and shown on the homepage \u2014 the strongest trust signal a clinic has.", icon: icons.star },
+          { title: "Privacy handled properly", body: "Consent notices, a privacy policy written for patient data, and forms that don't email sensitive details in plain text.", icon: icons.shield }
+        ],
+        quote: "The level of service is really good, and I'm getting loads of leads now. Patients book online instead of calling during clinic hours.",
+        quoteName: "Shahzad Ilyas", quoteCompany: "Sacred Tantra & Wellness",
+        results: [{ value: "21", label: "calls a week from Google" }, { value: "3", label: "areas ranking locally" }, { value: "7 days", label: "from brief to live site" }],
+        faqs: [
+          ["Can patients book appointments online?", "Yes \u2014 by doctor, day and time slot, with confirmation to both sides. Multi-seat and multi-location booking is available on Platinum."],
+          ["Is patient data handled safely?", "Forms are submitted over SSL and delivered to your chosen inbox; we don't store patient details on our platform. We'll also write you a privacy policy covering it."],
+          ["Can I list several doctors?", "Yes, each with their own profile page, specialisms and bookable availability."],
+          ["Will it help us rank for our neighbourhood?", "That's what the local SEO work is for \u2014 Google Business Profile, Maps, area pages and reviews. Included from Boost upwards."]
+        ]
+      }
+    };
+
+    const d = data[key];
+    const indHref = {
+      Restaurants: "Marketing - Website For Industry.dc.html",
+      Boutiques: "Marketing - Website For Boutiques.dc.html",
+      Clinics: "Marketing - Website For Clinics.dc.html"
+    };
+    const others = ["Restaurants", "Boutiques", "Clinics"]
+      .filter(x => x !== d.name).map(x => ({ label: x, href: indHref[x] }));
+
+    return {
+      industryName: d.name,
+      industryLower: d.lower,
+      builtCount: d.built,
+      subhead: d.subhead,
+      heroTicks: d.ticks,
+      heroTint: d.tint,
+      sampleDomain: d.sample.domain,
+      sampleKicker: d.sample.kicker,
+      sampleName: d.sample.name,
+      sampleBlurb: d.sample.blurb,
+      sampleCta: d.sample.cta,
+      sampleTiles: d.sample.tiles,
+      needsTitle: d.needsTitle,
+      features: d.features,
+      quote: d.quote,
+      quoteName: d.quoteName,
+      quoteCompany: d.quoteCompany,
+      resultStats: d.results,
+      otherIndustries: others,
+      faqs: d.faqs.map((f, i) => ({
+        question: f[0], answer: f[1],
+        open: this.state.openFaq === i,
+        rotate: this.state.openFaq === i ? "rotate(180deg)" : "rotate(0deg)",
+        toggle: () => this.setState({ openFaq: this.state.openFaq === i ? -1 : i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

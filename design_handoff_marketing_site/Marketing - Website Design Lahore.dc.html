@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1450px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="services" hint-size="100%,120px"></dc-import>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 44px 24px 0;">
+    <div style="display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 12.5px; color: #6A7F92;">
+      <a href="Marketing - Home.dc.html">Home</a>
+      <span>/</span>
+      <a href="Marketing - Services.dc.html">Locations</a>
+      <span>/</span>
+      <span style="font-weight: 600; color: #04121F;">{{ cityName }}</span>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 28px 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(30px, 4vw, 52px); align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+      <span style="align-self: flex-start; display: flex; align-items: center; gap: 9px; padding: 8px 16px 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.66); border: 1px solid rgba(255,255,255,0.9); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); font-size: 12.5px; font-weight: 600; color: #3B5063;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#707538" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"></path></svg>
+        {{ builtLine }}
+      </span>
+
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5vw, 52px); line-height: 1.06; letter-spacing: -1.9px; color: #04121F; text-wrap: balance;">Website design in <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone;">{{ cityName }}</span> &mdash; done for you in 7 days</h1>
+
+      <p style="margin: 0; max-width: 34em; font-size: clamp(14.5px, 1.7vw, 17.5px); line-height: 1.6; color: #435A70; text-wrap: pretty;">{{ subhead }}</p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px;">
+        <a href="Marketing - Pricing.dc.html" style="padding: 16px 30px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.8px; text-transform: uppercase; color: #16210B; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: 0 14px 30px rgba(244,242,174,0.4), inset 0 1px 0 rgba(255,255,255,0.7);" style-hover="background: #FFFDD8; color: #16210B;">Start my website</a>
+        <a href="tel:+923033720953" style="padding: 16px 28px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.8px; text-transform: uppercase; color: #04121F; background: rgba(255,255,255,0.66); border: 1.5px solid rgba(255,255,255,0.9); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);" style-hover="border-color: #707538; color: #04121F;">Call +92 303 372 0953</a>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 10px 26px; padding-top: 6px;">
+        <sc-for list="{{ heroTicks }}" as="t" hint-placeholder-count="3">
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #435A70;">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#707538" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="m5 12.5 4.5 4.5L19 7"></path></svg>
+            {{ t.label }}
+          </span>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <div style="padding: 26px 28px 28px; border-radius: 26px; background: linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96)); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(24px); box-shadow: 0 26px 58px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2); display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 19px; letter-spacing: -0.5px; color: #FFFFFF;">{{ cityName }} at a glance</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+          <sc-for list="{{ cityStats }}" as="s" hint-placeholder-count="4">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -0.8px; color: #F4F2AE;">{{ s.value }}</span>
+              <span style="font-size: 12.5px; line-height: 1.45; color: rgba(226,236,245,0.62);">{{ s.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="height: 150px; border-radius: 16px; background: {{ cityTint }}; border: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#C6CB8A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"></path></svg>
+          <span style="font-size: 12.5px; color: rgba(226,236,245,0.6);">{{ cityAreasLine }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-bottom: 38px;">
+      <span style="font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">Local, not generic</span>
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(25px, 4vw, 38px); line-height: 1.14; letter-spacing: -1.2px; color: #04121F; text-wrap: balance;">What a {{ cityName }} business actually needs</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+        <div style="padding: 26px 26px 28px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 12px;">
+          <span style="width: 42px; height: 42px; border-radius: 13px; background: #003366; display: grid; place-items: center;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F4F2AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ f.icon }}"></path></svg>
+          </span>
+          <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.35px; color: #04121F; text-wrap: pretty;">{{ f.title }}</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4B5D6E; text-wrap: pretty;">{{ f.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 70px 24px 0;">
+    <div style="padding: clamp(26px, 3.4vw, 40px); border-radius: 26px; background: rgba(242,238,226,0.6); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #8A7A5E; font-weight: 600;">Areas we serve</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(22px, 3.2vw, 30px); line-height: 1.16; letter-spacing: -1px; color: #04121F;">Businesses across {{ cityName }} and around it</h2>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+        <sc-for list="{{ areas }}" as="a" hint-placeholder-count="12">
+          <span style="padding: 10px 16px; border-radius: 999px; font-size: 13px; font-weight: 600; color: #3B5063; background: rgba(255,255,255,0.72); border: 1px solid rgba(255,255,255,0.9); white-space: nowrap;">{{ a.label }}</span>
+        </sc-for>
+      </div>
+      <p style="margin: 0; font-size: 14px; line-height: 1.62; color: #4B5D6E; text-wrap: pretty;">{{ areasNote }}</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 70px 24px 0;">
+    <div style="padding: clamp(26px, 3.6vw, 42px); border-radius: 26px; background: linear-gradient(160deg, rgba(4,18,31,0.97), rgba(0,28,51,0.97)); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(24px); box-shadow: 0 30px 66px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.18); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(26px, 4vw, 40px); align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <span style="font-size: 15px; letter-spacing: 2.5px; color: #F4F2AE;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p style="margin: 0; font-size: clamp(15px, 1.8vw, 17px); line-height: 1.62; color: rgba(255,255,255,0.9); text-wrap: pretty;">&ldquo;{{ quote }}&rdquo;</p>
+        <div style="display: flex; align-items: baseline; gap: 9px; padding-top: 4px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #F4F2AE;">{{ quoteName }}</span>
+          <span style="font-size: 13px; color: rgba(255,255,255,0.55);">{{ quoteCompany }}</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 11px; min-width: 0;">
+        <sc-for list="{{ localWins }}" as="w" hint-placeholder-count="3">
+          <div style="display: flex; align-items: flex-start; gap: 12px; padding: 15px 17px; border-radius: 15px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#C6CB8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px;"><path d="M12 19V5M12 5l-5 5M12 5l5 5"></path></svg>
+            <span style="font-size: 13.5px; line-height: 1.5; color: rgba(233,239,245,0.86);">{{ w.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 34px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.14; letter-spacing: -1.1px; color: #04121F;">{{ cityName }} <span style="background: #F4F2AE; padding: 0 8px; border-radius: 3px;">questions</span></h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #435A70;">{{ officeLine }}</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+          <div style="border-radius: 18px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); overflow: hidden;">
+            <button type="button" onClick="{{ q.toggle }}" style="all: unset; cursor: pointer; box-sizing: border-box; width: 100%; display: flex; align-items: flex-start; gap: 14px; padding: 19px 22px;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; line-height: 1.35; color: #04121F; margin-right: auto; text-align: left;">{{ q.question }}</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px; transform: {{ q.rotate }}; transition: transform 200ms ease;"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <sc-if value="{{ q.open }}">
+              <p style="margin: 0; padding: 0 22px 21px; font-size: 14.5px; line-height: 1.68; color: #435A70; text-wrap: pretty;">{{ q.answer }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 24px 0;">
+    <span style="display: block; margin-bottom: 20px; font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">Other cities we work in</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <sc-for list="{{ otherCities }}" as="c" hint-placeholder-count="8">
+        <a href="{{ c.href }}" style="padding: 11px 18px; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: #3B5063; background: rgba(255,255,255,0.62); border: 1.5px solid rgba(255,255,255,0.85); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); white-space: nowrap;" style-hover="border-color: #707538; color: #04121F;">Website design {{ c.label }}</a>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="height: 70px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;city&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;karachi&quot;,&quot;lahore&quot;,&quot;islamabad&quot;],&quot;default&quot;:&quot;lahore&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Location&quot;}}">
+class Component extends DCLogic {
+  state = { openFaq: 0 };
+
+  renderVals() {
+    const key = this.props.city ?? "lahore";
+
+    const icons = {
+      pin: "M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
+      map: "M4 20V6M4 6l7 4 9-5v9l-9 5-7-4Z",
+      phone: "M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z",
+      star: "M12 4l2.4 5.2 5.6.5-4.3 3.7 1.3 5.6L12 16l-5 3 1.3-5.6L4 9.7l5.6-.5Z",
+      cart: "M4 6h2.2l2.3 9.5h9L20 8H7M9.5 20a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z",
+      speed: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM12 8v4.5l3 2",
+      whatsapp: "M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z",
+      search: "M11 4.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM16 16l4.5 4.5"
+    };
+
+    const sharedFeatures = city => ([
+      { title: "Found in " + city + ", not nationally", body: "A verified Google Business Profile and Maps listing tuned to your actual neighbourhood, so \u201cnear me\u201d searches reach you rather than a competitor two districts away.", icon: icons.pin },
+      { title: "Area pages that rank", body: "Separate pages for the areas you serve, written properly rather than the same paragraph with the place name swapped. Google notices the difference.", icon: icons.search },
+      { title: "Built for local payment", body: "JazzCash, Easypaisa, PayFast and cash on delivery configured from day one, with 0% commission from us.", icon: icons.cart },
+      { title: "Fast on local mobile data", body: "Your customers are on 4G, not fibre. We optimise images and page weight for the connection people actually browse on.", icon: icons.speed },
+      { title: "Reviews from real customers", body: "Automated review invitations after each sale or visit, with the best ones surfaced on your homepage.", icon: icons.star },
+      { title: "WhatsApp as the main channel", body: "A tappable WhatsApp button and lead routing, because in Pakistan that's where the enquiry actually happens.", icon: icons.whatsapp }
+    ]);
+
+    const data = {
+      karachi: {
+        name: "Karachi",
+        built: "2,400+ Karachi businesses online with MatjarX",
+        subhead: "We build complete websites for Karachi shops, clinics, restaurants and wholesalers \u2014 written, designed and launched by our team in seven days. Our office is on Zamzama Boulevard, so we can meet in person if you'd rather.",
+        ticks: [{ label: "Office in Clifton" }, { label: "Live in 7 days" }, { label: "From Rs. 22,500" }],
+        stats: [
+          { value: "2,400+", label: "Karachi websites built" },
+          { value: "7 days", label: "average launch time" },
+          { value: "4.8 / 5", label: "client rating" },
+          { value: "In person", label: "meetings available" }
+        ],
+        tint: "linear-gradient(150deg, #1B4B6E, #0A2233)",
+        areasLine: "Clifton \u00b7 DHA \u00b7 Gulshan \u00b7 Saddar \u00b7 Korangi",
+        areas: ["Clifton", "DHA Phase 1\u20138", "Zamzama", "Saddar", "Gulshan-e-Iqbal", "North Nazimabad", "Korangi", "Malir", "Shahrah-e-Faisal", "Tariq Road", "Zainab Market", "SITE Area", "Bahadurabad", "Gulistan-e-Johar"],
+        areasNote: "Whether you run a boutique in Zainab Market, a clinic in DHA or a factory in SITE, the site is written for the customers in that area \u2014 not a generic Karachi paragraph.",
+        quote: "Ranks first on Google for Chinese restaurant catering in Karachi now. The team understood the market here without us explaining it.",
+        quoteName: "China Friend", quoteCompany: "Karachi",
+        wins: [
+          { label: "#1 for \u201crestaurant catering Karachi\u201d within four months" },
+          { label: "142 Google profile views a week from Clifton and DHA" },
+          { label: "21 calls a week straight from the Maps listing" }
+        ],
+        officeLine: "Visit us at 6c, Ln 4, Zamzama Boulevard, Clifton \u2014 Monday to Friday, 11am to 8pm.",
+        faqs: [
+          ["Do you meet clients in person in Karachi?", "Yes. Our office is at 6c, Ln 4, Zamzama Boulevard, Clifton, open Monday to Friday 11am to 8pm. Most clients prefer WhatsApp and a call, but you're welcome to come in."],
+          ["How much does a website cost in Karachi?", "Rs. 22,500 one-time to build it, then Rs. 4,500 a month including hosting, domain, business email and support. Local agencies typically quote Rs. 400,000 or more for the build alone."],
+          ["Will my site rank for my area of Karachi?", "That's the point of the local SEO work \u2014 a verified Maps listing, area pages and review collection. Businesses in Clifton, DHA and Gulshan typically see movement inside eight weeks."],
+          ["Can you take cash on delivery orders for Karachi?", "Yes, plus JazzCash, Easypaisa and PayFast. We also set up order confirmation to reduce refused deliveries, which is the biggest hidden cost in local e-commerce."]
+        ]
+      },
+
+      lahore: {
+        name: "Lahore",
+        built: "1,900+ Lahore businesses online with MatjarX",
+        subhead: "Websites for Lahore's wholesalers, boutiques, restaurants and services \u2014 designed, written and launched by our team in seven days, with the local SEO work included.",
+        ticks: [{ label: "Live in 7 days" }, { label: "Local SEO included" }, { label: "From Rs. 22,500" }],
+        stats: [
+          { value: "1,900+", label: "Lahore websites built" },
+          { value: "7 days", label: "average launch time" },
+          { value: "4.8 / 5", label: "client rating" },
+          { value: "0%", label: "commission on sales" }
+        ],
+        tint: "linear-gradient(150deg, #6B4A22, #2A1A08)",
+        areasLine: "Gulberg \u00b7 DHA \u00b7 Model Town \u00b7 Johar Town",
+        areas: ["Gulberg", "DHA Lahore", "Model Town", "Johar Town", "Bahria Town", "Cantt", "Faisal Town", "Garden Town", "Iqbal Town", "Shadman", "Anarkali", "Azam Cloth Market", "Township", "Wapda Town"],
+        areasNote: "Lahore's trade is concentrated by area \u2014 fabric in Azam Cloth Market, services in Gulberg, clinics in Model Town. We write and structure the site for the customers who actually search in your part of the city.",
+        quote: "\u201cFabric supplier lahore\u201d moved from nineteenth to eleventh in a month, and the enquiries followed it.",
+        quoteName: "Al-Falah Traders", quoteCompany: "Lahore",
+        wins: [
+          { label: "4,812 monthly visitors, up 18% on the previous month" },
+          { label: "96 enquiries a month, 34 of which became orders" },
+          { label: "Ranking in three Lahore areas within two months" }
+        ],
+        officeLine: "Lahore clients work with us over WhatsApp and video call \u2014 call +92 303 372 0953, Monday to Friday, 11am to 8pm.",
+        faqs: [
+          ["Do you have a Lahore office?", "Our office is in Karachi, but Lahore is our second largest client base. Everything runs over WhatsApp, email and video call \u2014 including your launch and training session."],
+          ["How much does a website cost in Lahore?", "Rs. 22,500 one-time, then Rs. 4,500 a month with hosting, domain, business email and support included."],
+          ["Can you handle wholesale and bulk enquiries?", "Yes \u2014 rate tables, per-metre and per-bale pricing, and bulk enquiry forms routed to your WhatsApp. It's one of the most common things we build for Lahore."],
+          ["Will you set up my Google listing?", "Yes, created and verified for you, with your area, hours and services. Included from Boost upwards, and set up on Launch too."]
+        ]
+      },
+
+      islamabad: {
+        name: "Islamabad",
+        built: "1,100+ Islamabad and Rawalpindi businesses online",
+        subhead: "Professional websites for Islamabad's consultancies, clinics, caterers and retailers \u2014 built by our team, launched in seven days, and kept current by your concierge.",
+        ticks: [{ label: "Live in 7 days" }, { label: "Twin-city coverage" }, { label: "From Rs. 22,500" }],
+        stats: [
+          { value: "1,100+", label: "twin-city websites built" },
+          { value: "7 days", label: "average launch time" },
+          { value: "4.8 / 5", label: "client rating" },
+          { value: "4 hrs", label: "concierge reply time" }
+        ],
+        tint: "linear-gradient(150deg, #2A4A3A, #0C2018)",
+        areasLine: "Blue Area \u00b7 F-6 \u00b7 F-7 \u00b7 Bahria \u00b7 Rawalpindi",
+        areas: ["Blue Area", "F-6", "F-7", "F-10", "F-11", "G-9", "I-8", "Bahria Town", "DHA Islamabad", "Gulberg Greens", "Saddar Rawalpindi", "Bahria Phase 4", "Chaklala", "Satellite Town"],
+        areasNote: "Islamabad and Rawalpindi behave like two markets. We build for whichever one your customers are actually in, and cover both when you serve the twin cities.",
+        quote: "Quotes from agencies here were in the hundreds of thousands. MatjarX delivered in a week for a fraction, and the quality held up.",
+        quoteName: "Saeed Ahmed", quoteCompany: "Caterer, Islamabad",
+        wins: [
+          { label: "Enquiries doubled in the first quarter after launch" },
+          { label: "Ranking for \u201ccatering Islamabad\u201d inside ten weeks" },
+          { label: "Bookings taken online instead of over the phone" }
+        ],
+        officeLine: "Islamabad and Rawalpindi clients work with us over WhatsApp and video call \u2014 call +92 303 372 0953, Monday to Friday, 11am to 8pm.",
+        faqs: [
+          ["Do you work with government or corporate clients?", "Yes. We handle procurement documentation and can invoice against a PO. Tell us your requirements up front and we'll confirm what we can meet."],
+          ["How much does a website cost in Islamabad?", "Rs. 22,500 one-time, then Rs. 4,500 a month. Local agencies in the Blue Area typically quote several hundred thousand for the build alone."],
+          ["Can you cover both Islamabad and Rawalpindi?", "Yes \u2014 separate area pages and a Maps listing for each location if you serve both cities."],
+          ["Do you offer bookings for consultancies?", "Yes. Consultation booking with your availability, confirmations to both sides, and multi-seat scheduling on Platinum."]
+        ]
+      }
+    };
+
+    const d = data[key];
+    const cityHref = {
+      Karachi: "Marketing - Website Design City.dc.html",
+      Lahore: "Marketing - Website Design Lahore.dc.html",
+      Islamabad: "Marketing - Website Design Islamabad.dc.html"
+    };
+    const others = ["Karachi", "Lahore", "Islamabad"]
+      .filter(x => x !== d.name).map(x => ({ label: x, href: cityHref[x] }));
+
+    return {
+      cityName: d.name,
+      builtLine: d.built,
+      subhead: d.subhead,
+      heroTicks: d.ticks,
+      cityStats: d.stats,
+      cityTint: d.tint,
+      cityAreasLine: d.areasLine,
+      areas: d.areas.map(a => ({ label: a })),
+      areasNote: d.areasNote,
+      features: sharedFeatures(d.name),
+      quote: d.quote,
+      quoteName: d.quoteName,
+      quoteCompany: d.quoteCompany,
+      localWins: d.wins,
+      officeLine: d.officeLine,
+      otherCities: others,
+      faqs: d.faqs.map((f, i) => ({
+        question: f[0], answer: f[1],
+        open: this.state.openFaq === i,
+        rotate: this.state.openFaq === i ? "rotate(180deg)" : "rotate(0deg)",
+        toggle: () => this.setState({ openFaq: this.state.openFaq === i ? -1 : i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

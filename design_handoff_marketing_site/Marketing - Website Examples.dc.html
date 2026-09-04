@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+  .mx-rail { scrollbar-width: none; -ms-overflow-style: none; }
+  .mx-rail::-webkit-scrollbar { display: none; }
+  .mx-card .mx-overlay { opacity: 0; transition: opacity 200ms ease; }
+  .mx-card:hover .mx-overlay, .mx-card:focus-within .mx-overlay { opacity: 1; }
+  @media (hover: none) {
+    .mx-card .mx-overlay { opacity: 1; background: rgba(4,18,31,0.44); }
+  }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="examples" hint-size="100%,120px"></dc-import>
+
+  <section style="max-width: 1000px; margin: 0 auto; padding: 56px 24px 0; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+    <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5.2vw, 52px); line-height: 1.07; letter-spacing: -1.9px; color: #04121F; text-wrap: balance;"><span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 4px;">70,000+ Websites</span> Built Globally</h1>
+    <p style="margin: 0; max-width: 40em; font-size: clamp(14.5px, 1.7vw, 17px); line-height: 1.6; color: #435A70;">New or established, local or e-commerce, we serve businesses of all kinds. Serving over 100s of business categories.</p>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 0;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button type="button" onClick="{{ railPrev }}" title="Previous categories" style="all: unset; cursor: pointer; width: 38px; height: 66px; flex: 0 0 auto; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,0.66); border: 1px solid rgba(255,255,255,0.9); backdrop-filter: blur(20px); box-shadow: 0 10px 26px rgba(4,18,31,0.08), inset 0 1px 0 rgba(255,255,255,0.9);" style-hover="background: #F4F2AE;">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#04121F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6"></path></svg>
+      </button>
+
+      <div id="mx-cat-rail" class="mx-rail" style="flex: 1; min-width: 0; overflow-x: auto; overflow-y: hidden;">
+        <div style="display: grid; grid-auto-flow: column; grid-template-rows: 1fr 1fr; grid-auto-columns: 158px; gap: 10px; width: max-content;">
+          <sc-for list="{{ categories }}" as="c" hint-placeholder-count="16">
+            <button type="button" onClick="{{ c.go }}" style="all: unset; cursor: pointer; text-align: center; padding: 13px 14px; border-radius: 10px; font-size: 13.5px; font-weight: {{ c.weight }}; color: {{ c.ink }}; background: {{ c.bg }}; border: 1px solid {{ c.line }}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background 180ms ease;">{{ c.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <button type="button" onClick="{{ railNext }}" title="More categories" style="all: unset; cursor: pointer; width: 38px; height: 66px; flex: 0 0 auto; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,0.66); border: 1px solid rgba(255,255,255,0.9); backdrop-filter: blur(20px); box-shadow: 0 10px 26px rgba(4,18,31,0.08), inset 0 1px 0 rgba(255,255,255,0.9);" style-hover="background: #F4F2AE;">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#04121F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6 6 6-6 6"></path></svg>
+      </button>
+    </div>
+    <p style="margin: 20px 0 0; text-align: center; font-size: 13.5px; color: #6A7F92;">{{ resultLine }}</p>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 26px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 22px;">
+      <sc-for list="{{ shown }}" as="ex" hint-placeholder-count="4">
+        <div class="mx-card" style="position: relative; border-radius: 20px; overflow: hidden; background: {{ ex.tint }}; border: 1px solid rgba(255,255,255,0.85); box-shadow: 0 18px 44px rgba(4,18,31,0.1);">
+          <div style="position: relative;">
+          <div style="position: relative; aspect-ratio: 16 / 10; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; padding: 11px 16px; background: rgba(0,0,0,0.28);">
+              <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 1px; color: rgba(255,255,255,0.94); white-space: nowrap;">{{ ex.brand }}</span>
+              <span style="display: flex; gap: 12px; margin: 0 auto;">
+                <sc-for list="{{ ex.nav }}" as="n" hint-placeholder-count="3">
+                  <span style="font-size: 8.5px; font-weight: 600; color: rgba(255,255,255,0.68); white-space: nowrap;">{{ n.label }}</span>
+                </sc-for>
+              </span>
+              <span style="flex: 0 0 auto; padding: 5px 11px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 8px; color: {{ ex.ctaInk }}; background: {{ ex.ctaBg }}; white-space: nowrap;">{{ ex.cta }}</span>
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 9px; padding: 22px 26px 26px; min-height: 0;">
+              <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.04; letter-spacing: -0.9px; color: #FFFFFF; text-shadow: 0 2px 14px rgba(0,0,0,0.4);">{{ ex.heroLine }}</span>
+              <span style="max-width: 26em; font-size: 11px; line-height: 1.6; color: rgba(255,255,255,0.8);">{{ ex.heroBlurb }}</span>
+            </div>
+          </div>
+
+          <div class="mx-overlay" style="position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; background: rgba(4,18,31,0.62); backdrop-filter: blur(2px);">
+            <button type="button" onClick="{{ ex.open }}" style="all: unset; cursor: pointer; padding: 13px 22px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13.5px; color: #FFFFFF; border-bottom: 2px solid rgba(255,255,255,0.8);" style-hover="color: #F4F2AE; border-bottom-color: #F4F2AE;">See Full Example</button>
+            <a href="Marketing - Pricing.dc.html" style="padding: 13px 22px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13.5px; color: #16210B; background: linear-gradient(160deg, #C6CB8A, #A8AD6A); box-shadow: 0 10px 24px rgba(0,0,0,0.28);" style-hover="background: #F4F2AE; color: #16210B;">Get A Site Like This</a>
+          </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px 18px; background: rgba(255,255,255,0.72); backdrop-filter: blur(20px);">
+            <div style="display: flex; flex-direction: column; gap: 3px; margin-right: auto; min-width: 0;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; letter-spacing: -0.2px; color: #04121F;">{{ ex.name }}</span>
+              <span style="font-size: 12px; color: #6A7F92;">{{ ex.category }} &middot; {{ ex.domain }}</span>
+            </div>
+            <span style="flex: 0 0 auto; font-size: 11.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; color: #3D3A08; background: #F4F2AE; white-space: nowrap;">{{ ex.result }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-if value="{{ modalOpen }}">
+    <div style="position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; padding: clamp(12px, 3vw, 34px); background: rgba(2,10,18,0.86); backdrop-filter: blur(8px);">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 0 4px 12px; flex-wrap: wrap;">
+        <span style="display: flex; align-items: center; gap: 10px; padding: 9px 16px; border-radius: 999px; background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(18px);">
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: #C6CB8A;"></span>
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 13px; color: #FFFFFF;">{{ modalName }}</span>
+          <span style="font-size: 12px; color: rgba(226,236,245,0.55);">{{ modalDomain }}</span>
+        </span>
+        <a href="Marketing - Pricing.dc.html" style="margin-left: auto; padding: 12px 22px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13.5px; color: #16210B; background: linear-gradient(160deg, #C6CB8A, #A8AD6A);" style-hover="background: #F4F2AE; color: #16210B;">Get A Website Like This</a>
+        <button type="button" onClick="{{ closeModal }}" title="Close" style="all: unset; cursor: pointer; width: 40px; height: 40px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);" style-hover="background: rgba(255,255,255,0.26);">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+        </button>
+      </div>
+      <div style="flex: 1; min-height: 0; position: relative; border-radius: 16px; overflow: hidden; background: {{ modalTint }}; border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 40px 90px rgba(0,0,0,0.5);">
+        <div style="position: absolute; inset: 0; z-index: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 34px; text-align: center;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(22px, 3vw, 34px); letter-spacing: -1px; color: #FFFFFF;">{{ modalName }}</span>
+          <span style="max-width: 30em; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.78);">If the live site doesn&rsquo;t appear, it blocks being embedded &mdash; open it in a new tab instead.</span>
+          <a href="{{ modalUrl }}" target="_blank" rel="noopener" style="padding: 14px 26px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #16210B; background: linear-gradient(160deg, #F7F5C0, #E7E49B);" style-hover="background: #FFFDD8; color: #16210B;">Open {{ modalDomain }} in a new tab</a>
+        </div>
+        <iframe src="{{ modalUrl }}" title="{{ modalName }}" loading="lazy" style="position: relative; z-index: 1; display: block; width: 100%; height: 100%; border: 0;"></iframe>
+      </div>
+    </div>
+  </sc-if>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 24px 0;">
+    <h2 style="margin: 0 0 34px; text-align: center; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(25px, 4vw, 38px); line-height: 1.14; letter-spacing: -1.2px; color: #04121F;">What makes MatjarX <span style="background: #F4F2AE; padding: 0 9px; border-radius: 3px;">websites great</span></h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 20px;">
+      <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+        <div style="padding: 28px 26px 30px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 13px;">
+          <span style="width: 44px; height: 44px; border-radius: 13px; background: #003366; display: grid; place-items: center;">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#F4F2AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ p.icon }}"></path></svg>
+          </span>
+          <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.3px; color: #04121F;">{{ p.title }}</h3>
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #4B5D6E; text-wrap: pretty;">{{ p.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="height: 70px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { filter: "All", modal: -1 };
+
+  renderVals() {
+    const all = [
+      { name: "Celestial Delicacies", brand: "CELESTIAL", domain: "celestialdelicacies.com", category: "Restaurants", cat: "Restaurants",
+        nav: ["Menu", "Reservations", "Catering"], cta: "Book A Table", ctaBg: "#C6A227", ctaInk: "#1A1004",
+        heroLine: "Dining worth the drive.", heroBlurb: "Fine dining in Karachi. Reserve a table, or let us cater your next event.",
+        result: "Bookings up 3\u00d7", tint: "linear-gradient(150deg, #8E1B22, #2A0709)", url: "https://celestialdelicacies.com" },
+      { name: "Bin Adam Textile", brand: "BIN ADAM", domain: "binadamtextile.pk", category: "Textiles", cat: "Textiles",
+        nav: ["Rates", "Bulk orders", "About"], cta: "Get A Quote", ctaBg: "#F4F2AE", ctaInk: "#16210B",
+        heroLine: "Fabric by the bale, priced clearly.", heroBlurb: "Faisalabad wholesaler with live rate tables and bulk enquiry forms.",
+        result: "#1 on Google", tint: "linear-gradient(150deg, #003366, #0A2647)", url: "https://celestialdelicacies.com" },
+      { name: "Sacred Wellness", brand: "SACRED", domain: "sacredwellness.pk", category: "Clinics", cat: "Clinics",
+        nav: ["Services", "Our doctors", "Contact"], cta: "Book Now", ctaBg: "#C6CB8A", ctaInk: "#16210B",
+        heroLine: "Care that starts with listening.", heroBlurb: "Consultations, physiotherapy and wellness programmes in Model Town.",
+        result: "Leads every day", tint: "linear-gradient(150deg, #1B5E6E, #062730)", url: "https://celestialdelicacies.com" },
+      { name: "Elegance Embroidery", brand: "ELEGANCE", domain: "eleganceembroidery.pk", category: "Boutiques", cat: "Boutiques",
+        nav: ["Shop", "Collections", "Fabric guide"], cta: "Order Now", ctaBg: "#F4F2AE", ctaInk: "#16210B",
+        heroLine: "Hand-stitched, made to be seen.", heroBlurb: "Chikankari and ajrak work, delivered nationwide with cash on delivery.",
+        result: "Online in 6 days", tint: "linear-gradient(150deg, #7A2E6B, #2A0F24)", url: "https://celestialdelicacies.com" },
+      { name: "Zulfay Hair", brand: "ZULFAY", domain: "zulfayhair.com", category: "Salons", cat: "Salons",
+        nav: ["Stylists", "Price list", "Gallery"], cta: "Book Now", ctaBg: "#E8B4C8", ctaInk: "#2A0F1A",
+        heroLine: "Your chair is ready.", heroBlurb: "Multi-seat booking across three branches, synced to every stylist's calendar.",
+        result: "1,520 messages", tint: "linear-gradient(150deg, #A0522D, #3E1B0C)", url: "https://celestialdelicacies.com" },
+      { name: "CapActix Offshore", brand: "CAPACTIX", domain: "capactix.com", category: "Accounting", cat: "Accounting",
+        nav: ["Services", "Pricing", "Blog"], cta: "Request Call", ctaBg: "#C4262E", ctaInk: "#FFFFFF",
+        heroLine: "Numbers that matter.", heroBlurb: "We turn your financial data into reporting you can actually act on.",
+        result: "550+ reviews", tint: "linear-gradient(150deg, #10265A, #050F2A)", url: "https://celestialdelicacies.com" },
+      { name: "Eebeel Home", brand: "EEBEEL", domain: "eebeel.pk", category: "E-commerce", cat: "E-commerce",
+        nav: ["Shop", "Track order", "Support"], cta: "Order Now", ctaBg: "#F4F2AE", ctaInk: "#16210B",
+        heroLine: "Everything for the home.", heroBlurb: "400+ products with JazzCash, Easypaisa and cash-on-delivery checkout.",
+        result: "2,000+ leads", tint: "linear-gradient(150deg, #6A2C8E, #2A0F3A)", url: "https://celestialdelicacies.com" },
+      { name: "Sweet Crumbs Bakery", brand: "SWEET CRUMBS", domain: "sweetcrumbs.pk", category: "Restaurants", cat: "Restaurants",
+        nav: ["Menu", "Our bakery", "Catering"], cta: "Book Now", ctaBg: "#6B4A22", ctaInk: "#FFFFFF",
+        heroLine: "Baked fresh, every morning.", heroBlurb: "Order online for pickup, or reserve your table for the weekend.",
+        result: "Sells out daily", tint: "linear-gradient(150deg, #7C5628, #2A1608)", url: "https://celestialdelicacies.com" },
+      { name: "Mr. Handyman Repairs", brand: "MR. HANDYMAN", domain: "mrhandyman.pk", category: "Trades", cat: "Trades",
+        nav: ["Services", "Areas", "Reviews"], cta: "Get A Quote", ctaBg: "#E9A94F", ctaInk: "#2A1608",
+        heroLine: "Home repairs, all jobs covered.", heroBlurb: "Quote requests routed straight to WhatsApp, with before-and-after galleries.",
+        result: "Calls doubled", tint: "linear-gradient(150deg, #B8621B, #4A2409)", url: "https://celestialdelicacies.com" }
+    ];
+
+    const cats = ["All", "Accounting", "Restaurants", "Chefs", "Flower Store", "Legal Services", "Digital Marketing", "Real Estate",
+      "Wedding And Caterers", "Drinks", "Coffee", "Travel", "Yacht Services", "Construction", "Builders And Fit-out",
+      "Boutiques", "Clinics", "Salons", "Textiles", "E-commerce", "Trades", "Gyms And Fitness", "Photography"];
+
+    const f = this.state.filter;
+    const shown = f === "All" ? all : all.filter(x => x.cat === f);
+
+    const scrollRail = dir => {
+      const el = document.getElementById("mx-cat-rail");
+      if (!el) return;
+      const max = el.scrollWidth - el.clientWidth;
+      const step = dir * Math.max(240, el.clientWidth - 40);
+      el.scrollLeft = Math.max(0, Math.min(max, el.scrollLeft + step));
+    };
+
+    const m = this.state.modal;
+    const modalItem = m >= 0 ? shown[m] : null;
+
+    return {
+      categories: cats.map(c => ({
+        label: c,
+        go: () => this.setState({ filter: c, modal: -1 }),
+        bg: f === c ? "#8A8F4A" : "#F4F2AE",
+        ink: f === c ? "#FFFFFF" : "#3D3A08",
+        line: f === c ? "#8A8F4A" : "rgba(61,58,8,0.14)",
+        weight: f === c ? 700 : 500
+      })),
+      railPrev: () => scrollRail(-1),
+      railNext: () => scrollRail(1),
+
+      resultLine: shown.length + (shown.length === 1 ? " example" : " examples")
+        + (f === "All" ? " shown \u00b7 hover a site to open it" : " in " + f + " \u00b7 hover a site to open it"),
+
+      shown: shown.map((x, k) => Object.assign({}, x, {
+        nav: x.nav.map(l => ({ label: l })),
+        open: () => this.setState({ modal: k })
+      })),
+
+      modalOpen: !!modalItem,
+      modalName: modalItem ? modalItem.name : "",
+      modalDomain: modalItem ? modalItem.domain : "",
+      modalUrl: modalItem ? modalItem.url : "",
+      modalTint: modalItem ? modalItem.tint : "#04121F",
+      closeModal: () => this.setState({ modal: -1 }),
+
+      pillars: [
+        { title: "Category expertise", body: "Your site is built by a designer who has worked in your trade before \u2014 so the layout, the words and the features actually fit how you sell.", icon: "M12 3.5 4.5 7.5v9L12 20.5l7.5-4v-9ZM12 12l7.5-4.5M12 12v8.5M12 12 4.5 7.5" },
+        { title: "Personalisation", body: "We showcase your brand and your unique selling points. Your website tells your story \u2014 not a template's.", icon: "M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM4.5 20a7.5 7.5 0 0 1 15 0" },
+        { title: "Easy to run", body: "Simple to launch, use and update. And help from a real person is always a message or a phone call away.", icon: "M12 15.1a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2ZM4.6 12a7.4 7.4 0 0 1 .1-1.2l-2-1.5 2-3.4 2.3 1a7.6 7.6 0 0 1 2-1.2l.3-2.5h4l.3 2.5a7.6 7.6 0 0 1 2 1.2l2.3-1 2 3.4-2 1.5a7.4 7.4 0 0 1 0 2.4l2 1.5-2 3.4-2.3-1a7.6 7.6 0 0 1-2 1.2l-.3 2.5h-4l-.3-2.5a7.6 7.6 0 0 1-2-1.2l-2.3 1-2-3.4 2-1.5A7.4 7.4 0 0 1 4.6 12Z" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

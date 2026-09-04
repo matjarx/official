@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #00121F; }
+  * { box-sizing: border-box; }
+  a { text-decoration: none; }
+  ::selection { background: rgba(244,242,174,0.35); }
+  .mx-hide { scrollbar-width: none; -ms-overflow-style: none; }
+  .mx-hide::-webkit-scrollbar { display: none; }
+</style>
+</helmet>
+
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; display: flex; flex-direction: column; font-family: 'Open Sans', Arial, sans-serif; background: {{ pageBg }};">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 520px; height: 520px; left: -170px; top: -160px; border-radius: 50%; background: {{ orb1 }};"></div>
+    <div style="position: absolute; width: 460px; height: 460px; right: -160px; top: 380px; border-radius: 50%; background: {{ orb2 }};"></div>
+  </div>
+
+  <div style="position: relative; z-index: 3; flex: 0 0 auto; background: linear-gradient(90deg, #003366 0%, #2E6EA8 20%, #707538 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%); padding: 40px 14px 9px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+    <span style="display: flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 999px; background: rgba(0,0,0,0.26); border: 1px solid rgba(255,255,255,0.32);">
+      <span style="width: 5px; height: 5px; flex: 0 0 auto; border-radius: 50%; background: #F4F2AE;"></span>
+      <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 10.5px; color: #FFFFFF; white-space: nowrap;">49% off on sign up</span>
+    </span>
+    <span style="font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.94); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">100,000 businesses in 2026</span>
+  </div>
+
+  <header style="position: relative; z-index: 3; flex: 0 0 auto; padding: 11px 14px; display: flex; align-items: center; gap: 10px; background: {{ headerBg }}; backdrop-filter: blur(26px); border-bottom: 1px solid {{ headerLine }};">
+    <span style="position: relative; width: 104px; height: 30px; flex: 0 0 auto; margin-right: auto;">
+      <img src="assets/matjarx-logo-light.png" alt="MatjarX" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: left center; opacity: {{ logoLightOpacity }};">
+      <img src="assets/matjarx-logo-black.png" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: left center; opacity: {{ logoDarkOpacity }};">
+    </span>
+    <button type="button" onClick="{{ toggleSkin }}" title="Switch skin" style="all: unset; cursor: pointer; width: 38px; height: 38px; flex: 0 0 auto; border-radius: 12px; display: grid; place-items: center; background: {{ chipBg }}; border: 1px solid {{ chipLine }};">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="{{ iconInk }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ skinIcon }}"></path></svg>
+    </button>
+    <a href="#login" title="Log in" style="width: 38px; height: 38px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(160deg, #0A4278, #002E5C); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22);">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#F4F2AE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM5 20a7 7 0 0 1 14 0"></path></svg>
+    </a>
+    <button type="button" onClick="{{ toggleMenu }}" title="Menu" style="all: unset; cursor: pointer; width: 38px; height: 38px; flex: 0 0 auto; border-radius: 12px; display: grid; place-items: center; background: {{ chipBg }}; border: 1px solid {{ chipLine }};">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="{{ iconInk }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ burger }}"></path></svg>
+    </button>
+  </header>
+
+  <sc-if value="{{ menuOpen }}">
+    <div style="position: relative; z-index: 3; flex: 0 0 auto; padding: 8px 14px 14px; background: {{ headerBg }}; backdrop-filter: blur(26px); border-bottom: 1px solid {{ headerLine }}; display: flex; flex-direction: column; gap: 3px;">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="padding: 13px 14px; border-radius: 12px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: {{ ink1 }}; background: {{ chipBg }};">{{ n.label }}</a>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <div class="mx-hide" style="position: relative; z-index: 2; flex: 1; overflow-y: auto; overflow-x: hidden; min-height: 0; padding: 22px 16px 30px; display: flex; flex-direction: column; gap: 22px;">
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;">
+      <span style="font-size: 12px; line-height: 1.5; color: {{ ink3 }};">Having trouble launching the right website for your business?</span>
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 30px; line-height: 1.1; letter-spacing: -1.1px; color: {{ ink1 }}; text-wrap: balance;">We'll build complete <span style="background: #C6CB8A; color: #16210B; padding: 0 6px; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone;">small business websites</span> in 7 days for Rs. 22,500</h1>
+      <span style="font-size: 13.5px; line-height: 1.6; color: {{ ink3 }};">Support your business growth with affordable agency services.</span>
+
+      <div style="width: 100%; display: flex; flex-direction: column; gap: 9px; padding-top: 4px;">
+        <a href="#pricing" style="text-align: center; padding: 16px 20px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13.5px; letter-spacing: 0.8px; text-transform: uppercase; color: #16210B; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: 0 12px 26px rgba(244,242,174,0.32), inset 0 1px 0 rgba(255,255,255,0.7);">Let's begin</a>
+        <a href="#examples" style="text-align: center; padding: 16px 20px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13.5px; letter-spacing: 0.8px; text-transform: uppercase; color: {{ ink1 }}; background: {{ chipBg }}; border: 1.5px solid {{ chipLine }};">See our websites</a>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; padding-top: 8px;">
+        <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 12px; color: {{ ink1 }};">RATED 4.8 EXCELLENT</span>
+        <span style="display: flex; gap: 2px;">
+          <sc-for list="{{ fiveStars }}" as="st" hint-placeholder-count="5">
+            <span style="width: 17px; height: 17px; display: grid; place-items: center; background: #00B67A;">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="#FFFFFF"><path d="m12 3.4 2.7 6.1 6.6.5-5 4.3 1.5 6.4L12 17.2l-5.8 3.5 1.5-6.4-5-4.3 6.6-.5z"></path></svg>
+            </span>
+          </sc-for>
+        </span>
+      </div>
+      <span style="font-size: 12px; font-weight: 600; color: {{ accentInk }};">Become part of a network of over 70,000 business owners.</span>
+
+      <div style="width: 100%; display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 4px 16px;" class="mx-hide">
+        <sc-for list="{{ badges }}" as="b" hint-placeholder-count="3">
+          <div style="flex: 0 0 auto; display: flex; align-items: center; gap: 10px; padding: 10px 15px 10px 12px; border-radius: 14px; background: {{ cardBg }}; border: 1px solid {{ cardLine }}; backdrop-filter: blur(20px); box-shadow: {{ cardShadow }};">
+            <span style="width: 28px; height: 28px; flex: 0 0 auto; border-radius: 9px; display: grid; place-items: center; background: {{ b.tint }};">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="{{ b.mark }}"><path d="{{ b.icon }}"></path></svg>
+            </span>
+            <span style="display: flex; flex-direction: column; gap: 1px; text-align: left;">
+              <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 12px; color: {{ ink1 }}; white-space: nowrap;">{{ b.name }}</span>
+              <span style="font-size: 10.5px; font-weight: 600; color: {{ ink4 }}; white-space: nowrap;">{{ b.score }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; padding-bottom: 12px;">
+      <span style="display: flex; align-items: center; gap: 9px; padding: 9px 16px 9px 11px; border-radius: 999px; background: linear-gradient(160deg, #0A4278, #002E5C); border: 1.5px solid rgba(244,242,174,0.5); box-shadow: 0 10px 24px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2);">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#F4F2AE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10"></path></svg>
+        <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.3px; color: #F4F2AE; white-space: nowrap;">30-day money-back guarantee</span>
+      </span>
+    </div>
+
+    <div style="position: relative;">
+      <div style="position: absolute; inset: -10px -8px -12px -8px; border-radius: 26px; background: linear-gradient(150deg, rgba(0,51,102,0.92), rgba(112,117,56,0.86)); z-index: 0;"></div>
+      <div style="position: relative; z-index: 1; padding: 3px;">
+        <dc-import name="Editor Showcase Mobile" hint-size="100%,560px"></dc-import>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px; padding-top: 8px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 11px; text-align: center;">
+        <span style="font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase; color: {{ accentInk }}; font-weight: 600;">Did you know?</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 23px; line-height: 1.16; letter-spacing: -0.8px; color: {{ ink1 }}; text-wrap: balance;"><span style="color: {{ accentInk }};">4 out of 5</span> small business owners either have no website, or don't like the one they have.</h2>
+      </div>
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+        <div style="position: relative; margin-bottom: 7px;">
+          <div style="position: absolute; inset: 7px -7px -7px 7px; border-radius: 18px; background: {{ offsetFill }}; z-index: 0;"></div>
+          <div style="position: relative; z-index: 1; padding: 18px 19px 20px; border-radius: 18px; background: {{ voiceBg }}; border: 1px solid {{ voiceLine }}; backdrop-filter: blur(20px); box-shadow: {{ cardShadow }}; display: flex; flex-direction: column; gap: 11px;">
+            <div style="display: flex; align-items: center; gap: 11px;">
+              <span style="width: 38px; height: 38px; flex: 0 0 auto; border-radius: 50%; background: {{ v.tint }}; border: 2px solid rgba(255,255,255,0.9); display: grid; place-items: center; font-family: Lato, sans-serif; font-weight: 700; font-size: 13px; color: #04121F;">{{ v.initials }}</span>
+              <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+                <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 16px; letter-spacing: -0.3px; color: {{ voiceInk }};">{{ v.name }}</span>
+                <span style="font-size: 11px; color: {{ voiceMeta }};">{{ v.trade }}</span>
+              </span>
+            </div>
+            <span style="font-size: 13.5px; line-height: 1.58; color: {{ voiceBody }};">&ldquo;{{ v.quote }}&rdquo;</span>
+          </div>
+        </div>
+      </sc-for>
+      <span style="align-self: center; font-family: Lato, sans-serif; font-weight: 900; font-size: 24px; letter-spacing: -0.6px; color: {{ accentInk }};">Why?</span>
+    </div>
+
+    <div style="border-radius: 24px; overflow: hidden; background: linear-gradient(150deg, #04121F, #0A3A63); border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 22px 50px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.16);">
+      <div style="padding: 20px; display: flex; flex-direction: column; gap: 13px;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 22px; line-height: 1.14; letter-spacing: -0.8px; color: #FFFFFF; text-wrap: balance;">50 milliseconds. <span style="color: rgba(255,255,255,0.6);">That's how long you have to make a first impression.</span></h2>
+        <span style="font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.66);">After that you get 3 to 8 seconds to convince a customer you're worth their money. If your website doesn't, they leave.</span>
+        <a href="#pricing" style="text-align: center; padding: 14px 20px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13.5px; color: #14210b; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);">Not on my watch</a>
+      </div>
+    </div>
+
+    <div style="padding: 22px 20px 24px; border-radius: 24px; background: linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96)); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(24px); box-shadow: 0 22px 50px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2); display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 9px;">
+        <span style="font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Do it yourself?</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 22px; line-height: 1.16; letter-spacing: -0.8px; color: #FFFFFF; text-wrap: balance;">Your time has a price. Work out what a DIY website costs you.</h2>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 11px; padding: 15px 16px; border-radius: 16px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 12.5px; color: rgba(233,239,245,0.82); margin-right: auto;">Number of hours</span>
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 16px; color: #F4F2AE; white-space: nowrap;">{{ hoursLabel }}</span>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <sc-for list="{{ hourSteps }}" as="h" hint-placeholder-count="5">
+            <button type="button" onClick="{{ h.go }}" style="all: unset; cursor: pointer; flex: 1; text-align: center; padding: 11px 2px; border-radius: 10px; font-family: Lato, sans-serif; font-weight: 700; font-size: 12.5px; color: {{ h.ink }}; background: {{ h.bg }}; border: 1px solid {{ h.line }};">{{ h.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 11px; padding: 15px 16px; border-radius: 16px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 12.5px; color: rgba(233,239,245,0.82); margin-right: auto;">Per hour cost</span>
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 16px; color: #F4F2AE; white-space: nowrap;">{{ rateLabel }}</span>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <sc-for list="{{ rateSteps }}" as="r" hint-placeholder-count="4">
+            <button type="button" onClick="{{ r.go }}" style="all: unset; cursor: pointer; flex: 1; text-align: center; padding: 11px 2px; border-radius: 10px; font-family: Lato, sans-serif; font-weight: 700; font-size: 12.5px; color: {{ r.ink }}; background: {{ r.bg }}; border: 1px solid {{ r.line }};">{{ r.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px; padding: 18px 19px 20px; border-radius: 18px; background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.18);">
+        <sc-for list="{{ calcRows }}" as="row" hint-placeholder-count="2">
+          <div style="display: flex; align-items: baseline; gap: 12px; padding-bottom: 11px; border-bottom: 1px solid rgba(255,255,255,0.12);">
+            <span style="display: flex; flex-direction: column; gap: 2px; margin-right: auto; min-width: 0;">
+              <span style="font-size: 12.5px; color: rgba(233,239,245,0.84);">{{ row.label }}</span>
+              <span style="font-size: 10.5px; color: rgba(226,236,245,0.5);">{{ row.note }}</span>
+            </span>
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 18px; letter-spacing: -0.4px; color: {{ row.ink }}; white-space: nowrap;">{{ row.value }}</span>
+          </div>
+        </sc-for>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">You save</span>
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 32px; line-height: 1.05; letter-spacing: -1.2px; color: #F4F2AE;">{{ savingValue }}</span>
+        </div>
+        <a href="#start" style="text-align: center; padding: 15px 20px; border-radius: 13px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #14210b; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);">Sign up now</a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <span style="font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase; color: {{ accentInk }}; font-weight: 600;">Plans</span>
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 23px; line-height: 1.16; letter-spacing: -0.8px; color: {{ ink1 }};">One setup fee. One monthly fee.</h2>
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="4">
+        <div style="padding: 20px; border-radius: 20px; background: {{ p.bg }}; border: 1.5px solid {{ p.border }}; backdrop-filter: blur(22px); box-shadow: {{ p.shadow }}; display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 9px;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 19px; letter-spacing: -0.4px; color: {{ p.ink }}; margin-right: auto;">{{ p.name }}</span>
+            <sc-if value="{{ p.tag }}">
+              <span style="font-size: 9.5px; font-weight: 700; letter-spacing: 0.7px; text-transform: uppercase; padding: 5px 9px; border-radius: 999px; color: #3D3A08; background: #F4F2AE; white-space: nowrap;">{{ p.tag }}</span>
+            </sc-if>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 5px;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 25px; letter-spacing: -0.9px; color: {{ p.ink }};">{{ p.price }}</span>
+            <span style="font-size: 12px; color: {{ p.muted }};">/ mo</span>
+          </div>
+          <span style="font-size: 11.5px; color: {{ p.muted }};">+ {{ p.setup }} setup &middot; {{ p.pitch }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="padding: 26px 22px 28px; border-radius: 26px; background: linear-gradient(150deg, rgba(244,242,174,0.94), rgba(198,203,138,0.94)); border: 1px solid rgba(255,255,255,0.7); box-shadow: 0 22px 50px rgba(112,117,56,0.24), inset 0 1px 0 rgba(255,255,255,0.85); display: flex; flex-direction: column; align-items: center; gap: 13px; text-align: center;">
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 24px; line-height: 1.12; letter-spacing: -0.9px; color: #1F2A08; text-wrap: balance;">Professional websites, ready in just 7 days.</h2>
+      <span style="font-size: 13px; line-height: 1.6; color: #3D4A16;">Completely risk-free, with unmatched customer support.</span>
+      <a href="#start" style="width: 100%; text-align: center; padding: 15px 20px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #FFFFFF; background: #04121F;">Get started</a>
+      <a href="https://wa.me/923033720953" style="width: 100%; text-align: center; padding: 15px 20px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #1F2A08; background: rgba(255,255,255,0.62); border: 1.5px solid rgba(255,255,255,0.9);">Talk to us on WhatsApp</a>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 6px;">
+      <img src="assets/matjarx-logo-light.png" alt="MatjarX" style="width: 124px; height: auto;">
+      <span style="font-size: 12px; line-height: 1.6; color: {{ ink4 }};">Done-for-you websites, SEO and growth marketing for small businesses across Pakistan and the Gulf.</span>
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <a href="tel:+923033720953" style="font-size: 12.5px; color: #E7E49B;">+92 303 372 0953</a>
+        <a href="mailto:office@matjarx.com" style="font-size: 12.5px; color: #E7E49B;">office@matjarx.com</a>
+      </div>
+      <span style="font-size: 11px; color: {{ ink5 }}; padding-top: 6px; border-top: 1px solid {{ headerLine }};">&copy; 2012&ndash;2026 MatjarX. All rights reserved.</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844}}">
+class Component extends DCLogic {
+  state = { skin: "dark", menu: false, hours: 15, rate: 5000 };
+
+  renderVals() {
+    const dark = this.state.skin === "dark";
+    const money = n => "Rs. " + n.toLocaleString("en-US");
+    const hrs = this.state.hours;
+    const rate = this.state.rate;
+    const diy = hrs * rate;
+    const fee = 22500;
+    const saved = diy - fee;
+
+    const pOn = { bg: "linear-gradient(160deg, #F7F5C0, #E7E49B)", ink: "#14210b", line: "#E7E49B" };
+    const pOff = { bg: "rgba(255,255,255,0.07)", ink: "rgba(233,239,245,0.75)", line: "rgba(255,255,255,0.16)" };
+
+    const theme = dark
+      ? {
+          pageBg: "linear-gradient(172deg, #001C33 0%, #00263F 55%, #001526 100%)",
+          orb1: "radial-gradient(circle, rgba(112,117,56,0.5) 0%, rgba(112,117,56,0) 68%)",
+          orb2: "radial-gradient(circle, rgba(41,110,177,0.44) 0%, rgba(41,110,177,0) 68%)",
+          headerBg: "rgba(0,20,35,0.74)", headerLine: "rgba(255,255,255,0.12)",
+          logo: "assets/matjarx-logo-light.png",
+          ink1: "#F5F8FB", ink3: "rgba(226,236,245,0.7)", ink4: "rgba(226,236,245,0.5)", ink5: "rgba(226,236,245,0.4)",
+          accentInk: "#C6CB8A", iconInk: "#E9EFF5",
+          chipBg: "rgba(255,255,255,0.08)", chipLine: "rgba(255,255,255,0.16)",
+          cardBg: "linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.035))",
+          cardLine: "rgba(255,255,255,0.14)",
+          cardShadow: "0 14px 34px rgba(0,8,18,0.3), inset 0 1px 0 rgba(255,255,255,0.16)",
+          voiceBg: "linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04))",
+          voiceLine: "rgba(255,255,255,0.14)", offsetFill: "rgba(168,173,106,0.55)",
+          voiceInk: "#F5F8FB", voiceMeta: "rgba(226,236,245,0.5)", voiceBody: "rgba(233,239,245,0.86)",
+          skinIcon: "M12 3.5a8.5 8.5 0 1 0 8.5 8.5c0-.4 0-.8-.1-1.2A6 6 0 0 1 12 3.6Z"
+        }
+      : {
+          pageBg: "linear-gradient(172deg, #FCFAF3 0%, #F4EFE2 100%)",
+          orb1: "radial-gradient(circle, rgba(198,203,138,0.5) 0%, rgba(198,203,138,0) 68%)",
+          orb2: "radial-gradient(circle, rgba(120,170,215,0.4) 0%, rgba(120,170,215,0) 68%)",
+          headerBg: "rgba(252,250,243,0.78)", headerLine: "rgba(4,18,31,0.1)",
+          logo: "assets/matjarx-logo-black.png",
+          ink1: "#04121F", ink3: "#435A70", ink4: "#6A7F92", ink5: "#90A2B1",
+          accentInk: "#707538", iconInk: "#04121F",
+          chipBg: "rgba(255,255,255,0.7)", chipLine: "rgba(255,255,255,0.95)",
+          cardBg: "rgba(255,255,255,0.7)", cardLine: "rgba(255,255,255,0.95)",
+          cardShadow: "0 12px 30px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)",
+          voiceBg: "#FFFFFF", voiceLine: "rgba(4,18,31,0.07)", offsetFill: "#A8AD6A",
+          voiceInk: "#04121F", voiceMeta: "#6A7F92", voiceBody: "#24384A",
+          skinIcon: "M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9ZM12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M18.5 5.5l-1.4 1.4M6.9 17.1 5.5 18.5"
+        };
+
+    const planLight = dark
+      ? { bg: "linear-gradient(160deg, rgba(255,255,255,0.095), rgba(255,255,255,0.03))", border: "rgba(255,255,255,0.13)",
+          shadow: "0 16px 40px rgba(0,8,18,0.3), inset 0 1px 0 rgba(255,255,255,0.16)", ink: "#F5F8FB", muted: "rgba(226,236,245,0.6)" }
+      : { bg: "rgba(255,255,255,0.66)", border: "rgba(255,255,255,0.9)",
+          shadow: "0 14px 34px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)", ink: "#04121F", muted: "#6A7F92" };
+    const planDark = { bg: "linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))", border: "rgba(255,255,255,0.18)",
+      shadow: "0 20px 46px rgba(0,51,102,0.3), inset 0 1px 0 rgba(255,255,255,0.2)", ink: "#FFFFFF", muted: "rgba(255,255,255,0.62)" };
+
+    return Object.assign({}, theme, {
+      toggleSkin: () => this.setState({ skin: dark ? "light" : "dark" }),
+      toggleMenu: () => this.setState({ menu: !this.state.menu }),
+      menuOpen: this.state.menu,
+      burger: this.state.menu ? "M6 6l12 12M18 6 6 18" : "M4 7h16M4 12h16M4 17h16",
+
+      navItems: [
+        { label: "Services", href: "Marketing - Services.dc.html" },
+        { label: "Website examples", href: "Marketing - Website Examples.dc.html" },
+        { label: "Website audit", href: "Marketing - Website Audit.dc.html" },
+        { label: "Pricing", href: "Marketing - Pricing.dc.html" },
+        { label: "Blog", href: "Marketing - Blog.dc.html" },
+        { label: "Get in touch", href: "Marketing - Contact.dc.html" }
+      ],
+
+      fiveStars: [1, 2, 3, 4, 5].map(n => ({ n: n })),
+      badges: [
+        { name: "Trustpilot", score: "4.8 / 5", tint: "rgba(0,182,122,0.16)", mark: "#00B67A",
+          icon: "m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" },
+        { name: "Google Reviews", score: "4.8 / 5", tint: "rgba(66,133,244,0.16)", mark: "#4285F4",
+          icon: "M12 3.5a8.5 8.5 0 1 0 8.4 9.9h-8.4V10h11.5v2a11.5 11.5 0 1 1-3.4-8.2l-2.1 2.1A8.4 8.4 0 0 0 12 3.5Z" },
+        { name: "Clutch", score: "4.9 / 5", tint: "rgba(230,58,53,0.16)", mark: "#E63A35",
+          icon: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 8.2-6.2l-3-1a5.4 5.4 0 1 1 0-2.6l3-1A8.5 8.5 0 0 0 12 3.5Zm0 5.6a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Z" }
+      ],
+
+      voices: [
+        { quote: "I really tried to build a website myself, but it didn't look good and I have no idea how to make it show up on Google.", name: "Ahmed Khan", trade: "Fabric wholesaler, Lahore", initials: "AK", tint: "#C6CB8A" },
+        { quote: "My cousin built my website. I'm not really happy with it, but I can't tell him that.", name: "Sabika Noor", trade: "Boutique owner, Karachi", initials: "SN", tint: "#F4F2AE" },
+        { quote: "I got quotes in the thousands for a website. I've just started out \u2014 I can't afford that.", name: "Saeed Ahmed", trade: "Caterer, Islamabad", initials: "SA", tint: "#BFD4E6" }
+      ],
+
+      hoursLabel: hrs + " hours",
+      rateLabel: money(rate) + " / hr",
+      hourSteps: [10, 15, 25, 40, 60].map(h => Object.assign({
+        label: String(h), go: () => this.setState({ hours: h })
+      }, hrs === h ? pOn : pOff)),
+      rateSteps: [2500, 5000, 7500, 10000].map(r => Object.assign({
+        label: (r / 1000) + "k", go: () => this.setState({ rate: r })
+      }, rate === r ? pOn : pOff)),
+      calcRows: [
+        { label: "Doing it yourself", note: hrs + " hours \u00d7 " + money(rate), value: money(diy), ink: "#FFFFFF" },
+        { label: "MatjarX, live in 7 days", note: "One-time Launch setup fee", value: money(fee), ink: "#C6CB8A" }
+      ],
+      savingValue: money(saved > 0 ? saved : 0),
+
+      plans: [
+        { name: "Launch", price: "Rs. 4,500", setup: "Rs. 22,500", pitch: "We build and launch your website.", tag: "", theme: planLight },
+        { name: "Boost", price: "Rs. 15,600", setup: "Rs. 22,500", pitch: "We manage your online presence.", tag: "Most popular", theme: planDark },
+        { name: "Growth", price: "Rs. 27,000", setup: "Rs. 22,500", pitch: "We grow your business online.", tag: "", theme: planLight },
+        { name: "Platinum", price: "Rs. 55,000", setup: "Rs. 140,000", pitch: "We scale your e-commerce business.", tag: "Custom", theme: planLight }
+      ].map(p => Object.assign({}, p.theme, {
+        name: p.name, price: p.price, setup: p.setup, pitch: p.pitch, tag: p.tag
+      }))
+    });
+  }
+}
+</script>
+</body>
+</html>

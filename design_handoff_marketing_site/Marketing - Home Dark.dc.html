@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #00121F; }
+  * { box-sizing: border-box; }
+  a { color: #E7E49B; text-decoration: none; }
+  a:hover { color: #C6CB8A; }
+  ::selection { background: #F4F2AE; }
+  .mx-marquee { animation: mxslide 38s linear infinite; }
+  @keyframes mxslide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: linear-gradient(172deg, #001C33 0%, #00263F 55%, #001526 100%); color: #E9EFF5; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 900px; height: 900px; left: -260px; top: -320px; border-radius: 50%; background: radial-gradient(circle, rgba(112,117,56,0.55) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 760px; height: 760px; right: -200px; top: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(41,110,177,0.48) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 820px; height: 820px; left: 18%; top: 1500px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.3) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header Dark" active="home" hint-size="100%,120px"></dc-import>
+
+  <section id="top" style="max-width: 1080px; margin: 0 auto; padding: 66px 24px 0; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center;">
+    <p style="margin: 0; font-size: clamp(14px, 1.6vw, 17px); color: rgba(226,236,245,0.7);">Having trouble launching the right website for your business?</p>
+
+    <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(32px, 5.6vw, 60px); line-height: 1.08; letter-spacing: -2px; color: #F5F8FB; text-wrap: balance;">We'll build complete <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone;">small business websites</span> in 7 days for Rs. 22,500</h1>
+
+    <p style="margin: 0; max-width: 34em; font-size: clamp(14.5px, 1.7vw, 17.5px); line-height: 1.6; color: rgba(226,236,245,0.7);">Support your business growth with affordable agency services.</p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; padding-top: 4px;">
+      <a href="#pricing" style="padding: 16px 30px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.8px; text-transform: uppercase; color: #16210B; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: 0 14px 30px rgba(244,242,174,0.4), inset 0 1px 0 rgba(255,255,255,0.7);" style-hover="background: #FFFDD8; color: #16210B;">Let's begin</a>
+      <a href="#examples" style="padding: 16px 30px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.8px; text-transform: uppercase; color: #F5F8FB; background: rgba(255,255,255,0.09); border: 1.5px solid rgba(255,255,255,0.18); backdrop-filter: blur(20px); box-shadow: 0 12px 28px rgba(0,8,18,0.3), inset 0 1px 0 rgba(255,255,255,0.18);" style-hover="border-color: #C6CB8A; color: #F5F8FB;">See the quality of our websites</a>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; padding-top: 12px;">
+      <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.3px; color: #F5F8FB;">RATED 4.8 EXCELLENT</span>
+      <span style="display: flex; gap: 2px;">
+        <sc-for list="{{ fiveStars }}" as="st" hint-placeholder-count="5">
+          <span style="width: 21px; height: 21px; display: grid; place-items: center; background: #00B67A;">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="#FFFFFF"><path d="m12 3.4 2.7 6.1 6.6.5-5 4.3 1.5 6.4L12 17.2l-5.8 3.5 1.5-6.4-5-4.3 6.6-.5z"></path></svg>
+          </span>
+        </sc-for>
+      </span>
+      <span style="display: flex; align-items: center; gap: 6px;">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="#00B67A"><path d="m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z"></path></svg>
+        <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 15.5px; color: #F5F8FB;">Trustpilot</span>
+      </span>
+    </div>
+
+    <p style="margin: 0; font-size: clamp(13.5px, 1.6vw, 16px); font-weight: 600; color: #E7E49B;">Become part of a thriving network of over 70,000 business owners.</p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; padding-top: 10px;">
+      <sc-for list="{{ ratingBadges }}" as="b" hint-placeholder-count="3">
+        <div style="display: flex; align-items: center; gap: 13px; padding: 13px 20px 13px 16px; border-radius: 16px; background: linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.035)); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(20px); box-shadow: 0 14px 34px rgba(0,8,18,0.3), inset 0 1px 0 rgba(255,255,255,0.16);">
+          <span style="width: 34px; height: 34px; flex: 0 0 auto; border-radius: 10px; display: grid; place-items: center; background: {{ b.tint }};">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="{{ b.mark }}"><path d="{{ b.icon }}"></path></svg>
+          </span>
+          <span style="display: flex; flex-direction: column; gap: 2px; text-align: left;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 14px; letter-spacing: -0.2px; color: #F5F8FB;">{{ b.name }}</span>
+            <span style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 12px; letter-spacing: 1.5px; color: {{ b.mark }};">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span style="font-size: 12px; font-weight: 600; color: rgba(226,236,245,0.5);">{{ b.score }}</span>
+            </span>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 46px 24px 66px;">
+      <div style="display: flex; justify-content: flex-end; padding: 0 4px 14px;">
+        <span style="display: flex; align-items: center; gap: 10px; padding: 10px 18px 10px 12px; border-radius: 999px; background: linear-gradient(160deg, #0A4278, #002E5C); border: 1.5px solid rgba(244,242,174,0.5); box-shadow: 0 12px 28px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2);">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#F4F2AE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10"></path></svg>
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.4px; color: #F4F2AE; white-space: nowrap;">30-day money-back guarantee</span>
+        </span>
+      </div>
+    <div style="position: relative;">
+      <div style="position: absolute; inset: -16px -12px -20px -12px; border-radius: 34px; background: linear-gradient(150deg, rgba(0,51,102,0.92), rgba(112,117,56,0.86)); box-shadow: 0 44px 96px rgba(4,18,31,0.3); z-index: 0;"></div>
+      <div style="position: relative; z-index: 1; padding: 4px;">
+        <dc-import name="Editor Showcase" hint-size="100%,560px"></dc-import>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 22px 0; overflow: hidden;">
+    <div style="display: flex; width: max-content; gap: 46px; align-items: center;" class="mx-marquee">
+      <sc-for list="{{ categories }}" as="c" hint-placeholder-count="24">
+        <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: rgba(226,236,245,0.4); white-space: nowrap;">{{ c.label }}</span>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 82px 24px 20px;">
+    <div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+      <span style="font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Did you know?</span>
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(27px, 4.6vw, 42px); line-height: 1.14; letter-spacing: -1.3px; color: #F5F8FB; text-wrap: balance;"><span style="color: #C6CB8A;">{{ statNumber }}</span> {{ statHeadline }}</h2>
+    </div>
+
+    <div style="margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 22px; align-items: start;">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+        <div style="position: relative; margin-bottom: 8px;">
+          <div style="position: absolute; inset: 8px -8px -8px 8px; border-radius: 20px; background: #A8AD6A; z-index: 0;"></div>
+          <div style="position: relative; z-index: 1; padding: 22px 24px 24px; border-radius: 20px; background: linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04)); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(22px); box-shadow: 0 18px 42px rgba(0,8,18,0.34), inset 0 1px 0 rgba(255,255,255,0.16); display: flex; flex-direction: column; gap: 13px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="width: 44px; height: 44px; flex: 0 0 auto; border-radius: 50%; background: {{ v.tint }}; border: 2px solid #FFFFFF; box-shadow: 0 3px 10px rgba(4,18,31,0.16); display: grid; place-items: center; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #F5F8FB;">{{ v.initials }}</span>
+              <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+                <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 19px; letter-spacing: -0.4px; color: #F5F8FB;">{{ v.name }}</span>
+                <span style="font-size: 12px; color: rgba(226,236,245,0.5);">{{ v.trade }}</span>
+              </span>
+            </div>
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.58; color: rgba(233,239,245,0.86); text-wrap: pretty;">&ldquo;{{ v.quote }}&rdquo;</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding-top: 34px;">
+      <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 30px; letter-spacing: -0.8px; color: #C6CB8A;">{{ whyLabel }}</span>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; align-items: stretch;">
+      <div style="padding: 30px 28px; border-radius: 22px; background: linear-gradient(160deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025)); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.14); display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-size: 12px; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(198,203,138,0.72); font-weight: 600;">Option one</span>
+        <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 24px; letter-spacing: -0.6px; color: #F5F8FB;">DIY builders</h3>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: rgba(226,236,245,0.62);">Hand you a toolbox and a blank page. Most people never finish.</p>
+        <span style="margin-top: 8px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #E5A97F;">Rs. 140,000 / yr + your weekends</span>
+      </div>
+      <div style="padding: 30px 28px; border-radius: 22px; background: linear-gradient(160deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025)); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.14); display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-size: 12px; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(198,203,138,0.72); font-weight: 600;">Option two</span>
+        <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 24px; letter-spacing: -0.6px; color: #F5F8FB;">Web agencies</h3>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: rgba(226,236,245,0.62);">Good work, big invoices &mdash; and you still can't change a phone number yourself.</p>
+        <span style="margin-top: 8px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #E5A97F;">Rs. 420,000&ndash;840,000 + upkeep</span>
+      </div>
+      <div style="padding: 30px 28px; border-radius: 22px; background: #003366; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 24px 50px rgba(0,51,102,0.28);">
+        <span style="font-size: 12px; letter-spacing: 1.6px; text-transform: uppercase; color: #F4F2AE; font-weight: 600;">Option three</span>
+        <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 24px; letter-spacing: -0.6px; color: #FFFFFF;">MatjarX</h3>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.78);">Agency quality, built for you in a week, with an editor simple enough to actually use.</p>
+        <span style="margin-top: 8px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #F4F2AE;">Rs. 22,500 once, then Rs. 4,500 / mo</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: rgba(0,10,20,0.5); padding: 84px 24px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 50px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+        <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">The editor</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(28px, 4.8vw, 42px); line-height: 1.12; letter-spacing: -1.4px; color: #FFFFFF; text-wrap: pretty;">Change a photo. Take a booking. Start selling.</h2>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: rgba(255,255,255,0.7); max-width: 32em; text-wrap: pretty;">Every MatjarX site ships with our own editor. Swap images, edit text and switch on the functions your business needs &mdash; no code, no plugins, no developer on retainer.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 6px;">
+          <sc-for list="{{ editorFeatures }}" as="f" hint-placeholder-count="3">
+            <div style="display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; border-radius: 16px; background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.1);">
+              <span style="width: 36px; height: 36px; flex: 0 0 auto; border-radius: 11px; background: rgba(198,203,138,0.16); display: grid; place-items: center;">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#C6CB8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ f.icon }}"></path></svg>
+              </span>
+              <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+                <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; color: #FFFFFF;">{{ f.title }}</span>
+                <span style="font-size: 13.5px; line-height: 1.55; color: rgba(255,255,255,0.62);">{{ f.body }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="min-width: 0;">
+        <dc-import name="Editor Showcase" hint-size="100%,540px"></dc-import>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 82px 24px;">
+    <div style="display: flex; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px;">
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-right: auto; max-width: 560px;">
+        <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">How it works</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(27px, 4.6vw, 40px); line-height: 1.12; letter-spacing: -1.2px; color: #F5F8FB;">Three steps. Seven days.</h2>
+      </div>
+      <span style="padding: 11px 18px; border-radius: 999px; background: #F4F2AE; font-size: 13.5px; font-weight: 600; color: #3D3A08;">Start today &rarr; live next {{ launchDay }}</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+        <div style="padding: 30px 28px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.06), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 44px; line-height: 1; letter-spacing: -2px; color: #C6CB8A;">{{ s.n }}</span>
+          <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.4px; color: #F5F8FB;">{{ s.title }}</h3>
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: rgba(226,236,245,0.62);">{{ s.body }}</p>
+          <span style="margin-top: auto; padding-top: 12px; font-size: 13px; font-weight: 600; color: #C6CB8A;">{{ s.time }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="examples" style="background: rgba(255,255,255,0.035); padding: 82px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: flex-end; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-right: auto; max-width: 560px;">
+        <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Real sites, real businesses</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(27px, 4.6vw, 40px); line-height: 1.12; letter-spacing: -1.2px; color: #F5F8FB;">70,000 websites built and counting</h2>
+      </div>
+      <a href="#all-examples" style="padding: 14px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #F5F8FB; background: #FFFFFF; border: 1.5px solid rgba(255,255,255,0.18);" style-hover="border-color: #C6CB8A; color: #F5F8FB;">Browse all examples</a>
+    </div>
+    <div style="max-width: 1200px; margin: 40px auto 0; padding: 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px;">
+      <sc-for list="{{ examples }}" as="ex" hint-placeholder-count="3">
+        <div style="border-radius: 22px; overflow: hidden; background: rgba(255,255,255,0.66); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.08), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column;">
+          <div style="height: 210px; background: {{ ex.tint }}; display: grid; place-items: center;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 21px; letter-spacing: 0.4px; color: rgba(255,255,255,0.9); text-align: center; padding: 0 20px;">{{ ex.name }}</span>
+          </div>
+          <div style="padding: 20px 22px; display: flex; align-items: center; gap: 12px;">
+            <div style="display: flex; flex-direction: column; gap: 3px; margin-right: auto; min-width: 0;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 16px; color: #F5F8FB;">{{ ex.name }}</span>
+              <span style="font-size: 12.5px; color: rgba(226,236,245,0.5);">{{ ex.category }}</span>
+            </div>
+            <span style="font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; color: #3D3A08; background: #F4F2AE; white-space: nowrap;">{{ ex.result }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 30px 24px 0;">
+    <div style="position: relative; border-radius: 30px; overflow: hidden; background: linear-gradient(120deg, #04121F 0%, #00243D 46%, #0A3A63 100%); border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 34px 76px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.16);">
+      <div style="position: absolute; width: 620px; height: 620px; right: -160px; bottom: -220px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.34) 0%, rgba(198,203,138,0) 68%); pointer-events: none;"></div>
+      <div style="position: relative;">
+        <div style="display: flex; flex-direction: column; gap: 18px; max-width: 46em; padding: clamp(34px, 5vw, 62px); min-width: 0;">
+          <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(26px, 3.8vw, 40px); line-height: 1.1; letter-spacing: -1.3px; color: #FFFFFF; text-wrap: balance;">50 milliseconds. <span style="color: rgba(255,255,255,0.6);">That's how much time you have to make a first impression.</span></h2>
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <span style="font-size: clamp(14px, 1.6vw, 16px); line-height: 1.6; color: rgba(255,255,255,0.62);">After that you have another 3 to 8 seconds to</span>
+            <span style="font-size: clamp(14px, 1.6vw, 16px); line-height: 1.6; font-weight: 600; color: #FFFFFF;">convince a customer you are worth their money.</span>
+            <span style="font-size: clamp(14px, 1.6vw, 16px); line-height: 1.6; color: rgba(255,255,255,0.62);">If your website doesn't do it in that window, they leave.</span>
+            <span style="font-size: clamp(14px, 1.6vw, 16px); line-height: 1.6; color: rgba(255,255,255,0.62);">Your competitor down the road will be delighted.</span>
+          </div>
+          <a href="#pricing" style="align-self: flex-start; margin-top: 6px; padding: 16px 30px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #14210b; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: 0 14px 32px rgba(244,242,174,0.28), inset 0 1px 0 rgba(255,255,255,0.65);" style-hover="background: #FFFDD8; color: #14210b;">Not on my watch &mdash; I want results</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator" style="max-width: 1200px; margin: 0 auto; padding: 82px 24px;">
+    <div style="padding: clamp(28px, 4vw, 46px); border-radius: 30px; background: linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96)); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(26px); box-shadow: 0 34px 76px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.2); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(26px, 4vw, 46px); align-items: center;">
+
+      <div style="display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+        <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">What it really costs to do it yourself</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(26px, 4.4vw, 38px); line-height: 1.14; letter-spacing: -1.2px; color: #FFFFFF; text-wrap: pretty;">Your time has a price. Work out what a DIY website costs you.</h2>
+
+        <div style="display: flex; flex-direction: column; gap: 16px; padding-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 11px; padding: 18px 20px; border-radius: 18px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(18px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 13.5px; color: rgba(233,239,245,0.82); margin-right: auto;">Number of hours</span>
+              <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 19px; letter-spacing: -0.4px; color: #F4F2AE; white-space: nowrap;">{{ hoursLabel }}</span>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <sc-for list="{{ hourSteps }}" as="h" hint-placeholder-count="5">
+                <button type="button" onClick="{{ h.go }}" style="all: unset; cursor: pointer; flex: 1; text-align: center; padding: 11px 4px; border-radius: 11px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13px; color: {{ h.ink }}; background: {{ h.bg }}; border: 1px solid {{ h.line }}; transition: background 160ms ease;">{{ h.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 11px; padding: 18px 20px; border-radius: 18px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(18px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 13.5px; color: rgba(233,239,245,0.82); margin-right: auto;">Per hour cost</span>
+              <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 19px; letter-spacing: -0.4px; color: #F4F2AE; white-space: nowrap;">{{ rateLabel }}</span>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <sc-for list="{{ rateSteps }}" as="r" hint-placeholder-count="4">
+                <button type="button" onClick="{{ r.go }}" style="all: unset; cursor: pointer; flex: 1; text-align: center; padding: 11px 4px; border-radius: 11px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13px; color: {{ r.ink }}; background: {{ r.bg }}; border: 1px solid {{ r.line }}; transition: background 160ms ease;">{{ r.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <div style="display: flex; flex-direction: column; gap: 14px; padding: 26px 28px; border-radius: 22px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(22px); box-shadow: 0 20px 46px rgba(0,10,25,0.28), inset 0 1px 0 rgba(255,255,255,0.2);">
+          <sc-for list="{{ rows }}" as="row" hint-placeholder-count="2">
+            <div style="display: flex; align-items: baseline; gap: 14px; padding-bottom: 13px; border-bottom: 1px solid rgba(255,255,255,0.12);">
+              <div style="display: flex; flex-direction: column; gap: 3px; margin-right: auto; min-width: 0;">
+                <span style="font-size: 13.5px; color: rgba(233,239,245,0.84);">{{ row.label }}</span>
+                <span style="font-size: 11.5px; color: rgba(226,236,245,0.5);">{{ row.note }}</span>
+              </div>
+              <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 22px; letter-spacing: -0.6px; color: {{ row.ink }}; white-space: nowrap;">{{ row.value }}</span>
+            </div>
+          </sc-for>
+
+          <div style="display: flex; flex-direction: column; gap: 5px; padding-top: 2px;">
+            <span style="font-size: 12px; letter-spacing: 1.6px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">You save</span>
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(34px, 5vw, 46px); line-height: 1.05; letter-spacing: -1.6px; color: #F4F2AE;">{{ savingValue }}</span>
+            <span style="font-size: 13px; line-height: 1.55; color: rgba(226,236,245,0.6);">{{ savingNote }}</span>
+          </div>
+
+          <a href="#start" style="margin-top: 6px; display: block; text-align: center; padding: 16px 24px; border-radius: 14px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #14210b; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: 0 14px 30px rgba(244,242,174,0.22), inset 0 1px 0 rgba(255,255,255,0.6);" style-hover="background: #FFFDD8; color: #14210b;">Sign up now</a>
+        </div>
+        <span style="font-size: 12px; line-height: 1.55; text-align: center; color: rgba(226,236,245,0.45);">Rs. 22,500 is the one-time Launch setup fee. Hosting, domain and business email are included.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" style="max-width: 1200px; margin: 0 auto; padding: 82px 24px;">
+    <div style="display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center; max-width: 620px; margin: 0 auto 44px;">
+      <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Plans</span>
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(27px, 4.6vw, 40px); line-height: 1.12; letter-spacing: -1.2px; color: #F5F8FB; text-wrap: pretty;">One setup fee. One monthly fee. No surprises.</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(226,236,245,0.7);">Every plan includes the website, domain, business email, hosting, SSL and 0% transaction fees.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 18px; align-items: stretch;">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="4">
+        <div style="padding: 28px 26px 30px; border-radius: 22px; display: flex; flex-direction: column; gap: 14px; background: {{ p.bg }}; border: 1.5px solid {{ p.border }}; backdrop-filter: {{ p.blur }}; box-shadow: {{ p.shadow }};">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 21px; letter-spacing: -0.5px; color: {{ p.ink }}; margin-right: auto;">{{ p.name }}</span>
+            <sc-if value="{{ p.tag }}">
+              <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; color: #3D3A08; background: #F4F2AE; white-space: nowrap;">{{ p.tag }}</span>
+            </sc-if>
+          </div>
+          <span style="font-size: 13.5px; line-height: 1.5; color: {{ p.muted }};">{{ p.pitch }}</span>
+          <div style="display: flex; align-items: baseline; gap: 6px; padding-top: 6px;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 30px; letter-spacing: -1px; color: {{ p.ink }};">{{ p.price }}</span>
+            <span style="font-size: 13px; color: {{ p.muted }};">/ mo</span>
+          </div>
+          <span style="font-size: 12.5px; color: {{ p.muted }};">+ {{ p.setup }} setup</span>
+          <div style="display: flex; flex-direction: column; gap: 9px; padding-top: 12px; margin-top: 4px; border-top: 1px solid {{ p.rule }};">
+            <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="4">
+              <span style="display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; line-height: 1.45; color: {{ p.body }};">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="{{ p.tick }}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px;"><path d="m5 12.5 4.5 4.5L19 7"></path></svg>
+                {{ f.label }}
+              </span>
+            </sc-for>
+          </div>
+          <a href="#start" style="margin-top: auto; padding-top: 18px; display: block;">
+            <span style="display: block; text-align: center; padding: 13px 18px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: {{ p.ctaInk }}; background: {{ p.ctaBg }}; border: 1.5px solid {{ p.ctaBorder }};">{{ p.cta }}</span>
+          </a>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin: 26px auto 0; max-width: 640px; text-align: center; font-size: 13.5px; line-height: 1.6; color: rgba(226,236,245,0.5);">Prices in PKR. Gulf clients are billed in AED at the equivalent rate &mdash; ask us for a quote.</p>
+  </section>
+
+  <section style="background: #003366; padding: 78px 24px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 44px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 17px; color: #F4F2AE;">4.8 / 5</span>
+          <span style="font-size: 15px; letter-spacing: 2px; color: #F4F2AE;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span style="font-size: 13px; color: rgba(255,255,255,0.6);">on Trustpilot</span>
+        </div>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(26px, 4.4vw, 38px); line-height: 1.14; letter-spacing: -1.2px; color: #FFFFFF; text-wrap: pretty;">The easy, stress-free way to grow your business online.</h2>
+        <div style="display: flex; gap: 34px; flex-wrap: wrap; padding-top: 6px;">
+          <sc-for list="{{ proofStats }}" as="st" hint-placeholder-count="3">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 27px; letter-spacing: -0.8px; color: #FFFFFF;">{{ st.value }}</span>
+              <span style="font-size: 13px; color: rgba(255,255,255,0.6);">{{ st.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="2">
+          <div style="padding: 24px 26px; border-radius: 20px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; gap: 12px;">
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,0.9); text-wrap: pretty;">&ldquo;{{ r.quote }}&rdquo;</p>
+            <div style="display: flex; align-items: baseline; gap: 8px;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #F4F2AE;">{{ r.name }}</span>
+              <span style="font-size: 12.5px; color: rgba(255,255,255,0.55);">{{ r.company }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 860px; margin: 0 auto; padding: 82px 24px;">
+    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 34px;">
+      <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Questions</span>
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(26px, 4.4vw, 38px); line-height: 1.12; letter-spacing: -1.2px; color: #F5F8FB;">Frequently asked</h2>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+        <div style="border-radius: 18px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); overflow: hidden;">
+          <button type="button" onClick="{{ q.toggle }}" style="all: unset; cursor: pointer; box-sizing: border-box; width: 100%; display: flex; align-items: center; gap: 16px; padding: 21px 24px;">
+            <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 16.5px; color: #F5F8FB; margin-right: auto; text-align: left;">{{ q.question }}</span>
+            <span style="width: 28px; height: 28px; flex: 0 0 auto; border-radius: 50%; background: rgba(255,255,255,0.09); display: grid; place-items: center;">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#F5F8FB" stroke-width="2.4" stroke-linecap="round" style="transform: {{ q.rotate }}; transition: transform 200ms ease;"><path d="M12 5v14M5 12h14"></path></svg>
+            </span>
+          </button>
+          <sc-if value="{{ q.open }}">
+            <p style="margin: 0; padding: 0 24px 24px; font-size: 15px; line-height: 1.65; color: rgba(226,236,245,0.7); text-wrap: pretty;">{{ q.answer }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;statNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;4 out of 5&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Did you know&quot;},&quot;statHeadline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;small business owners either have no website, or don't like the one they have.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Did you know&quot;},&quot;whyLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Why?&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Did you know&quot;},&quot;voice1Name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Ahmed Khan&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Voice 1&quot;},&quot;voice1Trade&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Fabric wholesaler, Lahore&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Voice 1&quot;},&quot;voice1Quote&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;I really tried to build a website myself, but it didn't look good and I have no idea how to make it show up on Google.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Voice 1&quot;},&quot;voice2Name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Sabika Noor&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Voice 2&quot;},&quot;voice2Trade&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Boutique owner, Karachi&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Voice 2&quot;},&quot;voice2Quote&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;My cousin built my website. I'm not really happy with it, but I can't tell him that.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Voice 2&quot;},&quot;voice3Name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Saeed Ahmed&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Voice 3&quot;},&quot;voice3Trade&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Caterer, Islamabad&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Voice 3&quot;},&quot;voice3Quote&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;I got quotes in the thousands for a website. I've just started out — I can't afford that.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Voice 3&quot;}}">
+function initialsOf(name) {
+  return String(name || "").trim().split(/\s+/).slice(0, 2).map(w => w[0] || "").join("").toUpperCase();
+}
+
+class Component extends DCLogic {
+  state = { openFaq: 0, hours: 15, rate: 5000 };
+
+  renderVals() {
+    const money = n => "Rs. " + n.toLocaleString("en-US");
+    const hours = this.state.hours;
+    const rate = this.state.rate;
+    const diyTotal = hours * rate;
+    const matjarx = 22500;
+    const saving = diyTotal - matjarx;
+
+    const pillOn = { bg: "linear-gradient(160deg, #F7F5C0, #E7E49B)", ink: "#14210b", line: "#E7E49B" };
+    const pillOff = { bg: "rgba(255,255,255,0.07)", ink: "rgba(233,239,245,0.75)", line: "rgba(255,255,255,0.16)" };
+    const pill = on => (on ? pillOn : pillOff);
+
+    const calcVals = {
+      hoursLabel: hours + " hours",
+      rateLabel: money(rate) + " / hour",
+      hourSteps: [10, 15, 25, 40, 60].map(h => Object.assign({
+        label: String(h), go: () => this.setState({ hours: h })
+      }, pill(hours === h))),
+      rateSteps: [2500, 5000, 7500, 10000].map(r => Object.assign({
+        label: (r / 1000) + "k", go: () => this.setState({ rate: r })
+      }, pill(rate === r))),
+      rows: [
+        { label: "Doing it yourself", note: hours + " hours \u00d7 " + money(rate) + " / hour", value: money(diyTotal), ink: "#FFFFFF" },
+        { label: "MatjarX, live in 7 days", note: "One-time Launch setup fee", value: money(matjarx), ink: "#C6CB8A" }
+      ],
+      savingValue: money(saving > 0 ? saving : 0),
+      savingNote: saving > 0
+        ? "And you don't spend a single one of those " + hours + " hours."
+        : "Even at this rate, your time is better spent running the business."
+    };
+
+    const faqData = [
+      { question: "How does it actually work?", answer: "Pick a plan and check out. You fill in a short questionnaire about your business, our team builds the whole site in seven days, then we launch it with you on a live call and show you how to edit it yourself." },
+      { question: "Which plan is right for me?", answer: "Launch gets you online with a professional site, domain, email and hosting. Boost is our most popular \u2014 it adds unlimited edits done by us, advanced SEO and selling on Google, Facebook and Instagram. Growth adds a dedicated team and monthly marketing sessions. Platinum is a fully custom build for serious e-commerce." },
+      { question: "Can I edit the website myself afterwards?", answer: "Yes. Every site comes with our own editor \u2014 change photos, text, prices and products from any device, no technical skill needed. If you'd rather not, send the change to your concierge and we'll do it." },
+      { question: "Are hosting, domain and email included?", answer: "Yes, in every plan: a custom domain (or connect one you already own), matching business email, fast secure hosting and an SSL certificate. There are no separate charges for these." },
+      { question: "What if I don't like the website?", answer: "You get 30 days of unlimited edits so we can get it right, and a 30-day money-back guarantee. If you're unhappy for any reason in that window, ask and we refund you." },
+      { question: "Do you work with businesses outside Pakistan?", answer: "Yes \u2014 we serve clients across the Gulf as well. Pricing is quoted in AED for UAE, Saudi and Qatar businesses, and your concierge works your time zone." }
+    ];
+
+    return Object.assign({}, calcVals, {
+      faqs: faqData.map((f, i) => ({
+        question: f.question,
+        answer: f.answer,
+        open: this.state.openFaq === i,
+        rotate: this.state.openFaq === i ? "rotate(45deg)" : "rotate(0deg)",
+        toggle: () => this.setState({ openFaq: this.state.openFaq === i ? -1 : i })
+      })),
+
+      proofStats: [
+        { value: "70,000", label: "websites built" },
+        { value: "7 days", label: "average launch" },
+        { value: "0%", label: "commission on sales" }
+      ],
+
+      reviews: [
+        { quote: "What you get for the value you pay is almost unheard of. You get all the support and tech help you need, in a quick turnaround.", name: "Zohaib Sethia", company: "Bin Adam Textile" },
+        { quote: "Very cooperative team. They handle strategy and consultation, and they now manage both of my websites.", name: "Farooq Butt", company: "Butt Enterprises" }
+      ],
+
+      footerCols: [
+        { title: "Product", links: [
+          { label: "Done-for-you websites", href: "#dfy" },
+          { label: "Local & global SEO", href: "#seo" },
+          { label: "Concierge service", href: "#concierge" },
+          { label: "Growth marketing", href: "#growth" }
+        ] },
+        { title: "Compare", links: [
+          { label: "MatjarX vs Wix", href: "#vs-wix" },
+          { label: "MatjarX vs Squarespace", href: "#vs-squarespace" },
+          { label: "MatjarX vs GoDaddy", href: "#vs-godaddy" }
+        ] },
+        { title: "Company", links: [
+          { label: "About us", href: "#about" },
+          { label: "Careers", href: "#careers" },
+          { label: "Become a partner", href: "#partner" },
+          { label: "Get in touch", href: "#contact" }
+        ] },
+        { title: "Resources", links: [
+          { label: "Website examples", href: "#examples" },
+          { label: "Pricing", href: "#pricing" },
+          { label: "Blog", href: "#blog" },
+          { label: "FAQs", href: "#faqs" }
+        ] }
+      ],
+
+      launchDay: "Friday",
+      fiveStars: [1, 2, 3, 4, 5].map(n => ({ n: n })),
+      ratingBadges: [
+        { name: "Trustpilot", score: "4.8 / 5", tint: "rgba(0,182,122,0.14)", mark: "#00B67A",
+          icon: "m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" },
+        { name: "Google Reviews", score: "4.8 / 5", tint: "rgba(66,133,244,0.14)", mark: "#4285F4",
+          icon: "M12 3.5a8.5 8.5 0 1 0 8.4 9.9h-8.4V10h11.5v2a11.5 11.5 0 1 1-3.4-8.2l-2.1 2.1A8.4 8.4 0 0 0 12 3.5Z" },
+        { name: "Clutch", score: "4.9 / 5", tint: "rgba(230,58,53,0.14)", mark: "#E63A35",
+          icon: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 8.2-6.2l-3-1a5.4 5.4 0 1 1 0-2.6l3-1A8.5 8.5 0 0 0 12 3.5Zm0 5.6a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Z" }
+      ],
+      nav: [
+        { label: "Services", href: "#services" },
+        { label: "Examples", href: "#examples" },
+        { label: "Pricing", href: "#pricing" },
+        { label: "Resources", href: "#resources" },
+        { label: "Company", href: "#company" }
+      ],
+      heroTicks: [
+        { label: "Domain & business email" },
+        { label: "0% transaction fees" },
+        { label: "Hosting & SSL included" },
+        { label: "30-day money back" }
+      ],
+      categories: (() => {
+        const c = ["Restaurants", "Boutiques", "Clinics", "Law firms", "Salons", "Real estate", "Construction", "Gyms", "Caterers", "Auto repair", "Textiles", "Travel agents", "Accountants", "Event planners", "Coffee shops", "Furniture"];
+        return c.concat(c).map(x => ({ label: x }));
+      })(),
+      statNumber: this.props.statNumber ?? "4 out of 5",
+      statHeadline: this.props.statHeadline ?? "small business owners either have no website, or don't like the one they have.",
+      whyLabel: this.props.whyLabel ?? "Why?",
+
+      voices: [
+        { quote: this.props.voice1Quote ?? "I really tried to build a website myself, but it didn't look good and I have no idea how to make it show up on Google.",
+          name: this.props.voice1Name ?? "Ahmed Khan", trade: this.props.voice1Trade ?? "Fabric wholesaler, Lahore",
+          initials: initialsOf(this.props.voice1Name ?? "Ahmed Khan"), tint: "#C6CB8A" },
+        { quote: this.props.voice2Quote ?? "My cousin built my website. I'm not really happy with it, but I can't tell him that.",
+          name: this.props.voice2Name ?? "Sabika Noor", trade: this.props.voice2Trade ?? "Boutique owner, Karachi",
+          initials: initialsOf(this.props.voice2Name ?? "Sabika Noor"), tint: "#F4F2AE" },
+        { quote: this.props.voice3Quote ?? "I got quotes in the thousands for a website. I've just started out \u2014 I can't afford that.",
+          name: this.props.voice3Name ?? "Saeed Ahmed", trade: this.props.voice3Trade ?? "Caterer, Islamabad",
+          initials: initialsOf(this.props.voice3Name ?? "Saeed Ahmed"), tint: "#BFD4E6" }
+      ],
+      editorFeatures: [
+        { title: "Change image", body: "Click any photo and swap it. Your new menu, your new stock, live in seconds.", icon: "M4 5.5h16v13H4zM8.3 10.6a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM4 16.2l4.6-4.2 4.4 3.9 2.6-2.4L20 17" },
+        { title: "Book a table", body: "Switch on bookings and the button becomes a real reservation form, synced to your calendar.", icon: "M5 5.5h14v14H5zM5 10h14M9 3.5v4M15 3.5v4M9 14h2" },
+        { title: "Sell products", body: "Turn on the store and the same button reads Shop now \u2014 cart, checkout and 0% commission included.", icon: "M4 6h2.2l2.3 9.5h9L20 8H7M9.5 20a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Zm7.5 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z" }
+      ],
+      examples: [
+        { name: "Celestial Delicacies", category: "Fine dining, Karachi", result: "Bookings up 3\u00d7", tint: "linear-gradient(150deg, #8E1B22, #3A0A0E)" },
+        { name: "Bin Adam Textile", category: "Wholesale textiles, Faisalabad", result: "#1 on Google", tint: "linear-gradient(150deg, #003366, #2E6EA8)" },
+        { name: "Sacred Wellness", category: "Spa & wellness, Lahore", result: "Leads every day", tint: "linear-gradient(150deg, #707538, #C6CB8A)" }
+      ],
+
+      plans: (() => {
+        const light = {
+          bg: "rgba(255,255,255,0.62)", border: "rgba(255,255,255,0.85)", shadow: "0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)", blur: "blur(22px)",
+          ink: "#04121F", muted: "#6A7F92", body: "#3B5063", rule: "rgba(4,18,31,0.09)",
+          tick: "#707538", ctaInk: "#04121F", ctaBg: "#FCFAF3", ctaBorder: "rgba(4,18,31,0.16)"
+        };
+        const dark = {
+          bg: "linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))", border: "rgba(255,255,255,0.16)", shadow: "0 30px 66px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)", blur: "blur(26px)",
+          ink: "#FFFFFF", muted: "rgba(255,255,255,0.62)", body: "rgba(255,255,255,0.8)", rule: "rgba(255,255,255,0.16)",
+          tick: "#C6CB8A", ctaInk: "#04121F", ctaBg: "#F4F2AE", ctaBorder: "#F4F2AE"
+        };
+        const rows = [
+          { name: "Launch", pitch: "We build and launch your website.", price: "Rs. 4,500", setup: "Rs. 22,500", cta: "Choose Launch", theme: light, tag: "",
+            features: ["Multi-page site, written for you", "Domain + 1 business email", "Google Business Profile set up", "Live chat support"] },
+          { name: "Boost", pitch: "We manage your online presence.", price: "Rs. 15,600", setup: "Rs. 22,500", cta: "Choose Boost", theme: dark, tag: "Most popular",
+            features: ["Everything in Launch", "4 business emails", "Unlimited edits, done by us", "Advanced SEO + custom logo", "Sell on Google, Facebook, Instagram"] },
+          { name: "Growth", pitch: "We grow your business online.", price: "Rs. 27,000", setup: "Rs. 22,500", cta: "Choose Growth", theme: light, tag: "",
+            features: ["Everything in Boost", "Dedicated growth team", "Monthly 1-on-1 marketing session", "2,000 words of fresh content monthly"] },
+          { name: "Platinum", pitch: "We scale your e-commerce business.", price: "Rs. 55,000", setup: "Rs. 140,000", cta: "Talk to us", theme: light, tag: "Custom",
+            features: ["Everything in Growth", "Custom design in our own tool", "Full webstore, unlimited products", "Subscriptions & digital products", "Multi-seat bookings"] }
+        ];
+        return rows.map(r => Object.assign({}, r.theme, {
+          name: r.name, pitch: r.pitch, price: r.price, setup: r.setup, cta: r.cta, tag: r.tag,
+          features: r.features.map(l => ({ label: l }))
+        }));
+      })(),
+
+      steps: [
+        { n: "1", title: "Tell us about your business", body: "A short questionnaire: what you do, who you serve, and what the site needs to achieve.", time: "15\u201330 minutes" },
+        { n: "2", title: "We build the whole thing", body: "Design, copy, images, SEO, store or bookings \u2014 assembled by a specialist in your category.", time: "7 days" },
+        { n: "3", title: "We launch it together", body: "A live call to walk your new site, make final changes, and show you the editor.", time: "30 minutes" }
+      ]
+    });
+  }
+}
+</script>
+</body>
+</html>

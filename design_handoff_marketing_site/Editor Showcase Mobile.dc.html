@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif;">
+
+  <div style="width: 100%; border-radius: 14px; overflow: hidden; background: linear-gradient(168deg, #001C33 0%, #00263F 100%); border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 20px 46px rgba(0,8,18,0.44);">
+
+    <div style="display: flex; align-items: center; gap: 8px; padding: 9px 10px;">
+      <span style="width: 26px; height: 26px; flex: 0 0 auto; border-radius: 8px; display: grid; place-items: center; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13);">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6"></path></svg>
+      </span>
+      <span style="display: flex; flex-direction: column; gap: 1px; min-width: 0; margin-right: auto;">
+        <span style="font-size: 7.5px; letter-spacing: 1.1px; text-transform: uppercase; color: rgba(226,236,245,0.42);">Theme editor</span>
+        <span style="display: flex; align-items: center; gap: 5px; min-width: 0;">
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 10.5px; color: #F7FAFD; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ siteName }}</span>
+          <span style="flex: 0 0 auto; display: flex; align-items: center; gap: 3px; padding: 2px 6px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);">
+            <span style="font-size: 7.5px; font-weight: 600; color: rgba(233,239,245,0.8);">Home</span>
+            <svg viewBox="0 0 24 24" width="7" height="7" fill="none" stroke="rgba(226,236,245,0.55)" stroke-width="2.6" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg>
+          </span>
+        </span>
+      </span>
+      <span style="width: 26px; height: 26px; flex: 0 0 auto; border-radius: 8px; display: grid; place-items: center; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13);">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg>
+      </span>
+      <span style="flex: 0 0 auto; padding: 7px 12px; border-radius: 8px; font-family: Lato, sans-serif; font-weight: 700; font-size: 10px; color: #14210b; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);">Publish</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 6px; padding: 0 12px 8px;">
+      <span style="width: 5px; height: 5px; border-radius: 50%; background: #C6CB8A;"></span>
+      <span style="font-size: 8.5px; color: rgba(226,236,245,0.42); margin-right: auto;">Saved just now</span>
+      <span style="font-size: 8.5px; color: rgba(226,236,245,0.3);">v2.4 draft</span>
+    </div>
+
+    <div style="padding: 0 6px;">
+      <div style="border-radius: 10px; overflow: hidden; background: #FFFCF5; box-shadow: 0 14px 32px rgba(0,8,18,0.38);">
+        <div style="display: flex; align-items: center; gap: 5px; padding: 6px 9px; background: #0B1B27;">
+          <span style="width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.16);"></span>
+          <span style="width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.16);"></span>
+          <span style="width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.16);"></span>
+          <span style="margin: 0 auto; padding: 3px 10px; border-radius: 999px; font-size: 8px; color: rgba(226,236,245,0.6); background: rgba(255,255,255,0.07);">{{ domain }}</span>
+        </div>
+
+        <div style="position: relative; outline: 2px solid #F4F2AE; outline-offset: -2px;">
+          <span style="position: absolute; top: 0; left: 0; z-index: 8; padding: 2px 8px; border-radius: 0 0 6px 0; background: #E7E49B; font-family: Lato, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: 0.5px; text-transform: uppercase; color: #14210b;">Hero</span>
+
+          <div style="display: flex; align-items: center; gap: 8px; padding: 9px 12px; background: {{ navBg }}; border-bottom: 1px solid {{ navLine }};">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 8.5px; letter-spacing: 1px; line-height: 1.1; color: {{ navInk }}; white-space: nowrap; margin-right: auto;">{{ brandMark }}</span>
+            <span style="flex: 0 0 auto; padding: 5px 11px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 7.5px; color: {{ navCtaInk }}; background: {{ navCtaBg }}; white-space: nowrap;">{{ navCta }}</span>
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="{{ navInk }}" stroke-width="2" stroke-linecap="round" style="flex: 0 0 auto;"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+          </div>
+
+          <div style="position: relative; min-height: 210px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 26px 18px 30px; text-align: center; overflow: hidden; background: {{ heroBase }};">
+            <img src="{{ heroImg }}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: {{ heroPos }}; z-index: 0;">
+            <span style="position: absolute; inset: 0; z-index: 1; background: {{ heroScrim }};"></span>
+            <span style="position: relative; z-index: 2; font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; color: {{ kickerInk }}; font-weight: 600;">{{ kicker }}</span>
+            <span style="position: relative; z-index: 2; font-family: Lato, sans-serif; font-weight: 900; font-size: 21px; line-height: 1.06; letter-spacing: -0.8px; color: {{ headInk }};">{{ headline }}</span>
+            <span style="position: relative; z-index: 2; max-width: 22em; font-size: 9.5px; line-height: 1.6; color: {{ bodyInk }};">{{ blurb }}</span>
+            <span style="position: relative; z-index: 2; margin-top: 6px; padding: 9px 20px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 10px; color: {{ ctaInk }}; background: {{ ctaBg }}; box-shadow: 0 6px 16px rgba(0,0,0,0.24);">{{ ctaPrimary }}</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 10px 12px 12px; background: #FFFCF5;">
+          <sc-for list="{{ stripTiles }}" as="s" hint-placeholder-count="3">
+            <span style="height: 42px; border-radius: 6px; overflow: hidden;">
+              <img src="{{ s.src }}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+            </span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 6px 0;">
+
+      <button type="button" onClick="{{ toggleMode }}" title="Tap to switch the business type" style="all: unset; cursor: pointer; padding: 4px; border-radius: 8px; border: 1.5px solid #37B6F0;">
+        <span style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; min-height: 76px; padding: 12px 8px; border-radius: 4px; background: #1C1C1C;">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="{{ modeIcon }}"></path></svg>
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.8px; text-transform: uppercase; color: #FFFFFF; text-align: center; white-space: nowrap;">{{ modeIconLabel }}</span>
+        </span>
+      </button>
+
+      <button type="button" onClick="{{ cycleImage }}" title="Tap to change the banner image" style="all: unset; cursor: pointer; padding: 4px; border-radius: 8px; border: 1.5px solid #37B6F0;">
+        <span style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; min-height: 76px; padding: 10px 8px; border-radius: 4px; background: #1C1C1C;">
+          <span style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; width: 100%; max-width: 84px;">
+            <sc-for list="{{ mediaThumbs }}" as="m" hint-placeholder-count="6">
+              <img src="{{ m.src }}" alt="" style="display: block; width: 100%; height: 16px; object-fit: cover; border-radius: 2px; outline: {{ m.ring }}; outline-offset: -1px; opacity: {{ m.opacity }};">
+            </sc-for>
+          </span>
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.8px; text-transform: uppercase; color: #FFFFFF; text-align: center; white-space: nowrap;">Change Image</span>
+        </span>
+      </button>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 6px; padding: 10px 6px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.09);">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <span style="flex: 1; min-height: 44px; border-radius: 11px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; background: {{ t.bg }}; border: 1px solid {{ t.line }};">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="{{ t.ink }}" stroke-width="{{ t.weight }}" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.icon }}"></path></svg>
+          <span style="font-size: 8.5px; font-weight: 600; color: {{ t.ink }};">{{ t.label }}</span>
+        </span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="margin-top: 11px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#F4F2AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="m7 4 11 8-11 8z"></path></svg>
+    <span style="font-size: 11px; line-height: 1.5; text-align: center; color: {{ statusInk }};">{{ statusLine }}</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:360,&quot;height&quot;:620},&quot;statusInk&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;rgba(226,236,245,0.6)&quot;,&quot;#6A7F92&quot;],&quot;default&quot;:&quot;rgba(226,236,245,0.6)&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Host page&quot;}}">
+class Component extends DCLogic {
+  state = { mode: "product", img: 0 };
+
+  renderVals() {
+    const isProduct = this.state.mode === "product";
+    const i = this.state.img;
+
+    const EE = ["assets/ee-hanger.jpeg", "assets/ee-paisley.jpeg", "assets/ee-purple.jpeg"];
+    const EEpos = ["50% 38%", "50% 45%", "50% 40%"];
+    const SCB = ["assets/scb-hero.jpg", "assets/scb-shelf.jpeg", "assets/scb-croissants.jpeg"];
+    const SCBpos = ["50% 48%", "50% 55%", "50% 45%"];
+
+    const eeScrims = [
+      "linear-gradient(180deg, rgba(24,2,8,0.62) 0%, rgba(30,4,12,0.86) 100%)",
+      "linear-gradient(180deg, rgba(12,6,20,0.64) 0%, rgba(20,10,30,0.88) 100%)",
+      "linear-gradient(180deg, rgba(24,4,26,0.64) 0%, rgba(48,10,52,0.88) 100%)"
+    ];
+    const scbScrims = [
+      "linear-gradient(180deg, rgba(253,246,234,0.72) 0%, rgba(253,246,234,0.94) 100%)",
+      "linear-gradient(180deg, rgba(253,246,234,0.74) 0%, rgba(253,246,234,0.95) 100%)",
+      "linear-gradient(180deg, rgba(253,246,234,0.72) 0%, rgba(253,246,234,0.94) 100%)"
+    ];
+
+    const thumbSrc = isProduct
+      ? ["assets/ee-hanger.jpeg", "assets/ee-paisley.jpeg", "assets/ee-purple.jpeg", "assets/ee-chikankari.jpeg", "assets/ee-necklines.jpeg", "assets/ee-blockprint.jpeg"]
+      : ["assets/scb-hero.jpg", "assets/scb-shelf.jpeg", "assets/scb-croissants.jpeg", "assets/scb-cookies.jpg", "assets/scb-baguettes.webp", "assets/scb-muffins.jpeg"];
+
+    const stripSrc = isProduct
+      ? ["assets/ee-chikankari.jpeg", "assets/ee-necklines.jpeg", "assets/ee-blockprint.jpeg"]
+      : ["assets/scb-croissants.jpeg", "assets/scb-cookies.jpg", "assets/scb-muffins.jpeg"];
+
+    return {
+      isProduct: isProduct,
+      isService: !isProduct,
+      toggleMode: () => this.setState({ mode: isProduct ? "service" : "product", img: 0 }),
+      cycleImage: () => this.setState({ img: (i + 1) % 3 }),
+
+      siteName: isProduct ? "Elegance Embroidery" : "Sweet Crumbs Bakery",
+      domain: isProduct ? "eleganceembroidery.pk" : "sweetcrumbs.pk",
+      brandMark: isProduct ? "ELEGANCE" : "SWEET CRUMBS",
+      navBg: isProduct ? "rgba(12,4,10,0.92)" : "#FFFCF5",
+      navLine: isProduct ? "rgba(255,255,255,0.12)" : "rgba(42,22,8,0.12)",
+      navInk: isProduct ? "#FFFFFF" : "#2A1608",
+      navCta: isProduct ? "Order Now" : "Book Now",
+      navCtaBg: isProduct ? "linear-gradient(160deg, #F7F5C0, #E7E49B)" : "#6B4A22",
+      navCtaInk: isProduct ? "#14210b" : "#FFFFFF",
+
+      heroImg: isProduct ? EE[i] : SCB[i],
+      heroPos: isProduct ? EEpos[i] : SCBpos[i],
+      heroScrim: isProduct ? eeScrims[i] : scbScrims[i],
+      heroBase: isProduct ? "#180208" : "#FFFCF5",
+      stripTiles: stripSrc.map(s => ({ src: s })),
+
+      kicker: isProduct ? "New winter collection" : "Baked fresh, every morning",
+      kickerInk: isProduct ? "#F4F2AE" : "#A87A3A",
+      headline: isProduct ? "Hand-stitched, made to be seen." : "Baked Fresh, Every Morning.",
+      headInk: isProduct ? "#FFFFFF" : "#2A1608",
+      blurb: isProduct
+        ? "Chikankari and ajrak work, delivered nationwide."
+        : "Order online for pickup, or reserve your table.",
+      bodyInk: isProduct ? "rgba(255,255,255,0.82)" : "#6B5340",
+      ctaPrimary: isProduct ? "Order Now" : "Book Now",
+      ctaBg: isProduct ? "linear-gradient(160deg, #F7F5C0, #E7E49B)" : "linear-gradient(160deg, #7C5628, #5A3C18)",
+      ctaInk: isProduct ? "#14210b" : "#FFFFFF",
+
+
+      modeIconLabel: isProduct ? "Book Now!" : "Sell Products",
+      modeIcon: isProduct
+        ? "M5 6h14v14H5zM5 11h14M9 3.5v4M15 3.5v4M9 15h2"
+        : "M3.5 6h2.4l2.5 9.6h9.4L20 8.4H7M10 20a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6Zm7.2 0a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6Z",
+
+      mediaThumbs: thumbSrc.map((src, k) => ({
+        src: src,
+        opacity: k === i ? "1" : "0.6",
+        ring: k === i ? "2px solid #37B6F0" : "1px solid rgba(255,255,255,0.12)"
+      })),
+
+      tabs: [
+        { label: "Add", icon: "M12 5v14M5 12h14", on: false },
+        { label: "Layers", icon: "M12 3.5 4 7.5l8 4 8-4ZM4 12l8 4 8-4M4 16.5l8 4 8-4", on: false },
+        { label: "Edit", icon: "M5 7h9M18 7h1M5 12h4M13 12h6M5 17h11M20 17h.01M14 4.5v5M9 9.5v5M16 14.5v5", on: true }
+      ].map(t => ({
+        label: t.label, icon: t.icon,
+        bg: t.on ? "rgba(244,242,174,0.14)" : "rgba(255,255,255,0.06)",
+        line: t.on ? "rgba(244,242,174,0.34)" : "rgba(255,255,255,0.11)",
+        ink: t.on ? "#F4F2AE" : "rgba(226,236,245,0.6)",
+        weight: t.on ? 2.1 : 1.75
+      })),
+
+      statusInk: this.props.statusInk ?? "rgba(226,236,245,0.6)",
+      statusLine: isProduct
+        ? "Store on \u2014 the buttons read Order Now"
+        : "Bookings on \u2014 the buttons read Book Now"
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1450px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="resources" hint-size="100%,120px"></dc-import>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 44px 24px 0;">
+    <div style="display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 12.5px; color: #6A7F92;">
+      <a href="Marketing - Home.dc.html">Home</a>
+      <span>/</span>
+      <a href="Marketing - Best Website Builder Pakistan.dc.html">Alternatives</a>
+      <span>/</span>
+      <span style="font-weight: 600; color: #04121F;">MatjarX vs {{ rivalName }}</span>
+    </div>
+  </section>
+
+  <section style="max-width: 1000px; margin: 0 auto; padding: 30px 24px 0; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;">
+    <span style="font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">Honest comparison</span>
+    <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5.2vw, 52px); line-height: 1.06; letter-spacing: -1.9px; color: #04121F; text-wrap: balance;">MatjarX vs <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 4px;">{{ rivalName }}</span></h1>
+    <p style="margin: 0; max-width: 36em; font-size: clamp(14.5px, 1.7vw, 17.5px); line-height: 1.62; color: #435A70; text-wrap: pretty;">{{ rivalIntro }}</p>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 46px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; align-items: stretch;">
+
+      <div style="padding: 32px 30px 34px; border-radius: 26px; background: linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96)); border: 1.5px solid rgba(255,255,255,0.18); backdrop-filter: blur(24px); box-shadow: 0 30px 66px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2); display: flex; flex-direction: column; gap: 16px;">
+        <img src="assets/matjarx-logo-light.png" alt="MatjarX" style="width: 128px; height: auto;">
+        <span style="font-size: 12px; letter-spacing: 1.6px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Done for you</span>
+        <div style="display: flex; flex-direction: column; gap: 11px;">
+          <sc-for list="{{ ourPoints }}" as="p" hint-placeholder-count="6">
+            <span style="display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.55; color: rgba(255,255,255,0.88);">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#C6CB8A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px;"><path d="m5 12.5 4.5 4.5L19 7"></path></svg>
+              {{ p.label }}
+            </span>
+          </sc-for>
+        </div>
+        <div style="margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.18); display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 24px; letter-spacing: -0.8px; color: #FFFFFF;">Rs. 22,500 once</span>
+          <span style="font-size: 13px; line-height: 1.5; color: rgba(226,236,245,0.62);">then Rs. 4,500 / month, everything included</span>
+        </div>
+        <a href="Marketing - Pricing.dc.html" style="margin-top: 6px; text-align: center; padding: 15px 22px; border-radius: 14px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #16210B; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: 0 12px 28px rgba(244,242,174,0.24), inset 0 1px 0 rgba(255,255,255,0.65);" style-hover="background: #FFFDD8; color: #16210B;">See MatjarX plans</a>
+      </div>
+
+      <div style="padding: 32px 30px 34px; border-radius: 26px; background: rgba(255,255,255,0.62); border: 1.5px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 16px;">
+        <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 26px; letter-spacing: -0.8px; color: #04121F;">{{ rivalName }}</span>
+        <span style="font-size: 12px; letter-spacing: 1.6px; text-transform: uppercase; color: #8A7A5E; font-weight: 600;">{{ rivalMode }}</span>
+        <div style="display: flex; flex-direction: column; gap: 11px;">
+          <sc-for list="{{ rivalPoints }}" as="p" hint-placeholder-count="5">
+            <span style="display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.55; color: #4B5D6E;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#B4874F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px;"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+              {{ p.label }}
+            </span>
+          </sc-for>
+        </div>
+        <div style="margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(4,18,31,0.1); display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 24px; letter-spacing: -0.8px; color: #04121F;">{{ rivalPrice }}</span>
+          <span style="font-size: 13px; line-height: 1.5; color: #6A7F92;">{{ rivalPriceNote }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1060px; margin: 0 auto; padding: 76px 24px 0;">
+    <h2 style="margin: 0 0 30px; text-align: center; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(25px, 4vw, 36px); line-height: 1.14; letter-spacing: -1.2px; color: #04121F;">Side by side</h2>
+    <div style="border-radius: 26px; overflow-x: auto; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 18px 44px rgba(4,18,31,0.08), inset 0 1px 0 rgba(255,255,255,0.9);">
+      <div style="display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(120px, 0.8fr) minmax(120px, 0.8fr); min-width: 620px;">
+        <span style="padding: 20px 24px; background: rgba(242,238,226,0.7);"></span>
+        <span style="padding: 20px 16px; text-align: center; font-family: Lato, sans-serif; font-weight: 900; font-size: 14.5px; color: #FFFFFF; background: #003366;">MatjarX</span>
+        <span style="padding: 20px 16px; text-align: center; font-family: Lato, sans-serif; font-weight: 900; font-size: 14.5px; color: #04121F; background: rgba(242,238,226,0.7);">{{ rivalName }}</span>
+        <sc-for list="{{ table }}" as="row" hint-placeholder-count="9">
+          <span style="padding: 16px 24px; font-size: 14px; line-height: 1.45; color: #24384A; border-top: 1px solid rgba(4,18,31,0.07);">{{ row.label }}</span>
+          <span style="padding: 16px; text-align: center; font-size: 13px; font-weight: 600; color: #003366; background: rgba(0,51,102,0.05); border-top: 1px solid rgba(4,18,31,0.07);">{{ row.us }}</span>
+          <span style="padding: 16px; text-align: center; font-size: 13px; font-weight: 600; color: {{ row.themColor }}; border-top: 1px solid rgba(4,18,31,0.07);">{{ row.them }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 880px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="padding: clamp(26px, 3.4vw, 40px); border-radius: 26px; background: rgba(242,238,226,0.6); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); display: flex; flex-direction: column; gap: 18px;">
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(23px, 3.4vw, 32px); line-height: 1.14; letter-spacing: -1.1px; color: #04121F; text-wrap: balance;">When {{ rivalName }} is the better choice</h2>
+      <p style="margin: 0; font-size: clamp(15px, 1.7vw, 16.5px); line-height: 1.68; color: #3B5063; text-wrap: pretty;">{{ rivalHonest }}</p>
+      <p style="margin: 0; font-size: clamp(15px, 1.7vw, 16.5px); line-height: 1.68; color: #3B5063; text-wrap: pretty;">MatjarX is the better choice if you'd rather not build anything yourself &mdash; if you want a team that writes the words, sources the images, sets up Google, and answers your WhatsApp when something needs changing.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1000px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="padding: clamp(26px, 3.6vw, 42px); border-radius: 26px; background: linear-gradient(160deg, rgba(4,18,31,0.97), rgba(0,28,51,0.97)); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(24px); box-shadow: 0 30px 66px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.18); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: clamp(26px, 4vw, 38px); align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <span style="font-size: 15px; letter-spacing: 2.5px; color: #F4F2AE;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p style="margin: 0; font-size: clamp(15px, 1.8vw, 17px); line-height: 1.62; color: rgba(255,255,255,0.9); text-wrap: pretty;">&ldquo;I really tried to build a website myself, but it didn't look good and I had no idea how to make it show up on Google. MatjarX just did the whole thing.&rdquo;</p>
+        <div style="display: flex; align-items: baseline; gap: 9px; padding-top: 4px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #F4F2AE;">Ahmed Khan</span>
+          <span style="font-size: 13px; color: rgba(255,255,255,0.55);">Al-Falah Traders, Lahore</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 11px; min-width: 0;">
+        <a href="Marketing - Pricing.dc.html" style="text-align: center; padding: 16px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #16210B; background: #F4F2AE;" style-hover="background: #FFFDD8; color: #16210B;">Compare our plans</a>
+        <a href="Marketing - Website Examples.dc.html" style="text-align: center; padding: 16px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #FFFFFF; background: rgba(255,255,255,0.09); border: 1.5px solid rgba(255,255,255,0.2);" style-hover="background: rgba(255,255,255,0.18); color: #FFFFFF;">See real MatjarX sites</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 24px 0;">
+    <span style="display: block; margin-bottom: 20px; font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">Other comparisons</span>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 18px;">
+      <sc-for list="{{ otherVs }}" as="o" hint-placeholder-count="3">
+        <a href="{{ o.href }}" style="display: flex; flex-direction: column; gap: 9px; padding: 24px 26px 26px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1.5px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 14px 34px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9);" style-hover="border-color: #707538; color: #04121F;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 19px; letter-spacing: -0.5px; color: #04121F;">{{ o.title }}</span>
+          <span style="font-size: 13.5px; line-height: 1.55; color: #4B5D6E; text-wrap: pretty;">{{ o.body }}</span>
+          <span style="margin-top: 4px; font-size: 13px; font-weight: 600; color: #707538;">Read it &rarr;</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="height: 70px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;rival&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;wix&quot;,&quot;squarespace&quot;,&quot;godaddy&quot;],&quot;default&quot;:&quot;squarespace&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Comparison&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const r = this.props.rival ?? "squarespace";
+
+    const data = {
+      wix: {
+        name: "Wix",
+        intro: "Wix is a capable drag-and-drop builder. The question isn't whether it can build a good site \u2014 it's whether you will.",
+        mode: "You build it yourself",
+        points: ["A blank canvas and hundreds of settings to learn", "You write every word and source every image", "SEO is a checklist you have to work through", "Support is a ticket queue, not a person who knows you", "App-store add-ons billed separately, monthly"],
+        price: "From Rs. 4,000 / mo",
+        priceNote: "plus your time, apps and any freelancer you hire",
+        honest: "Wix is the better choice if you genuinely enjoy designing, have the hours to spare, and want total pixel-level control over every element. Its editor is more flexible than ours, and if building the site is the fun part for you, you'll like it.",
+        table: [
+          ["Who builds the site", "Our team", "You"],
+          ["Time from start to live", "7 days", "Weeks to months"],
+          ["Copywriting included", "Yes", "No"],
+          ["Images sourced for you", "Yes", "No"],
+          ["Google Business Profile set up", "Yes", "No"],
+          ["Ongoing edits done for you", "Unlimited", "You do them"],
+          ["Transaction fees on sales", "0%", "0% + gateway"],
+          ["Support", "Named concierge, 4 hrs", "Ticket queue"],
+          ["Local payment gateways", "Built in", "Third-party app"]
+        ]
+      },
+      squarespace: {
+        name: "Squarespace",
+        intro: "Squarespace makes beautiful templates. It also assumes you have the taste, time and copy to fill them.",
+        mode: "You build it yourself",
+        points: ["Gorgeous templates \u2014 that all start empty", "Your site looks as good as the content you put in it", "Priced in USD, billed to a card that needs to work abroad", "Limited local payment options for Pakistan and the Gulf", "Email campaigns and scheduling cost extra"],
+        price: "From USD $16 / mo",
+        priceNote: "billed in dollars, plus domain and add-ons",
+        honest: "Squarespace is the better choice if you're a designer, photographer or creative with strong visual material already prepared, selling to a Western audience in USD. Its typography and template craft are excellent.",
+        table: [
+          ["Who builds the site", "Our team", "You"],
+          ["Time from start to live", "7 days", "Weeks to months"],
+          ["Billed in", "PKR / AED", "USD"],
+          ["Copywriting included", "Yes", "No"],
+          ["JazzCash, Easypaisa, COD", "Built in", "Not supported"],
+          ["Ongoing edits done for you", "Unlimited", "You do them"],
+          ["Local SEO for Pakistan / Gulf", "Included", "You configure"],
+          ["Support", "Named concierge, 4 hrs", "Email, 1 business day"],
+          ["Phone support", "Yes", "No"]
+        ]
+      },
+      godaddy: {
+        name: "GoDaddy",
+        intro: "GoDaddy is excellent at selling you a domain. What happens after that is largely up to you.",
+        mode: "DIY builder + upsells",
+        points: ["Cheap entry price, then upsells at every renewal", "Website builder is basic compared with the alternatives", "SEO, email and security sold as separate subscriptions", "Renewal pricing often several times the intro rate", "No design or copy help \u2014 you assemble it"],
+        price: "From Rs. 2,500 / mo",
+        priceNote: "intro rate; renewals and add-ons cost considerably more",
+        honest: "GoDaddy is the better choice if all you need is a domain name and a single holding page, and you want the cheapest possible starting price. Their domain management is genuinely good.",
+        table: [
+          ["Who builds the site", "Our team", "You"],
+          ["Time from start to live", "7 days", "Days to weeks"],
+          ["Copywriting included", "Yes", "No"],
+          ["Business email", "Included", "Extra subscription"],
+          ["SSL certificate", "Included", "Often extra"],
+          ["SEO tools", "Done for you", "Extra subscription"],
+          ["Renewal price increase", "None", "Common"],
+          ["Ongoing edits done for you", "Unlimited", "You do them"],
+          ["Support", "Named concierge, 4 hrs", "Phone, with upsells"]
+        ]
+      }
+    };
+
+    const meta = {
+      wix: { title: "MatjarX vs Wix", body: "The most capable DIY builder \u2014 if you finish it.", href: "Marketing - vs Wix.dc.html" },
+      squarespace: { title: "MatjarX vs Squarespace", body: "Beautiful templates, billed in USD, no local payments.", href: "Marketing - vs Squarespace.dc.html" },
+      godaddy: { title: "MatjarX vs GoDaddy", body: "Cheap to start, then upsold at every renewal.", href: "Marketing - vs GoDaddy.dc.html" }
+    };
+
+    const d = data[r];
+
+    return {
+      rivalName: d.name,
+      rivalIntro: d.intro,
+      rivalMode: d.mode,
+      rivalPrice: d.price,
+      rivalPriceNote: d.priceNote,
+      rivalHonest: d.honest,
+      rivalPoints: d.points.map(l => ({ label: l })),
+      ourPoints: [
+        "Our team designs, writes and builds the whole site",
+        "Live in 7 days, not 7 weekends",
+        "Domain, business email, hosting and SSL included",
+        "Google Business Profile created and verified for you",
+        "Unlimited edits handled by your concierge",
+        "JazzCash, Easypaisa and COD built in"
+      ].map(l => ({ label: l })),
+      table: d.table.map(row => ({
+        label: row[0], us: row[1], them: row[2],
+        themColor: (row[2] === "No" || row[2] === "Not supported") ? "#B4874F" : "#8A6A4B"
+      })),
+      otherVs: Object.keys(meta).filter(k => k !== r).map(k => meta[k]).concat([
+        { title: "All alternatives", body: "Every option available to a Pakistani business, side by side.", href: "Marketing - Best Website Builder Pakistan.dc.html" }
+      ])
+    };
+  }
+}
+</script>
+</body>
+</html>

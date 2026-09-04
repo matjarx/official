@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="pricing" hint-size="100%,120px"></dc-import>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 46px 24px 0;">
+    <div style="display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 12.5px; color: #6A7F92;">
+      <a href="Marketing - Home.dc.html">Home</a>
+      <span>/</span>
+      <a href="Marketing - Pricing.dc.html">Plans</a>
+      <span>/</span>
+      <span style="font-weight: 600; color: #04121F;">{{ planName }}</span>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 30px 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(30px, 4vw, 54px); align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+      <span style="align-self: flex-start; display: flex; align-items: center; gap: 9px; padding: 8px 16px 8px 12px; border-radius: 999px; background: {{ tagBg }}; border: 1px solid {{ tagLine }}; font-size: 12.5px; font-weight: 600; color: {{ tagInk }};">
+        <span style="width: 7px; height: 7px; border-radius: 50%; background: {{ tagDot }};"></span>
+        {{ planTag }}
+      </span>
+
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5vw, 52px); line-height: 1.06; letter-spacing: -1.9px; color: #04121F; text-wrap: balance;">{{ planName }} Plan &mdash; <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone;">{{ headline }}</span></h1>
+
+      <p style="margin: 0; max-width: 34em; font-size: clamp(14.5px, 1.7vw, 17.5px); line-height: 1.6; color: #435A70; text-wrap: pretty;">{{ subhead }}</p>
+
+      <div style="display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; padding-top: 4px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 11.5px; letter-spacing: 1.3px; text-transform: uppercase; color: #6A7F92; font-weight: 600;">Monthly</span>
+          <div style="display: flex; align-items: baseline; gap: 5px;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 4vw, 40px); letter-spacing: -1.4px; color: #04121F;">{{ price }}</span>
+            <span style="font-size: 14px; color: #6A7F92;">/ mo</span>
+          </div>
+        </div>
+        <span style="width: 1px; height: 44px; background: rgba(4,18,31,0.14);"></span>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 11.5px; letter-spacing: 1.3px; text-transform: uppercase; color: #6A7F92; font-weight: 600;">One-time setup</span>
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(22px, 3vw, 28px); letter-spacing: -0.9px; color: #04121F;">{{ setup }}</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 6px;">
+        <a href="#start" style="padding: 16px 30px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.7px; text-transform: uppercase; color: #16210B; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: 0 14px 30px rgba(244,242,174,0.4), inset 0 1px 0 rgba(255,255,255,0.7);" style-hover="background: #FFFDD8; color: #16210B;">{{ ctaLabel }}</a>
+        <a href="https://wa.me/923033720953" style="padding: 16px 28px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.7px; text-transform: uppercase; color: #04121F; background: rgba(255,255,255,0.66); border: 1.5px solid rgba(255,255,255,0.9); backdrop-filter: blur(20px); box-shadow: 0 10px 26px rgba(4,18,31,0.08), inset 0 1px 0 rgba(255,255,255,0.9);" style-hover="border-color: #707538; color: #04121F;">Ask a question</a>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 10px 26px; padding-top: 6px;">
+        <sc-for list="{{ heroTicks }}" as="t" hint-placeholder-count="3">
+          <span style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #435A70;">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#707538" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="m5 12.5 4.5 4.5L19 7"></path></svg>
+            {{ t.label }}
+          </span>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <div style="padding: 28px 30px 30px; border-radius: 26px; background: rgba(255,255,255,0.66); border: 1px solid rgba(255,255,255,0.9); backdrop-filter: blur(22px); box-shadow: 0 20px 48px rgba(4,18,31,0.09), inset 0 1px 0 rgba(255,255,255,0.95); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 11px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 18px; letter-spacing: -0.4px; color: #04121F; margin-right: auto;">What you get</span>
+          <span style="font-size: 11.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; color: #3D3A08; background: #F4F2AE; white-space: nowrap;">{{ featureCount }}</span>
+        </div>
+        <sc-if value="{{ inherits }}">
+          <span style="font-size: 13.5px; font-weight: 700; font-family: Lato, sans-serif; color: #707538;">{{ inherits }}</span>
+        </sc-if>
+        <div style="display: flex; flex-direction: column; gap: 11px;">
+          <sc-for list="{{ features }}" as="f" hint-placeholder-count="8">
+            <span style="display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; line-height: 1.5; color: #3B5063;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#707538" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px;"><path d="m5 12.5 4.5 4.5L19 7"></path></svg>
+              {{ f.label }}
+            </span>
+          </sc-for>
+        </div>
+      </div>
+      <span style="text-align: center; font-size: 12.5px; line-height: 1.55; color: #6A7F92;">Prices in PKR. Gulf clients are quoted in AED &mdash; <a href="Marketing - Contact.dc.html" style="font-weight: 600;">ask for a quote</a>.</span>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-bottom: 38px;">
+      <span style="font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">Who it's for</span>
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(25px, 4vw, 36px); line-height: 1.14; letter-spacing: -1.2px; color: #04121F; text-wrap: balance;">{{ forTitle }}</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+      <sc-for list="{{ audiences }}" as="a" hint-placeholder-count="3">
+        <div style="padding: 26px 26px 28px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 12px;">
+          <span style="width: 42px; height: 42px; border-radius: 13px; background: #003366; display: grid; place-items: center;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F4F2AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ a.icon }}"></path></svg>
+          </span>
+          <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.35px; color: #04121F;">{{ a.title }}</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4B5D6E; text-wrap: pretty;">{{ a.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="padding: clamp(26px, 3.6vw, 44px); border-radius: 30px; background: linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96)); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(26px); box-shadow: 0 34px 76px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.2); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(26px, 4vw, 42px); align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+        <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Compared with {{ compareWith }}</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.14; letter-spacing: -1.2px; color: #FFFFFF; text-wrap: balance;">{{ compareTitle }}</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.62; color: rgba(226,236,245,0.68); text-wrap: pretty;">{{ compareBody }}</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px;">
+          <a href="Marketing - Pricing.dc.html" style="padding: 14px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #16210B; background: #F4F2AE;" style-hover="background: #FFFDD8; color: #16210B;">Compare all plans</a>
+          <a href="{{ otherHref }}" style="padding: 14px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #FFFFFF; background: rgba(255,255,255,0.09); border: 1.5px solid rgba(255,255,255,0.2);" style-hover="background: rgba(255,255,255,0.18); color: #FFFFFF;">{{ otherLabel }}</a>
+        </div>
+      </div>
+      <div style="min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+        <sc-for list="{{ deltas }}" as="d" hint-placeholder-count="4">
+          <div style="display: flex; align-items: center; gap: 12px; padding: 15px 17px; border-radius: 15px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="{{ d.ink }}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="{{ d.icon }}"></path></svg>
+            <span style="font-size: 13.5px; line-height: 1.45; color: rgba(233,239,245,0.86);">{{ d.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 76px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 34px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.14; letter-spacing: -1.1px; color: #04121F;">{{ planName }} <span style="background: #F4F2AE; padding: 0 8px; border-radius: 3px;">questions</span></h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #435A70;">Anything else, call us on +92 303 372 0953 &mdash; a real person answers.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+          <div style="border-radius: 18px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); overflow: hidden;">
+            <button type="button" onClick="{{ q.toggle }}" style="all: unset; cursor: pointer; box-sizing: border-box; width: 100%; display: flex; align-items: flex-start; gap: 14px; padding: 19px 22px;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; line-height: 1.35; color: #04121F; margin-right: auto; text-align: left;">{{ q.question }}</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px; transform: {{ q.rotate }}; transition: transform 200ms ease;"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <sc-if value="{{ q.open }}">
+              <p style="margin: 0; padding: 0 22px 21px; font-size: 14.5px; line-height: 1.68; color: #435A70; text-wrap: pretty;">{{ q.answer }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 76px 24px 0;">
+    <span style="display: block; margin-bottom: 20px; font-size: 12px; letter-spacing: 2.2px; text-transform: uppercase; color: #707538; font-weight: 600;">Other plans</span>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 18px;">
+      <sc-for list="{{ otherPlans }}" as="o" hint-placeholder-count="3">
+        <a href="{{ o.href }}" style="display: flex; flex-direction: column; gap: 10px; padding: 24px 26px 26px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1.5px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 14px 34px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9);" style-hover="border-color: #707538; color: #04121F;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -0.5px; color: #04121F;">{{ o.name }}</span>
+          <span style="font-size: 13.5px; line-height: 1.55; color: #4B5D6E;">{{ o.pitch }}</span>
+          <span style="display: flex; align-items: baseline; gap: 5px; padding-top: 4px;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 20px; letter-spacing: -0.6px; color: #04121F;">{{ o.price }}</span>
+            <span style="font-size: 12.5px; color: #6A7F92;">/ mo</span>
+          </span>
+          <span style="margin-top: 4px; font-size: 13px; font-weight: 600; color: #707538;">See the {{ o.name }} plan &rarr;</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="height: 70px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;plan&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;launch&quot;,&quot;boost&quot;,&quot;growth&quot;,&quot;platinum&quot;],&quot;default&quot;:&quot;platinum&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Plan&quot;}}">
+class Component extends DCLogic {
+  state = { openFaq: 0 };
+
+  renderVals() {
+    const key = this.props.plan ?? "platinum";
+
+    const icons = {
+      shop: "M4 6h2.2l2.3 9.5h9L20 8H7M9.5 20a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Zm7.5 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z",
+      person: "M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM4.5 20a7.5 7.5 0 0 1 15 0",
+      search: "M11 4.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM16 16l4.5 4.5",
+      chart: "M4 18V9M9.5 18V5M15 18v-6M20.5 18v-9",
+      pin: "M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
+      clock: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM12 8v4.5l3 2",
+      globe: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM3.5 12h17M12 3.5c2.2 2.3 3.4 5.3 3.4 8.5S14.2 18.2 12 20.5",
+      spark: "M12 4l2.4 5.2 5.6.5-4.3 3.7 1.3 5.6L12 16l-5 3 1.3-5.6L4 9.7l5.6-.5Z",
+      up: "M12 19V5M12 5l-5 5M12 5l5 5",
+      plus: "M12 5v14M5 12h14",
+      check: "m5 12.5 4.5 4.5L19 7",
+      dash: "M5 12h14"
+    };
+
+    const planHref = {
+      launch: "Marketing - Plan Launch.dc.html",
+      boost: "Marketing - Plan.dc.html",
+      growth: "Marketing - Plan Growth.dc.html",
+      platinum: "Marketing - Plan Platinum.dc.html"
+    };
+
+    const allPlans = {
+      launch: { name: "Launch", price: "Rs. 4,500", setup: "Rs. 22,500", pitch: "We build and launch your website." },
+      boost: { name: "Boost", price: "Rs. 15,600", setup: "Rs. 22,500", pitch: "We manage your online presence." },
+      growth: { name: "Growth", price: "Rs. 27,000", setup: "Rs. 22,500", pitch: "We grow your business online." },
+      platinum: { name: "Platinum", price: "Rs. 55,000", setup: "Rs. 140,000", pitch: "We scale your e-commerce business." }
+    };
+
+    const data = {
+      launch: {
+        tag: "Best first step", tagBg: "rgba(255,255,255,0.66)", tagLine: "rgba(255,255,255,0.9)", tagInk: "#3B5063", tagDot: "#707538",
+        headline: "Get Online Properly, In Seven Days",
+        subhead: "A complete, professionally written website with your own domain, business email and hosting. Built by our team \u2014 you never touch a builder.",
+        ctaLabel: "Start with Launch",
+        heroTicks: [{ label: "Live in 7 days" }, { label: "0% transaction fees" }, { label: "30-day money back" }],
+        inherits: "",
+        features: [
+          "Built-for-you website or online store", "Personalised design, made for your trade",
+          "Fast loading, structured to rank on Google", "Ready in 7 days",
+          "Custom domain, or connect one you own", "Professional business email address",
+          "Easy-to-use editor", "0% fees on sales and bookings",
+          "1-on-1 launch and training call", "Secure hosting and SSL certificate",
+          "Google Business Profile set up", "30-day money-back guarantee"
+        ],
+        forTitle: "Launch is right if you need to exist online, credibly, this month",
+        audiences: [
+          { title: "You have no website at all", body: "Customers search your name and find nothing. Launch closes that gap in a week, with copy and images handled for you.", icon: icons.globe },
+          { title: "Your site was built years ago", body: "It loads slowly, looks dated on a phone and nobody has touched it since. We rebuild it properly and take over the upkeep.", icon: icons.clock },
+          { title: "You sell mostly in person", body: "You need a shopfront online that answers questions and takes enquiries \u2014 not a full e-commerce operation yet.", icon: icons.pin }
+        ],
+        compareWith: "Boost",
+        compareTitle: "Launch gets you online. Boost keeps you growing.",
+        compareBody: "If you expect to change your site regularly, or you want to be found on Google rather than just be findable, Boost is the better value \u2014 it adds unlimited done-for-you edits and advanced SEO.",
+        deltas: [
+          { label: "Launch: 1 business email \u2014 Boost: 4", icon: icons.plus, ink: "#C6CB8A" },
+          { label: "Launch: you make your own edits \u2014 Boost: unlimited edits done by us", icon: icons.plus, ink: "#C6CB8A" },
+          { label: "Launch: Google Business Profile \u2014 Boost: advanced SEO and Maps", icon: icons.plus, ink: "#C6CB8A" },
+          { label: "Launch: live chat support \u2014 Boost: VIP phone support", icon: icons.plus, ink: "#C6CB8A" }
+        ],
+        otherHref: "Marketing - Plan.dc.html", otherLabel: "See the Boost plan",
+        faqs: [
+          ["How many pages do I get?", "A complete multi-page site \u2014 typically home, about, services or products, and contact. If your business needs more, we'll say so before you pay rather than after."],
+          ["Can I add a shop later?", "Yes. Launch includes basic store functionality, and you can move up to Boost or Growth at any time \u2014 we only charge the difference."],
+          ["Who writes the words?", "We do. You fill in a short questionnaire about your business and our copywriters produce the site copy. You approve it before launch."],
+          ["What if I already have a domain?", "We connect it for you and handle the DNS. Your domain stays registered in your name either way."]
+        ]
+      },
+
+      boost: {
+        tag: "Most popular", tagBg: "#F4F2AE", tagLine: "#E7E49B", tagInk: "#3D3A08", tagDot: "#707538",
+        headline: "More Pages, More SEO, More Growth",
+        subhead: "Everything in Launch, plus unlimited edits done by our team, advanced SEO to rank on Google, and your products promoted across Google, Facebook and Instagram.",
+        ctaLabel: "Choose Boost",
+        heroTicks: [{ label: "Unlimited done-for-you edits" }, { label: "Advanced SEO" }, { label: "VIP phone support" }],
+        inherits: "Everything in Launch, plus:",
+        features: [
+          "4 business email addresses", "Advanced SEO to rank on Google",
+          "Unlimited done-for-you edits", "Live chat, lead forms and multimedia added for you",
+          "Promote products on Google, Facebook and Instagram", "Google Maps listing created and verified",
+          "Review collection and replies", "VIP phone support",
+          "Seasonal campaigns set up for you", "Analytics and tracking connected"
+        ],
+        forTitle: "Boost is right if your website needs to work, not just exist",
+        audiences: [
+          { title: "You change things often", body: "New stock, new prices, Ramzan offers, a seasonal banner. Message your concierge and it's done inside four working hours \u2014 unlimited, at no extra cost.", icon: icons.spark },
+          { title: "You want to be found on Google", body: "Advanced on-page SEO, a verified Maps listing and steady review collection. This is what turns a website into an enquiry source.", icon: icons.search },
+          { title: "You sell across channels", body: "Your products syndicated to Google Shopping, Facebook and Instagram, kept in step with your site automatically.", icon: icons.shop }
+        ],
+        compareWith: "Growth",
+        compareTitle: "Boost manages your presence. Growth actively grows it.",
+        compareBody: "Boost keeps your site current and ranking. If you want a marketing partner \u2014 a named team, a monthly plan, fresh content and paid ads managed for you \u2014 that's Growth.",
+        deltas: [
+          { label: "Boost: our team handles your site \u2014 Growth: a dedicated growth team", icon: icons.plus, ink: "#C6CB8A" },
+          { label: "Boost: advanced SEO \u2014 Growth: 2,000 words of fresh content monthly", icon: icons.plus, ink: "#C6CB8A" },
+          { label: "Boost: no marketing sessions \u2014 Growth: 1-on-1 every month", icon: icons.plus, ink: "#C6CB8A" },
+          { label: "Boost: no ad management \u2014 Growth: paid ads set up and managed", icon: icons.plus, ink: "#C6CB8A" }
+        ],
+        otherHref: "Marketing - Plan Growth.dc.html", otherLabel: "See the Growth plan",
+        faqs: [
+          ["What counts as an edit?", "Anything on your site: text, photos, prices, a new section, a seasonal banner, a new product range. There's no monthly cap and no per-change fee."],
+          ["How fast are edits done?", "Your concierge replies within four working hours and most changes are live the same day. Larger requests get a stated timeline up front."],
+          ["Is the SEO work ongoing?", "Yes. On-page optimisation, technical fixes, Maps and review management continue every month \u2014 it isn't a one-off setup."],
+          ["Why is Boost the most popular plan?", "Because most small businesses don't want to maintain a website. Launch gets you online; Boost means you never think about it again."]
+        ]
+      },
+
+      growth: {
+        tag: "For businesses scaling up", tagBg: "rgba(198,203,138,0.4)", tagLine: "rgba(198,203,138,0.7)", tagInk: "#3D4A16", tagDot: "#707538",
+        headline: "A Marketing Team, Not Just A Website",
+        subhead: "Everything in Boost, plus a dedicated growth team, a marketing plan built for your business, monthly 1-on-1 sessions and 2,000 words of fresh content every month.",
+        ctaLabel: "Choose Growth",
+        heroTicks: [{ label: "Dedicated growth team" }, { label: "Monthly 1-on-1 session" }, { label: "Content written for you" }],
+        inherits: "Everything in Boost, plus:",
+        features: [
+          "Dedicated VIP growth team", "A marketing plan built for your business",
+          "1-on-1 monthly marketing sessions", "2,000 words of fresh content written monthly",
+          "Advice on email, social, ads, SEO and reputation", "Paid ads set up and managed",
+          "Monthly SEO audit report", "Competitor insight for your city and category",
+          "Reputation management", "Advanced e-commerce features"
+        ],
+        forTitle: "Growth is right if the website is working and you want more",
+        audiences: [
+          { title: "You have demand and want more", body: "Enquiries are coming in and you want to increase them deliberately \u2014 with a plan, a budget and someone accountable for the result.", icon: icons.chart },
+          { title: "You don't have a marketing person", body: "You get a named marketing partner and a monthly session instead of hiring in-house or guessing at it yourself.", icon: icons.person },
+          { title: "You're competing on search", body: "Fresh content every month, technical SEO, competitor tracking and paid search running alongside your organic rankings.", icon: icons.search }
+        ],
+        compareWith: "Platinum",
+        compareTitle: "Growth grows your business. Platinum rebuilds it from scratch.",
+        compareBody: "Growth runs on our themes, tuned for your brand. If you need a fully custom design, a full webstore with unlimited products, subscriptions or multi-seat bookings, that's Platinum.",
+        deltas: [
+          { label: "Growth: theme-based design \u2014 Platinum: custom design in our own tool", icon: icons.plus, ink: "#C6CB8A" },
+          { label: "Growth: advanced store \u2014 Platinum: full webstore, unlimited products", icon: icons.plus, ink: "#C6CB8A" },
+          { label: "Growth: bookings \u2014 Platinum: multi-seat bookings and subscriptions", icon: icons.plus, ink: "#C6CB8A" },
+          { label: "Growth: 4 business emails \u2014 Platinum: unlimited", icon: icons.plus, ink: "#C6CB8A" }
+        ],
+        otherHref: "Marketing - Plan Platinum.dc.html", otherLabel: "See the Platinum plan",
+        faqs: [
+          ["Who is my growth partner?", "A named marketing specialist assigned to your account, who knows your business and joins your monthly call. Not a rotating support queue."],
+          ["What happens in the monthly session?", "Thirty to sixty minutes reviewing what happened last month, what we're doing next, and one skill you want to learn \u2014 email, social, ads or SEO."],
+          ["Is ad spend included?", "No. We set up and manage the campaigns; the spend goes directly to Google, Meta or TikTok on your own card, so you keep full control of the budget."],
+          ["Can I see the monthly reporting first?", "Yes. Ask us and we'll show you a real anonymised report before you commit."]
+        ]
+      },
+
+      platinum: {
+        tag: "Custom built", tagBg: "rgba(244,242,174,0.5)", tagLine: "rgba(244,242,174,0.8)", tagInk: "#3D3A08", tagDot: "#8A7A12",
+        headline: "A Custom Store, Built To Scale",
+        subhead: "Everything in Growth, plus a fully custom design created in our own tool, a complete webstore with unlimited products, subscriptions, digital goods and multi-seat bookings.",
+        ctaLabel: "Talk to us about Platinum",
+        heroTicks: [{ label: "Fully custom design" }, { label: "Unlimited products" }, { label: "Unlimited edits" }],
+        inherits: "Everything in Growth, plus:",
+        features: [
+          "Custom design built in our own tool", "Full webstore built for you",
+          "Unlimited products and unlimited edits", "Sell subscriptions and digital products",
+          "Manage multi-seat bookings", "Unlimited business email addresses",
+          "Enhanced marketing integrations", "Direct line to our build team",
+          "Quarterly business review", "Priority build and support queue"
+        ],
+        forTitle: "Platinum is right if a theme can't carry your business",
+        audiences: [
+          { title: "You run real e-commerce", body: "Hundreds of products, variants, bundles and stock to keep straight. You need a store designed around your catalogue, not fitted to a template.", icon: icons.shop },
+          { title: "You sell subscriptions or digital goods", body: "Recurring boxes, memberships, downloads or courses \u2014 none of which a standard theme handles well.", icon: icons.spark },
+          { title: "You book capacity, not appointments", body: "Multiple seats, rooms, tables or slots across locations, with rules about what can be booked when.", icon: icons.clock }
+        ],
+        compareWith: "Growth",
+        compareTitle: "Not sure you need Platinum yet?",
+        compareBody: "Most businesses should start on Growth and move up when the catalogue or the booking rules outgrow a theme. We'll tell you honestly which side of that line you're on \u2014 Platinum is a considerably larger setup fee.",
+        deltas: [
+          { label: "Start on Growth if your catalogue is under 100 products", icon: icons.dash, ink: "rgba(226,236,245,0.5)" },
+          { label: "Start on Growth if bookings are single-seat", icon: icons.dash, ink: "rgba(226,236,245,0.5)" },
+          { label: "Choose Platinum for subscriptions or digital products", icon: icons.check, ink: "#C6CB8A" },
+          { label: "Choose Platinum when the design has to be yours alone", icon: icons.check, ink: "#C6CB8A" }
+        ],
+        otherHref: "Marketing - Plan Growth.dc.html", otherLabel: "See the Growth plan",
+        faqs: [
+          ["Why is the setup fee higher?", "Because nothing is templated. Discovery, custom design, a bespoke store build and data migration are all included in the Rs. 140,000 \u2014 an agency would quote several times that."],
+          ["How long does a Platinum build take?", "Four to six weeks typically, depending on catalogue size. We give you a dated schedule before you commit, not an estimate."],
+          ["Can you migrate an existing store?", "Yes \u2014 products, customers, orders and URL redirects, so your Google rankings follow you across."],
+          ["Do I still get unlimited edits?", "Yes, and a direct line to the team that built your store rather than a general queue."]
+        ]
+      }
+    };
+
+    const d = data[key];
+    const p = allPlans[key];
+    const others = Object.keys(allPlans).filter(k => k !== key).map(k => ({
+      name: allPlans[k].name, pitch: allPlans[k].pitch, price: allPlans[k].price, href: planHref[k]
+    }));
+
+    return {
+      planName: p.name, price: p.price, setup: p.setup,
+      planTag: d.tag, tagBg: d.tagBg, tagLine: d.tagLine, tagInk: d.tagInk, tagDot: d.tagDot,
+      headline: d.headline, subhead: d.subhead, ctaLabel: d.ctaLabel,
+      heroTicks: d.heroTicks,
+      inherits: d.inherits,
+      features: d.features.map(l => ({ label: l })),
+      featureCount: d.features.length + " included",
+      forTitle: d.forTitle,
+      audiences: d.audiences,
+      compareWith: d.compareWith, compareTitle: d.compareTitle, compareBody: d.compareBody,
+      deltas: d.deltas, otherHref: d.otherHref, otherLabel: d.otherLabel,
+      otherPlans: others,
+      faqs: d.faqs.map((f, i) => ({
+        question: f[0], answer: f[1],
+        open: this.state.openFaq === i,
+        rotate: this.state.openFaq === i ? "rotate(180deg)" : "rotate(0deg)",
+        toggle: () => this.setState({ openFaq: this.state.openFaq === i ? -1 : i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

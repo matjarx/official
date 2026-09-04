@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+  input::placeholder { color: #90A2B1; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="resources" hint-size="100%,120px"></dc-import>
+
+  <section style="background: #003366; padding: 60px 24px 52px;">
+    <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+      <span style="font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">MatjarX resources</span>
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5.6vw, 50px); line-height: 1.08; letter-spacing: -1.7px; color: #FFFFFF; text-wrap: pretty;">Helping small businesses <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 3px;">grow online</span></h1>
+      <p style="margin: 0; max-width: 32em; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.72);">Practical guides written for Pakistani and Gulf business owners &mdash; no jargon, no theory.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 46px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 22px; align-items: stretch;">
+      <a href="Marketing - Blog Post.dc.html" style="display: flex; flex-direction: column; border-radius: 24px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(4,18,31,0.09); box-shadow: 0 16px 40px rgba(4,18,31,0.07);">
+        <div style="height: 280px; background: linear-gradient(150deg, #1B7A3D, #08361B); display: flex; flex-direction: column; justify-content: flex-end; padding: 26px;">
+          <span style="align-self: flex-start; font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; color: #16210B; background: #F4F2AE; margin-bottom: 14px;">Featured</span>
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 27px; line-height: 1.14; letter-spacing: -0.7px; color: #FFFFFF; text-wrap: pretty;">{{ featured.title }}</span>
+        </div>
+        <div style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 14px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4B5D6E; text-wrap: pretty;">{{ featured.excerpt }}</p>
+          <div style="display: flex; align-items: center; gap: 12px; padding-top: 4px;">
+            <span style="width: 34px; height: 34px; border-radius: 50%; background: #C6CB8A; display: grid; place-items: center; font-family: Lato, sans-serif; font-weight: 700; font-size: 12.5px; color: #16210B;">{{ featured.initials }}</span>
+            <span style="font-size: 13px; color: #6A7F92;">{{ featured.author }} &middot; {{ featured.date }} &middot; {{ featured.readTime }}</span>
+          </div>
+        </div>
+      </a>
+
+      <div style="padding: 34px 32px; border-radius: 24px; background: linear-gradient(150deg, #F4F2AE, #C6CB8A); display: flex; flex-direction: column; gap: 16px; justify-content: center;">
+        <span style="font-size: 12px; letter-spacing: 1.8px; text-transform: uppercase; color: #4A5518; font-weight: 700;">Newsletter</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 30px; line-height: 1.12; letter-spacing: -1px; color: #1F2A08; text-wrap: pretty;">Get monthly advice and exclusive deals</h2>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #3D4A16;">One email a month: what's working for businesses like yours, plus partner offers.</p>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px;">
+          <input type="email" placeholder="you@yourbusiness.pk" style="width: 100%; padding: 15px 17px; border-radius: 13px; font-family: 'Open Sans', sans-serif; font-size: 14.5px; color: #1F2A08; background: rgba(255,255,255,0.75); border: 1.5px solid rgba(31,42,8,0.18); outline: none;">
+          <button type="button" style="all: unset; cursor: pointer; text-align: center; padding: 15px 20px; border-radius: 13px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #FFFFFF; background: #04121F;" style-hover="background: #003366;">Subscribe</button>
+        </div>
+        <span style="font-size: 11.5px; line-height: 1.5; color: #4A5518;">By subscribing you agree to the MatjarX privacy policy. Unsubscribe any time.</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 46px 24px 0;">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+        <button type="button" onClick="{{ c.go }}" style="all: unset; cursor: pointer; padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 600; white-space: nowrap; color: {{ c.color }}; background: {{ c.bg }}; border: 1.5px solid {{ c.border }};">{{ c.label }}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 28px 24px 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 22px;">
+      <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+        <a href="Marketing - Blog Post.dc.html" style="display: flex; flex-direction: column; border-radius: 22px; overflow: hidden; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9);">
+          <div style="height: 168px; background: {{ p.tint }}; display: flex; align-items: flex-start; padding: 16px;">
+            <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 11px; border-radius: 999px; color: rgba(255,255,255,0.94); background: rgba(0,0,0,0.3);">{{ p.category }}</span>
+          </div>
+          <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 11px; flex: 1;">
+            <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.28; letter-spacing: -0.35px; color: #04121F; text-wrap: pretty;">{{ p.title }}</h3>
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.58; color: #4B5D6E; text-wrap: pretty;">{{ p.excerpt }}</p>
+            <span style="margin-top: auto; padding-top: 12px; font-size: 12px; color: #90A2B1;">{{ p.date }} &middot; {{ p.readTime }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+    <div style="display: flex; justify-content: center; padding: 44px 0 0;">
+      <button type="button" style="all: unset; cursor: pointer; padding: 15px 32px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #04121F; background: #FFFFFF; border: 1.5px solid rgba(4,18,31,0.16);" style-hover="border-color: #707538;">Load more posts</button>
+    </div>
+  </section>
+
+  <div style="height: 60px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { cat: "All" };
+
+  renderVals() {
+    const all = [
+      { title: "Why does every small business need a website in 2026?", category: "Getting started", cat: "Getting started",
+        excerpt: "Without a website, customers question your reputation before they ever contact you. Here's how to fix that without breaking the bank.",
+        date: "24 Aug 2026", readTime: "6 min read", tint: "linear-gradient(150deg, #003366, #2E6EA8)" },
+      { title: "How Elegance Embroidery won the ultimate digital makeover", category: "Client stories", cat: "Client stories",
+        excerpt: "Inside our Zainab Market lucky draw \u2014 and what changed for Mukesh Kumar's boutique in the ninety days after launch.",
+        date: "13 Aug 2026", readTime: "8 min read", tint: "linear-gradient(150deg, #1B7A3D, #08361B)" },
+      { title: "Set up JazzCash on your business website", category: "Payments", cat: "Payments",
+        excerpt: "A step-by-step walkthrough of connecting Jazz Business to your checkout, including the paperwork most people miss.",
+        date: "08 Aug 2026", readTime: "7 min read", tint: "linear-gradient(150deg, #C0392B, #5B140D)" },
+      { title: "COD optimisation: how to reduce your RTO rate", category: "E-commerce", cat: "E-commerce",
+        excerpt: "Cash on delivery drives most Pakistani online sales \u2014 and most of the losses. Six changes that cut returns.",
+        date: "02 Aug 2026", readTime: "9 min read", tint: "linear-gradient(150deg, #707538, #3A3D18)" },
+      { title: "Local SEO for small business: the complete guide", category: "SEO", cat: "SEO",
+        excerpt: "How to get your shop, clinic or restaurant showing up when someone nearby searches for what you sell.",
+        date: "28 Jul 2026", readTime: "12 min read", tint: "linear-gradient(150deg, #1E5FA8, #0A2647)" },
+      { title: "Top 5 website mistakes killing your conversions", category: "Getting started", cat: "Getting started",
+        excerpt: "Slow load times, hidden phone numbers, and four other things quietly costing you customers every day.",
+        date: "21 Jul 2026", readTime: "6 min read", tint: "linear-gradient(150deg, #8E1B22, #2A0709)" },
+      { title: "How generative engine optimisation actually works", category: "SEO", cat: "SEO",
+        excerpt: "AI answer engines are replacing blue links for some searches. What that means for a small business, in plain terms.",
+        date: "16 Jul 2026", readTime: "11 min read", tint: "linear-gradient(150deg, #4A2C8E, #1A0F3A)" },
+      { title: "Setting up WhatsApp automation for your business", category: "Marketing", cat: "Marketing",
+        excerpt: "Auto-replies, catalogues and order updates \u2014 configured properly so customers don't feel they're talking to a robot.",
+        date: "09 Jul 2026", readTime: "8 min read", tint: "linear-gradient(150deg, #128C4A, #06381D)" },
+      { title: "Domain and hosting explained, without the jargon", category: "Getting started", cat: "Getting started",
+        excerpt: "What you're actually paying for, what you can safely ignore, and how to avoid the renewal traps.",
+        date: "01 Jul 2026", readTime: "5 min read", tint: "linear-gradient(150deg, #005A6E, #012B34)" }
+    ];
+
+    const cats = ["All", "Getting started", "SEO", "E-commerce", "Payments", "Marketing", "Client stories"];
+    const c = this.state.cat;
+    const filtered = c === "All" ? all : all.filter(x => x.cat === c);
+
+    return {
+      featured: {
+        title: "Why does every small business need a website in 2026?",
+        excerpt: "Without a website, customers question your reputation before they ever pick up the phone. We break down what a site actually needs to do for a Pakistani business \u2014 and how to get one without breaking the bank.",
+        author: "Yasir Hashmi", initials: "YH", date: "24 Aug 2026", readTime: "6 min read"
+      },
+      cats: cats.map(x => ({
+        label: x,
+        go: () => this.setState({ cat: x }),
+        bg: c === x ? "#003366" : "#FFFFFF",
+        color: c === x ? "#FFFFFF" : "#3B5063",
+        border: c === x ? "#003366" : "rgba(4,18,31,0.14)"
+      })),
+      posts: filtered
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div>
+  <section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 78px;">
+    <div style="padding: 58px 48px; border-radius: 30px; background: linear-gradient(150deg, rgba(244,242,174,0.9), rgba(198,203,138,0.9)); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(24px); box-shadow: 0 26px 60px rgba(112,117,56,0.24), inset 0 1px 0 rgba(255,255,255,0.85); display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;">
+      <h2 style="margin: 0; max-width: 22em; font-family: Lato, sans-serif; font-weight: 900; font-size: 40px; line-height: 1.08; letter-spacing: -1.4px; color: #1F2A08; text-wrap: pretty;">Professional websites, ready in just 7 days.</h2>
+      <p style="margin: 0; max-width: 34em; font-size: 16.5px; line-height: 1.6; color: #3D4A16;">Completely risk-free, with unmatched customer support.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; padding-top: 8px;">
+        <a href="Marketing - Pricing.dc.html" style="padding: 17px 32px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; color: #FFFFFF; background: linear-gradient(160deg, #10293D, #04121F); box-shadow: 0 12px 26px rgba(4,18,31,0.28), inset 0 1px 0 rgba(255,255,255,0.18);" style-hover="background: #003366; color: #FFFFFF;">Get started</a>
+        <a href="https://wa.me/923033720953" style="padding: 17px 30px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; color: #1F2A08; background: rgba(255,255,255,0.62); border: 1.5px solid rgba(255,255,255,0.85); backdrop-filter: blur(20px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);" style-hover="background: #FFFFFF; color: #1F2A08;">Talk to us on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: linear-gradient(168deg, #04121F 0%, #001C33 100%); padding: 62px 24px 34px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: minmax(200px, 1.4fr) repeat(auto-fit, minmax(148px, 1fr)); gap: 40px 30px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+        <img src="assets/matjarx-logo-light.png" alt="MatjarX" style="width: 148px; height: auto;">
+        <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.55); max-width: 26em;">Done-for-you websites, SEO and growth marketing for small businesses across Pakistan and the Gulf.</p>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding-top: 4px;">
+          <a href="tel:+923033720953" style="font-size: 13.5px; color: #F4F2AE;">+92 303 372 0953</a>
+          <a href="mailto:office@matjarx.com" style="font-size: 13.5px; color: #F4F2AE;">office@matjarx.com</a>
+        </div>
+        <div style="display: flex; gap: 8px; padding-top: 8px;">
+          <sc-for list="{{ socials }}" as="s" hint-placeholder-count="6">
+            <a href="{{ s.href }}" title="{{ s.name }}" style="width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(18px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);" style-hover="background: rgba(244,242,174,0.16); color: #F4F2AE;">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(255,255,255,0.72)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ s.icon }}"></path></svg>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+      <sc-for list="{{ cols }}" as="col" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 13px; min-width: 0;">
+          <span style="font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(255,255,255,0.42); font-weight: 600;">{{ col.title }}</span>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+              <a href="{{ l.href }}" style="font-size: 13.5px; color: rgba(255,255,255,0.72);" style-hover="color: #F4F2AE;">{{ l.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="max-width: 1200px; margin: 44px auto 0; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+      <span style="font-size: 12.5px; color: rgba(255,255,255,0.42); margin-right: auto;">&copy; 2012&ndash;2026 MatjarX. All rights reserved.</span>
+      <a href="Marketing - Legal.dc.html" style="font-size: 12.5px; color: rgba(255,255,255,0.55);" style-hover="color: #F4F2AE;">Terms &amp; conditions</a>
+      <a href="Marketing - Legal.dc.html" style="font-size: 12.5px; color: rgba(255,255,255,0.55);" style-hover="color: #F4F2AE;">Refund policy</a>
+      <a href="Marketing - Legal.dc.html" style="font-size: 12.5px; color: rgba(255,255,255,0.55);" style-hover="color: #F4F2AE;">Privacy &amp; cookies</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:600}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      socials: [
+        { name: "WhatsApp", href: "https://wa.me/923033720953", icon: "M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z" },
+        { name: "Facebook", href: "#facebook", icon: "M14 8.5h2.5V5.2H14c-2 0-3.4 1.5-3.4 3.5v1.6H8.5v3.3h2.1V21h3.4v-7.4h2.4l.5-3.3h-2.9V8.9c0-.3.2-.4.5-.4Z" },
+        { name: "Instagram", href: "#instagram", icon: "M8 3.5h8a4.5 4.5 0 0 1 4.5 4.5v8A4.5 4.5 0 0 1 16 20.5H8A4.5 4.5 0 0 1 3.5 16V8A4.5 4.5 0 0 1 8 3.5Zm4 5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm4.6-1.1h.01" },
+        { name: "YouTube", href: "#youtube", icon: "M3.5 8.5a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-11a3 3 0 0 1-3-3ZM10.5 9.5l4 2.5-4 2.5Z" },
+        { name: "LinkedIn", href: "#linkedin", icon: "M5 9.5v10M5 5.6h.01M10.5 19.5v-10M10.5 13.2c0-2 1.4-3.7 3.4-3.7s3.6 1.7 3.6 3.7v6.3" },
+        { name: "TikTok", href: "#tiktok", icon: "M14 3.5v10.8a3.6 3.6 0 1 1-3.6-3.6M14 3.5a5 5 0 0 0 5 5" }
+      ],
+      cols: [
+        { title: "Product", links: [
+          { label: "Pricing", href: "Marketing - Pricing.dc.html" },
+          { label: "Features", href: "Marketing - Features.dc.html" },
+          { label: "Website examples", href: "Marketing - Website Examples.dc.html" },
+          { label: "Done-for-you website", href: "Marketing - Services.dc.html" },
+          { label: "Help centre", href: "Marketing - Help.dc.html" }
+        ] },
+        { title: "Services", links: [
+          { label: "Local & global SEO", href: "Marketing - Services.dc.html" },
+          { label: "Concierge service", href: "Marketing - Services.dc.html" },
+          { label: "Growth marketing", href: "Marketing - Services.dc.html" },
+          { label: "Websites for restaurants", href: "Marketing - Website For Industry.dc.html" },
+          { label: "Websites for boutiques", href: "Marketing - Website For Boutiques.dc.html" },
+          { label: "Website design Karachi", href: "Marketing - Website Design City.dc.html" }
+        ] },
+        { title: "Company", links: [
+          { label: "About us", href: "Marketing - About.dc.html" },
+          { label: "Careers", href: "Marketing - Careers.dc.html" },
+          { label: "Get in touch", href: "Marketing - Contact.dc.html" },
+          { label: "Become a partner", href: "Marketing - Partner.dc.html" }
+        ] },
+        { title: "Compare", links: [
+          { label: "MatjarX vs Wix", href: "Marketing - vs Wix.dc.html" },
+          { label: "MatjarX vs Squarespace", href: "Marketing - vs Squarespace.dc.html" },
+          { label: "MatjarX vs GoDaddy", href: "Marketing - vs GoDaddy.dc.html" },
+          { label: "Best builder in Pakistan", href: "Marketing - Best Website Builder Pakistan.dc.html" }
+        ] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

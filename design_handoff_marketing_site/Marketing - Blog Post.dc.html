@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="resources" hint-size="100%,120px"></dc-import>
+
+  <section style="background: #003366; padding: 46px 24px 54px;">
+    <div style="max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <a href="Marketing - Blog.dc.html" style="font-size: 13px; font-weight: 600; color: #C6CB8A;">&larr; All posts</a>
+        <span style="font-size: 13px; color: rgba(255,255,255,0.4);">/</span>
+        <span style="font-size: 13px; color: rgba(255,255,255,0.6);">Getting started</span>
+      </div>
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(29px, 5.2vw, 46px); line-height: 1.1; letter-spacing: -1.6px; color: #FFFFFF; text-wrap: pretty;">Why does every small business need a website in <span style="background: #C6CB8A; color: #16210B; padding: 0 9px; border-radius: 3px;">2026?</span></h1>
+      <div style="display: flex; align-items: center; gap: 13px; flex-wrap: wrap;">
+        <span style="width: 42px; height: 42px; flex: 0 0 auto; border-radius: 50%; background: linear-gradient(150deg, #C6CB8A, #707538); display: grid; place-items: center; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; color: #16210B;">YH</span>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #FFFFFF;">Yasir Hashmi</span>
+          <span style="font-size: 12.5px; color: rgba(255,255,255,0.55);">24 August 2026 &middot; 6 min read</span>
+        </div>
+        <div style="display: flex; gap: 8px; margin-left: auto;">
+          <sc-for list="{{ shareLinks }}" as="s" hint-placeholder-count="3">
+            <a href="{{ s.href }}" title="Share on {{ s.name }}" style="width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);" style-hover="background: rgba(244,242,174,0.18); color: #F4F2AE;">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ s.icon }}"></path></svg>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1140px; margin: 0 auto; padding: 46px 24px 0;">
+    <div style="height: 380px; border-radius: 24px; background: linear-gradient(150deg, #003366, #707538); display: grid; place-items: center; box-shadow: 0 22px 50px rgba(4,18,31,0.16);">
+      <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 20px; letter-spacing: 0.4px; color: rgba(255,255,255,0.85);">Article cover image</span>
+    </div>
+  </section>
+
+  <section style="max-width: 1140px; margin: 0 auto; padding: 52px 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 46px; align-items: start;">
+
+    <article style="min-width: 0; max-width: 680px; display: flex; flex-direction: column; gap: 24px;">
+      <p style="margin: 0; font-size: 19.5px; line-height: 1.6; font-weight: 500; color: #24384A; text-wrap: pretty;">If a customer hears about your business today, the first thing they do is search for it. What they find &mdash; or don't find &mdash; decides whether they call you or your competitor.</p>
+
+      <sc-for list="{{ body }}" as="b" hint-placeholder-count="8">
+        <sc-if value="{{ b.isHeading }}">
+          <h2 style="margin: 16px 0 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 29px; line-height: 1.18; letter-spacing: -0.9px; color: #04121F; text-wrap: pretty;">{{ b.text }}</h2>
+        </sc-if>
+        <sc-if value="{{ b.isPara }}">
+          <p style="margin: 0; font-size: 17px; line-height: 1.72; color: #33485B; text-wrap: pretty;">{{ b.text }}</p>
+        </sc-if>
+        <sc-if value="{{ b.isQuote }}">
+          <blockquote style="margin: 8px 0; padding: 24px 28px; border-radius: 18px; background: #F2EEE2; border-left: 4px solid #C6CB8A;">
+            <p style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.45; letter-spacing: -0.4px; color: #04121F; text-wrap: pretty;">{{ b.text }}</p>
+          </blockquote>
+        </sc-if>
+        <sc-if value="{{ b.isList }}">
+          <div style="display: flex; flex-direction: column; gap: 13px;">
+            <sc-for list="{{ b.items }}" as="li" hint-placeholder-count="4">
+              <span style="display: flex; align-items: flex-start; gap: 13px; font-size: 17px; line-height: 1.65; color: #33485B; text-wrap: pretty;">
+                <span style="width: 7px; height: 7px; flex: 0 0 auto; margin-top: 10px; border-radius: 50%; background: #C6CB8A;"></span>
+                {{ li.text }}
+              </span>
+            </sc-for>
+          </div>
+        </sc-if>
+      </sc-for>
+
+      <div style="margin-top: 20px; padding: 30px 32px; border-radius: 22px; background: linear-gradient(150deg, #F4F2AE, #C6CB8A); display: flex; flex-direction: column; gap: 14px;">
+        <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 25px; line-height: 1.16; letter-spacing: -0.7px; color: #1F2A08; text-wrap: pretty;">Want this handled for you?</h3>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: #3D4A16; text-wrap: pretty;">We build the whole website &mdash; design, copy, images, Google listing &mdash; and launch it in seven days from Rs. 22,500.</p>
+        <a href="Marketing - Pricing.dc.html" style="align-self: flex-start; margin-top: 4px; padding: 15px 28px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #FFFFFF; background: #04121F;" style-hover="background: #003366; color: #FFFFFF;">See plans</a>
+      </div>
+
+      <div style="margin-top: 24px; padding: 26px 28px; border-radius: 20px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; gap: 18px; align-items: flex-start;">
+        <span style="width: 56px; height: 56px; flex: 0 0 auto; border-radius: 50%; background: linear-gradient(150deg, #C6CB8A, #707538); display: grid; place-items: center; font-family: Lato, sans-serif; font-weight: 700; font-size: 17px; color: #16210B;">YH</span>
+        <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;">
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 16.5px; color: #04121F;">Yasir Hashmi</span>
+          <span style="font-size: 12.5px; color: #6A7F92;">Head of Client Success, MatjarX</span>
+          <p style="margin: 4px 0 0; font-size: 14px; line-height: 1.6; color: #4B5D6E; text-wrap: pretty;">Yasir has helped over 900 Pakistani businesses get their first website live. He writes about the practical side of going digital.</p>
+        </div>
+      </div>
+    </article>
+
+    <aside style="min-width: 0; max-width: 340px; display: flex; flex-direction: column; gap: 18px; position: sticky; top: 100px;">
+      <div style="padding: 24px 26px; border-radius: 20px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-size: 11.5px; letter-spacing: 1.6px; text-transform: uppercase; color: #8A7A5E; font-weight: 600;">In this article</span>
+        <div style="display: flex; flex-direction: column; gap: 11px;">
+          <sc-for list="{{ toc }}" as="t" hint-placeholder-count="5">
+            <a href="{{ t.href }}" style="font-size: 14px; line-height: 1.45; color: #3B5063;" style-hover="color: #707538;">{{ t.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="padding: 24px 26px; border-radius: 20px; background: #04121F; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 17px; color: #FFFFFF;">Get one email a month</span>
+        <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.6);">Practical advice for growing a business online in Pakistan and the Gulf.</p>
+        <a href="Marketing - Blog.dc.html" style="margin-top: 4px; text-align: center; padding: 13px 18px; border-radius: 12px; font-family: Lato, sans-serif; font-weight: 700; font-size: 13.5px; color: #16210B; background: #F4F2AE;" style-hover="background: #FFFDD8; color: #16210B;">Subscribe</a>
+      </div>
+    </aside>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 74px 24px 20px;">
+    <h2 style="margin: 0 0 28px; font-family: Lato, sans-serif; font-weight: 900; font-size: 32px; letter-spacing: -1px; color: #04121F;">Keep reading</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px;">
+      <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+        <a href="Marketing - Blog Post.dc.html" style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(4,18,31,0.09);">
+          <div style="height: 140px; background: {{ r.tint }};"></div>
+          <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 9px;">
+            <span style="font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #707538;">{{ r.category }}</span>
+            <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 17px; line-height: 1.3; letter-spacing: -0.3px; color: #04121F; text-wrap: pretty;">{{ r.title }}</h3>
+            <span style="font-size: 12px; color: #90A2B1;">{{ r.readTime }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="height: 60px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  renderVals() {
+    const blocks = [
+      { t: "h", text: "Your website is your reputation, not your brochure" },
+      { t: "p", text: "Ten years ago a website was a place to list your address and phone number. Today it is the first thing a customer judges you on. When someone is recommended your business by a friend, they will search your name before they call \u2014 and if nothing credible comes up, they hesitate." },
+      { t: "p", text: "We see this pattern constantly with wholesalers in Faisalabad and boutiques in Karachi. The business is well known locally, has real customers and a strong reputation by word of mouth. But a buyer from another city has no way to verify any of that. A website closes that gap in about four seconds." },
+      { t: "q", text: "4 out of 5 small business owners either have no website, or don't like the one they have." },
+      { t: "h", text: "What a website actually needs to do" },
+      { t: "p", text: "Most business owners overestimate how elaborate their site needs to be. In practice, a site that earns its cost does four things well:" },
+      { t: "l", items: [
+        "Answers the obvious questions immediately \u2014 what you sell, where you are, how to reach you, what it costs.",
+        "Shows proof \u2014 real photos of your work, real reviews from real customers, and the trust signals that matter in your trade.",
+        "Makes contact effortless \u2014 a tappable phone number, a WhatsApp button, and a form that actually reaches your inbox.",
+        "Appears on Google when someone searches for what you sell near where you are."
+      ] },
+      { t: "p", text: "Everything beyond those four things is optional. A beautiful site that hides your phone number below three screens of scrolling is worse than a plain one that puts it in the header." },
+      { t: "h", text: "The Google problem nobody warns you about" },
+      { t: "p", text: "Having a website and being findable are two entirely different projects. We regularly meet owners who paid for a site three years ago and have never received a single enquiry from it \u2014 because nothing was ever done to make Google aware it exists." },
+      { t: "p", text: "At minimum you need a verified Google Business Profile, a Maps listing, page titles that match what people actually type, and a steady flow of reviews. For a local business, the Business Profile often drives more calls than the website itself. It is also free, which makes skipping it especially painful." },
+      { t: "h", text: "Why most DIY attempts stall" },
+      { t: "p", text: "The builders are not the problem \u2014 they are genuinely capable tools. The problem is that they hand you a blank page and assume you have the three things that are actually hard: knowing what should go on each page, having the words to fill it, and having photographs that look professional." },
+      { t: "p", text: "So the site gets to about seventy percent, sits unpublished for months, and eventually the subscription gets cancelled. We have taken over dozens of half-built sites from owners who did nothing wrong except run out of evenings." },
+      { t: "h", text: "What it should cost" },
+      { t: "p", text: "A DIY builder subscription runs to well over a hundred thousand rupees a year once you add the apps, and you supply all the labour. A local agency will quote several hundred thousand for the build alone, and you will still need them every time a price changes." },
+      { t: "p", text: "There is a middle path, which is the one we built MatjarX around: a fixed one-time build fee, a predictable monthly cost that includes hosting, domain, email and support, and a team that makes your changes for you. For most small businesses that lands around Rs. 22,500 to start and Rs. 4,500 a month after." }
+    ];
+
+    return {
+      body: blocks.map(b => ({
+        isHeading: b.t === "h",
+        isPara: b.t === "p",
+        isQuote: b.t === "q",
+        isList: b.t === "l",
+        text: b.text,
+        items: (b.items || []).map(x => ({ text: x }))
+      })),
+      toc: blocks.filter(b => b.t === "h").map(b => ({ label: b.text, href: "#" })),
+      shareLinks: [
+        { name: "WhatsApp", href: "#share-whatsapp", icon: "M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z" },
+        { name: "Facebook", href: "#share-facebook", icon: "M14 8.5h2.5V5.2H14c-2 0-3.4 1.5-3.4 3.5v1.6H8.5v3.3h2.1V21h3.4v-7.4h2.4l.5-3.3h-2.9V8.9c0-.3.2-.4.5-.4Z" },
+        { name: "LinkedIn", href: "#share-linkedin", icon: "M5 9.5v10M5 5.6h.01M10.5 19.5v-10M10.5 13.2c0-2 1.4-3.7 3.4-3.7s3.6 1.7 3.6 3.7v6.3" }
+      ],
+      related: [
+        { title: "Local SEO for small business: the complete guide", category: "SEO", readTime: "12 min read", tint: "linear-gradient(150deg, #1E5FA8, #0A2647)" },
+        { title: "Top 5 website mistakes killing your conversions", category: "Getting started", readTime: "6 min read", tint: "linear-gradient(150deg, #8E1B22, #2A0709)" },
+        { title: "Domain and hosting explained, without the jargon", category: "Getting started", readTime: "5 min read", tint: "linear-gradient(150deg, #005A6E, #012B34)" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

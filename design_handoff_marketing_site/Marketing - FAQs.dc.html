@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="resources" hint-size="100%,120px"></dc-import>
+
+  <section style="background: #003366; padding: 60px 24px 52px;">
+    <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+      <span style="font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Help centre</span>
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5.6vw, 50px); line-height: 1.08; letter-spacing: -1.7px; color: #FFFFFF; text-wrap: pretty;">Frequently asked <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 3px;">questions</span></h1>
+      <p style="margin: 0; max-width: 32em; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.72);">Everything you need to use MatjarX like a pro. Still stuck? We're a phone call away.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 40px 24px 0;">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
+        <button type="button" onClick="{{ g.go }}" style="all: unset; cursor: pointer; padding: 11px 20px; border-radius: 999px; font-size: 13.5px; font-weight: 600; white-space: nowrap; color: {{ g.color }}; background: {{ g.bg }}; border: 1.5px solid {{ g.border }}; transition: background 160ms ease;">{{ g.label }}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 36px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+        <sc-for list="{{ colA }}" as="q" hint-placeholder-count="5">
+          <div style="border-radius: 18px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); overflow: hidden;">
+            <button type="button" onClick="{{ q.toggle }}" style="all: unset; cursor: pointer; box-sizing: border-box; width: 100%; display: flex; align-items: flex-start; gap: 14px; padding: 19px 22px;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; line-height: 1.35; color: #04121F; margin-right: auto; text-align: left;">{{ q.question }}</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px; transform: {{ q.rotate }}; transition: transform 200ms ease;"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <sc-if value="{{ q.open }}">
+              <p style="margin: 0; padding: 0 22px 21px; font-size: 14.5px; line-height: 1.68; color: #435A70; text-wrap: pretty;">{{ q.answer }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+        <sc-for list="{{ colB }}" as="q" hint-placeholder-count="5">
+          <div style="border-radius: 18px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); overflow: hidden;">
+            <button type="button" onClick="{{ q.toggle }}" style="all: unset; cursor: pointer; box-sizing: border-box; width: 100%; display: flex; align-items: flex-start; gap: 14px; padding: 19px 22px;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 15.5px; line-height: 1.35; color: #04121F; margin-right: auto; text-align: left;">{{ q.question }}</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px; transform: {{ q.rotate }}; transition: transform 200ms ease;"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <sc-if value="{{ q.open }}">
+              <p style="margin: 0; padding: 0 22px 21px; font-size: 14.5px; line-height: 1.68; color: #435A70; text-wrap: pretty;">{{ q.answer }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1080px; margin: 0 auto; padding: 66px 24px 0;">
+    <div style="padding: clamp(26px, 4vw, 40px) clamp(22px, 3.5vw, 42px); border-radius: 26px; background: #04121F; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 34px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 12px; min-width: 0;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(23px, 3.6vw, 30px); line-height: 1.18; letter-spacing: -1px; color: #FFFFFF; text-wrap: pretty;">Still have questions?</h2>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.62; color: rgba(255,255,255,0.65);">Get started today &mdash; or just ask us anything before you commit to anything.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+        <a href="tel:+923033720953" style="text-align: center; padding: 15px 22px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #16210B; background: #F4F2AE;" style-hover="background: #FFFDD8; color: #16210B;">Call +92 303 372 0953</a>
+        <a href="Marketing - Contact.dc.html" style="text-align: center; padding: 15px 22px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #FFFFFF; background: rgba(255,255,255,0.09); border: 1.5px solid rgba(255,255,255,0.2);" style-hover="background: rgba(255,255,255,0.18); color: #FFFFFF;">Send us a message</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="height: 74px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { group: "All", open: "Getting started|0" };
+
+  renderVals() {
+    const data = {
+      "Getting started": [
+        ["How do I get started?", "Pick a plan and check out. You'll get a short questionnaire about your business \u2014 what you do, who you serve, what the site needs to achieve. From there our team builds the whole thing and we launch it with you on a live call."],
+        ["How does this all work?", "You never touch a website builder. A designer who has worked in your trade before designs the pages, a writer produces the copy, our SEO team structures it to rank, and your concierge stays on afterwards to make changes for you."],
+        ["What's included in the Launch package?", "A multi-page website written and designed for you, a custom domain, one professional email address, secure hosting with an SSL certificate, your Google Business Profile set up, a 1-on-1 launch and training call, and a 30-day money-back guarantee."],
+        ["How long does it take?", "Seven days from the day we receive your completed questionnaire. Brief on Monday, review on Friday, live the following week is typical."],
+        ["What do you need from me?", "About 15 to 30 minutes for the questionnaire, your logo if you have one, and any photos or prices you want used. If you don't have images we source appropriate ones for your trade."]
+      ],
+      "Your website": [
+        ["Once launched, can I still edit the website myself?", "Yes. Every site comes with our own editor \u2014 change photos, text, prices and products from any device, with no technical skill needed. If you'd rather not, send the change to your concierge instead."],
+        ["Are these templated websites?", "We start from themes built for specific business categories, then design around your brand, your photos and your services. Platinum plans are designed entirely from scratch in our own tool."],
+        ["What platform are the websites built on?", "Our own platform. That's deliberate \u2014 it means no plugin conflicts, no version updates to manage, and nothing that breaks when a third-party add-on changes."],
+        ["Are MatjarX websites secure?", "Yes. Every site includes an SSL certificate, daily backups with restore points, and security patching handled by us. You'll never be asked to update anything yourself."],
+        ["Can I transfer an existing website to MatjarX?", "Yes, and we do this often. We rebuild the site on our platform, carry over your content and set up redirects so your Google rankings follow you across."],
+        ["Can you show me the platform and editor?", "Happily. Book a call and we'll walk you through a live site and the editor before you pay anything."]
+      ],
+      "Domain & email": [
+        ["Are hosting and domain included? Can I use my own domain?", "Both are included in every plan. We can register a new .pk or .com for you, or connect a domain you already own \u2014 we handle the DNS either way."],
+        ["Do I own my domain?", "Yes. The domain is registered in your name and stays yours. If you ever leave, it goes with you."],
+        ["What about business email?", "You get a professional address on your own domain \u2014 one inbox on Launch, four on Boost and Growth, unlimited on Platinum. Set up and working from day one."],
+        ["What happens if I stop paying?", "Your site goes offline but nothing is deleted for 90 days, and your domain remains yours. Restart any time and we put it straight back up."]
+      ],
+      "Pricing & plans": [
+        ["Which plan is right for me?", "Launch if you need a professional site online. Boost \u2014 our most popular \u2014 if you also want unlimited edits done for you, advanced SEO and selling on Google, Facebook and Instagram. Growth if you want a dedicated marketing team. Platinum for serious custom e-commerce."],
+        ["Is the setup fee charged every year?", "No, it's one-time. It covers the full build \u2014 design, copy, images, SEO and launch. After that you only pay the monthly plan fee."],
+        ["Can I switch plans?", "Any time. Upgrades apply immediately and we only charge the difference. Downgrades take effect at your next billing date."],
+        ["Do you charge commission on my sales?", "Never. 0% on sales and bookings on every plan. You only pay your payment gateway's own processing fee."],
+        ["Do you work with businesses outside Pakistan?", "Yes \u2014 we serve clients across the Gulf. UAE, Saudi and Qatar businesses are quoted in AED, and your concierge works your time zone."]
+      ],
+      "Support & guarantees": [
+        ["What if I don't like my website?", "You get 30 days of unlimited edits so we can get it right, plus a 30-day money-back guarantee. If you're unhappy for any reason in that window, ask and we refund you."],
+        ["Can I speak with someone?", "Yes, and we'd encourage it. Call +92 303 372 0953 or message us on WhatsApp \u2014 you'll reach a person, not a menu."],
+        ["How fast is support?", "Your concierge replies within four working hours, Monday to Saturday. Boost and above include VIP phone support."],
+        ["How do I cancel?", "Message your concierge or email office@matjarx.com. There's no lock-in contract \u2014 cancel before your next billing date and you won't be charged again."]
+      ]
+    };
+
+    const groupNames = ["All"].concat(Object.keys(data));
+    const g = this.state.group;
+    const flat = [];
+    Object.keys(data).forEach(k => {
+      if (g === "All" || g === k) data[k].forEach((q, i) => flat.push({ key: k + "|" + i, question: q[0], answer: q[1] }));
+    });
+
+    const mapQ = q => ({
+      question: q.question, answer: q.answer,
+      open: this.state.open === q.key,
+      rotate: this.state.open === q.key ? "rotate(180deg)" : "rotate(0deg)",
+      toggle: () => this.setState({ open: this.state.open === q.key ? "" : q.key })
+    });
+
+    const half = Math.ceil(flat.length / 2);
+
+    return {
+      groups: groupNames.map(n => ({
+        label: n,
+        go: () => this.setState({ group: n }),
+        bg: g === n ? "#003366" : "#FFFFFF",
+        color: g === n ? "#FFFFFF" : "#3B5063",
+        border: g === n ? "#003366" : "rgba(4,18,31,0.14)"
+      })),
+      colA: flat.slice(0, half).map(mapQ),
+      colB: flat.slice(half).map(mapQ)
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif;">
+
+  <div style="border-radius: 16px; overflow: hidden; background: linear-gradient(168deg, #001C33 0%, #00263F 100%); border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 30px 66px rgba(0,8,18,0.44);">
+
+    <div style="display: flex; align-items: center; gap: 10px; padding: 10px 13px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+      <span style="display: flex; align-items: center; gap: 7px; padding: 6px 12px 6px 9px; border-radius: 9px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); flex: 0 0 auto;">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6"></path></svg>
+        <span style="font-size: 11px; font-weight: 600; color: #E9EFF5;">Exit</span>
+      </span>
+      <span style="width: 1px; height: 20px; flex: 0 0 auto; background: rgba(255,255,255,0.12);"></span>
+      <img src="assets/matjarx-mark-light.png" alt="" style="width: 18px; height: 18px; flex: 0 0 auto; object-fit: contain;">
+      <span style="font-size: 11.5px; color: rgba(226,236,245,0.5); white-space: nowrap;">Theme editor</span>
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(226,236,245,0.34)" stroke-width="2.2" stroke-linecap="round" style="flex: 0 0 auto;"><path d="m9 6 6 6-6 6"></path></svg>
+      <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 12.5px; color: #F2F6FA; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ siteName }}</span>
+      <span style="display: flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.13); flex: 0 0 auto;">
+        <span style="font-size: 10.5px; font-weight: 600; color: rgba(233,239,245,0.82);">Home</span>
+        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.55)" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg>
+      </span>
+
+      <span style="display: flex; gap: 4px; margin-left: 4px; flex: 0 0 auto;">
+        <sc-for list="{{ topIcons }}" as="t" hint-placeholder-count="2">
+          <span style="width: 26px; height: 26px; border-radius: 7px; display: grid; place-items: center; opacity: {{ t.opacity }};">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(226,236,245,0.8)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.icon }}"></path></svg>
+          </span>
+        </sc-for>
+      </span>
+
+      <span style="display: flex; gap: 3px; margin: 0 auto; padding: 3px; border-radius: 9px; background: rgba(0,17,32,0.42); border: 1px solid rgba(255,255,255,0.09); flex: 0 0 auto;">
+        <sc-for list="{{ devices }}" as="d" hint-placeholder-count="3">
+          <span style="width: 32px; height: 23px; border-radius: 6px; display: grid; place-items: center; background: {{ d.bg }};">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="{{ d.ink }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ d.icon }}"></path></svg>
+          </span>
+        </sc-for>
+      </span>
+
+      <span style="display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: 9px; background: rgba(0,17,32,0.42); border: 1px solid rgba(255,255,255,0.09); flex: 0 0 auto;">
+        <span style="width: 24px; height: 22px; border-radius: 6px; display: grid; place-items: center;">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(226,236,245,0.75)" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"></path></svg>
+        </span>
+        <span style="min-width: 38px; text-align: center; font-family: Lato, sans-serif; font-weight: 700; font-size: 11px; color: #E9EFF5;">100%</span>
+        <span style="width: 24px; height: 22px; border-radius: 6px; display: grid; place-items: center;">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(226,236,245,0.75)" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        </span>
+      </span>
+
+      <span style="display: flex; align-items: center; gap: 6px; flex: 0 0 auto;">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: #C6CB8A;"></span>
+        <span style="font-size: 10.5px; color: rgba(226,236,245,0.45); white-space: nowrap;">Saved just now</span>
+      </span>
+      <span style="flex: 0 0 auto; padding: 7px 13px; border-radius: 8px; font-size: 11px; font-weight: 600; color: #E9EFF5; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); white-space: nowrap;">Preview</span>
+      <span style="flex: 0 0 auto; padding: 7px 14px; border-radius: 8px; font-family: Lato, sans-serif; font-weight: 700; font-size: 11.5px; color: #14210b; background: linear-gradient(160deg, #F7F5C0, #E7E49B); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6); white-space: nowrap;">Publish</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 186px minmax(0, 1fr) 216px;">
+
+      <div style="padding: 12px 10px; border-right: 1px solid rgba(255,255,255,0.09); display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+        <div style="display: flex; gap: 4px; padding: 3px; border-radius: 9px; background: rgba(0,17,32,0.42); border: 1px solid rgba(255,255,255,0.09);">
+          <span style="flex: 1; text-align: center; padding: 6px 4px; border-radius: 7px; font-family: Lato, sans-serif; font-weight: 700; font-size: 10.5px; color: #F7FAFD; background: linear-gradient(160deg, rgba(255,255,255,0.18), rgba(255,255,255,0.07));">Sections</span>
+          <span style="flex: 1; text-align: center; padding: 6px 4px; border-radius: 7px; font-size: 10.5px; color: rgba(226,236,245,0.55);">Globals</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 9px; background: rgba(0,17,32,0.4); border: 1px solid rgba(255,255,255,0.1);">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(226,236,245,0.45)" stroke-width="2" stroke-linecap="round" style="flex: 0 0 auto;"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+          <span style="font-size: 10px; color: rgba(226,236,245,0.4);">Search sections</span>
+        </div>
+
+        <sc-for list="{{ libraryGroups }}" as="g" hint-placeholder-count="3">
+          <div style="display: flex; flex-direction: column; gap: 3px;">
+            <span style="padding: 4px 4px 5px; font-size: 8.5px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(226,236,245,0.34); font-weight: 600;">{{ g.title }}</span>
+            <sc-for list="{{ g.items }}" as="w" hint-placeholder-count="4">
+              <span style="display: flex; align-items: center; gap: 8px; padding: 7px 7px; border-radius: 8px;">
+                <span style="width: 24px; height: 24px; flex: 0 0 auto; border-radius: 7px; display: grid; place-items: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#C6CB8A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="{{ w.icon }}"></path></svg>
+                </span>
+                <span style="display: flex; flex-direction: column; gap: 1px; min-width: 0; margin-right: auto;">
+                  <span style="font-size: 10.5px; font-weight: 600; color: #EDF3F8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ w.name }}</span>
+                  <span style="font-size: 8.5px; color: rgba(226,236,245,0.42); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ w.hint }}</span>
+                </span>
+                <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.24)" stroke-width="2" stroke-linecap="round" style="flex: 0 0 auto;"><path d="M9 6h.01M9 12h.01M9 18h.01M15 6h.01M15 12h.01M15 18h.01"></path></svg>
+              </span>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="padding: 14px; min-width: 0;">
+        <div style="border-radius: 11px; overflow: hidden; background: #FFFCF5; box-shadow: 0 18px 42px rgba(0,8,18,0.4);">
+          <div style="display: flex; align-items: center; gap: 6px; padding: 7px 11px; background: #0B1B27;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.16);"></span>
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.16);"></span>
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.16);"></span>
+            <span style="margin: 0 auto; padding: 3px 12px; border-radius: 999px; font-size: 9.5px; color: rgba(226,236,245,0.6); background: rgba(255,255,255,0.07);">{{ domain }}</span>
+            <span style="font-size: 8.5px; color: rgba(226,236,245,0.38); flex: 0 0 auto;">Desktop 1440</span>
+          </div>
+
+          <div style="position: relative; outline: 2px solid #F4F2AE; outline-offset: -2px;">
+            <span style="position: absolute; top: 0; left: 0; z-index: 8; padding: 3px 10px; border-radius: 0 0 7px 0; background: #E7E49B; font-family: Lato, sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.5px; text-transform: uppercase; color: #14210b;">Hero</span>
+            <span style="position: absolute; top: 6px; right: 6px; z-index: 8; display: flex; gap: 2px; padding: 3px; border-radius: 7px; background: rgba(8,20,32,0.86); border: 1px solid rgba(255,255,255,0.16);">
+              <sc-for list="{{ tools }}" as="t" hint-placeholder-count="5">
+                <span style="width: 19px; height: 19px; border-radius: 5px; display: grid; place-items: center;">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="{{ t.ink }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.icon }}"></path></svg>
+                </span>
+              </sc-for>
+            </span>
+
+            <div style="display: flex; align-items: center; gap: 14px; padding: 10px 16px; background: {{ navBg }}; border-bottom: 1px solid {{ navLine }};">
+              <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 10px; letter-spacing: 1.2px; line-height: 1.1; color: {{ navInk }}; white-space: nowrap;">{{ brandMark }}</span>
+              <span style="display: flex; align-items: center; gap: 12px; margin: 0 auto;">
+                <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="4">
+                  <span style="font-size: 8.5px; font-weight: 600; letter-spacing: 0.4px; color: {{ n.ink }}; white-space: nowrap;">{{ n.label }}</span>
+                </sc-for>
+              </span>
+              <span style="flex: 0 0 auto; padding: 6px 13px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.4px; color: {{ navCtaInk }}; background: {{ navCtaBg }}; white-space: nowrap;">{{ navCta }}</span>
+            </div>
+
+            <div style="position: relative; min-height: 226px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); align-items: center; gap: 18px; padding: 28px 22px 32px; overflow: hidden; background: {{ heroBase }};">
+              <img src="{{ heroImg }}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: {{ heroPos }}; z-index: 0;">
+              <span style="position: absolute; inset: 0; z-index: 1; background: {{ heroScrim }};"></span>
+
+              <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 9px; min-width: 0;">
+                <span style="font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: {{ kickerInk }}; font-weight: 600;">{{ kicker }}</span>
+                <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 23px; line-height: 1.05; letter-spacing: -0.9px; color: {{ headInk }};">{{ headline }}</span>
+                <span style="max-width: 21em; font-size: 9.5px; line-height: 1.6; color: {{ bodyInk }};">{{ blurb }}</span>
+                <span style="display: flex; gap: 7px; flex-wrap: wrap; padding-top: 5px;">
+                  <span style="padding: 8px 17px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 9.5px; color: {{ ctaInk }}; background: {{ ctaBg }}; box-shadow: 0 6px 16px rgba(0,0,0,0.2);">{{ ctaPrimary }}</span>
+                  <span style="padding: 8px 15px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 9.5px; color: {{ ghostInk }}; background: {{ ghostBg }}; border: 1px solid {{ ghostLine }};">{{ ctaGhost }}</span>
+                </span>
+              </div>
+
+              <div style="position: relative; z-index: 2; min-width: 0; display: flex; justify-content: center;">
+                <span style="display: block; width: 100%; max-width: 176px; aspect-ratio: 1 / 1.04; border-radius: 10px; overflow: hidden; box-shadow: 0 14px 34px rgba(0,0,0,0.3);">
+                  <img src="{{ inlineImg }}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%;">
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 12px 16px 16px; background: #FFFCF5;">
+            <sc-for list="{{ stripTiles }}" as="s" hint-placeholder-count="4">
+              <span style="height: 46px; border-radius: 7px; overflow: hidden;">
+                <img src="{{ s.src }}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+              </span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-left: 1px solid rgba(255,255,255,0.09); display: flex; flex-direction: column; min-width: 0;">
+        <div style="padding: 12px 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.09); display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: baseline; gap: 8px;">
+            <span style="font-size: 8.5px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(226,236,245,0.34); font-weight: 600; margin-right: auto;">Structure</span>
+            <span style="font-size: 8.5px; color: rgba(226,236,245,0.3);">5 sections</span>
+          </div>
+          <sc-for list="{{ layerGroups }}" as="lg" hint-placeholder-count="2">
+            <div style="display: flex; flex-direction: column; gap: 3px;">
+              <div style="display: flex; align-items: baseline; gap: 8px; padding: 3px 2px;">
+                <span style="font-size: 8.5px; font-weight: 600; color: rgba(226,236,245,0.5); margin-right: auto;">{{ lg.title }}</span>
+                <span style="font-size: 8px; color: rgba(226,236,245,0.28);">{{ lg.note }}</span>
+              </div>
+              <sc-for list="{{ lg.rows }}" as="row" hint-placeholder-count="4">
+                <span style="display: flex; align-items: center; gap: 7px; margin-left: 8px; padding: 6px 8px; border-radius: 7px; background: {{ row.bg }}; border-left: 2px solid {{ row.rail }};">
+                  <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="rgba(226,236,245,0.22)" stroke-width="2" stroke-linecap="round" style="flex: 0 0 auto;"><path d="M9 6h.01M9 12h.01M9 18h.01M15 6h.01M15 12h.01M15 18h.01"></path></svg>
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="{{ row.iconInk }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="{{ row.icon }}"></path></svg>
+                  <span style="font-size: 10px; font-weight: {{ row.weight }}; color: {{ row.ink }}; margin-right: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ row.label }}</span>
+                  <sc-if value="{{ row.badge }}">
+                    <span style="font-size: 8px; font-weight: 600; padding: 3px 6px; border-radius: 999px; color: rgba(226,236,245,0.55); background: rgba(255,255,255,0.08); white-space: nowrap; flex: 0 0 auto;">{{ row.badge }}</span>
+                  </sc-if>
+                  <sc-if value="{{ row.custom }}">
+                    <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="#E7E49B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"></path></svg>
+                  </sc-if>
+                </span>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="padding: 12px; display: flex; flex-direction: column; gap: 13px;">
+          <div style="display: flex; align-items: center; gap: 9px;">
+            <span style="width: 26px; height: 26px; flex: 0 0 auto; border-radius: 8px; display: grid; place-items: center; background: rgba(244,242,174,0.14); border: 1px solid rgba(244,242,174,0.3);">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#F4F2AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v6H4zM4 15h9M4 18.5h6"></path></svg>
+            </span>
+            <span style="display: flex; flex-direction: column; gap: 1px; min-width: 0;">
+              <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 11.5px; color: #F2F6FA;">Hero</span>
+              <span style="font-size: 8.5px; color: rgba(226,236,245,0.42); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Section 1 of 5 &middot; custom code</span>
+            </span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 8.5px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(226,236,245,0.34); font-weight: 600;">Layout</span>
+            <span style="font-size: 10px; color: rgba(226,236,245,0.6);">Text alignment</span>
+            <div style="display: flex; gap: 3px; padding: 3px; border-radius: 8px; background: rgba(0,17,32,0.42); border: 1px solid rgba(255,255,255,0.09);">
+              <sc-for list="{{ alignOptions }}" as="a" hint-placeholder-count="3">
+                <span style="flex: 1; text-align: center; padding: 6px 3px; border-radius: 6px; font-family: Lato, sans-serif; font-weight: 700; font-size: 9.5px; color: {{ a.ink }}; background: {{ a.bg }};">{{ a.label }}</span>
+              </sc-for>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 10px; color: rgba(226,236,245,0.6); margin-right: auto;">Padding</span>
+              <span style="display: flex; align-items: center; gap: 2px; padding: 2px; border-radius: 8px; background: rgba(0,17,32,0.42); border: 1px solid rgba(255,255,255,0.09);">
+                <span style="width: 20px; height: 20px; border-radius: 5px; display: grid; place-items: center;">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.75)" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"></path></svg>
+                </span>
+                <span style="min-width: 34px; text-align: center; font-family: Lato, sans-serif; font-weight: 700; font-size: 10px; color: #E9EFF5;">62 px</span>
+                <span style="width: 20px; height: 20px; border-radius: 5px; display: grid; place-items: center;">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.75)" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 8.5px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(226,236,245,0.34); font-weight: 600;">Background</span>
+            <div style="display: flex; gap: 7px;">
+              <sc-for list="{{ swatches }}" as="s" hint-placeholder-count="4">
+                <span style="flex: 1; height: 26px; border-radius: 8px; background: {{ s.fill }}; box-shadow: 0 0 0 {{ s.ring }};"></span>
+              </sc-for>
+            </div>
+            <span style="font-size: 10px; color: rgba(226,236,245,0.6);">Background image</span>
+            <div style="display: flex; align-items: center; gap: 9px; padding: 8px 9px; border-radius: 9px; background: rgba(0,17,32,0.35); border: 1px dashed rgba(255,255,255,0.22);">
+              <span style="width: 26px; height: 26px; flex: 0 0 auto; border-radius: 6px; overflow: hidden;">
+                <img src="{{ heroImg }}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+              </span>
+              <span style="display: flex; flex-direction: column; gap: 1px; min-width: 0;">
+                <span style="font-size: 9.5px; font-weight: 600; color: #EDF3F8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ bgFileName }}</span>
+                <span style="font-size: 8px; color: rgba(226,236,245,0.42);">Click to replace</span>
+              </span>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="display: flex; flex-direction: column; gap: 1px; margin-right: auto; min-width: 0;">
+              <span style="font-size: 10px; color: rgba(233,239,245,0.78);">Show kicker</span>
+              <span style="font-size: 8px; color: rgba(226,236,245,0.4);">Line above the heading</span>
+            </span>
+            <span style="width: 34px; height: 20px; flex: 0 0 auto; border-radius: 999px; padding: 2px; background: #C6CB8A;">
+              <span style="display: block; width: 16px; height: 16px; border-radius: 50%; background: #FFFFFF; margin-left: 14px;"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px; padding: 8px 13px; border-top: 1px solid rgba(255,255,255,0.09); flex-wrap: wrap;">
+      <span style="font-size: 10px; color: rgba(226,236,245,0.42); margin-right: auto;">Hero selected</span>
+      <span style="font-size: 10px; color: rgba(226,236,245,0.3);">Version 2.4 draft</span>
+    </div>
+  </div>
+
+  <button type="button" onClick="{{ toggleMode }}" title="Click to switch the business type" style="all: unset; cursor: pointer; position: absolute; z-index: 20; left: 4%; top: 46%; width: 208px; padding: 13px 15px 14px; border-radius: 12px; background: {{ bookingBg }}; box-shadow: 0 22px 48px rgba(0,8,18,0.44); display: flex; flex-direction: column; gap: 8px;" style-hover="box-shadow: 0 26px 56px rgba(0,8,18,0.5);">
+    <span style="display: flex; align-items: center; gap: 7px;">
+      <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 1.1px; text-transform: uppercase; color: {{ panelLabelInk }}; margin-right: auto;">{{ panelLabel }}</span>
+      <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="{{ panelLabelInk }}" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M4 8h13l-3-3M20 16H7l3 3"></path></svg>
+    </span>
+
+    <sc-if value="{{ isService }}">
+      <span style="display: flex; flex-direction: column; gap: 6px;">
+        <sc-for list="{{ bookingFields }}" as="b" hint-placeholder-count="3">
+          <span style="display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 7px; background: #FFFCF5; border: 1px solid rgba(27,44,58,0.16);">
+            <span style="font-size: 9px; color: #4B5D6E; margin-right: auto;">{{ b.label }}</span>
+            <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#8A9AA6" stroke-width="2.6" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg>
+          </span>
+        </sc-for>
+        <span style="text-align: center; padding: 9px; border-radius: 7px; font-family: Lato, sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: 0.4px; color: #FFFFFF; background: #6B4A22;">Book Now</span>
+      </span>
+    </sc-if>
+
+    <sc-if value="{{ isProduct }}" hint-placeholder-val="{{ true }}">
+      <span style="display: flex; flex-direction: column; gap: 9px;">
+        <span style="display: flex; align-items: center; gap: 9px;">
+          <img src="{{ shopItemImg }}" alt="" style="width: 42px; height: 42px; flex: 0 0 auto; border-radius: 7px; object-fit: cover;">
+          <span style="display: flex; flex-direction: column; gap: 3px; min-width: 0;">
+            <span style="font-size: 9px; font-weight: 600; line-height: 1.3; color: #E9EFF5;">{{ shopItemName }}</span>
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 10px; color: #F4F2AE;">{{ shopItemPrice }}</span>
+          </span>
+        </span>
+        <span style="text-align: center; padding: 9px; border-radius: 7px; font-family: Lato, sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: 0.4px; color: #14210b; background: linear-gradient(160deg, #F7F5C0, #E7E49B);">Add to Cart</span>
+      </span>
+    </sc-if>
+  </button>
+
+  <button type="button" onClick="{{ toggleMode }}" title="Click to switch the business type" style="all: unset; cursor: pointer; position: absolute; z-index: 20; left: 24%; bottom: 6.5%; padding: 5px; border-radius: 4px; border: 1.5px solid #37B6F0; box-shadow: 0 20px 44px rgba(0,8,18,0.5);" style-hover="border-color: #F4F2AE;">
+    <span style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; width: 152px; padding: 20px 16px 18px; background: #1C1C1C;">
+      <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="{{ modeIcon }}"></path></svg>
+      <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 1.1px; text-transform: uppercase; color: #FFFFFF; text-align: center; white-space: nowrap;">{{ modeIconLabel }}</span>
+    </span>
+  </button>
+
+  <button type="button" onClick="{{ cycleImage }}" title="Click to change the banner image" style="all: unset; cursor: pointer; position: absolute; z-index: 20; right: 8%; bottom: 16%; width: 196px; border-radius: 12px; overflow: hidden; background: #0B1B27; border: 1px solid #37B6F0; box-shadow: 0 22px 48px rgba(0,8,18,0.48);" style-hover="border-color: #F4F2AE;">
+    <span style="display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: rgba(255,255,255,0.06);">
+      <span style="font-size: 9.5px; font-weight: 600; color: #E9EFF5; margin-right: auto;">Media Library</span>
+      <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.6)" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+    </span>
+    <span style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; padding: 8px;">
+      <sc-for list="{{ mediaThumbs }}" as="m" hint-placeholder-count="6">
+        <img src="{{ m.src }}" alt="" style="display: block; width: 100%; height: 38px; object-fit: cover; border-radius: 4px; outline: {{ m.ring }}; outline-offset: -1px; opacity: {{ m.opacity }};">
+      </sc-for>
+    </span>
+    <span style="display: flex; align-items: center; justify-content: center; gap: 6px; margin: 0 8px 9px; padding: 8px; border-radius: 7px; background: #FFFCF5;">
+      <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#04121F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5h16v11H4zM8.5 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM4 15l4-3.5 3.5 3 2-2L20 16"></path></svg>
+      <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.4px; color: #04121F;">Change Image</span>
+    </span>
+  </button>
+
+  <div style="margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 9px; flex-wrap: wrap;">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#F4F2AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="m7 4 11 8-11 8z"></path></svg>
+    <span style="font-size: 12px; line-height: 1.5; color: {{ statusInk }};">{{ statusLine }}</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:700},&quot;statusInk&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;rgba(226,236,245,0.6)&quot;,&quot;#6A7F92&quot;],&quot;default&quot;:&quot;rgba(226,236,245,0.6)&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Host page&quot;}}">
+class Component extends DCLogic {
+  state = { mode: "product", img: 0 };
+
+  renderVals() {
+    const isProduct = this.state.mode === "product";
+    const i = this.state.img;
+
+    const icons = {
+      hero: "M4 5.5h16v6H4zM4 15h9M4 18.5h6",
+      content: "M4 5.5h7v13H4zM14 7h6M14 11h6M14 15h4",
+      grid: "M4 4.5h6.5v6.5H4zM13.5 4.5H20v6.5h-6.5zM4 13.5h6.5V20H4zM13.5 13.5H20V20h-6.5z",
+      quote: "M9 7.5C6.5 8.5 5 10.5 5 13v3.5h4.5V11H7.5c0-1 .6-2 1.5-2.4ZM18 7.5c-2.5 1-4 3-4 5.5v3.5h4.5V11H16.5c0-1 .6-2 1.5-2.4Z",
+      faq: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8M12 16.8h.01",
+      menu: "M4 6h16M4 12h10M4 18h13",
+      form: "M4 5.5h16v13H4zM8 9.5h8M8 13h5",
+      gallery: "M4 5.5h16v13H4zM8.3 10.6a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM4 16.2l4.6-4.2 4.4 3.9 2.6-2.4L20 17",
+      blog: "M5 4.5h14v15H5zM5 16h14M8.5 8h7M8.5 11.5h5",
+      header: "M4 5.5h16v4H4zM4 12h9M4 16h6",
+      footer: "M4 14.5h16v4H4zM4 6h9M4 10h6"
+    };
+
+    const EE = ["assets/ee-hanger.jpeg", "assets/ee-paisley.jpeg", "assets/ee-purple.jpeg"];
+    const EEpos = ["50% 38%", "50% 45%", "50% 40%"];
+    const EEinline = ["assets/ee-chikankari.jpeg", "assets/ee-necklines.jpeg", "assets/ee-gold-paisley.jpeg"];
+    const EEnames = ["hero-chikankari.jpg", "hero-paisley.jpg", "hero-purple.jpg"];
+
+    const SCB = ["assets/scb-hero.jpg", "assets/scb-shelf.jpeg", "assets/scb-croissants.jpeg"];
+    const SCBpos = ["50% 48%", "50% 55%", "50% 45%"];
+    const SCBinline = ["assets/scb-croissants.jpeg", "assets/scb-cookies.jpg", "assets/scb-baguettes.webp"];
+    const SCBnames = ["hero-bread.jpg", "hero-shelf.jpg", "hero-croissants.jpg"];
+
+    const eeScrims = [
+      "linear-gradient(100deg, rgba(24,2,8,0.86) 0%, rgba(30,4,12,0.6) 52%, rgba(30,4,12,0.32) 100%)",
+      "linear-gradient(100deg, rgba(12,6,20,0.88) 0%, rgba(20,10,30,0.62) 52%, rgba(20,10,30,0.32) 100%)",
+      "linear-gradient(100deg, rgba(24,4,26,0.88) 0%, rgba(48,10,52,0.6) 52%, rgba(48,10,52,0.32) 100%)"
+    ];
+    const scbScrims = [
+      "linear-gradient(100deg, rgba(253,246,234,0.94) 0%, rgba(253,246,234,0.7) 46%, rgba(253,246,234,0.2) 100%)",
+      "linear-gradient(100deg, rgba(253,246,234,0.95) 0%, rgba(253,246,234,0.72) 46%, rgba(253,246,234,0.22) 100%)",
+      "linear-gradient(100deg, rgba(253,246,234,0.94) 0%, rgba(253,246,234,0.7) 46%, rgba(253,246,234,0.2) 100%)"
+    ];
+
+    const shopItems = [
+      { name: "Chikankari 3-piece \u2014 red", price: "Rs. 6,400", img: "assets/ee-hanger.jpeg" },
+      { name: "Kashmiri paisley shawl", price: "Rs. 12,800", img: "assets/ee-paisley.jpeg" },
+      { name: "Purple diamond dupatta", price: "Rs. 5,200", img: "assets/ee-purple.jpeg" }
+    ];
+
+    const thumbSrc = isProduct
+      ? ["assets/ee-hanger.jpeg", "assets/ee-paisley.jpeg", "assets/ee-purple.jpeg", "assets/ee-chikankari.jpeg", "assets/ee-necklines.jpeg", "assets/ee-blockprint.jpeg"]
+      : ["assets/scb-hero.jpg", "assets/scb-shelf.jpeg", "assets/scb-croissants.jpeg", "assets/scb-cookies.jpg", "assets/scb-baguettes.webp", "assets/scb-muffins.jpeg"];
+
+    const stripSrc = isProduct
+      ? ["assets/ee-chikankari.jpeg", "assets/ee-necklines.jpeg", "assets/ee-blockprint.jpeg", "assets/ee-quilt.jpeg"]
+      : ["assets/scb-croissants.jpeg", "assets/scb-cookies.jpg", "assets/scb-muffins.jpeg", "assets/scb-patties.jpeg"];
+
+    const layerRow = (label, icon, on, badge, custom) => ({
+      label: label, icon: icon, badge: badge || "", custom: !!custom,
+      bg: on ? "rgba(244,242,174,0.13)" : "transparent",
+      rail: on ? "#F4F2AE" : "rgba(255,255,255,0.1)",
+      ink: on ? "#F7FAFD" : "rgba(226,236,245,0.68)",
+      iconInk: on ? "#F4F2AE" : "rgba(226,236,245,0.46)",
+      weight: on ? 600 : 400
+    });
+
+    return {
+      isProduct: isProduct,
+      isService: !isProduct,
+      toggleMode: () => this.setState({ mode: isProduct ? "service" : "product", img: 0 }),
+      cycleImage: () => this.setState({ img: (i + 1) % 3 }),
+
+      domain: isProduct ? "eleganceembroidery.pk" : "sweetcrumbs.pk",
+      siteName: isProduct ? "Elegance Embroidery" : "Sweet Crumbs Bakery",
+      brandMark: isProduct ? "ELEGANCE" : "SWEET\nCRUMBS",
+      navLinks: (isProduct ? ["Shop", "Collections", "Fabric guide", "Contact"] : ["Menu", "Our bakery", "Catering", "Contact"])
+        .map(l => ({ label: l, ink: isProduct ? "rgba(255,255,255,0.78)" : "#4A3520" })),
+      navBg: isProduct ? "rgba(12,4,10,0.92)" : "#FFFCF5",
+      navLine: isProduct ? "rgba(255,255,255,0.12)" : "rgba(42,22,8,0.12)",
+      navInk: isProduct ? "#FFFFFF" : "#2A1608",
+      navCta: isProduct ? "Order Now" : "Book Now",
+      navCtaBg: isProduct ? "linear-gradient(160deg, #F7F5C0, #E7E49B)" : "#6B4A22",
+      navCtaInk: isProduct ? "#14210b" : "#FFFFFF",
+
+      heroImg: isProduct ? EE[i] : SCB[i],
+      heroPos: isProduct ? EEpos[i] : SCBpos[i],
+      heroScrim: isProduct ? eeScrims[i] : scbScrims[i],
+      heroBase: isProduct ? "#180208" : "#FFFCF5",
+      inlineImg: isProduct ? EEinline[i] : SCBinline[i],
+      bgFileName: isProduct ? EEnames[i] : SCBnames[i],
+      stripTiles: stripSrc.map(s => ({ src: s })),
+
+      kicker: isProduct ? "New winter collection" : "Baked fresh, every morning",
+      kickerInk: isProduct ? "#F4F2AE" : "#A87A3A",
+      headline: isProduct ? "Hand-stitched, made to be seen." : "Baked Fresh, Every Morning.",
+      headInk: isProduct ? "#FFFFFF" : "#2A1608",
+      blurb: isProduct
+        ? "Chikankari, ralli and ajrak work \u2014 delivered nationwide with cash on delivery."
+        : "Order online for pickup, or reserve your table for the weekend.",
+      bodyInk: isProduct ? "rgba(255,255,255,0.82)" : "#6B5340",
+
+      ctaPrimary: isProduct ? "Order Now" : "Book Now",
+      ctaBg: isProduct ? "linear-gradient(160deg, #F7F5C0, #E7E49B)" : "linear-gradient(160deg, #7C5628, #5A3C18)",
+      ctaInk: isProduct ? "#14210b" : "#FFFFFF",
+      ctaGhost: isProduct ? "View collection" : "See the menu",
+      ghostBg: isProduct ? "rgba(255,255,255,0.12)" : "rgba(42,22,8,0.06)",
+      ghostLine: isProduct ? "rgba(255,255,255,0.3)" : "rgba(42,22,8,0.22)",
+      ghostInk: isProduct ? "#FFFFFF" : "#4A3520",
+
+      modeIconLabel: isProduct ? "Book Now!" : "Sell Products",
+      modeIcon: isProduct
+        ? "M5 6h14v14H5zM5 11h14M9 3.5v4M15 3.5v4M9 15h2"
+        : "M3.5 6h2.4l2.5 9.6h9.4L20 8.4H7M10 20a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6Zm7.2 0a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6Z",
+
+      panelLabel: isProduct ? "Shop products" : "Reserve your spot",
+      panelLabelInk: isProduct ? "#C6CB8A" : "#6B4A22",
+      bookingBg: isProduct ? "#0B1B27" : "#FFFFFF",
+      bookingFields: [{ label: "Table for 2" }, { label: "Date" }, { label: "Time" }],
+      shopItemName: shopItems[i].name,
+      shopItemPrice: shopItems[i].price,
+      shopItemImg: shopItems[i].img,
+
+      mediaThumbs: thumbSrc.map((src, k) => ({
+        src: src,
+        opacity: k === i ? "1" : "0.6",
+        ring: k === i ? "2px solid #37B6F0" : "1px solid rgba(255,255,255,0.12)"
+      })),
+
+      topIcons: [
+        { icon: "M9 14 4 9l5-5M4 9h9a6 6 0 0 1 0 12h-2", opacity: "1" },
+        { icon: "m15 14 5-5-5-5M20 9h-9a6 6 0 0 0 0 12h2", opacity: "0.4" }
+      ],
+      devices: [
+        { icon: "M3.5 5.5h17v10h-17zM9 19h6M12 15.5V19", bg: "linear-gradient(160deg, rgba(255,255,255,0.18), rgba(255,255,255,0.07))", ink: "#F7FAFD" },
+        { icon: "M7 3.5h10v17H7zM11 18h2", bg: "transparent", ink: "rgba(226,236,245,0.55)" },
+        { icon: "M8.5 3.5h7v17h-7zM11.5 18h1", bg: "transparent", ink: "rgba(226,236,245,0.55)" }
+      ],
+
+      libraryGroups: [
+        { title: "Structure", items: [
+          { name: "Hero", hint: "Full-width banner with a call to action", icon: icons.hero },
+          { name: "Content block", hint: "Image beside text", icon: icons.content },
+          { name: "Testimonials", hint: "Quotes, or live Google reviews", icon: icons.quote },
+          { name: "FAQ", hint: "Expandable question list", icon: icons.faq }
+        ] },
+        { title: "Commerce", items: [
+          { name: "Product grid", hint: "Shoppable cards with prices", icon: icons.grid },
+          { name: "Menu", hint: "Priced list for food and services", icon: icons.menu },
+          { name: "Booking form", hint: "Table, appointment or consultation", icon: icons.form }
+        ] },
+        { title: "Content & media", items: [
+          { name: "Gallery", hint: "Photo grid, slider or lightbox", icon: icons.gallery },
+          { name: "Blog grid", hint: "Latest posts, auto-updating", icon: icons.blog }
+        ] }
+      ],
+
+      layerGroups: [
+        { title: "Site-wide", note: "every page", rows: [
+          layerRow("Header", icons.header, false),
+          layerRow("Footer", icons.footer, false)
+        ] },
+        { title: "Home page", note: "5 sections", rows: [
+          layerRow("Hero", icons.hero, true, "", true),
+          layerRow("Content block", icons.content, false),
+          layerRow(isProduct ? "Product grid" : "Booking form", isProduct ? icons.grid : icons.form, false, isProduct ? "4 items" : ""),
+          layerRow("Testimonials", icons.quote, false)
+        ] }
+      ],
+
+      alignOptions: [
+        { label: "Left", bg: "transparent", ink: "rgba(226,236,245,0.6)" },
+        { label: "Center", bg: "linear-gradient(160deg, rgba(255,255,255,0.18), rgba(255,255,255,0.07))", ink: "#F7FAFD" },
+        { label: "Right", bg: "transparent", ink: "rgba(226,236,245,0.6)" }
+      ],
+
+      swatches: [
+        { fill: "radial-gradient(120% 100% at 50% 0%, #4A2A12 0%, #1C0F05 100%)", ring: "2px #F4F2AE" },
+        { fill: "linear-gradient(165deg, #FFFCF5, #F0E2CC)", ring: "1px rgba(255,255,255,0.14)" },
+        { fill: "linear-gradient(165deg, #0A3A63, #001C33)", ring: "1px rgba(255,255,255,0.14)" },
+        { fill: "linear-gradient(165deg, #8E9455, #5A5E2A)", ring: "1px rgba(255,255,255,0.14)" }
+      ],
+
+      tools: [
+        { icon: "M12 19V5M12 5l-5 5M12 5l5 5", ink: "rgba(233,239,245,0.8)" },
+        { icon: "M12 5v14M12 19l-5-5M12 19l5-5", ink: "rgba(233,239,245,0.8)" },
+        { icon: "M9 9h11v11H9zM15 5H4v11", ink: "rgba(233,239,245,0.8)" },
+        { icon: "m9 8-4 4 4 4M15 8l4 4-4 4", ink: "#F4F2AE" },
+        { icon: "M5 7h14M9 7V4.5h6V7M7 7l1 13h8l1-13", ink: "#E58A6B" }
+      ],
+
+      statusInk: this.props.statusInk ?? "rgba(226,236,245,0.6)",
+      statusLine: isProduct
+        ? "Store switched on \u2014 the buttons read Order Now"
+        : "Bookings switched on \u2014 the buttons read Book Now"
+    };
+  }
+}
+</script>
+</body>
+</html>

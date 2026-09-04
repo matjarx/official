@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+  input::placeholder, textarea::placeholder { color: #90A2B1; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="company" hint-size="100%,120px"></dc-import>
+
+  <section style="background: #003366; padding: 60px 24px 52px;">
+    <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+      <span style="font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">Get in touch</span>
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(30px, 5.6vw, 50px); line-height: 1.08; letter-spacing: -1.7px; color: #FFFFFF; text-wrap: pretty;">Talk to a real person, <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 3px;">today</span></h1>
+      <p style="margin: 0; max-width: 32em; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.72);">No bots, no ticket queues. Ask us anything about plans, timelines or what your business needs.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1140px; margin: 0 auto; padding: 48px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 18px;">
+      <sc-for list="{{ channels }}" as="c" hint-placeholder-count="3">
+        <a href="{{ c.href }}" style="display: flex; flex-direction: column; gap: 12px; padding: 26px 26px 28px; border-radius: 22px; background: {{ c.bg }}; border: 1.5px solid {{ c.border }}; box-shadow: {{ c.shadow }};" style-hover="border-color: #707538;">
+          <span style="width: 44px; height: 44px; border-radius: 13px; background: {{ c.iconBg }}; display: grid; place-items: center;">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="{{ c.iconInk }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.icon }}"></path></svg>
+          </span>
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.3px; color: {{ c.ink }};">{{ c.title }}</span>
+          <span style="font-size: 14.5px; font-weight: 600; color: {{ c.valueInk }};">{{ c.value }}</span>
+          <span style="font-size: 13px; line-height: 1.55; color: {{ c.muted }};">{{ c.note }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1140px; margin: 0 auto; padding: 44px 24px 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; align-items: start;">
+
+      <div style="padding: clamp(24px, 3.5vw, 34px) clamp(20px, 3vw, 34px) clamp(26px, 3.5vw, 36px); border-radius: 24px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: 28px; letter-spacing: -0.9px; color: #04121F;">Send us a message</h2>
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #4B5D6E;">We reply within four working hours, Monday to Saturday.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 16px;">
+          <label style="display: flex; flex-direction: column; gap: 7px;">
+            <span style="font-size: 11.5px; letter-spacing: 1.2px; text-transform: uppercase; color: #6A7F92; font-weight: 600;">Your name</span>
+            <input type="text" placeholder="Ahmed Khan" style="width: 100%; padding: 14px 15px; border-radius: 12px; font-family: 'Open Sans', sans-serif; font-size: 14.5px; color: #0B2135; background: #FCFAF3; border: 1.5px solid rgba(4,18,31,0.13); outline: none;">
+          </label>
+          <label style="display: flex; flex-direction: column; gap: 7px;">
+            <span style="font-size: 11.5px; letter-spacing: 1.2px; text-transform: uppercase; color: #6A7F92; font-weight: 600;">Business name</span>
+            <input type="text" placeholder="Al-Falah Traders" style="width: 100%; padding: 14px 15px; border-radius: 12px; font-family: 'Open Sans', sans-serif; font-size: 14.5px; color: #0B2135; background: #FCFAF3; border: 1.5px solid rgba(4,18,31,0.13); outline: none;">
+          </label>
+          <label style="display: flex; flex-direction: column; gap: 7px;">
+            <span style="font-size: 11.5px; letter-spacing: 1.2px; text-transform: uppercase; color: #6A7F92; font-weight: 600;">Phone / WhatsApp</span>
+            <input type="tel" placeholder="0300 441 2887" style="width: 100%; padding: 14px 15px; border-radius: 12px; font-family: 'Open Sans', sans-serif; font-size: 14.5px; color: #0B2135; background: #FCFAF3; border: 1.5px solid rgba(4,18,31,0.13); outline: none;">
+          </label>
+          <label style="display: flex; flex-direction: column; gap: 7px;">
+            <span style="font-size: 11.5px; letter-spacing: 1.2px; text-transform: uppercase; color: #6A7F92; font-weight: 600;">Email</span>
+            <input type="email" placeholder="you@yourbusiness.pk" style="width: 100%; padding: 14px 15px; border-radius: 12px; font-family: 'Open Sans', sans-serif; font-size: 14.5px; color: #0B2135; background: #FCFAF3; border: 1.5px solid rgba(4,18,31,0.13); outline: none;">
+          </label>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <span style="font-size: 11.5px; letter-spacing: 1.2px; text-transform: uppercase; color: #6A7F92; font-weight: 600;">What do you need?</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ topics }}" as="t" hint-placeholder-count="5">
+              <button type="button" onClick="{{ t.go }}" style="all: unset; cursor: pointer; padding: 10px 16px; border-radius: 999px; font-size: 13px; font-weight: 600; white-space: nowrap; color: {{ t.color }}; background: {{ t.bg }}; border: 1.5px solid {{ t.border }}; transition: background 160ms ease;">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <label style="display: flex; flex-direction: column; gap: 7px;">
+          <span style="font-size: 11.5px; letter-spacing: 1.2px; text-transform: uppercase; color: #6A7F92; font-weight: 600;">Tell us about your business</span>
+          <textarea rows="5" placeholder="What you sell, who your customers are, and what you'd like the website to do." style="width: 100%; padding: 14px 15px; border-radius: 12px; font-family: 'Open Sans', sans-serif; font-size: 14.5px; line-height: 1.65; color: #0B2135; background: #FCFAF3; border: 1.5px solid rgba(4,18,31,0.13); outline: none; resize: vertical;"></textarea>
+        </label>
+
+        <button type="button" style="all: unset; cursor: pointer; text-align: center; padding: 16px 22px; border-radius: 14px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #FFFFFF; background: #003366; box-shadow: 0 12px 28px rgba(0,51,102,0.24);" style-hover="background: #00274E;">Send message</button>
+        <span style="font-size: 12.5px; line-height: 1.55; color: #6A7F92;">By sending this you agree to our <a href="Marketing - Legal.dc.html" style="font-weight: 600;">privacy policy</a>. We never share your details.</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+        <div style="padding: 28px 30px; border-radius: 24px; background: #04121F; display: flex; flex-direction: column; gap: 18px;">
+          <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 19px; color: #FFFFFF;">Our office</span>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <sc-for list="{{ officeRows }}" as="o" hint-placeholder-count="4">
+              <div style="display: flex; gap: 13px; align-items: flex-start;">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#C6CB8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto; margin-top: 3px;"><path d="{{ o.icon }}"></path></svg>
+                <div style="display: flex; flex-direction: column; gap: 3px; min-width: 0;">
+                  <span style="font-size: 11.5px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.42); font-weight: 600;">{{ o.label }}</span>
+                  <span style="font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,0.88);">{{ o.value }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="height: 170px; border-radius: 16px; background: linear-gradient(150deg, #1B4B6E, #0A2233); display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.1);">
+            <span style="font-size: 13px; color: rgba(255,255,255,0.5);">Map &mdash; Jt Society, Malir, Karachi</span>
+          </div>
+        </div>
+
+        <div style="padding: 28px 30px; border-radius: 24px; background: linear-gradient(150deg, #F4F2AE, #C6CB8A); display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 11.5px; letter-spacing: 1.6px; text-transform: uppercase; color: #4A5518; font-weight: 700;">Prefer to skip the form?</span>
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 24px; line-height: 1.18; letter-spacing: -0.7px; color: #1F2A08; text-wrap: pretty;">Message us on WhatsApp and get a reply the same day.</span>
+          <a href="https://wa.me/923033720953" style="align-self: flex-start; margin-top: 6px; padding: 14px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 14.5px; color: #FFFFFF; background: #04121F;" style-hover="background: #003366; color: #FFFFFF;">Open WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height: 74px;"></div>
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { topic: "A new website" };
+
+  renderVals() {
+    const t = this.state.topic;
+    return {
+      channels: [
+        { title: "Call us", value: "+92 303 372 0953", note: "Monday to Saturday, 10am to 8pm PKT.", href: "tel:+923033720953",
+          icon: "M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z",
+          bg: "#FFFFFF", border: "rgba(4,18,31,0.1)", shadow: "0 10px 28px rgba(4,18,31,0.05)",
+          iconBg: "#F4F2AE", iconInk: "#3D3A08", ink: "#04121F", valueInk: "#003366", muted: "#6A7F92" },
+        { title: "WhatsApp", value: "Chat with us now", note: "The fastest way to reach a real person.", href: "https://wa.me/923033720953",
+          icon: "M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z",
+          bg: "#003366", border: "#003366", shadow: "0 20px 44px rgba(0,51,102,0.26)",
+          iconBg: "rgba(198,203,138,0.2)", iconInk: "#C6CB8A", ink: "#FFFFFF", valueInk: "#F4F2AE", muted: "rgba(255,255,255,0.6)" },
+        { title: "Email us", value: "office@matjarx.com", note: "Detailed questions and documents welcome.", href: "mailto:office@matjarx.com",
+          icon: "M4 6h16v12H4zM4 7l8 6 8-6",
+          bg: "#FFFFFF", border: "rgba(4,18,31,0.1)", shadow: "0 10px 28px rgba(4,18,31,0.05)",
+          iconBg: "#F4F2AE", iconInk: "#3D3A08", ink: "#04121F", valueInk: "#003366", muted: "#6A7F92" }
+      ],
+      topics: ["A new website", "Pricing question", "SEO & Google", "Existing site help", "Partnership"].map(x => ({
+        label: x,
+        go: () => this.setState({ topic: x }),
+        bg: t === x ? "#003366" : "#FFFFFF",
+        color: t === x ? "#FFFFFF" : "#3B5063",
+        border: t === x ? "#003366" : "rgba(4,18,31,0.14)"
+      })),
+      officeRows: [
+        { label: "Address", value: "B27, Street 7, Jt Society, Malir, Karachi", icon: "M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" },
+        { label: "Hours", value: "Monday to Saturday, 10am to 8pm PKT", icon: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM12 8v4.5l3 2" },
+        { label: "Gulf clients", value: "We work your time zone \u2014 ask for a UAE or Saudi call slot", icon: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM3.5 12h17M12 3.5c2.2 2.3 3.4 5.3 3.4 8.5S14.2 18.2 12 20.5" },
+        { label: "Existing clients", value: "Message your concierge from the dashboard for a 4-hour reply", icon: "M4.5 5.5h15v10h-9L6 19.5v-4H4.5z" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

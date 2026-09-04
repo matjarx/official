@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;500;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; background: #FCFAF3; }
+  * { box-sizing: border-box; }
+  a { color: #003366; text-decoration: none; }
+  a:hover { color: #707538; }
+  ::selection { background: #F4F2AE; }
+</style>
+</helmet>
+
+<div style="position: relative; font-family: 'Open Sans', Arial, sans-serif; background: #FCFAF3; color: #0B2135; overflow-x: hidden;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 860px; height: 860px; left: -250px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%);"></div>
+    <div style="position: absolute; width: 720px; height: 720px; right: -190px; top: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%);"></div>
+    <div style="position: absolute; width: 780px; height: 780px; left: 20%; top: 1400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%);"></div>
+  </div>
+
+  <div style="position: relative; z-index: 1;">
+  <dc-import name="Site Header" active="company" hint-size="100%,120px"></dc-import>
+
+  <section style="background: #003366; padding: 62px 24px 56px;">
+    <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+      <span style="font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: #C6CB8A; font-weight: 600;">About MatjarX</span>
+      <h1 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(31px, 5.8vw, 52px); line-height: 1.08; letter-spacing: -1.8px; color: #FFFFFF; text-wrap: pretty;">We think every business deserves to be <span style="background: #C6CB8A; color: #16210B; padding: 0 10px; border-radius: 3px;">findable</span></h1>
+      <p style="margin: 0; max-width: 34em; font-size: 17px; line-height: 1.62; color: rgba(255,255,255,0.72); text-wrap: pretty;">Not just the ones who can afford an agency, or who have the spare evenings to learn a website builder.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 0;">
+    <div style="max-width: 1140px; margin: -34px auto 0; padding: 0 24px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(50%, 200px), 1fr)); gap: 2px; border-radius: 22px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(4,18,31,0.09); box-shadow: 0 20px 46px rgba(4,18,31,0.1);">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div style="padding: 30px 26px; display: flex; flex-direction: column; gap: 6px; background: #FFFFFF;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 34px; letter-spacing: -1.2px; color: #04121F;">{{ s.value }}</span>
+            <span style="font-size: 13.5px; color: #6A7F92;">{{ s.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1140px; margin: 0 auto; padding: 74px 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 48px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+        <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #707538; font-weight: 600;">Our story</span>
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(26px, 4.4vw, 38px); line-height: 1.14; letter-spacing: -1.3px; color: #04121F; text-wrap: pretty;">It started with a question we couldn't answer well</h2>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: #33485B; text-wrap: pretty;">A fabric wholesaler in Faisalabad asked us what a website would cost him. The honest answer at the time was uncomfortable: either several hundred thousand rupees to an agency, or a year of his own evenings learning a builder he would probably abandon.</p>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: #33485B; text-wrap: pretty;">Neither answer was reasonable for a business doing solid trade with twelve staff. So we built the option that should have existed: a fixed price, a fixed timeline, and a team that does the work.</p>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: #33485B; text-wrap: pretty;">Fourteen years later we've built 70,000 websites. The model hasn't changed much &mdash; you tell us about your business, we build the whole thing, and we stay on to keep it working.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+        <div style="height: 300px; border-radius: 22px; background: linear-gradient(150deg, #003366, #707538); display: grid; place-items: center;">
+          <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 17px; color: rgba(255,255,255,0.85);">Team photo</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+          <div style="height: 150px; border-radius: 18px; background: linear-gradient(150deg, #C6CB8A, #707538);"></div>
+          <div style="height: 150px; border-radius: 18px; background: linear-gradient(150deg, #2E6EA8, #003366);"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #F2EEE2; padding: 76px 24px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="max-width: 640px; margin: 0 auto 42px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(26px, 4.4vw, 38px); line-height: 1.14; letter-spacing: -1.3px; color: #04121F;">What we <span style="background: #C6CB8A; padding: 0 9px; border-radius: 3px;">believe</span></h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+          <div style="padding: 30px 28px; border-radius: 22px; background: rgba(255,255,255,0.62); border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(22px); box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; gap: 13px;">
+            <span style="width: 44px; height: 44px; border-radius: 13px; background: #003366; display: grid; place-items: center;">
+              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#F4F2AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ v.icon }}"></path></svg>
+            </span>
+            <h3 style="margin: 0; font-family: Lato, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.35px; color: #04121F; text-wrap: pretty;">{{ v.title }}</h3>
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.62; color: #4B5D6E; text-wrap: pretty;">{{ v.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 76px 24px;">
+    <div style="max-width: 640px; margin: 0 auto 42px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;">
+      <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(26px, 4.4vw, 38px); line-height: 1.14; letter-spacing: -1.3px; color: #04121F;">The people behind it</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #435A70;">A team of designers, writers, SEO specialists and concierges across Lahore and Karachi.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px;">
+      <sc-for list="{{ team }}" as="t" hint-placeholder-count="4">
+        <div style="border-radius: 22px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(4,18,31,0.08);">
+          <div style="height: 210px; background: {{ t.tint }}; display: grid; place-items: center;">
+            <span style="font-family: Lato, sans-serif; font-weight: 900; font-size: 30px; letter-spacing: -0.6px; color: rgba(255,255,255,0.92);">{{ t.initials }}</span>
+          </div>
+          <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-family: Lato, sans-serif; font-weight: 700; font-size: 16.5px; color: #04121F;">{{ t.name }}</span>
+            <span style="font-size: 13px; color: #6A7F92;">{{ t.role }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1140px; margin: 0 auto; padding: 0 24px 76px;">
+    <div style="padding: clamp(28px, 4vw, 44px) clamp(22px, 3.5vw, 46px); border-radius: 26px; background: #04121F; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 40px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+        <h2 style="margin: 0; font-family: Lato, sans-serif; font-weight: 900; font-size: clamp(24px, 3.8vw, 32px); line-height: 1.16; letter-spacing: -1.1px; color: #FFFFFF; text-wrap: pretty;">Want to work with us?</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.62; color: rgba(255,255,255,0.65); text-wrap: pretty;">We're hiring designers, copywriters and SEO specialists in Lahore &mdash; and we work with agencies and freelancers through our partner program.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px; min-width: 0;">
+        <a href="Marketing - Careers.dc.html" style="text-align: center; padding: 16px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #16210B; background: #F4F2AE;" style-hover="background: #FFFDD8; color: #16210B;">See open roles</a>
+        <a href="Marketing - Partner.dc.html" style="text-align: center; padding: 16px 24px; border-radius: 999px; font-family: Lato, sans-serif; font-weight: 700; font-size: 15px; color: #FFFFFF; background: rgba(255,255,255,0.09); border: 1.5px solid rgba(255,255,255,0.2);" style-hover="background: rgba(255,255,255,0.18); color: #FFFFFF;">Become a partner</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" hint-size="100%,600px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      stats: [
+        { value: "70,000", label: "websites built since 2012" },
+        { value: "4.8 / 5", label: "average client rating" },
+        { value: "7 days", label: "from brief to live site" },
+        { value: "1,000+", label: "business categories served" }
+      ],
+      values: [
+        { title: "Done, not doable", body: "Handing someone a tool is not the same as solving their problem. We finish the work rather than teaching you to.", icon: "m5 12.5 4.5 4.5L19 7" },
+        { title: "One price, stated up front", body: "No hourly billing, no scope creep, no renewal surprises. You know the total before you start.", icon: "M12 4v16M8 8h5.5a2.5 2.5 0 0 1 0 5H10a2.5 2.5 0 0 0 0 5H16" },
+        { title: "A person, not a portal", body: "Every client gets a named concierge who knows their business and replies within four working hours.", icon: "M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM4.5 20a7.5 7.5 0 0 1 15 0" },
+        { title: "Built for here", body: "JazzCash, Easypaisa, cash on delivery, Urdu-friendly typography. Built for how business actually works in this region.", icon: "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM3.5 12h17M12 3.5c2.2 2.3 3.4 5.3 3.4 8.5S14.2 18.2 12 20.5" }
+      ],
+      team: [
+        { name: "Wajeeh Hassan", role: "Founder", initials: "WH", tint: "linear-gradient(150deg, #003366, #2E6EA8)" },
+        { name: "Yasir Hashmi", role: "Head of Client Success", initials: "YH", tint: "linear-gradient(150deg, #707538, #C6CB8A)" },
+        { name: "Sana Bashir", role: "Lead Designer", initials: "SB", tint: "linear-gradient(150deg, #8E1B22, #3A0A0E)" },
+        { name: "Bilal Raza", role: "Head of SEO", initials: "BR", tint: "linear-gradient(150deg, #1B7A3D, #08361B)" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
