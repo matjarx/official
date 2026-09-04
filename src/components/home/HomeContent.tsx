@@ -16,21 +16,10 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
 import SavingsCalculator from '@/components/SavingsCalculator'
 import { routes } from '@/lib/routes'
-
-const RATING_BADGES = [
-  { name: 'Trustpilot', score: '4.8 / 5', tint: 'rgba(0,182,122,0.14)', mark: '#00B67A', icon: 'm12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z' },
-  { name: 'Google Reviews', score: '4.8 / 5', tint: 'rgba(66,133,244,0.14)', mark: '#4285F4', icon: 'M12 3.5a8.5 8.5 0 1 0 8.4 9.9h-8.4V10h11.5v2a11.5 11.5 0 1 1-3.4-8.2l-2.1 2.1A8.4 8.4 0 0 0 12 3.5Z' },
-  { name: 'Clutch', score: '4.9 / 5', tint: 'rgba(230,58,53,0.14)', mark: '#E63A35', icon: 'M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 8.2-6.2l-3-1a5.4 5.4 0 1 1 0-2.6l3-1A8.5 8.5 0 0 0 12 3.5Zm0 5.6a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Z' },
-]
+import { RATING_BADGES, VOICES } from '@/lib/home-data'
 
 const CATEGORIES_BASE = ['Restaurants', 'Boutiques', 'Clinics', 'Law firms', 'Salons', 'Real estate', 'Construction', 'Gyms', 'Caterers', 'Auto repair', 'Textiles', 'Travel agents', 'Accountants', 'Event planners', 'Coffee shops', 'Furniture']
 const CATEGORIES = [...CATEGORIES_BASE, ...CATEGORIES_BASE]
-
-const VOICES = [
-  { quote: "I really tried to build a website myself, but it didn't look good and I have no idea how to make it show up on Google.", name: 'Ahmed Khan', trade: 'Fabric wholesaler, Lahore', initials: 'AK', tint: '#C6CB8A' },
-  { quote: "My cousin built my website. I'm not really happy with it, but I can't tell him that.", name: 'Sabika Noor', trade: 'Boutique owner, Karachi', initials: 'SN', tint: '#F4F2AE' },
-  { quote: "I got quotes in the thousands for a website. I've just started out — I can't afford that.", name: 'Saeed Ahmed', trade: 'Caterer, Islamabad', initials: 'SA', tint: '#BFD4E6' },
-]
 
 const EDITOR_FEATURES = [
   { title: 'Change image', body: 'Click any photo and swap it. Your new menu, your new stock, live in seconds.', icon: 'M4 5.5h16v13H4zM8.3 10.6a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM4 16.2l4.6-4.2 4.4 3.9 2.6-2.4L20 17' },
