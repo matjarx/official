@@ -15,6 +15,7 @@ import Image from 'next/image'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
 import { ALL_PLANS, type PlanKey } from '@/lib/plan-data'
+import { appLogin, appSignup } from '@/lib/routes'
 
 const NAV_ITEMS = [
   { label: 'Services', href: '/services' },
@@ -110,7 +111,7 @@ export default function HomeMobileContent() {
           <button type="button" onClick={() => setSkin(dark ? 'light' : 'dark')} title="Switch skin" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 38, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center', background: theme.chipBg, border: `1px solid ${theme.chipLine}` }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke={theme.iconInk} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={theme.skinIcon} /></svg>
           </button>
-          <a href="#login" title="Log in" style={{ width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'linear-gradient(160deg, #0A4278, #002E5C)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22)' }}>
+          <a href={appLogin} title="Log in" style={{ width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'linear-gradient(160deg, #0A4278, #002E5C)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22)' }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM5 20a7 7 0 0 1 14 0" /></svg>
           </a>
           <button type="button" onClick={() => setMenuOpen((v) => !v)} title="Menu" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 38, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center', background: theme.chipBg, border: `1px solid ${theme.chipLine}` }}>
@@ -301,7 +302,7 @@ export default function HomeMobileContent() {
           <div style={{ padding: '26px 22px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(244,242,174,0.94), rgba(198,203,138,0.94))', border: '1px solid rgba(255,255,255,0.7)', boxShadow: '0 22px 50px rgba(112,117,56,0.24), inset 0 1px 0 rgba(255,255,255,0.85)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 13, textAlign: 'center' }}>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.12, letterSpacing: '-0.9px', color: '#1F2A08' }}>Professional websites, ready in just 7 days.</h2>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Completely risk-free, with unmatched customer support.</span>
-            <a href="/pricing" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: '#04121F' }}>Get started</a>
+            <a href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: '#04121F' }}>Get started</a>
             <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(255,255,255,0.9)' }}>Talk to us on WhatsApp</a>
           </div>
 

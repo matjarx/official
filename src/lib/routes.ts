@@ -28,3 +28,26 @@ export const routes = {
   legal: (doc: 'terms' | 'refund' | 'privacy') => `/legal/${doc}`,
   thankYou: '/thank-you',
 } as const
+
+// Links out to the real platform app (app.matjarx.com), where signup and
+// login actually live — the marketing site never implements those flows
+// itself. Marketing's plan keys don't all match the app's own plan ids:
+// notably Boost is stored there as "pro" (a historical rename). Custom
+// has no backend plan at all — its own /pricing page routes that tier to
+// a support conversation, not signup — so callers should send Custom's
+// CTA to routes.contact instead of appSignup.
+const APP_URL = 'https://app.matjarx.com'
+
+const APP_PLAN_ID: Record<'launch' | 'boost' | 'growth' | 'platinum', string> = {
+  launch: 'launch',
+  boost: 'pro',
+  growth: 'growth',
+  platinum: 'platinum',
+}
+
+export const appLogin = `${APP_URL}/login`
+
+export function appSignup(plan?: 'launch' | 'boost' | 'growth' | 'platinum'): string {
+  if (!plan) return `${APP_URL}/signup`
+  return `${APP_URL}/signup?plan=${APP_PLAN_ID[plan]}&source=marketing`
+}

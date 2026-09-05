@@ -16,7 +16,7 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import SavingsCalculator from '@/components/SavingsCalculator'
-import { routes } from '@/lib/routes'
+import { routes, appSignup } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
 
 const CATEGORIES_BASE = ['Restaurants', 'Boutiques', 'Clinics', 'Law firms', 'Salons', 'Real estate', 'Construction', 'Gyms', 'Caterers', 'Auto repair', 'Textiles', 'Travel agents', 'Accountants', 'Event planners', 'Coffee shops', 'Furniture']
@@ -71,13 +71,13 @@ const DARK_PLAN_THEME = {
   tick: '#C6CB8A', ctaInk: '#04121F', ctaBg: '#F4F2AE', ctaBorder: '#F4F2AE',
 }
 const PLAN_ROWS = [
-  { name: 'Launch', pitch: 'We build and launch your website.', price: 'Rs. 4,500', setup: 'Rs. 22,500', cta: 'Choose Launch', theme: LIGHT_PLAN_THEME, tag: '', href: routes.plan('launch'),
+  { name: 'Launch', pitch: 'We build and launch your website.', price: 'Rs. 4,500', setup: 'Rs. 22,500', cta: 'Choose Launch', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('launch'),
     features: ['Multi-page site, written for you', 'Domain + 1 business email', 'Google Business Profile set up', 'Live chat support'] },
-  { name: 'Boost', pitch: 'We manage your online presence.', price: 'Rs. 15,600', setup: 'Rs. 22,500', cta: 'Choose Boost', theme: DARK_PLAN_THEME, tag: 'Most popular', href: routes.plan('boost'),
+  { name: 'Boost', pitch: 'We manage your online presence.', price: 'Rs. 15,600', setup: 'Rs. 22,500', cta: 'Choose Boost', theme: DARK_PLAN_THEME, tag: 'Most popular', href: appSignup('boost'),
     features: ['Everything in Launch', '4 business emails', 'Unlimited edits, done by us', 'Advanced SEO + custom logo', 'Sell on Google, Facebook, Instagram'] },
-  { name: 'Growth', pitch: 'We grow your business online.', price: 'Rs. 27,000', setup: 'Rs. 22,500', cta: 'Choose Growth', theme: LIGHT_PLAN_THEME, tag: '', href: routes.plan('growth'),
+  { name: 'Growth', pitch: 'We grow your business online.', price: 'Rs. 27,000', setup: 'Rs. 22,500', cta: 'Choose Growth', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('growth'),
     features: ['Everything in Boost', 'Dedicated growth team', 'Monthly 1-on-1 marketing session', '2,000 words of fresh content monthly'] },
-  { name: 'Platinum', pitch: 'We scale your e-commerce business.', price: 'Rs. 55,000', setup: 'Rs. 140,000', cta: 'Talk to us', theme: LIGHT_PLAN_THEME, tag: 'Custom', href: routes.plan('platinum'),
+  { name: 'Platinum', pitch: 'We scale your e-commerce business.', price: 'Rs. 55,000', setup: 'Rs. 140,000', cta: 'Talk to us', theme: LIGHT_PLAN_THEME, tag: 'Custom', href: appSignup('platinum'),
     features: ['Everything in Growth', 'Custom design in our own tool', 'Full webstore, unlimited products', 'Subscriptions & digital products', 'Multi-seat bookings'] },
 ]
 
@@ -372,9 +372,9 @@ export default function HomeContent({ dark: initialDark = false }: { dark?: bool
                       </span>
                     ))}
                   </div>
-                  <Link href={p.href} style={{ marginTop: 'auto', paddingTop: 18, display: 'block' }}>
+                  <a href={p.href} style={{ marginTop: 'auto', paddingTop: 18, display: 'block' }}>
                     <span style={{ display: 'block', textAlign: 'center', padding: '13px 18px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: t.ctaInk, background: t.ctaBg, border: `1.5px solid ${t.ctaBorder}` }}>{p.cta}</span>
-                  </Link>
+                  </a>
                 </div>
               )
             })}

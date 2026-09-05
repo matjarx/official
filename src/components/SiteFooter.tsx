@@ -4,7 +4,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
-import { routes } from '@/lib/routes'
+import { routes, appSignup } from '@/lib/routes'
 
 export default function SiteFooter() {
   return (
@@ -30,13 +30,13 @@ export default function SiteFooter() {
           </h2>
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.6, color: '#3D4A16' }}>Completely risk-free, with unmatched customer support.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 8 }}>
-            <Link
-              href={routes.pricing}
+            <a
+              href={appSignup()}
               style={{ padding: '17px 32px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#FFFFFF', background: 'linear-gradient(160deg, #10293D, #04121F)', boxShadow: '0 12px 26px rgba(4,18,31,0.28), inset 0 1px 0 rgba(255,255,255,0.18)' }}
               className="footer-cta-primary"
             >
               Get started
-            </Link>
+            </a>
             <a
               href="https://wa.me/923033720953"
               target="_blank"

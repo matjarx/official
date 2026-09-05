@@ -10,7 +10,7 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import SavingsCalculator from '@/components/SavingsCalculator'
-import { routes } from '@/lib/routes'
+import { routes, appSignup } from '@/lib/routes'
 
 const HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
 
@@ -85,13 +85,13 @@ const DARK_THEME = {
 }
 
 const PLAN_ROWS = [
-  { name: 'Launch', base: 4500, setup: '22,500', pitch: 'We build and launch your website.', cta: 'Choose Launch', theme: LIGHT_THEME, tag: '', inherits: '', href: routes.plan('launch'),
+  { name: 'Launch', base: 4500, setup: '22,500', pitch: 'We build and launch your website.', cta: 'Choose Launch', theme: LIGHT_THEME, tag: '', inherits: '', href: appSignup('launch'),
     features: ['Built-for-you website or online store', 'Personalised design, made for your trade', 'Fast loading, structured to rank on Google', 'Ready in 7 days', 'Custom domain, or connect one you own', 'Professional business email address', 'Easy-to-use editor', '0% fees on sales and bookings', '1-on-1 launch and training call', 'Secure hosting and SSL certificate', '30-day money-back guarantee'] },
-  { name: 'Boost', base: 15600, setup: '22,500', pitch: 'We manage your online presence.', cta: 'Choose Boost', theme: DARK_THEME, tag: 'Most popular', inherits: 'Everything in Launch, plus:', href: routes.plan('boost'),
+  { name: 'Boost', base: 15600, setup: '22,500', pitch: 'We manage your online presence.', cta: 'Choose Boost', theme: DARK_THEME, tag: 'Most popular', inherits: 'Everything in Launch, plus:', href: appSignup('boost'),
     features: ['4 business email addresses', 'Advanced SEO to rank on Google', 'Unlimited done-for-you edits', 'Live chat, lead forms and multimedia added for you', 'Promote products on Google, Facebook and Instagram', 'VIP phone support'] },
-  { name: 'Growth', base: 27000, setup: '22,500', pitch: 'We grow your business online.', cta: 'Choose Growth', theme: LIGHT_THEME, tag: '', inherits: 'Everything in Boost, plus:', href: routes.plan('growth'),
+  { name: 'Growth', base: 27000, setup: '22,500', pitch: 'We grow your business online.', cta: 'Choose Growth', theme: LIGHT_THEME, tag: '', inherits: 'Everything in Boost, plus:', href: appSignup('growth'),
     features: ['Dedicated VIP growth team', 'A marketing plan built for your business', '1-on-1 monthly marketing sessions', 'Advice on email, social, ads, SEO and reputation', '2,000 words of fresh content written monthly'] },
-  { name: 'Platinum', base: 55000, setup: '140,000', pitch: 'We scale your e-commerce business.', cta: 'Talk to us', theme: LIGHT_THEME, tag: 'Custom built', inherits: 'Everything in Growth, plus:', href: routes.plan('platinum'),
+  { name: 'Platinum', base: 55000, setup: '140,000', pitch: 'We scale your e-commerce business.', cta: 'Talk to us', theme: LIGHT_THEME, tag: 'Custom built', inherits: 'Everything in Growth, plus:', href: appSignup('platinum'),
     features: ['Custom design built in our own tool', 'Full webstore built for you', 'Unlimited products and unlimited edits', 'Sell subscriptions and digital products', 'Manage multi-seat bookings', 'Enhanced marketing integrations'] },
 ]
 
@@ -182,9 +182,9 @@ export default function PricingContent() {
                 </div>
                 <span style={{ fontSize: 12.5, color: t.muted }}>+ Rs. {p.setup} one-time setup</span>
                 {saving && <span style={{ fontSize: 12.5, fontWeight: 600, color: t.savingInk }}>{saving}</span>}
-                <Link href={p.href} style={{ display: 'block', paddingTop: 8 }}>
+                <a href={p.href} style={{ display: 'block', paddingTop: 8 }}>
                   <span style={{ display: 'block', textAlign: 'center', padding: '14px 18px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: t.ctaInk, background: t.ctaBg, border: `1.5px solid ${t.ctaBorder}` }}>{p.cta}</span>
-                </Link>
+                </a>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingTop: 16, marginTop: 6, borderTop: `1px solid ${t.rule}` }}>
                   {p.inherits && <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: t.ink }}>{p.inherits}</span>}
                   {p.features.map((f) => (

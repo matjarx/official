@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { NAV_ITEMS, type NavKey } from '@/lib/nav'
-import { routes } from '@/lib/routes'
+import { routes, appLogin, appSignup } from '@/lib/routes'
 
 export default function SiteHeader({ active, dark = false, onToggleDark }: { active: NavKey; dark?: boolean; onToggleDark?: () => void }) {
   const [narrow, setNarrow] = useState(false)
@@ -144,7 +144,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                 )
               })}
               <a
-                href="#login"
+                href={appLogin}
                 title="Log in"
                 style={{ width: 40, height: 40, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--navy-gradient)', boxShadow: '0 8px 18px rgba(0,51,102,0.28), inset 0 1px 0 rgba(255,255,255,0.22)' }}
               >
@@ -176,7 +176,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
               </button>
             )}
 
-            <Link href={routes.pricing} className="btn-navy" style={{ flex: '0 0 auto' }}>Get started</Link>
+            <a href={appSignup()} className="btn-navy" style={{ flex: '0 0 auto' }}>Get started</a>
 
             {narrow && (
               <button
@@ -250,7 +250,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
               )
             })}
             <a
-              href="#login"
+              href={appLogin}
               style={{
                 marginTop: 8,
                 textAlign: 'center',
