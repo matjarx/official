@@ -12,6 +12,7 @@ import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { INDUSTRY_DATA, otherIndustriesFor, type IndustryKey } from '@/lib/industry-data'
+import IndustryDetailSections from './IndustryDetailSections'
 
 export default function IndustryContent({ industryKey }: { industryKey: IndustryKey }) {
   const [openFaq, setOpenFaq] = useState(0)
@@ -173,6 +174,8 @@ export default function IndustryContent({ industryKey }: { industryKey: Industry
             </div>
           </div>
         </section>
+
+        <IndustryDetailSections industryKey={industryKey} />
 
         {/* Other industries */}
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
