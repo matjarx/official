@@ -21,7 +21,7 @@ export const NAV_ITEMS: NavItem[] = [
       { label: 'Local, national & global SEO', href: routes.services, note: 'Get found on Google' },
       { label: 'Concierge service', href: routes.services, note: 'Unlimited edits, done by us' },
       { label: 'Growth marketing', href: routes.services, note: 'A team that grows your revenue' },
-      { label: 'Free website audit', href: routes.websiteAudit, note: 'Nine checks, report on your WhatsApp' },
+      { label: 'Website audit', href: routes.websiteAudit, note: '10 areas checked, delivered by WhatsApp or email' },
       { label: 'Websites for restaurants', href: routes.industry('restaurants'), note: 'Bookings, menus and Google Maps' },
       { label: 'Websites for boutiques', href: routes.industry('boutiques'), note: 'Webstore, COD and variants' },
       { label: 'Websites for clinics', href: routes.industry('clinics'), note: 'Appointments and doctor profiles' },
