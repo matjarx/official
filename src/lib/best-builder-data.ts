@@ -1,46 +1,49 @@
-// Data for the Best Website Builder Pakistan page — from
-// Marketing - Best Website Builder Pakistan.dc.html
+// Data for the Best Website Builder Pakistan page — reconciled against
+// files/matjarx_best_website_builder_pakistan.md, whose comparison set is
+// MatjarX vs. Shopify, Wix, Squarespace, GoDaddy and WordPress (the
+// design-handoff version compared against a fabricated "Local agency"
+// column instead of Shopify/WordPress, which the real content treats as
+// two of the main global competitors).
 
 import { routes } from './routes'
 
 export const HERO_STATS = [
-  { value: '70,000', label: 'websites built' },
-  { value: '7 days', label: 'average launch' },
+  { value: '70,000+', label: 'websites built' },
+  { value: '5–10 days', label: 'to launch' },
   { value: '4.8 / 5', label: 'client rating' },
   { value: '0%', label: 'commission on sales' },
 ]
 
-export const COL_HEADS = ['MatjarX', 'Wix', 'Squarespace', 'GoDaddy', 'Local agency'] as const
+export const COL_HEADS = ['MatjarX', 'Shopify', 'Wix', 'Squarespace', 'GoDaddy', 'WordPress'] as const
 
-type Row = [string, string, string, string, string, string]
+type Row = [string, string, string, string, string, string, string]
 
 const ROWS: Row[] = [
-  ['Who builds it', 'Our team', 'You', 'You', 'You', 'Them'],
-  ['Time to live', '7 days', 'Weeks', 'Weeks', 'Days–weeks', '4–8 weeks'],
-  ['Copy written for you', 'Yes', 'No', 'No', 'No', 'Sometimes'],
-  ['Realistic first-year cost', 'Rs. 76,500', 'Rs. 140,000+', 'USD $190+', 'Rs. 60,000+', 'Rs. 420,000+'],
-  ['JazzCash / Easypaisa / COD', 'Built in', 'Third-party app', 'Not supported', 'Limited', 'Depends'],
-  ['Ongoing edits', 'Unlimited, by us', 'You', 'You', 'You', 'Billed hourly'],
-  ['Google Business Profile', 'Set up for you', 'No', 'No', 'Upsell', 'Sometimes'],
-  ['Support', 'Named concierge', 'Tickets', 'Email', 'Phone + upsells', 'When free'],
-  ['You own the domain', 'Yes', 'Yes', 'Yes', 'Yes', 'Usually'],
+  ['Setup time', '5–10 days', '2–4 weeks', '1–2 weeks', '1–2 weeks', '1–2 weeks', '2–4 weeks'],
+  ['Monthly cost', 'Rs. 4,500–55,000', 'USD, converts to Rs. 6,000+', 'USD, converts to Rs. 8,000+', 'USD, converts to Rs. 7,000+', 'USD, converts to Rs. 5,000+', 'Free + hosting, Rs. 3,000–10,000'],
+  ['Local payments', 'JazzCash, Easypaisa, bank transfer', 'Limited, international focus', 'Limited', 'Limited', 'Limited', 'DIY via plugins'],
+  ['SEO ranking', 'Native from day one', 'Manual setup required', 'Limited', 'Moderate', 'Limited', 'Strong, with plugins'],
+  ['Marketing team included', 'Yes', 'No', 'No', 'No', 'No', 'No'],
+  ['Domain included', 'Yes, first year', 'No', 'Yes', 'Yes', 'Varies', 'No'],
+  ['Hosting included', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No, separate cost'],
+  ['Support', 'Pakistani team, Mon–Sat 11am–8pm PKT', 'Chat + email, global queue', 'Chat + email', 'Chat + email', 'Chat + email', 'Community forums'],
+  ['Realistic Year 1 cost (Rs.)', '76,500–800,000', '252,000–1,500,000+', '192,000–732,000', '174,000–704,000', '170,000–780,000', '338,000–968,000'],
 ]
 
-const BAD_2 = new Set(['No', 'You'])
-const BAD_3 = new Set(['No', 'You', 'Not supported'])
-const BAD_4 = new Set(['No', 'You', 'Limited', 'Upsell'])
+// "Bad" is judged per-row against what a Pakistani small business actually
+// needs (local payments, PKR pricing, included marketing) — not a generic
+// good/bad reading of the raw feature.
+const BAD_VALUES = new Set([
+  'No', 'Varies', 'Limited', 'Limited, international focus', 'Moderate',
+  'Manual setup required', 'DIY via plugins', 'No, separate cost',
+  'Chat + email, global queue', 'Chat + email', 'Community forums',
+])
 
 export type MatrixCell = { v: string; tone: 'us' | 'ok' | 'bad' }
 
 export const MATRIX: { label: string; cells: MatrixCell[] }[] = ROWS.map((r) => ({
   label: r[0],
-  cells: [
-    { v: r[1], tone: 'us' },
-    { v: r[2], tone: BAD_2.has(r[2]) ? 'bad' : 'ok' },
-    { v: r[3], tone: BAD_3.has(r[3]) ? 'bad' : 'ok' },
-    { v: r[4], tone: BAD_4.has(r[4]) ? 'bad' : 'ok' },
-    { v: r[5], tone: 'ok' },
-  ],
+  cells: r.slice(1).map((v, i) => ({ v, tone: i === 0 ? 'us' as const : BAD_VALUES.has(v) ? 'bad' as const : 'ok' as const })),
 }))
 
 export const REASONS = [
@@ -60,15 +63,18 @@ export const DIY_CASES = [
 ]
 
 export const VS_LINKS = [
+  { title: 'MatjarX vs Shopify', body: 'Organic growth vs. PPC dependency — Shopify without local payment gateways or a marketing team costs more than it looks.', href: routes.compare('shopify') },
   { title: 'MatjarX vs Wix', body: 'The most capable DIY builder — if you finish it. A straight comparison of cost, time and who does the work.', href: routes.compare('wix') },
   { title: 'MatjarX vs Squarespace', body: 'Beautiful templates, billed in USD, with no local payment support. Where that helps and where it hurts.', href: routes.compare('squarespace') },
-  { title: 'MatjarX vs GoDaddy', body: 'Cheap to start, then upsold at every renewal. What the real first-year and second-year cost looks like.', href: routes.compare('godaddy') },
+  { title: 'MatjarX vs WordPress', body: 'Ultimate customisation vs. plugin hell — what WordPress really costs once hosting, plugins and a developer are added up.', href: routes.compare('wordpress') },
 ]
 
 export const BEST_BUILDER_FAQS: [string, string][] = [
   ['So which website builder is actually best for a Pakistani business?', "If you want to build it yourself, Wix is the most capable and Squarespace the best-looking. But most small business owners we meet never finish a DIY site — not because the tools are bad, but because writing the copy and sourcing photos is the hard part. That's the gap MatjarX fills."],
-  ['Why is MatjarX cheaper than a DIY builder over a year?', "Because the DIY price you see is the entry tier. Add a custom domain, business email, an e-commerce plan and two or three apps and most businesses land well over Rs. 140,000 a year — and that's before your own time."],
+  ['Why is MatjarX cheaper than a DIY builder over a year?', "Because the entry price you see for a DIY builder isn't the real price. Add a custom domain, business email, apps for SEO and payments, and a marketing agency, and most businesses land well over Rs. 170,000 in year one — before their own time is counted. MatjarX's Year 1 cost (Rs. 76,500–800,000 depending on plan) is transparent and all-in from the start."],
   ['Do you support local payment methods?', "Yes. JazzCash, Easypaisa, PayFast and cash on delivery are built in, with 0% commission from us. Most international builders need a third-party plugin or don't support them at all."],
+  ['Can I use Shopify in Pakistan?', "Yes, but without native local payment support — your customers pay through international gateways most don't use, and you'll need to hire a marketing agency separately. Real costs for a Pakistani business often exceed Rs. 250,000 in year one."],
+  ['Does WordPress really need a developer?', 'For basic setup, no. But for customisation, scaling and fixing issues, most WordPress users end up hiring one — commonly adding Rs. 50,000–200,000 to the first year, on top of hosting, plugins and security tools.'],
   ['Can I move an existing Wix or WordPress site to MatjarX?', 'Yes, and we do it often. We rebuild it on our platform, carry your content across and set up redirects so your Google rankings follow you.'],
   ['What if I want to leave later?', "Your domain is registered in your name and your content is yours. We'll export it for you — there is no lock-in contract and no exit fee."],
 ]

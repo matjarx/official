@@ -1,10 +1,11 @@
 'use client'
 
 // Best Website Builder Pakistan page — from
-// Marketing - Best Website Builder Pakistan.dc.html. Hero + stats, a
-// 5-column comparison matrix (MatjarX/Wix/Squarespace/GoDaddy/Local
-// agency), reasons grid, "when DIY is right" honest panel, vs-links to
-// the 3 comparison pages, FAQs.
+// Marketing - Best Website Builder Pakistan.dc.html, reconciled against
+// files/matjarx_best_website_builder_pakistan.md. Hero + stats, a
+// 6-column comparison matrix (MatjarX/Shopify/Wix/Squarespace/GoDaddy/
+// WordPress — the real content's actual competitor set), reasons grid,
+// "when DIY is right" honest panel, vs-links to 4 comparison pages, FAQs.
 
 import { Fragment, useState } from 'react'
 import Link from 'next/link'
@@ -58,13 +59,13 @@ export default function BestBuilderContent() {
         {/* Comparison matrix */}
         <section id="compare" style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
-            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>The five options</span>
+            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>The six options</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.2vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>What you can actually choose from in Pakistan</h2>
           </div>
 
           <div className="glass-card" style={{ borderRadius: 26, overflow: 'hidden' }}>
             <div className="table-scroll">
-              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.5fr) repeat(5, minmax(112px, 0.8fr))', minWidth: 860 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: `minmax(0, 1.4fr) repeat(${COL_HEADS.length}, minmax(110px, 0.8fr))`, minWidth: 980 }}>
                 <span style={{ padding: '20px 22px', background: 'rgba(242,238,226,0.7)' }} />
                 {COL_HEADS.map((h, i) => (
                   <span key={h} style={{ padding: '20px 12px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 13.5, letterSpacing: '-0.2px', color: i === 0 ? '#FFFFFF' : '#04121F', background: i === 0 ? 'var(--navy)' : 'rgba(242,238,226,0.7)' }}>{h}</span>
@@ -80,7 +81,7 @@ export default function BestBuilderContent() {
               </div>
             </div>
           </div>
-          <p style={{ margin: '20px auto 0', maxWidth: 700, textAlign: 'center', fontSize: 13, lineHeight: 1.6, color: '#6A7F92' }}>Prices are the realistic annual cost including the add-ons most businesses end up needing. Freelancer and agency figures are the median of quotes our own clients showed us.</p>
+          <p style={{ margin: '20px auto 0', maxWidth: 700, textAlign: 'center', fontSize: 13, lineHeight: 1.6, color: '#6A7F92' }}>Year 1 costs are the realistic total including the apps, payment workarounds and marketing help most businesses end up needing on top of the platform&rsquo;s own price.</p>
         </section>
 
         {/* Reasons grid */}
