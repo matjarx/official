@@ -13,6 +13,7 @@ import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appSignup } from '@/lib/routes'
 import { ALL_PLANS, PLAN_DATA, otherPlansFor, CYCLE_FACTOR, moneyPKR, type PlanKey } from '@/lib/plan-data'
+import PlanDetailSections from './PlanDetailSections'
 
 export default function PlanContent({ planKey }: { planKey: PlanKey }) {
   const [openFaq, setOpenFaq] = useState(0)
@@ -190,6 +191,8 @@ export default function PlanContent({ planKey }: { planKey: PlanKey }) {
             </div>
           </div>
         </section>
+
+        <PlanDetailSections planKey={planKey} />
 
         {/* Other plans */}
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
