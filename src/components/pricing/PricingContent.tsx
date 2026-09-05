@@ -201,6 +201,15 @@ export default function PricingContent() {
         <p style={{ margin: '26px auto 0', maxWidth: 660, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: '#6A7F92' }}>
           Prices in PKR, billed to Pakistani businesses. Gulf clients are quoted in AED at the equivalent rate — <Link href={routes.contact} style={{ fontWeight: 600 }}>ask for a quote</Link>.
         </p>
+
+        <div style={{ marginTop: 22, padding: 'clamp(24px, 3vw, 32px)', borderRadius: 24, background: 'rgba(4,18,31,0.9)', border: '1px solid rgba(255,255,255,0.14)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 24, alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 0 }}>
+            <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--butter)', fontWeight: 700 }}>Have unique needs?</span>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: '#FFFFFF' }}>Build your own plan — talk to us about Custom</span>
+            <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.68)' }}>200 pages, CRM integration, a specific API, or something none of these four cover — tell us what you need and we&apos;ll scope it, price it and build it.</span>
+          </div>
+          <Link href={routes.plan('custom')} className="btn-primary" style={{ justifySelf: 'start' }}>Talk to us about Custom</Link>
+        </div>
       </section>
 
       {/* Savings calculator */}
