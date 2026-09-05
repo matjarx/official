@@ -1,7 +1,7 @@
 // Data for the About page — from Marketing - About.dc.html
 
 export const ABOUT_STATS = [
-  { value: '70,000', label: 'websites built since 2012' },
+  { value: '70,000+', label: 'websites built' },
   { value: '4.8 / 5', label: 'average client rating' },
   { value: '7 days', label: 'from brief to live site' },
   { value: '1,000+', label: 'business categories served' },
@@ -14,9 +14,22 @@ export const ABOUT_VALUES = [
   { title: 'Built for here', body: 'JazzCash, Easypaisa, cash on delivery, Urdu-friendly typography. Built for how business actually works in this region.', icon: 'M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM3.5 12h17M12 3.5c2.2 2.3 3.4 5.3 3.4 8.5S14.2 18.2 12 20.5' },
 ]
 
+export const ABOUT_FAQS: [string, string][] = [
+  ['How long has MatjarX been around?', "8+ years helping small businesses get online. We've grown from a small team to 120 professionals across 4 countries, but our mission remains the same: solve the website problem."],
+  ['Is MatjarX a Pakistani company?', "Yes and no. MatjarX was founded in Pakistan and is headquartered here. Our team operates across Pakistan, the US, the UK and the UAE — optimised for serving Pakistani businesses with local payment methods, support in Urdu and English, and a deep understanding of the Pakistani market."],
+  ['How many websites has MatjarX built?', "70,000+ websites across 1,000+ business categories — everything from local services to e-commerce, solo entrepreneurs to small teams."],
+  ['Do you have a security track record?', "Zero security breaches in 8+ years serving 70,000+ customers. All data is stored on AWS, one of the safest providers in the world, and every website includes an SSL security certificate."],
+  ["Who should use MatjarX?", "Small business owners who want a professional website without learning web design, don't have 60+ hours to spend building one, can't afford expensive agencies, need ongoing support and updates, and want to rank on Google and get customers online."],
+  ["Who might not be a good fit for MatjarX?", "You might prefer something else if you enjoy learning web design and want full control, your needs are extremely custom or enterprise-scale, or you prefer a pure DIY approach. But we serve 70,000+ businesses across wildly different industries — chances are we're a great fit."],
+  ["What's MatjarX's customer satisfaction rate?", "4.8 stars on Trustpilot, with hundreds of verified reviews. Feedback most often mentions fast turnaround, professional design, excellent support, affordability and real results."],
+  ['How do you pronounce MatjarX?', 'Mat-jar-ex (متجرایکس) — Urdu-inspired, reflecting our Pakistani roots. Everyone gets it wrong the first time.'],
+  ['Is MatjarX hiring?', "Yes — we're always looking for talented people who share our values. See our careers page for open roles."],
+  ['How can I partner with MatjarX?', "We'd love to. If you work with small businesses or entrepreneurs, we offer partner commissions starting at Rs. 30,000+ per referral and work closely with partners on marketing strategy — see our partner page for details."],
+  ['How can I get in touch?', 'Phone or WhatsApp: +92 303 372 0953 (Monday to Saturday, 11am to 8pm PKT). Email: office@matjarx.com.'],
+]
+
 export const ABOUT_TEAM = [
-  { name: 'Wajeeh Hassan', role: 'Founder', initials: 'WH', tint: 'linear-gradient(150deg, var(--navy), #2E6EA8)' },
-  { name: 'Yasir Hashmi', role: 'Head of Client Success', initials: 'YH', tint: 'linear-gradient(150deg, var(--olive), var(--moss-light))' },
-  { name: 'Sana Bashir', role: 'Lead Designer', initials: 'SB', tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)' },
-  { name: 'Bilal Raza', role: 'Head of SEO', initials: 'BR', tint: 'linear-gradient(150deg, #1B7A3D, #08361B)' },
+  { name: 'Wajeeh Hassan', role: 'CEO & Founder', initials: 'WH', tint: 'linear-gradient(150deg, var(--navy), #2E6EA8)' },
+  { name: 'Junaid Ahmed', role: 'Sales Director', initials: 'JA', tint: 'linear-gradient(150deg, var(--olive), var(--moss-light))' },
+  { name: 'Ijlal Mustafa', role: 'Marketing Director', initials: 'IM', tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)' },
 ]

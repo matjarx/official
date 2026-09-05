@@ -1,15 +1,20 @@
+'use client'
+
 // About page — from Marketing - About.dc.html. Navy hero, a stats
 // strip overlapping the hero band, story two-column with photo
-// placeholders, values grid, team grid, a dark "want to work with us?"
-// CTA panel.
+// placeholders, values grid, team grid, an "About MatjarX" FAQ
+// accordion, a dark "want to work with us?" CTA panel.
 
+import { useState } from 'react'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
-import { ABOUT_STATS, ABOUT_VALUES, ABOUT_TEAM } from '@/lib/about-data'
+import { ABOUT_STATS, ABOUT_VALUES, ABOUT_TEAM, ABOUT_FAQS } from '@/lib/about-data'
 
 export default function AboutContent() {
+  const [openFaq, setOpenFaq] = useState(0)
+
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
       <SiteHeader active="company" />
@@ -54,7 +59,7 @@ export default function AboutContent() {
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: '#04121F' }}>It started with a question we couldn&rsquo;t answer well</h2>
                 <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: '#33485B' }}>A fabric wholesaler in Faisalabad asked us what a website would cost him. The honest answer at the time was uncomfortable: either several hundred thousand rupees to an agency, or a year of his own evenings learning a builder he would probably abandon.</p>
                 <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: '#33485B' }}>Neither answer was reasonable for a business doing solid trade with twelve staff. So we built the option that should have existed: a fixed price, a fixed timeline, and a team that does the work.</p>
-                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: '#33485B' }}>Fourteen years later we&rsquo;ve built 70,000 websites. The model hasn&rsquo;t changed much — you tell us about your business, we build the whole thing, and we stay on to keep it working.</p>
+                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: '#33485B' }}>Eight years later we&rsquo;ve built 70,000+ websites. The model hasn&rsquo;t changed much — you tell us about your business, we build the whole thing, and we stay on to keep it working.</p>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                 <div style={{ height: 300, borderRadius: 22, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'grid', placeItems: 'center' }}>
@@ -106,6 +111,28 @@ export default function AboutContent() {
                   </div>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* About FAQ */}
+          <section style={{ maxWidth: 820, margin: '0 auto', padding: '0 24px 76px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Questions about our company</span>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>About MatjarX</h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {ABOUT_FAQS.map(([q, a], i) => {
+                const open = openFaq === i
+                return (
+                  <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
+                    <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
+                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q}</span>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                    </button>
+                    {open && <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{a}</p>}
+                  </div>
+                )
+              })}
             </div>
           </section>
 
