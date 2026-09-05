@@ -507,5 +507,5 @@ export function otherComparisonsFor(key: RivalKey) {
     body: RIVAL_DATA[k].intro[0],
     href: routes.compare(k),
   }))
-  return cards.concat([{ title: 'All alternatives', body: 'Every option available to a Pakistani business, side by side.', href: routes.bestBuilder }])
+  return cards.concat([{ title: 'All alternatives', body: 'Every option available to a Pakistani business, side by side.', href: routes.alternatives }])
 }
