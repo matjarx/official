@@ -8,16 +8,13 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
-import {
-  BLOG_POSTS, FEATURED_POST_BODY, FEATURED_POST_AUTHOR, FEATURED_POST_RELATED_SLUGS, SHARE_LINKS,
-  type BlogPostSummary,
-} from '@/lib/blog-data'
+import { BLOG_POSTS, AUTHOR, SHARE_LINKS, type BlogPost } from '@/lib/blog-data'
 
-export default function BlogPostContent({ post }: { post: BlogPostSummary }) {
-  const toc = FEATURED_POST_BODY.filter((b) => b.t === 'h')
-  const related = FEATURED_POST_RELATED_SLUGS
+export default function BlogPostContent({ post }: { post: BlogPost }) {
+  const toc = post.body.filter((b) => b.t === 'h')
+  const related = post.relatedSlugs
     .map((slug) => BLOG_POSTS.find((p) => p.slug === slug))
-    .filter((p): p is BlogPostSummary => !!p)
+    .filter((p): p is BlogPost => !!p)
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -33,9 +30,9 @@ export default function BlogPostContent({ post }: { post: BlogPostSummary }) {
           </div>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(29px, 5.2vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: '#FFFFFF' }}>{post.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 13, flexWrap: 'wrap' }}>
-            <span style={{ width: 42, height: 42, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#16210B' }}>{FEATURED_POST_AUTHOR.initials}</span>
+            <span style={{ width: 42, height: 42, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#16210B' }}>{AUTHOR.initials}</span>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#FFFFFF' }}>{FEATURED_POST_AUTHOR.name}</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#FFFFFF' }}>{AUTHOR.name}</span>
               <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>{post.date} · {post.readTime}</span>
             </div>
             <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
@@ -67,9 +64,7 @@ export default function BlogPostContent({ post }: { post: BlogPostSummary }) {
           <section style={{ maxWidth: 1140, margin: '0 auto', padding: '52px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 46, alignItems: 'start' }}>
 
             <article style={{ minWidth: 0, maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 24 }}>
-              <p style={{ margin: 0, fontSize: 19.5, lineHeight: 1.6, fontWeight: 500, color: '#24384A' }}>If a customer hears about your business today, the first thing they do is search for it. What they find — or don&rsquo;t find — decides whether they call you or your competitor.</p>
-
-              {FEATURED_POST_BODY.map((b, i) => {
+              {post.body.map((b, i) => {
                 if (b.t === 'h') return <h2 key={i} style={{ margin: '16px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: '#04121F' }}>{b.text}</h2>
                 if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: '#33485B' }}>{b.text}</p>
                 if (b.t === 'q') return (
@@ -96,11 +91,10 @@ export default function BlogPostContent({ post }: { post: BlogPostSummary }) {
               </div>
 
               <div className="glass-card" style={{ marginTop: 24, padding: '26px 28px', borderRadius: 20, display: 'flex', gap: 18, alignItems: 'flex-start' }}>
-                <span style={{ width: 56, height: 56, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#16210B' }}>{FEATURED_POST_AUTHOR.initials}</span>
+                <span style={{ width: 56, height: 56, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#16210B' }}>{AUTHOR.initials}</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{FEATURED_POST_AUTHOR.name}</span>
-                  <span style={{ fontSize: 12.5, color: '#6A7F92' }}>{FEATURED_POST_AUTHOR.role}</span>
-                  <p style={{ margin: '4px 0 0', fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{FEATURED_POST_AUTHOR.bio}</p>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{AUTHOR.name}</span>
+                  <span style={{ fontSize: 12.5, color: '#6A7F92' }}>{AUTHOR.role}</span>
                 </div>
               </div>
             </article>

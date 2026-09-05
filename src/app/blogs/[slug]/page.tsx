@@ -1,14 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import BlogPostContent from '@/components/blog/BlogPostContent'
-import { BLOG_POSTS, FEATURED_SLUG } from '@/lib/blog-data'
+import { BLOG_POSTS } from '@/lib/blog-data'
 
-// Only the featured post has an authored body (see blog-data.ts) — its
-// route is the only one statically generated. Other post slugs exist
-// in the listing (real excerpts, real cards) but 404 on their detail
-// page until that copy is supplied, rather than fabricating articles.
+// All 28 real posts now have an authored body (see blog-data.ts) — every
+// slug in BLOG_POSTS is statically generated.
 export function generateStaticParams() {
-  return [{ slug: FEATURED_SLUG }]
+  return BLOG_POSTS.map((p) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -24,6 +22,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = BLOG_POSTS.find((p) => p.slug === slug)
-  if (!post || slug !== FEATURED_SLUG) notFound()
+  if (!post) notFound()
   return <BlogPostContent post={post} />
 }
