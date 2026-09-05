@@ -315,3 +315,13 @@ textarea.input {
 .showcase-overlay-1:hover { box-shadow: 0 26px 56px rgba(0,8,18,0.5) !important; }
 .showcase-overlay-2:hover { border-color: var(--butter) !important; }
 .showcase-overlay-3:hover { border-color: var(--butter) !important; }
+
+/* Desktop Editor Showcase uses a fixed 186px|1fr|216px grid that has no
+   room on a phone; Editor Showcase Mobile takes over below the same
+   940px breakpoint SiteHeader's own nav collapses at. */
+.showcase-desktop-only { display: block; }
+.showcase-mobile-only { display: none; }
+@media (max-width: 940px) {
+  .showcase-desktop-only { display: none; }
+  .showcase-mobile-only { display: block; }
+}

@@ -10,6 +10,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
+import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes } from '@/lib/routes'
 import { FEATURE_GROUPS, ALWAYS_ON, FEATURES_FAQ, type FeatureGroupKey } from '@/lib/features-data'
 
@@ -91,7 +92,8 @@ export default function FeaturesContent() {
               </div>
               <Link href={routes.pricing} style={{ padding: '15px 26px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#16210B', background: 'var(--butter)' }}>Get the editor</Link>
             </div>
-            <EditorShowcase />
+            <div className="showcase-desktop-only"><EditorShowcase /></div>
+            <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
           </div>
         </section>
 

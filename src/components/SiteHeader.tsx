@@ -11,7 +11,7 @@ import Image from 'next/image'
 import { NAV_ITEMS, type NavKey } from '@/lib/nav'
 import { routes } from '@/lib/routes'
 
-export default function SiteHeader({ active, dark = false }: { active: NavKey; dark?: boolean }) {
+export default function SiteHeader({ active, dark = false, onToggleDark }: { active: NavKey; dark?: boolean; onToggleDark?: () => void }) {
   const [narrow, setNarrow] = useState(false)
   const [open, setOpen] = useState(-1)
   const [drawer, setDrawer] = useState(false)
@@ -153,33 +153,57 @@ export default function SiteHeader({ active, dark = false }: { active: NavKey; d
             </nav>
           )}
 
-          <Link href={routes.pricing} className="btn-navy" style={{ flex: '0 0 auto' }}>Get started</Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: '0 0 auto', marginLeft: narrow ? 'auto' : 0 }}>
+            {onToggleDark && (
+              <button
+                type="button"
+                onClick={onToggleDark}
+                title={dark ? 'Switch to light' : 'Switch to dark'}
+                style={{
+                  all: 'unset', cursor: 'pointer', flex: '0 0 auto', width: 40, height: 40, borderRadius: 12,
+                  display: 'grid', placeItems: 'center',
+                  background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.66)',
+                  border: dark ? '1.5px solid rgba(255,255,255,0.18)' : '1.5px solid rgba(255,255,255,0.9)',
+                  backdropFilter: 'blur(20px)',
+                  boxShadow: dark ? 'inset 0 1px 0 rgba(255,255,255,0.16)' : 'inset 0 1px 0 rgba(255,255,255,0.9)',
+                }}
+              >
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke={dark ? '#E9EFF5' : '#04121F'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d={dark
+                    ? 'M12 3.5a8.5 8.5 0 1 0 8.5 8.5c0-.4 0-.8-.1-1.2A6 6 0 0 1 12 3.6Z'
+                    : 'M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9ZM12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M18.5 5.5l-1.4 1.4M6.9 17.1 5.5 18.5'} />
+                </svg>
+              </button>
+            )}
 
-          {narrow && (
-            <button
-              type="button"
-              onClick={() => setDrawer((v) => !v)}
-              title="Menu"
-              style={{
-                all: 'unset',
-                cursor: 'pointer',
-                flex: '0 0 auto',
-                width: 44,
-                height: 44,
-                borderRadius: 13,
-                display: 'grid',
-                placeItems: 'center',
-                background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.66)',
-                border: dark ? '1.5px solid rgba(255,255,255,0.18)' : '1.5px solid rgba(255,255,255,0.9)',
-                backdropFilter: 'blur(20px)',
-                boxShadow: dark ? 'inset 0 1px 0 rgba(255,255,255,0.16)' : 'inset 0 1px 0 rgba(255,255,255,0.9)',
-              }}
-            >
-              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke={dark ? '#E9EFF5' : '#04121F'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d={drawer ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16'} />
-              </svg>
-            </button>
-          )}
+            <Link href={routes.pricing} className="btn-navy" style={{ flex: '0 0 auto' }}>Get started</Link>
+
+            {narrow && (
+              <button
+                type="button"
+                onClick={() => setDrawer((v) => !v)}
+                title="Menu"
+                style={{
+                  all: 'unset',
+                  cursor: 'pointer',
+                  flex: '0 0 auto',
+                  width: 44,
+                  height: 44,
+                  borderRadius: 13,
+                  display: 'grid',
+                  placeItems: 'center',
+                  background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.66)',
+                  border: dark ? '1.5px solid rgba(255,255,255,0.18)' : '1.5px solid rgba(255,255,255,0.9)',
+                  backdropFilter: 'blur(20px)',
+                  boxShadow: dark ? 'inset 0 1px 0 rgba(255,255,255,0.16)' : 'inset 0 1px 0 rgba(255,255,255,0.9)',
+                }}
+              >
+                <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke={dark ? '#E9EFF5' : '#04121F'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d={drawer ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16'} />
+                </svg>
+              </button>
+            )}
+          </div>
         </div>
 
         {drawerOpen && (

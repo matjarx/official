@@ -15,6 +15,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
+import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes } from '@/lib/routes'
 import { SERVICE_TABS, SERVICE_DATA, type ServiceKey } from '@/lib/services-data'
 
@@ -40,7 +41,8 @@ export default function ServicesContent() {
           </div>
           <div style={{ maxWidth: 1140, margin: '44px auto -70px', padding: '0 24px' }}>
             <div style={{ borderRadius: '20px 20px 0 0', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.14)', borderBottom: 'none', boxShadow: '0 -10px 60px rgba(0,0,0,0.35)', padding: 4, background: '#001526' }}>
-              <EditorShowcase />
+              <div className="showcase-desktop-only"><EditorShowcase /></div>
+              <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
             </div>
           </div>
         </section>

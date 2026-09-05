@@ -14,6 +14,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
+import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import SavingsCalculator from '@/components/SavingsCalculator'
 import { routes } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
@@ -80,7 +81,13 @@ const PLAN_ROWS = [
     features: ['Everything in Growth', 'Custom design in our own tool', 'Full webstore, unlimited products', 'Subscriptions & digital products', 'Multi-seat bookings'] },
 ]
 
-export default function HomeContent({ dark = false }: { dark?: boolean }) {
+export default function HomeContent({ dark: initialDark = false }: { dark?: boolean }) {
+  // Real toggle, not a fixed prop: the design handoff's own instruction is to
+  // treat dark as "a theme layer over one page component, not a second
+  // page" — a live switch in the header delivers that better than a
+  // separate /home-dark URL ever could. /home-dark still works (renders
+  // with dark as the starting state) and now also gets a working toggle.
+  const [dark, setDark] = useState(initialDark)
   const [openFaq, setOpenFaq] = useState(0)
 
   const ink1 = dark ? '#FFFFFF' : '#04121F'
@@ -94,7 +101,7 @@ export default function HomeContent({ dark = false }: { dark?: boolean }) {
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: bgGradient ?? cream, color: dark ? '#E9EFF5' : '#0B2135', overflowX: 'hidden' }}>
       <AmbientOrbs dark={dark} />
       <div className="page-content">
-        <SiteHeader active="home" dark={dark} />
+        <SiteHeader active="home" dark={dark} onToggleDark={() => setDark((v) => !v)} />
 
         {/* Hero */}
         <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, textAlign: 'center' }}>
@@ -159,7 +166,8 @@ export default function HomeContent({ dark = false }: { dark?: boolean }) {
           <div style={{ position: 'relative' }}>
             <div style={{ position: 'absolute', inset: '-16px -12px -20px -12px', borderRadius: 34, background: 'linear-gradient(150deg, rgba(0,51,102,0.92), rgba(112,117,56,0.86))', boxShadow: '0 44px 96px rgba(4,18,31,0.3)', zIndex: 0 }} />
             <div style={{ position: 'relative', zIndex: 1, padding: 4 }}>
-              <EditorShowcase />
+              <div className="showcase-desktop-only"><EditorShowcase /></div>
+              <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
             </div>
           </div>
         </section>
@@ -275,7 +283,8 @@ export default function HomeContent({ dark = false }: { dark?: boolean }) {
               </div>
             </div>
             <div style={{ minWidth: 0 }}>
-              <EditorShowcase />
+              <div className="showcase-desktop-only"><EditorShowcase /></div>
+              <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
             </div>
           </div>
         </section>
