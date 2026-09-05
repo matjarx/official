@@ -56,7 +56,7 @@ const FAQ_DATA = [
   { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional site, domain, email and hosting. Boost is our most popular — it adds unlimited edits done by us, advanced SEO and selling on Google, Facebook and Instagram. Growth adds a dedicated team and monthly marketing sessions. Platinum is a fully custom build for serious e-commerce.' },
   { question: 'Can I edit the website myself afterwards?', answer: "Yes. Every site comes with our own editor — change photos, text, prices and products from any device, no technical skill needed. If you'd rather not, send the change to your concierge and we'll do it." },
   { question: 'Are hosting, domain and email included?', answer: 'Yes, in every plan: a custom domain (or connect one you already own), matching business email, fast secure hosting and an SSL certificate. There are no separate charges for these.' },
-  { question: "What if I don't like the website?", answer: "You get 30 days of unlimited edits so we can get it right, and a 30-day money-back guarantee. If you're unhappy for any reason in that window, ask and we refund you." },
+  { question: "What if I don't like the website?", answer: "You get 30 days of unlimited edits after launch so we can get it right — tell your concierge what's wrong and we'll change it. The setup fee itself isn't refundable once work has started, but there's no long-term contract: cancel your plan at any time with 30 days' notice." },
   { question: 'Do you work with businesses outside Pakistan?', answer: 'Yes — we serve clients across the Gulf as well. Pricing is quoted in AED for UAE, Saudi and Qatar businesses, and your concierge works your time zone.' },
 ]
 
@@ -160,7 +160,7 @@ export default function HomeContent({ dark: initialDark = false }: { dark?: bool
           <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0 4px 14px' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 12px', borderRadius: 999, background: 'var(--navy-gradient)', border: '1.5px solid rgba(244,242,174,0.5)', boxShadow: '0 12px 28px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)' }}>
               <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10" /></svg>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>30-day money-back guarantee</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>No long-term contract</span>
             </span>
           </div>
           <div style={{ position: 'relative' }}>

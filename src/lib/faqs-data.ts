@@ -33,9 +33,9 @@ export const FAQ_GROUPS = {
     ['Does MatjarX ensure my website remains secure and up to date?', 'Yes. We handle all security, updates and maintenance automatically — SSL encryption, regular backups, security patches and software updates all included.'],
   ],
   'Pricing & Flexibility': [
-    ['Does MatjarX offer a 30-day money-back guarantee?', "Yes. Completely risk-free. If you're unhappy with your website or service for any reason in the first 30 days, just tell us and we refund you in full — no questions asked."],
-    ['Can I easily downgrade or upgrade my plan at any time?', "Yes. Upgrade anytime and we only charge the difference; downgrade anytime and it takes effect at your next billing date. There's no penalty for changing your mind."],
-    ['Can I cancel my plan at any time?', 'Yes. Message your concierge or email us — there are no long-term contracts, and month-to-month flexibility is standard.'],
+    ['Does MatjarX offer a 30-day money-back guarantee?', "Not quite — here's the real policy. Your setup fee is refundable within 24 hours of payment if work hasn't started yet; once design or development begins, it's non-refundable. Monthly plan payments aren't refunded mid-cycle. We'd rather fix the problem than refund you, so tell your concierge what's wrong first."],
+    ['Can I easily downgrade or upgrade my plan at any time?', "Yes. Upgrade anytime and we only charge the difference; downgrade anytime and it takes effect at your next billing date."],
+    ['Can I cancel my plan at any time?', "Yes, with 30 days' written notice to your concierge or by email — there's no long-term contract. Your site stays active through the notice period and isn't charged again after it ends."],
     ['Are all of my sales on MatjarX commission-free? Like, really, 0%?', 'Yes, really 0%. MatjarX takes zero commission on your sales, bookings or transactions. You keep 100% of your revenue — we make money from your subscription, not your sales.'],
     ['Will MatjarX save me money on payment processing?', "We don't mark up payment processing fees — you pay the same rates you'd pay directly with JazzCash, EasyPaisa, SadaPay or PayFast. No hidden MatjarX fees."],
   ],

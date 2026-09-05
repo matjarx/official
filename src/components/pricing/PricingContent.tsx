@@ -27,7 +27,7 @@ const COMPARE_GROUPS: { title: string; rows: [string, Cell, Cell, Cell, Cell][] 
     ['Copywriting and image selection', 1, 1, 1, 1],
     ['Custom domain and business email', '1 inbox', '4 inboxes', '4 inboxes', 'Unlimited'],
     ['Live in 7 days', 1, 1, 1, 1],
-    ['30-day money-back guarantee', 1, 1, 1, 1],
+    ['No long-term contract', 1, 1, 1, 1],
   ] },
   { title: 'Pro website features', rows: [
     ['Easy-to-use editor', 1, 1, 1, 1],
@@ -69,7 +69,7 @@ const FAQ_DATA = [
   { question: 'How do I get started?', answer: 'Pick a plan and check out. You fill in a short questionnaire about your business, we build the whole site in seven days, then we launch it with you on a live call.' },
   { question: 'How does this all work?', answer: "Our team designs, writes and builds your site — you don't touch a builder. Once live, you can edit anything yourself in our editor, or send changes to your concierge and we do them for you." },
   { question: 'Can I switch plans?', answer: 'Yes, any time. Upgrading applies immediately and we only charge the difference. Downgrading takes effect at your next billing date.' },
-  { question: 'How do I cancel?', answer: "Message your concierge or email office@matjarx.com. There's no lock-in contract — cancel before your next billing date and you won't be charged again. Within the first 30 days you get a full refund." },
+  { question: 'How do I cancel?', answer: "Message your concierge or email office@matjarx.com with 30 days' written notice. There's no long-term contract — your site stays active through the notice period and isn't renewed after it, with no exit fee." },
   { question: 'Is the setup fee charged every year?', answer: 'No. The setup fee is one-time and covers the full build — design, copy, images, SEO and launch. After that you only pay the monthly plan fee.' },
 ]
 
@@ -86,7 +86,7 @@ const DARK_THEME = {
 
 const PLAN_ROWS = [
   { name: 'Launch', base: 4500, setup: '22,500', pitch: 'We build and launch your website.', cta: 'Choose Launch', theme: LIGHT_THEME, tag: '', inherits: '', href: appSignup('launch'),
-    features: ['Built-for-you website or online store', 'Personalised design, made for your trade', 'Fast loading, structured to rank on Google', 'Ready in 7 days', 'Custom domain, or connect one you own', 'Professional business email address', 'Easy-to-use editor', '0% fees on sales and bookings', '1-on-1 launch and training call', 'Secure hosting and SSL certificate', '30-day money-back guarantee'] },
+    features: ['Built-for-you website or online store', 'Personalised design, made for your trade', 'Fast loading, structured to rank on Google', 'Ready in 7 days', 'Custom domain, or connect one you own', 'Professional business email address', 'Easy-to-use editor', '0% fees on sales and bookings', '1-on-1 launch and training call', 'Secure hosting and SSL certificate', 'No long-term contract'] },
   { name: 'Boost', base: 15600, setup: '22,500', pitch: 'We manage your online presence.', cta: 'Choose Boost', theme: DARK_THEME, tag: 'Most popular', inherits: 'Everything in Launch, plus:', href: appSignup('boost'),
     features: ['4 business email addresses', 'Advanced SEO to rank on Google', 'Unlimited done-for-you edits', 'Live chat, lead forms and multimedia added for you', 'Promote products on Google, Facebook and Instagram', 'VIP phone support'] },
   { name: 'Growth', base: 27000, setup: '22,500', pitch: 'We grow your business online.', cta: 'Choose Growth', theme: LIGHT_THEME, tag: '', inherits: 'Everything in Boost, plus:', href: appSignup('growth'),

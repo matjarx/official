@@ -86,7 +86,7 @@ export const ALWAYS_ON = [
   '0% commission on sales',
   'Google Business Profile setup',
   'Mobile-first design',
-  '30-day money-back guarantee',
+  'No long-term contract',
 ]
 
 export const FEATURES_FAQ: [string, string][] = [

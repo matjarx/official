@@ -57,9 +57,9 @@ export const PLAN_DATA: Record<PlanKey, {
     headline: 'Get Online Properly, In Seven Days',
     subhead: 'A complete, professionally written website with your own domain, business email and hosting. Built by our team — you never touch a builder.',
     ctaLabel: 'Start with Launch',
-    heroTicks: ['Live in 7 days', '0% transaction fees', '30-day money back'],
+    heroTicks: ['Live in 7 days', '0% transaction fees', 'No long-term contract'],
     inherits: '',
-    features: ['Built-for-you website or online store', 'Personalised design, made for your trade', 'Fast loading, structured to rank on Google', 'Ready in 7 days', 'Custom domain, or connect one you own', 'Professional business email address', 'Easy-to-use editor', '0% fees on sales and bookings', '1-on-1 launch and training call', 'Secure hosting and SSL certificate', 'Google Business Profile set up', '30-day money-back guarantee'],
+    features: ['Built-for-you website or online store', 'Personalised design, made for your trade', 'Fast loading, structured to rank on Google', 'Ready in 7 days', 'Custom domain, or connect one you own', 'Professional business email address', 'Easy-to-use editor', '0% fees on sales and bookings', '1-on-1 launch and training call', 'Secure hosting and SSL certificate', 'Google Business Profile set up', 'No long-term contract'],
     forTitle: 'Launch is right if you need to exist online, credibly, this month',
     audiences: [
       { title: 'You have no website at all', body: 'Customers search your name and find nothing. Launch closes that gap in a week, with copy and images handled for you.', icon: ICONS.globe },

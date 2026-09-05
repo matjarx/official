@@ -28,7 +28,7 @@ export default function SiteFooter() {
           <h2 style={{ margin: 0, maxWidth: '22em', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 40, lineHeight: 1.08, letterSpacing: '-1.4px', color: '#1F2A08' }}>
             Professional websites, ready in just 7 days.
           </h2>
-          <p style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.6, color: '#3D4A16' }}>Completely risk-free, with unmatched customer support.</p>
+          <p style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.6, color: '#3D4A16' }}>Built by a real team, with unmatched customer support.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 8 }}>
             <a
               href={appSignup()}

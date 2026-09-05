@@ -170,7 +170,7 @@ export default function HomeMobileContent() {
           <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: 12 }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '9px 16px 9px 11px', borderRadius: 999, background: 'linear-gradient(160deg, #0A4278, #002E5C)', border: '1.5px solid rgba(244,242,174,0.5)', boxShadow: '0 10px 24px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)' }}>
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10" /></svg>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, letterSpacing: '0.3px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>30-day money-back guarantee</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, letterSpacing: '0.3px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>No long-term contract</span>
             </span>
           </div>
 
@@ -301,7 +301,7 @@ export default function HomeMobileContent() {
           {/* CTA */}
           <div style={{ padding: '26px 22px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(244,242,174,0.94), rgba(198,203,138,0.94))', border: '1px solid rgba(255,255,255,0.7)', boxShadow: '0 22px 50px rgba(112,117,56,0.24), inset 0 1px 0 rgba(255,255,255,0.85)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 13, textAlign: 'center' }}>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.12, letterSpacing: '-0.9px', color: '#1F2A08' }}>Professional websites, ready in just 7 days.</h2>
-            <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Completely risk-free, with unmatched customer support.</span>
+            <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Built by a real team, with unmatched customer support.</span>
             <a href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: '#04121F' }}>Get started</a>
             <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(255,255,255,0.9)' }}>Talk to us on WhatsApp</a>
           </div>
