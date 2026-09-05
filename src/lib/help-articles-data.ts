@@ -102,6 +102,11 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
         { type: 'ul', items: ["Domain activates", "Website deployed to live servers", "Analytics activated", "Google Search Console setup", "Confirmation email sent"] },
         { type: 'p', text: "**Your website is now live and visible to the world!**" },
       ] },
+      { heading: "Need Help?", blocks: [
+        { type: 'p', text: "**Contact us anytime:**" },
+        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'p', text: "[Contact Support →](#)" },
+      ] },
     ],
     faqs: [
       ["How long until my website is live?", "Typically 7-45 days depending on your plan. Launch Plan takes 7 days, Platinum takes 30-45 days."],
@@ -261,6 +266,15 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
         { type: "h3", text: "Adding a Photo Gallery" },
         { type: 'ul', items: ["Click \"Add Element\"", "Choose \"Gallery\"", "Upload photos", "Arrange order", "Set descriptions", "Save"] },
       ] },
+      { heading: "Getting Help", blocks: [
+        { type: "h3", text: "Built-In Help" },
+        { type: 'ul', items: ["**Help button** in editor (top right)", "**Video tutorials** for common tasks", "**Tooltips** hover over elements"] },
+        { type: "h3", text: "Support" },
+        { type: 'p', text: "**For editing help:**" },
+        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953"] },
+        { type: 'p', text: "**We can help with:**" },
+        { type: 'ul', items: ["Complex edits", "Design changes", "Content updates", "Troubleshooting"] },
+      ] },
     ],
     faqs: [
       ["Can I edit my website anytime?", "Yes! 24/7 access to edit your site."],
@@ -404,6 +418,11 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
         { type: 'p', text: "**Be careful:**" },
         { type: 'ul', items: ["Don't open suspicious attachments", "Don't click links from unknown senders", "Verify sender before replying", "Use official domain email only (not personal emails)"] },
       ] },
+      { heading: "Support", blocks: [
+        { type: 'p', text: "**Domain or email questions?**" },
+        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'p', text: "[Contact Support →](#)" },
+      ] },
     ],
     faqs: [
       ["Can I have multiple domains?", "Yes! Connect multiple domains to different sites or same site."],
@@ -533,6 +552,11 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
         { type: 'p', text: "Your invoice includes:" },
         { type: 'ul', items: ["Invoice number (for reference)", "Invoice date", "Due date", "Services provided", "Amount due", "Payment instructions", "Account information"] },
         { type: 'p', text: "**Keep your invoices** for tax and record purposes" },
+      ] },
+      { heading: "Support", blocks: [
+        { type: 'p', text: "**Questions about billing?**" },
+        { type: 'ul', items: ["**Email:** office@matjarx.com", "**WhatsApp:** +92 303 372 0953", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'p', text: "[Contact Support →](#)" },
       ] },
     ],
     faqs: [
@@ -719,6 +743,11 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
         { type: 'p', text: "**If customer disputes payment:**" },
         { type: 'ul', items: ["Review transaction details", "Check order confirmation", "Gather documentation", "Contact payment provider if needed", "Resolve with customer"] },
       ] },
+      { heading: "Support", blocks: [
+        { type: 'p', text: "**E-commerce or payment questions?**" },
+        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'p', text: "[Contact Support →](#)" },
+      ] },
     ],
     faqs: [
       ["What payment methods can I accept?", "JazzCash, bank transfers, and others (contact for more options)."],
@@ -885,6 +914,11 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
       { heading: "Common SEO Mistakes", blocks: [
         { type: 'p', text: "**Don't do these:**" },
         { type: 'ul', items: ["❌ Keyword stuffing (overusing keyword unnaturally)", "❌ Duplicate content (copying from other sites)", "❌ Buying backlinks (violates Google rules)", "❌ Neglecting mobile (over 60% of searches)", "❌ Ignoring analytics (data-driven optimization)", "❌ Irregular posting (consistency matters)", "❌ Poor quality content (write for humans, not robots)"] },
+      ] },
+      { heading: "Support", blocks: [
+        { type: 'p', text: "**SEO and marketing questions?**" },
+        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'p', text: "[Contact Support →](#)" },
       ] },
     ],
     faqs: [
@@ -1058,6 +1092,11 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
         { type: 'p', text: "**Account or security questions?**" },
         { type: 'ul', items: ["**Email:** office@matjarx.com (most secure)", "**WhatsApp:** +92 303 372 0953", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
         { type: 'p', text: "**Important:** Don't share password even with support. Ask for help instead." },
+      ] },
+      { heading: "Support", blocks: [
+        { type: 'p', text: "**Need immediate help?**" },
+        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953 (fastest)", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'p', text: "[Contact Support →](#)" },
       ] },
     ],
     faqs: [

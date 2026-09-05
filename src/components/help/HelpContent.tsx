@@ -11,10 +11,15 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appLogin } from '@/lib/routes'
-import { HELP_TOPICS, HELP_POPULAR, HELP_CHANNELS, HELP_SUBJECTS, HELP_CONTACT_ROWS } from '@/lib/help-data'
+import { HELP_TOPICS, HELP_POPULAR, HELP_CHANNELS, HELP_SUBJECTS, HELP_CONTACT_ROWS, HELP_FAQS, HELP_VIDEOS, HELP_BY_PLAN, HELP_TROUBLESHOOTING, HELP_KNOWLEDGE_BASE, HELP_BEST_PRACTICES, HELP_QUICK_LINKS } from '@/lib/help-data'
+
+function slugFor(topic: string) {
+  return HELP_TOPICS.find((t) => t.title === topic)?.slug
+}
 
 export default function HelpContent() {
   const [subject, setSubject] = useState(HELP_SUBJECTS[0])
+  const [openFaq, setOpenFaq] = useState(0)
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -59,7 +64,7 @@ export default function HelpContent() {
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Most read this month</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 14 }}>
             {HELP_POPULAR.map((p) => {
-              const topicSlug = HELP_TOPICS.find((t) => t.title === p.topic)?.slug
+              const topicSlug = slugFor(p.topic)
               return (
                 <Link key={p.title} href={topicSlug ? routes.helpArticle(topicSlug) : routes.help} className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 13, padding: '18px 20px', borderRadius: 16 }}>
                   <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--olive)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4" /></svg>
@@ -67,6 +72,128 @@ export default function HelpContent() {
                     <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: '#04121F' }}>{p.title}</span>
                     <span style={{ fontSize: 11.5, color: '#6A7F92' }}>{p.topic}</span>
                   </span>
+                </Link>
+              )
+            })}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+          <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Common questions answered</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {HELP_FAQS.map(([q, a], i) => {
+              const open = openFaq === i
+              return (
+                <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
+                  <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q}</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                  </button>
+                  {open && <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{a}</p>}
+                </div>
+              )
+            })}
+          </div>
+        </section>
+
+        {/* Video tutorials */}
+        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+          <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Learn by watching</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
+            {HELP_VIDEOS.map((v) => (
+              <div key={v.group} className="glass-card" style={{ padding: '24px 26px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F' }}>{v.group}</span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {v.items.map((it) => (
+                    <span key={it} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: '#4B5D6E' }}>
+                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="1.9" style={{ flex: '0 0 auto' }}><circle cx="12" cy="12" r="9" /><path d="m10 9 5 3-5 3z" /></svg>
+                      {it}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* By plan */}
+        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+          <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Help for your plan</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
+            {HELP_BY_PLAN.map((p) => (
+              <div key={p.plan} style={{ padding: '22px 24px 24px', borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: '#04121F' }}>{p.plan} plan members</span>
+                {p.items.map((it) => (
+                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>
+                    <span style={{ width: 5, height: 5, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
+                    {it}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Troubleshooting */}
+        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+          <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Common issues &amp; solutions</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 14 }}>
+            {HELP_TROUBLESHOOTING.map((t) => {
+              const slug = slugFor(t.topic)
+              return (
+                <Link key={t.issue} href={slug ? routes.helpArticle(slug) : routes.help} className="glass-chip" style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '18px 20px', borderRadius: 16 }}>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: '#04121F' }}>{t.issue}</span>
+                  <span style={{ fontSize: 12.5, color: 'var(--olive)', fontWeight: 600 }}>{t.topic} guide →</span>
+                </Link>
+              )
+            })}
+          </div>
+        </section>
+
+        {/* Knowledge base */}
+        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+          <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Complete documentation</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 18 }}>
+            {HELP_KNOWLEDGE_BASE.map((k) => (
+              <div key={k.group} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>{k.group}</span>
+                {k.items.map((it) => (
+                  <span key={it} style={{ fontSize: 13.5, color: '#4B5D6E' }}>{it}</span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Best practices */}
+        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+          <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Tips for success</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
+            {HELP_BEST_PRACTICES.map((b) => (
+              <div key={b.group} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 9 }}>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: '#04121F' }}>{b.group}</span>
+                {b.items.map((it) => (
+                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
+                    {it}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Getting help with... quick links table */}
+        <section style={{ maxWidth: 900, margin: '0 auto', padding: '76px 24px 0' }}>
+          <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Quick links by topic</span>
+          <div className="glass-card" style={{ borderRadius: 20, overflow: 'hidden' }}>
+            {HELP_QUICK_LINKS.map((row, i) => {
+              const slug = slugFor(row.goTo)
+              return (
+                <Link key={row.topic} href={slug ? routes.helpArticle(slug) : routes.help} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, padding: '15px 22px', borderTop: i > 0 ? '1px solid rgba(4,18,31,0.07)' : undefined }}>
+                  <span style={{ fontSize: 14.5, color: '#24384A' }}>{row.topic}</span>
+                  <span style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--olive)', whiteSpace: 'nowrap' }}>{row.goTo} →</span>
                 </Link>
               )
             })}

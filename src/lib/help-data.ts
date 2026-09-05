@@ -10,13 +10,88 @@ export const HELP_TOPICS = [
   { slug: 'account-and-security', title: 'Account and security', icon: 'M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5Z', body: 'Passwords, changing your login email, exporting your data, backups and account deletion.' },
 ] as const
 
+// The source's own "Most Popular Articles" list — 18 links across 6
+// categories (Getting Started, Website Editing, Domains, Billing, SEO,
+// Account), each pointing at the one real article that covers it.
 export const HELP_POPULAR = [
-  { title: 'How do I change a photo on my homepage?', topic: 'Website editor' },
-  { title: 'Connecting a domain I bought elsewhere', topic: 'Domains and email' },
-  { title: 'Setting up JazzCash on my checkout', topic: 'E-commerce and payments' },
-  { title: "Why isn't my site showing on Google yet?", topic: 'SEO and marketing' },
-  { title: 'Switching from Launch to Boost', topic: 'Billing and plans' },
-  { title: 'What happens in the first seven days?', topic: 'Getting started' },
+  { title: 'How to start your website', topic: 'Getting started' },
+  { title: 'Website onboarding process', topic: 'Getting started' },
+  { title: 'Scheduling your launch call', topic: 'Getting started' },
+  { title: 'How to edit your website', topic: 'Website editor' },
+  { title: 'Adding pages and content', topic: 'Website editor' },
+  { title: 'Website customization', topic: 'Website editor' },
+  { title: 'Setup custom domain', topic: 'Domains and email' },
+  { title: 'Create email accounts', topic: 'Domains and email' },
+  { title: 'Connect domain', topic: 'Domains and email' },
+  { title: 'Upgrade or downgrade plan', topic: 'Billing and plans' },
+  { title: 'Cancel subscription', topic: 'Billing and plans' },
+  { title: 'Understanding billing', topic: 'Billing and plans' },
+  { title: 'Improve Google rankings', topic: 'SEO and marketing' },
+  { title: 'Blog publishing guide', topic: 'SEO and marketing' },
+  { title: 'Local SEO setup', topic: 'SEO and marketing' },
+  { title: 'Password reset', topic: 'Account and security' },
+  { title: 'Login help', topic: 'Account and security' },
+  { title: 'Two-factor authentication', topic: 'Account and security' },
+]
+
+export const HELP_FAQS: [string, string][] = [
+  ['How do I make changes to my website?', 'Use our website editor. Log in, click "Edit Website," and make changes. They save automatically.'],
+  ['How do I set up my custom domain?', 'In account settings, go to "Domains" and follow the connection guide. Takes 24-48 hours.'],
+  ['Can I upgrade or downgrade my plan?', 'Yes, anytime from your account settings. Changes take effect on next billing date.'],
+  ['How do I accept payments online?', 'Enable a payment gateway (JazzCash or bank transfer). Setup takes 15-30 minutes.'],
+  ['Can I cancel my plan?', 'Yes, with 30 days notice. Your site stays live during the notice period.'],
+  ['How do I improve my Google rankings?', 'Publish regular blog content, optimize your pages, and build local presence.'],
+  ['I forgot my password. What do I do?', 'Click "Forgot Password" on the login page and follow the email instructions.'],
+  ['How do I create email accounts?', 'In domain settings, create email accounts with your custom domain.'],
+]
+
+export const HELP_VIDEOS = [
+  { group: 'Getting Started', items: ['Introduction to MatjarX (3 min)', 'Dashboard Overview (4 min)', 'Your First Website (5 min)'] },
+  { group: 'Website Editing', items: ['Website Editor Basics (5 min)', 'Adding Pages (4 min)', 'Editing Content (4 min)', 'Uploading Images (3 min)'] },
+  { group: 'Advanced', items: ['SEO Optimization (7 min)', 'Blog Publishing (5 min)', 'Accepting Payments (6 min)', 'Domain Setup (4 min)'] },
+]
+
+export const HELP_BY_PLAN = [
+  { plan: 'Launch', items: ['Website editing basics', 'Domain and email setup', 'Billing and account management'] },
+  { plan: 'Boost', items: ['All Launch features', 'Blog publishing guide', 'SEO optimization tips', 'Monthly reports'] },
+  { plan: 'Growth', items: ['All Boost features', 'Marketing strategy guides', 'Email marketing setup', 'Growth metrics'] },
+  { plan: 'Platinum', items: ['All Growth features', 'E-commerce setup', 'Payment processing', 'Advanced features'] },
+]
+
+export const HELP_TROUBLESHOOTING = [
+  { issue: "Can't log in?", topic: 'Account and security' },
+  { issue: "Website won't load?", topic: 'Website editor' },
+  { issue: 'Payment not working?', topic: 'E-commerce and payments' },
+  { issue: 'Email not working?', topic: 'Domains and email' },
+  { issue: 'Not ranking on Google?', topic: 'SEO and marketing' },
+  { issue: 'Billing questions?', topic: 'Billing and plans' },
+]
+
+export const HELP_KNOWLEDGE_BASE = [
+  { group: 'Website Building', items: ['Page creation and management', 'Content optimization', 'Design customization', 'Template selection'] },
+  { group: 'Marketing', items: ['SEO best practices', 'Blog strategy', 'Local SEO', 'Traffic growth'] },
+  { group: 'E-Commerce', items: ['Product management', 'Payment processing', 'Order fulfillment', 'Inventory tracking'] },
+  { group: 'Account', items: ['Login and access', 'Password management', 'Security settings', 'Account recovery'] },
+  { group: 'Technical', items: ['Domain configuration', 'Email setup', 'Analytics integration', 'Third-party tools'] },
+]
+
+export const HELP_BEST_PRACTICES = [
+  { group: 'Website Design', items: ['Keep design clean and professional', 'Use plenty of white space', 'Make navigation clear', 'Optimize images', 'Test on mobile'] },
+  { group: 'Content', items: ['Write for your customers', 'Use clear headings', 'Keep paragraphs short', 'Include images', 'Update regularly'] },
+  { group: 'SEO', items: ['Use keywords naturally', 'Write substantial content (300+ words)', 'Build quality backlinks', 'Publish regularly', 'Monitor rankings'] },
+  { group: 'Conversions', items: ['Clear call-to-action', 'Easy contact forms', 'Trust signals', 'Fast page load', 'Mobile optimization'] },
+]
+
+export const HELP_QUICK_LINKS = [
+  { topic: 'Starting your website', goTo: 'Getting started' },
+  { topic: 'Editing pages', goTo: 'Website editor' },
+  { topic: 'Setting up domain', goTo: 'Domains and email' },
+  { topic: 'Email accounts', goTo: 'Domains and email' },
+  { topic: 'Your plan', goTo: 'Billing and plans' },
+  { topic: 'Accepting payments', goTo: 'E-commerce and payments' },
+  { topic: 'Google rankings', goTo: 'SEO and marketing' },
+  { topic: 'Login issues', goTo: 'Account and security' },
+  { topic: 'Password reset', goTo: 'Account and security' },
 ]
 
 export type Channel = {
