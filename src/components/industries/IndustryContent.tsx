@@ -38,13 +38,15 @@ export default function IndustryContent({ industryKey }: { industryKey: Industry
         {/* Hero */}
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '28px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 'clamp(30px, 4vw, 52px)', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
-            <span className="glass-chip" style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: '#3B5063' }}>
-              <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)' }} />
-              {d.built}
-            </span>
+            {d.built && (
+              <span className="glass-chip" style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: '#3B5063' }}>
+                <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)' }} />
+                {d.built}
+              </span>
+            )}
 
             <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5vw, 52px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: '#04121F' }}>
-              Websites for <span className="marker">{d.lower}</span> — built in 7 days
+              {d.headline ?? <>Websites for <span className="marker">{d.lower}</span> — built in 7 days</>}
             </h1>
 
             <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: '#435A70' }}>{d.subhead}</p>
@@ -54,42 +56,52 @@ export default function IndustryContent({ industryKey }: { industryKey: Industry
               <Link href={routes.websiteExamples} className="btn-secondary">See real examples</Link>
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 26px', paddingTop: 6 }}>
-              {d.ticks.map((t) => (
-                <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13.5, color: '#435A70' }}>
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                  {t}
-                </span>
-              ))}
-            </div>
+            {d.ticks && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 26px', paddingTop: 6 }}>
+                {d.ticks.map((t) => (
+                  <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13.5, color: '#435A70' }}>
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
 
           <div style={{ minWidth: 0, position: 'relative' }}>
             <div style={{ position: 'absolute', inset: '-14px -10px -18px -10px', borderRadius: 32, background: d.tint, boxShadow: '0 40px 90px rgba(4,18,31,0.28)', zIndex: 0 }} />
-            <div style={{ position: 'relative', zIndex: 1, padding: 3 }}>
-              <div style={{ borderRadius: 18, overflow: 'hidden', background: '#FFFCF5', boxShadow: '0 24px 54px rgba(0,8,18,0.34)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '9px 13px', background: '#0B1B27' }}>
-                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
-                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
-                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
-                  <span style={{ margin: '0 auto', padding: '4px 14px', borderRadius: 999, fontSize: 10, color: 'rgba(226,236,245,0.6)', background: 'rgba(255,255,255,0.07)' }}>{d.sample.domain}</span>
-                </div>
-                <div style={{ position: 'relative', minHeight: 236, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '40px 26px', textAlign: 'center', background: d.tint }}>
-                  <span style={{ fontSize: 9, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.72)', fontWeight: 600 }}>{d.sample.kicker}</span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, lineHeight: 1.08, letterSpacing: '-1px', color: '#FFFFFF', textShadow: '0 2px 14px rgba(0,0,0,0.34)' }}>{d.sample.name}</span>
-                  <span style={{ maxWidth: '24em', fontSize: 11.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.82)' }}>{d.sample.blurb}</span>
-                  <span style={{ marginTop: 8, padding: '10px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, color: '#14210b', background: 'linear-gradient(160deg, #F7F5C0, #E7E49B)' }}>{d.sample.cta}</span>
-                </div>
-                <div style={{ padding: '16px 18px 20px', background: '#FFFCF5', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
-                  {d.sample.tiles.map((t) => (
-                    <span key={t.label} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                      <span style={{ height: 52, borderRadius: 9, background: t.tint }} />
-                      <span style={{ fontSize: 8.5, fontWeight: 600, color: '#1B2C3A', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{t.label}</span>
-                    </span>
-                  ))}
+            {d.sample ? (
+              <div style={{ position: 'relative', zIndex: 1, padding: 3 }}>
+                <div style={{ borderRadius: 18, overflow: 'hidden', background: '#FFFCF5', boxShadow: '0 24px 54px rgba(0,8,18,0.34)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '9px 13px', background: '#0B1B27' }}>
+                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
+                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
+                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
+                    <span style={{ margin: '0 auto', padding: '4px 14px', borderRadius: 999, fontSize: 10, color: 'rgba(226,236,245,0.6)', background: 'rgba(255,255,255,0.07)' }}>{d.sample.domain}</span>
+                  </div>
+                  <div style={{ position: 'relative', minHeight: 236, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '40px 26px', textAlign: 'center', background: d.tint }}>
+                    <span style={{ fontSize: 9, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.72)', fontWeight: 600 }}>{d.sample.kicker}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, lineHeight: 1.08, letterSpacing: '-1px', color: '#FFFFFF', textShadow: '0 2px 14px rgba(0,0,0,0.34)' }}>{d.sample.name}</span>
+                    <span style={{ maxWidth: '24em', fontSize: 11.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.82)' }}>{d.sample.blurb}</span>
+                    <span style={{ marginTop: 8, padding: '10px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, color: '#14210b', background: 'linear-gradient(160deg, #F7F5C0, #E7E49B)' }}>{d.sample.cta}</span>
+                  </div>
+                  <div style={{ padding: '16px 18px 20px', background: '#FFFCF5', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+                    {d.sample.tiles.map((t) => (
+                      <span key={t.label} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                        <span style={{ height: 52, borderRadius: 9, background: t.tint }} />
+                        <span style={{ fontSize: 8.5, fontWeight: 600, color: '#1B2C3A', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{t.label}</span>
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="glass-dark-panel" style={{ position: 'relative', zIndex: 1, padding: '32px 30px', borderRadius: 26, minHeight: 236, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, textAlign: 'center' }}>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="var(--butter)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7" /></svg>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: '#FFFFFF' }}>Built for {d.lower}</span>
+                <span style={{ maxWidth: '24em', fontSize: 13.5, lineHeight: 1.6, color: 'rgba(226,236,245,0.75)' }}>{d.subhead}</span>
+              </div>
+            )}
           </div>
         </section>
 
@@ -97,7 +109,7 @@ export default function IndustryContent({ industryKey }: { industryKey: Industry
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What your site needs</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{d.needsTitle}</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{d.needsTitle ?? `What a ${d.lower} website needs to do`}</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
             {d.features.map((f) => (
@@ -112,27 +124,31 @@ export default function IndustryContent({ industryKey }: { industryKey: Industry
           </div>
         </section>
 
-        {/* Quote panel */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
-          <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-              <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
-              <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
-                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>{d.quoteCompany}</span>
-              </div>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
-              {d.results.map((r) => (
-                <div key={r.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3vw, 30px)', letterSpacing: '-0.9px', color: '#FFFFFF' }}>{r.value}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(226,236,245,0.6)' }}>{r.label}</span>
+        {/* Quote panel — only when a real testimonial exists for this industry */}
+        {d.quote && (
+          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+            <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
+                <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
+                <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>{d.quoteCompany}</span>
                 </div>
-              ))}
+              </div>
+              {d.results && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
+                  {d.results.map((r) => (
+                    <div key={r.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3vw, 30px)', letterSpacing: '-0.9px', color: '#FFFFFF' }}>{r.value}</span>
+                      <span style={{ fontSize: 13, color: 'rgba(226,236,245,0.6)' }}>{r.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* FAQs */}
         <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
