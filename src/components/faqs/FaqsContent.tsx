@@ -16,7 +16,7 @@ type FlatQ = { key: string; question: string; answer: string }
 
 export default function FaqsContent() {
   const [group, setGroup] = useState<'All' | FaqGroupName>('All')
-  const [openKey, setOpenKey] = useState('Getting started|0')
+  const [openKey, setOpenKey] = useState('Getting Started & Launch|0')
 
   const flat = useMemo<FlatQ[]>(() => {
     const out: FlatQ[] = []
