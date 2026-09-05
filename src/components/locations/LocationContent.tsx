@@ -13,10 +13,18 @@ import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { CITY_DATA, otherCitiesFor, type CityKey } from '@/lib/location-data'
+import { CITY_DETAIL } from '@/lib/location-detail-data'
+
+const bullet = (text: string, key?: React.Key) => (
+  <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: '#4B5D6E' }}>
+    <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{text}
+  </li>
+)
 
 export default function LocationContent({ locationKey }: { locationKey: CityKey }) {
   const [openFaq, setOpenFaq] = useState(0)
   const d = CITY_DATA[locationKey]
+  const detail = CITY_DETAIL[locationKey]
   const others = otherCitiesFor(locationKey)
 
   return (
@@ -123,6 +131,58 @@ export default function LocationContent({ locationKey }: { locationKey: CityKey 
                 ))}
               </div>
             )}
+          </div>
+        </section>
+
+        {/* How it works — 3-step process for this city */}
+        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '70px 24px 0' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
+            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>How it works</span>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Our 3-step process for {d.name} businesses</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
+            {detail.process.map((s, i) => (
+              <div key={s.title} className="glass-card" style={{ padding: '26px 24px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, lineHeight: 1, color: 'var(--moss-light)' }}>{i + 1}</span>
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#04121F' }}>{s.title}</h3>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Plans for this city's businesses */}
+        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '70px 24px 0' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
+            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Pricing</span>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Plans for {d.name} businesses</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
+            {detail.plans.map((p) => (
+              <div key={p.name} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: '#04121F' }}>{p.name}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, color: '#04121F' }}>{p.price}</span>
+                {p.items.length > 0 && <ul style={{ margin: '4px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{p.items.map((it, i) => bullet(it, i))}</ul>}
+                {p.setup && <span style={{ marginTop: 'auto', paddingTop: 8, fontSize: 12.5, color: '#8A9AA6' }}>Setup: {p.setup}</span>}
+              </div>
+            ))}
+          </div>
+          <p style={{ margin: '22px 0 0', textAlign: 'center' }}><Link href={routes.pricing} style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--olive)' }}>View full pricing →</Link></p>
+        </section>
+
+        {/* Why MatjarX over other options, for this city */}
+        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '70px 24px 0' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
+            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>The comparison</span>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Why MatjarX over other options</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
+            {detail.whyOver.map((g) => (
+              <div key={g.label} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
+                <h4 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{g.label}</h4>
+                <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{g.items.map((it, i) => bullet(it, i))}</ul>
+              </div>
+            ))}
           </div>
         </section>
 
