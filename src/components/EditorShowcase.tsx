@@ -10,8 +10,17 @@
 // handoff: they sit in the sidebar gutter and over the thumbnail strip,
 // never over the hero copy or the section library. Do not move them.
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+
+// Reference width the whole mockup (card + the 3 overlay callouts) was laid
+// out at. The overlay positions below are percentages of this width, per
+// the original handoff note ("load-bearing... do not move them") — instead
+// of reflowing them at narrower container widths (which used to make them
+// drift onto the section library / structure tree and overlap real UI),
+// the whole thing now scales down as one unit via ResizeObserver, so every
+// relative position stays exactly as designed at any container width.
+const BASE_WIDTH = 1200
 
 const ICONS = {
   hero: 'M4 5.5h16v6H4zM4 15h9M4 18.5h6',
@@ -115,6 +124,28 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
   const [img, setImg] = useState(0)
   const isProduct = mode === 'product'
 
+  const outerRef = useRef<HTMLDivElement>(null)
+  const innerRef = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(1)
+  const [innerHeight, setInnerHeight] = useState(0)
+
+  useEffect(() => {
+    const outerEl = outerRef.current
+    const innerEl = innerRef.current
+    if (!outerEl || !innerEl) return
+    const roOuter = new ResizeObserver((entries) => {
+      const w = entries[0].contentRect.width
+      if (w > 0) setScale(Math.min(1, w / BASE_WIDTH))
+    })
+    const roInner = new ResizeObserver((entries) => setInnerHeight(entries[0].contentRect.height))
+    roOuter.observe(outerEl)
+    roInner.observe(innerEl)
+    return () => {
+      roOuter.disconnect()
+      roInner.disconnect()
+    }
+  }, [])
+
   function toggleMode() {
     setMode(isProduct ? 'service' : 'product')
     setImg(0)
@@ -197,6 +228,8 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif' }}>
+      <div ref={outerRef} style={{ position: 'relative', width: '100%', height: innerHeight ? innerHeight * scale : undefined, overflow: 'hidden' }}>
+      <div ref={innerRef} style={{ position: 'absolute', top: 0, left: 0, width: BASE_WIDTH, transform: `scale(${scale})`, transformOrigin: 'top left' }}>
       <div style={{ borderRadius: 16, overflow: 'hidden', background: 'linear-gradient(168deg, #001C33 0%, #00263F 100%)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 30px 66px rgba(0,8,18,0.44)' }}>
 
         {/* Top bar */}
@@ -520,6 +553,8 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
           <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 0.4, color: '#04121F' }}>Change Image</span>
         </span>
       </button>
+      </div>
+      </div>
 
       <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9, flexWrap: 'wrap' }}>
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#F4F2AE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m7 4 11 8-11 8z" /></svg>

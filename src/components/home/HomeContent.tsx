@@ -282,9 +282,10 @@ export default function HomeContent({ dark: initialDark = false }: { dark?: bool
                 ))}
               </div>
             </div>
-            <div style={{ minWidth: 0 }}>
-              <div className="showcase-desktop-only"><EditorShowcase /></div>
-              <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
+            <div style={{ minWidth: 0, display: 'flex', justifyContent: 'center' }}>
+              <div style={{ width: '100%', maxWidth: 360 }}>
+                <EditorShowcaseMobile />
+              </div>
             </div>
           </div>
         </section>
