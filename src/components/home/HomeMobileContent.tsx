@@ -314,7 +314,7 @@ export default function HomeMobileContent() {
               <a href="tel:+923033720953" style={{ fontSize: 12.5, color: '#E7E49B' }}>+92 303 372 0953</a>
               <a href="mailto:office@matjarx.com" style={{ fontSize: 12.5, color: '#E7E49B' }}>office@matjarx.com</a>
             </div>
-            <span style={{ fontSize: 11, color: theme.ink5, paddingTop: 6, borderTop: `1px solid ${theme.headerLine}` }}>© 2012–2026 MatjarX. All rights reserved.</span>
+            <span style={{ fontSize: 11, color: theme.ink5, paddingTop: 6, borderTop: `1px solid ${theme.headerLine}` }}>© 2018–2026 MatjarX. All rights reserved.</span>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
-import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS, CONTACT_FAQS } from '@/lib/contact-data'
+import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS, CONTACT_FAQS, CONTACT_SUPPORT_CATEGORIES, CONTACT_SUMMARY_TABLE, CONTACT_PREP_CHECKLIST, CONTACT_PREFERRED_CHANNEL, CONTACT_COMMITMENT } from '@/lib/contact-data'
 
 export default function ContactContent() {
   const [topic, setTopic] = useState(CONTACT_TOPICS[0])
@@ -49,6 +49,32 @@ export default function ContactContent() {
                   <span style={{ fontSize: 14.5, fontWeight: 600, color: c.valueInk }}>{c.value}</span>
                   <span style={{ fontSize: 13, lineHeight: 1.55, color: c.muted }}>{c.note}</span>
                 </a>
+              ))}
+            </div>
+          </section>
+
+          {/* Support categories */}
+          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '66px 24px 0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What type of support do you need?</span>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Support categories</h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: 18 }}>
+              {CONTACT_SUPPORT_CATEGORIES.map((c, i) => (
+                <div key={c.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  <span style={{ fontSize: 11.5, fontWeight: 700, color: '#A08A5E' }}>{i + 1}.</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F' }}>{c.title}</span>
+                  <span style={{ fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>{c.body}</span>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 2 }}>
+                    {c.items.map((it) => (
+                      <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.5, color: '#4B5D6E' }}>
+                        <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
+                        {it}
+                      </span>
+                    ))}
+                  </div>
+                  <span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--navy)', paddingTop: 4, borderTop: '1px solid rgba(4,18,31,0.07)', marginTop: 4 }}>Contact: {c.contact}</span>
+                </div>
               ))}
             </div>
           </section>
@@ -150,6 +176,87 @@ export default function ContactContent() {
                   </div>
                 )
               })}
+            </div>
+          </section>
+
+          {/* Before you contact us */}
+          <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
+            <div className="glass-card" style={{ padding: 'clamp(24px, 3.5vw, 34px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Help us help you faster</span>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: '#04121F' }}>Before you contact us</h2>
+                <p style={{ margin: 0, fontSize: 14, color: '#6A7F92' }}>Please have ready:</p>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 10 }}>
+                {CONTACT_PREP_CHECKLIST.map((it) => (
+                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 14, lineHeight: 1.5, color: '#33485B' }}>
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
+                    {it}
+                  </span>
+                ))}
+              </div>
+              <p style={{ margin: 0, fontSize: 13, color: '#6A7F92', fontStyle: 'italic' }}>This helps us respond faster and more accurately.</p>
+            </div>
+          </section>
+
+          {/* Preferred channel by topic */}
+          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+            <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Preferred communication channel, by topic</span>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
+              {CONTACT_PREFERRED_CHANNEL.map((g) => (
+                <div key={g.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 9 }}>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: '#04121F' }}>{g.title}</span>
+                  {g.items.map((it) => (
+                    <span key={it} style={{ fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>{it}</span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Our commitment to support */}
+          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you can expect</span>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Our commitment to support</h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
+              {CONTACT_COMMITMENT.map((g) => (
+                <div key={g.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>{g.title}</span>
+                  {g.items.map((it) => (
+                    <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>
+                      <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
+                      {it}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Contact information summary table */}
+          <section style={{ maxWidth: 1000, margin: '0 auto', padding: '66px 24px 0' }}>
+            <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>All ways to reach MatjarX</span>
+            <div className="glass-card table-scroll" style={{ borderRadius: 20, overflow: 'hidden' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 640 }}>
+                <thead>
+                  <tr>
+                    {CONTACT_SUMMARY_TABLE.headers.map((h) => (
+                      <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: '#04121F', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {CONTACT_SUMMARY_TABLE.rows.map((row, ri) => (
+                    <tr key={ri}>
+                      {row.map((cell, ci) => (
+                        <td key={ci} style={{ padding: '14px 20px', fontSize: 13.5, lineHeight: 1.5, color: '#33485B', borderTop: '1px solid rgba(4,18,31,0.07)', fontWeight: ci === 0 ? 700 : 400 }}>{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
 

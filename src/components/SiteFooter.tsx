@@ -93,7 +93,7 @@ export default function SiteFooter() {
         </div>
 
         <div style={{ maxWidth: 1200, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
-          <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.42)', marginRight: 'auto' }}>&copy; 2012&ndash;2026 MatjarX. All rights reserved.</span>
+          <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.42)', marginRight: 'auto' }}>&copy; 2018&ndash;2026 MatjarX. All rights reserved.</span>
           <Link href={routes.legal('terms')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Terms &amp; conditions</Link>
           <Link href={routes.legal('refund')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Refund policy</Link>
           <Link href={routes.legal('privacy')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Privacy &amp; cookies</Link>
