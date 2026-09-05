@@ -29,7 +29,7 @@ const HOUR_STEPS = [10, 15, 25, 40, 60]
 const RATE_STEPS = [2500, 5000, 7500, 10000]
 const SETUP_FEE = 22500
 
-const PLAN_TAGS: Record<PlanKey, string> = { launch: '', boost: 'Most popular', growth: '', platinum: 'Custom' }
+const PLAN_TAGS: Record<PlanKey, string> = { launch: '', boost: 'Most popular', growth: '', platinum: 'Enterprise', custom: '' }
 const PLAN_ORDER: PlanKey[] = ['launch', 'boost', 'growth', 'platinum']
 
 function money(n: number) {

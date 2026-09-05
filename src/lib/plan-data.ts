@@ -1,11 +1,14 @@
-// Data for the four Plan pages — from Marketing - Plan*.dc.html. The
-// prototype ships four files because a prop default only seeds its editor,
-// not the runtime; in production this is one route with a plan param
-// (the handoff's own implementation note).
+// Data for the Plan pages — Launch/Boost/Growth/Platinum from Marketing -
+// Plan*.dc.html (the prototype ships four files because a prop default
+// only seeds its editor, not the runtime; in production this is one route
+// with a plan param — the handoff's own implementation note). Custom was
+// added from the real content package (files/matjarx_custom_plan_page.md)
+// — a genuine 5th tier for needs no themed plan covers, project-priced
+// rather than a fixed monthly fee.
 
 import { routes } from './routes'
 
-export type PlanKey = 'launch' | 'boost' | 'growth' | 'platinum'
+export type PlanKey = 'launch' | 'boost' | 'growth' | 'platinum' | 'custom'
 
 const ICONS = {
   shop: 'M4 6h2.2l2.3 9.5h9L20 8H7M9.5 20a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Zm7.5 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z',
@@ -26,6 +29,17 @@ export const ALL_PLANS: Record<PlanKey, { name: string; price: string; setup: st
   boost: { name: 'Boost', price: 'Rs. 15,600', setup: 'Rs. 22,500', pitch: 'We manage your online presence.' },
   growth: { name: 'Growth', price: 'Rs. 27,000', setup: 'Rs. 22,500', pitch: 'We grow your business online.' },
   platinum: { name: 'Platinum', price: 'Rs. 55,000', setup: 'Rs. 140,000', pitch: 'We scale your e-commerce business.' },
+  custom: { name: 'Custom', price: "Let's talk", setup: 'Custom quote', pitch: 'A bespoke build for needs no standard plan covers.' },
+}
+
+// Yearly and two-year discount factors — the real, working billing toggle
+// already live on /pricing (Boost's promise "the client's live site shows a
+// toggle that does nothing" was explicitly the thing being fixed). Kept
+// here too so a plan page's own annual-savings figures always agree with
+// what the toggle on /pricing actually charges.
+export const CYCLE_FACTOR = { monthly: 1, yearly: 10 / 12, two: 0.75 } as const
+export function moneyPKR(n: number) {
+  return 'Rs. ' + Math.round(n).toLocaleString('en-US')
 }
 
 export const PLAN_DATA: Record<PlanKey, {
@@ -160,6 +174,37 @@ export const PLAN_DATA: Record<PlanKey, {
       ['How long does a Platinum build take?', 'Four to six weeks typically, depending on catalogue size. We give you a dated schedule before you commit, not an estimate.'],
       ['Can you migrate an existing store?', 'Yes — products, customers, orders and URL redirects, so your Google rankings follow you across.'],
       ['Do I still get unlimited edits?', 'Yes, and a direct line to the team that built your store rather than a general queue.'],
+    ],
+  },
+  custom: {
+    tag: 'Enterprise', tagBg: 'rgba(4,18,31,0.9)', tagLine: 'rgba(255,255,255,0.2)', tagInk: '#F5F8FB', tagDot: 'var(--butter)',
+    headline: 'Your Vision. Our Custom Solution.',
+    subhead: "Not fitting into standard plans? A discovery call, a proposal with real pricing, and a build made exactly for your business — CRM integrations, enterprise scale, or a business model none of our themes were built for.",
+    ctaLabel: 'Discuss your custom solution',
+    heroTicks: ['Discovery call, then a real quote', 'CRM, ERP and API integrations', 'Direct line to the build team'],
+    inherits: 'Starts from everything in Platinum, then built around what you actually need:',
+    features: ['A discovery call to understand your business', 'A proposal with real pricing before any commitment', 'Custom functionality beyond any standard plan', 'CRM, ERP and specialised API integrations', 'Support for multiple departments and user permissions', 'Migration from an existing system, data included', 'A dedicated project team, not a general queue', 'A dated schedule, agreed before work begins'],
+    forTitle: "Custom is right if your business doesn't fit a plan, not because it's small but because it's specific",
+    audiences: [
+      { title: 'You run more than one kind of business', body: 'Product and service and wholesale under one roof, or an operation with rules a standard theme was never designed to enforce.', icon: ICONS.globe },
+      { title: 'You need real integrations', body: 'Salesforce, HubSpot, an ERP, or an API specific to your industry — connected properly, not bolted on.', icon: ICONS.spark },
+      { title: "You're moving off an existing system", body: 'Products, customers, orders and history migrated across with a plan for the cutover, not just an export button.', icon: ICONS.clock },
+    ],
+    compareWith: 'Platinum',
+    compareTitle: 'Most businesses should start on Platinum, not Custom',
+    compareBody: "Platinum already covers a full webstore, unlimited products, subscriptions and multi-seat bookings. Custom exists for what's genuinely outside that — a different business model, a specific integration, or enterprise-scale requirements. We'll tell you honestly on the discovery call if Platinum already does what you need.",
+    deltas: [
+      { label: 'Platinum: our themes, tuned for your brand — Custom: built from a blank page', icon: ICONS.plus, ink: 'var(--moss-light)' },
+      { label: 'Platinum: fixed pricing — Custom: a proposal priced to your requirements', icon: ICONS.plus, ink: 'var(--moss-light)' },
+      { label: 'Platinum: our standard integrations — Custom: CRM, ERP and specialised APIs', icon: ICONS.plus, ink: 'var(--moss-light)' },
+      { label: 'Platinum: single build team — Custom: a dedicated project team', icon: ICONS.plus, ink: 'var(--moss-light)' },
+    ],
+    otherHref: routes.plan('platinum'), otherLabel: 'See the Platinum plan',
+    faqs: [
+      ['How much will my custom solution cost?', "It depends entirely on complexity — typical projects range from Rs. 500,000 to several million. The discovery call gets you an initial estimate, and the proposal that follows has real, transparent pricing before you commit to anything."],
+      ['How long does a custom build take?', 'Typically two to four months from signed proposal to launch, depending on complexity, integration requirements and how quickly we get feedback from you.'],
+      ['Can you integrate with the CRM or ERP we already use?', "Almost certainly. We've connected Salesforce, HubSpot, various ERPs and payment, accounting and analytics systems. Tell us what you run and we'll confirm on the discovery call."],
+      ['Can you migrate us off our current system?', 'Yes — data export and import, integration during the transition, training and support through cutover. This is scoped and priced as part of the proposal.'],
     ],
   },
 }

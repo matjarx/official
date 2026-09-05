@@ -11,7 +11,7 @@ export const routes = {
   pricing: '/pricing',
   features: '/features',
   websiteAudit: '/website-audit',
-  plan: (slug: 'launch' | 'boost' | 'growth' | 'platinum') => `/plans/${slug}`,
+  plan: (slug: 'launch' | 'boost' | 'growth' | 'platinum' | 'custom') => `/plans/${slug}`,
   industry: (slug: string) => `/website-for-${slug}`,
   location: (slug: string) => `/website-design-${slug}`,
   compare: (rival: string) => `/alternatives/matjarx-vs-${rival}`,
