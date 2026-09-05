@@ -38,6 +38,7 @@ export const NAV_ITEMS: NavItem[] = [
     menu: [
       { label: 'All plans & pricing', href: routes.pricing, note: 'Compare the four plans' },
       { label: 'Features', href: routes.features, note: 'Everything included, by plan' },
+      { label: 'Templates', href: routes.templates, note: '100+ designs to launch from' },
       { label: 'Launch plan', href: routes.plan('launch'), note: 'Get online properly, in 7 days' },
       { label: 'Boost plan', href: routes.plan('boost'), note: 'More pages, more SEO, more growth' },
       { label: 'Growth plan', href: routes.plan('growth'), note: 'A marketing team, not just a website' },

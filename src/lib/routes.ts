@@ -13,6 +13,7 @@ export const routes = {
   websiteAudit: '/website-audit',
   videos: '/videos',
   alternatives: '/alternatives',
+  templates: '/templates',
   plan: (slug: 'launch' | 'boost' | 'growth' | 'platinum' | 'custom') => `/plans/${slug}`,
   industry: (slug: string) => `/website-for-${slug}`,
   location: (slug: string) => `/website-design-${slug}`,
