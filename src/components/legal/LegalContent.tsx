@@ -73,8 +73,8 @@ export default function LegalContent({ doc }: { doc: LegalDoc }) {
                 ))}
 
                 <div className="glass-card" style={{ marginTop: 20, padding: '26px 28px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 9 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>MatjarX (Pvt) Ltd</span>
-                  <span style={{ fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>B27, Street 7, Jt Society, Malir, Karachi, Pakistan</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>MatjarX (Sole Proprietorship)</span>
+                  <span style={{ fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>B6, 4th Street, Zamzama, Clifton, Karachi, Sindh, Pakistan</span>
                   <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', paddingTop: 4 }}>
                     <a href="mailto:office@matjarx.com" style={{ fontSize: 14, fontWeight: 600 }}>office@matjarx.com</a>
                     <a href="tel:+923033720953" style={{ fontSize: 14, fontWeight: 600 }}>+92 303 372 0953</a>

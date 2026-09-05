@@ -117,7 +117,7 @@ export default function ContactContent() {
                     ))}
                   </div>
                   <div style={{ height: 170, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, #0A2233)', display: 'grid', placeItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Map — Jt Society, Malir, Karachi</span>
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Map — Zamzama, Clifton, Karachi</span>
                   </div>
                 </div>
 

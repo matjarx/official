@@ -40,17 +40,16 @@ export default function HelpContent() {
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
             {HELP_TOPICS.map((t) => (
-              <a key={t.slug} href={`#${t.slug}`} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '26px 26px 28px', borderRadius: 22 }}>
+              <Link key={t.slug} href={routes.helpArticle(t.slug)} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '26px 26px 28px', borderRadius: 22 }}>
                 <span style={{ width: 42, height: 42, borderRadius: 13, background: 'var(--navy)', display: 'grid', placeItems: 'center' }}>
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={t.icon} /></svg>
                 </span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18.5, letterSpacing: '-0.35px', color: '#04121F' }}>{t.title}</span>
                 <span style={{ fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{t.body}</span>
                 <span style={{ marginTop: 'auto', paddingTop: 10, display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: '#A08A5E' }}>{t.count} articles</span>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)', marginLeft: 'auto' }}>Browse →</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)', marginLeft: 'auto' }}>Read the guide →</span>
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
@@ -59,15 +58,18 @@ export default function HelpContent() {
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Most read this month</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 14 }}>
-            {HELP_POPULAR.map((p) => (
-              <a key={p.title} href="#article" className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 13, padding: '18px 20px', borderRadius: 16 }}>
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--olive)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4" /></svg>
-                <span style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
-                  <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: '#04121F' }}>{p.title}</span>
-                  <span style={{ fontSize: 11.5, color: '#6A7F92' }}>{p.topic}</span>
-                </span>
-              </a>
-            ))}
+            {HELP_POPULAR.map((p) => {
+              const topicSlug = HELP_TOPICS.find((t) => t.title === p.topic)?.slug
+              return (
+                <Link key={p.title} href={topicSlug ? routes.helpArticle(topicSlug) : routes.help} className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 13, padding: '18px 20px', borderRadius: 16 }}>
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--olive)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4" /></svg>
+                  <span style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
+                    <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: '#04121F' }}>{p.title}</span>
+                    <span style={{ fontSize: 11.5, color: '#6A7F92' }}>{p.topic}</span>
+                  </span>
+                </Link>
+              )
+            })}
           </div>
         </section>
 
@@ -98,7 +100,7 @@ export default function HelpContent() {
             <div style={{ padding: '32px 32px 34px', borderRadius: 26, background: 'rgba(255,255,255,0.66)', border: '1px solid rgba(255,255,255,0.9)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 48px rgba(4,18,31,0.09), inset 0 1px 0 rgba(255,255,255,0.95)', display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.4vw, 30px)', letterSpacing: '-1px', color: '#04121F' }}>Send us a message</h2>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>Monday to Friday, 11am to 8pm. We reply the same working day.</p>
+                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>Monday to Saturday, 11am to 8pm. We reply the same working day.</p>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 16 }}>
@@ -160,7 +162,7 @@ export default function HelpContent() {
                 </div>
                 <div style={{ height: 168, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, #0A2233)', border: '1px solid rgba(255,255,255,0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                   <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--moss-light)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /></svg>
-                  <span style={{ fontSize: 12.5, color: 'rgba(226,236,245,0.55)' }}>Zamzama Boulevard, Clifton, Karachi</span>
+                  <span style={{ fontSize: 12.5, color: 'rgba(226,236,245,0.55)' }}>Zamzama, Clifton, Karachi</span>
                 </div>
               </div>
 

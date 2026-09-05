@@ -225,7 +225,7 @@ export const CITY_DATA: Record<CityKey, {
     quoteName: "Saeed Ahmed",
     quoteCompany: "Caterer, Islamabad",
     wins: ["Enquiries doubled in the first quarter after launch", "Ranking for \"catering Islamabad\" inside ten weeks", "Bookings taken online instead of over the phone"],
-    officeLine: "Islamabad and Rawalpindi clients work with us over WhatsApp and video call — call +92 303 372 0953, Monday to Friday, 11am to 8pm.",
+    officeLine: "Islamabad and Rawalpindi clients work with us over WhatsApp and video call — call +92 303 372 0953, Monday to Saturday, 11am to 8pm.",
   },
   "jacobabad": {
     name: "Jacobabad",
@@ -296,7 +296,7 @@ export const CITY_DATA: Record<CityKey, {
     quoteName: "China Friend",
     quoteCompany: "Karachi",
     wins: ["#1 for \"restaurant catering Karachi\" within four months", "142 Google profile views a week from Clifton and DHA", "21 calls a week straight from the Maps listing"],
-    officeLine: "Visit us at 6c, Ln 4, Zamzama Boulevard, Clifton — Monday to Friday, 11am to 8pm.",
+    officeLine: "Visit us at B6, 4th Street, Zamzama, Clifton — Monday to Saturday, 11am to 8pm.",
   },
   "khairpur": {
     name: "Khairpur",
@@ -377,7 +377,7 @@ export const CITY_DATA: Record<CityKey, {
     quoteName: "Al-Falah Traders",
     quoteCompany: "Lahore",
     wins: ["4,812 monthly visitors, up 18% on the previous month", "96 enquiries a month, 34 of which became orders", "Ranking in three Lahore areas within two months"],
-    officeLine: "Lahore clients work with us over WhatsApp and video call — call +92 303 372 0953, Monday to Friday, 11am to 8pm.",
+    officeLine: "Lahore clients work with us over WhatsApp and video call — call +92 303 372 0953, Monday to Saturday, 11am to 8pm.",
   },
   "larkana": {
     name: "Larkana",

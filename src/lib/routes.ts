@@ -17,6 +17,7 @@ export const routes = {
   compare: (rival: string) => `/alternatives/matjarx-vs-${rival}`,
   bestBuilder: '/best-website-builder-pakistan',
   help: '/help',
+  helpArticle: (slug: string) => `/help/${slug}`,
   blog: '/blogs',
   blogPost: (slug: string) => `/blogs/${slug}`,
   about: '/about-us',
