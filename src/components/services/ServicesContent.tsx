@@ -18,6 +18,7 @@ import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes } from '@/lib/routes'
 import { SERVICE_TABS, SERVICE_DATA, type ServiceKey } from '@/lib/services-data'
+import ServiceDetailSections from './ServiceDetailSections'
 
 export default function ServicesContent() {
   const [svc, setSvc] = useState<ServiceKey>('dfy')
@@ -138,6 +139,8 @@ export default function ServicesContent() {
             </div>
           </div>
         </section>
+
+        <ServiceDetailSections svc={svc} />
 
         <SiteFooter />
       </div>
