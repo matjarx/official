@@ -53,5 +53,5 @@ export const HELP_CONTACT_ROWS = [
   { label: 'Address', value: 'B6, 4th Street, Zamzama, Clifton, Karachi.', note: '', icon: 'M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z' },
   { label: 'Hours', value: 'Monday – Saturday, 11am to 8pm.', note: '', icon: 'M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM12 8v4.5l3 2' },
   { label: 'Gulf clients', value: 'Connect support to schedule.', note: 'We work your time zone — ask for a UAE, Saudi or Qatar call slot.', icon: 'M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM3.5 12h17M12 3.5c2.2 2.3 3.4 5.3 3.4 8.5S14.2 18.2 12 20.5' },
-  { label: 'Existing clients', value: 'Message your concierge from the dashboard for a 30 minutes reply.', note: '', icon: 'M4.5 5.5h15v10h-9L6 19.5v-4H4.5z' },
+  { label: 'Existing clients', value: 'Message your concierge from the dashboard for a reply within four working hours.', note: '', icon: 'M4.5 5.5h15v10h-9L6 19.5v-4H4.5z' },
 ]

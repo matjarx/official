@@ -168,7 +168,7 @@ export default function HelpContent() {
 
               <div style={{ padding: '26px 28px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(244,242,174,0.9), rgba(198,203,138,0.9))', border: '1px solid rgba(255,255,255,0.7)', backdropFilter: 'blur(22px)', boxShadow: '0 22px 50px rgba(112,117,56,0.22), inset 0 1px 0 rgba(255,255,255,0.85)', display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: '#4A5518', fontWeight: 700 }}>Already a client?</span>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.18, letterSpacing: '-0.7px', color: '#1F2A08' }}>Message your concierge from the dashboard for a 30 minute reply.</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.18, letterSpacing: '-0.7px', color: '#1F2A08' }}>Message your concierge from the dashboard for a reply within four working hours.</span>
                 <a href="#login" className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Open my dashboard</a>
               </div>
             </div>

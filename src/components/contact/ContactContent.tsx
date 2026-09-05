@@ -9,10 +9,11 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
-import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS } from '@/lib/contact-data'
+import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS, CONTACT_FAQS } from '@/lib/contact-data'
 
 export default function ContactContent() {
   const [topic, setTopic] = useState(CONTACT_TOPICS[0])
+  const [openFaq, setOpenFaq] = useState(0)
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -59,7 +60,7 @@ export default function ContactContent() {
               <div className="glass-card" style={{ padding: 'clamp(24px, 3.5vw, 34px) clamp(20px, 3vw, 34px) clamp(26px, 3.5vw, 36px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: '#04121F' }}>Send us a message</h2>
-                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>We reply within four working hours, Monday to Saturday.</p>
+                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>We reply within 24 business hours — sooner over WhatsApp.</p>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 16 }}>
@@ -127,6 +128,28 @@ export default function ContactContent() {
                   <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Open WhatsApp</a>
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* Getting support FAQ */}
+          <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Getting support</span>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Common questions about contacting us</h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {CONTACT_FAQS.map(([q, a], i) => {
+                const open = openFaq === i
+                return (
+                  <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
+                    <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
+                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q}</span>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                    </button>
+                    {open && <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{a}</p>}
+                  </div>
+                )
+              })}
             </div>
           </section>
 
