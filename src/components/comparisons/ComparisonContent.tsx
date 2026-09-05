@@ -9,7 +9,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
-import { RIVAL_DATA, OUR_POINTS, otherComparisonsFor, type RivalKey } from '@/lib/comparison-data'
+import { RIVAL_DATA, otherComparisonsFor, type RivalKey } from '@/lib/comparison-data'
 
 export default function ComparisonContent({ rivalKey }: { rivalKey: RivalKey }) {
   const d = RIVAL_DATA[rivalKey]
@@ -38,7 +38,9 @@ export default function ComparisonContent({ rivalKey }: { rivalKey: RivalKey }) 
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 54px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: '#04121F' }}>
             MatjarX vs <span className="marker">{d.name}</span>
           </h1>
-          <p style={{ margin: 0, maxWidth: '38em', fontSize: 'clamp(14.5px, 1.8vw, 18px)', lineHeight: 1.62, color: '#435A70' }}>{d.intro}</p>
+          {d.intro.map((p) => (
+            <p key={p} style={{ margin: 0, maxWidth: '38em', fontSize: 'clamp(14.5px, 1.8vw, 18px)', lineHeight: 1.62, color: '#435A70' }}>{p}</p>
+          ))}
         </section>
 
         {/* Two-card side-by-side */}
@@ -50,7 +52,7 @@ export default function ComparisonContent({ rivalKey }: { rivalKey: RivalKey }) 
                 <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', textTransform: 'uppercase', color: 'var(--navy)', background: 'var(--butter)', padding: '4px 10px', borderRadius: 999 }}>Done for you</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {OUR_POINTS.map((p) => (
+                {d.ourPoints.map((p) => (
                   <div key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 11 }}>
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--moss-light)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                     <span style={{ fontSize: 14, lineHeight: 1.55, color: 'rgba(233,239,245,0.9)' }}>{p}</span>
@@ -66,7 +68,7 @@ export default function ComparisonContent({ rivalKey }: { rivalKey: RivalKey }) 
             <div className="glass-card" style={{ padding: 'clamp(26px, 3.2vw, 34px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 18 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: '#04121F' }}>{d.name}</span>
-                <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', textTransform: 'uppercase', color: '#8A6A4B', background: 'rgba(180,135,79,0.14)', padding: '4px 10px', borderRadius: 999 }}>{d.mode}</span>
+                {d.mode && <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', textTransform: 'uppercase', color: '#8A6A4B', background: 'rgba(180,135,79,0.14)', padding: '4px 10px', borderRadius: 999 }}>{d.mode}</span>}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {d.points.map((p) => (
@@ -76,10 +78,12 @@ export default function ComparisonContent({ rivalKey }: { rivalKey: RivalKey }) 
                   </div>
                 ))}
               </div>
-              <div style={{ marginTop: 'auto', paddingTop: 10, borderTop: '1px solid rgba(4,18,31,0.09)', display: 'flex', flexDirection: 'column', gap: 3 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: '#04121F' }}>{d.price}</span>
-                <span style={{ fontSize: 12.5, color: '#6A7F92' }}>{d.priceNote}</span>
-              </div>
+              {d.price && (
+                <div style={{ marginTop: 'auto', paddingTop: 10, borderTop: '1px solid rgba(4,18,31,0.09)', display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: '#04121F' }}>{d.price}</span>
+                  <span style={{ fontSize: 12.5, color: '#6A7F92' }}>{d.priceNote}</span>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -111,14 +115,52 @@ export default function ComparisonContent({ rivalKey }: { rivalKey: RivalKey }) 
           </div>
         </section>
 
-        {/* Honest panel */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
-          <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>Being straight with you</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(21px, 3vw, 27px)', lineHeight: 1.2, letterSpacing: '-0.8px', color: '#04121F' }}>When {d.name} is the better choice</h2>
-            <p style={{ margin: 0, maxWidth: '46em', fontSize: 14.5, lineHeight: 1.65, color: '#4B5D6E' }}>{d.honest}</p>
-          </div>
-        </section>
+        {/* Honest panel — the original 3 rivals only */}
+        {d.honest && (
+          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
+            <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>Being straight with you</span>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(21px, 3vw, 27px)', lineHeight: 1.2, letterSpacing: '-0.8px', color: '#04121F' }}>When {d.name} is the better choice</h2>
+              <p style={{ margin: 0, maxWidth: '46em', fontSize: 14.5, lineHeight: 1.65, color: '#4B5D6E' }}>{d.honest}</p>
+            </div>
+          </section>
+        )}
+
+        {/* Why we win — the 39 added rivals */}
+        {d.whyWeWin && (
+          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Why MatjarX wins</span>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 34px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Against {d.name}, here&rsquo;s what actually changes</h2>
+            </div>
+            <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {d.whyWeWin.map((p) => (
+                <p key={p} style={{ margin: 0, fontSize: 15, lineHeight: 1.68, color: '#33485B' }}>{p}</p>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* What you'll love checklist — the 39 added rivals */}
+        {d.checklist && (
+          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you&rsquo;ll love</span>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 34px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>About switching to MatjarX</h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
+              {d.checklist.map((c) => (
+                <div key={c.title} className="glass-card" style={{ padding: '22px 24px', borderRadius: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, letterSpacing: '-0.3px', color: '#04121F' }}>{c.title}</span>
+                  </div>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: '#4B5D6E' }}>{c.body}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Testimonial */}
         <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>

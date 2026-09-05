@@ -14,7 +14,7 @@ export const routes = {
   plan: (slug: 'launch' | 'boost' | 'growth' | 'platinum') => `/plans/${slug}`,
   industry: (slug: string) => `/website-for-${slug}`,
   location: (slug: string) => `/website-design-${slug}`,
-  compare: (rival: 'godaddy' | 'wix' | 'squarespace') => `/alternatives/matjarx-vs-${rival}`,
+  compare: (rival: string) => `/alternatives/matjarx-vs-${rival}`,
   bestBuilder: '/best-website-builder-pakistan',
   help: '/help',
   blog: '/blogs',
