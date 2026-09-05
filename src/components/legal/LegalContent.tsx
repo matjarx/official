@@ -1,13 +1,72 @@
 // Legal page — from Marketing - Legal.dc.html. Since each doc has its
 // own real URL here (unlike the source's single-page client-state
 // switcher), the sidebar uses real navigation — active state comes
-// from the route, not local state.
+// from the route, not local state. Body rendering is block-based
+// (h3/h4/paragraph/list/table) to represent each real legal document's
+// own numbered-section structure faithfully rather than flattening it.
 
+import { Fragment, type ReactNode } from 'react'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
-import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc } from '@/lib/legal-data'
+import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc, type LegalBlock } from '@/lib/legal-data'
+
+function renderInline(text: string): ReactNode {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean)
+  return parts.map((part, i) =>
+    part.startsWith('**') && part.endsWith('**')
+      ? <strong key={i}>{part.slice(2, -2)}</strong>
+      : <Fragment key={i}>{part}</Fragment>
+  )
+}
+
+function renderLegalBlock(block: LegalBlock, i: number) {
+  if (block.type === 'h3') {
+    return <h3 key={i} style={{ margin: '6px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 18.5, letterSpacing: '-0.3px', color: '#04121F' }}>{block.text}</h3>
+  }
+  if (block.type === 'h4') {
+    return <h4 key={i} style={{ margin: '2px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, color: '#1B4B6E' }}>{block.text}</h4>
+  }
+  if (block.type === 'p') {
+    return <p key={i} style={{ margin: 0, fontSize: 16, lineHeight: 1.72, color: '#33485B' }}>{renderInline(block.text)}</p>
+  }
+  if (block.type === 'ul') {
+    return (
+      <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 11, paddingLeft: 2 }}>
+        {block.items.map((li, j) => (
+          <span key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 16, lineHeight: 1.65, color: '#33485B' }}>
+            <span style={{ width: 6, height: 6, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
+            <span>{renderInline(li)}</span>
+          </span>
+        ))}
+      </div>
+    )
+  }
+  // table
+  return (
+    <div key={i} className="table-scroll" style={{ borderRadius: 14, border: '1px solid rgba(4,18,31,0.1)', overflow: 'hidden' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 560 }}>
+        <thead>
+          <tr>
+            {block.headers.map((h, hi) => (
+              <th key={hi} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: '#04121F', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {block.rows.map((row, ri) => (
+            <tr key={ri}>
+              {row.map((cell, ci) => (
+                <td key={ci} style={{ padding: '12px 16px', fontSize: 14, lineHeight: 1.5, color: '#33485B', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
 
 export default function LegalContent({ doc }: { doc: LegalDoc }) {
   const d = LEGAL_DATA[doc]
@@ -52,23 +111,11 @@ export default function LegalContent({ doc }: { doc: LegalDoc }) {
               </aside>
 
               <article style={{ minWidth: 0, maxWidth: 700, display: 'flex', flexDirection: 'column', gap: 22 }}>
-                <p style={{ margin: 0, fontSize: 17.5, lineHeight: 1.65, fontWeight: 500, color: '#24384A' }}>{d.intro}</p>
+                <p style={{ margin: 0, fontSize: 17.5, lineHeight: 1.65, fontWeight: 500, color: '#24384A' }}>{renderInline(d.intro)}</p>
                 {d.sections.map((s) => (
                   <div key={s.heading} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
                     <h2 style={{ margin: '12px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.2, letterSpacing: '-0.7px', color: '#04121F' }}>{s.heading}</h2>
-                    {s.paras.map((p) => (
-                      <p key={p} style={{ margin: 0, fontSize: 16, lineHeight: 1.72, color: '#33485B' }}>{p}</p>
-                    ))}
-                    {s.items.length > 0 && (
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: 11, paddingLeft: 2 }}>
-                        {s.items.map((li) => (
-                          <span key={li} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 16, lineHeight: 1.65, color: '#33485B' }}>
-                            <span style={{ width: 6, height: 6, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
-                            {li}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                    {s.blocks.map((b, i) => renderLegalBlock(b, i))}
                   </div>
                 ))}
 
