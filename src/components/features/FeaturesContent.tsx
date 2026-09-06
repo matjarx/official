@@ -6,6 +6,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -13,6 +14,7 @@ import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes } from '@/lib/routes'
 import { FEATURE_GROUPS, ALWAYS_ON, FEATURES_FAQ, type FeatureGroupKey } from '@/lib/features-data'
+import { INTEGRATION_ICONS, SOCIAL_FEED_ICONS, ENGAGEMENT_ICONS } from '@/lib/feature-icons-data'
 import type { FeaturesContentShape } from '@/lib/marketing-content'
 
 const TAB_KEYS = Object.keys(FEATURE_GROUPS) as FeatureGroupKey[]
@@ -113,6 +115,58 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
               <div key={label} className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '18px 20px', borderRadius: 16 }}>
                 <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--olive)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                 <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: '#04121F' }}>{label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Feature & integration icon galleries */}
+        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
+            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Integrations</span>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Connects to the tools you already use</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: 16 }}>
+            {INTEGRATION_ICONS.map((icon) => (
+              <div key={icon.src} className="glass-card" style={{ padding: '18px 14px', borderRadius: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, textAlign: 'center' }}>
+                <div style={{ position: 'relative', width: 44, height: 44 }}>
+                  <Image src={icon.src} alt={icon.label} fill sizes="44px" style={{ objectFit: 'contain' }} />
+                </div>
+                <span style={{ fontSize: 12.5, fontWeight: 600, color: '#04121F' }}>{icon.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
+            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Social media</span>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Embed your social feeds, live</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
+            {SOCIAL_FEED_ICONS.map((icon) => (
+              <div key={icon.src} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: `${icon.width} / ${icon.height}` }}>
+                  <Image src={icon.src} alt={icon.label} fill sizes="(max-width: 600px) 100vw, 320px" style={{ objectFit: 'cover' }} />
+                </div>
+                <p style={{ margin: 0, padding: '10px 14px', fontSize: 13, fontWeight: 600, color: '#04121F' }}>{icon.label}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
+            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>More ways to engage customers</span>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Every widget, built in</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
+            {ENGAGEMENT_ICONS.map((icon) => (
+              <div key={icon.src} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: `${icon.width} / ${icon.height}` }}>
+                  <Image src={icon.src} alt={icon.label} fill sizes="(max-width: 600px) 100vw, 320px" style={{ objectFit: 'cover' }} />
+                </div>
+                <p style={{ margin: 0, padding: '10px 14px', fontSize: 13, fontWeight: 600, color: '#04121F' }}>{icon.label}</p>
               </div>
             ))}
           </div>
