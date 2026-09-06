@@ -7,6 +7,7 @@
 // fallback for sites that block embedding — instead of a static mockup.
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { routes } from '@/lib/routes'
 import type { ExampleSite } from '@/lib/examples-data'
 
@@ -66,6 +67,11 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: '#FFFFFF' }}>{modalItem.name}</span>
               <span style={{ fontSize: 12, color: 'rgba(226,236,245,0.55)' }}>{modalItem.domain}</span>
             </span>
+            {modalItem.proofImage && (
+              <div style={{ position: 'relative', width: 132, height: 86, flex: '0 0 auto', borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.2)' }} title="Real Google listing for this client">
+                <Image src={modalItem.proofImage.src} alt={modalItem.proofImage.alt} fill sizes="132px" style={{ objectFit: 'cover' }} />
+              </div>
+            )}
             <Link href={routes.pricing} className="mx-get-site" style={{ marginLeft: 'auto', padding: '12px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: '#16210B', background: 'linear-gradient(160deg, #C6CB8A, #A8AD6A)' }}>Get A Website Like This</Link>
             <button type="button" onClick={() => setModalIndex(-1)} title="Close" style={{ all: 'unset', cursor: 'pointer', width: 40, height: 40, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.22)' }}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>

@@ -1,9 +1,10 @@
 // Data for the Templates & Examples page — from files/matjarx_templates_page.md,
-// verbatim. This page has no route/component/data file yet even though the
-// user's own master page inventory marks it P0. Templates themselves live
-// inside the app dashboard (behind login) — there are no real template
-// preview images to show here, so categories are represented as real,
-// honestly-worded content cards (tint + text), not fabricated screenshots.
+// verbatim. Templates themselves live inside the app dashboard (behind
+// login); the 12 category cards below stay real, honestly-worded content
+// (tint + text) rather than fabricated screenshots. TEMPLATE_PREVIEWS below
+// are real preview renders pulled from matjarx.com's WordPress media
+// library (already Google-indexed with real alt text) for 6 of the
+// available niches.
 
 export const META = {
   title: 'Website Templates - Professional Design Templates for Your Business',
@@ -15,6 +16,17 @@ export const HERO = {
   subhead: 'Choose from industry-specific designs, customize, and launch your professional website in days.',
   cta: 'Browse Templates in Dashboard',
 }
+
+export type TemplatePreview = { name: string; src: string; alt: string; width: number; height: number }
+
+export const TEMPLATE_PREVIEWS: TemplatePreview[] = [
+  { name: 'Apparel Store', src: '/templates/apparel-shop.webp', alt: 'MatjarX apparel store UI template - responsive fashion e-commerce design with clothing grid and shopping cart', width: 1402, height: 1122 },
+  { name: 'Barber Shop', src: '/templates/barber-shop.webp', alt: 'MatjarX barber shop website template - modern online booking and responsive layout for local grooming businesses', width: 1383, height: 1137 },
+  { name: 'Auto Detailing', src: '/templates/auto-detailing.webp', alt: 'MatjarX auto detailing website design preview', width: 1382, height: 1138 },
+  { name: 'Health & Wellness', src: '/templates/health-and-wellness.webp', alt: 'MatjarX health and wellness website design preview', width: 1399, height: 1124 },
+  { name: 'Spa & Salon', src: '/templates/spa-salon.webp', alt: 'MatjarX spa and salon website design preview', width: 1402, height: 1122 },
+  { name: 'Pet Store', src: '/templates/pet-store.webp', alt: 'MatjarX pet store website design preview', width: 1383, height: 1137 },
+]
 
 export type IconCard = { title: string; body: string[]; icon: string }
 

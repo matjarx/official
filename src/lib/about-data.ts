@@ -30,8 +30,10 @@ export const ABOUT_FAQS: [string, string][] = [
   ['How can I get in touch?', 'Phone or WhatsApp: +92 303 372 0953 (Monday to Saturday, 11am to 8pm PKT). Email: office@matjarx.com.'],
 ]
 
+// Real headshots pulled from matjarx.com's WordPress media library — same
+// files and alt text already indexed by Google, not new assets.
 export const ABOUT_TEAM = [
-  { name: 'Wajeeh Hassan', role: 'CEO & Founder', initials: 'WH', tint: 'linear-gradient(150deg, var(--navy), #2E6EA8)' },
-  { name: 'Junaid Ahmed', role: 'Sales Director', initials: 'JA', tint: 'linear-gradient(150deg, var(--olive), var(--moss-light))' },
-  { name: 'Ijlal Mustafa', role: 'Marketing Director', initials: 'IM', tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)' },
+  { name: 'Wajeeh Hassan', role: 'CEO & Founder', initials: 'WH', tint: 'linear-gradient(150deg, var(--navy), #2E6EA8)', photo: { src: '/about/wajeeh-hassan.webp', alt: 'Wajeeh Hassan, Founder of MatjarX, wearing a white shirt and grey blazer.', width: 1423, height: 1105 } },
+  { name: 'Junaid Ahmed', role: 'Sales Director', initials: 'JA', tint: 'linear-gradient(150deg, var(--olive), var(--moss-light))', photo: { src: '/about/junaid-ahmed.webp', alt: 'Junaid Ahmed, Operations Manager at MatjarX, overseeing day-to-day operations.', width: 1441, height: 1092 } },
+  { name: 'Ijlal Mustafa', role: 'Marketing Director', initials: 'IM', tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', photo: { src: '/about/ijlal-mustafa.webp', alt: 'Ijlal Mustafa, SEO Manager at MatjarX, responsible for search engine optimization.', width: 1420, height: 1108 } },
 ]

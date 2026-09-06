@@ -2,12 +2,13 @@
 
 // Templates & Examples page — real content, verbatim, from
 // files/matjarx_templates_page.md. Templates live inside the app dashboard
-// behind login, so there are no real preview screenshots to show here —
-// each category is a real, honestly-worded content card rather than a
-// fabricated thumbnail.
+// behind login; the 12 category cards stay real, honestly-worded content
+// rather than fabricated thumbnails. TEMPLATE_PREVIEWS below are real
+// preview renders (from matjarx.com's own media library) for 6 niches.
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -15,7 +16,7 @@ import { routes, appLogin } from '@/lib/routes'
 import {
   HERO, WHY_TEMPLATES, TEMPLATE_FEATURES, CATEGORIES, SELECTION_PROCESS,
   CUSTOMIZATION, POPULAR, TEMPLATE_UPDATES, MIGRATION, TEMPLATE_FAQS, RELATED,
-  type IconCard,
+  TEMPLATE_PREVIEWS, type IconCard,
 } from '@/lib/templates-data'
 
 function IconCardGrid({ items, cols = 4 }: { items: IconCard[]; cols?: number }) {
@@ -70,6 +71,22 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
       <div style={{ position: 'relative' }}>
         <AmbientOrbs />
         <div className="page-content">
+
+          {/* Real preview renders */}
+          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '56px 24px 0' }}>
+            <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>See it for yourself</span>
+            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Real template previews</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 18 }}>
+              {TEMPLATE_PREVIEWS.map((p) => (
+                <div key={p.name} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
+                  <div style={{ position: 'relative', width: '100%', aspectRatio: `${p.width} / ${p.height}` }}>
+                    <Image src={p.src} alt={p.alt} fill sizes="(max-width: 700px) 100vw, 400px" style={{ objectFit: 'cover' }} />
+                  </div>
+                  <p style={{ margin: 0, padding: '12px 16px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{p.name}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
           {/* Why use templates */}
           <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 0' }}>

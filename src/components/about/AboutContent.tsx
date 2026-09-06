@@ -7,6 +7,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
@@ -106,8 +107,12 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 20 }}>
               {ABOUT_TEAM_ACTIVE.map((t) => (
                 <div key={t.name} style={{ borderRadius: 22, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)' }}>
-                  <div style={{ height: 210, background: t.tint, display: 'grid', placeItems: 'center' }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.6px', color: 'rgba(255,255,255,0.92)' }}>{t.initials}</span>
+                  <div style={{ position: 'relative', height: 210, background: t.photo ? undefined : t.tint, display: 'grid', placeItems: 'center' }}>
+                    {t.photo ? (
+                      <Image src={t.photo.src} alt={t.photo.alt} fill sizes="220px" style={{ objectFit: 'cover' }} />
+                    ) : (
+                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.6px', color: 'rgba(255,255,255,0.92)' }}>{t.initials}</span>
+                    )}
                   </div>
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 4 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{t.name}</span>

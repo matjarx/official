@@ -12,6 +12,10 @@ export type ExampleSite = {
   name: string; brand: string; domain: string; category: string; cat: string
   nav: string[]; cta: string; ctaBg: string; ctaInk: string
   heroLine: string; heroBlurb: string; result: string; tint: string
+  // Real proof screenshot (Google search/Maps listing) pulled from
+  // matjarx.com's WordPress media library — same file and alt text
+  // already indexed by Google, not a new asset.
+  proofImage?: { src: string; alt: string; width: number; height: number }
 }
 
 export const EXAMPLES: ExampleSite[] = [
@@ -34,7 +38,8 @@ export const EXAMPLES: ExampleSite[] = [
   { name: 'Zulfay Hair', brand: 'ZULFAY', domain: 'zulfayhair.com', category: 'Salons', cat: 'Salons',
     nav: ['Stylists', 'Price list', 'Gallery'], cta: 'Book Now', ctaBg: '#E8B4C8', ctaInk: '#2A0F1A',
     heroLine: 'Your chair is ready.', heroBlurb: "Multi-seat booking across three branches, synced to every stylist's calendar.",
-    result: '1,520 messages', tint: 'linear-gradient(150deg, #A0522D, #3E1B0C)' },
+    result: '1,520 messages', tint: 'linear-gradient(150deg, #A0522D, #3E1B0C)',
+    proofImage: { src: '/services/zulfay-map-listing.webp', alt: 'Zulfay Hair Google search listing featuring the Zulfay logo, 4.8-star rating, salon information, and website button.', width: 1552, height: 1013 } },
   { name: 'CapActix Offshore', brand: 'CAPACTIX', domain: 'capactix.com', category: 'Accounting', cat: 'Accounting',
     nav: ['Services', 'Pricing', 'Blog'], cta: 'Request Call', ctaBg: '#C4262E', ctaInk: '#FFFFFF',
     heroLine: 'Numbers that matter.', heroBlurb: 'We turn your financial data into reporting you can actually act on.',
@@ -42,7 +47,8 @@ export const EXAMPLES: ExampleSite[] = [
   { name: 'Eebeel Home', brand: 'EEBEEL', domain: 'eebeel.pk', category: 'E-commerce', cat: 'E-commerce',
     nav: ['Shop', 'Track order', 'Support'], cta: 'Order Now', ctaBg: '#F4F2AE', ctaInk: '#16210B',
     heroLine: 'Everything for the home.', heroBlurb: '400+ products with JazzCash, Easypaisa and cash-on-delivery checkout.',
-    result: '2,000+ leads', tint: 'linear-gradient(150deg, #6A2C8E, #2A0F3A)' },
+    result: '2,000+ leads', tint: 'linear-gradient(150deg, #6A2C8E, #2A0F3A)',
+    proofImage: { src: '/services/eebeel-map-listing.webp', alt: 'eebeel Google search listing featuring the eebeel logo, 4.8-star rating, beauty and personal care information, and website button.', width: 1552, height: 1013 } },
   { name: 'Sweet Crumbs Bakery', brand: 'SWEET CRUMBS', domain: 'sweetcrumbs.pk', category: 'Restaurants', cat: 'Restaurants',
     nav: ['Menu', 'Our bakery', 'Catering'], cta: 'Book Now', ctaBg: '#6B4A22', ctaInk: '#FFFFFF',
     heroLine: 'Baked fresh, every morning.', heroBlurb: 'Order online for pickup, or reserve your table for the weekend.',
