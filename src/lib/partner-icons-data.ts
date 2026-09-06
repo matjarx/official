@@ -17,6 +17,16 @@ export const PARTNER_TOOL_LOGOS: PartnerIcon[] = [
   { src: '/partner/ruby.png', label: 'Ruby' },
   { src: '/partner/monday.png', label: 'monday.com' },
   { src: '/partner/canva.png', label: 'Canva' },
+  { src: '/partner/xero.webp', label: 'Xero' },
+  { src: '/partner/fundera.png', label: 'Fundera' },
+  { src: '/partner/tailor-brands.webp', label: 'Tailor Brands' },
+  { src: '/partner/shoeboxed.png', label: 'Shoeboxed' },
+  { src: '/partner/sanebox.png', label: 'SaneBox' },
+  { src: '/partner/socialbee.png', label: 'SocialBee' },
+  { src: '/partner/invideo.png', label: 'InVideo' },
+  { src: '/partner/mylo.png', label: 'Mylo' },
+  { src: '/partner/ecredable.png', label: 'eCredable' },
+  { src: '/partner/nase.png', label: 'NASE' },
 ]
 
 export const PARTNER_CATEGORY_ICONS: PartnerIcon[] = [
