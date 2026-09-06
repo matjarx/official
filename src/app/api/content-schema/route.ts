@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
 import { INDUSTRY_DATA } from '@/lib/industry-data'
 import { RIVAL_DATA } from '@/lib/comparison-data'
-import { BLOG_POSTS } from '@/lib/blog-data'
 import { HELP_ARTICLES, HELP_SLUGS } from '@/lib/help-articles-data'
 import { LEGAL_DATA, LEGAL_DOC_KEYS } from '@/lib/legal-data'
 import { ALL_PLANS } from '@/lib/plan-data'
@@ -54,9 +53,9 @@ export async function GET() {
   for (const key of Object.keys(RIVAL_DATA)) {
     entries.push({ slug: `comparisons/${key}`, label: `MatjarX vs ${RIVAL_DATA[key as keyof typeof RIVAL_DATA].name}`, category: 'Comparisons' })
   }
-  for (const post of BLOG_POSTS) {
-    entries.push({ slug: `blog/${post.slug}`, label: post.title, category: 'Blog posts' })
-  }
+  // Blog posts have their own dedicated CRUD editor now (Marketing Site >
+  // Blog, backed by the marketing_blog_posts table) instead of living in
+  // this generic field editor's page list.
   for (const key of HELP_SLUGS) {
     entries.push({ slug: `help/${key}`, label: HELP_ARTICLES[key].title, category: 'Help articles' })
   }

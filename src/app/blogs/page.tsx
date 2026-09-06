@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import BlogContent from '@/components/blog/BlogContent'
-import { getSeoOverride } from '@/lib/marketing-content'
+import { getSeoOverride, getBlogPosts } from '@/lib/marketing-content'
+
+// Re-checks marketing_blog_posts at most once a minute — a new/edited post
+// shows up without a redeploy.
+export const revalidate = 60
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('blogs')
@@ -11,6 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function Page() {
-  return <BlogContent />
+export default async function Page() {
+  const posts = await getBlogPosts()
+  return <BlogContent posts={posts} />
 }

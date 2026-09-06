@@ -11,16 +11,28 @@ import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
-import { BLOG_POSTS, BLOG_CATEGORIES, FEATURED_SLUG, AUTHOR, type BlogCategory } from '@/lib/blog-data'
+import { BLOG_CATEGORIES, FEATURED_SLUG, AUTHOR, type BlogCategory, type BlogPost } from '@/lib/blog-data'
 
-export default function BlogContent() {
+export default function BlogContent({ posts }: { posts: BlogPost[] }) {
   const [cat, setCat] = useState<(typeof BLOG_CATEGORIES)[number]>('All')
-  const featuredPost = BLOG_POSTS.find((p) => p.slug === FEATURED_SLUG)!
+  // Falls back to the first post if the originally-featured slug was ever
+  // deleted through the admin — never crashes on an empty/edited list.
+  const featuredPost = posts.find((p) => p.slug === FEATURED_SLUG) || posts[0]
 
   const filtered = useMemo(
-    () => (cat === 'All' ? BLOG_POSTS : BLOG_POSTS.filter((p) => p.category === (cat as BlogCategory))),
-    [cat]
+    () => (cat === 'All' ? posts : posts.filter((p) => p.category === (cat as BlogCategory))),
+    [cat, posts]
   )
+
+  if (!featuredPost) {
+    return (
+      <div style={{ fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)' }}>
+        <SiteHeader active="resources" />
+        <p style={{ textAlign: 'center', padding: '80px 24px', color: '#4B5D6E' }}>No posts yet.</p>
+        <SiteFooter />
+      </div>
+    )
+  }
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>

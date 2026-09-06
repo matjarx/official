@@ -16,7 +16,7 @@ import { CITY_DETAIL } from './location-detail-data'
 import { INDUSTRY_DATA, type IndustryKey } from './industry-data'
 import { INDUSTRY_DETAIL } from './industry-detail-data'
 import { RIVAL_DATA, type RivalKey } from './comparison-data'
-import { BLOG_POSTS } from './blog-data'
+import { BLOG_POSTS, type BlogPost } from './blog-data'
 import { HELP_ARTICLES, type HelpSlug } from './help-articles-data'
 import { HELP_TOPICS, HELP_POPULAR, HELP_CHANNELS, HELP_SUBJECTS, HELP_FAQS } from './help-data'
 import { LEGAL_DATA, type LegalDoc } from './legal-data'
@@ -251,6 +251,73 @@ export function isWidgetActive(config: { enabled?: boolean; start_date?: string;
   if (config.start_date && today < config.start_date) return false
   if (config.end_date && today > config.end_date) return false
   return true
+}
+
+// Real blog CRUD, backed by its own table (not the marketing_content
+// override mechanism — a create/edit/delete editor needs an actual list
+// to add to and remove from, which a single per-slug override row can't
+// give it). BLOG_POSTS (blog-data.ts) is the seed data and the fallback
+// if this table is ever empty or unreachable — same resilience
+// philosophy as every reserved-slug row above, just via a real table
+// instead. Column names are snake_case in the DB; these two functions
+// map back to BlogPost's existing camelCase shape so nothing downstream
+// (BlogContent, BlogPostContent, generateMetadata, JSON-LD) needs to
+// know the difference.
+type BlogPostRow = {
+  slug: string
+  title: string
+  category: string
+  excerpt: string
+  date: string
+  read_time: string
+  tint: string
+  body: unknown
+  related_slugs: string[]
+  cover_image: { src: string; alt: string; width: number; height: number } | null
+}
+
+function rowToBlogPost(row: BlogPostRow): BlogPost {
+  return {
+    slug: row.slug,
+    title: row.title,
+    category: row.category as BlogPost['category'],
+    excerpt: row.excerpt,
+    date: row.date,
+    readTime: row.read_time,
+    tint: row.tint,
+    body: row.body as BlogPost['body'],
+    relatedSlugs: row.related_slugs || [],
+    coverImage: row.cover_image || undefined,
+  }
+}
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  try {
+    const { data, error } = await supabase
+      .from('marketing_blog_posts')
+      .select('slug, title, category, excerpt, date, read_time, tint, body, related_slugs, cover_image')
+      .eq('published', true)
+      .order('date', { ascending: false })
+    if (error || !data || data.length === 0) return BLOG_POSTS
+    return data.map(rowToBlogPost)
+  } catch {
+    return BLOG_POSTS
+  }
+}
+
+export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+  try {
+    const { data, error } = await supabase
+      .from('marketing_blog_posts')
+      .select('slug, title, category, excerpt, date, read_time, tint, body, related_slugs, cover_image')
+      .eq('slug', slug)
+      .eq('published', true)
+      .maybeSingle()
+    if (error || !data) return BLOG_POSTS.find((p) => p.slug === slug) || null
+    return rowToBlogPost(data)
+  } catch {
+    return BLOG_POSTS.find((p) => p.slug === slug) || null
+  }
 }
 
 export type Testimonial = { quote: string; name: string; company: string; initials: string; tint: string }

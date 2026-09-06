@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { routes } from '@/lib/routes'
-import { BLOG_POSTS } from '@/lib/blog-data'
+import { getBlogPosts } from '@/lib/marketing-content'
 import { RIVAL_DATA } from '@/lib/comparison-data'
 import { INDUSTRY_SLUGS } from '@/lib/industry-data'
 import { CITY_SLUGS } from '@/lib/location-data'
@@ -14,7 +14,7 @@ import { LEGAL_DOC_KEYS } from '@/lib/legal-data'
 
 const SITE_URL = 'https://matjarx.com'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
 
   const staticRoutes = [
@@ -77,7 +77,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }))
 
-  const blogRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+  const blogPosts = await getBlogPosts()
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${SITE_URL}${routes.blogPost(post.slug)}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,

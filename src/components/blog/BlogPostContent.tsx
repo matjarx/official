@@ -9,12 +9,16 @@ import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
-import { BLOG_POSTS, AUTHOR, SHARE_LINKS, type BlogPost } from '@/lib/blog-data'
+import { AUTHOR, SHARE_LINKS, type BlogPost } from '@/lib/blog-data'
 
-export default function BlogPostContent({ post }: { post: BlogPost }) {
+// allPosts comes from the same getBlogPosts() call the page already made
+// for the listing — resolving relatedSlugs against the live table rather
+// than the static BLOG_POSTS array, so an edited/deleted post's related
+// links never drift out of sync with what's actually live.
+export default function BlogPostContent({ post, allPosts }: { post: BlogPost; allPosts: BlogPost[] }) {
   const toc = post.body.filter((b) => b.t === 'h')
   const related = post.relatedSlugs
-    .map((slug) => BLOG_POSTS.find((p) => p.slug === slug))
+    .map((slug) => allPosts.find((p) => p.slug === slug))
     .filter((p): p is BlogPost => !!p)
 
   return (
