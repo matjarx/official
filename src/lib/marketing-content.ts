@@ -72,8 +72,14 @@ export function getDefaultContent(slug: string): Record<string, unknown> | null 
       return { heroTicks: DEFAULT_HERO_TICKS, testimonials: DEFAULT_TESTIMONIALS, howToChoose: DEFAULT_HOW_TO_CHOOSE, faqs: PRICING_FAQS, compareGroups: COMPARE_GROUPS, plans: DEFAULT_PLAN_ROWS }
     case 'features':
       return { groups: FEATURE_GROUPS, alwaysOn: ALWAYS_ON, faqs: FEATURES_FAQ }
-    case 'services':
-      return { tabs: SERVICE_DATA, detail: { dfy: DFY, seo: SEO, concierge: CONCIERGE, growth: GROWTH_SERVICE_DETAIL } }
+    // Each of the 4 services is its own real page (matching the exact
+    // live matjarx.com URLs), same shape as 'plans' below.
+    case 'services': {
+      if (!key || !(key in SERVICE_DATA)) return null
+      const serviceKey = key as ServiceKey
+      const detail = { dfy: DFY, seo: SEO, concierge: CONCIERGE, growth: GROWTH_SERVICE_DETAIL }[serviceKey]
+      return { ...SERVICE_DATA[serviceKey], detail }
+    }
     case 'plans': {
       if (!key || !(key in PLAN_DATA)) return null
       const planKey = key as PlanKey

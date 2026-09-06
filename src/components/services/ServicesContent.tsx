@@ -1,15 +1,18 @@
 'use client'
 
-// Services page — from Marketing - Services.dc.html. Four services behind
-// tabs, each: navy hero with the editor bleeding into the next section,
-// alternating image/text blocks, a six-card grid, and a navy testimonial
-// panel with result stats.
+// The 4 services each have their own real page, matching the exact live
+// matjarx.com URLs (done-for-you-website, local-national-and-global-seo,
+// concierge-service, growth-marketing-service) — no /services hub exists
+// on the live site. One shared component (same pattern as PlanContent for
+// the 5 /plans/{key} pages): navy hero with the editor bleeding into the
+// next section, a tab strip that's real navigation between the 4 pages
+// (not client-side state), alternating image/text blocks, a six-card
+// grid, and a navy testimonial panel with result stats.
 //
 // The hero's static assets/editor-showcase.png is superseded by the live
 // EditorShowcase component (per the handoff: "now superseded by the live
 // Editor Showcase component") — same bleed-into-next-section treatment.
 
-import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
@@ -17,13 +20,16 @@ import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
-import { routes } from '@/lib/routes'
-import { SERVICE_TABS, SERVICE_DATA, type ServiceKey } from '@/lib/services-data'
+import { routes, SERVICE_ROUTES } from '@/lib/routes'
+import { SERVICE_TABS, SERVICE_DATA, type ServiceKey, type ServiceDataEntry } from '@/lib/services-data'
 import ServiceDetailSections from './ServiceDetailSections'
 
-export default function ServicesContent({ tabs = SERVICE_DATA }: { tabs?: typeof SERVICE_DATA }) {
-  const [svc, setSvc] = useState<ServiceKey>('dfy')
-  const d = tabs[svc]
+export type ServicesContentShape = ServiceDataEntry
+const DEFAULT_CONTENT: Record<ServiceKey, ServicesContentShape> = SERVICE_DATA
+
+export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[serviceKey] }: { serviceKey: ServiceKey; content?: ServicesContentShape }) {
+  const svc = serviceKey
+  const d = content
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -57,9 +63,9 @@ export default function ServicesContent({ tabs = SERVICE_DATA }: { tabs?: typeof
             {SERVICE_TABS.map((t) => {
               const on = svc === t.id
               return (
-                <button key={t.id} type="button" onClick={() => setSvc(t.id)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? '#FFFFFF' : '#4B5D6E', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
+                <Link key={t.id} href={SERVICE_ROUTES[t.id]} style={{ padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? '#FFFFFF' : '#4B5D6E', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
                   {t.label}
-                </button>
+                </Link>
               )
             })}
           </div>

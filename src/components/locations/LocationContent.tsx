@@ -37,7 +37,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
-      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://matjarx.com' + routes.services },
+      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://matjarx.com' + routes.home },
       { '@type': 'ListItem', position: 3, name: d.name, item: pageUrl },
     ],
   }
@@ -62,7 +62,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
           <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#6A7F92' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
-            <Link href={routes.services}>Locations</Link>
+            <span>Locations</span>
             <span>/</span>
             <span style={{ fontWeight: 600, color: '#04121F' }}>{d.name}</span>
           </div>

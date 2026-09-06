@@ -4,9 +4,18 @@
 // each other by literal filename (single-file constraint), which these
 // replace.
 
+// Exact live matjarx.com URLs for the 4 real service pages — confirmed via
+// the WordPress REST API (no /services hub exists there; each stands alone).
+export const SERVICE_ROUTES = {
+  dfy: '/done-for-you-website',
+  seo: '/local-national-and-global-seo',
+  concierge: '/concierge-service',
+  growth: '/growth-marketing-service',
+} as const
+
 export const routes = {
   home: '/',
-  services: '/services',
+  service: (key: keyof typeof SERVICE_ROUTES) => SERVICE_ROUTES[key],
   websiteExamples: '/website-examples',
   pricing: '/pricing',
   features: '/features',

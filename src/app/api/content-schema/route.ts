@@ -6,6 +6,7 @@ import { BLOG_POSTS } from '@/lib/blog-data'
 import { HELP_ARTICLES, HELP_SLUGS } from '@/lib/help-articles-data'
 import { LEGAL_DATA, LEGAL_DOC_KEYS } from '@/lib/legal-data'
 import { ALL_PLANS } from '@/lib/plan-data'
+import { SERVICE_TABS } from '@/lib/services-data'
 
 type Entry = { slug: string; label: string; category: string }
 
@@ -23,7 +24,6 @@ export async function GET() {
 
   entries.push({ slug: 'home', label: 'Home', category: 'Main pages' })
   entries.push({ slug: 'pricing', label: 'Pricing', category: 'Main pages' })
-  entries.push({ slug: 'services', label: 'Services', category: 'Main pages' })
   entries.push({ slug: 'features', label: 'Features', category: 'Main pages' })
   entries.push({ slug: 'about', label: 'About Us', category: 'Main pages' })
   entries.push({ slug: 'contact', label: 'Contact', category: 'Main pages' })
@@ -41,6 +41,9 @@ export async function GET() {
 
   for (const key of Object.keys(ALL_PLANS) as (keyof typeof ALL_PLANS)[]) {
     entries.push({ slug: `plans/${key}`, label: `${ALL_PLANS[key].name} Plan`, category: 'Plans' })
+  }
+  for (const t of SERVICE_TABS) {
+    entries.push({ slug: `services/${t.id}`, label: t.label, category: 'Services' })
   }
   for (const key of Object.keys(INDUSTRY_DATA)) {
     entries.push({ slug: `industries/${key}`, label: INDUSTRY_DATA[key as keyof typeof INDUSTRY_DATA].name, category: 'Industries' })

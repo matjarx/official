@@ -19,7 +19,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     { url: routes.home, changeFrequency: 'weekly', priority: 1 },
-    { url: routes.services, changeFrequency: 'monthly', priority: 0.9 },
+    { url: routes.service('dfy'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: routes.service('seo'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: routes.service('concierge'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: routes.service('growth'), changeFrequency: 'monthly', priority: 0.9 },
     { url: routes.websiteExamples, changeFrequency: 'weekly', priority: 0.8 },
     { url: routes.pricing, changeFrequency: 'weekly', priority: 1 },
     { url: routes.features, changeFrequency: 'monthly', priority: 0.8 },

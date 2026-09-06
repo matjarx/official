@@ -103,18 +103,28 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                 const isOpen = open === i
                 const color = isActive ? (dark ? 'var(--butter)' : 'var(--olive)') : dark ? 'rgba(226,236,245,0.78)' : '#1C3B56'
                 return (
-                  <div key={item.key} style={{ position: 'relative' }}>
+                  <div key={item.key} style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                    {/* The label is a real link — clicking "Pricing" (or any
+                        top-level item) navigates to its own page. The
+                        chevron is a separate click target so the dropdown
+                        can still be browsed without leaving the page. */}
                     <a
                       href={item.href}
-                      onClick={item.menu ? (e) => { e.preventDefault(); setOpen(isOpen ? -1 : i) } : undefined}
                       className={dark ? 'nav-link-dark' : 'nav-link-light'}
-                      style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
+                      style={{ display: 'flex', alignItems: 'center', gap: 5, padding: item.menu ? '9px 4px 9px 15px' : '9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
                     >
                       {item.label}
-                      {item.menu && (
-                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 180ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                      )}
                     </a>
+                    {item.menu && (
+                      <button
+                        type="button"
+                        onClick={() => setOpen(isOpen ? -1 : i)}
+                        aria-label={`${item.label} menu`}
+                        style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '9px 12px 9px 4px', borderRadius: 999, color }}
+                      >
+                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 180ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      </button>
+                    )}
                     {item.menu && isOpen && (
                       <div
                         style={{
@@ -227,17 +237,26 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
               const color = isActive ? (dark ? 'var(--butter)' : 'var(--olive)') : dark ? 'rgba(226,236,245,0.78)' : '#1C3B56'
               return (
                 <div key={item.key} style={{ display: 'flex', flexDirection: 'column' }}>
-                  <a
-                    href={item.href}
-                    onClick={item.menu ? (e) => { e.preventDefault(); setOpen(isOpen ? -1 : i) } : () => setDrawer(false)}
-                    className={dark ? 'mobile-link-dark' : 'mobile-link-light'}
-                    style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '15px 14px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 16, fontWeight: isActive ? 700 : 500, color }}
-                  >
-                    <span style={{ marginRight: 'auto' }}>{item.label}</span>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <a
+                      href={item.href}
+                      onClick={() => setDrawer(false)}
+                      className={dark ? 'mobile-link-dark' : 'mobile-link-light'}
+                      style={{ display: 'flex', alignItems: 'center', flex: 1, minWidth: 0, gap: 10, padding: '15px 14px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 16, fontWeight: isActive ? 700 : 500, color }}
+                    >
+                      <span>{item.label}</span>
+                    </a>
                     {item.menu && (
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 180ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      <button
+                        type="button"
+                        onClick={() => setOpen(isOpen ? -1 : i)}
+                        aria-label={`${item.label} menu`}
+                        style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '15px 14px', color }}
+                      >
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 180ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      </button>
                     )}
-                  </a>
+                  </div>
                   {item.menu && isOpen && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 2, margin: '2px 0 8px 16px', paddingLeft: 16, borderLeft: '2px solid rgba(198,203,138,0.7)' }}>
                       {item.menu.map((m) => (

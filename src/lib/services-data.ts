@@ -13,12 +13,15 @@ export const SERVICE_TABS: { id: ServiceKey; label: string }[] = [
   { id: 'growth', label: 'Growth marketing' },
 ]
 
-export const SERVICE_DATA: Record<ServiceKey, {
+export type ServiceDataEntry = {
   kicker: string; titleLead: string; titleMark: string; subtitle: string; heroCta: string
   pitchTitle: string; pitchBody: string; blocks: ServiceBlock[]
   gridTitle: string; gridItems: GridItem[]
   quote: string; quoteName: string; quoteCompany: string; resultStats: ResultStat[]
-}> = {
+  detail?: unknown
+}
+
+export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
   dfy: {
     kicker: 'Done-for-you website',
     titleLead: "We'll build your complete website in",
