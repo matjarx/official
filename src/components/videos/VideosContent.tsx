@@ -13,6 +13,7 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
+import InstagramEmbed from './InstagramEmbed'
 import { routes } from '@/lib/routes'
 import {
   HERO, INTRO, VIDEO_SECTIONS, CATEGORIES_BY_PURPOSE, CATEGORIES_BY_LENGTH,
@@ -22,12 +23,16 @@ import {
 function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos'][number] }) {
   return (
     <div className="glass-card" style={{ borderRadius: 22, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ height: 140, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-        <span style={{ width: 42, height: 42, borderRadius: '50%', background: 'rgba(255,255,255,0.14)', display: 'grid', placeItems: 'center' }}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="rgba(255,255,255,0.85)"><path d="M8 5v14l11-7z" /></svg>
-        </span>
-        <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', color: 'rgba(255,255,255,0.7)' }}>Video coming soon</span>
-      </div>
+      {video.url ? (
+        <InstagramEmbed url={video.url} />
+      ) : (
+        <div style={{ height: 140, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+          <span style={{ width: 42, height: 42, borderRadius: '50%', background: 'rgba(255,255,255,0.14)', display: 'grid', placeItems: 'center' }}>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="rgba(255,255,255,0.85)"><path d="M8 5v14l11-7z" /></svg>
+          </span>
+          <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', color: 'rgba(255,255,255,0.7)' }}>Video coming soon</span>
+        </div>
+      )}
       <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 9 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
           <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>{video.title}</span>

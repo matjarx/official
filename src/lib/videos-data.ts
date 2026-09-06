@@ -20,6 +20,12 @@ export type Video = {
   body: string
   items?: string[]
   extra?: string // a one-line "Perfect for:" / "Topics:" / "Tone:" note, for videos without a full bullet list
+  // An instagram.com/reel/.../ or /p/.../ URL — once set, the card shows
+  // the real embedded video instead of the "Video coming soon"
+  // placeholder. Editable per-video from the admin's Marketing Content
+  // editor (this is already part of the 'videos' content shape merged
+  // from Supabase), no code change needed to fill one in.
+  url?: string
 }
 
 export type VideoSection = { title: string; videos: Video[] }
