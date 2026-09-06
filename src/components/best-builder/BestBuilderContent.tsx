@@ -9,11 +9,13 @@
 
 import { Fragment, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { HERO_STATS, COL_HEADS, MATRIX, PLATFORM_PROFILES, WIN_REASONS, CHOOSE_GUIDE, REASONS, DIY_CASES, VS_LINKS, BEST_BUILDER_FAQS } from '@/lib/best-builder-data'
+import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 
 const TONE_COLOR = { us: 'var(--navy)', ok: '#3B5063', bad: '#B4874F' } as const
 
@@ -103,6 +105,11 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
               return (
                 <div key={p.name} className="glass-card" style={{ borderRadius: 20, overflow: 'hidden' }}>
                   <button type="button" onClick={() => setOpenProfile(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '20px 24px' }}>
+                    {PLATFORM_LOGOS[p.name] && (
+                      <span style={{ position: 'relative', width: 28, height: 28, flex: '0 0 auto' }}>
+                        <Image src={PLATFORM_LOGOS[p.name]} alt="" fill sizes="28px" style={{ objectFit: 'contain' }} />
+                      </span>
+                    )}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: '#04121F' }}>{i + 1}. {p.name}</span>
                       <span style={{ fontSize: 13, color: '#6A7F92' }}>{p.tagline}</span>

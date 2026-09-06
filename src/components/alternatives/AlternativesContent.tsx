@@ -4,11 +4,13 @@
 // see src/lib/alternatives-data.ts for the source-of-truth groups/copy.
 
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { HERO, GROUPS, WHY_COMPARE, CANT_FIND, CLOSING } from '@/lib/alternatives-data'
+import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 
 export type AlternativesContentShape = { hero: typeof HERO; groups: typeof GROUPS; whyCompare: typeof WHY_COMPARE }
 const DEFAULT_CONTENT: AlternativesContentShape = { hero: HERO, groups: GROUPS, whyCompare: WHY_COMPARE }
@@ -43,7 +45,14 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 14 }}>
                 {group.links.map((link) => (
                   <Link key={link.key} href={routes.compare(link.key)} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '20px 22px 22px', borderRadius: 18 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>MatjarX vs {link.label}</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
+                      {PLATFORM_LOGOS[link.label] && (
+                        <span style={{ position: 'relative', width: 20, height: 20, flex: '0 0 auto' }}>
+                          <Image src={PLATFORM_LOGOS[link.label]} alt="" fill sizes="20px" style={{ objectFit: 'contain' }} />
+                        </span>
+                      )}
+                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>MatjarX vs {link.label}</span>
+                    </span>
                     {link.blurb ? (
                       <span style={{ fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>{link.blurb}</span>
                     ) : null}

@@ -5,11 +5,13 @@
 // real template shared by every rival.
 
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { RIVAL_DATA, otherComparisonsFor, type RivalKey } from '@/lib/comparison-data'
+import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 
 export type ComparisonContentShape = (typeof RIVAL_DATA)[RivalKey]
 
@@ -49,6 +51,11 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         {/* Hero */}
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '28px 24px 0', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <span className="glass-chip" style={{ padding: '8px 16px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: '#3B5063' }}>Honest comparison</span>
+          {PLATFORM_LOGOS[d.name] && (
+            <span style={{ position: 'relative', width: 40, height: 40 }}>
+              <Image src={PLATFORM_LOGOS[d.name]} alt="" fill sizes="40px" style={{ objectFit: 'contain' }} />
+            </span>
+          )}
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 54px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: '#04121F' }}>
             MatjarX vs <span className="marker">{d.name}</span>
           </h1>
