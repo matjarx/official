@@ -29,7 +29,6 @@ export default async function Image() {
           padding: 80,
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={logoSrc} width={420} height={Math.round((420 / 905) * 287)} style={{ objectFit: 'contain' }} alt="" />
         <div
           style={{

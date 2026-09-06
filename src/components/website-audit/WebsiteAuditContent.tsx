@@ -44,7 +44,7 @@ function IntakeForm() {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, textAlign: 'center', padding: '20px 0' }}>
         <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, color: '#04121F' }}>Request received</span>
-        <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>We'll review {websiteUrl} and get your report to you within 5-7 business days, over {preferredChannel === 'whatsapp' ? 'WhatsApp' : 'email'}.</p>
+        <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>We&apos;ll review {websiteUrl} and get your report to you within 5-7 business days, over {preferredChannel === 'whatsapp' ? 'WhatsApp' : 'email'}.</p>
       </div>
     )
   }
@@ -169,7 +169,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           <section style={{ maxWidth: 900, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>A thorough analysis across 10 key areas</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>What's included in the audit</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>What&apos;s included in the audit</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {AUDIT_AREAS_ACTIVE.map((area, i) => {
@@ -200,7 +200,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                           </div>
                         </div>
                         <div style={{ padding: '14px 18px', borderRadius: 16, background: 'rgba(0,51,102,0.05)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-                          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: '#6A7F92' }}>What you'll learn</span>
+                          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: '#6A7F92' }}>What you&apos;ll learn</span>
                           {area.learn.map((l) => (
                             <span key={l} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: '#1B2E3F' }}>
                               <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--navy)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
@@ -270,7 +270,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           {/* Outcomes */}
           <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
-              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you'll know after your audit</span>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you&apos;ll know after your audit</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>The report includes</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
@@ -348,7 +348,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           {/* Closing CTA */}
           <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Your website could be perfectly optimized. Or severely underperforming. You won't know until you look.</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Your website could be perfectly optimized. Or severely underperforming. You won&apos;t know until you look.</h2>
               <p style={{ margin: 0, maxWidth: '38em', fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>70,000+ small businesses use MatjarX to improve their online visibility. Your website could be next.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>
                 <a href={`https://wa.me/${CHANNELS.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="btn-primary">Request your free consultation</a>

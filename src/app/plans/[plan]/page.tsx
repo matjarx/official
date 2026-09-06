@@ -54,7 +54,6 @@ export default async function PlanPage({ params }: { params: Promise<{ plan: str
     <>
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
       <PlanContent planKey={plan} content={content} />

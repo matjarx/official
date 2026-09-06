@@ -21,7 +21,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
 
   const shown = useMemo(
     () => (filter === 'All' ? CAREERS_ROLES_ACTIVE : CAREERS_ROLES_ACTIVE.filter((r) => r.cat === filter)),
-    [filter]
+    [filter, CAREERS_ROLES_ACTIVE]
   )
 
   const roleCount = `${shown.length} ${shown.length === 1 ? 'role open' : 'roles open'}${filter === 'All' ? ' across five teams' : ` in ${filter}`}`

@@ -8,7 +8,7 @@
 // and closing copy. ServiceDetailSections.tsx renders SERVICE_DATA's
 // existing fields first, then everything here.
 
-import type { Block, Section, ProcessPhase, PlanFaq, CompareTable } from './plan-detail-data'
+import type { Section, ProcessPhase, PlanFaq, CompareTable } from './plan-detail-data'
 
 export type Testimonial = { quote: string; name: string }
 export type CaseStudy = { title: string; lines: string[] }

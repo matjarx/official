@@ -15,7 +15,6 @@ export default function PageviewTracker() {
   useEffect(() => {
     const query = searchParams.toString()
     trackEvent('pageview', { path: query ? `${pathname}?${query}` : pathname })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, searchParams])
 
   return null

@@ -18,7 +18,7 @@ import { ALL_PLANS, type PlanKey } from '@/lib/plan-data'
 import { appLogin, appSignup } from '@/lib/routes'
 
 const NAV_ITEMS = [
-  { label: 'Services', href: '/services' },
+  { label: 'Services', href: '/done-for-you-website' },
   { label: 'Website examples', href: '/website-examples' },
   { label: 'Website audit', href: '/website-audit' },
   { label: 'Pricing', href: '/pricing' },
