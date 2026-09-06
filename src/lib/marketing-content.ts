@@ -206,6 +206,53 @@ export type SiteSettings = {
   socials?: Record<string, string>
 }
 
+// Announcement bar + popup — two independent widgets, each with its own
+// on/off toggle, optional schedule window, and content. Same reserved-slug
+// pattern as site settings: no new tables, just two more marketing_content
+// rows, read via getMergedContent and rendered from the root layout (which
+// already awaits it server-side, so — unlike SiteFooter's socials — these
+// don't need a public API route of their own).
+export const ANNOUNCEMENT_BAR_SLUG = '_announcement_bar'
+export const POPUP_SLUG = '_popup'
+
+export type AnnouncementBarConfig = {
+  enabled?: boolean
+  text?: string
+  link_text?: string
+  link_url?: string
+  bg_color?: string
+  text_color?: string
+  dismissible?: boolean
+  start_date?: string
+  end_date?: string
+}
+
+export type PopupConfig = {
+  enabled?: boolean
+  heading?: string
+  body?: string
+  image_url?: string
+  cta_text?: string
+  cta_url?: string
+  trigger?: 'load' | 'delay' | 'exit_intent'
+  delay_seconds?: number
+  frequency_days?: number
+  start_date?: string
+  end_date?: string
+}
+
+// Shared by both widgets: enabled, and (if set) today falls within
+// start_date/end_date. No date set on either end means no bound on that
+// side — e.g. only an end_date means "active until then", only a
+// start_date means "active from then on".
+export function isWidgetActive(config: { enabled?: boolean; start_date?: string; end_date?: string }): boolean {
+  if (!config.enabled) return false
+  const today = new Date().toISOString().slice(0, 10)
+  if (config.start_date && today < config.start_date) return false
+  if (config.end_date && today > config.end_date) return false
+  return true
+}
+
 export type Testimonial = { quote: string; name: string; company: string; initials: string; tint: string }
 export type QA = { q: string; a: string }
 export type FaqEntry = { question: string; answer: string }

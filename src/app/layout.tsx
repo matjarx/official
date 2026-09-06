@@ -5,7 +5,18 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { Lato, Open_Sans } from 'next/font/google'
 import PageviewTracker from '@/components/PageviewTracker'
 import WebVitalsReporter from '@/components/WebVitalsReporter'
-import { getMergedContent, SITE_SETTINGS_SLUG, type SiteSettings } from '@/lib/marketing-content'
+import {
+  getMergedContent,
+  isWidgetActive,
+  SITE_SETTINGS_SLUG,
+  ANNOUNCEMENT_BAR_SLUG,
+  POPUP_SLUG,
+  type SiteSettings,
+  type AnnouncementBarConfig,
+  type PopupConfig,
+} from '@/lib/marketing-content'
+import AnnouncementBar from '@/components/AnnouncementBar'
+import SitePopup from '@/components/SitePopup'
 import './globals.css'
 
 // Today's real values — used unless overridden from the admin's Marketing
@@ -80,7 +91,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const settings = await getMergedContent<SiteSettings>(SITE_SETTINGS_SLUG)
+  const [settings, announcementConfig, popupConfig] = await Promise.all([
+    getMergedContent<SiteSettings>(SITE_SETTINGS_SLUG),
+    getMergedContent<AnnouncementBarConfig>(ANNOUNCEMENT_BAR_SLUG),
+    getMergedContent<PopupConfig>(POPUP_SLUG),
+  ])
   const gaId = settings.ga_measurement_id || DEFAULT_GA_MEASUREMENT_ID
   const pixelId = settings.meta_pixel_id || DEFAULT_META_PIXEL_ID
   const contactEmail = settings.contact_email || DEFAULT_CONTACT_EMAIL
@@ -117,7 +132,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <PageviewTracker />
         </Suspense>
         <WebVitalsReporter />
+        {isWidgetActive(announcementConfig) && <AnnouncementBar config={announcementConfig} />}
         {children}
+        {isWidgetActive(popupConfig) && <SitePopup config={popupConfig} />}
         <GoogleAnalytics gaId={gaId} />
         {/* Meta Pixel — base code + PageView, per Meta's own snippet. */}
         <Script id="meta-pixel" strategy="afterInteractive">
