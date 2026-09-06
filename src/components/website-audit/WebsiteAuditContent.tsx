@@ -9,6 +9,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -133,6 +134,9 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What is a website audit?</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>A complete analysis of your online presence</h2>
               <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: '#33485B' }}>{AUDIT_INTRO}</p>
+            </div>
+            <div style={{ position: 'relative', width: '100%', maxWidth: 560, height: 220, margin: '0 auto 28px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 44px rgba(4,18,31,0.14)' }}>
+              <Image src="/website-audit/audit-report.webp" alt="A dashboard showing website traffic growth and Google ranking improvement" fill sizes="(max-width: 600px) 100vw, 560px" style={{ objectFit: 'cover' }} />
             </div>
             <p style={{ margin: '0 0 18px', fontSize: 16, lineHeight: 1.62, color: '#33485B', textAlign: 'center' }}>{WHAT_IS_AUDIT.intro}</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 10 }}>
