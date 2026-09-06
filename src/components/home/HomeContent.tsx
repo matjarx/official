@@ -51,6 +51,43 @@ const REVIEWS = [
   { quote: 'Very cooperative team. They handle strategy and consultation, and they now manage both of my websites.', name: 'Farooq Butt', company: 'Butt Enterprises' },
 ]
 
+const DIY_POINTS = ['Give you a toolbox, but not a ready-to-use website', 'Require technical skills you may not have', 'Consume hours of your valuable time', 'Result in amateur-looking sites']
+const AGENCY_POINTS = ['Can be expensive (Rs. 50,000–200,000+)', 'You still have to learn how to manage your site afterward', 'Long timelines (weeks or months)', 'Ongoing dependency on the agency for changes']
+
+const BUILT_WITH = [
+  ['Built-for-you website', 'Custom design and content tailored for your business'],
+  ['Ready in just 7 days', 'From questionnaire to launch call'],
+  ['Custom design and content', 'Professionally created, not templated'],
+  ['Get listed on Google', 'SEO-friendly structure for better visibility'],
+  ['0% transaction fees', 'On sales and bookings (no hidden charges)'],
+  ['VIP support', 'Whenever you need it'],
+  ['Domain and business email included', 'Professional presence from day one'],
+  ['Easy-to-use editor', 'Make future updates yourself'],
+  ['30-day money-back guarantee', 'Risk-free satisfaction guarantee'],
+  ['Pakistani payment support', 'JazzCash, EasyPaisa, SadaPay, PayFast'],
+]
+const BUILT_WITHOUT = [
+  'Confusing DIY tools and endless learning curves',
+  'Time-consuming (weeks to months of work)',
+  'Hidden fees and extra costs (hosting, domains, plugins)',
+  "No customer support when you're stuck",
+  'Outdated designs after a few months',
+  'No marketing or lead-capture features',
+  'International payment gateways (no local options)',
+  "You're on your own for everything",
+]
+
+const WHY_CHOOSE = [
+  { title: 'Grow Your Business with Ease', pitch: 'Your all-in-one solution to attract and convert customers.', body: "MatjarX isn't just a website builder—it's your complete business toolkit. From online sales to customer bookings to reputation management, we give you the tools to turn visitors into customers.", icon: 'M12 4l2.4 5.2 5.6.5-4.3 3.7 1.3 5.6L12 16l-5 3 1.3-5.6L4 9.7l5.6-.5Z' },
+  { title: 'Save Time and Reduce Costs', pitch: 'Save yourself the time and frustration of building your own website. Save the cost of hiring an expensive agency.', body: 'MatjarX provides the solution for small business: agency-like quality at the price of a DIY platform, with a team here to help you build your online presence. No learning curves. No expensive retainers. Just results.', icon: 'M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM12 8v4.5l3 2' },
+  { title: 'Reach New Customers Effortlessly', pitch: 'Whether you sell products or offer services, MatjarX makes it easy for your business to get found online.', body: 'This starts with your website and extends to your online reviews, social media, and ranking on Google. Our team works with you so that you can attract visitors and convert them into customers.', icon: 'M11 4.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM16 16l4.5 4.5' },
+  { title: 'Sell Anywhere, Anytime', pitch: 'Our websites are built with powerful e-commerce tools.', body: 'Multi-item shopping carts, flexible shipping, collection management, and multiple payment methods (JazzCash, EasyPaisa, SadaPay, PayFast, credit cards). Automatically sync your shop with Google Shopping, Facebook Marketplace, and Instagram Shopping, making it easy for shoppers to find and buy from you.', icon: 'M4 6h2.2l2.3 9.5h9L20 8H7M9.5 20a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Zm7.5 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z' },
+  { title: 'Accept Bookings Seamlessly', pitch: 'Allow customers to book your services 24/7/365.', body: 'Get notified instantly by email, SMS, or WhatsApp when you have a new booking. Manage your bookings through your Business Hub. Sync MatjarX appointments with your calendar or connect a third-party booking solution to your MatjarX website.', icon: 'M5 5.5h14v14H5zM5 10h14M9 3.5v4M15 3.5v4' },
+  { title: 'Strengthen Your Brand', pitch: 'A custom domain, business email accounts, professional design, five-star reviews, and social media posts to make you stand out.', body: 'Manage your reputation across trusted platforms and review sites from one place. Making your brand look more professional is only a few clicks away.', icon: 'M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM3.5 12h17M12 3.5c2.2 2.3 3.4 5.3 3.4 8.5S14.2 18.2 12 20.5' },
+  { title: 'Accelerate Business Growth', pitch: 'Need help with marketing but not sure where to start?', body: 'MatjarX offers an affordable 1-on-1 Growth Plan to launch your online marketing, social media advertising, SEO, and online reputation management. Benefit from the experience of digital marketing professionals just like the big brands do.', icon: 'M4 18V9M9.5 18V5M15 18v-6M20.5 18v-9' },
+  { title: 'Experience Your Complete One-Stop Solution', pitch: 'More than just a website, MatjarX offers an entire business toolkit.', body: 'Your Business Hub allows you to manage your website, emails, bookings, sales, reviews, and social media posts all in one place. Forget about multiple subscriptions to get your business running online. Why cobble things together when you can manage them in one place?', icon: 'M4 6h16v12H4zM4 10h16M9 14h6' },
+]
+
 const FAQ_DATA = [
   { question: 'How does it actually work?', answer: 'Pick a plan and check out. You fill in a short questionnaire about your business, our team builds the whole site in seven days, then we launch it with you on a live call and show you how to edit it yourself.' },
   { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional site, domain, email and hosting. Boost is our most popular — it adds unlimited edits done by us, advanced SEO and selling on Google, Facebook and Instagram. Growth adds a dedicated team and monthly marketing sessions. Platinum is a fully custom build for serious e-commerce.' },
@@ -220,12 +257,26 @@ export default function HomeContent({ dark: initialDark = false }: { dark?: bool
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#8A7A5E', fontWeight: 600 }}>Option one</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: ink1 }}>DIY builders</h3>
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>Hand you a toolbox and a blank page. Most people never finish.</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
+                {DIY_POINTS.map((p) => (
+                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#6A7F92' }}>
+                    <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? '#E5A97F' : '#8A5B3C', flex: '0 0 auto' }} />{p}
+                  </span>
+                ))}
+              </div>
               <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? '#E5A97F' : '#8A5B3C' }}>Rs. 140,000 / yr + your weekends</span>
             </div>
             <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(242,238,226,0.6)', border: dark ? undefined : '1px solid rgba(255,255,255,0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#8A7A5E', fontWeight: 600 }}>Option two</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: ink1 }}>Web agencies</h3>
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>Good work, big invoices — and you still can&apos;t change a phone number yourself.</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
+                {AGENCY_POINTS.map((p) => (
+                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#6A7F92' }}>
+                    <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? '#E5A97F' : '#8A5B3C', flex: '0 0 auto' }} />{p}
+                  </span>
+                ))}
+              </div>
               <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? '#E5A97F' : '#8A5B3C' }}>Rs. 420,000–840,000 + upkeep</span>
             </div>
             <div style={{ padding: '30px 28px', borderRadius: 22, background: '#003366', display: 'flex', flexDirection: 'column', gap: 12, boxShadow: '0 24px 50px rgba(0,51,102,0.28)' }}>
@@ -233,6 +284,39 @@ export default function HomeContent({ dark: initialDark = false }: { dark?: bool
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: '#FFFFFF' }}>MatjarX</h3>
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.78)' }}>Agency quality, built for you in a week, with an editor simple enough to actually use.</p>
               <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>Rs. 22,500 once, then Rs. 4,500 / mo</span>
+              <p style={{ margin: '4px 0 0', fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>The truly affordable, ready-to-use website solution designed for small business owners in Pakistan.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* The comparison: built with MatjarX vs without */}
+        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '20px 24px 0' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 40 }}>
+            <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>The comparison</span>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: ink1 }}>With MatjarX, or without it</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 24 }}>
+            <div className={dark ? 'glass-dark-inner' : 'glass-card'} style={{ padding: '30px 28px 32px', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>Websites built with MatjarX</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {BUILT_WITH.map(([title, body]) => (
+                  <div key={title} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
+                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.82)' : '#3B5063' }}><strong style={{ color: ink1 }}>{title}</strong> — {body}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ padding: '30px 28px 32px', borderRadius: 24, background: dark ? 'rgba(255,255,255,0.03)' : '#F2EEE2', border: `1px solid ${dark ? 'rgba(255,255,255,0.08)' : 'rgba(4,18,31,0.06)'}`, display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: dark ? '#E5A97F' : '#8A5B3C' }}>Websites without MatjarX</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {BUILT_WITHOUT.map((it) => (
+                  <div key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={dark ? '#E5A97F' : '#8A5B3C'} strokeWidth="2.4" strokeLinecap="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
+                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.62)' : '#6A7F92' }}>{it}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -306,6 +390,27 @@ export default function HomeContent({ dark: initialDark = false }: { dark?: bool
                 <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, letterSpacing: '-0.4px', color: ink1 }}>{s.title}</h3>
                 <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>{s.body}</p>
                 <span style={{ marginTop: 'auto', paddingTop: 12, fontSize: 13, fontWeight: 600, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>{s.time}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Why choose MatjarX */}
+        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '82px 24px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 40 }}>
+            <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Why choose MatjarX</span>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>Stop wasting time and money on DIY sites or costly agencies</h2>
+            <p style={{ margin: 0, maxWidth: '38em', fontSize: 15.5, lineHeight: 1.62, color: ink4 }}>MatjarX delivers agency-quality websites at an affordable price, with a team to help you build and grow your online presence.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
+            {WHY_CHOOSE.map((w) => (
+              <div key={w.title} className={dark ? 'glass-dark-inner' : 'glass-card'} style={{ padding: '26px 24px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <span style={{ width: 42, height: 42, borderRadius: 13, background: dark ? 'rgba(198,203,138,0.14)' : 'var(--navy)', display: 'grid', placeItems: 'center' }}>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke={dark ? 'var(--moss-light)' : 'var(--butter)'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={w.icon} /></svg>
+                </span>
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: ink1 }}>{w.title}</h3>
+                <p style={{ margin: 0, fontSize: 13.5, fontWeight: 600, lineHeight: 1.5, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>{w.pitch}</p>
+                <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.58, color: dark ? 'rgba(226,236,245,0.68)' : '#4B5D6E' }}>{w.body}</p>
               </div>
             ))}
           </div>

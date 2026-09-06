@@ -59,9 +59,20 @@ const COMPARE_GROUPS: { title: string; rows: [string, Cell, Cell, Cell, Cell][] 
 ]
 
 const TESTIMONIALS = [
-  { quote: "If you're looking for a website provider, then MatjarX is fantastic. The level of service is really good, and I'm getting loads of leads as well.", name: 'Shahzad Ilyas', company: 'Sacred Tantra & Wellness', initials: 'SI', tint: '#C6CB8A' },
-  { quote: 'What you get for the value you pay is almost unheard of. You get all the support and tech help you need, in a quick turnaround time.', name: 'Zohaib Sethia', company: 'Bin Adam Textile', initials: 'ZS', tint: '#F4F2AE' },
-  { quote: 'MatjarX delivered our website in 7 days, with excellent quality and smooth communication throughout.', name: 'Samuel Abbas Jaffri', company: 'Verified Trustpilot review', initials: 'SJ', tint: '#BFD4E6' },
+  { quote: "If you are looking for a website provider, then MatjarX is fantastic. The level of service is really really good, and I'm getting loads of leads as well.", name: 'Bella Goode', company: 'Bella Goode and Training Centre', initials: 'BG', tint: '#C6CB8A' },
+  { quote: 'What you get for the value that you pay is almost unheard of. You get all the support, all the tech help that you need, in a quick turnaround time.', name: 'Severen Henderson', company: 'Care Concern Connect NFP', initials: 'SH', tint: '#F4F2AE' },
+  { quote: 'I started out knowing absolutely nothing about how to create a website. You guys made it so easy. With telling you just basic things about my company, you designed a beautiful website for me at an absolutely amazing price.', name: 'Marvin F.', company: 'Trustpilot 5-star review, US', initials: 'MF', tint: '#BFD4E6' },
+  { quote: 'Amazing customer service and support. Quick response to an enquiry and always solving any issues. Recommended!', name: 'James W.', company: 'Trustpilot 5-star review, US', initials: 'JW', tint: '#E8C48D' },
+  { quote: 'I was able to utilize the platform provided by MatjarX to jump start my new company and products. I appreciate the ease of use and my connectivity options offered as a free service.', name: 'Ronald G.', company: 'Trustpilot 5-star review, US', initials: 'RG', tint: '#E8B4C8' },
+  { quote: 'I recommend MatjarX because of their attention to detail and their consistent motivation to ensure customer service and satisfaction. I absolutely, unequivocally and without a doubt recommend MatjarX as a premier website provider.', name: 'Edwoods L.', company: 'Trustpilot 5-star review, US', initials: 'EL', tint: '#C8B4E8' },
+  { quote: 'I have been with this company for 2 years. I have had my website, then upgraded to a growth plan. I have found the online chat and email communication very helpful, along with numerous 1-on-1 web calls. I would highly recommend this company.', name: 'Emma S.', company: 'Trustpilot 5-star review, US', initials: 'ES', tint: '#A8D8C8' },
+]
+
+const HOW_TO_CHOOSE = [
+  { q: 'Starting your online presence?', a: 'Boost gets you a professional website with SEO fundamentals and monthly content. Perfect for first-time builders and businesses testing the market.' },
+  { q: 'Ready to generate leads?', a: 'Growth pairs your website with a marketing expert who helps you acquire customers. Best for businesses that have proof of concept and want to scale.' },
+  { q: 'Serious about digital dominance?', a: 'Platinum gives you a complete team. Best for online sellers, franchises, and businesses treating digital growth as a core business function.' },
+  { q: 'Have unique needs?', a: "Custom plans start with a conversation about your business. We'll design something that fits." },
 ]
 
 const FAQ_DATA = [
@@ -71,6 +82,9 @@ const FAQ_DATA = [
   { question: 'Can I switch plans?', answer: 'Yes, any time. Upgrading applies immediately and we only charge the difference. Downgrading takes effect at your next billing date.' },
   { question: 'How do I cancel?', answer: "Message your concierge or email office@matjarx.com with 30 days' written notice. There's no long-term contract — your site stays active through the notice period and isn't renewed after it, with no exit fee." },
   { question: 'Is the setup fee charged every year?', answer: 'No. The setup fee is one-time and covers the full build — design, copy, images, SEO and launch. After that you only pay the monthly plan fee.' },
+  { question: 'Is there a money-back guarantee if I’m not satisfied?', answer: "Yes — a 30-day full refund guarantee. If you're unhappy with your website or service for any reason during your first 30 days, just email our customer success team for a refund. No questions asked, no gotchas." },
+  { question: 'Are there any hidden fees or extra charges?', answer: 'No hidden fees. Your quoted price includes website design and content, setup and launch, domain, email addresses and support. Payment gateways (JazzCash, EasyPaisa, SadaPay, PayFast, credit cards) charge their own transaction fees, but MatjarX takes 0% commission on your sales.' },
+  { question: 'What if my business needs are between two plans?', answer: "That's what the Custom plan is for — more pages than standard, more content, extra features or integrations, or a specific growth strategy tailored to your business. Talk to us and we'll scope out a plan that fits." },
 ]
 
 const LIGHT_THEME = {
@@ -86,13 +100,20 @@ const DARK_THEME = {
 
 const PLAN_ROWS = [
   { name: 'Launch', base: 4500, setup: '22,500', pitch: 'We build and launch your website.', cta: 'Choose Launch', theme: LIGHT_THEME, tag: '', inherits: '', href: appSignup('launch'),
-    features: ['Built-for-you website or online store', 'Personalised design, made for your trade', 'Fast loading, structured to rank on Google', 'Ready in 7 days', 'Custom domain, or connect one you own', 'Professional business email address', 'Easy-to-use editor', '0% fees on sales and bookings', '1-on-1 launch and training call', 'Secure hosting and SSL certificate', 'No long-term contract'] },
+    features: ['Built-for-you website or online store', 'Personalised design, made for your trade', 'Fast loading, structured to rank on Google', 'Ready in 7 days', 'Custom domain, or connect one you own', 'Professional business email address', 'Easy-to-use editor', '0% fees on sales and bookings', '1-on-1 launch and training call', 'Secure hosting and SSL certificate', 'No long-term contract'],
+    bestFor: 'Perfect for: first-time builders and businesses testing the market.' },
   { name: 'Boost', base: 15600, setup: '22,500', pitch: 'We manage your online presence.', cta: 'Choose Boost', theme: DARK_THEME, tag: 'Most popular', inherits: 'Everything in Launch, plus:', href: appSignup('boost'),
-    features: ['4 business email addresses', 'Advanced SEO to rank on Google', 'Unlimited done-for-you edits', 'Live chat, lead forms and multimedia added for you', 'Promote products on Google, Facebook and Instagram', 'VIP phone support'] },
+    features: ['4 business email addresses', 'Advanced SEO to rank on Google', 'Unlimited done-for-you edits', 'Live chat, lead forms and multimedia added for you', 'Promote products on Google, Facebook and Instagram', 'VIP phone support'],
+    why: 'Why Boost works: if your launch website is getting you started but you need more content, better search rankings, and advanced features to attract customers — Boost adds dedicated marketing content and SEO power to compete in your local market.',
+    bestFor: 'Best for: restaurants wanting online menus, real estate agents expanding listings, service businesses building credibility, shops selling more products.' },
   { name: 'Growth', base: 27000, setup: '22,500', pitch: 'We grow your business online.', cta: 'Choose Growth', theme: LIGHT_THEME, tag: '', inherits: 'Everything in Boost, plus:', href: appSignup('growth'),
-    features: ['Dedicated VIP growth team', 'A marketing plan built for your business', '1-on-1 monthly marketing sessions', 'Advice on email, social, ads, SEO and reputation', '2,000 words of fresh content written monthly'] },
+    features: ['Dedicated VIP growth team', 'A marketing plan built for your business', '1-on-1 monthly marketing sessions', 'Advice on email, social, ads, SEO and reputation', '2,000 words of fresh content written monthly'],
+    why: "Why Growth wins: you're not just getting a website — you're getting a part-time marketing team. A dedicated expert works with you monthly, creating a personalised growth strategy and content plan that turns your website from a digital brochure into a lead-generating machine.",
+    bestFor: 'Best for: law firms building reputation, clinics acquiring patients, consultants attracting clients, agencies managing growth — any business serious about generating consistent leads.' },
   { name: 'Platinum', base: 55000, setup: '140,000', pitch: 'We scale your e-commerce business.', cta: 'Talk to us', theme: LIGHT_THEME, tag: 'Custom built', inherits: 'Everything in Growth, plus:', href: appSignup('platinum'),
-    features: ['Custom design built in our own tool', 'Full webstore built for you', 'Unlimited products and unlimited edits', 'Sell subscriptions and digital products', 'Manage multi-seat bookings', 'Enhanced marketing integrations'] },
+    features: ['Custom design built in our own tool', 'Full webstore built for you', 'Unlimited products and unlimited edits', 'Sell subscriptions and digital products', 'Manage multi-seat bookings', 'Enhanced marketing integrations'],
+    why: "Why Platinum scales: it isn't just for e-commerce — it's for any business serious about owned-channel marketing and growth. You get a complete team of designers, content creators, SEO experts and social media strategists working together to grow your business.",
+    bestFor: 'Best for: online stores, subscription businesses, agencies, courses, digital products, multi-location businesses, franchises — anyone serious about digital dominance.' },
 ]
 
 const CYCLES = [
@@ -194,6 +215,12 @@ export default function PricingContent() {
                     </span>
                   ))}
                 </div>
+                {(p.why || p.bestFor) && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingTop: 14, marginTop: 6, borderTop: `1px solid ${t.rule}` }}>
+                    {p.why && <p style={{ margin: 0, fontSize: 12.5, lineHeight: 1.55, color: t.body }}>{p.why}</p>}
+                    {p.bestFor && <p style={{ margin: 0, fontSize: 12.5, fontWeight: 600, lineHeight: 1.5, color: t.savingInk }}>{p.bestFor}</p>}
+                  </div>
+                )}
               </div>
             )
           })}
@@ -209,6 +236,19 @@ export default function PricingContent() {
             <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.68)' }}>200 pages, CRM integration, a specific API, or something none of these four cover — tell us what you need and we&apos;ll scope it, price it and build it.</span>
           </div>
           <Link href={routes.plan('custom')} className="btn-primary" style={{ justifySelf: 'start' }}>Talk to us about Custom</Link>
+        </div>
+      </section>
+
+      {/* How to choose your plan */}
+      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+        <h2 style={{ margin: '0 0 30px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>How to choose your plan</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
+          {HOW_TO_CHOOSE.map((h) => (
+            <div key={h.q} className="glass-card" style={{ padding: '22px 22px 24px', borderRadius: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{h.q}</span>
+              <span style={{ fontSize: 13.5, lineHeight: 1.58, color: '#4B5D6E' }}>{h.a}</span>
+            </div>
+          ))}
         </div>
       </section>
 
