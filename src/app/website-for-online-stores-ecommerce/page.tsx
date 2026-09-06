@@ -1,14 +1,17 @@
 import type { Metadata } from 'next'
 import IndustryContent, { type IndustryContentShape } from '@/components/industries/IndustryContent'
-import { getMergedContent } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
 import { INDUSTRY_DATA } from '@/lib/industry-data'
 
 const industry = INDUSTRY_DATA['online-stores-ecommerce']
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/website-for-online-stores-ecommerce' },
-  title: industry.metaTitle,
-  description: industry.metaDesc,
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getSeoOverride('industries/online-stores-ecommerce')
+  return {
+    alternates: { canonical: '/website-for-online-stores-ecommerce' },
+    title: seo?.title || industry.metaTitle,
+    description: seo?.description || industry.metaDesc,
+  }
 }
 
 export const revalidate = 60

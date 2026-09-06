@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import VideosContent, { type VideosContentShape } from '@/components/videos/VideosContent'
-import { getMergedContent } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/videos' },
-  title: 'Videos',
-  description: 'Watch our library of videos to see how MatjarX helps small businesses get online fast, easy, and affordable.',
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getSeoOverride('videos')
+  return {
+    alternates: { canonical: '/videos' },
+    title: seo?.title || 'Videos',
+    description: seo?.description || 'Watch our library of videos to see how MatjarX helps small businesses get online fast, easy, and affordable.',
+  }
 }
 
 export const revalidate = 60

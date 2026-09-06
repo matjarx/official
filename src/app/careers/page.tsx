@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import CareersContent, { type CareersContentShape } from '@/components/careers/CareersContent'
-import { getMergedContent } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/careers' },
-  title: 'Careers',
-  description: 'Open roles in design, content, growth, client success and engineering. Build things that put real businesses on the map.',
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getSeoOverride('careers')
+  return {
+    alternates: { canonical: '/careers' },
+    title: seo?.title || 'Careers',
+    description: seo?.description || 'Open roles in design, content, growth, client success and engineering. Build things that put real businesses on the map.',
+  }
 }
 
 export const revalidate = 60

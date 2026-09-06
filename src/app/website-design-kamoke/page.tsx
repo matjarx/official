@@ -1,14 +1,17 @@
 import type { Metadata } from 'next'
 import LocationContent, { type LocationContentShape } from '@/components/locations/LocationContent'
-import { getMergedContent } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
 import { CITY_DATA } from '@/lib/location-data'
 
 const city = CITY_DATA['kamoke']
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/website-design-kamoke' },
-  title: city.metaTitle,
-  description: city.metaDesc,
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getSeoOverride('cities/kamoke')
+  return {
+    alternates: { canonical: '/website-design-kamoke' },
+    title: seo?.title || city.metaTitle,
+    description: seo?.description || city.metaDesc,
+  }
 }
 
 export const revalidate = 60

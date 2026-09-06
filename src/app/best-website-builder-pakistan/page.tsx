@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import BestBuilderContent, { type BestBuilderContentShape } from '@/components/best-builder/BestBuilderContent'
-import { getMergedContent } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/best-website-builder-pakistan' },
-  title: 'Best Website Builder in Pakistan',
-  description: 'MatjarX vs Wix, Squarespace, GoDaddy and local agencies — real first-year costs, who builds the site, and when a DIY builder is genuinely the right answer.',
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getSeoOverride('best-builder')
+  return {
+    alternates: { canonical: '/best-website-builder-pakistan' },
+    title: seo?.title || 'Best Website Builder in Pakistan',
+    description: seo?.description || 'MatjarX vs Wix, Squarespace, GoDaddy and local agencies — real first-year costs, who builds the site, and when a DIY builder is genuinely the right answer.',
+  }
 }
 
 export const revalidate = 60

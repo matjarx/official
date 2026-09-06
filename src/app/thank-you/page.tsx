@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import ThankYouContent, { type ThankYouContentShape } from '@/components/thank-you/ThankYouContent'
-import { getMergedContent } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/thank-you' },
-  title: 'Thank You',
-  description: "Your message is with our team. Someone will be in touch within 24 business hours — sooner over WhatsApp.",
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getSeoOverride('thank-you')
+  return {
+    alternates: { canonical: '/thank-you' },
+    title: seo?.title || 'Thank You',
+    description: seo?.description || "Your message is with our team. Someone will be in touch within 24 business hours — sooner over WhatsApp.",
+  }
 }
 
 export const revalidate = 60

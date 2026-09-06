@@ -163,6 +163,24 @@ export async function getContentOverride<T>(slug: string): Promise<T | null> {
   }
 }
 
+// SEO title/description, editable from the admin's per-page editor. Stored
+// under the same marketing_content row as the page's content, in a
+// reserved `__seo` key — no new table, and the admin's existing
+// fetch/save plumbing (read the row, edit the object, upsert it back)
+// already covers this for free. Falls back to whatever the page passes
+// in (its hardcoded default) when there's no override or the field is
+// blank, so a page is never left with an empty <title>.
+export type SeoOverride = { title?: string; description?: string }
+export async function getSeoOverride(slug: string): Promise<SeoOverride | null> {
+  try {
+    const { data, error } = await supabase.from('marketing_content').select('data').eq('slug', slug).maybeSingle()
+    if (error || !data) return null
+    return (data.data as { __seo?: SeoOverride })?.__seo ?? null
+  } catch {
+    return null
+  }
+}
+
 export type Testimonial = { quote: string; name: string; company: string; initials: string; tint: string }
 export type QA = { q: string; a: string }
 export type FaqEntry = { question: string; answer: string }

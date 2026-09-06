@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import AlternativesContent, { type AlternativesContentShape } from '@/components/alternatives/AlternativesContent'
 import { META } from '@/lib/alternatives-data'
-import { getMergedContent } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/alternatives' },
-  title: META.title,
-  description: META.description,
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getSeoOverride('alternatives')
+  return {
+    alternates: { canonical: '/alternatives' },
+    title: seo?.title || META.title,
+    description: seo?.description || META.description,
+  }
 }
 
 export const revalidate = 60

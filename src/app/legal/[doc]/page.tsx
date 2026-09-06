@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import LegalContent from '@/components/legal/LegalContent'
 import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc, type LegalDocData } from '@/lib/legal-data'
 import { routes } from '@/lib/routes'
-import { getMergedContent } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
 
 // Re-checks marketing_content at most once a minute rather than only at
 // build time — otherwise an admin edit would need a full redeploy to show
@@ -22,9 +22,10 @@ export async function generateMetadata({ params }: { params: Promise<{ doc: stri
   const { doc } = await params
   if (!isLegalDoc(doc)) return {}
   const d = LEGAL_DATA[doc]
+  const seo = await getSeoOverride(`legal/${doc}`)
   return {
-    title: d.title,
-    description: d.intro,
+    title: seo?.title || d.title,
+    description: seo?.description || d.intro,
     alternates: { canonical: routes.legal(doc) },
   }
 }

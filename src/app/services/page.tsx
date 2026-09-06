@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import ServicesContent from '@/components/services/ServicesContent'
-import { getMergedContent } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
 import type { SERVICE_DATA } from '@/lib/services-data'
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/services' },
-  title: 'Services',
-  description: 'Done-for-you websites, local & global SEO, a concierge edit service, and growth marketing — everything MatjarX does for your business, explained.',
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getSeoOverride('services')
+  return {
+    alternates: { canonical: '/services' },
+    title: seo?.title || 'Services',
+    description: seo?.description || 'Done-for-you websites, local & global SEO, a concierge edit service, and growth marketing — everything MatjarX does for your business, explained.',
+  }
 }
 
 // Re-checks marketing_content at most once a minute rather than only at
