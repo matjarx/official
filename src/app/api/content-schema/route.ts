@@ -9,6 +9,12 @@ import { ALL_PLANS } from '@/lib/plan-data'
 
 type Entry = { slug: string; label: string; category: string }
 
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+}
+
 // Every real, editable page/entity on the site, grouped by category — the
 // admin's page list is built entirely from this rather than a hardcoded
 // list, so it can never drift out of sync as pages are added.
@@ -55,5 +61,9 @@ export async function GET() {
     entries.push({ slug: `legal/${key}`, label: LEGAL_DATA[key].title, category: 'Legal' })
   }
 
-  return NextResponse.json({ entries })
+  return NextResponse.json({ entries }, { headers: CORS_HEADERS })
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: CORS_HEADERS })
 }
