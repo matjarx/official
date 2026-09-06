@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import IndustryContent from '@/components/industries/IndustryContent'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/website-for-restaurants' },
   title: 'Websites for Restaurants',
   description: '1,240 restaurant websites built. Table bookings, a live menu, Google Maps and reviews, online ordering with 0% commission — built in 7 days.',
 }

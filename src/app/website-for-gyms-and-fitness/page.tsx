@@ -5,6 +5,7 @@ import { INDUSTRY_DATA } from '@/lib/industry-data'
 const industry = INDUSTRY_DATA['gyms-and-fitness']
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/website-for-gyms-and-fitness' },
   title: industry.metaTitle,
   description: industry.metaDesc,
 }

@@ -11,16 +11,36 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
-import { INDUSTRY_DATA, otherIndustriesFor, type IndustryKey } from '@/lib/industry-data'
+import { INDUSTRY_DATA, INDUSTRY_SLUGS, otherIndustriesFor, type IndustryKey } from '@/lib/industry-data'
 import IndustryDetailSections from './IndustryDetailSections'
 
 export default function IndustryContent({ industryKey }: { industryKey: IndustryKey }) {
   const [openFaq, setOpenFaq] = useState(0)
   const d = INDUSTRY_DATA[industryKey]
   const others = otherIndustriesFor(industryKey)
+  const pageUrl = `https://matjarx.com${routes.industry(INDUSTRY_SLUGS[industryKey])}`
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
+      { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://matjarx.com' + routes.services },
+      { '@type': 'ListItem', position: 3, name: d.name, item: pageUrl },
+    ],
+  }
+  const faqJsonLd = d.faqs.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: d.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+      }
+    : null
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="services" />

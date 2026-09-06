@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import BlogContent from '@/components/blog/BlogContent'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/blogs' },
   title: 'Blog',
   description: 'Practical guides for Pakistani and Gulf business owners — getting started, SEO, e-commerce, payments, marketing and client stories.',
 }

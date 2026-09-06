@@ -14,9 +14,21 @@ import { RIVAL_DATA, otherComparisonsFor, type RivalKey } from '@/lib/comparison
 export default function ComparisonContent({ rivalKey }: { rivalKey: RivalKey }) {
   const d = RIVAL_DATA[rivalKey]
   const others = otherComparisonsFor(rivalKey)
+  const pageUrl = `https://matjarx.com${routes.compare(rivalKey)}`
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
+      { '@type': 'ListItem', position: 2, name: 'Alternatives', item: 'https://matjarx.com' + routes.bestBuilder },
+      { '@type': 'ListItem', position: 3, name: `MatjarX vs ${d.name}`, item: pageUrl },
+    ],
+  }
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="resources" />

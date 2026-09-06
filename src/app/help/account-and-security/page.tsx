@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import HelpArticleContent from '@/components/help/HelpArticleContent'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/help/account-and-security' },
   title: "Account & Security - Password Reset, Login Help & 2FA",
   description: "Manage your MatjarX account securely. Password reset, login help, account settings, and two-factor authentication guide.",
 }

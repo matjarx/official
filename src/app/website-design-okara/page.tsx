@@ -5,6 +5,7 @@ import { CITY_DATA } from '@/lib/location-data'
 const city = CITY_DATA['okara']
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/website-design-okara' },
   title: city.metaTitle,
   description: city.metaDesc,
 }

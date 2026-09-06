@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import LegalContent from '@/components/legal/LegalContent'
 import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc } from '@/lib/legal-data'
+import { routes } from '@/lib/routes'
 
 export function generateStaticParams() {
   return LEGAL_DOC_KEYS.map((doc) => ({ doc }))
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ doc: stri
   return {
     title: d.title,
     description: d.intro,
+    alternates: { canonical: routes.legal(doc) },
   }
 }
 

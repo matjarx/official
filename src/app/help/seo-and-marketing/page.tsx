@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import HelpArticleContent from '@/components/help/HelpArticleContent'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/help/seo-and-marketing' },
   title: "SEO & Marketing Help - Improve Google Rankings & Traffic",
   description: "Complete guide to improving your Google rankings and attracting customers. Local SEO, content strategy, marketing tips for MatjarX websites.",
 }

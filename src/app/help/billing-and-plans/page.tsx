@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import HelpArticleContent from '@/components/help/HelpArticleContent'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/help/billing-and-plans' },
   title: "Billing & Plans - Manage, Cancel, Switch, & Refund Policy",
   description: "Understand your MatjarX plan, manage billing, switch plans, cancel anytime, and learn our refund policy. Transparent pricing, no surprises.",
 }

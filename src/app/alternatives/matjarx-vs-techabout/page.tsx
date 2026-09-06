@@ -5,6 +5,7 @@ import { RIVAL_DATA } from '@/lib/comparison-data'
 const rival = RIVAL_DATA['techabout']
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/alternatives/matjarx-vs-techabout' },
   title: `MatjarX vs ${rival.name}`,
   description: rival.intro[0],
 }

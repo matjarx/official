@@ -26,9 +26,29 @@ export default function LocationContent({ locationKey }: { locationKey: CityKey 
   const d = CITY_DATA[locationKey]
   const detail = CITY_DETAIL[locationKey]
   const others = otherCitiesFor(locationKey)
+  const pageUrl = `https://matjarx.com${routes.location(locationKey)}`
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
+      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://matjarx.com' + routes.services },
+      { '@type': 'ListItem', position: 3, name: d.name, item: pageUrl },
+    ],
+  }
+  const faqJsonLd = d.faqs.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: d.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+      }
+    : null
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="services" />

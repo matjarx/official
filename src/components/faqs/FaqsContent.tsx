@@ -32,6 +32,17 @@ export default function FaqsContent() {
   const colA = flat.slice(0, half)
   const colB = flat.slice(half)
 
+  // Full FAQ set for structured data, independent of the "All"/category
+  // filter above — an agent or search crawler should see every question
+  // regardless of which chip a visitor last clicked.
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_GROUP_NAMES.flatMap((name) =>
+      FAQ_GROUPS[name].map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } }))
+    ),
+  }
+
   const renderCol = (col: FlatQ[]) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
       {col.map((q) => {
@@ -51,6 +62,7 @@ export default function FaqsContent() {
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <SiteHeader active="resources" />
 
       {/* Navy hero */}

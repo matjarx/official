@@ -5,6 +5,7 @@ import { CITY_DATA } from '@/lib/location-data'
 const city = CITY_DATA['hyderabad']
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/website-design-hyderabad' },
   title: city.metaTitle,
   description: city.metaDesc,
 }
