@@ -1,6 +1,6 @@
 // Data for the Services page — from Marketing - Services.dc.html.
 
-export type ServiceBlock = { stat: string; titleLead: string; titleMark: string; points: string[]; tint: string; mediaLabel: string }
+export type ServiceBlock = { stat: string; titleLead: string; titleMark: string; points: string[]; tint: string; mediaLabel: string; image?: { src: string; alt: string; width: number; height: number } }
 export type GridItem = { title: string; body: string; icon: string }
 export type ResultStat = { value: string; label: string }
 
@@ -30,13 +30,13 @@ export const SERVICE_DATA: Record<ServiceKey, {
     blocks: [
       { stat: 'Step 1 · 15–30 minutes of your time', titleLead: 'You tell us about', titleMark: 'your business',
         points: ['A short questionnaire — what you do, who you serve', 'Send your logo, photos and prices, or we source them', 'Pick the functions you need: store, bookings, enquiries', 'Nothing else needed from you until review day'],
-        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Questionnaire & brief' },
+        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Questionnaire & brief', image: { src: '/services/questionnaire-brief.webp', alt: 'A finished MatjarX-built website shown in the editor', width: 453, height: 373 } },
       { stat: 'Step 2 · 7 days', titleLead: 'A specialist in your trade', titleMark: 'builds it',
         points: ['Designed by someone who has built for your category before', 'Copy written for Pakistani and Gulf customers', 'Structured to load fast and rank on Google', 'Mobile-first — most of your visitors arrive on a phone'],
-        tint: 'linear-gradient(150deg, #707538, #C6CB8A)', mediaLabel: 'Design & build' },
+        tint: 'linear-gradient(150deg, #707538, #C6CB8A)', mediaLabel: 'Design & build', image: { src: '/services/design-build.webp', alt: 'A website design editor with font and color controls', width: 1190, height: 980 } },
       { stat: 'Step 3 · 30 minutes', titleLead: 'We launch it', titleMark: 'together',
         points: ['A live call to walk through every page', 'Final changes made while you watch', "We show you the editor so you're never stuck", '30 days of unlimited edits after launch'],
-        tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', mediaLabel: 'Launch & training call' },
+        tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', mediaLabel: 'Launch & training call', image: { src: '/services/launch-training-call.webp', alt: 'A live video call walking through a finished website', width: 1190, height: 980 } },
     ],
     gridTitle: "What's included in every website",
     gridItems: [
@@ -66,13 +66,13 @@ export const SERVICE_DATA: Record<ServiceKey, {
     blocks: [
       { stat: 'Step 1 for local businesses to get found on Google', titleLead: 'Done-for-you Google', titleMark: 'Business Profile',
         points: ['Created, optimised and verified for you', 'Ready in 7 days alongside your website', 'Collect and respond to reviews from one place', 'Your site content synced to your profile', 'A dedicated marketing manager on Growth and above'],
-        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Google Business Profile' },
+        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Google Business Profile', image: { src: '/services/google-business-profile.webp', alt: 'A professional business website presented cleanly', width: 451, height: 372 } },
       { stat: '93% of consumers use Google Maps to find a business', titleLead: 'Launch on', titleMark: 'Google Maps',
         points: ['We create and verify your Maps listing', "Get found in 'near me' searches", 'Receive and reply to Google Business messages', 'Stand out with reviews, services and product info'],
-        tint: 'linear-gradient(150deg, #1B7A3D, #0C4522)', mediaLabel: 'Google Maps listing' },
+        tint: 'linear-gradient(150deg, #1B7A3D, #0C4522)', mediaLabel: 'Google Maps listing', image: { src: '/services/google-maps-listing.webp', alt: 'A dashboard tracking website traffic and lead capture', width: 1190, height: 980 } },
       { stat: '81% of consumers read Google reviews before buying', titleLead: 'Collect Google reviews with', titleMark: 'one click',
         points: ['Invite every customer to review your business', 'Reviews shown automatically on your website', 'Build a five-star reputation customers trust', 'Ongoing SEO work to rank higher every month'],
-        tint: 'linear-gradient(150deg, #707538, #C6CB8A)', mediaLabel: 'Review collection' },
+        tint: 'linear-gradient(150deg, #707538, #C6CB8A)', mediaLabel: 'Review collection', image: { src: '/services/review-collection.webp', alt: 'A dashboard tracking website traffic and lead capture', width: 1190, height: 980 } },
     ],
     gridTitle: "Plus, every month you'll get",
     gridItems: [
@@ -102,13 +102,13 @@ export const SERVICE_DATA: Record<ServiceKey, {
     blocks: [
       { stat: 'Unlimited edits, at your request', titleLead: 'Ask for anything, and', titleMark: 'we do it',
         points: ['Change a photo, a price, a phone number, a whole page', 'Add a new section, gallery or form', 'Seasonal campaigns and Ramzan offers set up for you', 'No ticket queues — a named person who knows your business'],
-        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Unlimited edit requests' },
+        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Unlimited edit requests', image: { src: '/services/unlimited-edits.webp', alt: 'A website design editor with font and color controls', width: 1190, height: 980 } },
       { stat: 'Rich multimedia', titleLead: "We'll make your website", titleMark: 'come to life',
         points: ['Photo and video galleries, sliders and lightboxes', 'Instagram, TikTok, Facebook and YouTube feeds embedded', 'Countdown timers, discount pop-ups and scratch-and-win', 'Audio and podcast players, live streaming blocks'],
-        tint: 'linear-gradient(150deg, #707538, #C6CB8A)', mediaLabel: 'Galleries, feeds & multimedia' },
+        tint: 'linear-gradient(150deg, #707538, #C6CB8A)', mediaLabel: 'Galleries, feeds & multimedia', image: { src: '/services/galleries-feeds.webp', alt: 'A product gallery with color-palette customization', width: 712, height: 508 } },
       { stat: 'Tools, connected for you', titleLead: 'Tracking, chat and', titleMark: 'lead capture',
         points: ['Google Analytics, Search Console and Tag Manager', 'Meta Pixel and TikTok tracking for your ads', 'WhatsApp, Messenger and live chat buttons', 'Newsletter signup and lead forms wired to your inbox'],
-        tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', mediaLabel: 'Integrations & tracking' },
+        tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', mediaLabel: 'Integrations & tracking', image: { src: '/services/integrations-tracking.webp', alt: 'A dashboard tracking website traffic and lead capture', width: 1190, height: 980 } },
     ],
     gridTitle: 'A few popular requests',
     gridItems: [
@@ -138,16 +138,16 @@ export const SERVICE_DATA: Record<ServiceKey, {
     blocks: [
       { stat: 'Month 1 to 5 and beyond', titleLead: 'A customised', titleMark: 'marketing program',
         points: ["Month 1 — define your brand's unique selling point", 'Month 2 — get five-star reviews coming in every week', 'Month 3 — email marketing set up and sending', 'Month 4 — posting on Facebook and Instagram', 'Month 5 — advanced SEO and paid search'],
-        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Your 5-month program' },
+        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Your 5-month program', image: { src: '/services/five-month-program.webp', alt: "Google's AI Overview describing MatjarX as an emerging website builder", width: 850, height: 538 } },
       { stat: "Never done email campaigns? We'll show you how", titleLead: 'The highest-ROI', titleMark: 'marketing channel',
         points: ['Increase purchases and bookings by sending email', 'Start collecting subscribers from your website', 'Learn how to set up your email platform properly', 'We build and run the campaigns together'],
-        tint: 'linear-gradient(150deg, #707538, #C6CB8A)', mediaLabel: 'Email marketing' },
+        tint: 'linear-gradient(150deg, #707538, #C6CB8A)', mediaLabel: 'Email marketing', image: { src: '/services/email-marketing.webp', alt: 'A business email account set up alongside a website', width: 1190, height: 980 } },
       { stat: 'Overwhelmed by posts, hashtags and reels?', titleLead: 'Social media', titleMark: 'marketing',
         points: ['Build your presence to attract new customers', 'Learn how to create posts — and then do it', 'Target the right content to the right platform', 'Only the strategies relevant to your business'],
-        tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', mediaLabel: 'Social media' },
+        tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', mediaLabel: 'Social media', image: { src: '/services/social-media.webp', alt: 'A sponsored social media ad with campaign performance stats', width: 600, height: 494 } },
       { stat: "Want to try paid ads? We'll guide you", titleLead: 'Online', titleMark: 'advertising',
         points: ['Understand the real costs, benefits and risks', 'Align campaigns with your business goals', 'Learn to set up your campaigns properly', 'Maximise your chances of success before you spend'],
-        tint: 'linear-gradient(150deg, #2E4A8E, #101E44)', mediaLabel: 'Paid advertising' },
+        tint: 'linear-gradient(150deg, #2E4A8E, #101E44)', mediaLabel: 'Paid advertising', image: { src: '/services/paid-advertising.webp', alt: 'An ads manager showing budget and campaign performance', width: 600, height: 494 } },
     ],
     gridTitle: 'What your growth team delivers',
     gridItems: [

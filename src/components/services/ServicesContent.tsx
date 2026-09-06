@@ -11,6 +11,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -91,8 +92,12 @@ export default function ServicesContent({ tabs = SERVICE_DATA }: { tabs?: typeof
                       ))}
                     </div>
                   </div>
-                  <div style={{ minWidth: 0, order: mediaOrder, height: 260, borderRadius: 18, background: b.tint, display: 'grid', placeItems: 'center', padding: 24 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '0.3px', textAlign: 'center', color: 'rgba(255,255,255,0.92)' }}>{b.mediaLabel}</span>
+                  <div style={{ minWidth: 0, order: mediaOrder, position: 'relative', height: 260, borderRadius: 18, overflow: 'hidden', background: b.tint }}>
+                    {b.image ? (
+                      <Image src={b.image.src} alt={b.image.alt} fill sizes="(max-width: 700px) 100vw, 500px" style={{ objectFit: 'cover' }} />
+                    ) : (
+                      <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', padding: 24, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '0.3px', textAlign: 'center', color: 'rgba(255,255,255,0.92)' }}>{b.mediaLabel}</span>
+                    )}
                   </div>
                 </div>
               )
