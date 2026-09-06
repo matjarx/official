@@ -8,12 +8,14 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import { ALL_PLANS, PLAN_DATA, otherPlansFor, CYCLE_FACTOR, moneyPKR, type PlanKey } from '@/lib/plan-data'
+import { PLAN_TIER_ICONS } from '@/lib/partner-icons-data'
 import type { PlanContentShape } from '@/lib/marketing-content'
 import PlanDetailSections from './PlanDetailSections'
 
@@ -80,8 +82,13 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
               {d.tag}
             </span>
 
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5vw, 52px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: '#04121F' }}>
-              {p.name} Plan — <span className="marker">{d.headline}</span>
+            <h1 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 14, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5vw, 52px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: '#04121F' }}>
+              {PLAN_TIER_ICONS[p.name as keyof typeof PLAN_TIER_ICONS] && (
+                <span style={{ position: 'relative', width: 40, height: 40, flex: '0 0 auto' }}>
+                  <Image src={PLAN_TIER_ICONS[p.name as keyof typeof PLAN_TIER_ICONS]} alt="" fill sizes="40px" style={{ objectFit: 'contain' }} />
+                </span>
+              )}
+              <span>{p.name} Plan — <span className="marker">{d.headline}</span></span>
             </h1>
 
             <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: '#435A70' }}>{d.subhead}</p>
