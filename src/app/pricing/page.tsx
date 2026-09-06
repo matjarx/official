@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import PricingContent from '@/components/pricing/PricingContent'
+import { getContentOverride, type PricingOverride } from '@/lib/marketing-content'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/pricing' },
@@ -7,6 +8,12 @@ export const metadata: Metadata = {
   description: 'One setup fee, one monthly fee, no surprises. Compare the Launch, Boost, Growth and Platinum plans and see what a DIY website really costs you.',
 }
 
-export default function PricingPage() {
-  return <PricingContent />
+// Re-checks marketing_content at most once a minute rather than only at
+// build time — otherwise an admin edit would need a full redeploy to show
+// up, defeating the point of a live content editor.
+export const revalidate = 60
+
+export default async function PricingPage() {
+  const override = await getContentOverride<PricingOverride>('pricing')
+  return <PricingContent override={override} />
 }

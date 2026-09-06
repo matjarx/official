@@ -12,15 +12,17 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes } from '@/lib/routes'
-import { FEATURE_GROUPS, ALWAYS_ON, FEATURES_FAQ, type FeatureGroupKey } from '@/lib/features-data'
+import { FEATURE_GROUPS, ALWAYS_ON, FEATURES_FAQ as DEFAULT_FEATURES_FAQ, type FeatureGroupKey } from '@/lib/features-data'
+import type { FeaturesOverride } from '@/lib/marketing-content'
 
 const TAB_KEYS = Object.keys(FEATURE_GROUPS) as FeatureGroupKey[]
 
-export default function FeaturesContent() {
+export default function FeaturesContent({ override }: { override?: FeaturesOverride | null }) {
   const [tab, setTab] = useState<FeatureGroupKey>('website')
   const [openFaq, setOpenFaq] = useState(0)
 
   const g = FEATURE_GROUPS[tab]
+  const FEATURES_FAQ = override?.faqs ?? DEFAULT_FEATURES_FAQ
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>

@@ -14,16 +14,18 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import { ALL_PLANS, PLAN_DATA, otherPlansFor, CYCLE_FACTOR, moneyPKR, type PlanKey } from '@/lib/plan-data'
+import type { PlanPageOverride } from '@/lib/marketing-content'
 import PlanDetailSections from './PlanDetailSections'
 
-export default function PlanContent({ planKey }: { planKey: PlanKey }) {
+export default function PlanContent({ planKey, override }: { planKey: PlanKey; override?: PlanPageOverride | null }) {
   const [openFaq, setOpenFaq] = useState(0)
 
   const p = ALL_PLANS[planKey]
   const monthlyNum = Number(p.price.replace(/[^0-9]/g, '')) || 0
   const yearlySaving = monthlyNum * 12 - monthlyNum * 12 * CYCLE_FACTOR.yearly
   const twoYearSaving = monthlyNum * 24 - monthlyNum * 24 * CYCLE_FACTOR.two
-  const d = PLAN_DATA[planKey]
+  // Admin-edited copy wins field-by-field over the default PLAN_DATA entry.
+  const d = { ...PLAN_DATA[planKey], ...override }
   const others = otherPlansFor(planKey)
   const pageUrl = `https://matjarx.com${routes.plan(planKey)}`
 

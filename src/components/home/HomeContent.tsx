@@ -20,6 +20,7 @@ import PortfolioShowcase from '@/components/examples/PortfolioShowcase'
 import { routes, appSignup } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
 import { EXAMPLES } from '@/lib/examples-data'
+import type { HomeOverride } from '@/lib/marketing-content'
 
 const HOME_EXAMPLE_NAMES = ['Celestial Delicacies', 'Bin Adam Textile', 'Sacred Wellness']
 const HOME_EXAMPLES = EXAMPLES.filter((ex) => HOME_EXAMPLE_NAMES.includes(ex.name))
@@ -87,7 +88,7 @@ const WHY_CHOOSE = [
   { title: 'Experience Your Complete One-Stop Solution', pitch: 'More than just a website, MatjarX offers an entire business toolkit.', body: 'Your Business Hub allows you to manage your website, emails, bookings, sales, reviews, and social media posts all in one place. Forget about multiple subscriptions to get your business running online. Why cobble things together when you can manage them in one place?', icon: 'M4 6h16v12H4zM4 10h16M9 14h6' },
 ]
 
-const FAQ_DATA = [
+const DEFAULT_FAQ_DATA = [
   { question: 'How does it actually work?', answer: 'Pick a plan and check out. You fill in a short questionnaire about your business, our team builds the whole site in seven days, then we launch it with you on a live call and show you how to edit it yourself.' },
   { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional site, domain, email and hosting. Boost is our most popular — it adds unlimited edits done by us, advanced SEO and selling on Google, Facebook and Instagram. Growth adds a dedicated team and monthly marketing sessions. Platinum is a fully custom build for serious e-commerce.' },
   { question: 'Can I edit the website myself afterwards?', answer: "Yes. Every site comes with our own editor — change photos, text, prices and products from any device, no technical skill needed. If you'd rather not, send the change to your concierge and we'll do it." },
@@ -117,7 +118,7 @@ const PLAN_ROWS = [
     features: ['Everything in Growth', 'Custom design in our own tool', 'Full webstore, unlimited products', 'Subscriptions & digital products', 'Multi-seat bookings'] },
 ]
 
-export default function HomeContent({ dark: initialDark = false }: { dark?: boolean }) {
+export default function HomeContent({ dark: initialDark = false, override }: { dark?: boolean; override?: HomeOverride | null }) {
   // Real toggle, not a fixed prop: the design handoff's own instruction is to
   // treat dark as "a theme layer over one page component, not a second
   // page" — a live switch in the header delivers that better than a
@@ -126,6 +127,8 @@ export default function HomeContent({ dark: initialDark = false }: { dark?: bool
   const [dark, setDark] = useState(initialDark)
   const [openFaq, setOpenFaq] = useState(0)
   const [exampleModal, setExampleModal] = useState(-1)
+
+  const FAQ_DATA = override?.faqs ?? DEFAULT_FAQ_DATA
 
   const ink1 = dark ? '#FFFFFF' : '#04121F'
   const ink4 = dark ? 'rgba(255,255,255,0.7)' : '#435A70'
