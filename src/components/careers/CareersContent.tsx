@@ -10,12 +10,17 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { CAREERS_PERKS, CAREERS_ROLES, CAREERS_CATEGORIES } from '@/lib/careers-data'
 
-export default function CareersContent() {
+export type CareersContentShape = { perks: typeof CAREERS_PERKS; roles: typeof CAREERS_ROLES }
+const DEFAULT_CONTENT: CareersContentShape = { perks: CAREERS_PERKS, roles: CAREERS_ROLES }
+
+export default function CareersContent({ content = DEFAULT_CONTENT }: { content?: CareersContentShape }) {
   const [filter, setFilter] = useState<(typeof CAREERS_CATEGORIES)[number]>('All')
   const [openIndex, setOpenIndex] = useState(0)
+  const CAREERS_PERKS_ACTIVE = content.perks
+  const CAREERS_ROLES_ACTIVE = content.roles
 
   const shown = useMemo(
-    () => (filter === 'All' ? CAREERS_ROLES : CAREERS_ROLES.filter((r) => r.cat === filter)),
+    () => (filter === 'All' ? CAREERS_ROLES_ACTIVE : CAREERS_ROLES_ACTIVE.filter((r) => r.cat === filter)),
     [filter]
   )
 
@@ -46,7 +51,7 @@ export default function CareersContent() {
           {/* Perks */}
           <section style={{ maxWidth: 1140, margin: '0 auto', padding: '48px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
-              {CAREERS_PERKS.map((p) => (
+              {CAREERS_PERKS_ACTIVE.map((p) => (
                 <div key={p.title} className="glass-card" style={{ padding: '26px 26px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <span style={{ width: 42, height: 42, borderRadius: 12, background: 'var(--butter)', display: 'grid', placeItems: 'center' }}>
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3D3A08" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={p.icon} /></svg>

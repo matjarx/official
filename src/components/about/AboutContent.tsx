@@ -12,8 +12,12 @@ import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
 import { ABOUT_STATS, ABOUT_VALUES, ABOUT_TEAM, ABOUT_FAQS } from '@/lib/about-data'
 
-export default function AboutContent() {
+export type AboutContentShape = { stats: typeof ABOUT_STATS; values: typeof ABOUT_VALUES; team: typeof ABOUT_TEAM; faqs: typeof ABOUT_FAQS }
+const DEFAULT_CONTENT: AboutContentShape = { stats: ABOUT_STATS, values: ABOUT_VALUES, team: ABOUT_TEAM, faqs: ABOUT_FAQS }
+
+export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: AboutContentShape }) {
   const [openFaq, setOpenFaq] = useState(0)
+  const { stats: ABOUT_STATS_ACTIVE, values: ABOUT_VALUES_ACTIVE, team: ABOUT_TEAM_ACTIVE, faqs: ABOUT_FAQS_ACTIVE } = content
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -41,7 +45,7 @@ export default function AboutContent() {
           <section style={{ maxWidth: 1200, margin: '0 auto', padding: 0 }}>
             <div style={{ maxWidth: 1140, margin: '-34px auto 0', padding: '0 24px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(50%, 200px), 1fr))', gap: 2, borderRadius: 22, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.09)', boxShadow: '0 20px 46px rgba(4,18,31,0.1)' }}>
-                {ABOUT_STATS.map((s) => (
+                {ABOUT_STATS_ACTIVE.map((s) => (
                   <div key={s.label} style={{ padding: '30px 26px', display: 'flex', flexDirection: 'column', gap: 6, background: '#FFFFFF' }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-1.2px', color: '#04121F' }}>{s.value}</span>
                     <span style={{ fontSize: 13.5, color: '#6A7F92' }}>{s.label}</span>
@@ -80,7 +84,7 @@ export default function AboutContent() {
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: '#04121F' }}>What we <span className="marker">believe</span></h2>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
-                {ABOUT_VALUES.map((v) => (
+                {ABOUT_VALUES_ACTIVE.map((v) => (
                   <div key={v.title} className="glass-card" style={{ padding: '30px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 13 }}>
                     <span style={{ width: 44, height: 44, borderRadius: 13, background: 'var(--navy)', display: 'grid', placeItems: 'center' }}>
                       <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={v.icon} /></svg>
@@ -100,7 +104,7 @@ export default function AboutContent() {
               <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: '#435A70' }}>A team of designers, writers, SEO specialists and concierges across Lahore and Karachi.</p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 20 }}>
-              {ABOUT_TEAM.map((t) => (
+              {ABOUT_TEAM_ACTIVE.map((t) => (
                 <div key={t.name} style={{ borderRadius: 22, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)' }}>
                   <div style={{ height: 210, background: t.tint, display: 'grid', placeItems: 'center' }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.6px', color: 'rgba(255,255,255,0.92)' }}>{t.initials}</span>
@@ -121,7 +125,7 @@ export default function AboutContent() {
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>About MatjarX</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {ABOUT_FAQS.map(([q, a], i) => {
+              {ABOUT_FAQS_ACTIVE.map(([q, a], i) => {
                 const open = openFaq === i
                 return (
                   <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>

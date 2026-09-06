@@ -1,8 +1,14 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import LegalContent from '@/components/legal/LegalContent'
-import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc } from '@/lib/legal-data'
+import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc, type LegalDocData } from '@/lib/legal-data'
 import { routes } from '@/lib/routes'
+import { getMergedContent } from '@/lib/marketing-content'
+
+// Re-checks marketing_content at most once a minute rather than only at
+// build time — otherwise an admin edit would need a full redeploy to show
+// up, defeating the point of a live content editor.
+export const revalidate = 60
 
 export function generateStaticParams() {
   return LEGAL_DOC_KEYS.map((doc) => ({ doc }))
@@ -26,5 +32,6 @@ export async function generateMetadata({ params }: { params: Promise<{ doc: stri
 export default async function LegalDocPage({ params }: { params: Promise<{ doc: string }> }) {
   const { doc } = await params
   if (!isLegalDoc(doc)) notFound()
-  return <LegalContent doc={doc} />
+  const content = await getMergedContent<LegalDocData>(`legal/${doc}`)
+  return <LegalContent doc={doc} content={content} />
 }

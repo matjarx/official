@@ -10,7 +10,7 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
-import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc, type LegalBlock } from '@/lib/legal-data'
+import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc, type LegalBlock, type LegalDocData } from '@/lib/legal-data'
 
 function renderInline(text: string): ReactNode {
   const parts = text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean)
@@ -68,8 +68,8 @@ function renderLegalBlock(block: LegalBlock, i: number) {
   )
 }
 
-export default function LegalContent({ doc }: { doc: LegalDoc }) {
-  const d = LEGAL_DATA[doc]
+export default function LegalContent({ doc, content }: { doc: LegalDoc; content?: LegalDocData }) {
+  const d = content ?? LEGAL_DATA[doc]
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>

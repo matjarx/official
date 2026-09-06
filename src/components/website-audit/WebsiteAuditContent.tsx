@@ -87,7 +87,14 @@ function IntakeForm() {
   )
 }
 
-export default function WebsiteAuditContent() {
+export type WebsiteAuditContentShape = { hero: typeof HERO; areas: typeof AUDIT_AREAS; process: typeof PROCESS_STEPS; faqs: typeof AUDIT_FAQS }
+const DEFAULT_CONTENT: WebsiteAuditContentShape = { hero: HERO, areas: AUDIT_AREAS, process: PROCESS_STEPS, faqs: AUDIT_FAQS }
+
+export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { content?: WebsiteAuditContentShape }) {
+  const HERO_ACTIVE = content.hero
+  const AUDIT_AREAS_ACTIVE = content.areas
+  const PROCESS_STEPS_ACTIVE = content.process
+  const AUDIT_FAQS_ACTIVE = content.faqs
   const [openArea, setOpenArea] = useState(0)
   const [openFaq, setOpenFaq] = useState(0)
 
@@ -99,9 +106,9 @@ export default function WebsiteAuditContent() {
       <section style={{ background: 'var(--navy)', padding: '58px 24px 60px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 40, alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO.eyebrow}</span>
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: '#FFFFFF' }}>{HERO.headline}</h1>
-            <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>{HERO.subhead}</p>
+            <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO_ACTIVE.eyebrow}</span>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: '#FFFFFF' }}>{HERO_ACTIVE.headline}</h1>
+            <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>{HERO_ACTIVE.subhead}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingTop: 6 }}>
               {PROBLEMS.map((p) => (
                 <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>
@@ -161,7 +168,7 @@ export default function WebsiteAuditContent() {
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>What's included in the audit</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {AUDIT_AREAS.map((area, i) => {
+              {AUDIT_AREAS_ACTIVE.map((area, i) => {
                 const open = openArea === i
                 return (
                   <div key={area.number} className="glass-card" style={{ borderRadius: 20, overflow: 'hidden' }}>
@@ -212,7 +219,7 @@ export default function WebsiteAuditContent() {
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>The audit process</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
-              {PROCESS_STEPS.map((s) => (
+              {PROCESS_STEPS_ACTIVE.map((s) => (
                 <div key={s.step} className="glass-card" style={{ padding: '24px 24px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <span style={{ width: 34, height: 34, borderRadius: '50%', background: 'var(--navy)', color: 'var(--butter)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 14 }}>{s.step}</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 17, color: '#04121F' }}>{s.title}</span>
@@ -300,7 +307,7 @@ export default function WebsiteAuditContent() {
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>FAQ: Website audit</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 40 }}>
-              {AUDIT_FAQS.map(([q, a], i) => {
+              {AUDIT_FAQS_ACTIVE.map(([q, a], i) => {
                 const open = openFaq === i
                 return (
                   <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>

@@ -13,7 +13,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
-import { HELP_ARTICLES, type HelpSlug, type HelpBlock } from '@/lib/help-articles-data'
+import { HELP_ARTICLES, type HelpSlug, type HelpBlock, type HelpArticle } from '@/lib/help-articles-data'
 import { HELP_CHANNELS } from '@/lib/help-data'
 
 // Turns the source markdown's inline **bold** and [text](url) into real
@@ -73,8 +73,8 @@ function renderBlock(block: HelpBlock, i: number) {
   )
 }
 
-export default function HelpArticleContent({ slug }: { slug: HelpSlug }) {
-  const d = HELP_ARTICLES[slug]
+export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; content?: HelpArticle }) {
+  const d = content ?? HELP_ARTICLES[slug]
   const [openFaq, setOpenFaq] = useState(0)
 
   const faqJsonLd = d.faqs.length

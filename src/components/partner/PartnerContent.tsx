@@ -16,7 +16,12 @@ import {
   PARTNER_PLAN_RATES, PARTNER_COMMISSION_PCT, money, type PlanKey,
 } from '@/lib/partner-data'
 
-export default function PartnerContent() {
+export type PartnerContentShape = { tiers: typeof PARTNER_TIERS; steps: typeof PARTNER_STEPS }
+const DEFAULT_CONTENT: PartnerContentShape = { tiers: PARTNER_TIERS, steps: PARTNER_STEPS }
+
+export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?: PartnerContentShape }) {
+  const PARTNER_TIERS_ACTIVE = content.tiers
+  const PARTNER_STEPS_ACTIVE = content.steps
   const [clients, setClients] = useState(10)
   const [plan, setPlan] = useState<PlanKey>('Boost')
   const [ptype, setPtype] = useState(PARTNER_TYPES[0])
@@ -57,7 +62,7 @@ export default function PartnerContent() {
           {/* Tier cards */}
           <section style={{ maxWidth: 1140, margin: '0 auto', padding: '48px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
-              {PARTNER_TIERS.map((t) => (
+              {PARTNER_TIERS_ACTIVE.map((t) => (
                 <div key={t.name} className={t.dark ? 'glass-dark-panel' : 'glass-card'} style={{ padding: '30px 28px 32px', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '-0.5px', color: t.dark ? '#FFFFFF' : '#04121F', marginRight: 'auto' }}>{t.name}</span>
@@ -86,7 +91,7 @@ export default function PartnerContent() {
           <section style={{ maxWidth: 1140, margin: '0 auto', padding: '68px 24px 0' }}>
             <h2 style={{ margin: '0 0 34px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>How it <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3 }}>works</span></h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 20 }}>
-              {PARTNER_STEPS.map((s) => (
+              {PARTNER_STEPS_ACTIVE.map((s) => (
                 <div key={s.n} className="glass-card" style={{ padding: '28px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 40, lineHeight: 1, letterSpacing: '-1.8px', color: 'var(--moss-light)' }}>{s.n}</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: '#04121F' }}>{s.title}</span>

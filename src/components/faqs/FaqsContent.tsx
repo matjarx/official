@@ -14,7 +14,11 @@ import { FAQ_GROUPS, FAQ_GROUP_NAMES, type FaqGroupName } from '@/lib/faqs-data'
 
 type FlatQ = { key: string; question: string; answer: string }
 
-export default function FaqsContent() {
+export type FaqsContentShape = { groups: typeof FAQ_GROUPS }
+const DEFAULT_CONTENT: FaqsContentShape = { groups: FAQ_GROUPS }
+
+export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: FaqsContentShape }) {
+  const FAQ_GROUPS_ACTIVE = content.groups
   const [group, setGroup] = useState<'All' | FaqGroupName>('All')
   const [openKey, setOpenKey] = useState('Getting Started & Launch|0')
 
@@ -22,11 +26,11 @@ export default function FaqsContent() {
     const out: FlatQ[] = []
     FAQ_GROUP_NAMES.forEach((name) => {
       if (group === 'All' || group === name) {
-        FAQ_GROUPS[name].forEach(([question, answer], i) => out.push({ key: `${name}|${i}`, question, answer }))
+        FAQ_GROUPS_ACTIVE[name].forEach(([question, answer], i) => out.push({ key: `${name}|${i}`, question, answer }))
       }
     })
     return out
-  }, [group])
+  }, [group, FAQ_GROUPS_ACTIVE])
 
   const half = Math.ceil(flat.length / 2)
   const colA = flat.slice(0, half)
@@ -39,7 +43,7 @@ export default function FaqsContent() {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: FAQ_GROUP_NAMES.flatMap((name) =>
-      FAQ_GROUPS[name].map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } }))
+      FAQ_GROUPS_ACTIVE[name].map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } }))
     ),
   }
 

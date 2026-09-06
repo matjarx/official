@@ -50,8 +50,14 @@ function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos']
   )
 }
 
-export default function VideosContent() {
+export type VideosContentShape = { hero: typeof HERO; sections: typeof VIDEO_SECTIONS; faqs: typeof VIDEO_FAQS }
+const DEFAULT_CONTENT: VideosContentShape = { hero: HERO, sections: VIDEO_SECTIONS, faqs: VIDEO_FAQS }
+
+export default function VideosContent({ content = DEFAULT_CONTENT }: { content?: VideosContentShape }) {
   const [openFaq, setOpenFaq] = useState(0)
+  const HERO_ACTIVE = content.hero
+  const VIDEO_SECTIONS_ACTIVE = content.sections
+  const VIDEO_FAQS_ACTIVE = content.faqs
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -60,9 +66,9 @@ export default function VideosContent() {
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 52px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
-          <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO.eyebrow}</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: '#FFFFFF' }}>{HERO.headline}</h1>
-          <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>{HERO.subhead}</p>
+          <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO_ACTIVE.eyebrow}</span>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: '#FFFFFF' }}>{HERO_ACTIVE.headline}</h1>
+          <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>{HERO_ACTIVE.subhead}</p>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.55)' }}>{INTRO}</p>
         </div>
       </section>
@@ -72,7 +78,7 @@ export default function VideosContent() {
         <div className="page-content">
 
           {/* Video sections */}
-          {VIDEO_SECTIONS.map((section) => (
+          {VIDEO_SECTIONS_ACTIVE.map((section) => (
             <section key={section.title} style={{ maxWidth: 1240, margin: '0 auto', padding: '66px 24px 0' }}>
               <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>{section.title}</span>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
@@ -119,7 +125,7 @@ export default function VideosContent() {
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>FAQ: MatjarX videos</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {VIDEO_FAQS.map(([q, a], i) => {
+              {VIDEO_FAQS_ACTIVE.map(([q, a], i) => {
                 const open = openFaq === i
                 return (
                   <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>

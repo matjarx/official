@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import VideosContent from '@/components/videos/VideosContent'
+import VideosContent, { type VideosContentShape } from '@/components/videos/VideosContent'
+import { getMergedContent } from '@/lib/marketing-content'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/videos' },
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
   description: 'Watch our library of videos to see how MatjarX helps small businesses get online fast, easy, and affordable.',
 }
 
-export default function Page() {
-  return <VideosContent />
+export const revalidate = 60
+
+export default async function Page() {
+  const content = await getMergedContent<VideosContentShape>('videos')
+  return <VideosContent content={content} />
 }

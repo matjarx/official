@@ -13,8 +13,15 @@ import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS, CONTACT_FAQS, CO
 import { supabase } from '@/lib/supabase'
 import { trackEvent } from '@/lib/analytics'
 
-export default function ContactContent() {
-  const [topic, setTopic] = useState(CONTACT_TOPICS[0])
+export type ContactContentShape = { channels: typeof CONTACT_CHANNELS; topics: typeof CONTACT_TOPICS; officeRows: typeof CONTACT_OFFICE_ROWS; faqs: typeof CONTACT_FAQS }
+const DEFAULT_CONTENT: ContactContentShape = { channels: CONTACT_CHANNELS, topics: CONTACT_TOPICS, officeRows: CONTACT_OFFICE_ROWS, faqs: CONTACT_FAQS }
+
+export default function ContactContent({ content = DEFAULT_CONTENT }: { content?: ContactContentShape }) {
+  const CONTACT_CHANNELS_ACTIVE = content.channels
+  const CONTACT_TOPICS_ACTIVE = content.topics
+  const CONTACT_OFFICE_ROWS_ACTIVE = content.officeRows
+  const CONTACT_FAQS_ACTIVE = content.faqs
+  const [topic, setTopic] = useState(CONTACT_TOPICS_ACTIVE[0])
   const [openFaq, setOpenFaq] = useState(0)
   const [name, setName] = useState('')
   const [businessName, setBusinessName] = useState('')
@@ -59,7 +66,7 @@ export default function ContactContent() {
           {/* Channel cards */}
           <section style={{ maxWidth: 1140, margin: '0 auto', padding: '48px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
-              {CONTACT_CHANNELS.map((c) => (
+              {CONTACT_CHANNELS_ACTIVE.map((c) => (
                 <a key={c.title} href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined} style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '26px 26px 28px', borderRadius: 22, background: c.bg, border: `1.5px solid ${c.border}`, boxShadow: c.shadow }}>
                   <span style={{ width: 44, height: 44, borderRadius: 13, background: c.iconBg, display: 'grid', placeItems: 'center' }}>
                     <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke={c.iconInk} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={c.icon} /></svg>
@@ -136,7 +143,7 @@ export default function ContactContent() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
                     <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>What do you need?</span>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                      {CONTACT_TOPICS.map((label) => {
+                      {CONTACT_TOPICS_ACTIVE.map((label) => {
                         const active = topic === label
                         return (
                           <button key={label} type="button" onClick={() => setTopic(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{label}</button>
@@ -161,7 +168,7 @@ export default function ContactContent() {
                 <div style={{ padding: '28px 30px', borderRadius: 24, background: '#04121F', display: 'flex', flexDirection: 'column', gap: 18 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, color: '#FFFFFF' }}>Our office</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                    {CONTACT_OFFICE_ROWS.map((o) => (
+                    {CONTACT_OFFICE_ROWS_ACTIVE.map((o) => (
                       <div key={o.label} style={{ display: 'flex', gap: 13, alignItems: 'flex-start' }}>
                         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--moss-light)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d={o.icon} /></svg>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
@@ -192,7 +199,7 @@ export default function ContactContent() {
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Common questions about contacting us</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {CONTACT_FAQS.map(([q, a], i) => {
+              {CONTACT_FAQS_ACTIVE.map(([q, a], i) => {
                 const open = openFaq === i
                 return (
                   <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>

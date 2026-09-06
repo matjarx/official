@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import WebsiteExamplesContent from '@/components/examples/WebsiteExamplesContent'
+import WebsiteExamplesContent, { type WebsiteExamplesContentShape } from '@/components/examples/WebsiteExamplesContent'
+import { getMergedContent } from '@/lib/marketing-content'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/website-examples' },
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
   description: '70,000+ websites built globally. Browse real MatjarX sites across restaurants, boutiques, clinics, textiles, e-commerce and more.',
 }
 
-export default function WebsiteExamplesPage() {
-  return <WebsiteExamplesContent />
+export const revalidate = 60
+
+export default async function WebsiteExamplesPage() {
+  const content = await getMergedContent<WebsiteExamplesContentShape>('website-examples')
+  return <WebsiteExamplesContent content={content} />
 }

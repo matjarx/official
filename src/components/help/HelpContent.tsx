@@ -19,7 +19,13 @@ function slugFor(topic: string) {
   return HELP_TOPICS.find((t) => t.title === topic)?.slug
 }
 
-export default function HelpContent() {
+export type HelpHubContentShape = { topics: typeof HELP_TOPICS; popular: typeof HELP_POPULAR; faqs: typeof HELP_FAQS }
+const DEFAULT_CONTENT: HelpHubContentShape = { topics: HELP_TOPICS, popular: HELP_POPULAR, faqs: HELP_FAQS }
+
+export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: HelpHubContentShape }) {
+  const HELP_TOPICS_ACTIVE = content.topics
+  const HELP_POPULAR_ACTIVE = content.popular
+  const HELP_FAQS_ACTIVE = content.faqs
   const [subject, setSubject] = useState(HELP_SUBJECTS[0])
   const [openFaq, setOpenFaq] = useState(0)
   const [name, setName] = useState('')
@@ -63,7 +69,7 @@ export default function HelpContent() {
         {/* Topic cards */}
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
-            {HELP_TOPICS.map((t) => (
+            {HELP_TOPICS_ACTIVE.map((t) => (
               <Link key={t.slug} href={routes.helpArticle(t.slug)} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '26px 26px 28px', borderRadius: 22 }}>
                 <span style={{ width: 42, height: 42, borderRadius: 13, background: 'var(--navy)', display: 'grid', placeItems: 'center' }}>
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={t.icon} /></svg>
@@ -82,7 +88,7 @@ export default function HelpContent() {
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Most read this month</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 14 }}>
-            {HELP_POPULAR.map((p) => {
+            {HELP_POPULAR_ACTIVE.map((p) => {
               const topicSlug = slugFor(p.topic)
               return (
                 <Link key={p.title} href={topicSlug ? routes.helpArticle(topicSlug) : routes.help} className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 13, padding: '18px 20px', borderRadius: 16 }}>
@@ -101,7 +107,7 @@ export default function HelpContent() {
         <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Common questions answered</span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {HELP_FAQS.map(([q, a], i) => {
+            {HELP_FAQS_ACTIVE.map(([q, a], i) => {
               const open = openFaq === i
               return (
                 <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>

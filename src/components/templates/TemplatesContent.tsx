@@ -41,9 +41,17 @@ function IconCardGrid({ items, cols = 4 }: { items: IconCard[]; cols?: number })
   )
 }
 
-export default function TemplatesContent() {
+export type TemplatesContentShape = { hero: typeof HERO; why: typeof WHY_TEMPLATES; features: typeof TEMPLATE_FEATURES; categories: typeof CATEGORIES; faqs: typeof TEMPLATE_FAQS }
+const DEFAULT_CONTENT: TemplatesContentShape = { hero: HERO, why: WHY_TEMPLATES, features: TEMPLATE_FEATURES, categories: CATEGORIES, faqs: TEMPLATE_FAQS }
+
+export default function TemplatesContent({ content = DEFAULT_CONTENT }: { content?: TemplatesContentShape }) {
   const [openFaq, setOpenFaq] = useState(0)
   const [openCat, setOpenCat] = useState(0)
+  const HERO_ACTIVE = content.hero
+  const WHY_TEMPLATES_ACTIVE = content.why
+  const TEMPLATE_FEATURES_ACTIVE = content.features
+  const CATEGORIES_ACTIVE = content.categories
+  const TEMPLATE_FAQS_ACTIVE = content.faqs
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -53,9 +61,9 @@ export default function TemplatesContent() {
       <section style={{ background: 'var(--navy)', padding: '58px 24px 56px' }}>
         <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>100+ designs, ready to launch</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: '#FFFFFF' }}>{HERO.headline}</h1>
-          <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>{HERO.subhead}</p>
-          <a href={appLogin} className="btn-primary" style={{ marginTop: 4 }}>{HERO.cta}</a>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: '#FFFFFF' }}>{HERO_ACTIVE.headline}</h1>
+          <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>{HERO_ACTIVE.subhead}</p>
+          <a href={appLogin} className="btn-primary" style={{ marginTop: 4 }}>{HERO_ACTIVE.cta}</a>
         </div>
       </section>
 
@@ -67,14 +75,14 @@ export default function TemplatesContent() {
           <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>About our templates</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Why use templates?</h2>
-            <IconCardGrid items={WHY_TEMPLATES} />
+            <IconCardGrid items={WHY_TEMPLATES_ACTIVE} />
           </section>
 
           {/* Template features */}
           <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Template features</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>What every template includes</h2>
-            <IconCardGrid items={TEMPLATE_FEATURES} cols={5} />
+            <IconCardGrid items={TEMPLATE_FEATURES_ACTIVE} cols={5} />
           </section>
 
           {/* Categories */}
@@ -82,7 +90,7 @@ export default function TemplatesContent() {
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Browse by type</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Template categories</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {CATEGORIES.map((c, i) => {
+              {CATEGORIES_ACTIVE.map((c, i) => {
                 const open = openCat === i
                 return (
                   <div key={c.n} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
@@ -203,7 +211,7 @@ export default function TemplatesContent() {
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
             <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Frequently asked questions</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {TEMPLATE_FAQS.map(([q, a], i) => {
+              {TEMPLATE_FAQS_ACTIVE.map(([q, a], i) => {
                 const open = openFaq === i
                 return (
                   <div key={q} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>

@@ -17,7 +17,13 @@ import { HERO_STATS, COL_HEADS, MATRIX, PLATFORM_PROFILES, WIN_REASONS, CHOOSE_G
 
 const TONE_COLOR = { us: 'var(--navy)', ok: '#3B5063', bad: '#B4874F' } as const
 
-export default function BestBuilderContent() {
+export type BestBuilderContentShape = { heroStats: typeof HERO_STATS; profiles: typeof PLATFORM_PROFILES; faqs: typeof BEST_BUILDER_FAQS }
+const DEFAULT_CONTENT: BestBuilderContentShape = { heroStats: HERO_STATS, profiles: PLATFORM_PROFILES, faqs: BEST_BUILDER_FAQS }
+
+export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { content?: BestBuilderContentShape }) {
+  const HERO_STATS_ACTIVE = content.heroStats
+  const PLATFORM_PROFILES_ACTIVE = content.profiles
+  const BEST_BUILDER_FAQS_ACTIVE = content.faqs
   const [openFaq, setOpenFaq] = useState(0)
   const [openProfile, setOpenProfile] = useState(0)
 
@@ -48,7 +54,7 @@ export default function BestBuilderContent() {
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center', paddingTop: 18 }}>
-            {HERO_STATS.map((s) => (
+            {HERO_STATS_ACTIVE.map((s) => (
               <div key={s.label} className="glass-chip" style={{ minWidth: 140, display: 'flex', flexDirection: 'column', gap: 4, padding: '16px 22px', borderRadius: 18 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.8px', color: '#04121F' }}>{s.value}</span>
                 <span style={{ fontSize: 12, color: '#6A7F92' }}>{s.label}</span>
@@ -92,7 +98,7 @@ export default function BestBuilderContent() {
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.2vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Each platform explained</h2>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {PLATFORM_PROFILES.map((p, i) => {
+            {PLATFORM_PROFILES_ACTIVE.map((p, i) => {
               const open = openProfile === i
               return (
                 <div key={p.name} className="glass-card" style={{ borderRadius: 20, overflow: 'hidden' }}>
@@ -261,7 +267,7 @@ export default function BestBuilderContent() {
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>Still deciding? Call +92 303 372 0953 and we&rsquo;ll tell you honestly which option fits.</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-              {BEST_BUILDER_FAQS.map(([question, answer], i) => {
+              {BEST_BUILDER_FAQS_ACTIVE.map(([question, answer], i) => {
                 const open = openFaq === i
                 return (
                   <div key={question} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>

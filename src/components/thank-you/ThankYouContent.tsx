@@ -7,7 +7,12 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { THANK_YOU_STEPS, THANK_YOU_LINKS } from '@/lib/thank-you-data'
 
-export default function ThankYouContent() {
+export type ThankYouContentShape = { steps: typeof THANK_YOU_STEPS; links: typeof THANK_YOU_LINKS }
+const DEFAULT_CONTENT: ThankYouContentShape = { steps: THANK_YOU_STEPS, links: THANK_YOU_LINKS }
+
+export default function ThankYouContent({ content = DEFAULT_CONTENT }: { content?: ThankYouContentShape }) {
+  const THANK_YOU_STEPS_ACTIVE = content.steps
+  const THANK_YOU_LINKS_ACTIVE = content.links
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
       <SiteHeader active="home" />
@@ -38,7 +43,7 @@ export default function ThankYouContent() {
           <section style={{ maxWidth: 1080, margin: '0 auto', padding: '48px 24px 0' }}>
             <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-1px', color: '#04121F' }}>What happens next</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
-              {THANK_YOU_STEPS.map((s) => (
+              {THANK_YOU_STEPS_ACTIVE.map((s) => (
                 <div key={s.title} className="glass-card" style={{ padding: '26px 26px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 11 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.4px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>{s.when}</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: '#04121F' }}>{s.title}</span>
@@ -66,7 +71,7 @@ export default function ThankYouContent() {
           <section style={{ maxWidth: 1080, margin: '0 auto', padding: '54px 24px 0' }}>
             <h2 style={{ margin: '0 0 24px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.9px', color: '#04121F' }}>While you wait</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
-              {THANK_YOU_LINKS.map((l) => (
+              {THANK_YOU_LINKS_ACTIVE.map((l) => (
                 <Link key={l.title} href={l.href} style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '24px 26px', borderRadius: 20, background: '#FFFFFF', border: '1.5px solid rgba(4,18,31,0.1)' }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: '#04121F' }}>{l.title}</span>
                   <span style={{ fontSize: 13.5, lineHeight: 1.58, color: '#4B5D6E' }}>{l.body}</span>

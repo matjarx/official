@@ -13,12 +13,18 @@ import SiteFooter from '@/components/SiteFooter'
 import PortfolioShowcase from './PortfolioShowcase'
 import { EXAMPLES, EXAMPLE_CATEGORIES, EXAMPLE_PILLARS } from '@/lib/examples-data'
 
-export default function WebsiteExamplesContent() {
+export type WebsiteExamplesContentShape = { examples: typeof EXAMPLES; categories: typeof EXAMPLE_CATEGORIES; pillars: typeof EXAMPLE_PILLARS }
+const DEFAULT_CONTENT: WebsiteExamplesContentShape = { examples: EXAMPLES, categories: EXAMPLE_CATEGORIES, pillars: EXAMPLE_PILLARS }
+
+export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { content?: WebsiteExamplesContentShape }) {
+  const EXAMPLES_ACTIVE = content.examples
+  const EXAMPLE_CATEGORIES_ACTIVE = content.categories
+  const EXAMPLE_PILLARS_ACTIVE = content.pillars
   const [filter, setFilter] = useState('All')
   const [modalIndex, setModalIndex] = useState(-1)
   const railRef = useRef<HTMLDivElement>(null)
 
-  const shown = filter === 'All' ? EXAMPLES : EXAMPLES.filter((x) => x.cat === filter)
+  const shown = filter === 'All' ? EXAMPLES_ACTIVE : EXAMPLES_ACTIVE.filter((x) => x.cat === filter)
 
   function scrollRail(dir: 1 | -1) {
     const el = railRef.current
@@ -58,7 +64,7 @@ export default function WebsiteExamplesContent() {
 
             <div ref={railRef} className="mx-rail" style={{ flex: 1, minWidth: 0, overflowX: 'auto', overflowY: 'hidden' }}>
               <div style={{ display: 'grid', gridAutoFlow: 'column', gridTemplateRows: '1fr 1fr', gridAutoColumns: 158, gap: 10, width: 'max-content' }}>
-                {EXAMPLE_CATEGORIES.map((c) => {
+                {EXAMPLE_CATEGORIES_ACTIVE.map((c) => {
                   const on = filter === c
                   return (
                     <button
@@ -92,7 +98,7 @@ export default function WebsiteExamplesContent() {
             What makes MatjarX <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3 }}>websites great</span>
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: 20 }}>
-            {EXAMPLE_PILLARS.map((p) => (
+            {EXAMPLE_PILLARS_ACTIVE.map((p) => (
               <div key={p.title} className="glass-card" style={{ padding: '28px 26px 30px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 13 }}>
                 <span style={{ width: 44, height: 44, borderRadius: 13, background: 'var(--navy)', display: 'grid', placeItems: 'center' }}>
                   <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={p.icon} /></svg>
