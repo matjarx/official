@@ -18,7 +18,7 @@ export const CITY_DATA: Record<CityKey, {
 }> = {
   "abbottabad": {
     name: "Abbottabad",
-    metaTitle: "Website Design Abbottabad | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Abbottabad | Professional Websites Built Fast",
     metaDesc: "Web design for Abbottabad businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Abbottabad: Launch Your Business Website in 7 Days",
     intro: ["Abbottabad's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Abbottabad businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -28,7 +28,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "attock": {
     name: "Attock",
-    metaTitle: "Website Design Attock | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Attock | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Attock businesses, cement, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Attock: Launch Your Business Website in 7 Days",
     intro: ["Attock's business sector is thriving—cement industry, manufacturing, retail, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Attock businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -38,7 +38,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "bahawalnagar": {
     name: "Bahawalnagar",
-    metaTitle: "Website Design Bahawalnagar | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Bahawalnagar | Professional Websites Built Fast",
     metaDesc: "Web design for Bahawalnagar businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Bahawalnagar: Launch Your Business Website in 7 Days",
     intro: ["Bahawalnagar's business sector is growing—agriculture, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Bahawalnagar businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -48,7 +48,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "bahawalpur": {
     name: "Bahawalpur",
-    metaTitle: "Website Design Bahawalpur | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Bahawalpur | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Bahawalpur businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Bahawalpur: Launch Your Business Website in 7 Days",
     intro: ["Bahawalpur's business market is growing. Retail, hospitality, services, e-commerce—every business needs a professional online presence.", "MatjarX builds professional websites for Bahawalpur businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -58,7 +58,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "burewala": {
     name: "Burewala",
-    metaTitle: "Website Design Burewala | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Burewala | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Burewala businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Burewala: Launch Your Business Website in 7 Days",
     intro: ["Burewala's business sector is dynamic—agriculture, retail, services, e-commerce. Every business needs a strong online presence.", "MatjarX builds professional websites for Burewala businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No complexity. Just a professional website that brings customers."],
@@ -68,7 +68,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "charsadda": {
     name: "Charsadda",
-    metaTitle: "Website Design Charsadda | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Charsadda | Professional Websites Built Fast",
     metaDesc: "Web design for Charsadda businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Charsadda: Launch Your Business Website in 7 Days",
     intro: ["Charsadda's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Charsadda businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -78,7 +78,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "chichawatni": {
     name: "Chichawatni",
-    metaTitle: "Website Design Chichawatni | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Chichawatni | Professional Websites Built Fast",
     metaDesc: "Web design for Chichawatni businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Chichawatni: Launch Your Business Website in 7 Days",
     intro: ["Chichawatni's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Chichawatni businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -88,7 +88,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "chiniot": {
     name: "Chiniot",
-    metaTitle: "Website Design Chiniot | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Chiniot | Professional Websites Built Fast",
     metaDesc: "Web design for Chiniot businesses, furniture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Chiniot: Launch Your Business Website in 7 Days",
     intro: ["Chiniot's business sector is dynamic—furniture manufacturing, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Chiniot businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -98,7 +98,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "dadu": {
     name: "Dadu",
-    metaTitle: "Website Design Dadu | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Dadu | Professional Websites Built Fast",
     metaDesc: "Web design for Dadu businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Dadu: Launch Your Business Website in 7 Days",
     intro: ["Dadu's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Dadu businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -108,7 +108,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "daska": {
     name: "Daska",
-    metaTitle: "Website Design Daska | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Daska | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Daska businesses, textile, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Daska: Launch Your Business Website in 7 Days",
     intro: ["Daska's business sector is dynamic—textile, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Daska businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -118,7 +118,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "dera-ghazi-khan": {
     name: "Dera Ghazi Khan",
-    metaTitle: "Website Design Dera Ghazi Khan | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Dera Ghazi Khan | Professional Websites Built Fast",
     metaDesc: "Web design for Dera Ghazi Khan businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Dera Ghazi Khan: Launch Your Business Website in 7 Days",
     intro: ["Dera Ghazi Khan's business sector is dynamic—agriculture, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Dera Ghazi Khan businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No complexity. Just a professional website that brings customers."],
@@ -128,7 +128,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "dera-ismail-khan": {
     name: "Dera Ismail Khan",
-    metaTitle: "Website Design Dera Ismail Khan | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Dera Ismail Khan | Professional Websites Built Fast",
     metaDesc: "Web design for Dera Ismail Khan businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Dera Ismail Khan: Launch Your Business Website in 7 Days",
     intro: ["Dera Ismail Khan's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Dera Ismail Khan businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -138,7 +138,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "faisalabad": {
     name: "Faisalabad",
-    metaTitle: "Website Design Faisalabad | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Faisalabad | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Faisalabad businesses, textiles, retail & services. Professional websites in 7 days. PKR 22,500 setup. SEO-optimized, local payments included.",
     h1: "Website Design Faisalabad: Launch Your Website in 7 Days",
     intro: ["Faisalabad's business sector is vibrant—textile industry, manufacturing, retail, e-commerce, services. Every business needs a professional online presence to compete and grow.", "MatjarX builds professional websites for Faisalabad businesses in just 7 days. One setup fee (PKR 22,500). Then affordable monthly plans from PKR 4,500. Local payment support, SEO optimization from day one, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -148,7 +148,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "gojra": {
     name: "Gojra",
-    metaTitle: "Website Design Gojra | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Gojra | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Gojra businesses, leather, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Gojra: Launch Your Business Website in 7 Days",
     intro: ["Gojra's business sector is thriving—leather industry, retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Gojra businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -158,7 +158,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "gujranwala": {
     name: "Gujranwala",
-    metaTitle: "Website Design Gujranwala | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Gujranwala | Professional Websites Built Fast",
     metaDesc: "Web design services in Gujranwala for steel, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Gujranwala: Launch Your Business Website in 7 Days",
     intro: ["Gujranwala's business market is thriving—steel industry, manufacturing, retail, e-commerce, services. Every business needs a professional online presence to compete and grow.", "MatjarX builds professional websites for Gujranwala businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans starting at PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -168,7 +168,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "gujrat": {
     name: "Gujrat",
-    metaTitle: "Website Design Gujrat | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Gujrat | Professional Websites Built Fast",
     metaDesc: "Web design for Gujrat businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Gujrat: Launch Your Business Website in 7 Days",
     intro: ["Gujrat's business sector is growing. Retail, hospitality, services, e-commerce—every business needs a professional online presence.", "MatjarX builds professional websites for Gujrat businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -178,7 +178,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "hafizabad": {
     name: "Hafizabad",
-    metaTitle: "Website Design Hafizabad | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Hafizabad | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Hafizabad businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Hafizabad: Launch Your Business Website in 7 Days",
     intro: ["Hafizabad's business sector is dynamic—agriculture, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Hafizabad businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No complexity. Just a professional website that brings customers."],
@@ -188,7 +188,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "haripur": {
     name: "Haripur",
-    metaTitle: "Website Design Haripur | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Haripur | Professional Websites Built Fast",
     metaDesc: "Web design for Haripur businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Haripur: Launch Your Business Website in 7 Days",
     intro: ["Haripur's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Haripur businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -198,7 +198,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "hyderabad": {
     name: "Hyderabad",
-    metaTitle: "Website Design Hyderabad | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Hyderabad | Professional Websites Built Fast",
     metaDesc: "Web design for Hyderabad businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Hyderabad: Launch Your Business Website in 7 Days",
     intro: ["Hyderabad's business sector is growing fast. Retail, hospitality, e-commerce, services—every business needs a professional online presence.", "MatjarX builds professional websites for Hyderabad businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No complexity. Just a professional website that brings customers."],
@@ -208,7 +208,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "islamabad": {
     name: "Islamabad",
-    metaTitle: "Website Design Islamabad | Professional Sites for Local Business - MatjarX",
+    metaTitle: "Website Design Islamabad | Professional Sites for Local Business",
     metaDesc: "Web design for Islamabad businesses, restaurants, retail & services. Professional websites in 7 days. PKR 22,500 setup. SEO-optimized, local payments.",
     h1: "Website Design Islamabad: Launch Your Website in 7 Days",
     intro: ["Islamabad's business sector is competitive and growing. Government sector workers, corporate offices, growing retail market—Islamabad businesses need professional online presence.", "MatjarX builds professional websites for Islamabad businesses in 7 days. One setup fee (PKR 22,500). Then affordable monthly plans starting at PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -229,7 +229,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "jacobabad": {
     name: "Jacobabad",
-    metaTitle: "Website Design Jacobabad | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Jacobabad | Professional Websites Built Fast",
     metaDesc: "Web design for Jacobabad businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Jacobabad: Launch Your Business Website in 7 Days",
     intro: ["Jacobabad's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Jacobabad businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -239,7 +239,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "jhang": {
     name: "Jhang",
-    metaTitle: "Website Design Jhang | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Jhang | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Jhang businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Jhang: Launch Your Business Website in 7 Days",
     intro: ["Jhang's business market is growing—agriculture, retail, services, e-commerce. Every business needs a strong online presence.", "MatjarX builds professional websites for Jhang businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -249,7 +249,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "jhelum": {
     name: "Jhelum",
-    metaTitle: "Website Design Jhelum | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Jhelum | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Jhelum businesses, metalware, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Jhelum: Launch Your Business Website in 7 Days",
     intro: ["Jhelum's business sector is dynamic—metalware, manufacturing, retail, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Jhelum businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -259,7 +259,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "kamoke": {
     name: "Kamoke",
-    metaTitle: "Website Design Kamoke | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Kamoke | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Kamoke businesses, textile, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Kamoke: Launch Your Business Website in 7 Days",
     intro: ["Kamoke's business sector is growing—textile, retail, services, e-commerce. Every business needs a strong online presence.", "MatjarX builds professional websites for Kamoke businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -269,7 +269,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "kandhkot": {
     name: "Kandhkot",
-    metaTitle: "Website Design Kandhkot | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Kandhkot | Professional Websites Built Fast",
     metaDesc: "Web design for Kandhkot businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Kandhkot: Launch Your Business Website in 7 Days",
     intro: ["Kandhkot's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Kandhkot businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -279,7 +279,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "karachi": {
     name: "Karachi",
-    metaTitle: "Website Design Karachi | Professional Custom Websites - MatjarX",
+    metaTitle: "Website Design Karachi | Professional Custom Websites",
     metaDesc: "Professional website design in Karachi for restaurants, retail, e-commerce & services. Build in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Karachi: Get Your Business Online in 7 Days",
     intro: ["Karachi businesses need websites that work. Not beautiful templates. Not WordPress complexity. Websites that bring customers.", "MatjarX builds professional websites for Karachi businesses in 7 days. With local payment support (JazzCash, EasyPaisa), SEO from launch, and a dedicated team managing your growth—all for PKR 22,500 setup + affordable monthly plans.", "Your website is live in a week. Your customers find you in Google within weeks. No developers. No agencies. Just your website, ranking, converting."],
@@ -300,7 +300,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "khairpur": {
     name: "Khairpur",
-    metaTitle: "Website Design Khairpur | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Khairpur | Professional Websites Built Fast",
     metaDesc: "Web design for Khairpur businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Khairpur: Launch Your Business Website in 7 Days",
     intro: ["Khairpur's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Khairpur businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -310,7 +310,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "khanewal": {
     name: "Khanewal",
-    metaTitle: "Website Design Khanewal | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Khanewal | Professional Websites Built Fast",
     metaDesc: "Web design for Khanewal businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Khanewal: Launch Your Business Website in 7 Days",
     intro: ["Khanewal's business sector is growing—agriculture, retail, services, e-commerce. Every business needs a strong online presence.", "MatjarX builds professional websites for Khanewal businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -320,7 +320,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "khanpur": {
     name: "Khanpur",
-    metaTitle: "Website Design Khanpur | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Khanpur | Professional Websites Built Fast",
     metaDesc: "Web design for Khanpur businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Khanpur: Launch Your Business Website in 7 Days",
     intro: ["Khanpur's business sector is growing—agriculture, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Khanpur businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -330,7 +330,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "khuzdar": {
     name: "Khuzdar",
-    metaTitle: "Website Design Khuzdar | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Khuzdar | Professional Websites Built Fast",
     metaDesc: "Web design for Khuzdar businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Khuzdar: Launch Your Business Website in 7 Days",
     intro: ["Khuzdar's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Khuzdar businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -340,7 +340,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "kohat": {
     name: "Kohat",
-    metaTitle: "Website Design Kohat | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Kohat | Professional Websites Built Fast",
     metaDesc: "Web design for Kohat businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Kohat: Launch Your Business Website in 7 Days",
     intro: ["Kohat's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Kohat businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -350,7 +350,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "kot-adu": {
     name: "Kot Adu",
-    metaTitle: "Website Design Kot Adu | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Kot Adu | Professional Websites Built Fast",
     metaDesc: "Web design for Kot Adu businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Kot Adu: Launch Your Business Website in 7 Days",
     intro: ["Kot Adu's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Kot Adu businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -360,7 +360,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "lahore": {
     name: "Lahore",
-    metaTitle: "Website Design Lahore | Professional Websites for Local Businesses - MatjarX",
+    metaTitle: "Website Design Lahore | Professional Websites for Local Businesses",
     metaDesc: "Web design services in Lahore for restaurants, shops, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payment support.",
     h1: "Website Design Lahore: Get Your Business Website in 7 Days",
     intro: ["Lahore's business community is growing fast. Restaurants, retail, e-commerce, services—every business needs a strong online presence.", "MatjarX builds professional websites for Lahore businesses in just 7 days. With PKR 22,500 setup, local payment support (JazzCash, EasyPaisa), and SEO from day one—your website ranks in Google while competitors are still planning.", "No developers. No delays. Just a professional website that brings customers."],
@@ -381,7 +381,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "larkana": {
     name: "Larkana",
-    metaTitle: "Website Design Larkana | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Larkana | Professional Websites Built Fast",
     metaDesc: "Web design for Larkana businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Larkana: Launch Your Business Website in 7 Days",
     intro: ["Larkana's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Larkana businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -391,7 +391,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "mandi-bahauddin": {
     name: "Mandi Bahauddin",
-    metaTitle: "Website Design Mandi Bahauddin | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Mandi Bahauddin | Professional Websites Built Fast",
     metaDesc: "Web design for Mandi Bahauddin businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Mandi Bahauddin: Launch Your Business Website in 7 Days",
     intro: ["Mandi Bahauddin's business sector is growing—agriculture, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Mandi Bahauddin businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -401,7 +401,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "mansehra": {
     name: "Mansehra",
-    metaTitle: "Website Design Mansehra | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Mansehra | Professional Websites Built Fast",
     metaDesc: "Web design for Mansehra businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Mansehra: Launch Your Business Website in 7 Days",
     intro: ["Mansehra's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Mansehra businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -411,7 +411,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "mardan": {
     name: "Mardan",
-    metaTitle: "Website Design Mardan | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Mardan | Professional Websites Built Fast",
     metaDesc: "Web design for Mardan businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Mardan: Launch Your Business Website in 7 Days",
     intro: ["Mardan's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Mardan businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -421,7 +421,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "mianwali": {
     name: "Mianwali",
-    metaTitle: "Website Design Mianwali | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Mianwali | Professional Websites Built Fast",
     metaDesc: "Web design for Mianwali businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Mianwali: Launch Your Business Website in 7 Days",
     intro: ["Mianwali's business sector is growing—agriculture, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Mianwali businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No complexity. Just a professional website that brings customers."],
@@ -431,7 +431,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "mirpur-khas": {
     name: "Mirpur Khas",
-    metaTitle: "Website Design Mirpur Khas | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Mirpur Khas | Professional Websites Built Fast",
     metaDesc: "Web design for Mirpur Khas businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Mirpur Khas: Launch Your Business Website in 7 Days",
     intro: ["Mirpur Khas's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Mirpur Khas businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -441,7 +441,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "multan": {
     name: "Multan",
-    metaTitle: "Website Design Multan | Professional Websites for Local Business - MatjarX",
+    metaTitle: "Website Design Multan | Professional Websites for Local Business",
     metaDesc: "Web design for Multan businesses, restaurants, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Multan: Launch Your Professional Website in 7 Days",
     intro: ["Multan's business market is growing. Retail, hospitality, services, e-commerce—every business needs a strong online presence to succeed.", "MatjarX builds professional websites for Multan businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans starting at PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No waiting. No complexity. Just a professional website that brings customers."],
@@ -451,7 +451,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "muridke": {
     name: "Muridke",
-    metaTitle: "Website Design Muridke | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Muridke | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Muridke businesses, footwear, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Muridke: Launch Your Business Website in 7 Days",
     intro: ["Muridke's business sector is thriving—footwear manufacturing, retail, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Muridke businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No complexity. Just a professional website that brings customers."],
@@ -461,7 +461,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "murree": {
     name: "Murree",
-    metaTitle: "Website Design Murree | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Murree | Professional Websites Built Fast",
     metaDesc: "Web design for Murree businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Murree: Launch Your Business Website in 7 Days",
     intro: ["Murree's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Murree businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -471,7 +471,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "muzaffargarh": {
     name: "Muzaffargarh",
-    metaTitle: "Website Design Muzaffargarh | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Muzaffargarh | Professional Websites Built Fast",
     metaDesc: "Web design for Muzaffargarh businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Muzaffargarh: Launch Your Business Website in 7 Days",
     intro: ["Muzaffargarh's business sector is growing—agriculture, citrus, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Muzaffargarh businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -481,7 +481,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "nawabshah": {
     name: "Nawabshah",
-    metaTitle: "Website Design Nawabshah | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Nawabshah | Professional Websites Built Fast",
     metaDesc: "Web design for Nawabshah businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Nawabshah: Launch Your Business Website in 7 Days",
     intro: ["Nawabshah's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Nawabshah businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -491,7 +491,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "nowshera": {
     name: "Nowshera",
-    metaTitle: "Website Design Nowshera | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Nowshera | Professional Websites Built Fast",
     metaDesc: "Web design for Nowshera businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Nowshera: Launch Your Business Website in 7 Days",
     intro: ["Nowshera's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Nowshera businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -501,7 +501,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "okara": {
     name: "Okara",
-    metaTitle: "Website Design Okara | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Okara | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Okara businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Okara: Launch Your Business Website in 7 Days",
     intro: ["Okara's business sector is growing—agriculture, retail, services, e-commerce. Every business needs a strong online presence.", "MatjarX builds professional websites for Okara businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -511,7 +511,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "pakpattan": {
     name: "Pakpattan",
-    metaTitle: "Website Design Pakpattan | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Pakpattan | Professional Websites Built Fast",
     metaDesc: "Web design for Pakpattan businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Pakpattan: Launch Your Business Website in 7 Days",
     intro: ["Pakpattan's business sector is growing—agriculture, retail, services, e-commerce. Every business needs a strong online presence.", "MatjarX builds professional websites for Pakpattan businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -521,7 +521,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "peshawar": {
     name: "Peshawar",
-    metaTitle: "Website Design Peshawar | Professional Websites for Local Businesses - MatjarX",
+    metaTitle: "Website Design Peshawar | Professional Websites for Local Businesses",
     metaDesc: "Web design services in Peshawar for restaurants, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Peshawar: Launch Your Business Website in 7 Days",
     intro: ["Peshawar's business market is vibrant and growing. Retail, hospitality, services, e-commerce—every business needs a strong online presence to compete.", "MatjarX builds professional websites for Peshawar businesses in just 7 days. One setup fee (PKR 22,500). Then affordable monthly plans starting at PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -531,7 +531,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "quetta": {
     name: "Quetta",
-    metaTitle: "Website Design Quetta | Professional Websites for Local Businesses - MatjarX",
+    metaTitle: "Website Design Quetta | Professional Websites for Local Businesses",
     metaDesc: "Web design services in Quetta for restaurants, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Quetta: Launch Your Business Website in 7 Days",
     intro: ["Quetta's business sector is growing. Retail, hospitality, services, e-commerce—every business needs a strong online presence.", "MatjarX builds professional websites for Quetta businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No complexity. Just a professional website that brings customers."],
@@ -541,7 +541,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "rahim-yar-khan": {
     name: "Rahim Yar Khan",
-    metaTitle: "Website Design Rahim Yar Khan | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Rahim Yar Khan | Professional Websites Built Fast",
     metaDesc: "Web design for Rahim Yar Khan businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Rahim Yar Khan: Launch Your Business Website in 7 Days",
     intro: ["Rahim Yar Khan's business sector is growing—agriculture, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Rahim Yar Khan businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -551,7 +551,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "rawalpindi": {
     name: "Rawalpindi",
-    metaTitle: "Website Design Rawalpindi | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Rawalpindi | Professional Websites Built Fast",
     metaDesc: "Web design services in Rawalpindi for restaurants, retail, e-commerce & services. Professional sites in 7 days. PKR 22,500 setup. Local payments, SEO-ready.",
     h1: "Website Design Rawalpindi: Professional Websites in 7 Days",
     intro: ["Rawalpindi's business market is diverse—military families, traders, growing retail and e-commerce sector. Every business needs a strong online presence to compete.", "MatjarX builds professional websites for Rawalpindi businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans starting at PKR 4,500. Local payment support, SEO optimization from day one, and your website ranking in Google.", "No waiting. No delays. Just a professional website that brings customers."],
@@ -561,7 +561,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "sadiqabad": {
     name: "Sadiqabad",
-    metaTitle: "Website Design Sadiqabad | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Sadiqabad | Professional Websites Built Fast",
     metaDesc: "Web design for Sadiqabad businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Sadiqabad: Launch Your Business Website in 7 Days",
     intro: ["Sadiqabad's business sector is growing—agriculture, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Sadiqabad businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -571,7 +571,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "sahiwal": {
     name: "Sahiwal",
-    metaTitle: "Website Design Sahiwal | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Sahiwal | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Sahiwal businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Sahiwal: Launch Your Business Website in 7 Days",
     intro: ["Sahiwal's business market is growing—agriculture, cattle breeding, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Sahiwal businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -581,7 +581,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "sargodha": {
     name: "Sargodha",
-    metaTitle: "Website Design Sargodha | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Sargodha | Professional Websites Built Fast",
     metaDesc: "Web design for Sargodha businesses, citrus, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Sargodha: Launch Your Business Website in 7 Days",
     intro: ["Sargodha's business sector is vibrant—citrus industry, agriculture, retail, e-commerce, services. Every business needs a strong online presence.", "MatjarX builds professional websites for Sargodha businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -591,7 +591,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "sheikhupura": {
     name: "Sheikhupura",
-    metaTitle: "Website Design Sheikhupura | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Sheikhupura | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Sheikhupura businesses, agriculture, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Sheikhupura: Launch Your Business Website in 7 Days",
     intro: ["Sheikhupura's business sector is growing—agriculture, textile, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Sheikhupura businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -601,7 +601,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "shikarpur": {
     name: "Shikarpur",
-    metaTitle: "Website Design Shikarpur | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Shikarpur | Professional Websites Built Fast",
     metaDesc: "Web design for Shikarpur businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Shikarpur: Launch Your Business Website in 7 Days",
     intro: ["Shikarpur's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Shikarpur businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -611,7 +611,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "sialkot": {
     name: "Sialkot",
-    metaTitle: "Website Design Sialkot | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Sialkot | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Sialkot businesses, sports goods, retail & manufacturing. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-ready.",
     h1: "Website Design Sialkot: Launch Your Business Website in 7 Days",
     intro: ["Sialkot's business sector is dynamic—sports goods manufacturing, export, retail, e-commerce, local services. Every business needs a professional online presence.", "MatjarX builds professional websites for Sialkot businesses in just 7 days. One setup fee (PKR 22,500). Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No agencies. Just your website, built fast, ranking faster."],
@@ -621,7 +621,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "sukkur": {
     name: "Sukkur",
-    metaTitle: "Website Design Sukkur | Professional Websites Built in 7 Days - MatjarX",
+    metaTitle: "Website Design Sukkur | Professional Websites Built in 7 Days",
     metaDesc: "Web design for Sukkur businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Sukkur: Launch Your Business Website in 7 Days",
     intro: ["Sukkur's business market is dynamic. Retail, services, e-commerce—every business needs a strong online presence.", "MatjarX builds professional websites for Sukkur businesses in just 7 days. PKR 22,500 setup. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from day one, and your website ranking in Google.", "No developers. No complexity. Just a professional website that brings customers."],
@@ -631,7 +631,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "swabi": {
     name: "Swabi",
-    metaTitle: "Website Design Swabi | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Swabi | Professional Websites Built Fast",
     metaDesc: "Web design for Swabi businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Swabi: Launch Your Business Website in 7 Days",
     intro: ["Swabi's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Swabi businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -641,7 +641,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "tando-allahyar": {
     name: "Tando Allahyar",
-    metaTitle: "Website Design Tando Allahyar | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Tando Allahyar | Professional Websites Built Fast",
     metaDesc: "Web design for Tando Allahyar businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Tando Allahyar: Launch Your Business Website in 7 Days",
     intro: ["Tando Allahyar's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Tando Allahyar businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -651,7 +651,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "vehari": {
     name: "Vehari",
-    metaTitle: "Website Design Vehari | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Vehari | Professional Websites Built Fast",
     metaDesc: "Web design for Vehari businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Vehari: Launch Your Business Website in 7 Days",
     intro: ["Vehari's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Vehari businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -661,7 +661,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "wah-cantonment": {
     name: "Wah Cantonment",
-    metaTitle: "Website Design Wah Cantonment | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Wah Cantonment | Professional Websites Built Fast",
     metaDesc: "Web design for Wah Cantonment businesses, manufacturing, retail & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Wah Cantonment: Launch Your Business Website in 7 Days",
     intro: ["Wah Cantonment's business sector is thriving—manufacturing, retail, services, e-commerce. Every business needs a professional online presence.", "MatjarX builds professional websites for Wah Cantonment businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
@@ -671,7 +671,7 @@ export const CITY_DATA: Record<CityKey, {
   },
   "zhob": {
     name: "Zhob",
-    metaTitle: "Website Design Zhob | Professional Websites Built Fast - MatjarX",
+    metaTitle: "Website Design Zhob | Professional Websites Built Fast",
     metaDesc: "Web design for Zhob businesses, retail, e-commerce & services. Professional websites in 7 days. PKR 22,500 setup. Local payments, SEO-optimized.",
     h1: "Website Design Zhob: Launch Your Business Website in 7 Days",
     intro: ["Zhob's business sector is growing—retail, e-commerce, services. Every business needs a professional online presence.", "MatjarX builds professional websites for Zhob businesses in just 7 days. PKR 22,500 setup fee. Then affordable monthly plans from PKR 4,500. Local payment support, SEO from launch, and your website ranking in Google.", "No developers. No delays. Just a professional website that brings customers."],
