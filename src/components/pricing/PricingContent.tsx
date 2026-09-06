@@ -7,11 +7,13 @@
 
 import { Fragment, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import SavingsCalculator from '@/components/SavingsCalculator'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
+import { PLAN_TIER_ICONS } from '@/lib/partner-icons-data'
 import type { PricingContentShape } from '@/lib/marketing-content'
 
 export const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
@@ -207,7 +209,14 @@ export default function PricingContent({ content }: { content: PricingContentSha
             return (
               <div key={p.name} style={{ padding: '28px 25px 30px', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 12, background: t.bg, border: `1.5px solid ${t.border}`, backdropFilter: t.blur, boxShadow: t.shadow }}>
                 {p.tag && <span style={{ alignSelf: 'flex-start', fontSize: 10.5, fontWeight: 700, letterSpacing: '0.9px', textTransform: 'uppercase', padding: '6px 12px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)' }}>{p.tag}</span>}
-                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 25, letterSpacing: '-0.7px', color: t.ink }}>{p.name}</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  {PLAN_TIER_ICONS[p.name as keyof typeof PLAN_TIER_ICONS] && (
+                    <div style={{ position: 'relative', width: 26, height: 26, flex: '0 0 auto' }}>
+                      <Image src={PLAN_TIER_ICONS[p.name as keyof typeof PLAN_TIER_ICONS]} alt="" fill sizes="26px" style={{ objectFit: 'contain' }} />
+                    </div>
+                  )}
+                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 25, letterSpacing: '-0.7px', color: t.ink }}>{p.name}</h3>
+                </div>
                 <span style={{ fontSize: 13.5, lineHeight: 1.5, color: t.muted }}>{p.pitch}</span>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 5, paddingTop: 8 }}>
                   <span style={{ fontSize: 15, fontWeight: 600, color: t.muted }}>Rs.</span>

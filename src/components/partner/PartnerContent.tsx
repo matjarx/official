@@ -8,6 +8,7 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
@@ -15,6 +16,7 @@ import {
   PARTNER_TIERS, PARTNER_STEPS, PARTNER_CLIENT_STEPS, PARTNER_PLAN_PICKS, PARTNER_TYPES,
   PARTNER_PLAN_RATES, PARTNER_COMMISSION_PCT, money, type PlanKey,
 } from '@/lib/partner-data'
+import { PARTNER_CATEGORY_ICONS, PARTNER_TOOL_LOGOS } from '@/lib/partner-icons-data'
 
 export type PartnerContentShape = { tiers: typeof PARTNER_TIERS; steps: typeof PARTNER_STEPS }
 const DEFAULT_CONTENT: PartnerContentShape = { tiers: PARTNER_TIERS, steps: PARTNER_STEPS }
@@ -96,6 +98,37 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 40, lineHeight: 1, letterSpacing: '-1.8px', color: 'var(--moss-light)' }}>{s.n}</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: '#04121F' }}>{s.title}</span>
                   <span style={{ fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{s.body}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Referral categories */}
+          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '68px 24px 0' }}>
+            <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>What kind of referrals work best?</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: 14 }}>
+              {PARTNER_CATEGORY_ICONS.map((c) => (
+                <div key={c.src} className="glass-card" style={{ padding: '18px 14px', borderRadius: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, textAlign: 'center' }}>
+                  <div style={{ position: 'relative', width: 40, height: 40, borderRadius: 12, background: 'var(--navy)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ position: 'relative', width: 20, height: 20 }}>
+                      <Image src={c.src} alt={c.label} fill sizes="20px" style={{ objectFit: 'contain' }} />
+                    </div>
+                  </div>
+                  <span style={{ fontSize: 12.5, fontWeight: 600, color: '#04121F' }}>{c.label}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Complementary tools partners already recommend */}
+          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '54px 24px 0' }}>
+            <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Tools our partners already recommend</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 130px), 1fr))', gap: 14 }}>
+              {PARTNER_TOOL_LOGOS.map((t) => (
+                <div key={t.src} className="glass-card" style={{ padding: '16px', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', height: 64 }}>
+                  <div style={{ position: 'relative', width: '100%', height: 32 }}>
+                    <Image src={t.src} alt={t.label} fill sizes="120px" style={{ objectFit: 'contain' }} />
+                  </div>
                 </div>
               ))}
             </div>
