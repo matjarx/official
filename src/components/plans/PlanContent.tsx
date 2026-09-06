@@ -14,18 +14,25 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import { ALL_PLANS, PLAN_DATA, otherPlansFor, CYCLE_FACTOR, moneyPKR, type PlanKey } from '@/lib/plan-data'
-import type { PlanPageOverride } from '@/lib/marketing-content'
+import type { PlanContentShape } from '@/lib/marketing-content'
 import PlanDetailSections from './PlanDetailSections'
 
-export default function PlanContent({ planKey, override }: { planKey: PlanKey; override?: PlanPageOverride | null }) {
+const DEFAULT_CONTENT: Record<PlanKey, PlanContentShape> = (Object.keys(ALL_PLANS) as PlanKey[]).reduce((acc, key) => {
+  acc[key] = { ...ALL_PLANS[key], ...PLAN_DATA[key], detail: undefined }
+  return acc
+}, {} as Record<PlanKey, PlanContentShape>)
+
+export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey] }: { planKey: PlanKey; content?: PlanContentShape }) {
   const [openFaq, setOpenFaq] = useState(0)
 
-  const p = ALL_PLANS[planKey]
-  const monthlyNum = Number(p.price.replace(/[^0-9]/g, '')) || 0
+  const monthlyNum = Number(content.price.replace(/[^0-9]/g, '')) || 0
   const yearlySaving = monthlyNum * 12 - monthlyNum * 12 * CYCLE_FACTOR.yearly
   const twoYearSaving = monthlyNum * 24 - monthlyNum * 24 * CYCLE_FACTOR.two
-  // Admin-edited copy wins field-by-field over the default PLAN_DATA entry.
-  const d = { ...PLAN_DATA[planKey], ...override }
+  // `content` is this plan's full default data (ALL_PLANS + PLAN_DATA),
+  // deep-merged with any admin override — `p`/`d` alias the same object
+  // since both names were used historically for different subsets of it.
+  const p = content
+  const d = content
   const others = otherPlansFor(planKey)
   const pageUrl = `https://matjarx.com${routes.plan(planKey)}`
 

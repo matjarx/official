@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import PlanContent from '@/components/plans/PlanContent'
 import { ALL_PLANS, PLAN_DATA, type PlanKey } from '@/lib/plan-data'
 import { routes } from '@/lib/routes'
-import { getContentOverride, type PlanPageOverride, type MarketingContentSlug } from '@/lib/marketing-content'
+import { getMergedContent, type PlanContentShape } from '@/lib/marketing-content'
 
 // Re-checks marketing_content at most once a minute rather than only at
 // build time — otherwise an admin edit would need a full redeploy to show
@@ -34,7 +34,7 @@ export default async function PlanPage({ params }: { params: Promise<{ plan: str
   const { plan } = await params
   if (!isPlanKey(plan)) notFound()
 
-  const override = await getContentOverride<PlanPageOverride>(`plans/${plan}` as MarketingContentSlug)
+  const content = await getMergedContent<PlanContentShape>(`plans/${plan}`)
   const p = ALL_PLANS[plan]
   const d = PLAN_DATA[plan]
   const priceNumber = Number(p.price.replace(/[^0-9.]/g, '')) || undefined
@@ -56,7 +56,7 @@ export default async function PlanPage({ params }: { params: Promise<{ plan: str
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
-      <PlanContent planKey={plan} override={override} />
+      <PlanContent planKey={plan} content={content} />
     </>
   )
 }

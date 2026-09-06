@@ -12,9 +12,9 @@ import SiteFooter from '@/components/SiteFooter'
 import SavingsCalculator from '@/components/SavingsCalculator'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
-import type { PricingOverride } from '@/lib/marketing-content'
+import type { PricingContentShape } from '@/lib/marketing-content'
 
-const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
+export const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
 
 type Cell = 1 | 0 | string
 const YES = { mark: '✓', color: 'var(--olive)' }
@@ -23,7 +23,7 @@ function cellsFor(a: Cell, b: Cell, c: Cell, d: Cell) {
   return [a, b, c, d].map((v) => (v === 1 ? YES : v === 0 ? NO : { mark: String(v), color: '#04121F' }))
 }
 
-const COMPARE_GROUPS: { title: string; rows: [string, Cell, Cell, Cell, Cell][] }[] = [
+export const COMPARE_GROUPS: { title: string; rows: [string, Cell, Cell, Cell, Cell][] }[] = [
   { title: 'Done-for-you website', rows: [
     ['Multi-page website built by our team', 1, 1, 1, 1],
     ['Copywriting and image selection', 1, 1, 1, 1],
@@ -60,7 +60,7 @@ const COMPARE_GROUPS: { title: string; rows: [string, Cell, Cell, Cell, Cell][] 
   ] },
 ]
 
-const DEFAULT_TESTIMONIALS = [
+export const DEFAULT_TESTIMONIALS = [
   { quote: "If you are looking for a website provider, then MatjarX is fantastic. The level of service is really really good, and I'm getting loads of leads as well.", name: 'Bella Goode', company: 'Bella Goode and Training Centre', initials: 'BG', tint: '#C6CB8A' },
   { quote: 'What you get for the value that you pay is almost unheard of. You get all the support, all the tech help that you need, in a quick turnaround time.', name: 'Severen Henderson', company: 'Care Concern Connect NFP', initials: 'SH', tint: '#F4F2AE' },
   { quote: 'I started out knowing absolutely nothing about how to create a website. You guys made it so easy. With telling you just basic things about my company, you designed a beautiful website for me at an absolutely amazing price.', name: 'Marvin F.', company: 'Trustpilot 5-star review, US', initials: 'MF', tint: '#BFD4E6' },
@@ -70,14 +70,14 @@ const DEFAULT_TESTIMONIALS = [
   { quote: 'I have been with this company for 2 years. I have had my website, then upgraded to a growth plan. I have found the online chat and email communication very helpful, along with numerous 1-on-1 web calls. I would highly recommend this company.', name: 'Emma S.', company: 'Trustpilot 5-star review, US', initials: 'ES', tint: '#A8D8C8' },
 ]
 
-const DEFAULT_HOW_TO_CHOOSE = [
+export const DEFAULT_HOW_TO_CHOOSE = [
   { q: 'Starting your online presence?', a: 'Boost gets you a professional website with SEO fundamentals and monthly content. Perfect for first-time builders and businesses testing the market.' },
   { q: 'Ready to generate leads?', a: 'Growth pairs your website with a marketing expert who helps you acquire customers. Best for businesses that have proof of concept and want to scale.' },
   { q: 'Serious about digital dominance?', a: 'Platinum gives you a complete team. Best for online sellers, franchises, and businesses treating digital growth as a core business function.' },
   { q: 'Have unique needs?', a: "Custom plans start with a conversation about your business. We'll design something that fits." },
 ]
 
-const DEFAULT_FAQ_DATA = [
+export const DEFAULT_FAQ_DATA = [
   { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional website, domain, email and hosting. Boost is our most popular — it adds unlimited edits done by us, advanced SEO and selling on Google, Facebook and Instagram. Growth adds a dedicated team and monthly marketing sessions. Platinum is a fully custom build for serious e-commerce.' },
   { question: 'How do I get started?', answer: 'Pick a plan and check out. You fill in a short questionnaire about your business, we build the whole site in seven days, then we launch it with you on a live call.' },
   { question: 'How does this all work?', answer: "Our team designs, writes and builds your site — you don't touch a builder. Once live, you can edit anything yourself in our editor, or send changes to your concierge and we do them for you." },
@@ -100,7 +100,7 @@ const DARK_THEME = {
   tick: 'var(--moss-light)', ctaInk: '#16210B', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)', savingInk: 'var(--butter)',
 }
 
-const DEFAULT_PLAN_ROWS = [
+export const DEFAULT_PLAN_ROWS = [
   { name: 'Launch', base: 4500, setup: '22,500', pitch: 'We build and launch your website.', cta: 'Choose Launch', theme: LIGHT_THEME, tag: '', inherits: '', href: appSignup('launch'),
     features: ['Built-for-you website or online store', 'Personalised design, made for your trade', 'Fast loading, structured to rank on Google', 'Ready in 7 days', 'Custom domain, or connect one you own', 'Professional business email address', 'Easy-to-use editor', '0% fees on sales and bookings', '1-on-1 launch and training call', 'Secure hosting and SSL certificate', 'No long-term contract'],
     bestFor: 'Perfect for: first-time builders and businesses testing the market.' },
@@ -129,22 +129,21 @@ function money(n: number) {
   return n.toLocaleString('en-US')
 }
 
-export default function PricingContent({ override }: { override?: PricingOverride | null }) {
+export default function PricingContent({ content }: { content: PricingContentShape }) {
   const [cycle, setCycle] = useState<'monthly' | 'yearly' | 'two'>('monthly')
   const [openGroup, setOpenGroup] = useState(0)
   const [openFaq, setOpenFaq] = useState(-1)
 
-  // Admin-edited copy (matjarx-platform's marketing content editor) wins
-  // field-by-field; anything not overridden falls back to the default
-  // copy above, so an empty or partial row changes nothing.
-  const HERO_TICKS = override?.heroTicks ?? DEFAULT_HERO_TICKS
-  const TESTIMONIALS = override?.testimonials ?? DEFAULT_TESTIMONIALS
-  const HOW_TO_CHOOSE = override?.howToChoose ?? DEFAULT_HOW_TO_CHOOSE
-  const FAQ_DATA = override?.faqs ?? DEFAULT_FAQ_DATA
-  const PLAN_ROWS = DEFAULT_PLAN_ROWS.map((p) => ({
-    ...p,
-    ...(override?.plans?.[p.name as keyof NonNullable<PricingOverride['plans']>] ?? {}),
-  }))
+  // `content` is this page's full default data, deep-merged with any
+  // admin override (matjarx-platform's marketing content editor) — every
+  // field below can be edited there; an empty/partial override changes
+  // only the fields it touches.
+  const HERO_TICKS = content.heroTicks
+  const TESTIMONIALS = content.testimonials
+  const HOW_TO_CHOOSE = content.howToChoose
+  const FAQ_DATA = content.faqs
+  const PLAN_ROWS = content.plans
+  const COMPARE_GROUPS = content.compareGroups
 
   const factor = CYCLE_FACTOR[cycle]
   const fmt = (n: number) => Math.round((n * factor) / 50) * 50

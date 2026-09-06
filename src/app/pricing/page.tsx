@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import PricingContent from '@/components/pricing/PricingContent'
-import { getContentOverride, type PricingOverride } from '@/lib/marketing-content'
+import { getMergedContent, type PricingContentShape } from '@/lib/marketing-content'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/pricing' },
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
 export const revalidate = 60
 
 export default async function PricingPage() {
-  const override = await getContentOverride<PricingOverride>('pricing')
-  return <PricingContent override={override} />
+  const content = await getMergedContent<PricingContentShape>('pricing')
+  return <PricingContent content={content} />
 }

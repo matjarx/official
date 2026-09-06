@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import FeaturesContent from '@/components/features/FeaturesContent'
-import { getContentOverride, type FeaturesOverride } from '@/lib/marketing-content'
+import { getMergedContent, type FeaturesContentShape } from '@/lib/marketing-content'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/features' },
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
 export const revalidate = 60
 
 export default async function FeaturesPage() {
-  const override = await getContentOverride<FeaturesOverride>('features')
-  return <FeaturesContent override={override} />
+  const content = await getMergedContent<FeaturesContentShape>('features')
+  return <FeaturesContent content={content} />
 }

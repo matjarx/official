@@ -12,17 +12,20 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes } from '@/lib/routes'
-import { FEATURE_GROUPS, ALWAYS_ON, FEATURES_FAQ as DEFAULT_FEATURES_FAQ, type FeatureGroupKey } from '@/lib/features-data'
-import type { FeaturesOverride } from '@/lib/marketing-content'
+import { FEATURE_GROUPS, ALWAYS_ON, FEATURES_FAQ, type FeatureGroupKey } from '@/lib/features-data'
+import type { FeaturesContentShape } from '@/lib/marketing-content'
 
 const TAB_KEYS = Object.keys(FEATURE_GROUPS) as FeatureGroupKey[]
+const DEFAULT_CONTENT: FeaturesContentShape = { groups: FEATURE_GROUPS, alwaysOn: ALWAYS_ON, faqs: FEATURES_FAQ }
 
-export default function FeaturesContent({ override }: { override?: FeaturesOverride | null }) {
+export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content?: FeaturesContentShape }) {
   const [tab, setTab] = useState<FeatureGroupKey>('website')
   const [openFaq, setOpenFaq] = useState(0)
 
-  const g = FEATURE_GROUPS[tab]
-  const FEATURES_FAQ = override?.faqs ?? DEFAULT_FEATURES_FAQ
+  const FEATURE_GROUPS_ACTIVE = content.groups
+  const ALWAYS_ON_ACTIVE = content.alwaysOn
+  const g = FEATURE_GROUPS_ACTIVE[tab]
+  const FEATURES_FAQ_ACTIVE = content.faqs
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -52,7 +55,7 @@ export default function FeaturesContent({ override }: { override?: FeaturesOverr
               const on = tab === k
               return (
                 <button key={k} type="button" onClick={() => setTab(k)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? '#FFFFFF' : '#4B5D6E', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
-                  {FEATURE_GROUPS[k].label}
+                  {FEATURE_GROUPS_ACTIVE[k].label}
                 </button>
               )
             })}
@@ -106,7 +109,7 @@ export default function FeaturesContent({ override }: { override?: FeaturesOverr
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>The things other builders charge extra for</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 14 }}>
-            {ALWAYS_ON.map((label) => (
+            {ALWAYS_ON_ACTIVE.map((label) => (
               <div key={label} className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '18px 20px', borderRadius: 16 }}>
                 <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--olive)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                 <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: '#04121F' }}>{label}</span>
@@ -124,7 +127,7 @@ export default function FeaturesContent({ override }: { override?: FeaturesOverr
               <Link href={routes.help} className="btn-secondary" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Talk to us</Link>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-              {FEATURES_FAQ.map(([question, answer], i) => {
+              {FEATURES_FAQ_ACTIVE.map(([question, answer], i) => {
                 const open = openFaq === i
                 return (
                   <div key={question} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
