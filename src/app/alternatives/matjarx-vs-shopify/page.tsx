@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import ComparisonContent from '@/components/comparisons/ComparisonContent'
+import ComparisonContent, { type ComparisonContentShape } from '@/components/comparisons/ComparisonContent'
+import { getMergedContent } from '@/lib/marketing-content'
 import { RIVAL_DATA } from '@/lib/comparison-data'
 
 const rival = RIVAL_DATA['shopify']
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
   description: rival.intro[0],
 }
 
-export default function Page() {
-  return <ComparisonContent rivalKey="shopify" />
+export const revalidate = 60
+
+export default async function Page() {
+  const content = await getMergedContent<ComparisonContentShape>('comparisons/shopify')
+  return <ComparisonContent rivalKey="shopify" content={content} />
 }

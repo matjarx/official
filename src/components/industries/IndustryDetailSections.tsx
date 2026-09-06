@@ -9,7 +9,7 @@
 
 import { useState } from 'react'
 import type { Block } from '@/lib/plan-detail-data'
-import { INDUSTRY_DETAIL } from '@/lib/industry-detail-data'
+import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data'
 import type { IndustryKey } from '@/lib/industry-data'
 
 const H2: React.CSSProperties = { margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }
@@ -39,9 +39,9 @@ function BlockList({ blocks }: { blocks: Block[] }) {
   )
 }
 
-export default function IndustryDetailSections({ industryKey }: { industryKey: IndustryKey }) {
+export default function IndustryDetailSections({ industryKey, detail }: { industryKey: IndustryKey; detail?: IndustryDetail | null }) {
   const [openFaq, setOpenFaq] = useState(-1)
-  const d = INDUSTRY_DETAIL[industryKey]
+  const d = detail ?? INDUSTRY_DETAIL[industryKey]
   if (!d) return null
 
   return (

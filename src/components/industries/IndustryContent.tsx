@@ -12,11 +12,14 @@ import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { INDUSTRY_DATA, INDUSTRY_SLUGS, otherIndustriesFor, type IndustryKey } from '@/lib/industry-data'
+import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data'
 import IndustryDetailSections from './IndustryDetailSections'
 
-export default function IndustryContent({ industryKey }: { industryKey: IndustryKey }) {
+export type IndustryContentShape = (typeof INDUSTRY_DATA)[IndustryKey] & { detail?: IndustryDetail | null }
+
+export default function IndustryContent({ industryKey, content }: { industryKey: IndustryKey; content?: IndustryContentShape }) {
   const [openFaq, setOpenFaq] = useState(0)
-  const d = INDUSTRY_DATA[industryKey]
+  const d = content ?? { ...INDUSTRY_DATA[industryKey], detail: INDUSTRY_DETAIL[industryKey] }
   const others = otherIndustriesFor(industryKey)
   const pageUrl = `https://matjarx.com${routes.industry(INDUSTRY_SLUGS[industryKey])}`
 
@@ -195,7 +198,7 @@ export default function IndustryContent({ industryKey }: { industryKey: Industry
           </div>
         </section>
 
-        <IndustryDetailSections industryKey={industryKey} />
+        <IndustryDetailSections industryKey={industryKey} detail={d.detail} />
 
         {/* Other industries */}
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>

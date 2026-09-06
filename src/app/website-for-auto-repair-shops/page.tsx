@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import IndustryContent from '@/components/industries/IndustryContent'
+import IndustryContent, { type IndustryContentShape } from '@/components/industries/IndustryContent'
+import { getMergedContent } from '@/lib/marketing-content'
 import { INDUSTRY_DATA } from '@/lib/industry-data'
 
 const industry = INDUSTRY_DATA['auto-repair-shops']
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
   description: industry.metaDesc,
 }
 
-export default function Page() {
-  return <IndustryContent industryKey="auto-repair-shops" />
+export const revalidate = 60
+
+export default async function Page() {
+  const content = await getMergedContent<IndustryContentShape>('industries/auto-repair-shops')
+  return <IndustryContent industryKey="auto-repair-shops" content={content} />
 }

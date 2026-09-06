@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import LocationContent from '@/components/locations/LocationContent'
+import LocationContent, { type LocationContentShape } from '@/components/locations/LocationContent'
+import { getMergedContent } from '@/lib/marketing-content'
 import { CITY_DATA } from '@/lib/location-data'
 
 const city = CITY_DATA['sadiqabad']
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
   description: city.metaDesc,
 }
 
-export default function Page() {
-  return <LocationContent locationKey="sadiqabad" />
+export const revalidate = 60
+
+export default async function Page() {
+  const content = await getMergedContent<LocationContentShape>('cities/sadiqabad')
+  return <LocationContent locationKey="sadiqabad" content={content} />
 }

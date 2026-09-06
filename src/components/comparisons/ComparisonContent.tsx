@@ -11,8 +11,10 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { RIVAL_DATA, otherComparisonsFor, type RivalKey } from '@/lib/comparison-data'
 
-export default function ComparisonContent({ rivalKey }: { rivalKey: RivalKey }) {
-  const d = RIVAL_DATA[rivalKey]
+export type ComparisonContentShape = (typeof RIVAL_DATA)[RivalKey]
+
+export default function ComparisonContent({ rivalKey, content }: { rivalKey: RivalKey; content?: ComparisonContentShape }) {
+  const d = content ?? RIVAL_DATA[rivalKey]
   const others = otherComparisonsFor(rivalKey)
   const pageUrl = `https://matjarx.com${routes.compare(rivalKey)}`
 

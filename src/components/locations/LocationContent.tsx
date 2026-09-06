@@ -13,7 +13,7 @@ import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { CITY_DATA, otherCitiesFor, type CityKey } from '@/lib/location-data'
-import { CITY_DETAIL } from '@/lib/location-detail-data'
+import { CITY_DETAIL, type CityProcessStep, type CityPlanTier, type CityCompareGroup } from '@/lib/location-detail-data'
 
 const bullet = (text: string, key?: React.Key) => (
   <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: '#4B5D6E' }}>
@@ -21,10 +21,14 @@ const bullet = (text: string, key?: React.Key) => (
   </li>
 )
 
-export default function LocationContent({ locationKey }: { locationKey: CityKey }) {
+export type LocationContentShape = (typeof CITY_DATA)[CityKey] & {
+  detail: { process: CityProcessStep[]; plans: CityPlanTier[]; whyOver: CityCompareGroup[] }
+}
+
+export default function LocationContent({ locationKey, content }: { locationKey: CityKey; content?: LocationContentShape }) {
   const [openFaq, setOpenFaq] = useState(0)
-  const d = CITY_DATA[locationKey]
-  const detail = CITY_DETAIL[locationKey]
+  const d = content ?? { ...CITY_DATA[locationKey], detail: CITY_DETAIL[locationKey] }
+  const detail = d.detail
   const others = otherCitiesFor(locationKey)
   const pageUrl = `https://matjarx.com${routes.location(locationKey)}`
 

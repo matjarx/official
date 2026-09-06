@@ -20,9 +20,9 @@ import { routes } from '@/lib/routes'
 import { SERVICE_TABS, SERVICE_DATA, type ServiceKey } from '@/lib/services-data'
 import ServiceDetailSections from './ServiceDetailSections'
 
-export default function ServicesContent() {
+export default function ServicesContent({ tabs = SERVICE_DATA }: { tabs?: typeof SERVICE_DATA }) {
   const [svc, setSvc] = useState<ServiceKey>('dfy')
-  const d = SERVICE_DATA[svc]
+  const d = tabs[svc]
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
