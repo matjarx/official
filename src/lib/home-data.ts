@@ -9,7 +9,7 @@ export const RATING_BADGES = [
 ]
 
 export const VOICES = [
-  { quote: "I really tried to build a website myself, but it didn't look good and I have no idea how to make it show up on Google.", name: 'Ahmed Khan', trade: 'Fabric wholesaler, Lahore', initials: 'AK', tint: '#C6CB8A' },
-  { quote: "My cousin built my website. I'm not really happy with it, but I can't tell him that.", name: 'Sabika Noor', trade: 'Boutique owner, Karachi', initials: 'SN', tint: '#F4F2AE' },
-  { quote: "I got quotes in the thousands for a website. I've just started out — I can't afford that.", name: 'Saeed Ahmed', trade: 'Caterer, Islamabad', initials: 'SA', tint: '#BFD4E6' },
+  { quote: "I really tried to build a website myself, but it didn't look good and I have no idea how to make it show up on Google.", name: 'Ahmed Khan', trade: 'Fabric wholesaler, Lahore', initials: 'AK', tint: '#C6CB8A', photo: { src: '/home/voices/ahmed-khan.webp', alt: 'Ahmed Khan, fabric wholesaler in Lahore', width: 54, height: 56 } },
+  { quote: "My cousin built my website. I'm not really happy with it, but I can't tell him that.", name: 'Sabika Noor', trade: 'Boutique owner, Karachi', initials: 'SN', tint: '#F4F2AE', photo: { src: '/home/voices/sabika-noor.webp', alt: 'Sabika Noor, boutique owner in Karachi', width: 54, height: 56 } },
+  { quote: "I got quotes in the thousands for a website. I've just started out — I can't afford that.", name: 'Saeed Ahmed', trade: 'Caterer, Islamabad', initials: 'SA', tint: '#BFD4E6', photo: { src: '/home/voices/saeed-ahmed.webp', alt: 'Saeed Ahmed, caterer in Islamabad', width: 54, height: 56 } },
 ]

@@ -186,13 +186,16 @@ export default function HomeMobileContent() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 11, textAlign: 'center' }}>
               <span style={{ fontSize: 11, letterSpacing: '2.2px', textTransform: 'uppercase', color: theme.accentInk, fontWeight: 600 }}>Did you know?</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 23, lineHeight: 1.16, letterSpacing: '-0.8px', color: theme.ink1 }}><span style={{ color: theme.accentInk }}>4 out of 5</span> small business owners either have no website, or don&rsquo;t like the one they have.</h2>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: theme.accentInk }}>Why?</span>
             </div>
             {VOICES.map((v) => (
               <div key={v.name} style={{ position: 'relative', marginBottom: 7 }}>
                 <div style={{ position: 'absolute', inset: '7px -7px -7px 7px', borderRadius: 18, background: theme.offsetFill, zIndex: 0 }} />
                 <div style={{ position: 'relative', zIndex: 1, padding: '18px 19px 20px', borderRadius: 18, background: theme.voiceBg, border: `1px solid ${theme.voiceLine}`, backdropFilter: 'blur(20px)', boxShadow: theme.cardShadow, display: 'flex', flexDirection: 'column', gap: 11 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
-                    <span style={{ width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', background: v.tint, border: '2px solid rgba(255,255,255,0.9)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: '#04121F' }}>{v.initials}</span>
+                    <span style={{ position: 'relative', width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid rgba(255,255,255,0.9)' }}>
+                      <Image src={v.photo.src} alt={v.photo.alt} fill sizes="38px" style={{ objectFit: 'cover' }} />
+                    </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 16, letterSpacing: '-0.3px', color: theme.voiceInk }}>{v.name}</span>
                       <span style={{ fontSize: 11, color: theme.voiceMeta }}>{v.trade}</span>
@@ -202,7 +205,6 @@ export default function HomeMobileContent() {
                 </div>
               </div>
             ))}
-            <span style={{ alignSelf: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: theme.accentInk }}>Why?</span>
           </div>
 
           {/* Mascot/urgency */}

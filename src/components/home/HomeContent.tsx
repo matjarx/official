@@ -10,6 +10,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -233,6 +234,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 42px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: ink1 }}>
               <span style={{ color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>4 out of 5</span> small business owners either have no website, or don&apos;t like the one they have.
             </h2>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.8px', color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>Why?</span>
           </div>
 
           <div style={{ marginTop: 44, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: 22, alignItems: 'start' }}>
@@ -241,7 +243,9 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 <div style={{ position: 'absolute', inset: '8px -8px -8px 8px', borderRadius: 20, background: dark ? '#3A3F1E' : '#A8AD6A', zIndex: 0 }} />
                 <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? '#0B2138' : '#FFFFFF', border: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.06)'}`, boxShadow: '0 10px 26px rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <span style={{ width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', background: v.tint, border: '2px solid #FFFFFF', boxShadow: '0 3px 10px rgba(4,18,31,0.16)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#04121F' }}>{v.initials}</span>
+                    <span style={{ position: 'relative', width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid #FFFFFF', boxShadow: '0 3px 10px rgba(4,18,31,0.16)' }}>
+                      <Image src={v.photo.src} alt={v.photo.alt} fill sizes="44px" style={{ objectFit: 'cover' }} />
+                    </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: ink1 }}>{v.name}</span>
                       <span style={{ fontSize: 12, color: dark ? 'rgba(226,236,245,0.5)' : '#6A7F92' }}>{v.trade}</span>
@@ -251,10 +255,6 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 </div>
               </div>
             ))}
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, paddingTop: 34 }}>
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.8px', color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>Why?</span>
           </div>
         </section>
 
