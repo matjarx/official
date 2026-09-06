@@ -187,6 +187,25 @@ export async function getSeoOverride(slug: string): Promise<SeoOverride | null> 
   }
 }
 
+// Site-wide settings — GA4/Meta Pixel IDs, social links, contact email,
+// default title/description — editable from the admin's Marketing Site >
+// Settings tab. Stored under the same marketing_content table as every
+// page, in one reserved slug (not a real page, so deliberately left out
+// of content-schema's page list). `socials` is keyed by FOOTER_SOCIALS'
+// own `name` field (see nav.ts) — only the href is overridable, not the
+// icon or which platforms exist. Every field falls back to today's
+// hardcoded value (in layout.tsx / SiteFooter.tsx) when blank or when
+// this row doesn't exist yet, so nothing regresses on day one.
+export const SITE_SETTINGS_SLUG = '_site_settings'
+export type SiteSettings = {
+  ga_measurement_id?: string
+  meta_pixel_id?: string
+  contact_email?: string
+  default_title?: string
+  default_description?: string
+  socials?: Record<string, string>
+}
+
 export type Testimonial = { quote: string; name: string; company: string; initials: string; tint: string }
 export type QA = { q: string; a: string }
 export type FaqEntry = { question: string; answer: string }

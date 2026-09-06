@@ -3,13 +3,40 @@
 // Site Footer — from Site Footer.dc.html. Two parts: the CTA band and the
 // dark footer with brand column + 4 link columns.
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
+import type { SiteSettings } from '@/lib/marketing-content'
 
 export default function SiteFooter() {
+  // FOOTER_SOCIALS' own hrefs render immediately (real, live values, not
+  // placeholders) — this only ever swaps in an override once/if one
+  // exists, so there's no flash of missing content while it loads. Client-
+  // side fetch rather than an await here because this component is
+  // rendered directly from ~30 different 'use client' page components,
+  // not from a shared server layout it could receive server-fetched props
+  // from — see /api/site-settings' own comment for why.
+  const [socialOverrides, setSocialOverrides] = useState<Record<string, string>>({})
+  useEffect(() => {
+    let cancelled = false
+    fetch('/api/site-settings')
+      .then((r) => r.json())
+      .then((settings: SiteSettings) => {
+        if (!cancelled) setSocialOverrides(settings.socials || {})
+      })
+      .catch(() => {
+        // Network hiccup or the route being briefly unavailable — just
+        // keep showing FOOTER_SOCIALS' real defaults, same as today.
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+  const socials = FOOTER_SOCIALS.map((s) => ({ ...s, href: socialOverrides[s.name] || s.href }))
+
   return (
     <div>
       <section style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 78px' }}>
@@ -66,7 +93,7 @@ export default function SiteFooter() {
               <a href="mailto:office@matjarx.com" style={{ fontSize: 13.5, color: 'var(--butter)' }}>office@matjarx.com</a>
             </div>
             <div style={{ display: 'flex', gap: 8, paddingTop: 8 }}>
-              {FOOTER_SOCIALS.map((s) => (
+              {socials.map((s) => (
                 <a
                   key={s.name}
                   href={s.href}

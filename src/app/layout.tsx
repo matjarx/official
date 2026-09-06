@@ -5,10 +5,15 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { Lato, Open_Sans } from 'next/font/google'
 import PageviewTracker from '@/components/PageviewTracker'
 import WebVitalsReporter from '@/components/WebVitalsReporter'
+import { getMergedContent, SITE_SETTINGS_SLUG, type SiteSettings } from '@/lib/marketing-content'
 import './globals.css'
 
-const GA_MEASUREMENT_ID = 'G-FPFM7MMEDB'
-const META_PIXEL_ID = '1082965164297632'
+// Today's real values — used unless overridden from the admin's Marketing
+// Site > Settings tab, and always the fallback if that row is empty or
+// unreachable, so nothing regresses.
+const DEFAULT_GA_MEASUREMENT_ID = 'G-FPFM7MMEDB'
+const DEFAULT_META_PIXEL_ID = '1082965164297632'
+const DEFAULT_CONTACT_EMAIL = 'office@matjarx.com'
 
 const lato = Lato({
   subsets: ['latin'],
@@ -27,73 +32,93 @@ const openSans = Open_Sans({
 const SITE_URL = 'https://matjarx.com'
 const DEFAULT_TITLE = 'MatjarX — Done-for-you websites, live in 7 days'
 const DEFAULT_DESCRIPTION = 'MatjarX builds complete small business websites in 7 days for Rs. 22,500 — done-for-you design, SEO and growth marketing for businesses across Pakistan and the Gulf.'
+const DEFAULT_SOCIALS: Record<string, string> = {
+  Facebook: 'https://www.facebook.com/matjarxpakistan/',
+  Instagram: 'https://www.instagram.com/matjarxpakistan/',
+  X: 'https://x.com/matjar_X',
+  Threads: 'https://www.threads.com/@matjarxpakistan',
+  TikTok: 'https://www.tiktok.com/@matjarxofficial',
+  LinkedIn: 'http://linkedin.com/company/matjarx/',
+  YouTube: 'https://www.youtube.com/@matjarxofficial',
+}
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: DEFAULT_TITLE,
-    template: '%s · MatjarX',
-  },
-  description: DEFAULT_DESCRIPTION,
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    type: 'website',
-    siteName: 'MatjarX',
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION,
+// Static per-page metadata already overrides title/description on nearly
+// every route — this is just the root fallback (and the OG/twitter
+// defaults), so making it async to read the settings override doesn't
+// change how any individual page's own metadata resolves.
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getMergedContent<SiteSettings>(SITE_SETTINGS_SLUG)
+  const title = settings.default_title || DEFAULT_TITLE
+  const description = settings.default_description || DEFAULT_DESCRIPTION
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: title,
+      template: '%s · MatjarX',
+    },
+    description,
+    alternates: {
+      canonical: '/',
+    },
+    openGraph: {
+      type: 'website',
+      siteName: 'MatjarX',
+      title,
+      description,
+      url: SITE_URL,
+      locale: 'en_US',
+      // Image itself comes from the opengraph-image.tsx file convention
+      // (auto-generated, scoped to this segment and inherited by children
+      // that don't define their own) — no need to list it here too.
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+  }
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const settings = await getMergedContent<SiteSettings>(SITE_SETTINGS_SLUG)
+  const gaId = settings.ga_measurement_id || DEFAULT_GA_MEASUREMENT_ID
+  const pixelId = settings.meta_pixel_id || DEFAULT_META_PIXEL_ID
+  const contactEmail = settings.contact_email || DEFAULT_CONTACT_EMAIL
+  const description = settings.default_description || DEFAULT_DESCRIPTION
+  // Overrides apply per-platform by name; a platform with no override (or
+  // this whole row missing) keeps its real, live default — never drops a
+  // profile just because settings hasn't been touched yet.
+  const socials = { ...DEFAULT_SOCIALS, ...settings.socials }
+
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'MatjarX',
     url: SITE_URL,
-    locale: 'en_US',
-    // Image itself comes from the opengraph-image.tsx file convention
-    // (auto-generated, scoped to this segment and inherited by children
-    // that don't define their own) — no need to list it here too.
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION,
-  },
-}
+    logo: `${SITE_URL}/icon.png`,
+    description,
+    sameAs: Object.values(socials),
+    contactPoint: [{
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      email: contactEmail,
+      areaServed: ['PK'],
+    }],
+  }
 
-const ORGANIZATION_JSON_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'MatjarX',
-  url: SITE_URL,
-  logo: `${SITE_URL}/icon.png`,
-  description: DEFAULT_DESCRIPTION,
-  sameAs: [
-    'https://www.facebook.com/matjarxpakistan/',
-    'https://www.instagram.com/matjarxpakistan/',
-    'https://x.com/matjar_X',
-    'https://www.threads.com/@matjarxpakistan',
-    'https://www.tiktok.com/@matjarxofficial',
-    'http://linkedin.com/company/matjarx/',
-    'https://www.youtube.com/@matjarxofficial',
-  ],
-  contactPoint: [{
-    '@type': 'ContactPoint',
-    contactType: 'customer service',
-    email: 'office@matjarx.com',
-    areaServed: ['PK'],
-  }],
-}
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${lato.variable} ${openSans.variable}`}>
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <Suspense fallback={null}>
           <PageviewTracker />
         </Suspense>
         <WebVitalsReporter />
         {children}
-        <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+        <GoogleAnalytics gaId={gaId} />
         {/* Meta Pixel — base code + PageView, per Meta's own snippet. */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
@@ -105,7 +130,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${META_PIXEL_ID}');
+            fbq('init', '${pixelId}');
             fbq('track', 'PageView');
           `}
         </Script>
@@ -115,7 +140,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             height="1"
             width="1"
             style={{ display: 'none' }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+            src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
             alt=""
           />
         </noscript>
