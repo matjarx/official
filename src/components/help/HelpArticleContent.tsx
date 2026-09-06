@@ -9,6 +9,7 @@
 
 import { useState, Fragment, type ReactNode } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -113,6 +114,15 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
       <div style={{ position: 'relative' }}>
         <AmbientOrbs />
         <div className="page-content">
+
+          {/* Hero image */}
+          {d.heroImage && (
+            <section style={{ maxWidth: 820, margin: '0 auto', padding: '36px 24px 0' }}>
+              <div style={{ position: 'relative', width: '100%', height: 260, borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 44px rgba(4,18,31,0.14)' }}>
+                <Image src={d.heroImage.src} alt={d.heroImage.alt} fill sizes="(max-width: 860px) 100vw, 820px" style={{ objectFit: 'cover' }} />
+              </div>
+            </section>
+          )}
 
           {/* Sections */}
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '44px 24px 0', display: 'flex', flexDirection: 'column', gap: 18 }}>

@@ -25,6 +25,7 @@ export type HelpArticle = {
   metaDesc: string
   intro?: string
   metaLines?: string[]
+  heroImage?: { src: string; alt: string; width: number; height: number }
   sections: { heading: string; blocks: HelpBlock[] }[]
   faqs: [string, string][]
   related: [string, string][]
@@ -37,6 +38,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
     metaDesc: "Welcome to MatjarX! Follow our step-by-step onboarding guide to get your website launched in 7 days. Includes questionnaire and launch call.",
     intro: "Getting started is simple. We'll guide you through every step from signup to launch.",
     metaLines: ["Timeline: 7-45 days depending on your plan", "Total time commitment: 2-3 hours over the onboarding period"],
+    heroImage: { src: '/services/questionnaire-brief.webp', alt: 'A finished MatjarX-built website shown in the editor', width: 453, height: 373 },
     sections: [
       { heading: "Step 1: Sign Up (10 minutes)", blocks: [
         { type: "h3", text: "Create Your MatjarX Account" },
@@ -121,6 +123,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
     title: "Website Editor Guide",
     metaTitle: "Website Editor - Edit & Customize Your Website",
     metaDesc: "Learn to edit your MatjarX website. Step-by-step guide to making changes, adding content, and self-serve website customization.",
+    heroImage: { src: '/services/design-build.webp', alt: 'A website design editor with font and color controls', width: 1190, height: 980 },
     sections: [
       { heading: "Getting Started With the Editor", blocks: [
         { type: "h3", text: "Accessing Your Website Editor" },
@@ -290,6 +293,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
     title: "Domains & Email Setup Guide",
     metaTitle: "Domains & Email - Setup Custom Domain & Professional Email",
     metaDesc: "Complete guide to connecting your custom domain and setting up professional email accounts with your MatjarX website.",
+    heroImage: { src: '/services/email-marketing.webp', alt: 'A business email account set up alongside a website', width: 1190, height: 980 },
     sections: [
       { heading: "About Domains", blocks: [
         { type: "h3", text: "What is a Domain?" },
@@ -574,6 +578,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
     title: "E-Commerce & Payments Guide",
     metaTitle: "E-Commerce & Payments - Accept Payments Online & Gateways",
     metaDesc: "Learn to accept payments on your MatjarX website. Payment gateway setup, JazzCash integration, and online transaction processing.",
+    heroImage: { src: '/help/ecommerce-payments.webp', alt: 'An online store checkout with a shopping cart, ready to ship', width: 1190, height: 980 },
     sections: [
       { heading: "E-Commerce Features", blocks: [
         { type: "h3", text: "Who Needs E-Commerce?" },
@@ -763,6 +768,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
     title: "SEO & Marketing Guide",
     metaTitle: "SEO & Marketing Help - Improve Google Rankings & Traffic",
     metaDesc: "Complete guide to improving your Google rankings and attracting customers. Local SEO, content strategy, marketing tips for MatjarX websites.",
+    heroImage: { src: '/services/five-month-program.webp', alt: "Google's AI Overview describing MatjarX as an emerging website builder", width: 850, height: 538 },
     sections: [
       { heading: "Understanding SEO", blocks: [
         { type: "h3", text: "What is SEO?" },
