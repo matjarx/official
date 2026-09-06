@@ -1,3 +1,5 @@
+'use client'
+
 // Site Footer — from Site Footer.dc.html. Two parts: the CTA band and the
 // dark footer with brand column + 4 link columns.
 
@@ -5,6 +7,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
 import { routes, appSignup } from '@/lib/routes'
+import { trackEvent } from '@/lib/analytics'
 
 export default function SiteFooter() {
   return (
@@ -32,6 +35,7 @@ export default function SiteFooter() {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 8 }}>
             <a
               href={appSignup()}
+              onClick={() => trackEvent('cta_click', { label: 'footer_get_started' })}
               style={{ padding: '17px 32px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#FFFFFF', background: 'linear-gradient(160deg, #10293D, #04121F)', boxShadow: '0 12px 26px rgba(4,18,31,0.28), inset 0 1px 0 rgba(255,255,255,0.18)' }}
               className="footer-cta-primary"
             >

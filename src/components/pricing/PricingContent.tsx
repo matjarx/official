@@ -11,6 +11,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import SavingsCalculator from '@/components/SavingsCalculator'
 import { routes, appSignup } from '@/lib/routes'
+import { trackEvent } from '@/lib/analytics'
 
 const HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
 
@@ -203,7 +204,7 @@ export default function PricingContent() {
                 </div>
                 <span style={{ fontSize: 12.5, color: t.muted }}>+ Rs. {p.setup} one-time setup</span>
                 {saving && <span style={{ fontSize: 12.5, fontWeight: 600, color: t.savingInk }}>{saving}</span>}
-                <a href={p.href} style={{ display: 'block', paddingTop: 8 }}>
+                <a href={p.href} onClick={() => trackEvent('cta_click', { label: `pricing_choose_${p.name.toLowerCase()}` })} style={{ display: 'block', paddingTop: 8 }}>
                   <span style={{ display: 'block', textAlign: 'center', padding: '14px 18px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: t.ctaInk, background: t.ctaBg, border: `1.5px solid ${t.ctaBorder}` }}>{p.cta}</span>
                 </a>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingTop: 16, marginTop: 6, borderTop: `1px solid ${t.rule}` }}>

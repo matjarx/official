@@ -10,6 +10,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { NAV_ITEMS, type NavKey } from '@/lib/nav'
 import { routes, appLogin, appSignup } from '@/lib/routes'
+import { trackEvent } from '@/lib/analytics'
 
 export default function SiteHeader({ active, dark = false, onToggleDark }: { active: NavKey; dark?: boolean; onToggleDark?: () => void }) {
   const [narrow, setNarrow] = useState(false)
@@ -176,7 +177,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
               </button>
             )}
 
-            <a href={appSignup()} className="btn-navy" style={{ flex: '0 0 auto' }}>Get started</a>
+            <a href={appSignup()} onClick={() => trackEvent('cta_click', { label: 'header_get_started' })} className="btn-navy" style={{ flex: '0 0 auto' }}>Get started</a>
 
             {narrow && (
               <button

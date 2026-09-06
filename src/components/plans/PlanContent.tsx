@@ -12,6 +12,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appSignup } from '@/lib/routes'
+import { trackEvent } from '@/lib/analytics'
 import { ALL_PLANS, PLAN_DATA, otherPlansFor, CYCLE_FACTOR, moneyPKR, type PlanKey } from '@/lib/plan-data'
 import PlanDetailSections from './PlanDetailSections'
 
@@ -107,9 +108,9 @@ export default function PlanContent({ planKey }: { planKey: PlanKey }) {
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, paddingTop: 6 }}>
               {planKey === 'custom' ? (
-                <Link href={routes.contact} className="btn-primary">{d.ctaLabel}</Link>
+                <Link href={routes.contact} onClick={() => trackEvent('cta_click', { label: `plan_${planKey}_cta` })} className="btn-primary">{d.ctaLabel}</Link>
               ) : (
-                <a href={appSignup(planKey)} className="btn-primary">{d.ctaLabel}</a>
+                <a href={appSignup(planKey)} onClick={() => trackEvent('cta_click', { label: `plan_${planKey}_cta` })} className="btn-primary">{d.ctaLabel}</a>
               )}
               <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" className="btn-secondary">Ask a question</a>
             </div>

@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Lato, Open_Sans } from 'next/font/google'
+import PageviewTracker from '@/components/PageviewTracker'
+import WebVitalsReporter from '@/components/WebVitalsReporter'
 import './globals.css'
 
 const lato = Lato({
@@ -73,6 +76,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
         />
+        <Suspense fallback={null}>
+          <PageviewTracker />
+        </Suspense>
+        <WebVitalsReporter />
         {children}
       </body>
     </html>

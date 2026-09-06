@@ -14,6 +14,7 @@ import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { supabase } from '@/lib/supabase'
+import { trackEvent } from '@/lib/analytics'
 import {
   HERO, PROBLEMS, AUDIT_INTRO, WHAT_IS_AUDIT, WHY_NEEDED, AUDIT_AREAS, PROCESS_STEPS,
   TIMELINE_ROWS, TIMELINE_TOTAL, RUSH_NOTE, OUTCOMES, BENEFITS, COMPARISON_TABLE, AUDIT_FAQS, CHANNELS,
@@ -35,6 +36,7 @@ function IntakeForm() {
       preferred_channel: preferredChannel, source: 'website_form',
     })
     setStatus(error ? 'error' : 'done')
+    if (!error) trackEvent('form_submit', { label: 'website_audit' })
   }
 
   if (status === 'done') {
