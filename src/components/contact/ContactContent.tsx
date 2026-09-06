@@ -10,10 +10,29 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
 import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS, CONTACT_FAQS, CONTACT_SUPPORT_CATEGORIES, CONTACT_SUMMARY_TABLE, CONTACT_PREP_CHECKLIST, CONTACT_PREFERRED_CHANNEL, CONTACT_COMMITMENT } from '@/lib/contact-data'
+import { supabase } from '@/lib/supabase'
+import { trackEvent } from '@/lib/analytics'
 
 export default function ContactContent() {
   const [topic, setTopic] = useState(CONTACT_TOPICS[0])
   const [openFaq, setOpenFaq] = useState(0)
+  const [name, setName] = useState('')
+  const [businessName, setBusinessName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle')
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('submitting')
+    const { error } = await supabase.from('marketing_leads').insert({
+      source: 'contact_us', name, business_name: businessName || null,
+      phone: phone || null, email: email || null, topic, message,
+    })
+    setStatus(error ? 'error' : 'done')
+    if (!error) trackEvent('form_submit', { label: 'contact_us' })
+  }
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -83,51 +102,60 @@ export default function ContactContent() {
           <section style={{ maxWidth: 1140, margin: '0 auto', padding: '44px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 24, alignItems: 'start' }}>
 
-              <div className="glass-card" style={{ padding: 'clamp(24px, 3.5vw, 34px) clamp(20px, 3vw, 34px) clamp(26px, 3.5vw, 36px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: '#04121F' }}>Send us a message</h2>
-                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>We reply within 24 business hours — sooner over WhatsApp.</p>
+              {status === 'done' ? (
+                <div className="glass-card" style={{ padding: 'clamp(24px, 3.5vw, 34px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', textAlign: 'center', justifyContent: 'center', minHeight: 320 }}>
+                  <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: '#04121F' }}>Message sent</h2>
+                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E', maxWidth: '30em' }}>Thanks — we reply within 24 business hours, sooner over WhatsApp.</p>
                 </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 16 }}>
-                  <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Your name</span>
-                    <input type="text" placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
-                  </label>
-                  <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Business name</span>
-                    <input type="text" placeholder="Al-Falah Traders" className="input" style={{ width: '100%' }} />
-                  </label>
-                  <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Phone / WhatsApp</span>
-                    <input type="tel" placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
-                  </label>
-                  <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Email</span>
-                    <input type="email" placeholder="you@yourbusiness.pk" className="input" style={{ width: '100%' }} />
-                  </label>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>What do you need?</span>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                    {CONTACT_TOPICS.map((label) => {
-                      const active = topic === label
-                      return (
-                        <button key={label} type="button" onClick={() => setTopic(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{label}</button>
-                      )
-                    })}
+              ) : (
+                <form onSubmit={handleSubmit} className="glass-card" style={{ padding: 'clamp(24px, 3.5vw, 34px) clamp(20px, 3vw, 34px) clamp(26px, 3.5vw, 36px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: '#04121F' }}>Send us a message</h2>
+                    <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>We reply within 24 business hours — sooner over WhatsApp.</p>
                   </div>
-                </div>
 
-                <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Tell us about your business</span>
-                  <textarea rows={5} placeholder="What you sell, who your customers are, and what you'd like the website to do." className="input" style={{ width: '100%' }} />
-                </label>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 16 }}>
+                    <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Your name</span>
+                      <input required type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
+                    </label>
+                    <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Business name</span>
+                      <input type="text" value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder="Al-Falah Traders" className="input" style={{ width: '100%' }} />
+                    </label>
+                    <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Phone / WhatsApp</span>
+                      <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
+                    </label>
+                    <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Email</span>
+                      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@yourbusiness.pk" className="input" style={{ width: '100%' }} />
+                    </label>
+                  </div>
 
-                <button type="button" className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(0,51,102,0.24)' }}>Send message</button>
-                <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#6A7F92' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>. We never share your details.</span>
-              </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
+                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>What do you need?</span>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                      {CONTACT_TOPICS.map((label) => {
+                        const active = topic === label
+                        return (
+                          <button key={label} type="button" onClick={() => setTopic(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{label}</button>
+                        )
+                      })}
+                    </div>
+                  </div>
+
+                  <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Tell us about your business</span>
+                    <textarea required rows={5} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="What you sell, who your customers are, and what you'd like the website to do." className="input" style={{ width: '100%' }} />
+                  </label>
+
+                  {status === 'error' && <p style={{ margin: 0, fontSize: 13, color: '#B4432F' }}>Something went wrong sending that — please try again or message us on WhatsApp instead.</p>}
+
+                  <button type="submit" disabled={status === 'submitting'} className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(0,51,102,0.24)' }}>{status === 'submitting' ? 'Sending…' : 'Send message'}</button>
+                  <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#6A7F92' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>. We never share your details.</span>
+                </form>
+              )}
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                 <div style={{ padding: '28px 30px', borderRadius: 24, background: '#04121F', display: 'flex', flexDirection: 'column', gap: 18 }}>
