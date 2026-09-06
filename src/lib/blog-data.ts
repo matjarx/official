@@ -16,6 +16,9 @@ export type BlogPost = {
   slug: string; title: string; category: BlogCategory; excerpt: string
   date: string; readTime: string; tint: string; body: BodyBlock[]
   relatedSlugs: string[]
+  // Real cover image pulled from matjarx.com's WordPress media library —
+  // same file and alt text already indexed by Google, not a new asset.
+  coverImage?: { src: string; alt: string; width: number; height: number }
 }
 
 export const AUTHOR = { name: 'The MatjarX Team', initials: 'MX', role: 'Written by the MatjarX team' }
@@ -114,6 +117,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "rastah-case-study-lessons-small-business",
+    coverImage: { src: "/blog/rastah-case-study-lessons-small-business.webp", alt: "RASTAH success story inspiring Pakistani small businesses with branding, storytelling, website strategy, and digital marketing for sustainable online growth.", width: 1296, height: 816 },
     title: "RASTAH Case Study: Build a Strong Brand & Website for Your SME",
     category: "Marketing",
     excerpt: "Learn how RASTAH built a modern Pakistani brand and how small business owners can apply these strategies for websites & growth marketing.",
@@ -153,6 +157,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "professional-website-build-trust",
+    coverImage: { src: "/blog/professional-website-build-trust.webp", alt: "Illustration of a professional business website featuring modern design, customer testimonials, secure HTTPS connection, fast loading speed, and mobile-friendly layout to build trust and credibility.", width: 1296, height: 816 },
     title: "How a Professional Website Builds Instant Trust for Your Business",
     category: "Getting started",
     excerpt: "Learn how a professional website can boost credibility, attract clients, and grow your small business in Pakistan.",
@@ -193,6 +198,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "top-5-website-mistakes-killing-conversions",
+    coverImage: { src: "/blog/top-5-website-mistakes-killing-conversions.webp", alt: "Illustration highlighting common website mistakes such as slow loading pages, poor mobile design, weak call-to-action buttons, confusing navigation, and missing customer testimonials affecting online conversions.", width: 1296, height: 816 },
     title: "Top 5 Website Mistakes Hurting Conversions",
     category: "Getting started",
     excerpt: "Discover top 5 website mistakes that reduce trust & conversions, and learn actionable tips to fix them for your small business in Pakistan.",
@@ -252,6 +258,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "mobile-first-design-tips-ux",
+    coverImage: { src: "/blog/mobile-first-design-tips-ux.webp", alt: "Illustration of a mobile-friendly business website showcasing responsive design, fast loading speed, tap-friendly buttons, simple navigation, and an optimized mobile user experience for small businesses.", width: 1296, height: 816 },
     title: "Mobile-First Website Design Tips to Boost UX",
     category: "Getting started",
     excerpt: "Learn mobile-first design strategies to improve UX, build trust, and increase conversions for your small business website in Pakistan.",
@@ -304,6 +311,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "trends-in-digital-marketing-for-pakistani-businesses",
+    coverImage: { src: "/blog/trends-in-digital-marketing-for-pakistani-businesses.webp", alt: "Illustration showcasing 2026 digital marketing trends in Pakistan, including short-form videos, social commerce, voice search, influencer marketing, WhatsApp automation, and business growth strategies.", width: 1296, height: 816 },
     title: "Trends in Digital Marketing for Pakistani Businesses",
     category: "Marketing",
     excerpt: "Discover digital marketing trends in Pak, including videos, social commerce, voice search, influencer marketing, & WhatsApp strategies.",
@@ -353,6 +361,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "why-website-is-important-for-business",
+    coverImage: { src: "/blog/why-website-is-important-for-business.webp", alt: "Illustration of a business website acting as a 24/7 digital salesperson, showcasing products, generating leads, building customer trust, and driving online sales for small businesses.", width: 1296, height: 816 },
     title: "Why a Website is Crucial for Your Small Business in Pakistan",
     category: "Getting started",
     excerpt: "Discover why a professional website acts as a digital salesperson, builds trust, showcases products, and increases sales for small businesses in Pakistan.",
@@ -401,6 +410,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "b2b-website-myths-broken",
+    coverImage: { src: "/blog/b2b-website-myths-broken.webp", alt: "Illustration of a B2B business website showcasing product catalogs, lead generation, inquiry forms, WhatsApp integration, and digital sales automation for business growth.", width: 1296, height: 816 },
     title: "B2B Website Myths Broken: Why Your Business Needs a Website",
     category: "Getting started",
     excerpt: "Discover why B2B businesses in Pakistan need a website. Break the myth that personal contacts are enough, and learn how websites generate leads 24/7.",
@@ -459,6 +469,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "domain-and-hosting-explained",
+    coverImage: { src: "/blog/domain-and-hosting-explained.webp", alt: "Illustration explaining the difference between domain and web hosting using a website foundation concept, showing domain as the website address, hosting as server space, and a business website for small businesses.", width: 1296, height: 816 },
     title: "What is Domain & Hosting? A Simple Guide for Small Businesses in Pak",
     category: "Getting started",
     excerpt: "Learn the difference between domain and hosting for your small business website in Pakistan. Build a strong online foundation with MatjarX.",
@@ -518,6 +529,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "cod-optimization-reduce-rto",
+    coverImage: { src: "/blog/cod-optimization-reduce-rto.webp", alt: "Illustration of Cash on Delivery (COD) order optimization showing customer verification, WhatsApp confirmations, delivery tracking, partial prepayment, return management, and reduced RTO for eCommerce businesses in Pakistan.", width: 1296, height: 816 },
     title: "COD Optimization: Reduce Returns & RTO by 20% for Your Business",
     category: "E-commerce",
     excerpt: "Learn how to reduce COD return rates (RTO) by 20% with MatjarX tips. Optimize orders, improve delivery success, and increase profits.",
@@ -578,6 +590,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "setup-sadapay-sadabiz-website",
+    coverImage: { src: "/blog/setup-sadapay-sadabiz-website.webp", alt: "Illustration of SadaPay Business payment gateway integration showing account verification, API setup, secure online payments, website checkout, and digital payment processing for businesses in Pakistan.", width: 1296, height: 816 },
     title: "How to Set Up SadaPay / SADA BIZ on Your Website",
     category: "Payments",
     excerpt: "Learn how to integrate SadaPay and SADA BIZ on your small business website in Pakistan. Accept online payments easily and boost sales.",
@@ -632,6 +645,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "setup-jazzcash-jazz-business-website",
+    coverImage: { src: "/blog/setup-jazzcash-jazz-business-website.webp", alt: "Illustration of JazzCash Business payment gateway integration showing merchant account setup, API integration, secure online payments, website checkout, and digital payment processing for businesses in Pakistan.", width: 1296, height: 816 },
     title: "How to Set Up JazzCash / Jazz Business on Your Website",
     category: "Payments",
     excerpt: "Learn how to integrate JazzCash and Jazz Business on your small business website in Pakistan. Accept online payments easily and grow sales.",
@@ -692,6 +706,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "setup-easypaisa-business-website",
+    coverImage: { src: "/blog/setup-easypaisa-business-website.webp", alt: "Illustration of EasyPaisa Business payment gateway integration showing secure online payments, API setup, merchant account verification, website checkout, and digital payment processing for businesses in Pakistan.", width: 1296, height: 816 },
     title: "How to Set Up EasyPaisa / EasyPaisa Business on Your Website",
     category: "Payments",
     excerpt: "Learn how to integrate EasyPaisa and EasyPaisa Business on your small business website in Pakistan. Accept online payments securely.",
@@ -746,6 +761,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "setup-payfast-payment-gateway",
+    coverImage: { src: "/blog/setup-payfast-payment-gateway.webp", alt: "Illustration of PayFast payment gateway integration showing secure online payments, API setup, website checkout, transaction verification, and digital payment processing for businesses in Pakistan.", width: 1296, height: 816 },
     title: "How to Set Up PayFast Payment Gateway on Your Website",
     category: "Payments",
     excerpt: "Learn how to integrate PayFast on your small business website in Pakistan. Accept online payments securely and grow your sales with MatjarX.",
@@ -801,6 +817,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "whatsapp-automation-setup",
+    coverImage: { src: "/blog/whatsapp-automation-setup.webp", alt: "Illustration of WhatsApp Business automation showing instant auto-replies, order confirmations, customer support, broadcast messaging, website integration, and sales automation for small businesses.", width: 1296, height: 816 },
     title: "How to Set Up WhatsApp Automation for Your Business",
     category: "Marketing",
     excerpt: "Learn step-by-step how to set up WhatsApp automation to generate leads and sales for your small business in Pakistan.",
@@ -866,6 +883,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "tiktok-growth-limit-switch-business-account",
+    coverImage: { src: "/blog/tiktok-growth-limit-switch-business-account.webp", alt: "Illustration of switching from a personal TikTok account to a TikTok Business Account, highlighting analytics, ads manager, website integration, audience insights, and business growth tools.", width: 1296, height: 816 },
     title: "TikTok Growth Limit? Switch to Business Account for Better Reach",
     category: "Marketing",
     excerpt: "Learn how small businesses in Pak can switch to a TikTok Business Account, unlock insights, ads, & website integration for unlimited growth.",
@@ -912,6 +930,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "business-content-ideas-no-dancing",
+    coverImage: { src: "/blog/business-content-ideas-no-dancing.webp", alt: "Illustration showing non-dancing social media content ideas for businesses, including product demos, customer reviews, behind-the-scenes videos, educational tips, and content marketing strategies that drive sales.", width: 1296, height: 816 },
     title: "Business Content Ideas That Don’t Require Dancing",
     category: "Marketing",
     excerpt: "Discover TikTok & Instagram content ideas for businesses that drive orders without dancing. Boost sales, engagement & automation with MatjarX.",
@@ -948,6 +967,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "set-up-tiktok-ads",
+    coverImage: { src: "/blog/set-up-tiktok-ads.webp", alt: "Illustration of TikTok Ads Manager showing campaign setup, audience targeting, account verification, payment options, and performance tracking for businesses in Pakistan.", width: 1296, height: 816 },
     title: "How to Set Up TikTok Ads in Pak: Step-by-Step Guide for SMBs",
     category: "Marketing",
     excerpt: "MatjarX guide: Run TikTok Ads in Pakistan easily. Increase traffic, leads, and sales for your SMB with our step-by-step instructions.",
@@ -985,6 +1005,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "facebook-page-for-business",
+    coverImage: { src: "/blog/facebook-page-for-business.webp", alt: "Professional illustration showing a Facebook Business Page with social search, AI recommendations, customer engagement, reviews, and Meta Advantage+ ads helping businesses grow in 2026.", width: 1296, height: 816 },
     title: "Why Every Business Still Needs a Facebook Page in 2026",
     category: "Marketing",
     excerpt: "Discover why Facebook is still essential for businesses in 2026. Learn growth strategies, ads tips, and page optimization with MatjarX.",
@@ -1021,6 +1042,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "facebook-page-setup-guide",
+    coverImage: { src: "/blog/facebook-page-setup-guide.webp", alt: "Professional illustration showing Facebook Page optimization with SEO page setup, Meta Business Suite, conversion button, and business growth strategies for 2026.", width: 1579, height: 996 },
     title: "How to Create a Facebook Page the Right Way in 2026",
     category: "Marketing",
     excerpt: "Learn how to create a fully optimized Facebook Page in 2026. MatjarX shows step-by-step tips for reach, engagement, and leads.",
@@ -1076,6 +1098,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "local-seo-for-small-business-guide",
+    coverImage: { src: "/blog/local-seo-for-small-business-guide.webp", alt: "Local SEO strategy helping small businesses improve Google Maps rankings, optimize Google Business Profile, and attract nearby customers in 2026.", width: 1296, height: 816 },
     title: "Local SEO for Small Business: Complete 2026 Guide",
     category: "SEO",
     excerpt: "Complete local SEO guide for Pakistani small businesses in Karachi, Lahore & Islamabad. Rank on Google with MatjarX.",
@@ -1153,6 +1176,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "definitive-master-guide-to-generative-engine-optimization",
+    coverImage: { src: "/blog/definitive-master-guide-to-generative-engine-optimization.webp", alt: "Business professionals analyzing a holographic knowledge graph connecting Brand Authority and AI Citation in a modern boardroom, featuring MatjarX branding.", width: 1296, height: 816 },
     title: "Definitive Guide to Generative Engine Optimization (GEO)",
     category: "SEO",
     excerpt: "Master Generative Engine Optimization (GEO). Learn how AI search engines work, why SEO is evolving, and how to make your brand cited by AI.",
@@ -1212,6 +1236,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "how-generative-engine-optimization-works",
+    coverImage: { src: "/blog/how-generative-engine-optimization-works.webp", alt: "Abstract visualization of a high-dimensional vector space showing interconnected semantic nodes with a GEO Ranking Factors hierarchy highlighting Semantic Depth, Entity Authority, Citation Credibility, and Technical Structure.", width: 776, height: 519 },
     title: "How GEO Works: Decoding AI Search Ranking Factors",
     category: "SEO",
     excerpt: "Discover how AI search engines work. Learn RAG pipelines, vector spaces, and key AI search ranking factors to boost your brand citations.",
@@ -1269,6 +1294,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "beyond-blue-links-how-generative-engine-optimization-drives-traffic",
+    coverImage: { src: "/blog/beyond-blue-links-how-generative-engine-optimization-drives-traffic.webp", alt: "A user interacting with a holographic AI assistant where a glowing citation link connects an AI-generated response to the MatjarX website, illustrating AI citations and referral traffic.", width: 776, height: 519 },
     title: "How GEO Drives Traffic & Best AI Citation Practices",
     category: "SEO",
     excerpt: "Learn how Generative Engine Optimization drives high-intent traffic. Master zero-click search strategies and best practices for AI citations.",
@@ -1323,6 +1349,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "top-geo-and-content-automation-tools-search-strategy",
+    coverImage: { src: "/blog/top-geo-and-content-automation-tools-search-strategy.webp", alt: "A futuristic command center displaying Pakistan AI search visibility maps, GEO analytics dashboards, content automation tools, and local payment gateway integrations for MatjarX.", width: 776, height: 519 },
     title: "Top GEO & Content Automation Tools for Pakistan",
     category: "SEO",
     excerpt: "Scale your search strategy with top generative engine optimization tools, AI visibility trackers, and content automation software in Pakistan.",
@@ -1366,6 +1393,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "hiring-a-geo-expert-agencies-and-consulting-services",
+    coverImage: { src: "/blog/hiring-a-geo-expert-agencies-and-consulting-services.webp", alt: "A Generative Engine Optimization specialist presenting a brand entity relationship graph and AI citation network to a client on a tablet in a modern office.", width: 776, height: 519 },
     title: "Hiring a GEO Expert & Consulting Agencies Guide",
     category: "SEO",
     excerpt: "Learn when to hire a GEO expert. Compare generative engine optimization services, consulting firms, and agencies to scale your AI search.",
@@ -1420,6 +1448,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "mastering-ai-search-best-generative-ai-geo-training-courses",
+    coverImage: { src: "/blog/mastering-ai-search-best-generative-ai-geo-training-courses.webp", alt: "A futuristic illustration showing a digital marketer climbing a staircase labeled Prompt Engineering, Vector Search, Schema Markup, and Entity Authority toward a GEO Certified platform.", width: 1534, height: 1025 },
     title: "Best Generative AI & GEO Training Courses for Marketers",
     category: "SEO",
     excerpt: "Future-proof your career with top generative AI digital marketing training courses, GEO certifications, and professional AI learning paths.",
@@ -1470,6 +1499,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "elegance-embroidery-mukesh-kumar-lucky-draw-winner",
+    coverImage: { src: "/blog/elegance-embroidery-mukesh-kumar-lucky-draw-winner.webp", alt: "A shop owner sitting inside a Zainab Market shop decorated with Pakistani flags and balloons for Independence Day, holding a phone with the MatjarX logo and title text displayed beside him.", width: 768, height: 513 },
     title: "Elegance Embroidery Wins MatjarX Complete Digital Setup",
     category: "Client stories",
     excerpt: "Meet Mukesh Kumar, owner of Elegance Embroidery at Zainab Market, who won a complete online presence, website, and digital training in our lucky draw!",

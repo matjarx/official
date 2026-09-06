@@ -7,6 +7,7 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
@@ -47,9 +48,15 @@ export default function BlogContent() {
           <section style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 22, alignItems: 'stretch' }}>
               <Link href={routes.blogPost(featuredPost.slug)} style={{ display: 'flex', flexDirection: 'column', borderRadius: 24, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.09)', boxShadow: '0 16px 40px rgba(4,18,31,0.07)' }}>
-                <div style={{ height: 280, background: 'linear-gradient(150deg, #1B7A3D, #08361B)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 26 }}>
-                  <span style={{ alignSelf: 'flex-start', fontSize: 10.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', padding: '6px 12px', borderRadius: 999, color: '#16210B', background: 'var(--butter)', marginBottom: 14 }}>Featured</span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 27, lineHeight: 1.14, letterSpacing: '-0.7px', color: '#FFFFFF' }}>{featuredPost.title}</span>
+                <div style={{ position: 'relative', height: 280, background: featuredPost.coverImage ? undefined : 'linear-gradient(150deg, #1B7A3D, #08361B)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 26 }}>
+                  {featuredPost.coverImage && (
+                    <>
+                      <Image src={featuredPost.coverImage.src} alt={featuredPost.coverImage.alt} fill sizes="(max-width: 700px) 100vw, 700px" style={{ objectFit: 'cover', zIndex: 0 }} priority />
+                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(0deg, rgba(4,18,31,0.75), rgba(4,18,31,0.1))' }} />
+                    </>
+                  )}
+                  <span style={{ position: 'relative', alignSelf: 'flex-start', fontSize: 10.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', padding: '6px 12px', borderRadius: 999, color: '#16210B', background: 'var(--butter)', marginBottom: 14 }}>Featured</span>
+                  <span style={{ position: 'relative', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 27, lineHeight: 1.14, letterSpacing: '-0.7px', color: '#FFFFFF' }}>{featuredPost.title}</span>
                 </div>
                 <div style={{ padding: '24px 26px 26px', display: 'flex', flexDirection: 'column', gap: 14 }}>
                   <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#4B5D6E' }}>{featuredPost.excerpt}</p>
@@ -90,8 +97,14 @@ export default function BlogContent() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 22 }}>
               {filtered.map((p) => (
                 <Link key={p.slug} href={routes.blogPost(p.slug)} className="glass-card" style={{ display: 'flex', flexDirection: 'column', borderRadius: 22, overflow: 'hidden' }}>
-                  <div style={{ height: 168, background: p.tint, display: 'flex', alignItems: 'flex-start', padding: 16 }}>
-                    <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', padding: '6px 11px', borderRadius: 999, color: 'rgba(255,255,255,0.94)', background: 'rgba(0,0,0,0.3)' }}>{p.category}</span>
+                  <div style={{ position: 'relative', height: 168, background: p.coverImage ? undefined : p.tint, display: 'flex', alignItems: 'flex-start', padding: 16 }}>
+                    {p.coverImage && (
+                      <>
+                        <Image src={p.coverImage.src} alt={p.coverImage.alt} fill sizes="320px" style={{ objectFit: 'cover', zIndex: 0 }} />
+                        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(4,18,31,0.35), rgba(4,18,31,0))' }} />
+                      </>
+                    )}
+                    <span style={{ position: 'relative', fontSize: 10.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', padding: '6px 11px', borderRadius: 999, color: 'rgba(255,255,255,0.94)', background: 'rgba(0,0,0,0.3)' }}>{p.category}</span>
                   </div>
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 11, flex: 1 }}>
                     <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, lineHeight: 1.28, letterSpacing: '-0.35px', color: '#04121F' }}>{p.title}</h3>
