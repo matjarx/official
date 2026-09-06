@@ -16,8 +16,13 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import SavingsCalculator from '@/components/SavingsCalculator'
+import PortfolioShowcase from '@/components/examples/PortfolioShowcase'
 import { routes, appSignup } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
+import { EXAMPLES } from '@/lib/examples-data'
+
+const HOME_EXAMPLE_NAMES = ['Celestial Delicacies', 'Bin Adam Textile', 'Sacred Wellness']
+const HOME_EXAMPLES = EXAMPLES.filter((ex) => HOME_EXAMPLE_NAMES.includes(ex.name))
 
 const CATEGORIES_BASE = ['Restaurants', 'Boutiques', 'Clinics', 'Law firms', 'Salons', 'Real estate', 'Construction', 'Gyms', 'Caterers', 'Auto repair', 'Textiles', 'Travel agents', 'Accountants', 'Event planners', 'Coffee shops', 'Furniture']
 const CATEGORIES = [...CATEGORIES_BASE, ...CATEGORIES_BASE]
@@ -32,12 +37,6 @@ const STEPS = [
   { n: '1', title: 'Tell us about your business', body: 'A short questionnaire: what you do, who you serve, and what the site needs to achieve.', time: '15–30 minutes' },
   { n: '2', title: 'We build the whole thing', body: 'Design, copy, images, SEO, store or bookings — assembled by a specialist in your category.', time: '7 days' },
   { n: '3', title: 'We launch it together', body: 'A live call to walk your new site, make final changes, and show you the editor.', time: '30 minutes' },
-]
-
-const EXAMPLES = [
-  { name: 'Celestial Delicacies', category: 'Fine dining, Karachi', result: 'Bookings up 3×', tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)' },
-  { name: 'Bin Adam Textile', category: 'Wholesale textiles, Faisalabad', result: '#1 on Google', tint: 'linear-gradient(150deg, #003366, #2E6EA8)' },
-  { name: 'Sacred Wellness', category: 'Spa & wellness, Lahore', result: 'Leads every day', tint: 'linear-gradient(150deg, #707538, #C6CB8A)' },
 ]
 
 const PROOF_STATS = [
@@ -126,6 +125,7 @@ export default function HomeContent({ dark: initialDark = false }: { dark?: bool
   // with dark as the starting state) and now also gets a working toggle.
   const [dark, setDark] = useState(initialDark)
   const [openFaq, setOpenFaq] = useState(0)
+  const [exampleModal, setExampleModal] = useState(-1)
 
   const ink1 = dark ? '#FFFFFF' : '#04121F'
   const ink4 = dark ? 'rgba(255,255,255,0.7)' : '#435A70'
@@ -425,21 +425,8 @@ export default function HomeContent({ dark: initialDark = false }: { dark?: bool
             </div>
             <Link href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(255,255,255,0.07)' : '#FFFFFF', border: `1.5px solid ${dark ? 'rgba(255,255,255,0.16)' : 'rgba(4,18,31,0.14)'}` }}>Browse all examples</Link>
           </div>
-          <div style={{ maxWidth: 1200, margin: '40px auto 0', padding: '0 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
-            {EXAMPLES.map((ex) => (
-              <div key={ex.name} className={dark ? 'glass-dark-inner' : 'glass-card'} style={{ borderRadius: 22, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ height: 210, background: ex.tint, display: 'grid', placeItems: 'center' }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '0.4px', color: 'rgba(255,255,255,0.9)', textAlign: 'center', padding: '0 20px' }}>{ex.name}</span>
-                </div>
-                <div style={{ padding: '20px 22px', display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, color: ink1 }}>{ex.name}</span>
-                    <span style={{ fontSize: 12.5, color: dark ? 'rgba(226,236,245,0.5)' : '#6A7F92' }}>{ex.category}</span>
-                  </div>
-                  <span style={{ fontSize: 12, fontWeight: 600, padding: '6px 12px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{ex.result}</span>
-                </div>
-              </div>
-            ))}
+          <div style={{ maxWidth: 1200, margin: '40px auto 0', padding: '0 24px' }}>
+            <PortfolioShowcase items={HOME_EXAMPLES} modalIndex={exampleModal} setModalIndex={setExampleModal} />
           </div>
         </section>
 

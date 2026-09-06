@@ -257,6 +257,25 @@ export default function PricingContent() {
         <SavingsCalculator />
       </section>
 
+      {/* Special savings — the worked example */}
+      <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0' }}>
+        <div className="glass-card" style={{ padding: 'clamp(24px, 3.4vw, 34px)', borderRadius: 22 }}>
+          <span style={{ display: 'block', marginBottom: 6, fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Special savings</span>
+          <h3 style={{ margin: '0 0 16px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 20, letterSpacing: '-0.4px', color: '#04121F' }}>Save more with longer commitments</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 18 }}>
+            <span style={{ fontSize: 14, color: '#3B5063' }}><strong>Monthly plan:</strong> full price, cancel anytime — no long-term commitment</span>
+            <span style={{ fontSize: 14, color: '#3B5063' }}><strong>Yearly plan:</strong> get 2 months free (17% savings)</span>
+            <span style={{ fontSize: 14, color: '#3B5063' }}><strong>Two-year plan:</strong> get 6 months free (25% savings)</span>
+          </div>
+          <div style={{ padding: '16px 18px', borderRadius: 14, background: 'var(--cream-deep)', display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <span style={{ fontSize: 13.5, color: '#435A70' }}>Example: Boost at Rs. 15,600/month = Rs. 187,200/year full price</span>
+            <span style={{ fontSize: 13.5, color: '#435A70' }}>Yearly commitment: save Rs. 31,200 (2 months free)</span>
+            <span style={{ fontSize: 13.5, color: '#435A70' }}>Two-year commitment: save Rs. 93,600 (6 months free)</span>
+          </div>
+          <p style={{ margin: '16px 0 0', fontSize: 13.5, lineHeight: 1.55, color: '#6A7F92' }}>Commit longer, invest less. All plans include the same quality, features and support.</p>
+        </div>
+      </section>
+
       {/* Compare plans */}
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '76px 24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, textAlign: 'center', marginBottom: 34 }}>
