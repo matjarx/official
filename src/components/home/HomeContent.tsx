@@ -122,7 +122,7 @@ const PLAN_ROWS = [
 // /home-dark and /home-mobile (noindex design-review surfaces, not the
 // canonical page) render this without fetching content — they keep using
 // the hardcoded defaults, which is fine since they're not what admins edit.
-const DEFAULT_CONTENT: HomeContentShape = { faqs: DEFAULT_FAQ_DATA }
+const DEFAULT_CONTENT: HomeContentShape = { faqs: DEFAULT_FAQ_DATA, voices: VOICES }
 
 export default function HomeContent({ dark: initialDark = false, content = DEFAULT_CONTENT }: { dark?: boolean; content?: HomeContentShape }) {
   // Real toggle, not a fixed prop: the design handoff's own instruction is to
@@ -135,6 +135,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
   const [exampleModal, setExampleModal] = useState(-1)
 
   const FAQ_DATA = content.faqs
+  const VOICES_ACTIVE = content.voices
 
   const ink1 = dark ? '#FFFFFF' : '#04121F'
   const ink4 = dark ? 'rgba(255,255,255,0.7)' : '#435A70'
@@ -238,7 +239,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           </div>
 
           <div style={{ marginTop: 44, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: 22, alignItems: 'start' }}>
-            {VOICES.map((v) => (
+            {VOICES_ACTIVE.map((v) => (
               <div key={v.name} style={{ position: 'relative', marginBottom: 8 }}>
                 <div style={{ position: 'absolute', inset: '8px -8px -8px 8px', borderRadius: 20, background: dark ? '#3A3F1E' : '#A8AD6A', zIndex: 0 }} />
                 <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? '#0B2138' : '#FFFFFF', border: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.06)'}`, boxShadow: '0 10px 26px rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>

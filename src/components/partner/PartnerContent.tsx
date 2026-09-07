@@ -18,12 +18,14 @@ import {
 } from '@/lib/partner-data'
 import { PARTNER_CATEGORY_ICONS, PARTNER_TOOL_LOGOS } from '@/lib/partner-icons-data'
 
-export type PartnerContentShape = { tiers: typeof PARTNER_TIERS; steps: typeof PARTNER_STEPS }
-const DEFAULT_CONTENT: PartnerContentShape = { tiers: PARTNER_TIERS, steps: PARTNER_STEPS }
+export type PartnerContentShape = { tiers: typeof PARTNER_TIERS; steps: typeof PARTNER_STEPS; toolLogos: typeof PARTNER_TOOL_LOGOS; categoryIcons: typeof PARTNER_CATEGORY_ICONS }
+const DEFAULT_CONTENT: PartnerContentShape = { tiers: PARTNER_TIERS, steps: PARTNER_STEPS, toolLogos: PARTNER_TOOL_LOGOS, categoryIcons: PARTNER_CATEGORY_ICONS }
 
 export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?: PartnerContentShape }) {
   const PARTNER_TIERS_ACTIVE = content.tiers
   const PARTNER_STEPS_ACTIVE = content.steps
+  const PARTNER_TOOL_LOGOS_ACTIVE = content.toolLogos
+  const PARTNER_CATEGORY_ICONS_ACTIVE = content.categoryIcons
   const [clients, setClients] = useState(10)
   const [plan, setPlan] = useState<PlanKey>('Boost')
   const [ptype, setPtype] = useState(PARTNER_TYPES[0])
@@ -107,7 +109,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
           <section style={{ maxWidth: 1140, margin: '0 auto', padding: '68px 24px 0' }}>
             <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>What kind of referrals work best?</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: 14 }}>
-              {PARTNER_CATEGORY_ICONS.map((c) => (
+              {PARTNER_CATEGORY_ICONS_ACTIVE.map((c) => (
                 <div key={c.src} className="glass-card" style={{ padding: '18px 14px', borderRadius: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, textAlign: 'center' }}>
                   <div style={{ position: 'relative', width: 40, height: 40, borderRadius: 12, background: 'var(--navy)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <div style={{ position: 'relative', width: 20, height: 20 }}>
@@ -124,7 +126,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
           <section style={{ maxWidth: 1140, margin: '0 auto', padding: '54px 24px 0' }}>
             <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Tools our partners already recommend</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 130px), 1fr))', gap: 14 }}>
-              {PARTNER_TOOL_LOGOS.map((t) => (
+              {PARTNER_TOOL_LOGOS_ACTIVE.map((t) => (
                 <div key={t.src} className="glass-card" style={{ padding: '16px', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', height: 64 }}>
                   <div style={{ position: 'relative', width: '100%', height: 32 }}>
                     <Image src={t.src} alt={t.label} fill sizes="120px" style={{ objectFit: 'contain' }} />

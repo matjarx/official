@@ -42,8 +42,8 @@ function IconCardGrid({ items, cols = 4 }: { items: IconCard[]; cols?: number })
   )
 }
 
-export type TemplatesContentShape = { hero: typeof HERO; why: typeof WHY_TEMPLATES; features: typeof TEMPLATE_FEATURES; categories: typeof CATEGORIES; faqs: typeof TEMPLATE_FAQS }
-const DEFAULT_CONTENT: TemplatesContentShape = { hero: HERO, why: WHY_TEMPLATES, features: TEMPLATE_FEATURES, categories: CATEGORIES, faqs: TEMPLATE_FAQS }
+export type TemplatesContentShape = { hero: typeof HERO; why: typeof WHY_TEMPLATES; features: typeof TEMPLATE_FEATURES; categories: typeof CATEGORIES; faqs: typeof TEMPLATE_FAQS; previews: typeof TEMPLATE_PREVIEWS }
+const DEFAULT_CONTENT: TemplatesContentShape = { hero: HERO, why: WHY_TEMPLATES, features: TEMPLATE_FEATURES, categories: CATEGORIES, faqs: TEMPLATE_FAQS, previews: TEMPLATE_PREVIEWS }
 
 export default function TemplatesContent({ content = DEFAULT_CONTENT }: { content?: TemplatesContentShape }) {
   const [openFaq, setOpenFaq] = useState(0)
@@ -53,6 +53,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
   const TEMPLATE_FEATURES_ACTIVE = content.features
   const CATEGORIES_ACTIVE = content.categories
   const TEMPLATE_FAQS_ACTIVE = content.faqs
+  const TEMPLATE_PREVIEWS_ACTIVE = content.previews
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -77,7 +78,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>See it for yourself</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Real template previews</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 18 }}>
-              {TEMPLATE_PREVIEWS.map((p) => (
+              {TEMPLATE_PREVIEWS_ACTIVE.map((p) => (
                 <div key={p.name} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
                   <div style={{ position: 'relative', width: '100%', aspectRatio: `${p.width} / ${p.height}` }}>
                     <Image src={p.src} alt={p.alt} fill sizes="(max-width: 700px) 100vw, 400px" style={{ objectFit: 'cover' }} />

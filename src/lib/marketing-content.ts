@@ -30,7 +30,9 @@ import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS, CONTACT_FAQS } f
 import { FAQ_GROUPS } from './faqs-data'
 import { CAREERS_PERKS, CAREERS_ROLES } from './careers-data'
 import { PARTNER_TIERS, PARTNER_STEPS } from './partner-data'
-import { HERO as TEMPLATES_HERO, WHY_TEMPLATES, TEMPLATE_FEATURES, CATEGORIES as TEMPLATE_CATEGORIES, TEMPLATE_FAQS } from './templates-data'
+import { PARTNER_TOOL_LOGOS, PARTNER_CATEGORY_ICONS, PLAN_TIER_ICONS } from './partner-icons-data'
+import { VOICES } from './home-data'
+import { HERO as TEMPLATES_HERO, WHY_TEMPLATES, TEMPLATE_FEATURES, CATEGORIES as TEMPLATE_CATEGORIES, TEMPLATE_FAQS, TEMPLATE_PREVIEWS } from './templates-data'
 import { HERO as VIDEOS_HERO, VIDEO_SECTIONS, VIDEO_FAQS } from './videos-data'
 import { HERO as AUDIT_HERO, AUDIT_AREAS, PROCESS_STEPS as AUDIT_PROCESS, AUDIT_FAQS } from './website-audit-data'
 import { EXAMPLES, EXAMPLE_CATEGORIES, EXAMPLE_PILLARS } from './examples-data'
@@ -67,9 +69,9 @@ export function getDefaultContent(slug: string): Record<string, unknown> | null 
 
   switch (category) {
     case 'home':
-      return { faqs: HOME_FAQS }
+      return { faqs: HOME_FAQS, voices: VOICES }
     case 'pricing':
-      return { heroTicks: DEFAULT_HERO_TICKS, testimonials: DEFAULT_TESTIMONIALS, howToChoose: DEFAULT_HOW_TO_CHOOSE, faqs: PRICING_FAQS, compareGroups: COMPARE_GROUPS, plans: DEFAULT_PLAN_ROWS }
+      return { heroTicks: DEFAULT_HERO_TICKS, testimonials: DEFAULT_TESTIMONIALS, howToChoose: DEFAULT_HOW_TO_CHOOSE, faqs: PRICING_FAQS, compareGroups: COMPARE_GROUPS, plans: DEFAULT_PLAN_ROWS, tierIcons: PLAN_TIER_ICONS }
     case 'features':
       return { groups: FEATURE_GROUPS, alwaysOn: ALWAYS_ON, faqs: FEATURES_FAQ }
     // Each of the 4 services is its own real page (matching the exact
@@ -122,9 +124,9 @@ export function getDefaultContent(slug: string): Record<string, unknown> | null 
     case 'careers':
       return { perks: CAREERS_PERKS, roles: CAREERS_ROLES }
     case 'partner':
-      return { tiers: PARTNER_TIERS, steps: PARTNER_STEPS }
+      return { tiers: PARTNER_TIERS, steps: PARTNER_STEPS, toolLogos: PARTNER_TOOL_LOGOS, categoryIcons: PARTNER_CATEGORY_ICONS }
     case 'templates':
-      return { hero: TEMPLATES_HERO, why: WHY_TEMPLATES, features: TEMPLATE_FEATURES, categories: TEMPLATE_CATEGORIES, faqs: TEMPLATE_FAQS }
+      return { hero: TEMPLATES_HERO, why: WHY_TEMPLATES, features: TEMPLATE_FEATURES, categories: TEMPLATE_CATEGORIES, faqs: TEMPLATE_FAQS, previews: TEMPLATE_PREVIEWS }
     case 'videos':
       return { hero: VIDEOS_HERO, sections: VIDEO_SECTIONS, faqs: VIDEO_FAQS }
     case 'website-audit':
@@ -372,7 +374,8 @@ export type PricingContentShape = {
   faqs: typeof PRICING_FAQS
   compareGroups: typeof COMPARE_GROUPS
   plans: typeof DEFAULT_PLAN_ROWS
+  tierIcons: typeof PLAN_TIER_ICONS
 }
-export type HomeContentShape = { faqs: typeof HOME_FAQS }
+export type HomeContentShape = { faqs: typeof HOME_FAQS; voices: typeof VOICES }
 export type FeaturesContentShape = { groups: typeof FEATURE_GROUPS; alwaysOn: typeof ALWAYS_ON; faqs: typeof FEATURES_FAQ }
 export type PlanContentShape = (typeof ALL_PLANS)[PlanKey] & (typeof PLAN_DATA)[PlanKey] & { detail: unknown }
