@@ -89,7 +89,7 @@ export default function SitePopup({ config }: { config: PopupConfig }) {
         </button>
         {config.image_url && (
           <div style={{ position: 'relative', width: '100%', height: 180 }}>
-            <Image src={config.image_url} alt="" fill sizes="420px" style={{ objectFit: 'cover' }} />
+            <Image src={config.image_url} alt={config.image_alt || ''} fill sizes="420px" style={{ objectFit: 'cover' }} />
           </div>
         )}
         <div style={{ padding: '28px 28px 32px', textAlign: 'center' }}>

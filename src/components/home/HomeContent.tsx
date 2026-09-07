@@ -334,7 +334,6 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '30px 24px 0' }}>
           <div style={{ position: 'relative', borderRadius: 30, overflow: 'hidden', background: 'linear-gradient(120deg, #04121F 0%, #00243D 46%, #0A3A63 100%)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 34px 76px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.16)' }}>
             <div style={{ position: 'absolute', width: 620, height: 620, right: -160, bottom: -220, borderRadius: '50%', background: 'radial-gradient(circle, rgba(198,203,138,0.34) 0%, rgba(198,203,138,0) 68%)', pointerEvents: 'none' }} />
-            <video src="/showcase-video/mascot.mp4" autoPlay muted loop playsInline style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} />
             <div style={{ position: 'relative' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, maxWidth: '46em', padding: 'clamp(34px, 5vw, 62px)', minWidth: 0 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 3.8vw, 40px)', lineHeight: 1.1, letterSpacing: '-1.3px', color: '#FFFFFF' }}>

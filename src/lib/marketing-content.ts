@@ -244,6 +244,7 @@ export type PopupConfig = {
   heading?: string
   body?: string
   image_url?: string
+  image_alt?: string
   cta_text?: string
   cta_url?: string
   trigger?: 'load' | 'delay' | 'exit_intent'
