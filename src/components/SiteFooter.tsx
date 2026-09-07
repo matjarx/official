@@ -72,6 +72,7 @@ export default function SiteFooter() {
               href="https://wa.me/923033720953"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('cta_click', { label: 'footer_whatsapp' })}
               style={{ padding: '17px 30px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(255,255,255,0.85)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.9)' }}
               className="footer-cta-secondary"
             >
@@ -89,7 +90,7 @@ export default function SiteFooter() {
               Done-for-you websites, SEO and growth marketing for small businesses across Pakistan and the Gulf.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 4 }}>
-              <a href="tel:+923033720953" style={{ fontSize: 13.5, color: 'var(--butter)' }}>+92 303 372 0953</a>
+              <a href="tel:+923033720953" onClick={() => trackEvent('cta_click', { label: 'footer_phone' })} style={{ fontSize: 13.5, color: 'var(--butter)' }}>+92 303 372 0953</a>
               <a href="mailto:office@matjarx.com" style={{ fontSize: 13.5, color: 'var(--butter)' }}>office@matjarx.com</a>
             </div>
             <div style={{ display: 'flex', gap: 8, paddingTop: 8 }}>
