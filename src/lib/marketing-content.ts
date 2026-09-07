@@ -293,11 +293,19 @@ function rowToBlogPost(row: BlogPostRow): BlogPost {
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
+    // Ordered by created_at, not the `date` column — `date` is a
+    // free-form display string ("1 Sep 2026"), not a real date type, so
+    // sorting on it alphabetically scrambles the actual chronological
+    // order (e.g. "9 Jun 2026" sorts before "8 Aug 2026"). The 28 seeded
+    // posts had created_at backfilled to match their real authored date
+    // one time at seed; a post created through the admin from here on
+    // gets a real created_at of "now" automatically, so it correctly
+    // sorts to the top without needing the same backfill again.
     const { data, error } = await supabase
       .from('marketing_blog_posts')
       .select('slug, title, category, excerpt, date, read_time, tint, body, related_slugs, cover_image')
       .eq('published', true)
-      .order('date', { ascending: false })
+      .order('created_at', { ascending: false })
     if (error || !data || data.length === 0) return BLOG_POSTS
     return data.map(rowToBlogPost)
   } catch {

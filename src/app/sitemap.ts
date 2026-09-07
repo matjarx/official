@@ -14,6 +14,14 @@ import { LEGAL_DOC_KEYS } from '@/lib/legal-data'
 
 const SITE_URL = 'https://matjarx.com'
 
+// Blog routes now come from getBlogPosts() (a live table, since the
+// admin's Blog tab can create/delete posts) rather than a static
+// import — without this, the route stayed statically cached forever (no
+// revalidate previously existed here), so a post created only through
+// the admin would never actually appear in the sitemap until the next
+// redeploy.
+export const revalidate = 60
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
 

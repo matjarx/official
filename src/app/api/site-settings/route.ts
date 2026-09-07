@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server'
 import { getMergedContent, SITE_SETTINGS_SLUG, type SiteSettings } from '@/lib/marketing-content'
 
+// Without this, Next could statically optimize this route handler (no
+// request-dependent APIs are used) and serve the same build-time JSON to
+// every visitor forever — a social-link edit needs this to actually show
+// up within a minute instead of only after a redeploy.
+export const revalidate = 60
+
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, OPTIONS',

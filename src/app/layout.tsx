@@ -19,6 +19,15 @@ import AnnouncementBar from '@/components/AnnouncementBar'
 import SitePopup from '@/components/SitePopup'
 import './globals.css'
 
+// Without this, Next's Data Cache would cache the layout's own
+// getMergedContent() calls indefinitely (force-cache is the default for
+// fetch-backed reads with no revalidate set) — meaning a Settings,
+// Announcements, or Popup edit would only ever show up after a full
+// redeploy, not "within a minute" like every other page in this repo.
+// Every other page.tsx already has this same line for the same reason;
+// the root layout was just missed until now.
+export const revalidate = 60
+
 // Today's real values — used unless overridden from the admin's Marketing
 // Site > Settings tab, and always the fallback if that row is empty or
 // unreachable, so nothing regresses.
