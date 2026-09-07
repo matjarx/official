@@ -61,9 +61,22 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
           {/* Cover image — real photo/graphic from matjarx.com's media library when available */}
           <section style={{ maxWidth: 1140, margin: '0 auto', padding: '46px 24px 0' }}>
             {post.coverImage ? (
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '1140 / 380', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(4,18,31,0.16)' }}>
-                <Image src={post.coverImage.src} alt={post.coverImage.alt} fill sizes="(max-width: 1140px) 100vw, 1140px" style={{ objectFit: 'cover' }} priority />
-              </div>
+              <figure style={{ margin: 0 }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '1140 / 380', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(4,18,31,0.16)' }}>
+                  <Image
+                    src={post.coverImage.src}
+                    alt={post.coverImage.alt}
+                    title={post.coverImage.title}
+                    fill
+                    sizes="(max-width: 1140px) 100vw, 1140px"
+                    style={{ objectFit: 'cover' }}
+                    priority
+                  />
+                </div>
+                {post.coverImage.caption && (
+                  <figcaption style={{ margin: '10px 4px 0', fontSize: 13.5, lineHeight: 1.5, color: '#6A7F92', textAlign: 'center' }}>{post.coverImage.caption}</figcaption>
+                )}
+              </figure>
             ) : (
               <div style={{ height: 380, borderRadius: 24, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'grid', placeItems: 'center', boxShadow: '0 22px 50px rgba(4,18,31,0.16)' }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '0.4px', color: 'rgba(255,255,255,0.85)' }}>Article cover image</span>

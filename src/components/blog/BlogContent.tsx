@@ -63,7 +63,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
                 <div style={{ position: 'relative', height: 280, background: featuredPost.coverImage ? undefined : 'linear-gradient(150deg, #1B7A3D, #08361B)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 26 }}>
                   {featuredPost.coverImage && (
                     <>
-                      <Image src={featuredPost.coverImage.src} alt={featuredPost.coverImage.alt} fill sizes="(max-width: 700px) 100vw, 700px" style={{ objectFit: 'cover', zIndex: 0 }} priority />
+                      <Image src={featuredPost.coverImage.src} alt={featuredPost.coverImage.alt} title={featuredPost.coverImage.title} fill sizes="(max-width: 700px) 100vw, 700px" style={{ objectFit: 'cover', zIndex: 0 }} priority />
                       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(0deg, rgba(4,18,31,0.75), rgba(4,18,31,0.1))' }} />
                     </>
                   )}
@@ -112,7 +112,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
                   <div style={{ position: 'relative', height: 168, background: p.coverImage ? undefined : p.tint, display: 'flex', alignItems: 'flex-start', padding: 16 }}>
                     {p.coverImage && (
                       <>
-                        <Image src={p.coverImage.src} alt={p.coverImage.alt} fill sizes="320px" style={{ objectFit: 'cover', zIndex: 0 }} />
+                        <Image src={p.coverImage.src} alt={p.coverImage.alt} title={p.coverImage.title} fill sizes="320px" style={{ objectFit: 'cover', zIndex: 0 }} />
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(4,18,31,0.35), rgba(4,18,31,0))' }} />
                       </>
                     )}

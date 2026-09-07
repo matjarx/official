@@ -18,7 +18,10 @@ export type BlogPost = {
   relatedSlugs: string[]
   // Real cover image pulled from matjarx.com's WordPress media library —
   // same file and alt text already indexed by Google, not a new asset.
-  coverImage?: { src: string; alt: string; width: number; height: number }
+  // title/caption/description are the same WordPress attachment's other
+  // metadata fields (title: tooltip; caption: shown under the image on the
+  // post page; description: longer text for search engines, not rendered).
+  coverImage?: { src: string; alt: string; title?: string; caption?: string; description?: string; width: number; height: number }
 }
 
 export const AUTHOR = { name: 'The MatjarX Team', initials: 'MX', role: 'Written by the MatjarX team' }

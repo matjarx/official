@@ -41,6 +41,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    ...(post.coverImage && {
+      image: {
+        '@type': 'ImageObject',
+        url: post.coverImage.src.startsWith('http') ? post.coverImage.src : `https://matjarx.com${post.coverImage.src}`,
+        ...(post.coverImage.description && { description: post.coverImage.description }),
+      },
+    }),
     author: { '@type': 'Organization', name: AUTHOR.name },
     publisher: { '@type': 'Organization', name: 'MatjarX' },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://matjarx.com${routes.blogPost(post.slug)}` },
