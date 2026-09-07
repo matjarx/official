@@ -146,11 +146,18 @@ export function getDefaultContent(slug: string): Record<string, unknown> | null 
 // default content. Server-side only (called from a page.tsx server
 // component) — safe with the anon key since RLS only grants that key
 // public SELECT, never write.
+//
+// An override with published = false is treated exactly like no
+// override at all — the admin's Pages editor can save a draft (visible
+// only in its own live-preview iframe there) without it going live,
+// then flip it to published when ready. The three reserved-slug rows
+// (_site_settings etc.) never set this explicitly, so they default to
+// published = true and behave exactly as before.
 export async function getMergedContent<T = Record<string, unknown>>(slug: string): Promise<T> {
   const base = getDefaultContent(slug) ?? {}
   try {
-    const { data, error } = await supabase.from('marketing_content').select('data').eq('slug', slug).maybeSingle()
-    if (error || !data) return base as T
+    const { data, error } = await supabase.from('marketing_content').select('data, published').eq('slug', slug).maybeSingle()
+    if (error || !data || data.published === false) return base as T
     return deepMerge(base, data.data) as T
   } catch {
     return base as T
@@ -158,11 +165,12 @@ export async function getMergedContent<T = Record<string, unknown>>(slug: string
 }
 
 // Back-compat for the 4 pages already wired to a narrow override shape —
-// still works, deepMerge treats a partial object the same way.
+// still works, deepMerge treats a partial object the same way. Same
+// published check as getMergedContent, for the same reason.
 export async function getContentOverride<T>(slug: string): Promise<T | null> {
   try {
-    const { data, error } = await supabase.from('marketing_content').select('data').eq('slug', slug).maybeSingle()
-    if (error || !data) return null
+    const { data, error } = await supabase.from('marketing_content').select('data, published').eq('slug', slug).maybeSingle()
+    if (error || !data || data.published === false) return null
     return data.data as T
   } catch {
     return null
@@ -175,12 +183,14 @@ export async function getContentOverride<T>(slug: string): Promise<T | null> {
 // fetch/save plumbing (read the row, edit the object, upsert it back)
 // already covers this for free. Falls back to whatever the page passes
 // in (its hardcoded default) when there's no override or the field is
-// blank, so a page is never left with an empty <title>.
+// blank, so a page is never left with an empty <title>. A draft
+// (published = false) page's SEO override stays hidden too, same as
+// its content — its metadata shouldn't leak out before the rest does.
 export type SeoOverride = { title?: string; description?: string }
 export async function getSeoOverride(slug: string): Promise<SeoOverride | null> {
   try {
-    const { data, error } = await supabase.from('marketing_content').select('data').eq('slug', slug).maybeSingle()
-    if (error || !data) return null
+    const { data, error } = await supabase.from('marketing_content').select('data, published').eq('slug', slug).maybeSingle()
+    if (error || !data || data.published === false) return null
     return (data.data as { __seo?: SeoOverride })?.__seo ?? null
   } catch {
     return null
