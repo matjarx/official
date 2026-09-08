@@ -199,6 +199,24 @@ export async function getSeoOverride(slug: string): Promise<SeoOverride | null> 
   }
 }
 
+// Every page's own title — the seo override above, or its hardcoded
+// default — already writes "MatjarX" into the string itself for most
+// pages (it's the natural way to write "Website Pricing Plans |
+// MatjarX"). The root layout's own title.template ALSO appends "·
+// MatjarX" to every plain-string title it receives, on top of
+// whatever the page already wrote — so a page authored the normal way
+// rendered as "Website Pricing Plans | MatjarX · MatjarX" sitewide.
+// Every generateMetadata() should wrap its title with this: it returns
+// an absolute title (bypasses the template entirely) when the string
+// already mentions MatjarX, and a plain string (the template appends
+// the brand for pages that never mention it themselves — the
+// unbranded hardcoded default case) otherwise. Branded exactly once,
+// regardless of which of the two ways the title got written.
+export function pageTitle(raw: string | undefined | null): import('next').Metadata['title'] {
+  if (!raw) return undefined // no override and no hardcoded default — let the parent's own default show
+  return /matjarx/i.test(raw) ? { absolute: raw } : raw
+}
+
 // Site-wide settings — GA4/Meta Pixel IDs, social links, contact email,
 // default title/description — editable from the admin's Marketing Site >
 // Settings tab. Stored under the same marketing_content table as every

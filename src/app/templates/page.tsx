@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import TemplatesContent, { type TemplatesContentShape } from '@/components/templates/TemplatesContent'
 import { META } from '@/lib/templates-data'
-import { getMergedContent, getSeoOverride } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageTitle } from '@/lib/marketing-content'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('templates')
   return {
     alternates: { canonical: '/templates' },
-    title: seo?.title || META.title,
+    title: pageTitle(seo?.title || META.title),
     description: seo?.description || META.description,
   }
 }

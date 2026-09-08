@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import HomeContent from '@/components/home/HomeContent'
-import { getMergedContent, getSeoOverride, type HomeContentShape } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageTitle, type HomeContentShape } from '@/lib/marketing-content'
 
 // Re-checks marketing_content at most once a minute rather than only at
 // build time — otherwise an admin edit would need a full redeploy to show
@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('home')
   if (!seo?.title && !seo?.description) return {}
   return {
-    ...(seo.title ? { title: seo.title } : {}),
+    ...(seo.title ? { title: pageTitle(seo.title) } : {}),
     ...(seo.description ? { description: seo.description } : {}),
   }
 }

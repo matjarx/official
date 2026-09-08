@@ -74,7 +74,16 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(SITE_URL),
     title: {
       default: title,
-      template: '%s · MatjarX',
+      // Every real page wraps its own title with pageTitle() (see
+      // marketing-content.ts) before returning it — that either returns
+      // an absolute title (when the page's own title already mentions
+      // MatjarX, which is how most of them are written) or a plain
+      // string for this template to brand. Kept at '|' to match how
+      // every hand-written and admin-entered title on the site already
+      // separates its own brand suffix, rather than the '·' this used
+      // to be, which only ever showed up doubled on top of a page's own
+      // '| MatjarX'.
+      template: '%s | MatjarX',
     },
     description,
     alternates: {

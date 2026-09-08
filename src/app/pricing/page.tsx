@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import PricingContent from '@/components/pricing/PricingContent'
-import { getMergedContent, type PricingContentShape, getSeoOverride } from '@/lib/marketing-content'
+import { getMergedContent, type PricingContentShape, getSeoOverride, pageTitle } from '@/lib/marketing-content'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('pricing')
   return {
     alternates: { canonical: '/pricing' },
-    title: seo?.title || 'Pricing',
+    title: pageTitle(seo?.title || 'Pricing'),
     description: seo?.description || 'One setup fee, one monthly fee, no surprises. Compare the Launch, Boost, Growth and Platinum plans and see what a DIY website really costs you.',
   }
 }
