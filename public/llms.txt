@@ -7,7 +7,10 @@ MatjarX is not a DIY website builder. A customer picks a plan, shares a brief, a
 ## Core pages
 
 - [Pricing](https://matjarx.com/pricing): All plans (Launch, Boost, Growth, Platinum, Custom) with pricing, setup fees, and what's included in each.
-- [Services](https://matjarx.com/services): The four services offered — Done-For-You build, SEO, Concierge support, Growth marketing.
+- [Done-For-You Website](https://matjarx.com/done-for-you-website): The core service — design, build and launch of the site itself.
+- [SEO](https://matjarx.com/local-national-and-global-seo): Ongoing local, national and global search optimisation.
+- [Concierge Service](https://matjarx.com/concierge-service): Unlimited website edits done by MatjarX's own team after launch.
+- [Growth Marketing](https://matjarx.com/growth-marketing-service): 1-on-1 marketing support — social, ads, SEO and reputation management.
 - [Features](https://matjarx.com/features): Full feature list across website, commerce, growth and operations tooling.
 - [Website Examples](https://matjarx.com/website-examples): Real, live client sites built by MatjarX, browsable by category.
 - [Templates](https://matjarx.com/templates): Starting-point site templates by business category.

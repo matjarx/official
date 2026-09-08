@@ -342,11 +342,11 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Mascot / urgency panel */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '30px 24px 0' }}>
+        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '30px 24px 60px' }}>
           <div style={{ position: 'relative', borderRadius: 30, overflow: 'hidden', background: 'linear-gradient(120deg, #04121F 0%, #00243D 46%, #0A3A63 100%)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 34px 76px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.16)' }}>
             <div style={{ position: 'absolute', width: 620, height: 620, right: -160, bottom: -220, borderRadius: '50%', background: 'radial-gradient(circle, rgba(198,203,138,0.34) 0%, rgba(198,203,138,0) 68%)', pointerEvents: 'none' }} />
-            <div style={{ position: 'relative' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 18, maxWidth: '46em', padding: 'clamp(34px, 5vw, 62px)', minWidth: 0 }}>
+            <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 'clamp(34px, 5vw, 62px)', minWidth: 0, order: 1 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 3.8vw, 40px)', lineHeight: 1.1, letterSpacing: '-1.3px', color: '#FFFFFF' }}>
                   50 milliseconds. <span style={{ color: 'rgba(255,255,255,0.6)' }}>That&apos;s how much time you have to make a first impression.</span>
                 </h2>
@@ -357,6 +357,10 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   <span style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>Your competitor down the road will be delighted.</span>
                 </div>
                 <Link href={routes.pricing} className="btn-primary" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Not on my watch — I want results</Link>
+              </div>
+              <div style={{ position: 'relative', minWidth: 0, minHeight: 320, alignSelf: 'stretch', order: 2 }}>
+                <Image src="/home/mascot.jpg" alt="" fill sizes="(max-width: 380px) 100vw, 50vw" style={{ objectFit: 'cover', objectPosition: 'center 20%' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #04121F 0%, rgba(4,18,31,0) 14%)' }} />
               </div>
             </div>
           </div>
