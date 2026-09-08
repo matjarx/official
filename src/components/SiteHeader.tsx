@@ -82,22 +82,21 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
             <Image src={logo} alt="MatjarX" width={128} height={34} style={{ width: 128, height: 'auto', display: 'block' }} priority />
           </Link>
 
-          {!narrow && (
-            <nav
-              ref={navRef}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 3,
-                margin: '0 auto',
-                padding: '5px 5px 5px 9px',
-                borderRadius: 999,
-                background: dark ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.5)',
-                border: dark ? '1px solid rgba(255,255,255,0.14)' : '1px solid rgba(255,255,255,0.85)',
-                backdropFilter: 'blur(24px)',
-                boxShadow: dark ? '0 14px 34px rgba(0,8,18,0.32), inset 0 1px 0 rgba(255,255,255,0.16)' : '0 14px 34px rgba(4,18,31,0.09), inset 0 1px 0 rgba(255,255,255,0.95)',
-              }}
-            >
+          <nav
+            ref={navRef}
+            className="site-header-nav-desktop"
+            style={{
+              alignItems: 'center',
+              gap: 3,
+              margin: '0 auto',
+              padding: '5px 5px 5px 9px',
+              borderRadius: 999,
+              background: dark ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.5)',
+              border: dark ? '1px solid rgba(255,255,255,0.14)' : '1px solid rgba(255,255,255,0.85)',
+              backdropFilter: 'blur(24px)',
+              boxShadow: dark ? '0 14px 34px rgba(0,8,18,0.32), inset 0 1px 0 rgba(255,255,255,0.16)' : '0 14px 34px rgba(4,18,31,0.09), inset 0 1px 0 rgba(255,255,255,0.95)',
+            }}
+          >
               {NAV_ITEMS.map((item, i) => {
                 const isActive = active === item.key
                 const isOpen = open === i
@@ -146,7 +145,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                         {item.menu.map((m) => (
                           <Link key={m.label} href={m.href} className={dark ? 'menu-item-dark' : 'menu-item-light'} style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '11px 14px', borderRadius: 12 }}>
                             <span style={{ fontSize: 13.5, fontWeight: 600, color: dark ? '#F2F6FA' : '#04121F' }}>{m.label}</span>
-                            {m.note && <span style={{ fontSize: 11.5, color: dark ? 'rgba(226,236,245,0.5)' : '#6A7F92' }}>{m.note}</span>}
+                            {m.note && <span style={{ fontSize: 11.5, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6F82' }}>{m.note}</span>}
                           </Link>
                         ))}
                       </div>
@@ -162,9 +161,8 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM5 20a7 7 0 0 1 14 0" /></svg>
               </a>
             </nav>
-          )}
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: '0 0 auto', marginLeft: narrow ? 'auto' : 0 }}>
+          <div className="site-header-actions" style={{ display: 'flex', alignItems: 'center', gap: 10, flex: '0 0 auto' }}>
             {onToggleDark && (
               <button
                 type="button"
@@ -189,31 +187,29 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
 
             <a href={appSignup()} onClick={() => trackEvent('cta_click', { label: 'header_get_started' })} className="btn-navy" style={{ flex: '0 0 auto' }}>Get started</a>
 
-            {narrow && (
-              <button
-                type="button"
-                onClick={() => setDrawer((v) => !v)}
-                title="Menu"
-                style={{
-                  all: 'unset',
-                  cursor: 'pointer',
-                  flex: '0 0 auto',
-                  width: 44,
-                  height: 44,
-                  borderRadius: 13,
-                  display: 'grid',
-                  placeItems: 'center',
-                  background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.66)',
-                  border: dark ? '1.5px solid rgba(255,255,255,0.18)' : '1.5px solid rgba(255,255,255,0.9)',
-                  backdropFilter: 'blur(20px)',
-                  boxShadow: dark ? 'inset 0 1px 0 rgba(255,255,255,0.16)' : 'inset 0 1px 0 rgba(255,255,255,0.9)',
-                }}
-              >
-                <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke={dark ? '#E9EFF5' : '#04121F'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={drawer ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16'} />
-                </svg>
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={() => setDrawer((v) => !v)}
+              title="Menu"
+              className="site-header-mobile-toggle"
+              style={{
+                all: 'unset',
+                cursor: 'pointer',
+                flex: '0 0 auto',
+                width: 44,
+                height: 44,
+                borderRadius: 13,
+                placeItems: 'center',
+                background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.66)',
+                border: dark ? '1.5px solid rgba(255,255,255,0.18)' : '1.5px solid rgba(255,255,255,0.9)',
+                backdropFilter: 'blur(20px)',
+                boxShadow: dark ? 'inset 0 1px 0 rgba(255,255,255,0.16)' : 'inset 0 1px 0 rgba(255,255,255,0.9)',
+              }}
+            >
+              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke={dark ? '#E9EFF5' : '#04121F'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d={drawer ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16'} />
+              </svg>
+            </button>
           </div>
         </div>
 

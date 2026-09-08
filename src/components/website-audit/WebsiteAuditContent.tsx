@@ -52,25 +52,25 @@ function IntakeForm() {
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14, width: '100%' }}>
       <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Website URL</span>
+        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Website URL</span>
         <input required type="text" value={websiteUrl} onChange={(e) => setWebsiteUrl(e.target.value)} placeholder="https://yourbusiness.pk" className="input" style={{ width: '100%' }} />
       </label>
       <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Your name</span>
+        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Your name</span>
         <input required type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
       </label>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 14 }}>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Email</span>
+          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Email</span>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@yourbusiness.pk" className="input" style={{ width: '100%' }} />
         </label>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>WhatsApp / phone</span>
+          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>WhatsApp / phone</span>
           <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
         </label>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Where should we send your report?</span>
+        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Where should we send your report?</span>
         <div style={{ display: 'flex', gap: 8 }}>
           {(['whatsapp', 'email'] as const).map((c) => (
             <button key={c} type="button" onClick={() => setPreferredChannel(c)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 16px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: preferredChannel === c ? '#FFFFFF' : '#3B5063', background: preferredChannel === c ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${preferredChannel === c ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>
@@ -83,7 +83,7 @@ function IntakeForm() {
         {status === 'submitting' ? 'Sending…' : 'Get Your Website Audit'}
       </button>
       {status === 'error' && <p style={{ margin: 0, fontSize: 13, color: '#B4543C' }}>Something went wrong — please try again, or message us on WhatsApp at {CHANNELS.whatsapp}.</p>}
-      <span style={{ fontSize: 12, lineHeight: 1.5, color: '#6A7F92' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
+      <span style={{ fontSize: 12, lineHeight: 1.5, color: '#5A6F82' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
     </form>
   )
 }
@@ -179,7 +179,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                     <button type="button" onClick={() => setOpenArea(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '20px 24px' }}>
                       <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'var(--navy)', color: 'var(--butter)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13 }}>{area.number}</span>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F', marginRight: 'auto' }}>{area.title}</span>
-                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                     </button>
                     {open && (
                       <div style={{ padding: '0 24px 26px', display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -200,7 +200,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                           </div>
                         </div>
                         <div style={{ padding: '14px 18px', borderRadius: 16, background: 'rgba(0,51,102,0.05)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-                          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: '#6A7F92' }}>What you&apos;ll learn</span>
+                          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: '#5A6F82' }}>What you&apos;ll learn</span>
                           {area.learn.map((l) => (
                             <span key={l} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: '#1B2E3F' }}>
                               <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--navy)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
@@ -236,7 +236,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                       </span>
                     ))}
                   </div>
-                  {s.note && <span style={{ fontSize: 12, fontStyle: 'italic', color: '#6A7F92', paddingTop: 4 }}>{s.note}</span>}
+                  {s.note && <span style={{ fontSize: 12, fontStyle: 'italic', color: '#5A6F82', paddingTop: 4 }}>{s.note}</span>}
                 </div>
               ))}
             </div>
@@ -264,7 +264,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               </table>
             </div>
             <p style={{ margin: '16px 0 0', fontSize: 14, fontWeight: 700, color: '#04121F', textAlign: 'center' }}>{TIMELINE_TOTAL}</p>
-            <p style={{ margin: '4px 0 0', fontSize: 13, color: '#6A7F92', textAlign: 'center' }}>{RUSH_NOTE}</p>
+            <p style={{ margin: '4px 0 0', fontSize: 13, color: '#5A6F82', textAlign: 'center' }}>{RUSH_NOTE}</p>
           </section>
 
           {/* Outcomes */}
@@ -317,7 +317,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                   <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
                     <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                     </button>
                     {open && <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{a}</p>}
                   </div>

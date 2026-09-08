@@ -92,7 +92,7 @@ export const DEFAULT_FAQ_DATA = [
 
 const LIGHT_THEME = {
   bg: 'rgba(255,255,255,0.62)', border: 'rgba(255,255,255,0.85)', shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)', blur: 'blur(22px)',
-  ink: '#04121F', muted: '#6A7F92', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
+  ink: '#04121F', muted: '#5A6F82', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
   tick: 'var(--olive)', ctaInk: '#FFFFFF', ctaBg: '#003366', ctaBorder: '#003366', savingInk: 'var(--olive)',
 }
 const DARK_THEME = {
@@ -247,7 +247,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
             )
           })}
         </div>
-        <p style={{ margin: '26px auto 0', maxWidth: 660, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: '#6A7F92' }}>
+        <p style={{ margin: '26px auto 0', maxWidth: 660, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: '#5A6F82' }}>
           Prices in PKR, billed to Pakistani businesses. Gulf clients are quoted in AED at the equivalent rate — <Link href={routes.contact} style={{ fontWeight: 600 }}>ask for a quote</Link>.
         </p>
 
@@ -294,7 +294,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
             <span style={{ fontSize: 13.5, color: '#435A70' }}>Yearly commitment: save Rs. 31,200 (2 months free)</span>
             <span style={{ fontSize: 13.5, color: '#435A70' }}>Two-year commitment: save Rs. 93,600 (6 months free)</span>
           </div>
-          <p style={{ margin: '16px 0 0', fontSize: 13.5, lineHeight: 1.55, color: '#6A7F92' }}>Commit longer, invest less. All plans include the same quality, features and support.</p>
+          <p style={{ margin: '16px 0 0', fontSize: 13.5, lineHeight: 1.55, color: '#5A6F82' }}>Commit longer, invest less. All plans include the same quality, features and support.</p>
         </div>
       </section>
 
@@ -320,7 +320,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
                     <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.7fr) repeat(4, minmax(58px, 0.55fr))', gap: '8px 10px', alignItems: 'center', minWidth: 520 }}>
                       <span />
                       {['Launch', 'Boost', 'Growth', 'Platinum'].map((h) => (
-                        <span key={h} style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: '#6A7F92', textAlign: 'center' }}>{h}</span>
+                        <span key={h} style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: '#5A6F82', textAlign: 'center' }}>{h}</span>
                       ))}
                       {g.rows.map((r) => {
                         const [label, a, b, c, d] = r
@@ -357,7 +357,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
                   <span style={{ width: 42, height: 42, flex: '0 0 auto', borderRadius: '50%', background: t.tint, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#04121F' }}>{t.initials}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{t.name}</span>
-                    <span style={{ fontSize: 12.5, color: '#6A7F92' }}>{t.company}</span>
+                    <span style={{ fontSize: 12.5, color: '#5A6F82' }}>{t.company}</span>
                   </div>
                 </div>
               </div>
@@ -371,7 +371,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
             <span style={{ width: 1, height: 26, background: 'rgba(4,18,31,0.12)' }} />
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: '#04121F' }}>4.8 / 5</span>
             <span style={{ fontSize: 14, letterSpacing: '2px', color: '#00B67A' }}>★★★★★</span>
-            <span style={{ fontSize: 13, color: '#6A7F92' }}>Rated &lsquo;Excellent&rsquo; by our clients</span>
+            <span style={{ fontSize: 13, color: '#5A6F82' }}>Rated &lsquo;Excellent&rsquo; by our clients</span>
           </div>
         </div>
       </section>
@@ -395,7 +395,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
                 <div key={q.question} className="glass-card" style={{ borderRadius: 16, overflow: 'hidden' }}>
                   <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '18px 20px' }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q.question}</span>
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                   </button>
                   {open && <p style={{ margin: 0, padding: '0 20px 20px', fontSize: 14.5, lineHeight: 1.65, color: '#435A70' }}>{q.answer}</p>}
                 </div>

@@ -109,17 +109,17 @@ export const HELP_CHANNELS: Channel[] = [
     icon: 'M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z',
     bg: 'rgba(255,255,255,0.62)', line: 'rgba(255,255,255,0.85)',
     shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)',
-    iconBg: 'var(--butter)', iconInk: '#3D3A08', ink: '#04121F', valueInk: 'var(--navy)', muted: '#6A7F92' },
+    iconBg: 'var(--butter)', iconInk: '#3D3A08', ink: '#04121F', valueInk: 'var(--navy)', muted: '#5A6F82' },
   { title: 'Email us', value: 'office@matjarx.com', note: 'Best for detailed questions, documents and anything with attachments.',
     icon: 'M4 6h16v12H4zM4 7l8 6 8-6',
     bg: 'rgba(255,255,255,0.62)', line: 'rgba(255,255,255,0.85)',
     shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)',
-    iconBg: 'var(--butter)', iconInk: '#3D3A08', ink: '#04121F', valueInk: 'var(--navy)', muted: '#6A7F92' },
+    iconBg: 'var(--butter)', iconInk: '#3D3A08', ink: '#04121F', valueInk: 'var(--navy)', muted: '#5A6F82' },
   { title: 'Gulf clients', value: 'Book a call slot', note: 'Connect support to schedule a call in your own time zone — UAE, Saudi or Qatar.',
     icon: 'M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM3.5 12h17M12 3.5c2.2 2.3 3.4 5.3 3.4 8.5S14.2 18.2 12 20.5',
     bg: 'rgba(242,238,226,0.6)', line: 'rgba(255,255,255,0.7)',
     shadow: 'inset 0 1px 0 rgba(255,255,255,0.8)',
-    iconBg: 'var(--navy)', iconInk: 'var(--butter)', ink: '#04121F', valueInk: 'var(--olive)', muted: '#6A7F92' },
+    iconBg: 'var(--navy)', iconInk: 'var(--butter)', ink: '#04121F', valueInk: 'var(--olive)', muted: '#5A6F82' },
 ]
 
 export const HELP_SUBJECTS = ['A new website', 'Billing question', 'Website editor', 'SEO & Google', 'Something else']

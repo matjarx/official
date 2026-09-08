@@ -44,7 +44,7 @@ function TableEl({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
     <div className="glass-card table-scroll" style={{ borderRadius: 18, overflow: 'hidden' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
-        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: '#6A7F92', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
+        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: '#5A6F82', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i} style={{ borderTop: '1px solid rgba(4,18,31,0.06)' }}>
@@ -299,7 +299,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
               <div key={f.q} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
                 <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{f.q}</span>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                 </button>
                 {open && (
                   <div style={{ padding: '0 22px 20px' }}>

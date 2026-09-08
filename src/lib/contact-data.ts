@@ -9,7 +9,7 @@ export const CONTACT_CHANNELS: ContactChannel[] = [
   { title: 'Call us', value: '+92 303 372 0953', note: 'Monday to Saturday, 11am to 8pm PKT.', href: 'tel:+923033720953',
     icon: 'M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z',
     bg: '#FFFFFF', border: 'rgba(4,18,31,0.1)', shadow: '0 10px 28px rgba(4,18,31,0.05)',
-    iconBg: 'var(--butter)', iconInk: '#3D3A08', ink: '#04121F', valueInk: 'var(--navy)', muted: '#6A7F92' },
+    iconBg: 'var(--butter)', iconInk: '#3D3A08', ink: '#04121F', valueInk: 'var(--navy)', muted: '#5A6F82' },
   { title: 'WhatsApp', value: 'Chat with us now', note: 'The fastest way to reach a real person — usually within 2-4 hours.', href: 'https://wa.me/923033720953',
     icon: 'M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z',
     bg: 'var(--navy)', border: 'var(--navy)', shadow: '0 20px 44px rgba(0,51,102,0.26)',
@@ -17,7 +17,7 @@ export const CONTACT_CHANNELS: ContactChannel[] = [
   { title: 'Email us', value: 'office@matjarx.com', note: 'Detailed questions and documents welcome. We reply within 24 business hours.', href: 'mailto:office@matjarx.com',
     icon: 'M4 6h16v12H4zM4 7l8 6 8-6',
     bg: '#FFFFFF', border: 'rgba(4,18,31,0.1)', shadow: '0 10px 28px rgba(4,18,31,0.05)',
-    iconBg: 'var(--butter)', iconInk: '#3D3A08', ink: '#04121F', valueInk: 'var(--navy)', muted: '#6A7F92' },
+    iconBg: 'var(--butter)', iconInk: '#3D3A08', ink: '#04121F', valueInk: 'var(--navy)', muted: '#5A6F82' },
 ]
 
 export const CONTACT_TOPICS = ['A new website', 'Pricing question', 'SEO & Google', 'Existing site help', 'Partnership']

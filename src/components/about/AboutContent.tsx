@@ -49,7 +49,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                 {ABOUT_STATS_ACTIVE.map((s) => (
                   <div key={s.label} style={{ padding: '30px 26px', display: 'flex', flexDirection: 'column', gap: 6, background: '#FFFFFF' }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-1.2px', color: '#04121F' }}>{s.value}</span>
-                    <span style={{ fontSize: 13.5, color: '#6A7F92' }}>{s.label}</span>
+                    <span style={{ fontSize: 13.5, color: '#5A6F82' }}>{s.label}</span>
                   </div>
                 ))}
               </div>
@@ -116,7 +116,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                   </div>
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 4 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{t.name}</span>
-                    <span style={{ fontSize: 13, color: '#6A7F92' }}>{t.role}</span>
+                    <span style={{ fontSize: 13, color: '#5A6F82' }}>{t.role}</span>
                   </div>
                 </div>
               ))}
@@ -136,7 +136,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                   <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
                     <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                     </button>
                     {open && <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{a}</p>}
                   </div>

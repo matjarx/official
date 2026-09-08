@@ -74,7 +74,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
                   <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#4B5D6E' }}>{featuredPost.excerpt}</p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 4 }}>
                     <span style={{ width: 34, height: 34, borderRadius: '50%', background: 'var(--moss-light)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: '#16210B' }}>{AUTHOR.initials}</span>
-                    <span style={{ fontSize: 13, color: '#6A7F92' }}>{AUTHOR.name} · {featuredPost.date} · {featuredPost.readTime}</span>
+                    <span style={{ fontSize: 13, color: '#5A6F82' }}>{AUTHOR.name} · {featuredPost.date} · {featuredPost.readTime}</span>
                   </div>
                 </div>
               </Link>

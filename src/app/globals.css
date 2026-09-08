@@ -21,7 +21,7 @@
   --ink-4: #435A70;
   --ink-4-alt: #3B5063;
   --ink-5: #4B5D6E;
-  --ink-muted: #6A7F92;
+  --ink-muted: #5A6F82;
   --ink-faint: #90A2B1;
   --navy: #003366;
   --navy-gradient: linear-gradient(160deg, #0A4278, #002E5C);
@@ -288,6 +288,32 @@ textarea.input {
 .mobile-link-dark:hover { background: rgba(255,255,255,0.08); }
 .mobile-submenu-light:hover { background: #F2EEE2; color: #04121F; }
 .mobile-submenu-dark:hover { background: rgba(255,255,255,0.08); color: #F7FAFD; }
+
+/* Site Header desktop-nav / mobile-toggle split — CSS-driven, not the
+   `narrow` JS state, and on purpose: a real mobile visitor's very first
+   paint (before React hydrates and matchMedia() can run) used to render
+   the full desktop nav pill regardless of viewport, then swap to the
+   compact hamburger header a beat later once the useEffect fired. That
+   swap was a massive layout shift right at the top of the page — it
+   pushed the whole page down and was the direct cause of a 0.78 mobile
+   CLS score (vs ~0.02 on desktop, where the swap never visibly happens
+   because the nav already fits). Gating visibility with plain CSS at the
+   same 940px breakpoint means the browser paints the correct layout
+   immediately, with no JS involved and nothing to shift. `narrow` in
+   SiteHeader.tsx is now only consulted for behavior (closing the drawer
+   on resize), never for what's visible on first paint. */
+.site-header-nav-desktop { display: flex; }
+/* !important here too: the button also carries an inline `all: unset`
+   (to strip default button chrome), which itself sets an inline
+   `display` value and would otherwise beat a plain, non-important class
+   rule — only an !important stylesheet rule outranks that. */
+.site-header-mobile-toggle { display: none !important; }
+.site-header-actions { margin-left: 0; }
+@media (max-width: 940px) {
+  .site-header-nav-desktop { display: none !important; }
+  .site-header-mobile-toggle { display: grid !important; }
+  .site-header-actions { margin-left: auto; }
+}
 
 /* Site Footer hover states */
 .footer-cta-primary:hover { background: #003366; color: #FFFFFF; }

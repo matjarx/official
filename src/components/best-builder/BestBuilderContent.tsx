@@ -59,7 +59,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             {HERO_STATS_ACTIVE.map((s) => (
               <div key={s.label} className="glass-chip" style={{ minWidth: 140, display: 'flex', flexDirection: 'column', gap: 4, padding: '16px 22px', borderRadius: 18 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.8px', color: '#04121F' }}>{s.value}</span>
-                <span style={{ fontSize: 12, color: '#6A7F92' }}>{s.label}</span>
+                <span style={{ fontSize: 12, color: '#5A6F82' }}>{s.label}</span>
               </div>
             ))}
           </div>
@@ -90,7 +90,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
               </div>
             </div>
           </div>
-          <p style={{ margin: '20px auto 0', maxWidth: 700, textAlign: 'center', fontSize: 13, lineHeight: 1.6, color: '#6A7F92' }}>Year 1 costs are the realistic total including the apps, payment workarounds and marketing help most businesses end up needing on top of the platform&rsquo;s own price.</p>
+          <p style={{ margin: '20px auto 0', maxWidth: 700, textAlign: 'center', fontSize: 13, lineHeight: 1.6, color: '#5A6F82' }}>Year 1 costs are the realistic total including the apps, payment workarounds and marketing help most businesses end up needing on top of the platform&rsquo;s own price.</p>
         </section>
 
         {/* Detailed breakdown — each platform explained */}
@@ -112,9 +112,9 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                     )}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: '#04121F' }}>{i + 1}. {p.name}</span>
-                      <span style={{ fontSize: 13, color: '#6A7F92' }}>{p.tagline}</span>
+                      <span style={{ fontSize: 13, color: '#5A6F82' }}>{p.tagline}</span>
                     </div>
-                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                   </button>
                   {open && (
                     <div style={{ padding: '0 24px 26px', display: 'flex', flexDirection: 'column', gap: 18 }}>
@@ -146,7 +146,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                       </div>
 
                       <div style={{ padding: '16px 18px', borderRadius: 16, background: 'rgba(4,18,31,0.04)', display: 'flex', flexDirection: 'column', gap: 8 }}>
-                        <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: '#6A7F92' }}>Real Year 1 cost for a Pakistani business</span>
+                        <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: '#5A6F82' }}>Real Year 1 cost for a Pakistani business</span>
                         {p.costLines.map((l) => (
                           <span key={l} style={{ fontSize: 13.5, color: '#33485B' }}>{l}</span>
                         ))}
@@ -195,10 +195,10 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             {WIN_REASONS.map((w, i) => (
               <div key={w.title} className="glass-card" style={{ padding: '24px 26px 26px', borderRadius: 22, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 20, alignItems: 'start' }}>
                 <div style={{ display: 'flex', gap: 14, minWidth: 0 }}>
-                  <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'rgba(4,18,31,0.06)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: '#6A7F92' }}>{i + 1}</span>
+                  <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'rgba(4,18,31,0.06)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: '#5A6F82' }}>{i + 1}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F' }}>{w.title}</span>
-                    <span style={{ fontSize: 13.5, lineHeight: 1.55, color: '#6A7F92' }}>{w.problem}</span>
+                    <span style={{ fontSize: 13.5, lineHeight: 1.55, color: '#5A6F82' }}>{w.problem}</span>
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: 10, padding: '14px 18px', borderRadius: 16, background: 'rgba(0,51,102,0.05)', minWidth: 0 }}>
@@ -280,7 +280,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                   <div key={question} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
                     <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '19px 22px' }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{question}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                     </button>
                     {open && <p style={{ margin: 0, padding: '0 22px 21px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{answer}</p>}
                   </div>

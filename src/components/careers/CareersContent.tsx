@@ -88,7 +88,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                     <button type="button" onClick={() => setOpenIndex(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 18, padding: '24px 26px', flexWrap: 'wrap' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginRight: 'auto', minWidth: 0, textAlign: 'left' }}>
                         <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, letterSpacing: '-0.35px', color: '#04121F' }}>{r.title}</span>
-                        <span style={{ fontSize: 13, color: '#6A7F92' }}>{r.team} · {r.location} · {r.type}</span>
+                        <span style={{ fontSize: 13, color: '#5A6F82' }}>{r.team} · {r.location} · {r.type}</span>
                       </div>
                       <span style={{ fontSize: 12, fontWeight: 600, padding: '7px 13px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{r.level}</span>
                       <span className="glass-chip" style={{ width: 30, height: 30, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center' }}>

@@ -92,6 +92,21 @@ const nextConfig = {
         pathname: '/storage/v1/object/public/**',
       },
     ],
+    // AVIF first: for photographic showcase/example images it typically
+    // beats WebP by another 15-25% at the same visual quality, which is
+    // where Lighthouse's "Improve image delivery" savings estimate was
+    // coming from — next/image already negotiates format via the
+    // request's Accept header, so declaring it here is the only change
+    // needed. WebP stays as the fallback for the few clients that accept
+    // it but not AVIF.
+    formats: ['image/avif', 'image/webp'],
+    // Default is 4 hours (14400s) — Lighthouse's "Use efficient cache
+    // lifetimes" wants long-lived caching for content that rarely
+    // changes, and these images (committed brand/showcase assets, or
+    // admin-uploaded media that gets a new Storage URL rather than
+    // overwriting an old one) qualify. A year, same as every other
+    // fingerprinted asset under _next/static.
+    minimumCacheTTL: 31536000,
   },
 }
 

@@ -84,7 +84,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#04121F" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m10 6 6 6-6 6" /></svg>
             </button>
           </div>
-          <p style={{ margin: '20px 0 0', textAlign: 'center', fontSize: 13.5, color: '#6A7F92' }}>{resultLine}</p>
+          <p style={{ margin: '20px 0 0', textAlign: 'center', fontSize: 13.5, color: '#5A6F82' }}>{resultLine}</p>
         </section>
 
         {/* Example cards + iframe modal */}

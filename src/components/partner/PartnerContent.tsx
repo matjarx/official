@@ -72,12 +72,12 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '-0.5px', color: t.dark ? '#FFFFFF' : '#04121F', marginRight: 'auto' }}>{t.name}</span>
                     {t.tag && <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.8px', textTransform: 'uppercase', padding: '5px 10px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{t.tag}</span>}
                   </div>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: t.dark ? 'rgba(255,255,255,0.6)' : '#6A7F92' }}>{t.who}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: t.dark ? 'rgba(255,255,255,0.6)' : '#5A6F82' }}>{t.who}</span>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, paddingTop: 8 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 38, letterSpacing: '-1.4px', color: t.dark ? '#FFFFFF' : '#04121F' }}>{t.rate}</span>
-                    <span style={{ fontSize: 14, color: t.dark ? 'rgba(255,255,255,0.6)' : '#6A7F92' }}>recurring</span>
+                    <span style={{ fontSize: 14, color: t.dark ? 'rgba(255,255,255,0.6)' : '#5A6F82' }}>recurring</span>
                   </div>
-                  <span style={{ fontSize: 13, color: t.dark ? 'rgba(255,255,255,0.6)' : '#6A7F92' }}>{t.bonus}</span>
+                  <span style={{ fontSize: 13, color: t.dark ? 'rgba(255,255,255,0.6)' : '#5A6F82' }}>{t.bonus}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 9, paddingTop: 14, marginTop: 4, borderTop: `1px solid ${t.dark ? 'rgba(255,255,255,0.16)' : 'rgba(4,18,31,0.09)'}` }}>
                     {t.features.map((f) => (
                       <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: t.dark ? 'rgba(255,255,255,0.82)' : '#3B5063' }}>
@@ -147,7 +147,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0, padding: '28px 30px', borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-                    <span style={{ fontSize: 12, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600, marginRight: 'auto' }}>Clients referred</span>
+                    <span style={{ fontSize: 12, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600, marginRight: 'auto' }}>Clients referred</span>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, color: '#04121F' }}>{clients}</span>
                   </div>
                   <div style={{ display: 'flex', gap: 6 }}>
@@ -160,7 +160,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                   </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-                  <span style={{ fontSize: 12, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Plan they choose</span>
+                  <span style={{ fontSize: 12, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Plan they choose</span>
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                     {PARTNER_PLAN_PICKS.map((p) => {
                       const active = plan === p
@@ -171,7 +171,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                   </div>
                 </div>
                 <div style={{ paddingTop: 18, borderTop: '1px solid rgba(4,18,31,0.09)', display: 'flex', flexDirection: 'column', gap: 5 }}>
-                  <span style={{ fontSize: 12.5, color: '#6A7F92' }}>Your recurring monthly commission</span>
+                  <span style={{ fontSize: 12.5, color: '#5A6F82' }}>Your recurring monthly commission</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-1.3px', color: 'var(--navy)' }}>{monthlyEarn}</span>
                   <span style={{ fontSize: 12.5, color: 'var(--olive)', fontWeight: 600 }}>{yearlyEarn} over a year</span>
                 </div>
@@ -189,25 +189,25 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 16 }}>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Your name</span>
+                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Your name</span>
                   <input type="text" placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
                 </label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Company</span>
+                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Company</span>
                   <input type="text" placeholder="Your agency or practice" className="input" style={{ width: '100%' }} />
                 </label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Email</span>
+                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Email</span>
                   <input type="email" placeholder="you@company.pk" className="input" style={{ width: '100%' }} />
                 </label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>Phone / WhatsApp</span>
+                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Phone / WhatsApp</span>
                   <input type="tel" placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
                 </label>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-                <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#6A7F92', fontWeight: 600 }}>What best describes you?</span>
+                <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>What best describes you?</span>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                   {PARTNER_TYPES.map((label) => {
                     const active = ptype === label
@@ -219,7 +219,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
               </div>
 
               <button type="button" className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(0,51,102,0.24)' }}>Submit application</button>
-              <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#6A7F92' }}>By applying you agree to our <Link href={routes.legal('terms')} style={{ fontWeight: 600 }}>partner terms</Link> and <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
+              <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#5A6F82' }}>By applying you agree to our <Link href={routes.legal('terms')} style={{ fontWeight: 600 }}>partner terms</Link> and <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
             </div>
           </section>
 

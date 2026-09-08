@@ -72,15 +72,15 @@ export default function HomeMobileContent() {
         orb2: 'radial-gradient(circle, rgba(120,170,215,0.4) 0%, rgba(120,170,215,0) 68%)',
         headerBg: 'rgba(252,250,243,0.78)', headerLine: 'rgba(4,18,31,0.1)',
         logo: '/brand/matjarx-logo-black.png',
-        ink1: '#04121F', ink3: '#435A70', ink4: '#6A7F92', ink5: '#90A2B1',
+        ink1: '#04121F', ink3: '#435A70', ink4: '#5A6F82', ink5: '#90A2B1',
         accentInk: '#707538', iconInk: '#04121F',
         chipBg: 'rgba(255,255,255,0.7)', chipLine: 'rgba(255,255,255,0.95)',
         cardBg: 'rgba(255,255,255,0.7)', cardLine: 'rgba(255,255,255,0.95)',
         cardShadow: '0 12px 30px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)',
         voiceBg: '#FFFFFF', voiceLine: 'rgba(4,18,31,0.07)', offsetFill: '#A8AD6A',
-        voiceInk: '#04121F', voiceMeta: '#6A7F92', voiceBody: '#24384A',
+        voiceInk: '#04121F', voiceMeta: '#5A6F82', voiceBody: '#24384A',
         skinIcon: 'M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9ZM12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M18.5 5.5l-1.4 1.4M6.9 17.1 5.5 18.5',
-        planLight: { bg: 'rgba(255,255,255,0.66)', border: 'rgba(255,255,255,0.9)', shadow: '0 14px 34px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)', ink: '#04121F', muted: '#6A7F92' },
+        planLight: { bg: 'rgba(255,255,255,0.66)', border: 'rgba(255,255,255,0.9)', shadow: '0 14px 34px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)', ink: '#04121F', muted: '#5A6F82' },
       }
 
   const planDark = { bg: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: 'rgba(255,255,255,0.18)', shadow: '0 20px 46px rgba(0,51,102,0.3), inset 0 1px 0 rgba(255,255,255,0.2)', ink: '#FFFFFF', muted: 'rgba(255,255,255,0.62)' }

@@ -50,7 +50,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px 18px', background: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(20px)' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, letterSpacing: '-0.2px', color: '#04121F' }}>{ex.name}</span>
-                <span style={{ fontSize: 12, color: '#6A7F92' }}>{ex.category} · {ex.domain}</span>
+                <span style={{ fontSize: 12, color: '#5A6F82' }}>{ex.category} · {ex.domain}</span>
               </div>
               <span style={{ flex: '0 0 auto', fontSize: 11.5, fontWeight: 600, padding: '6px 12px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{ex.result}</span>
             </div>

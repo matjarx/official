@@ -74,7 +74,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                   />
                 </div>
                 {post.coverImage.caption && (
-                  <figcaption style={{ margin: '10px 4px 0', fontSize: 13.5, lineHeight: 1.5, color: '#6A7F92', textAlign: 'center' }}>{post.coverImage.caption}</figcaption>
+                  <figcaption style={{ margin: '10px 4px 0', fontSize: 13.5, lineHeight: 1.5, color: '#5A6F82', textAlign: 'center' }}>{post.coverImage.caption}</figcaption>
                 )}
               </figure>
             ) : (
@@ -118,7 +118,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                 <span style={{ width: 56, height: 56, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#16210B' }}>{AUTHOR.initials}</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{AUTHOR.name}</span>
-                  <span style={{ fontSize: 12.5, color: '#6A7F92' }}>{AUTHOR.role}</span>
+                  <span style={{ fontSize: 12.5, color: '#5A6F82' }}>{AUTHOR.role}</span>
                 </div>
               </div>
             </article>

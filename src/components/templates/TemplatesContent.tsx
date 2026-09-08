@@ -115,7 +115,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
                     <button type="button" onClick={() => setOpenCat(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '16px 20px' }}>
                       <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: 10, background: c.tint, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: '#FFFFFF' }}>{c.n}</span>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#04121F', marginRight: 'auto' }}>{c.name}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                     </button>
                     {open && (
                       <div style={{ padding: '4px 20px 22px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 18 }}>
@@ -185,7 +185,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
                   <div style={{ height: 84, background: p.tint }} />
                   <div style={{ padding: '18px 20px 20px', background: '#FFFFFF', display: 'flex', flexDirection: 'column', gap: 6 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#04121F' }}>{p.name}</span>
-                    <span style={{ fontSize: 12.5, color: '#6A7F92' }}>{p.used}</span>
+                    <span style={{ fontSize: 12.5, color: '#5A6F82' }}>{p.used}</span>
                     <span style={{ fontSize: 13, color: '#4B5D6E' }}>{p.features}</span>
                     <div style={{ display: 'flex', gap: 8, paddingTop: 6 }}>
                       <span style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)' }}>{p.rating}</span>
@@ -235,7 +235,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
                   <div key={q} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
                     <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6A7F92" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                     </button>
                     {open && <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{a}</p>}
                   </div>

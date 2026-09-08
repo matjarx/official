@@ -112,7 +112,7 @@ export default function SiteFooter() {
 
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title} style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
-              <span style={{ fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.42)', fontWeight: 600 }}>{col.title}</span>
+              <span style={{ fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.62)', fontWeight: 600 }}>{col.title}</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {col.links.map((l) => (
                   <Link key={l.label} href={l.href} className="footer-link" style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.72)' }}>
@@ -125,7 +125,7 @@ export default function SiteFooter() {
         </div>
 
         <div style={{ maxWidth: 1200, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
-          <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.42)', marginRight: 'auto' }}>&copy; 2018&ndash;2026 MatjarX. All rights reserved.</span>
+          <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.62)', marginRight: 'auto' }}>&copy; 2018&ndash;2026 MatjarX. All rights reserved.</span>
           <Link href={routes.legal('terms')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Terms &amp; conditions</Link>
           <Link href={routes.legal('refund')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Refund policy</Link>
           <Link href={routes.legal('privacy')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Privacy &amp; cookies</Link>

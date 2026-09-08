@@ -11,17 +11,27 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
-import SavingsCalculator from '@/components/SavingsCalculator'
-import PortfolioShowcase from '@/components/examples/PortfolioShowcase'
 import { routes, appSignup } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
 import { EXAMPLES } from '@/lib/examples-data'
 import type { HomeContentShape } from '@/lib/marketing-content'
+
+// Code-split rather than statically imported: both sit well below the
+// fold (savings calculator, website-examples grid + its full-screen
+// iframe preview modal) and neither is needed for the hero's first
+// paint. `dynamic()` still renders them into the server HTML (no ssr:
+// false — that would risk reintroducing a layout shift on the very
+// thing this page just had one fixed), it only moves their JS into its
+// own chunk so the initial bundle has less to parse before the page is
+// interactive.
+const SavingsCalculator = dynamic(() => import('@/components/SavingsCalculator'))
+const PortfolioShowcase = dynamic(() => import('@/components/examples/PortfolioShowcase'))
 
 const HOME_EXAMPLE_NAMES = ['Celestial Delicacies', 'Bin Adam Textile', 'Sacred Wellness']
 const HOME_EXAMPLES = EXAMPLES.filter((ex) => HOME_EXAMPLE_NAMES.includes(ex.name))
@@ -100,7 +110,7 @@ export const DEFAULT_FAQ_DATA = [
 
 const LIGHT_PLAN_THEME = {
   bg: 'rgba(255,255,255,0.62)', border: 'rgba(255,255,255,0.85)', shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)', blur: 'blur(22px)',
-  ink: '#04121F', muted: '#6A7F92', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
+  ink: '#04121F', muted: '#5A6F82', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
   tick: '#707538', ctaInk: '#04121F', ctaBg: '#FCFAF3', ctaBorder: 'rgba(4,18,31,0.16)',
 }
 const DARK_PLAN_THEME = {
@@ -150,6 +160,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
       <div className="page-content">
         <SiteHeader active="home" dark={dark} onToggleDark={() => setDark((v) => !v)} />
 
+        <main>
         {/* Hero */}
         <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, textAlign: 'center' }}>
           <p style={{ margin: 0, fontSize: 'clamp(14px, 1.6vw, 17px)', color: ink4 }}>Having trouble launching the right website for your business?</p>
@@ -194,7 +205,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 14, letterSpacing: '-0.2px', color: ink1 }}>{b.name}</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span style={{ fontSize: 12, letterSpacing: '1.5px', color: b.mark }}>★★★★★</span>
-                    <span style={{ fontSize: 12, fontWeight: 600, color: dark ? 'rgba(226,236,245,0.6)' : '#6A7F92' }}>{b.score}</span>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6F82' }}>{b.score}</span>
                   </span>
                 </span>
               </div>
@@ -249,7 +260,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: ink1 }}>{v.name}</span>
-                      <span style={{ fontSize: 12, color: dark ? 'rgba(226,236,245,0.5)' : '#6A7F92' }}>{v.trade}</span>
+                      <span style={{ fontSize: 12, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6F82' }}>{v.trade}</span>
                     </span>
                   </div>
                   <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.58, color: dark ? 'rgba(226,236,245,0.82)' : '#24384A' }}>&ldquo;{v.quote}&rdquo;</p>
@@ -268,7 +279,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>Hand you a toolbox and a blank page. Most people never finish.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
                 {DIY_POINTS.map((p) => (
-                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#6A7F92' }}>
+                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6F82' }}>
                     <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? '#E5A97F' : '#8A5B3C', flex: '0 0 auto' }} />{p}
                   </span>
                 ))}
@@ -281,7 +292,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>Good work, big invoices — and you still can&apos;t change a phone number yourself.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
                 {AGENCY_POINTS.map((p) => (
-                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#6A7F92' }}>
+                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6F82' }}>
                     <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? '#E5A97F' : '#8A5B3C', flex: '0 0 auto' }} />{p}
                   </span>
                 ))}
@@ -322,7 +333,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 {BUILT_WITHOUT.map((it) => (
                   <div key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={dark ? '#E5A97F' : '#8A5B3C'} strokeWidth="2.4" strokeLinecap="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
-                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.62)' : '#6A7F92' }}>{it}</span>
+                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.62)' : '#5A6F82' }}>{it}</span>
                   </div>
                 ))}
               </div>
@@ -480,7 +491,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               )
             })}
           </div>
-          <p style={{ margin: '26px auto 0', maxWidth: 640, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.5)' : '#6A7F92' }}>Prices in PKR. Gulf clients are billed in AED at the equivalent rate — ask us for a quote.</p>
+          <p style={{ margin: '26px auto 0', maxWidth: 640, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6F82' }}>Prices in PKR. Gulf clients are billed in AED at the equivalent rate — ask us for a quote.</p>
         </section>
 
         {/* Trust band */}
@@ -539,6 +550,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             })}
           </div>
         </section>
+        </main>
 
         <SiteFooter />
       </div>
