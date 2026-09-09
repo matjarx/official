@@ -90,8 +90,61 @@ export const EXAMPLES: ExampleSite[] = [
 export const EXAMPLE_CATEGORIES = [
   'All', 'Accounting', 'Restaurants', 'Chefs', 'Flower Store', 'Legal Services', 'Digital Marketing', 'Real Estate',
   'Wedding And Caterers', 'Drinks', 'Coffee', 'Travel', 'Yacht Services', 'Construction', 'Builders And Fit-out',
-  'Boutiques', 'Clinics', 'Salons', 'Textiles', 'E-commerce', 'Trades', 'Gyms And Fitness', 'Photography',
+  'Boutiques', 'Clinics', 'Salons', 'Textiles', 'E-commerce', 'Trades', 'Gyms And Fitness', 'Jewelry & Luxury Goods',
+  'Automotive', 'Banking & Finance', 'Agriculture', 'Telecommunications', 'Pet Industry', 'Media & Entertainment',
+  'Security & Facility Management', 'Education & Training', 'Kids & Toys', 'Aviation', 'Import & Export',
+  'Metal & Engineering', 'Energy & Renewables', 'Automotive Parts', 'Home Services',
+  'Pharmaceutical & Healthcare Products', 'Printing & Packaging',
 ]
+
+// Cross-reference from each rail category above to the matching
+// industry (or industries) in the platform's own onboarding taxonomy
+// (matjarx-platform/src/lib/industries.ts), plus a plain-English
+// description of the businesses each category covers — kept here so
+// the two taxonomies can be reconciled deliberately if either changes,
+// rather than drifting apart silently. Not wired into the rail UI.
+export const EXAMPLE_CATEGORY_INDUSTRIES: Record<string, string> = {
+  'All': 'All Categories',
+  'Accounting': 'Professional Business Services',
+  'Restaurants': 'Food & Beverage, Tourism & Hospitality',
+  'Chefs': 'Food & Beverage, Personal Services',
+  'Flower Store': 'E-Commerce & Retail',
+  'Legal Services': 'Legal Services',
+  'Digital Marketing': 'Digital Marketing & Creative Services',
+  'Real Estate': 'Construction & Real Estate',
+  'Wedding And Caterers': 'Events & Weddings, Food & Beverage',
+  'Drinks': 'Food & Beverage',
+  'Coffee': 'Food & Beverage',
+  'Travel': 'Tourism & Hospitality',
+  'Yacht Services': 'Marine & Fisheries, Tourism & Hospitality',
+  'Construction': 'Construction & Real Estate',
+  'Builders And Fit-out': 'Construction & Real Estate',
+  'Boutiques': 'E-Commerce & Retail',
+  'Clinics': 'Healthcare & Medical',
+  'Salons': 'Beauty & Personal Care, Personal Services',
+  'Textiles': 'Textile & Apparel',
+  'E-commerce': 'E-Commerce & Retail',
+  'Trades': 'Professional Business Services, Home Services',
+  'Gyms And Fitness': 'Sports & Fitness',
+  'Jewelry & Luxury Goods': 'Jewelry boutiques, luxury watch retailers, designer accessory stores',
+  'Automotive': 'Car dealerships, auto repair shops, car rental services, mechanics',
+  'Banking & Finance': 'Banks, financial advisors, insurance brokers, fintech platforms',
+  'Agriculture': 'Farms, agricultural equipment suppliers, food processors, nurseries',
+  'Telecommunications': 'Mobile phone shops, internet service providers, telecom retailers',
+  'Pet Industry': 'Pet stores, veterinary clinics, pet grooming, pet training centers, pet supplies',
+  'Media & Entertainment': 'Publishing houses, production companies, entertainment venues, cinema',
+  'Security & Facility Management': 'Security services, cleaning services, facility management companies',
+  'Education & Training': 'Training centers, coaching institutes, online education platforms, universities',
+  'Kids & Toys': 'Toy stores, kids clothing boutiques, play centers, daycare services',
+  'Aviation': 'Airlines, flight training centers, aviation maintenance, aircraft services',
+  'Import & Export': 'Trading companies, freight forwarders, customs brokers, import/export agents',
+  'Metal & Engineering': 'Engineering firms, metal fabrication, welding shops, machinery suppliers',
+  'Energy & Renewables': 'Solar installation, renewable energy providers, energy consulting, electrical contractors',
+  'Automotive Parts': 'Auto parts stores, accessory shops, spare parts dealers',
+  'Home Services': 'Plumbing services, electrical services, HVAC, painting, carpentry',
+  'Pharmaceutical & Healthcare Products': 'Pharmacies, medical equipment suppliers, health product retailers',
+  'Printing & Packaging': 'Printing services, packaging design, label manufacturers, graphic design studios',
+}
 
 export const EXAMPLE_PILLARS = [
   { title: 'Category expertise', body: 'Your site is built by a designer who has worked in your trade before — so the layout, the words and the features actually fit how you sell.', icon: 'M12 3.5 4.5 7.5v9L12 20.5l7.5-4v-9ZM12 12l7.5-4.5M12 12v8.5M12 12 4.5 7.5' },
