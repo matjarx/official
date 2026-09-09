@@ -257,6 +257,22 @@ export const EXAMPLES: ExampleSite[] = [
     nav: ['Services', 'Umrah', 'Contact'], cta: 'Get A Quote', ctaBg: '#0A3D62', ctaInk: '#FFFFFF',
     heroLine: 'Travel, arranged properly.', heroBlurb: 'A UAE travel agency offering Umrah packages, visas and international tours.',
     result: 'Umrah, visas & tours', tint: 'linear-gradient(150deg, #0A3D62, #041B2E)' },
+  { name: 'Maison Des Fleurs', brand: 'MAISON DES FLEURS', domain: 'maisondesfleurs.com', category: 'Flower Store', cat: 'Flower Store',
+    nav: ['Shop', 'Delivery', 'About'], cta: 'Order Now', ctaBg: '#E8B4C8', ctaInk: '#2A0F1A',
+    heroLine: 'Flowers, delivered with luxury in mind.', heroBlurb: 'A luxury Dubai flower shop offering fresh flowers, long-life roses and gifts with online delivery.',
+    result: 'Dubai & Abu Dhabi delivery', tint: 'linear-gradient(150deg, #6E1B4A, #240818)' },
+  { name: 'The Flower Shop', brand: 'THE FLOWER SHOP', domain: 'theflowershop.ae', category: 'Flower Store', cat: 'Flower Store',
+    nav: ['Shop', 'Same-Day', 'Cakes'], cta: 'Send Flowers', ctaBg: '#C6A227', ctaInk: '#1A1004',
+    heroLine: 'Flowers, the same day.', heroBlurb: 'Same-day flower and cake delivery across Dubai and Abu Dhabi, rated the UAE\'s #1 florist for 15 years.',
+    result: '#1 florist, 15 years', tint: 'linear-gradient(150deg, #8E1B22, #2A0709)' },
+  { name: 'Al Thuriah Group', brand: 'AL THURIAH', domain: 'althuriah.com', category: 'Construction', cat: 'Construction',
+    nav: ['Projects', 'Services', 'Contact'], cta: 'Get In Touch', ctaBg: '#0A3D62', ctaInk: '#FFFFFF',
+    heroLine: 'Built and managed, end to end.', heroBlurb: 'A Sharjah real estate developer offering property development, construction, leasing and facilities management.',
+    result: 'Full-service developer', tint: 'linear-gradient(150deg, #0A3D62, #041B2E)' },
+  { name: 'Toys UAE', brand: 'TOYS UAE', domain: 'toysuae.com', category: 'Kids & Toys', cat: 'Kids & Toys',
+    nav: ['Shop', 'Brands', 'Delivery'], cta: 'Shop Now', ctaBg: '#D6E63A', ctaInk: '#1A2004',
+    heroLine: 'Toys, for every age.', heroBlurb: 'An online toy store serving the UAE with a wide range of toys and games for kids.',
+    result: 'UAE-wide toy delivery', tint: 'linear-gradient(150deg, #23291A, #0A0D06)' },
 ]
 
 export const EXAMPLE_CATEGORIES = [
