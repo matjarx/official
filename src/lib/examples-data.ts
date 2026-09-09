@@ -85,6 +85,14 @@ export const EXAMPLES: ExampleSite[] = [
     nav: ['Projects', 'Services', 'Get A Quote'], cta: 'Get A Quote', ctaBg: '#E9A94F', ctaInk: '#2A1608',
     heroLine: 'Built to last, on schedule.', heroBlurb: 'Islamabad contractor with a project gallery and a quote-request form routed to the right site manager.',
     result: '40+ projects showcased', tint: 'linear-gradient(150deg, #4A3B1A, #1A1506)' },
+  { name: 'Patrick Accounting', brand: 'PATRICK', domain: 'patrickaccounting.com', category: 'Accounting', cat: 'Accounting',
+    nav: ['Services', 'Pricing', 'About'], cta: "Let's Chat", ctaBg: '#2E6F4E', ctaInk: '#FFFFFF',
+    heroLine: 'Books handled. Business grown.', heroBlurb: 'Outsourced bookkeeping, accounting and tax for small businesses across the US, with a dedicated team and fixed-fee pricing.',
+    result: 'Fixed-fee accounting', tint: 'linear-gradient(150deg, #1B4332, #06211A)' },
+  { name: 'Coastal Tax Advisors', brand: 'COASTAL TAX', domain: 'coastal-tax.com', category: 'Accounting', cat: 'Accounting',
+    nav: ['Services', 'Testimonials', 'Consult'], cta: 'Free Consultation', ctaBg: '#4FB3BF', ctaInk: '#04121F',
+    heroLine: 'Tax season, simplified.', heroBlurb: 'Personalized tax preparation and planning for individuals, families and short-term rental hosts across the United States.',
+    result: 'Clients nationwide', tint: 'linear-gradient(150deg, #0B3D5C, #041D2E)' },
 ]
 
 export const EXAMPLE_CATEGORIES = [
