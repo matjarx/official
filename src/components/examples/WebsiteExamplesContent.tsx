@@ -89,7 +89,14 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
 
         {/* Example cards + iframe modal */}
         <section style={{ maxWidth: 1240, margin: '0 auto', padding: '26px 24px 0' }}>
-          <PortfolioShowcase items={shown} modalIndex={modalIndex} setModalIndex={setModalIndex} />
+          {shown.length > 0 ? (
+            <PortfolioShowcase items={shown} modalIndex={modalIndex} setModalIndex={setModalIndex} />
+          ) : (
+            <div style={{ textAlign: 'center', padding: '60px 24px', borderRadius: 20, background: 'rgba(255,255,255,0.5)', border: '1px dashed rgba(4,18,31,0.16)' }}>
+              <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#04121F' }}>No examples in {filter} yet</p>
+              <p style={{ margin: '8px 0 0', fontSize: 13.5, color: '#5A6F82' }}>We&rsquo;re adding real client sites to this category — check back soon, or browse another category above.</p>
+            </div>
+          )}
         </section>
 
         {/* Pillars */}
