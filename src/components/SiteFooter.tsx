@@ -39,7 +39,7 @@ export default function SiteFooter() {
 
   return (
     <div>
-      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 78px' }}>
+      <section style={{ maxWidth: 1360, margin: '0 auto', padding: '0 24px 78px' }}>
         <div
           style={{
             padding: '58px 48px',
@@ -83,7 +83,7 @@ export default function SiteFooter() {
       </section>
 
       <footer style={{ background: 'linear-gradient(168deg, #04121F 0%, #001C33 100%)', padding: '62px 24px 34px' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(200px, 1.4fr) repeat(auto-fit, minmax(148px, 1fr))', gap: '40px 30px' }}>
+        <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(200px, 1.4fr) repeat(auto-fit, minmax(148px, 1fr))', gap: '40px 30px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
             <Image src="/brand/matjarx-logo-light.png" alt="MatjarX" width={148} height={40} style={{ width: 148, height: 'auto' }} />
             <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.55)', maxWidth: '26em' }}>
@@ -124,7 +124,7 @@ export default function SiteFooter() {
           ))}
         </div>
 
-        <div style={{ maxWidth: 1200, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
+        <div style={{ maxWidth: 1360, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
           <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.62)', marginRight: 'auto' }}>&copy; 2018&ndash;2026 MatjarX. All rights reserved.</span>
           <Link href={routes.legal('terms')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Terms &amp; conditions</Link>
           <Link href={routes.legal('refund')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Refund policy</Link>

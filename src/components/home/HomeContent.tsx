@@ -162,7 +162,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
         <main>
         {/* Hero */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, textAlign: 'center' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, textAlign: 'center' }}>
           <p style={{ margin: 0, fontSize: 'clamp(14px, 1.6vw, 17px)', color: ink4 }}>Having trouble launching the right website for your business?</p>
 
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 5.6vw, 60px)', lineHeight: 1.08, letterSpacing: '-2px', color: ink1 }}>
@@ -214,7 +214,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Editor Showcase #1 */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 66px' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 66px' }}>
           <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0 4px 14px' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 12px', borderRadius: 999, background: 'var(--navy-gradient)', border: '1.5px solid rgba(244,242,174,0.5)', boxShadow: '0 12px 28px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)' }}>
               <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10" /></svg>
@@ -240,7 +240,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Did you know */}
-        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '82px 24px 20px' }}>
+        <section style={{ maxWidth: 1360, margin: '0 auto', padding: '82px 24px 20px' }}>
           <div style={{ maxWidth: 860, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
             <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Did you know?</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 42px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: ink1 }}>
@@ -271,7 +271,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Three options */}
-        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 24px' }}>
+        <section style={{ maxWidth: 1360, margin: '0 auto', padding: '72px 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20, alignItems: 'stretch' }}>
             <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(242,238,226,0.6)', border: dark ? undefined : '1px solid rgba(255,255,255,0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#8A7A5E', fontWeight: 600 }}>Option one</span>
@@ -310,7 +310,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* The comparison: built with MatjarX vs without */}
-        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '20px 24px 0' }}>
+        <section style={{ maxWidth: 1360, margin: '0 auto', padding: '20px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 40 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>The comparison</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: ink1 }}>With MatjarX, or without it</h2>
@@ -342,7 +342,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Mascot / urgency panel */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '30px 24px 60px' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '30px 24px 60px' }}>
           <div style={{ position: 'relative', borderRadius: 30, overflow: 'hidden', background: 'linear-gradient(120deg, #04121F 0%, #00243D 46%, #0A3A63 100%)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 34px 76px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.16)' }}>
             <div style={{ position: 'absolute', width: 620, height: 620, right: -160, bottom: -220, borderRadius: '50%', background: 'radial-gradient(circle, rgba(198,203,138,0.34) 0%, rgba(198,203,138,0) 68%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', alignItems: 'center' }}>
@@ -368,7 +368,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
         {/* Editor features + second showcase */}
         <section style={{ background: dark ? '#00121F' : '#04121F', padding: '84px 24px' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 50, alignItems: 'center' }}>
+          <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 50, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 22, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>The editor</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 42px)', lineHeight: 1.12, letterSpacing: '-1.4px', color: '#FFFFFF' }}>Change a photo. Take a booking. Start selling.</h2>
@@ -398,7 +398,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* How it works */}
-        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '82px 24px' }}>
+        <section style={{ maxWidth: 1360, margin: '0 auto', padding: '82px 24px' }}>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', marginBottom: 40 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginRight: 'auto', maxWidth: 560 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>How it works</span>
@@ -419,7 +419,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Why choose MatjarX */}
-        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '82px 24px' }}>
+        <section style={{ maxWidth: 1360, margin: '0 auto', padding: '82px 24px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 40 }}>
             <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Why choose MatjarX</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>Stop wasting time and money on DIY sites or costly agencies</h2>
@@ -441,25 +441,25 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
         {/* Website examples */}
         <section id="examples" style={{ background: dark ? 'rgba(255,255,255,0.03)' : '#F2EEE2', padding: '82px 0' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap' }}>
+          <div style={{ maxWidth: 1360, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginRight: 'auto', maxWidth: 560 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Real sites, real businesses</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>70,000 websites built and counting</h2>
             </div>
             <Link href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(255,255,255,0.07)' : '#FFFFFF', border: `1.5px solid ${dark ? 'rgba(255,255,255,0.16)' : 'rgba(4,18,31,0.14)'}` }}>Browse all examples</Link>
           </div>
-          <div style={{ maxWidth: 1200, margin: '40px auto 0', padding: '0 24px' }}>
+          <div style={{ maxWidth: 1360, margin: '40px auto 0', padding: '0 24px' }}>
             <PortfolioShowcase items={HOME_EXAMPLES} modalIndex={exampleModal} setModalIndex={setExampleModal} />
           </div>
         </section>
 
         {/* Savings calculator */}
-        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '82px 24px' }}>
+        <section style={{ maxWidth: 1360, margin: '0 auto', padding: '82px 24px' }}>
           <SavingsCalculator />
         </section>
 
         {/* Pricing */}
-        <section id="pricing" style={{ maxWidth: 1200, margin: '0 auto', padding: '82px 24px' }}>
+        <section id="pricing" style={{ maxWidth: 1360, margin: '0 auto', padding: '82px 24px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14, alignItems: 'center', textAlign: 'center', maxWidth: 620, margin: '0 auto 44px' }}>
             <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Plans</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>One setup fee. One monthly fee. No surprises.</h2>
@@ -500,7 +500,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
         {/* Trust band */}
         <section style={{ background: '#003366', padding: '78px 24px' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 44, alignItems: 'center' }}>
+          <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 44, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'var(--butter)' }}>4.8 / 5</span>

@@ -64,7 +64,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
         <div className="page-content">
 
           {/* Channel cards */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '48px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '48px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
               {CONTACT_CHANNELS_ACTIVE.map((c) => (
                 <a key={c.title} href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined} style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '26px 26px 28px', borderRadius: 22, background: c.bg, border: `1.5px solid ${c.border}`, boxShadow: c.shadow }}>
@@ -80,7 +80,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Support categories */}
-          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What type of support do you need?</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Support categories</h2>
@@ -106,7 +106,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Form + office info */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '44px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '44px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 24, alignItems: 'start' }}>
 
               {status === 'done' ? (
@@ -235,7 +235,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Preferred channel by topic */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Preferred communication channel, by topic</span>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
               {CONTACT_PREFERRED_CHANNEL.map((g) => (
@@ -250,7 +250,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Our commitment to support */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you can expect</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Our commitment to support</h2>
@@ -271,7 +271,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Contact information summary table */}
-          <section style={{ maxWidth: 1000, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>All ways to reach MatjarX</span>
             <div className="glass-card table-scroll" style={{ borderRadius: 20, overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 640 }}>

@@ -54,7 +54,7 @@ export default function NotFound() {
         <div className="page-content">
 
           {/* Quick links */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '54px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '54px 24px 0' }}>
             <h2 style={{ margin: '0 0 24px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.9px', color: '#04121F' }}>Or try one of these</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {QUICK_LINKS.map((l) => (

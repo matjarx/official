@@ -53,7 +53,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         <SiteHeader active="company" />
 
         {/* Hero */}
-        <section style={{ maxWidth: 1000, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
+        <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Help centre</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: '#04121F' }}>
             How can we <span className="marker">help you</span>?
@@ -67,7 +67,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* Topic cards */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
             {HELP_TOPICS_ACTIVE.map((t) => (
               <Link key={t.slug} href={routes.helpArticle(t.slug)} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '26px 26px 28px', borderRadius: 22 }}>
@@ -85,7 +85,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* Most read */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Most read this month</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 14 }}>
             {HELP_POPULAR_ACTIVE.map((p) => {
@@ -104,7 +104,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* FAQ */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Common questions answered</span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {HELP_FAQS_ACTIVE.map(([q, a], i) => {
@@ -123,7 +123,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* Video tutorials */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Learn by watching</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
             {HELP_VIDEOS.map((v) => (
@@ -143,7 +143,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* By plan */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Help for your plan</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
             {HELP_BY_PLAN.map((p) => (
@@ -161,7 +161,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* Troubleshooting */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Common issues &amp; solutions</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 14 }}>
             {HELP_TROUBLESHOOTING.map((t) => {
@@ -177,7 +177,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* Knowledge base */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Complete documentation</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 18 }}>
             {HELP_KNOWLEDGE_BASE.map((k) => (
@@ -192,7 +192,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* Best practices */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Tips for success</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
             {HELP_BEST_PRACTICES.map((b) => (
@@ -226,7 +226,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* Talk to us channels */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Talk to us</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>A real person, not a ticket queue</h2>
@@ -246,7 +246,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         {/* Contact form + info */}
-        <section id="contact" style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 0' }}>
+        <section id="contact" style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 22, alignItems: 'start' }}>
 
             {status === 'done' ? (

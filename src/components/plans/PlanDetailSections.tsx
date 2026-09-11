@@ -107,7 +107,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
   return (
     <>
       {/* What You Get detail */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '76px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '76px 24px 0' }}>
         <span style={EYEBROW}>{d.quickOverview.title}</span>
         <h2 style={H2}>{d.whatYouGet.title}</h2>
         <p style={{ margin: '-10px 0 26px', fontSize: 15, color: '#435A70' }}>{d.quickOverview.intro}</p>
@@ -123,7 +123,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
 
       {/* Extra narrative sections (Boost/Growth/Platinum only) */}
       {d.extraSections?.map((s) => (
-        <section key={s.title} style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+        <section key={s.title} style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{s.title}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 18 }}>
             {s.blocks.map((b, i) => (
@@ -142,13 +142,13 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       </section>
 
       {/* Best for */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.bestFor.title}</h2>
         <GroupGrid groups={d.bestFor.groups} />
       </section>
 
       {/* Pricing detail */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>Pricing, in full</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18, marginBottom: 22 }}>
           <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
@@ -211,7 +211,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       </section>
 
       {/* Real examples */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.examples.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
           {d.examples.items.map((ex) => (
@@ -224,7 +224,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       </section>
 
       {/* Process */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.process.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
           {d.process.phases.map((ph) => (
@@ -244,14 +244,14 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       </section>
 
       {/* Compare table + upgrade guides */}
-      <section style={{ maxWidth: 1000, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.compareTitle}</h2>
         {d.compareTable && <div style={{ marginBottom: 22 }}><CompareTableEl headers={d.compareTable.headers} rows={d.compareTable.rows} /></div>}
         {d.upgradeGroups && <GroupGrid groups={d.upgradeGroups} />}
       </section>
 
       {/* Closing + bottom line + guarantee */}
-      <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
         <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{d.closing.eyebrow}</span>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
@@ -287,7 +287,7 @@ function CustomDetail() {
   const d = CUSTOM
   return (
     <>
-      <section style={{ maxWidth: 1000, margin: '0 auto', padding: '76px 24px 0' }}>
+      <section style={{ maxWidth: 1160, margin: '0 auto', padding: '76px 24px 0' }}>
         <span style={EYEBROW}>How it works</span>
         <h2 style={H2}>{d.quickOverview.title}</h2>
         <p style={{ margin: '-10px 0 20px', fontSize: 15, color: '#435A70' }}>{d.quickOverview.intro}</p>
@@ -296,12 +296,12 @@ function CustomDetail() {
         </ol>
       </section>
 
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.whoNeeds.title}</h2>
         <GroupGrid groups={d.whoNeeds.groups} />
       </section>
 
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.examples.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
           {d.examples.items.map((ex) => (
@@ -316,7 +316,7 @@ function CustomDetail() {
         </div>
       </section>
 
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.discovery.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
           {d.discovery.phases.map((ph) => (
@@ -330,7 +330,7 @@ function CustomDetail() {
         </div>
       </section>
 
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>Custom Pricing</h2>
         <p style={{ margin: '-10px 0 20px', fontSize: 14.5, color: '#4B5D6E' }}>{d.pricing.intro}</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16, marginBottom: 22 }}>
@@ -348,12 +348,12 @@ function CustomDetail() {
         </div>
       </section>
 
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.features.title}</h2>
         <GroupGrid groups={d.features.groups} />
       </section>
 
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.whyCustom.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
           {d.whyCustom.items.map((it) => (
@@ -366,7 +366,7 @@ function CustomDetail() {
         </div>
       </section>
 
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.team.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
           {d.team.roles.map((r) => (
@@ -385,7 +385,7 @@ function CustomDetail() {
         <p style={{ margin: '16px 0 0', fontSize: 13, color: '#8A9AA6' }}>Factors affecting timeline: {d.timeline.factors.join(', ')}.</p>
       </section>
 
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.support.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16, marginBottom: 20 }}>
           {d.support.options.map((o) => (
@@ -405,7 +405,7 @@ function CustomDetail() {
         <FaqAccordion faqs={d.faqs} openIdx={openFaq} setOpenIdx={setOpenFaq} />
       </section>
 
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.gettingStarted.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
           {d.gettingStarted.steps.map((s) => (
@@ -425,7 +425,7 @@ function CustomDetail() {
         <p style={{ margin: 0, fontSize: 13, color: '#8A9AA6' }}>{d.showcase.note}</p>
       </section>
 
-      <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
         <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(255,255,255,0.68)' }}>{d.closing.body}</p>

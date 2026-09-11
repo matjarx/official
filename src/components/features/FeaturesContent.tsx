@@ -36,7 +36,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         <SiteHeader active="pricing" />
 
         {/* Hero */}
-        <section style={{ maxWidth: 1000, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
+        <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Features</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: '#04121F' }}>
             Everything your website needs, <span className="marker">already included</span>
@@ -51,7 +51,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         </section>
 
         {/* Tabs */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '44px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
           <div className="glass-nav-pill" style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', padding: 7, borderRadius: 999, width: 'fit-content', margin: '0 auto', boxShadow: '0 12px 30px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)' }}>
             {TAB_KEYS.map((k) => {
               const on = tab === k
@@ -65,7 +65,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         </section>
 
         {/* Feature cards */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '42px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '42px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, textAlign: 'center', marginBottom: 34 }}>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{g.title}</h2>
             <p style={{ margin: 0, maxWidth: '34em', fontSize: 15.5, lineHeight: 1.6, color: '#435A70' }}>{g.body}</p>
@@ -89,7 +89,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         </section>
 
         {/* Editor showcase */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, display: 'flex', flexDirection: 'column', gap: 26 }}>
             <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20, flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginRight: 'auto', minWidth: 0 }}>
@@ -105,7 +105,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         </section>
 
         {/* Always on */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Included on every plan</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>The things other builders charge extra for</h2>
@@ -121,7 +121,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         </section>
 
         {/* Feature & integration icon galleries */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Integrations</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Connects to the tools you already use</h2>
@@ -138,7 +138,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
           </div>
         </section>
 
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Social media</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Embed your social feeds, live</h2>
@@ -155,7 +155,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
           </div>
         </section>
 
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>More ways to engage customers</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Every widget, built in</h2>
@@ -173,7 +173,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         </section>
 
         {/* FAQs */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Feature <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>

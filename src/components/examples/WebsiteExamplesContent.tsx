@@ -46,7 +46,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         <SiteHeader active="examples" />
 
         {/* Hero */}
-        <section style={{ maxWidth: 1000, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
+        <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: '#04121F' }}>
             <span className="marker">70,000+ Websites</span> Built Globally
           </h1>
@@ -56,7 +56,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         </section>
 
         {/* Category rail */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '40px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '40px 24px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <button type="button" onClick={() => scrollRail(-1)} title="Previous categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#04121F" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m14 6-6 6 6 6" /></svg>
@@ -88,7 +88,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         </section>
 
         {/* Example cards + iframe modal */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '26px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '26px 24px 0' }}>
           {shown.length > 0 ? (
             <PortfolioShowcase items={shown} modalIndex={modalIndex} setModalIndex={setModalIndex} />
           ) : (
@@ -100,7 +100,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         </section>
 
         {/* Pillars */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <h2 style={{ margin: '0 0 34px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>
             What makes MatjarX <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3 }}>websites great</span>
           </h2>

@@ -179,7 +179,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       </section>
 
       {/* Plans */}
-      <section id="plans" style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 20px' }}>
+      <section id="plans" style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, flexWrap: 'wrap', marginBottom: 12 }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
             <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)', fontStyle: 'italic' }}>{saveNote}</span>
@@ -262,7 +262,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       </section>
 
       {/* How to choose your plan */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={{ margin: '0 0 30px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>How to choose your plan</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
           {HOW_TO_CHOOSE.map((h) => (
@@ -275,7 +275,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       </section>
 
       {/* Savings calculator */}
-      <section id="calculator" style={{ maxWidth: 1240, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section id="calculator" style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
         <SavingsCalculator />
       </section>
 
@@ -344,7 +344,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
 
       {/* Testimonials */}
       <section style={{ background: 'var(--cream-deep)', padding: '78px 24px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1260, margin: '0 auto' }}>
           <h2 style={{ margin: '0 0 40px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>
             Join 70,000+ business owners <span style={{ background: 'var(--moss-light)', padding: '0 9px', borderRadius: 3 }}>who love MatjarX</span>
           </h2>
@@ -377,7 +377,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       </section>
 
       {/* FAQs */}
-      <section style={{ maxWidth: 1000, margin: '0 auto', padding: '78px 24px' }}>
+      <section style={{ maxWidth: 1160, margin: '0 auto', padding: '78px 24px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 4vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Frequently asked <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>

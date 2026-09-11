@@ -49,7 +49,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
         <div className="page-content">
 
           {/* Perks */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '48px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '48px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {CAREERS_PERKS_ACTIVE.map((p) => (
                 <div key={p.title} className="glass-card" style={{ padding: '26px 26px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -64,7 +64,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Open roles */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', alignItems: 'flex-end', gap: 22, flexWrap: 'wrap', marginBottom: 28 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginRight: 'auto' }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Open roles</h2>
@@ -128,7 +128,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Nothing fits CTA */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '66px 24px 74px' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '66px 24px 74px' }}>
             <div style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: '#04121F', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: 36, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(23px, 3.6vw, 30px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Nothing fits, but you&rsquo;d be good here?</h2>

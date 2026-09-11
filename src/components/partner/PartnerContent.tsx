@@ -64,7 +64,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
         <div className="page-content">
 
           {/* Tier cards */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '48px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '48px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
               {PARTNER_TIERS_ACTIVE.map((t) => (
                 <div key={t.name} className={t.dark ? 'glass-dark-panel' : 'glass-card'} style={{ padding: '30px 28px 32px', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 13 }}>
@@ -92,7 +92,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* How it works */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '68px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '68px 24px 0' }}>
             <h2 style={{ margin: '0 0 34px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>How it <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3 }}>works</span></h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 20 }}>
               {PARTNER_STEPS_ACTIVE.map((s) => (
@@ -106,7 +106,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Referral categories */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '68px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '68px 24px 0' }}>
             <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>What kind of referrals work best?</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: 14 }}>
               {PARTNER_CATEGORY_ICONS_ACTIVE.map((c) => (
@@ -123,7 +123,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Complementary tools partners already recommend */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '54px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '54px 24px 0' }}>
             <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Tools our partners already recommend</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 130px), 1fr))', gap: 14 }}>
               {PARTNER_TOOL_LOGOS_ACTIVE.map((t) => (
@@ -137,7 +137,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           {/* Earnings calculator */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '68px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '68px 24px 0' }}>
             <div style={{ padding: 'clamp(26px, 4vw, 40px) clamp(22px, 3.5vw, 42px)', borderRadius: 26, background: 'rgba(242,238,226,0.6)', border: '1px solid rgba(255,255,255,0.7)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
                 <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>What you could earn</span>

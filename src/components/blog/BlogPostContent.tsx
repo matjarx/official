@@ -59,7 +59,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
         <div className="page-content">
 
           {/* Cover image — real photo/graphic from matjarx.com's media library when available */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '46px 24px 0' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '46px 24px 0' }}>
             {post.coverImage ? (
               <figure style={{ margin: 0 }}>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '1140 / 380', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(4,18,31,0.16)' }}>
@@ -85,7 +85,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
           </section>
 
           {/* Body + sidebar */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '52px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 46, alignItems: 'start' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '52px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 46, alignItems: 'start' }}>
 
             <article style={{ minWidth: 0, maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 24 }}>
               {post.body.map((b, i) => {
@@ -142,7 +142,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
           </section>
 
           {/* Keep reading */}
-          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '74px 24px 20px' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '74px 24px 20px' }}>
             <h2 style={{ margin: '0 0 28px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, letterSpacing: '-1px', color: '#04121F' }}>Keep reading</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
               {related.map((r) => (

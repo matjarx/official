@@ -40,7 +40,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT }: { content
         <div className="page-content">
 
           {/* What happens next */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '48px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '48px 24px 0' }}>
             <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-1px', color: '#04121F' }}>What happens next</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {THANK_YOU_STEPS_ACTIVE.map((s) => (
@@ -54,7 +54,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT }: { content
           </section>
 
           {/* WhatsApp panel */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '54px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '54px 24px 0' }}>
             <div style={{ padding: 'clamp(24px, 3.5vw, 34px) clamp(20px, 3vw, 36px)', borderRadius: 24, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 30, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 11, minWidth: 0 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, lineHeight: 1.16, letterSpacing: '-0.9px', color: '#1F2A08' }}>Can&rsquo;t wait? Message us now.</span>
@@ -68,7 +68,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT }: { content
           </section>
 
           {/* While you wait */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '54px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '54px 24px 0' }}>
             <h2 style={{ margin: '0 0 24px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.9px', color: '#04121F' }}>While you wait</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {THANK_YOU_LINKS_ACTIVE.map((l) => (

@@ -85,7 +85,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       </section>
 
       {/* Solution / how it works */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.solution.title}</h2>
         {d.solution.intro && <p style={{ margin: '-10px 0 22px', fontSize: 15, lineHeight: 1.62, color: '#435A70' }}>{d.solution.intro}</p>}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
@@ -101,7 +101,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
 
       {/* Who we serve */}
       {d.whoWeServe && (
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.whoWeServe.title}</h2>
           <p style={{ margin: '-10px 0 20px', fontSize: 14.5, color: '#4B5D6E' }}>{d.whoWeServe.intro}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -124,7 +124,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       )}
 
       {/* Included */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.included.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 18 }}>
           {d.included.sections.map((s) => (
@@ -138,7 +138,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
 
       {/* Differentiator (DFY DIY/agency, Concierge "what counts") */}
       {d.differentiator && (
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.differentiator.title}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
             {d.differentiator.groups.map((g) => (
@@ -153,7 +153,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
 
       {/* Process (SEO) */}
       {d.process && (
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.process.title}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
             {d.process.phases.map((ph) => (
@@ -186,7 +186,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
 
       {/* Marketing journey (Growth) */}
       {d.marketingJourney && (
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.marketingJourney.title}</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {d.marketingJourney.months.map((m) => (
@@ -211,7 +211,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       )}
 
       {/* Case studies */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.caseStudies.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
           {d.caseStudies.items.map((c) => (
@@ -225,7 +225,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
 
       {/* More testimonials */}
       {d.testimonials && (
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>What Customers Say</h2>
           <TestimonialGrid items={d.testimonials.items} />
         </section>
@@ -247,7 +247,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
 
       {/* Pricing detail (DFY) */}
       {d.pricing && (
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.pricing.title}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
             {d.pricing.setup && (
@@ -268,7 +268,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       )}
 
       {/* Why choose */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.whyChoose.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
           {d.whyChoose.items.map((it) => (
@@ -314,7 +314,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       </section>
 
       {/* Closing + bottom line */}
-      <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
         <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
           {d.closing.body && <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(255,255,255,0.68)' }}>{d.closing.body}</p>}

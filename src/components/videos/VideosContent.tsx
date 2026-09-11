@@ -84,7 +84,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
 
           {/* Video sections */}
           {VIDEO_SECTIONS_ACTIVE.map((section) => (
-            <section key={section.title} style={{ maxWidth: 1240, margin: '0 auto', padding: '66px 24px 0' }}>
+            <section key={section.title} style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
               <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>{section.title}</span>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
                 {section.videos.map((v) => <VideoCard key={v.number} video={v} />)}
@@ -93,7 +93,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           ))}
 
           {/* Categories by purpose */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Video categories</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>By purpose</h2>
@@ -109,7 +109,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           </section>
 
           {/* Categories by length */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '46px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>By length</h2>
             </div>
@@ -146,7 +146,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           </section>
 
           {/* Resources by audience */}
-          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Video resources</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>Find the right video for you</h2>
@@ -169,7 +169,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           </section>
 
           {/* Closing CTA */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Your 7-day website awaits</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Videos show what we do. But they don&apos;t compare to seeing your own website built in 7 days.</h2>

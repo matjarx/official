@@ -49,7 +49,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
         <SiteHeader active="services" />
 
         {/* Breadcrumb */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '44px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6F82' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
@@ -60,7 +60,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
         </section>
 
         {/* Hero */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '28px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 'clamp(30px, 4vw, 52px)', alignItems: 'center' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '28px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 'clamp(30px, 4vw, 52px)', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
             {d.built && (
               <span className="glass-chip" style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: '#3B5063' }}>
@@ -130,7 +130,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
         </section>
 
         {/* Feature grid */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What your site needs</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{d.needsTitle ?? `What a ${d.lower} website needs to do`}</h2>
@@ -150,7 +150,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
 
         {/* Quote panel — only when a real testimonial exists for this industry */}
         {d.quote && (
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
             <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
                 <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
@@ -175,7 +175,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
         )}
 
         {/* FAQs */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>{d.name} <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
@@ -201,7 +201,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
         <IndustryDetailSections industryKey={industryKey} detail={d.detail} />
 
         {/* Other industries */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Other industries we build for</span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             {others.map((o) => (

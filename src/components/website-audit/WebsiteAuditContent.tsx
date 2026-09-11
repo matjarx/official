@@ -105,7 +105,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
 
       {/* Hero + form */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 60px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 40, alignItems: 'center' }}>
+        <div style={{ maxWidth: 1260, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 40, alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO_ACTIVE.eyebrow}</span>
             <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: '#FFFFFF' }}>{HERO_ACTIVE.headline}</h1>
@@ -217,7 +217,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           </section>
 
           {/* Process */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>How to get your website audit</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>The audit process</h2>
@@ -268,7 +268,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           </section>
 
           {/* Outcomes */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you&apos;ll know after your audit</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>The report includes</h2>
@@ -289,7 +289,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           </section>
 
           {/* Benefits */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Why small business owners love website audits</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>Benefits for small businesses</h2>
@@ -305,7 +305,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           </section>
 
           {/* FAQ + comparison table */}
-          <section style={{ maxWidth: 1000, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Common questions about our audit</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>FAQ: Website audit</h2>
@@ -346,7 +346,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           </section>
 
           {/* Closing CTA */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Your website could be perfectly optimized. Or severely underperforming. You won&apos;t know until you look.</h2>
               <p style={{ margin: 0, maxWidth: '38em', fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>70,000+ small businesses use MatjarX to improve their online visibility. Your website could be next.</p>

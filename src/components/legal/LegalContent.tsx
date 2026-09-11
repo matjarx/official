@@ -91,7 +91,7 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
         </div>
         <div className="page-content">
 
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '40px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '40px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'start' }}>
 
               <aside style={{ minWidth: 0, maxWidth: 280, display: 'flex', flexDirection: 'column', gap: 18, position: 'sticky', top: 100 }}>

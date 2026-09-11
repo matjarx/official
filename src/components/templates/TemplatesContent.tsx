@@ -74,7 +74,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
         <div className="page-content">
 
           {/* Real preview renders */}
-          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '56px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '56px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>See it for yourself</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Real template previews</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 18 }}>
@@ -90,21 +90,21 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
           </section>
 
           {/* Why use templates */}
-          <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>About our templates</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Why use templates?</h2>
             <IconCardGrid items={WHY_TEMPLATES_ACTIVE} />
           </section>
 
           {/* Template features */}
-          <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Template features</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>What every template includes</h2>
             <IconCardGrid items={TEMPLATE_FEATURES_ACTIVE} cols={5} />
           </section>
 
           {/* Categories */}
-          <section style={{ maxWidth: 1000, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Browse by type</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Template categories</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -146,7 +146,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
           </section>
 
           {/* Selection process */}
-          <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>How to choose your template</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Template selection process</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
@@ -169,14 +169,14 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
           </section>
 
           {/* Customization */}
-          <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Making templates your own</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Template customization</h2>
             <IconCardGrid items={CUSTOMIZATION} />
           </section>
 
           {/* Popular templates */}
-          <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Most used templates</span>
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Popular templates</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
@@ -198,7 +198,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
           </section>
 
           {/* Updates + migration */}
-          <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
             <div className="glass-card" style={{ padding: '28px 26px', borderRadius: 22 }}>
               <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: '#04121F' }}>{TEMPLATE_UPDATES.title}</h3>
               <p style={{ margin: '0 0 12px', fontSize: 13.5, color: '#4B5D6E' }}>{TEMPLATE_UPDATES.intro}</p>
@@ -251,7 +251,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
           </section>
 
           {/* Closing CTA */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '46px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Browse templates now</h2>
               <p style={{ margin: 0, maxWidth: '30em', fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>All templates are available in your MatjarX dashboard.</p>

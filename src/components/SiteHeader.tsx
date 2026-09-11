@@ -77,7 +77,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
           boxShadow: dark ? '0 10px 30px rgba(0,8,18,0.3), inset 0 1px 0 rgba(255,255,255,0.14)' : '0 10px 30px rgba(4,18,31,0.05), inset 0 1px 0 rgba(255,255,255,0.9)',
         }}
       >
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '15px 20px', display: 'flex', alignItems: 'center', gap: 20 }}>
+        <div style={{ maxWidth: 1360, margin: '0 auto', padding: '15px 20px', display: 'flex', alignItems: 'center', gap: 20 }}>
           <Link href={routes.home} style={{ flex: '0 0 auto', display: 'block' }}>
             <Image src={logo} alt="MatjarX" width={128} height={34} style={{ width: 128, height: 'auto', display: 'block' }} priority />
           </Link>

@@ -58,7 +58,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         <SiteHeader active="services" />
 
         {/* Breadcrumb */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '44px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6F82' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
@@ -69,7 +69,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         </section>
 
         {/* Hero */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '28px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 'clamp(30px, 4vw, 52px)', alignItems: 'center' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '28px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 'clamp(30px, 4vw, 52px)', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
             {d.built && (
               <span className="glass-chip" style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: '#3B5063' }}>
@@ -114,7 +114,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         </section>
 
         {/* Why this city chooses us */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Local, not generic</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Why {d.name} businesses choose MatjarX</h2>
@@ -133,7 +133,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         </section>
 
         {/* Industries served */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '70px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
           <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>What we build</span>
@@ -159,7 +159,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         </section>
 
         {/* How it works — 3-step process for this city */}
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '70px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '70px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>How it works</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Our 3-step process for {d.name} businesses</h2>
@@ -176,7 +176,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         </section>
 
         {/* Plans for this city's businesses */}
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '70px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '70px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Pricing</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Plans for {d.name} businesses</h2>
@@ -195,7 +195,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         </section>
 
         {/* Why MatjarX over other options, for this city */}
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '70px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '70px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>The comparison</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Why MatjarX over other options</h2>
@@ -212,7 +212,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
 
         {/* Areas we serve — only for cities with real area data */}
         {d.areas && (
-          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '70px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>Areas we serve</span>
@@ -230,7 +230,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
 
         {/* Quote panel — only for cities with a real testimonial */}
         {d.quote && (
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div style={{ padding: 'clamp(26px, 3.6vw, 42px)', borderRadius: 26, background: 'linear-gradient(160deg, rgba(4,18,31,0.97), rgba(0,28,51,0.97))', border: '1px solid rgba(255,255,255,0.14)', backdropFilter: 'blur(24px)', boxShadow: '0 30px 66px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.18)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 40px)', alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
                 <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
@@ -255,7 +255,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         )}
 
         {/* FAQs */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>{d.name} <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
@@ -279,7 +279,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         </section>
 
         {/* Other cities */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Other cities we work in</span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             {others.map((c) => (

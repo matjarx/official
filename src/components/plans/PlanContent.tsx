@@ -64,7 +64,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
         <SiteHeader active="pricing" />
 
         {/* Breadcrumb */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6F82' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
@@ -75,7 +75,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
         </section>
 
         {/* Hero */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '30px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 'clamp(30px, 4vw, 54px)', alignItems: 'center' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '30px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 'clamp(30px, 4vw, 54px)', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
             <span style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, background: d.tagBg, border: `1px solid ${d.tagLine}`, fontSize: 12.5, fontWeight: 600, color: d.tagInk }}>
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: d.tagDot }} />
@@ -164,7 +164,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
         </section>
 
         {/* Who it's for */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Who it&apos;s for</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{d.forTitle}</h2>
@@ -183,7 +183,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
         </section>
 
         {/* Compare with adjacent tier */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Compared with {d.compareWith}</span>
@@ -206,7 +206,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
         </section>
 
         {/* FAQs */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>{p.name} <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
@@ -232,7 +232,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
         <PlanDetailSections planKey={planKey} />
 
         {/* Other plans */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Other plans</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
             {others.map((o) => (

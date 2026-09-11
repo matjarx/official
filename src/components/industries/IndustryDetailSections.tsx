@@ -61,7 +61,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
       </section>
 
       {/* What's included */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.included.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
           {d.included.sections.map((s) => (
@@ -74,7 +74,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
       </section>
 
       {/* Success stories */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.successStories.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 18 }}>
           {d.successStories.items.map((c) => (
@@ -87,7 +87,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
       </section>
 
       {/* Features specific */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.featuresSpecific.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
           {d.featuresSpecific.sections.map((s) => (
@@ -100,7 +100,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
       </section>
 
       {/* Marketing */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.marketing.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
           {d.marketing.sections.map((s) => (
@@ -114,7 +114,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
 
       {/* Real testimonials (restaurants only) */}
       {d.testimonials && (
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.testimonials.title}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
             {d.testimonials.items.map((t) => (
@@ -129,7 +129,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
       )}
 
       {/* Plans for this industry */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.plans.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
           {d.plans.tiers.map((t) => (
@@ -184,7 +184,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
       </section>
 
       {/* Closing */}
-      <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+      <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
         <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
           <p style={{ margin: 0, maxWidth: '30em', fontSize: 14.5, color: 'rgba(255,255,255,0.68)' }}>{d.closing.body}</p>

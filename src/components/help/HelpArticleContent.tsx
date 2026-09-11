@@ -170,7 +170,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
           )}
 
           {/* Talk to us */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
               {HELP_CHANNELS.slice(0, 3).map((c) => (
                 <div key={c.title} style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '24px 24px 26px', borderRadius: 22, background: c.bg, border: `1.5px solid ${c.line}`, backdropFilter: 'blur(22px)', boxShadow: c.shadow }}>
@@ -185,7 +185,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
             </div>
           </section>
 
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '38px 24px 0', textAlign: 'center' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '38px 24px 0', textAlign: 'center' }}>
             <Link href={routes.help} style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--olive)' }}>← Back to the Help centre</Link>
           </section>
 

@@ -39,7 +39,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
         <div className="page-content">
 
           {GROUPS_ACTIVE.map((group) => (
-            <section key={group.title} style={{ maxWidth: 1240, margin: '0 auto', padding: '60px 24px 0' }}>
+            <section key={group.title} style={{ maxWidth: 1400, margin: '0 auto', padding: '60px 24px 0' }}>
               <h2 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.6vw, 26px)', letterSpacing: '-0.6px', color: '#04121F' }}>{group.title}</h2>
               <p style={{ margin: '0 0 22px', fontSize: 14.5, color: '#4B5D6E' }}>{group.intro}</p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 14 }}>
@@ -63,7 +63,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
           ))}
 
           {/* Why Compare? */}
-          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <h2 style={{ margin: '0 0 22px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.6vw, 26px)', letterSpacing: '-0.6px', color: '#04121F' }}>Why Compare?</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 14 }}>
               {WHY_COMPARE_ACTIVE.map((item) => (
@@ -86,7 +86,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
           </section>
 
           {/* Closing CTA */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{CLOSING.eyebrow}</span>
               <Link href={routes.contact} className="btn-primary">{CLOSING.cta}</Link>

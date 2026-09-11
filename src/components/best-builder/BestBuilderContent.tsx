@@ -36,7 +36,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         <SiteHeader active="resources" />
 
         {/* Hero */}
-        <section style={{ maxWidth: 1100, margin: '0 auto', padding: '58px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
+        <section style={{ maxWidth: 1260, margin: '0 auto', padding: '58px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
           <span className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: '#3B5063' }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)' }} />
             Updated September 2026 · 70,000 websites built
@@ -66,7 +66,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         </section>
 
         {/* Comparison matrix */}
-        <section id="compare" style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section id="compare" style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>The six options</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.2vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>What you can actually choose from in Pakistan</h2>
@@ -171,7 +171,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         </section>
 
         {/* Reasons grid */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: 20 }}>
             {REASONS.map((r) => (
               <div key={r.title} className="glass-card" style={{ padding: '26px 26px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -186,7 +186,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         </section>
 
         {/* Why MatjarX wins — problem/solution pairs */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Why MatjarX wins for Pakistan</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.2vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>The same six problems, every global platform</h2>
@@ -211,7 +211,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         </section>
 
         {/* Who should choose each platform */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Honest fit</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.2vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Who should choose each platform?</h2>
@@ -234,7 +234,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         </section>
 
         {/* When DIY is right */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, background: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: '1px solid rgba(255,255,255,0.16)', backdropFilter: 'blur(26px)', boxShadow: '0 34px 76px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.2)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Be honest with yourself</span>
@@ -253,7 +253,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         </section>
 
         {/* Head to head */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Head to head</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
             {VS_LINKS.map((v) => (
@@ -267,7 +267,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         </section>
 
         {/* FAQs */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Common <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>

@@ -39,7 +39,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
 
         {/* Hero */}
         <section style={{ background: 'var(--navy)', padding: '62px 24px 0' }}>
-          <div style={{ maxWidth: 1000, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
+          <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
             <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{d.kicker}</span>
             <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(31px, 5.8vw, 52px)', lineHeight: 1.08, letterSpacing: '-1.8px', color: '#FFFFFF' }}>
               {d.titleLead} <span style={{ background: 'var(--moss-light)', color: '#16210B', padding: '0 10px', borderRadius: 3 }}>{d.titleMark}</span>
@@ -47,7 +47,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
             <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>{d.subtitle}</p>
             <Link href={routes.pricing} className="btn-primary" style={{ marginTop: 6 }}>{d.heroCta}</Link>
           </div>
-          <div style={{ maxWidth: 1140, margin: '44px auto -70px', padding: '0 24px' }}>
+          <div style={{ maxWidth: 1300, margin: '44px auto -70px', padding: '0 24px' }}>
             <div style={{ borderRadius: '20px 20px 0 0', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.14)', borderBottom: 'none', boxShadow: '0 -10px 60px rgba(0,0,0,0.35)', padding: 4, background: '#001526' }}>
               <div className="showcase-desktop-only"><EditorShowcase /></div>
               <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
@@ -58,7 +58,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
         <div style={{ height: 86 }} />
 
         {/* Tabs */}
-        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '26px 24px 0' }}>
+        <section style={{ maxWidth: 1360, margin: '0 auto', padding: '26px 24px 0' }}>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', padding: 7, borderRadius: 999, background: 'var(--cream-deep)', border: '1px solid rgba(4,18,31,0.08)', width: 'fit-content', margin: '0 auto' }}>
             {SERVICE_TABS.map((t) => {
               const on = svc === t.id
@@ -72,7 +72,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
         </section>
 
         {/* Pitch + blocks */}
-        <section style={{ maxWidth: 1200, margin: '0 auto', padding: '66px 24px 20px' }}>
+        <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 20px' }}>
           <div style={{ maxWidth: 760, margin: '0 auto 46px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{d.pitchTitle}</h2>
             <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: '#435A70' }}>{d.pitchBody}</p>
@@ -113,7 +113,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
 
         {/* Grid */}
         <section style={{ background: 'var(--cream-deep)', padding: '74px 24px' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <div style={{ maxWidth: 1360, margin: '0 auto' }}>
             <h2 style={{ margin: '0 0 38px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{d.gridTitle}</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {d.gridItems.map((g) => (
@@ -130,7 +130,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
         </section>
 
         {/* Testimonial */}
-        <section style={{ maxWidth: 1000, margin: '0 auto', padding: '74px 24px' }}>
+        <section style={{ maxWidth: 1160, margin: '0 auto', padding: '74px 24px' }}>
           <div style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: '#04121F', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>

@@ -38,7 +38,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         <SiteHeader active="resources" />
 
         {/* Breadcrumb */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '44px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6F82' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
@@ -65,7 +65,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         </section>
 
         {/* Two-card side-by-side */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '52px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '52px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 22, alignItems: 'stretch' }}>
             <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.2vw, 34px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 18 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -110,7 +110,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         </section>
 
         {/* Comparison table */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Side by side</span>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>MatjarX vs {d.name}, feature by feature</h2>
@@ -138,7 +138,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
 
         {/* Honest panel — the original 3 rivals only */}
         {d.honest && (
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 14 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>Being straight with you</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(21px, 3vw, 27px)', lineHeight: 1.2, letterSpacing: '-0.8px', color: '#04121F' }}>When {d.name} is the better choice</h2>
@@ -149,7 +149,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
 
         {/* Why we win — the 39 added rivals */}
         {d.whyWeWin && (
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Why MatjarX wins</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 34px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Against {d.name}, here&rsquo;s what actually changes</h2>
@@ -164,7 +164,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
 
         {/* What you'll love checklist — the 39 added rivals */}
         {d.checklist && (
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you&rsquo;ll love</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 34px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>About switching to MatjarX</h2>
@@ -184,7 +184,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         )}
 
         {/* Testimonial */}
-        <section style={{ maxWidth: 1080, margin: '0 auto', padding: '70px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
           <div style={{ padding: 'clamp(26px, 3.6vw, 42px)', borderRadius: 26, background: 'linear-gradient(160deg, rgba(4,18,31,0.97), rgba(0,28,51,0.97))', border: '1px solid rgba(255,255,255,0.14)', backdropFilter: 'blur(24px)', boxShadow: '0 30px 66px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.18)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 40px)', alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
@@ -202,7 +202,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         </section>
 
         {/* Other comparisons */}
-        <section style={{ maxWidth: 1240, margin: '0 auto', padding: '76px 24px 0' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Other comparisons</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
             {others.map((c) => (

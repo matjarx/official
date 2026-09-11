@@ -43,8 +43,8 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
         <div className="page-content">
 
           {/* Stats strip, overlapping the hero */}
-          <section style={{ maxWidth: 1200, margin: '0 auto', padding: 0 }}>
-            <div style={{ maxWidth: 1140, margin: '-34px auto 0', padding: '0 24px' }}>
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: 0 }}>
+            <div style={{ maxWidth: 1300, margin: '-34px auto 0', padding: '0 24px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(50%, 200px), 1fr))', gap: 2, borderRadius: 22, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.09)', boxShadow: '0 20px 46px rgba(4,18,31,0.1)' }}>
                 {ABOUT_STATS_ACTIVE.map((s) => (
                   <div key={s.label} style={{ padding: '30px 26px', display: 'flex', flexDirection: 'column', gap: 6, background: '#FFFFFF' }}>
@@ -57,7 +57,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
           </section>
 
           {/* Our story */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '74px 24px' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '74px 24px' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 48, alignItems: 'start' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
                 <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Our story</span>
@@ -80,7 +80,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
 
           {/* What we believe */}
           <section style={{ background: 'var(--cream-deep)', padding: '76px 24px' }}>
-            <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+            <div style={{ maxWidth: 1360, margin: '0 auto' }}>
               <div style={{ maxWidth: 640, margin: '0 auto 42px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: '#04121F' }}>What we <span className="marker">believe</span></h2>
               </div>
@@ -99,7 +99,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
           </section>
 
           {/* Team */}
-          <section style={{ maxWidth: 1200, margin: '0 auto', padding: '76px 24px' }}>
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '76px 24px' }}>
             <div style={{ maxWidth: 640, margin: '0 auto 42px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: '#04121F' }}>The people behind it</h2>
               <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: '#435A70' }}>A team of designers, writers, SEO specialists and concierges across Lahore and Karachi.</p>
@@ -146,7 +146,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
           </section>
 
           {/* Want to work with us CTA */}
-          <section style={{ maxWidth: 1140, margin: '0 auto', padding: '0 24px 76px' }}>
+          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '0 24px 76px' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px) clamp(22px, 3.5vw, 46px)', borderRadius: 26, background: '#04121F', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#FFFFFF' }}>Want to work with us?</h2>

@@ -57,7 +57,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
         <div className="page-content">
 
           {/* Featured + newsletter */}
-          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 22, alignItems: 'stretch' }}>
               <Link href={routes.blogPost(featuredPost.slug)} style={{ display: 'flex', flexDirection: 'column', borderRadius: 24, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.09)', boxShadow: '0 16px 40px rgba(4,18,31,0.07)' }}>
                 <div style={{ position: 'relative', height: 280, background: featuredPost.coverImage ? undefined : 'linear-gradient(150deg, #1B7A3D, #08361B)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 26 }}>
@@ -93,7 +93,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
           </section>
 
           {/* Category filter */}
-          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '46px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
               {BLOG_CATEGORIES.map((c) => {
                 const active = cat === c
@@ -105,7 +105,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
           </section>
 
           {/* Post grid */}
-          <section style={{ maxWidth: 1240, margin: '0 auto', padding: '28px 24px 20px' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '28px 24px 20px' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 22 }}>
               {filtered.map((p) => (
                 <Link key={p.slug} href={routes.blogPost(p.slug)} className="glass-card" style={{ display: 'flex', flexDirection: 'column', borderRadius: 22, overflow: 'hidden' }}>

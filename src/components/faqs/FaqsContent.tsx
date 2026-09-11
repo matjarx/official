@@ -88,7 +88,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
         <div className="page-content">
 
           {/* Group filter chips */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '40px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '40px 24px 0' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center' }}>
               {(['All', ...FAQ_GROUP_NAMES] as const).map((name) => {
                 const active = group === name
@@ -100,7 +100,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
           </section>
 
           {/* Two-column accordion */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '36px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '36px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 24, alignItems: 'start' }}>
               {renderCol(colA)}
               {renderCol(colB)}
@@ -108,7 +108,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
           </section>
 
           {/* Still have questions CTA */}
-          <section style={{ maxWidth: 1080, margin: '0 auto', padding: '66px 24px 0' }}>
+          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ padding: 'clamp(26px, 4vw, 40px) clamp(22px, 3.5vw, 42px)', borderRadius: 26, background: '#04121F', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(23px, 3.6vw, 30px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Still have questions?</h2>
