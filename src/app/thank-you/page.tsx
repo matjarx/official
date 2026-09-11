@@ -11,9 +11,16 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export const revalidate = 60
+// Every form on the site lands here now (was previously each form's own
+// inline "thanks" message) — the ?source= tells it which one, so the
+// hero subtitle can say something accurate for that specific submission
+// instead of one generic line. Reading searchParams makes this render
+// per-request rather than the ISR this page used before source-specific
+// messaging existed.
+export const dynamic = 'force-dynamic'
 
-export default async function Page() {
+export default async function Page({ searchParams }: { searchParams: Promise<{ source?: string }> }) {
+  const { source } = await searchParams
   const content = await getMergedContent<ThankYouContentShape>('thank-you')
-  return <ThankYouContent content={content} />
+  return <ThankYouContent content={content} source={source} />
 }

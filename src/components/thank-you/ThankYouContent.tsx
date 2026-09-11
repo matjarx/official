@@ -10,9 +10,21 @@ import { THANK_YOU_STEPS, THANK_YOU_LINKS } from '@/lib/thank-you-data'
 export type ThankYouContentShape = { steps: typeof THANK_YOU_STEPS; links: typeof THANK_YOU_LINKS }
 const DEFAULT_CONTENT: ThankYouContentShape = { steps: THANK_YOU_STEPS, links: THANK_YOU_LINKS }
 
-export default function ThankYouContent({ content = DEFAULT_CONTENT }: { content?: ThankYouContentShape }) {
+// Every form on the site (contact, help center, website audit, partner
+// program) redirects here on success with ?source=<name> — the two
+// with a genuinely different real turnaround time get their own hero
+// subtitle; everything else (contact_us, help_center, or no source at
+// all) keeps the generic 24-business-hours line.
+const SOURCE_SUBTITLE: Record<string, string> = {
+  website_form: "Your website audit request is with our technical team — we'll share your full audit within 24 hours.",
+  partner_program: "Your application is with our Partner Team — they'll connect with you within 3–5 business days.",
+}
+const DEFAULT_SUBTITLE = 'Your message is with our team. Someone will be in touch within 24 business hours — sooner over WhatsApp.'
+
+export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: { content?: ThankYouContentShape; source?: string }) {
   const THANK_YOU_STEPS_ACTIVE = content.steps
   const THANK_YOU_LINKS_ACTIVE = content.links
+  const subtitle = (source && SOURCE_SUBTITLE[source]) || DEFAULT_SUBTITLE
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
       <SiteHeader active="home" />
@@ -24,10 +36,10 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT }: { content
             <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#16210B" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7" /></svg>
           </span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 48px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>Thank you — we&rsquo;ve got it</h1>
-          <p style={{ margin: 0, maxWidth: '30em', fontSize: 17.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.75)' }}>Your message is with our team. Someone will be in touch within 24 business hours — sooner over WhatsApp.</p>
+          <p style={{ margin: 0, maxWidth: '30em', fontSize: 17.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.75)' }}>{subtitle}</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 20px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.16)' }}>
-            <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: '#16210B' }}>YH</span>
-            <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>Yasir Hashmi will most likely be the one replying</span>
+            <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: '#16210B' }}>JA</span>
+            <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>Junaid Ahmed will most likely be the one replying</span>
           </div>
         </div>
       </section>

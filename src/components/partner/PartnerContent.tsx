@@ -7,11 +7,14 @@
 // chip selector.
 
 import { useMemo, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { routes } from '@/lib/routes'
+import { supabase } from '@/lib/supabase'
+import { trackEvent } from '@/lib/analytics'
 import {
   PARTNER_TIERS, PARTNER_STEPS, PARTNER_CLIENT_STEPS, PARTNER_PLAN_PICKS, PARTNER_TYPES,
   PARTNER_PLAN_RATES, PARTNER_COMMISSION_PCT, money, type PlanKey,
@@ -26,9 +29,15 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
   const PARTNER_STEPS_ACTIVE = content.steps
   const PARTNER_TOOL_LOGOS_ACTIVE = content.toolLogos
   const PARTNER_CATEGORY_ICONS_ACTIVE = content.categoryIcons
+  const router = useRouter()
   const [clients, setClients] = useState(10)
   const [plan, setPlan] = useState<PlanKey>('Boost')
   const [ptype, setPtype] = useState(PARTNER_TYPES[0])
+  const [name, setName] = useState('')
+  const [company, setCompany] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
 
   const { monthlyEarn, yearlyEarn, tenClients } = useMemo(() => {
     const per = PARTNER_PLAN_RATES[plan] * PARTNER_COMMISSION_PCT
@@ -39,6 +48,25 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
       tenClients: money(PARTNER_PLAN_RATES.Boost * PARTNER_COMMISSION_PCT * 10),
     }
   }, [clients, plan])
+
+  // Same marketing_leads table Contact/Help write to — no dedicated
+  // columns for the calculator inputs, so they're folded into `message`
+  // as readable text rather than adding new columns for one form.
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('submitting')
+    const { error } = await supabase.from('marketing_leads').insert({
+      source: 'partner_program', name, business_name: company || null,
+      phone: phone || null, email: email || null, topic: ptype,
+      message: `Referral estimate: ${clients} clients on ${plan}.`,
+    })
+    if (error) {
+      setStatus('error')
+      return
+    }
+    trackEvent('form_submit', { label: 'partner_program' })
+    router.push('/thank-you?source=partner_program')
+  }
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
@@ -181,7 +209,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
 
           {/* Apply form */}
           <section id="apply" style={{ maxWidth: 860, margin: '0 auto', padding: '68px 24px 74px' }}>
-            <div className="glass-card" style={{ padding: 'clamp(24px, 4vw, 38px) clamp(20px, 3.5vw, 38px) clamp(26px, 4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <form onSubmit={handleSubmit} className="glass-card" style={{ padding: 'clamp(24px, 4vw, 38px) clamp(20px, 3.5vw, 38px) clamp(26px, 4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-1px', color: '#04121F' }}>Apply to become a partner</h2>
                 <p style={{ margin: 0, fontSize: 15, lineHeight: 1.62, color: '#4B5D6E' }}>We review applications within two working days. No minimum volume to join.</p>
@@ -190,19 +218,19 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 16 }}>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Your name</span>
-                  <input type="text" placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
+                  <input required type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
                 </label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Company</span>
-                  <input type="text" placeholder="Your agency or practice" className="input" style={{ width: '100%' }} />
+                  <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Your agency or practice" className="input" style={{ width: '100%' }} />
                 </label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Email</span>
-                  <input type="email" placeholder="you@company.pk" className="input" style={{ width: '100%' }} />
+                  <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.pk" className="input" style={{ width: '100%' }} />
                 </label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Phone / WhatsApp</span>
-                  <input type="tel" placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
+                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
                 </label>
               </div>
 
@@ -218,9 +246,10 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                 </div>
               </div>
 
-              <button type="button" className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(0,51,102,0.24)' }}>Submit application</button>
+              <button type="submit" disabled={status === 'submitting'} className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(0,51,102,0.24)' }}>{status === 'submitting' ? 'Sending…' : 'Submit application'}</button>
+              {status === 'error' && <p style={{ margin: 0, fontSize: 13, color: '#B4543C' }}>Something went wrong — please try again, or message us on WhatsApp.</p>}
               <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#5A6F82' }}>By applying you agree to our <Link href={routes.legal('terms')} style={{ fontWeight: 600 }}>partner terms</Link> and <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
-            </div>
+            </form>
           </section>
 
           <SiteFooter />

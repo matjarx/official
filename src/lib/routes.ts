@@ -19,7 +19,7 @@ export const routes = {
   websiteExamples: '/website-examples',
   pricing: '/pricing',
   features: '/features',
-  websiteAudit: '/website-audit',
+  websiteAudit: '/complete-website-audit-for-organic-visibility',
   videos: '/videos',
   alternatives: '/alternatives',
   templates: '/templates',

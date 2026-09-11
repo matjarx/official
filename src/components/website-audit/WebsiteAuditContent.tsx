@@ -8,6 +8,7 @@
 // FAQ (with the free-tools-vs-MatjarX comparison table), closing CTAs.
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
@@ -27,7 +28,8 @@ function IntakeForm() {
   const [phone, setPhone] = useState('')
   const [websiteUrl, setWebsiteUrl] = useState('')
   const [preferredChannel, setPreferredChannel] = useState<'whatsapp' | 'email'>('whatsapp')
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
+  const router = useRouter()
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -36,17 +38,12 @@ function IntakeForm() {
       name, email: email || null, phone: phone || null, website_url: websiteUrl,
       preferred_channel: preferredChannel, source: 'website_form',
     })
-    setStatus(error ? 'error' : 'done')
-    if (!error) trackEvent('form_submit', { label: 'website_audit' })
-  }
-
-  if (status === 'done') {
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, textAlign: 'center', padding: '20px 0' }}>
-        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, color: '#04121F' }}>Request received</span>
-        <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>We&apos;ll review {websiteUrl} and get your report to you within 5-7 business days, over {preferredChannel === 'whatsapp' ? 'WhatsApp' : 'email'}.</p>
-      </div>
-    )
+    if (error) {
+      setStatus('error')
+      return
+    }
+    trackEvent('form_submit', { label: 'website_audit' })
+    router.push('/thank-you?source=website_form')
   }
 
   return (

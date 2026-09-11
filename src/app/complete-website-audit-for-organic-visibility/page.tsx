@@ -5,7 +5,7 @@ import { getMergedContent, getSeoOverride, pageTitle } from '@/lib/marketing-con
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('website-audit')
   return {
-    alternates: { canonical: '/website-audit' },
+    alternates: { canonical: '/complete-website-audit-for-organic-visibility' },
     title: pageTitle(seo?.title || 'Website Audit'),
     description: seo?.description || "Discover exactly what's holding your website back from ranking on Google and getting customers online — a complete audit across 10 key areas, delivered by our team.",
   }

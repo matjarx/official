@@ -78,6 +78,7 @@ const nextConfig = {
       { source: '/refund-policy', destination: '/legal/refund', permanent: true },
       { source: '/privacy-cookies-policy', destination: '/legal/privacy', permanent: true },
       { source: '/website-example', destination: '/website-examples', permanent: true },
+      { source: '/website-audit', destination: '/complete-website-audit-for-organic-visibility', permanent: true },
       { source: '/pricing-table', destination: '/pricing', permanent: true },
       // No real equivalent for the old partner-offer landing page.
       { source: '/partner-offer', destination: '/', permanent: true },

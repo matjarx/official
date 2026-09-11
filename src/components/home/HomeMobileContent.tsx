@@ -20,7 +20,7 @@ import { appLogin, appSignup } from '@/lib/routes'
 const NAV_ITEMS = [
   { label: 'Services', href: '/done-for-you-website' },
   { label: 'Website examples', href: '/website-examples' },
-  { label: 'Website audit', href: '/website-audit' },
+  { label: 'Website audit', href: '/complete-website-audit-for-organic-visibility' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Blog', href: '/blogs' },
   { label: 'Get in touch', href: '/contact' },

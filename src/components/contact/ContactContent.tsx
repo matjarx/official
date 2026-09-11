@@ -5,6 +5,7 @@
 // panel with a map tile, butter WhatsApp panel.
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
@@ -28,7 +29,8 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
+  const router = useRouter()
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -37,8 +39,12 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
       source: 'contact_us', name, business_name: businessName || null,
       phone: phone || null, email: email || null, topic, message,
     })
-    setStatus(error ? 'error' : 'done')
-    if (!error) trackEvent('form_submit', { label: 'contact_us' })
+    if (error) {
+      setStatus('error')
+      return
+    }
+    trackEvent('form_submit', { label: 'contact_us' })
+    router.push('/thank-you?source=contact_us')
   }
 
   return (
@@ -109,12 +115,6 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '44px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 24, alignItems: 'start' }}>
 
-              {status === 'done' ? (
-                <div className="glass-card" style={{ padding: 'clamp(24px, 3.5vw, 34px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', textAlign: 'center', justifyContent: 'center', minHeight: 320 }}>
-                  <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: '#04121F' }}>Message sent</h2>
-                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E', maxWidth: '30em' }}>Thanks — we reply within 24 business hours, sooner over WhatsApp.</p>
-                </div>
-              ) : (
                 <form onSubmit={handleSubmit} className="glass-card" style={{ padding: 'clamp(24px, 3.5vw, 34px) clamp(20px, 3vw, 34px) clamp(26px, 3.5vw, 36px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: '#04121F' }}>Send us a message</h2>
@@ -162,7 +162,6 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                   <button type="submit" disabled={status === 'submitting'} className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(0,51,102,0.24)' }}>{status === 'submitting' ? 'Sending…' : 'Send message'}</button>
                   <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#5A6F82' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>. We never share your details.</span>
                 </form>
-              )}
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                 <div style={{ padding: '28px 30px', borderRadius: 24, background: '#04121F', display: 'flex', flexDirection: 'column', gap: 18 }}>

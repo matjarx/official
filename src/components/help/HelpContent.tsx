@@ -6,6 +6,7 @@
 // client?" panel.
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
@@ -33,7 +34,8 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
+  const router = useRouter()
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -42,8 +44,12 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
       source: 'help_center', name, business_name: businessName || null,
       phone: phone || null, email: email || null, topic: subject, message,
     })
-    setStatus(error ? 'error' : 'done')
-    if (!error) trackEvent('form_submit', { label: 'help_center' })
+    if (error) {
+      setStatus('error')
+      return
+    }
+    trackEvent('form_submit', { label: 'help_center' })
+    router.push('/thank-you?source=help_center')
   }
 
   return (
@@ -249,12 +255,6 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         <section id="contact" style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 22, alignItems: 'start' }}>
 
-            {status === 'done' ? (
-              <div style={{ padding: '32px', borderRadius: 26, background: 'rgba(255,255,255,0.66)', border: '1px solid rgba(255,255,255,0.9)', backdropFilter: 'blur(22px)', display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', textAlign: 'center', justifyContent: 'center', minHeight: 320 }}>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: '#04121F' }}>Message sent</h2>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E', maxWidth: '30em' }}>Thanks — we reply the same working day, Monday to Saturday.</p>
-              </div>
-            ) : (
               <form onSubmit={handleSubmit} style={{ padding: '32px 32px 34px', borderRadius: 26, background: 'rgba(255,255,255,0.66)', border: '1px solid rgba(255,255,255,0.9)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 48px rgba(4,18,31,0.09), inset 0 1px 0 rgba(255,255,255,0.95)', display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.4vw, 30px)', letterSpacing: '-1px', color: '#04121F' }}>Send us a message</h2>
@@ -302,7 +302,6 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
                 <button type="submit" disabled={status === 'submitting'} className="btn-primary" style={{ textAlign: 'center' }}>{status === 'submitting' ? 'Sending…' : 'Send message'}</button>
                 <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#5A6F82' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>. We never share your details.</span>
               </form>
-            )}
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
               <div className="glass-dark-panel" style={{ padding: '28px 30px 30px', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
