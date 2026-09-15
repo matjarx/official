@@ -12,6 +12,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { supabase } from '@/lib/supabase'
 import { trackEvent } from '@/lib/analytics'
@@ -85,10 +86,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
       </section>
 
       <div style={{ position: 'relative' }}>
-        <div className="orb-field">
-          <div style={{ position: 'absolute', width: 720, height: 720, right: -190, top: 60, borderRadius: '50%', background: 'radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%)' }} />
-          <div style={{ position: 'absolute', width: 780, height: 780, left: '20%', top: 1100, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%)' }} />
-        </div>
+        <AmbientOrbs />
         <div className="page-content">
 
           {/* Tier cards */}

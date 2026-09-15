@@ -10,6 +10,7 @@
 import { useRef, useState } from 'react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import AmbientOrbs from '@/components/AmbientOrbs'
 import PortfolioShowcase from './PortfolioShowcase'
 import { EXAMPLES, EXAMPLE_CATEGORIES, EXAMPLE_PILLARS } from '@/lib/examples-data'
 
@@ -38,10 +39,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
-      <div className="orb-field">
-        <div style={{ position: 'absolute', width: 860, height: 860, left: -250, top: -300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(198,203,138,0.4) 0%, rgba(198,203,138,0) 68%)' }} />
-        <div style={{ position: 'absolute', width: 720, height: 720, right: -190, top: 340, borderRadius: '50%', background: 'radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%)' }} />
-      </div>
+      <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="examples" />
 

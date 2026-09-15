@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { AUTHOR, SHARE_LINKS, type BlogPost } from '@/lib/blog-data'
 
@@ -15,8 +16,22 @@ import { AUTHOR, SHARE_LINKS, type BlogPost } from '@/lib/blog-data'
 // for the listing — resolving relatedSlugs against the live table rather
 // than the static BLOG_POSTS array, so an edited/deleted post's related
 // links never drift out of sync with what's actually live.
+// Anchor id for a heading's TOC entry — slugified from its own text, with
+// the index folded in so two identically-worded headings in the same
+// post (rare, but happens with "Conclusion"-style repeats) still get
+// distinct anchors instead of the TOC silently landing on the first one.
+function headingId(text: string, index: number): string {
+  const slug = text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+  return `${slug || 'section'}-${index}`
+}
+
 export default function BlogPostContent({ post, allPosts }: { post: BlogPost; allPosts: BlogPost[] }) {
-  const toc = post.body.filter((b) => b.t === 'h')
+  const toc = post.body
+    .map((b, i) => ({ ...b, index: i }))
+    .filter((b): b is typeof b & { t: 'h' } => b.t === 'h')
   const related = post.relatedSlugs
     .map((slug) => allPosts.find((p) => p.slug === slug))
     .filter((p): p is BlogPost => !!p)
@@ -52,10 +67,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
       </section>
 
       <div style={{ position: 'relative' }}>
-        <div className="orb-field">
-          <div style={{ position: 'absolute', width: 720, height: 720, right: -190, top: 60, borderRadius: '50%', background: 'radial-gradient(circle, rgba(120,170,215,0.32) 0%, rgba(120,170,215,0) 68%)' }} />
-          <div style={{ position: 'absolute', width: 780, height: 780, left: '20%', top: 1400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,242,174,0.36) 0%, rgba(244,242,174,0) 70%)' }} />
-        </div>
+        <AmbientOrbs />
         <div className="page-content">
 
           {/* Cover image — real photo/graphic from matjarx.com's media library when available */}
@@ -89,7 +101,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
 
             <article style={{ minWidth: 0, maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 24 }}>
               {post.body.map((b, i) => {
-                if (b.t === 'h') return <h2 key={i} style={{ margin: '16px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: '#04121F' }}>{b.text}</h2>
+                if (b.t === 'h') return <h2 key={i} id={headingId(b.text, i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: '#04121F' }}>{b.text}</h2>
                 if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: '#33485B' }}>{b.text}</p>
                 if (b.t === 'q') return (
                   <blockquote key={i} style={{ margin: '8px 0', padding: '24px 28px', borderRadius: 18, background: 'var(--cream-deep)', borderLeft: '4px solid var(--moss-light)' }}>
@@ -128,7 +140,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                 <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>In this article</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
                   {toc.map((t) => (
-                    <a key={t.text} href="#" style={{ fontSize: 14, lineHeight: 1.45, color: '#3B5063' }}>{t.text}</a>
+                    <a key={t.index} href={`#${headingId(t.text, t.index)}`} style={{ fontSize: 14, lineHeight: 1.45, color: '#3B5063' }}>{t.text}</a>
                   ))}
                 </div>
               </div>

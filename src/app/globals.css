@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* The blog post "In this article" sidebar links to each heading's own
+   #anchor — smooth-scroll so following one reads as navigation within
+   the article rather than an abrupt jump cut. */
+html {
+  scroll-behavior: smooth;
+}
+
 /* ---------------------------------------------------------------------
    MatjarX marketing site design system — from design_handoff_marketing_site/
    README.md. Light cream is the site's default identity; dark tokens exist
@@ -125,11 +132,19 @@ p {
   background: var(--butter);
 }
 
-/* Ambient orbs — three fixed radial gradients behind every page's content.
-   Usage: <div className="orb-field">...three orb divs...</div> as the
-   page's first child, with page content in a sibling .page-content wrapper. */
+/* Ambient orbs — soft radial gradients behind every page's content.
+   Usage: <div className="orb-field">...orb divs...</div> as the page's
+   first child, with page content in a sibling .page-content wrapper.
+   Pinned to the viewport (not the document) on purpose: these pages run
+   long (industry/location pages especially), and the orbs were
+   originally positioned at fixed pixel offsets meant for one screenful.
+   With `position: absolute` they only ever decorated the first ~2000px
+   of any page — everything scrolled past that sat on flat, empty cream
+   with nothing but bare margins either side. `fixed` keeps the same
+   handful of orbs in view at every scroll depth on every page, however
+   long, with no per-template changes needed. */
 .orb-field {
-  position: absolute;
+  position: fixed;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
