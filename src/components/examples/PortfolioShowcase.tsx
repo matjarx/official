@@ -69,7 +69,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
             </span>
             {modalItem.proofImage && (
               <div style={{ position: 'relative', width: 132, height: 86, flex: '0 0 auto', borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.2)' }} title="Real Google listing for this client">
-                <Image src={modalItem.proofImage.src} alt={modalItem.proofImage.alt} fill sizes="132px" style={{ objectFit: 'cover' }} />
+                <Image src={modalItem.proofImage.src} alt={modalItem.proofImage.alt} title={`${modalItem.name} — proof of results`} fill sizes="132px" style={{ objectFit: 'cover' }} />
               </div>
             )}
             <Link href={routes.pricing} className="mx-get-site" style={{ marginLeft: 'auto', padding: '12px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: '#16210B', background: 'linear-gradient(160deg, #C6CB8A, #A8AD6A)' }}>Get A Website Like This</Link>

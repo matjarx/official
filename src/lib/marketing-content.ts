@@ -335,7 +335,11 @@ type BlogPostRow = {
   tint: string
   body: unknown
   related_slugs: string[]
-  cover_image: { src: string; alt: string; width: number; height: number } | null
+  // title/caption/description are real, populated columns inside this
+  // JSON blob for 27 of the 28 posts. They were reaching the page only
+  // because the object is passed through whole -- TypeScript could not
+  // see them, so nothing could safely read one.
+  cover_image: { src: string; alt: string; title?: string; caption?: string; description?: string; width: number; height: number } | null
 }
 
 function rowToBlogPost(row: BlogPostRow): BlogPost {

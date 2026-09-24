@@ -42,9 +42,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     description: post.excerpt,
     datePublished: post.date,
     ...(post.coverImage && {
+      // width/height/name/caption as well as description: Google Images
+      // reads all of them, and the alternative was carrying four fields
+      // on the row and publishing one.
       image: {
         '@type': 'ImageObject',
         url: post.coverImage.src.startsWith('http') ? post.coverImage.src : `https://matjarx.com${post.coverImage.src}`,
+        width: post.coverImage.width,
+        height: post.coverImage.height,
+        ...(post.coverImage.title && { name: post.coverImage.title }),
+        ...(post.coverImage.caption && { caption: post.coverImage.caption }),
         ...(post.coverImage.description && { description: post.coverImage.description }),
       },
     }),

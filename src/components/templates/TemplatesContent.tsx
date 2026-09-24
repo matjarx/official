@@ -81,7 +81,7 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
               {TEMPLATE_PREVIEWS_ACTIVE.map((p) => (
                 <div key={p.name} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
                   <div style={{ position: 'relative', width: '100%', aspectRatio: `${p.width} / ${p.height}` }}>
-                    <Image src={p.src} alt={p.alt} fill sizes="(max-width: 700px) 100vw, 400px" style={{ objectFit: 'cover' }} />
+                    <Image src={p.src} alt={p.alt} title={`${p.name} website template`} fill sizes="(max-width: 700px) 100vw, 400px" style={{ objectFit: 'cover' }} />
                   </div>
                   <p style={{ margin: 0, padding: '12px 16px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{p.name}</p>
                 </div>

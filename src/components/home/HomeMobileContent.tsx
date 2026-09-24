@@ -194,7 +194,7 @@ export default function HomeMobileContent() {
                 <div style={{ position: 'relative', zIndex: 1, padding: '18px 19px 20px', borderRadius: 18, background: theme.voiceBg, border: `1px solid ${theme.voiceLine}`, backdropFilter: 'blur(20px)', boxShadow: theme.cardShadow, display: 'flex', flexDirection: 'column', gap: 11 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
                     <span style={{ position: 'relative', width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid rgba(255,255,255,0.9)' }}>
-                      <Image src={v.photo.src} alt={v.photo.alt} fill sizes="38px" style={{ objectFit: 'cover' }} />
+                      <Image src={v.photo.src} alt={v.photo.alt} title={v.photo.alt} fill sizes="38px" style={{ objectFit: 'cover' }} />
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 16, letterSpacing: '-0.3px', color: theme.voiceInk }}>{v.name}</span>

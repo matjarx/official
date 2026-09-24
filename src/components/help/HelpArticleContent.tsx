@@ -119,7 +119,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
           {d.heroImage && (
             <section style={{ maxWidth: 820, margin: '0 auto', padding: '36px 24px 0' }}>
               <div style={{ position: 'relative', width: '100%', height: 260, borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 44px rgba(4,18,31,0.14)' }}>
-                <Image src={d.heroImage.src} alt={d.heroImage.alt} fill sizes="(max-width: 860px) 100vw, 820px" style={{ objectFit: 'cover' }} />
+                <Image src={d.heroImage.src} alt={d.heroImage.alt} title={d.title} fill sizes="(max-width: 860px) 100vw, 820px" style={{ objectFit: 'cover' }} />
               </div>
             </section>
           )}

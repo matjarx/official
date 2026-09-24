@@ -107,7 +107,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                 <div key={t.name} style={{ borderRadius: 22, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)' }}>
                   <div style={{ position: 'relative', height: 210, background: t.photo ? undefined : t.tint, display: 'grid', placeItems: 'center' }}>
                     {t.photo ? (
-                      <Image src={t.photo.src} alt={t.photo.alt} fill sizes="220px" style={{ objectFit: 'cover' }} />
+                      <Image src={t.photo.src} alt={t.photo.alt} title={`${t.name} — ${t.role}`} fill sizes="220px" style={{ objectFit: 'cover' }} />
                     ) : (
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.6px', color: 'rgba(255,255,255,0.92)' }}>{t.initials}</span>
                     )}

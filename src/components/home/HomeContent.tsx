@@ -289,7 +289,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? '#0B2138' : '#FFFFFF', border: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.06)'}`, boxShadow: '0 10px 26px rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <span style={{ position: 'relative', width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid #FFFFFF', boxShadow: '0 3px 10px rgba(4,18,31,0.16)' }}>
-                      <Image src={v.photo.src} alt={v.photo.alt} fill sizes="44px" style={{ objectFit: 'cover' }} />
+                      <Image src={v.photo.src} alt={v.photo.alt} title={v.photo.alt} fill sizes="44px" style={{ objectFit: 'cover' }} />
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: ink1 }}>{v.name}</span>
@@ -392,7 +392,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 <Link href={routes.pricing} className="btn-primary" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Not on my watch — I want results</Link>
               </div>
               <div style={{ position: 'relative', minWidth: 0, minHeight: 320, alignSelf: 'stretch', order: 2 }}>
-                <Image src="/home/mascot.webp" alt="" fill sizes="(max-width: 380px) 100vw, 50vw" style={{ objectFit: 'cover', objectPosition: 'center 20%' }} />
+                <Image src="/home/mascot.webp" alt="A shop owner at the counter, looking at her phone while a customer waits" title="You have about 50 milliseconds" fill sizes="(max-width: 380px) 100vw, 50vw" style={{ objectFit: 'cover', objectPosition: 'center 20%' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #04121F 0%, rgba(4,18,31,0) 14%)' }} />
               </div>
             </div>
