@@ -316,18 +316,30 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
 
           {/* Center — canvas */}
           <div style={{ padding: 14, minWidth: 0 }}>
-            <div style={{ borderRadius: 11, overflow: 'hidden', background: '#FFFCF5', boxShadow: '0 18px 42px rgba(0,8,18,0.4)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 11px', background: '#0B1B27' }}>
+            {/* No overflow:hidden -- the section toolbar deliberately pokes
+                above this frame's top edge. The two children that touched
+                the rounded corners round their own instead. */}
+            <div style={{ borderRadius: 11, background: '#FFFCF5', boxShadow: '0 18px 42px rgba(0,8,18,0.4)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 11px', background: '#0B1B27', borderRadius: '11px 11px 0 0' }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
+                {/* Viewport label moved to the LEFT group. The section toolbar
+                    below now straddles the top-right corner of the selected
+                    section, the way a real editor attaches it, and that
+                    corner has to be clear for it. */}
+                <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.38)', flex: '0 0 auto', marginLeft: 4 }}>Desktop 1440</span>
                 <span style={{ margin: '0 auto', padding: '3px 12px', borderRadius: 999, fontSize: 9.5, color: 'rgba(226,236,245,0.6)', background: 'rgba(255,255,255,0.07)' }}>{domain}</span>
-                <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.38)', flex: '0 0 auto' }}>Desktop 1440</span>
+                <span style={{ width: 74, flex: '0 0 auto' }} aria-hidden="true" />
               </div>
 
               <div style={{ position: 'relative', outline: '2px solid #F4F2AE', outlineOffset: -2 }}>
                 <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '3px 10px', borderRadius: '0 0 7px 0', background: '#E7E49B', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 8.5, letterSpacing: 0.5, textTransform: 'uppercase', color: '#14210b' }}>Hero</span>
-                <span style={{ position: 'absolute', top: 6, right: 6, zIndex: 8, display: 'flex', gap: 2, padding: 3, borderRadius: 7, background: 'rgba(8,20,32,0.86)', border: '1px solid rgba(255,255,255,0.16)' }}>
+                {/* Straddling the section's top edge, not floating inside it.
+                    At top:6 this sat squarely on the storefront's own
+                    "Order Now" button -- you could read the CTA's text
+                    through it. Two unrelated UIs in the same 110x25px. */}
+                <span style={{ position: 'absolute', top: -13, right: 6, zIndex: 9, display: 'flex', gap: 2, padding: 3, borderRadius: 7, background: 'rgba(8,20,32,0.94)', border: '1px solid rgba(244,242,174,0.45)', boxShadow: '0 4px 12px rgba(0,8,18,0.5)' }}>
                   {TOOLS.map((t, i) => (
                     <span key={i} style={{ width: 19, height: 19, borderRadius: 5, display: 'grid', placeItems: 'center' }}>
                       <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke={t.ink} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={t.icon} /></svg>
@@ -367,7 +379,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, padding: '12px 16px 16px', background: '#FFFCF5' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, padding: '12px 16px 16px', background: '#FFFCF5', borderRadius: '0 0 11px 11px' }}>
                 {stripSrc.map((s, i) => (
                   <span key={i} style={{ height: 46, borderRadius: 7, overflow: 'hidden', position: 'relative' }}>
                     <Image src={s} alt="" fill sizes="80px" style={{ objectFit: 'cover' }} />

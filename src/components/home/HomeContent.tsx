@@ -250,15 +250,20 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Editor Showcase #1 */}
-        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 66px' }}>
-          <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0 4px 14px' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 12px', borderRadius: 999, background: 'var(--navy-gradient)', border: '1.5px solid rgba(244,242,174,0.5)', boxShadow: '0 12px 28px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)' }}>
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '62px 24px 66px' }}>
+          {/* The "No long-term contract" seal used to sit in a row of its
+              own above the panel, right-aligned to the CONTENT box while
+              the panel behind it extends 12px further out — so it was 16px
+              short of the edge it was meant to line up with, and read as
+              floating in empty space. Pinned to the panel's own top-right
+              corner now, overlapping it, which both fixes the alignment
+              and reclaims the 14px dead row above. */}
+          <div style={{ position: 'relative' }}>
+            <div style={{ position: 'absolute', inset: '-16px -12px -20px -12px', borderRadius: 34, background: 'linear-gradient(150deg, rgba(0,51,102,0.92), rgba(112,117,56,0.86))', boxShadow: '0 44px 96px rgba(4,18,31,0.3)', zIndex: 0 }} />
+            <span style={{ position: 'absolute', top: -32, right: -12, zIndex: 3, display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 12px', borderRadius: 999, background: 'var(--navy-gradient)', border: '1.5px solid rgba(244,242,174,0.5)', boxShadow: '0 12px 28px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)' }}>
               <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>No long-term contract</span>
             </span>
-          </div>
-          <div style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', inset: '-16px -12px -20px -12px', borderRadius: 34, background: 'linear-gradient(150deg, rgba(0,51,102,0.92), rgba(112,117,56,0.86))', boxShadow: '0 44px 96px rgba(4,18,31,0.3)', zIndex: 0 }} />
             <div style={{ position: 'relative', zIndex: 1, padding: 4 }}>
               <div className="showcase-desktop-only"><EditorShowcase /></div>
               <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
