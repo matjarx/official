@@ -286,8 +286,32 @@ textarea.input {
 }
 
 /* Tables that must scroll rather than crush */
+/* A table too wide for the screen.
+   These wrappers also carry .glass-card and a rounded corner, and the
+   inline `overflow: hidden` that kept the corners clean was overriding
+   overflow-x: auto -- so on a phone the table was simply cut off with no
+   way to reach the rest of it. /contact lost 300px of its channels
+   table, the website audit 180px of its phases, /plans/* 140px of its
+   comparison. Columns that exist and cannot be seen.
+
+   overflow-y stays hidden for the corners; overflow-x scrolls. The
+   fade on the right edge is the affordance -- a table that silently
+   ends at the screen edge looks finished, not scrollable. */
 .table-scroll {
   overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+@media (max-width: 760px) {
+  .table-scroll {
+    position: relative;
+    /* Sits on top of the right-hand edge, and disappears once you have
+       scrolled to the end because the background is attached to the
+       scroll container's local coordinates. */
+    background:
+      linear-gradient(to right, rgba(255,255,255,0) 90%, rgba(4,18,31,0.10) 100%) right center / 34px 100% no-repeat local;
+  }
 }
 
 /* Category marquee (Home) — a doubled list translated by exactly half its

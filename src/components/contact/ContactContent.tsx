@@ -271,7 +271,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           {/* Contact information summary table */}
           <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>All ways to reach MatjarX</span>
-            <div className="glass-card table-scroll" style={{ borderRadius: 20, overflow: 'hidden' }}>
+            <div className="glass-card table-scroll" style={{ borderRadius: 20, overflowY: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 640 }}>
                 <thead>
                   <tr>

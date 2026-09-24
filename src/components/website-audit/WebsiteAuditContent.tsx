@@ -243,7 +243,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           {/* Timeline */}
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', textAlign: 'center', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Complete website audit timeline</span>
-            <div className="glass-card table-scroll" style={{ borderRadius: 20, overflow: 'hidden' }}>
+            <div className="glass-card table-scroll" style={{ borderRadius: 20, overflowY: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 520 }}>
                 <thead><tr>
                   {['Phase', 'Duration', 'What Happens'].map((h) => (
@@ -323,7 +323,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               })}
             </div>
             <span style={{ display: 'block', textAlign: 'center', marginBottom: 16, fontSize: 13.5, fontWeight: 600, color: '#04121F' }}>Free tools vs. MatjarX audit</span>
-            <div className="glass-card table-scroll" style={{ borderRadius: 20, overflow: 'hidden' }}>
+            <div className="glass-card table-scroll" style={{ borderRadius: 20, overflowY: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
                 <thead><tr>
                   {COMPARISON_TABLE.headers.map((h) => (

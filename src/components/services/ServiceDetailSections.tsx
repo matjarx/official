@@ -43,7 +43,7 @@ function BlockList({ blocks }: { blocks: Block[] }) {
 
 function TableEl({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
-    <div className="glass-card table-scroll" style={{ borderRadius: 18, overflow: 'hidden' }}>
+    <div className="glass-card table-scroll" style={{ borderRadius: 18, overflowY: 'hidden' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
         <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: '#5A6F82', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
         <tbody>
