@@ -110,7 +110,22 @@ const nextConfig = {
       { source: '/resources-tools', destination: '/blogs', permanent: true },
       { source: '/resources-tools/:slug', destination: '/blogs/:slug', permanent: true },
       { source: '/blog', destination: '/blogs', permanent: true },
-      { source: '/blog/:slug', destination: '/blogs/:slug', permanent: true },
+      // `:slug([^.]+)` and not `:slug`, because /public/blog/ holds the
+      // post cover images and a bare wildcard swallowed them.
+      //
+      // The symptom was baffling: every blog image returned 200 when
+      // requested directly, and every one failed through /_next/image with
+      // "The requested resource isn't a valid image". Files in public/ are
+      // served BEFORE redirects, so the direct request never saw this rule
+      // -- but the image optimizer resolves the path through the redirect,
+      // landed on /blogs/<name>.webp, got an HTML 404 back, and correctly
+      // reported that HTML is not an image. All 27 covers, on every page
+      // that lists a post.
+      //
+      // Excluding any segment containing a dot keeps the legacy redirect
+      // working for real post slugs (none of which contain one) while
+      // leaving files alone.
+      { source: '/blog/:slug([^.]+)', destination: '/blogs/:slug', permanent: true },
 
       // Old WordPress portfolio/demo taxonomy (artist showcase pages,
       // project categories, tag/category archives) — none of it has an
