@@ -55,7 +55,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         ...(post.coverImage.description && { description: post.coverImage.description }),
       },
     }),
-    author: { '@type': 'Organization', name: AUTHOR.name },
+    // A named writer is a Person with a link to whatever establishes
+    // them; the house byline stays an Organization. Google asks who
+    // wrote a piece, and "The MatjarX Team" is not an answer for a
+    // 3,000-word guide.
+    author: post.author
+      ? {
+          '@type': 'Person',
+          name: post.author.name,
+          ...(post.author.role && { jobTitle: post.author.role }),
+          ...(post.author.url && { url: post.author.url }),
+          ...(post.author.avatarUrl && { image: post.author.avatarUrl }),
+          ...(post.author.bio && { description: post.author.bio }),
+        }
+      : { '@type': 'Organization', name: AUTHOR.name },
     publisher: { '@type': 'Organization', name: 'MatjarX' },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://matjarx.com${routes.blogPost(post.slug)}` },
   }

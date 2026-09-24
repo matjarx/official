@@ -128,7 +128,7 @@ export default function HomeMobileContent() {
         )}
 
         {/* Scrollable body */}
-        <div className="mx-rail" style={{ position: 'relative', zIndex: 2, flex: 1, overflowY: 'auto', overflowX: 'hidden', minHeight: 0, padding: '22px 16px 30px', display: 'flex', flexDirection: 'column', gap: 22 }}>
+        <div className="mx-rail" style={{ position: 'relative', zIndex: 2, flex: 1, overflowY: 'auto', overflowX: 'clip', minHeight: 0, padding: '22px 16px 30px', display: 'flex', flexDirection: 'column', gap: 22 }}>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
             <span style={{ fontSize: 12, lineHeight: 1.5, color: theme.ink3 }}>Having trouble launching the right website for your business?</span>

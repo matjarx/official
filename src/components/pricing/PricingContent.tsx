@@ -157,7 +157,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
   const saveNote = cycle === 'monthly' ? '2 months free on yearly billing' : cycle === 'yearly' ? '2 months free applied' : 'Best value — 25% off every month'
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
+    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="pricing" />
 
       {/* Hero */}

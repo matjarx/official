@@ -84,15 +84,25 @@ html {
   color-scheme: dark;
 }
 
+/* `clip`, not `hidden`.
+   Both stop sideways scrolling, and they are not interchangeable:
+   overflow-x: hidden makes the element a SCROLL CONTAINER, which means
+   every position: sticky descendant sticks to that container instead of
+   to the viewport -- i.e. never sticks at all. The blog's "In this
+   article" rail was written as sticky, computed as sticky, and scrolled
+   away with the page for exactly this reason.
+
+   overflow-x: clip just clips. No scroll container, sticky works.
+   Supported everywhere we care about since 2022. */
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   background: var(--cream);
   color: var(--ink-2);
   font-family: var(--font-open-sans), 'Open Sans', Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
 }
 
@@ -398,4 +408,60 @@ textarea.input {
 }
 @media (min-width: 980px) {
   .cross-link-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* "In this article" rail (ArticleToc). The left rule is the affordance:
+   it gives the list a spine, thickens and turns olive on the section you
+   are actually reading, and darkens on hover. Without it the items read
+   as a summary of the article rather than a way through it. */
+.toc-link {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 7px 0 7px 13px;
+  margin-left: 1px;
+  border-left: 2px solid rgba(4, 18, 31, 0.1);
+  font-size: 14px;
+  line-height: 1.45;
+  color: #3B5063;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+.toc-link:hover {
+  color: #04121F;
+  border-left-color: var(--olive);
+}
+.toc-link.is-active {
+  color: #04121F;
+  font-weight: 700;
+  border-left-color: var(--olive);
+  border-left-width: 3px;
+  margin-left: 0;
+}
+.toc-num {
+  flex: 0 0 auto;
+  font-family: var(--font-lato), Lato, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #9AA9B5;
+}
+.toc-link:hover .toc-num,
+.toc-link.is-active .toc-num { color: var(--olive); }
+
+@media (prefers-reduced-motion: reduce) {
+  .toc-link { transition: none; }
+}
+
+.author-name-link { color: inherit; text-decoration: none; border-bottom: 1.5px solid var(--moss-light); }
+.author-name-link:hover { border-bottom-color: var(--olive); }
+
+/* Keep-reading cards now carry a real cover image; lift them on hover so
+   the whole card reads as the link it already was. */
+.keep-reading-card { transition: transform 160ms ease, box-shadow 160ms ease; }
+.keep-reading-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(4, 18, 31, 0.1); }
+@media (prefers-reduced-motion: reduce) {
+  .keep-reading-card { transition: none; }
+  .keep-reading-card:hover { transform: none; }
 }

@@ -22,9 +22,42 @@ export type BlogPost = {
   // metadata fields (title: tooltip; caption: shown under the image on the
   // post page; description: longer text for search engines, not rendered).
   coverImage?: { src: string; alt: string; title?: string; caption?: string; description?: string; width: number; height: number }
+  /** Per-post byline. Falls back to AUTHOR when unset. */
+  author?: BlogAuthor
 }
 
-export const AUTHOR = { name: 'The MatjarX Team', initials: 'MX', role: 'Written by the MatjarX team' }
+/**
+ * Who wrote a post.
+ *
+ * Every post used to be "The MatjarX Team" because that was a module
+ * constant, not a field -- there was nowhere to say otherwise. A named
+ * person outranks an anonymous team byline for E-E-A-T, and the GEO
+ * posts in particular are the kind of thing Google wants attributed.
+ *
+ * `initials` is optional and derived from the name when absent, so
+ * adding an author in the admin is one required field.
+ */
+export type BlogAuthor = {
+  name: string
+  role?: string
+  initials?: string
+  /** Photo. The avatar falls back to initials on a moss disc without one. */
+  avatarUrl?: string
+  /** A sentence under the name in the end-of-article card. */
+  bio?: string
+  /** Somewhere that establishes the person: LinkedIn, a profile page. */
+  url?: string
+}
+
+export const AUTHOR: BlogAuthor = { name: 'The MatjarX Team', initials: 'MX', role: 'Written by the MatjarX team' }
+
+/** "Wajeeh Hassan" -> "WH". Two letters, uppercase, no punctuation. */
+export function authorInitials(a: BlogAuthor): string {
+  if (a.initials) return a.initials
+  const parts = a.name.trim().split(/\s+/).filter(Boolean)
+  if (parts.length === 0) return 'MX'
+  return (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase()
+}
 
 export const BLOG_POSTS: BlogPost[] = [
   {

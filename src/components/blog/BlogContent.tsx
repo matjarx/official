@@ -11,6 +11,7 @@ import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
+import NewsletterSignup from './NewsletterSignup'
 import { routes } from '@/lib/routes'
 import { BLOG_CATEGORIES, FEATURED_SLUG, AUTHOR, type BlogCategory, type BlogPost } from '@/lib/blog-data'
 
@@ -36,7 +37,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
   }
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
+    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="resources" />
 
       {/* Navy hero */}
@@ -72,21 +73,12 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
                   <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#4B5D6E' }}>{featuredPost.excerpt}</p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 4 }}>
                     <span style={{ width: 34, height: 34, borderRadius: '50%', background: 'var(--moss-light)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: '#16210B' }}>{AUTHOR.initials}</span>
-                    <span style={{ fontSize: 13, color: '#5A6F82' }}>{AUTHOR.name} · {featuredPost.date} · {featuredPost.readTime}</span>
+                    <span style={{ fontSize: 13, color: '#5A6F82' }}>{(featuredPost.author ?? AUTHOR).name} · {featuredPost.date} · {featuredPost.readTime}</span>
                   </div>
                 </div>
               </Link>
 
-              <div style={{ padding: '34px 32px', borderRadius: 24, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 16, justifyContent: 'center' }}>
-                <span style={{ fontSize: 12, letterSpacing: '1.8px', textTransform: 'uppercase', color: '#4A5518', fontWeight: 700 }}>Newsletter</span>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, lineHeight: 1.12, letterSpacing: '-1px', color: '#1F2A08' }}>Get monthly advice and exclusive deals</h2>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#3D4A16' }}>One email a month: what&rsquo;s working for businesses like yours, plus partner offers.</p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingTop: 4 }}>
-                  <input type="email" placeholder="you@yourbusiness.pk" style={{ width: '100%', padding: '15px 17px', borderRadius: 13, fontFamily: 'var(--font-open-sans), sans-serif', fontSize: 14.5, color: '#1F2A08', background: 'rgba(255,255,255,0.75)', border: '1.5px solid rgba(31,42,8,0.18)', outline: 'none' }} />
-                  <button type="button" className="btn-navy" style={{ textAlign: 'center' }}>Subscribe</button>
-                </div>
-                <span style={{ fontSize: 11.5, lineHeight: 1.5, color: '#4A5518' }}>By subscribing you agree to the MatjarX privacy policy. Unsubscribe any time.</span>
-              </div>
+              <NewsletterSignup variant="light" />
             </div>
           </section>
 

@@ -16,7 +16,7 @@ import { CITY_DETAIL } from './location-detail-data'
 import { INDUSTRY_DATA, type IndustryKey } from './industry-data'
 import { INDUSTRY_DETAIL } from './industry-detail-data'
 import { RIVAL_DATA, type RivalKey } from './comparison-data'
-import { BLOG_POSTS, type BlogPost } from './blog-data'
+import { BLOG_POSTS, type BlogPost, type BlogAuthor } from './blog-data'
 import { HELP_ARTICLES, type HelpSlug } from './help-articles-data'
 import { HELP_TOPICS, HELP_POPULAR, HELP_CHANNELS, HELP_SUBJECTS, HELP_FAQS } from './help-data'
 import { LEGAL_DATA, type LegalDoc } from './legal-data'
@@ -340,6 +340,8 @@ type BlogPostRow = {
   // because the object is passed through whole -- TypeScript could not
   // see them, so nothing could safely read one.
   cover_image: { src: string; alt: string; title?: string; caption?: string; description?: string; width: number; height: number } | null
+  /** Added later; a row written before the migration has it as null. */
+  author?: BlogAuthor | null
 }
 
 function rowToBlogPost(row: BlogPostRow): BlogPost {
@@ -354,7 +356,25 @@ function rowToBlogPost(row: BlogPostRow): BlogPost {
     body: row.body as BlogPost['body'],
     relatedSlugs: row.related_slugs || [],
     coverImage: row.cover_image || undefined,
+    author: row.author || undefined,
   }
+}
+
+// The columns a post is built from, and the same list minus `author`.
+//
+// `author` is a later addition. Selecting a column that does not exist
+// yet is a hard error in PostgREST, and every one of these reads falls
+// back to the static BLOG_POSTS array on error -- so a deploy that
+// landed before the migration would quietly serve 28 stale posts and
+// look like it was working. Retrying without the column keeps the two
+// independent of each other in either order.
+const BLOG_COLUMNS = 'slug, title, category, excerpt, date, read_time, tint, body, related_slugs, cover_image, author'
+const BLOG_COLUMNS_LEGACY = BLOG_COLUMNS.replace(', author', '')
+
+/** True when PostgREST rejected the query because `author` is not there yet. */
+function isMissingAuthorColumn(error: { message?: string; code?: string } | null): boolean {
+  if (!error) return false
+  return error.code === '42703' || /author/i.test(error.message || '')
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -367,13 +387,17 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     // one time at seed; a post created through the admin from here on
     // gets a real created_at of "now" automatically, so it correctly
     // sorts to the top without needing the same backfill again.
-    const { data, error } = await supabase
-      .from('marketing_blog_posts')
-      .select('slug, title, category, excerpt, date, read_time, tint, body, related_slugs, cover_image')
-      .eq('published', true)
-      .order('created_at', { ascending: false })
+    const query = (columns: string) =>
+      supabase
+        .from('marketing_blog_posts')
+        .select(columns)
+        .eq('published', true)
+        .order('created_at', { ascending: false })
+
+    let { data, error } = await query(BLOG_COLUMNS)
+    if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
     if (error || !data || data.length === 0) return BLOG_POSTS
-    return data.map(rowToBlogPost)
+    return (data as unknown as BlogPostRow[]).map(rowToBlogPost)
   } catch {
     return BLOG_POSTS
   }
@@ -381,14 +405,18 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
-    const { data, error } = await supabase
-      .from('marketing_blog_posts')
-      .select('slug, title, category, excerpt, date, read_time, tint, body, related_slugs, cover_image')
-      .eq('slug', slug)
-      .eq('published', true)
-      .maybeSingle()
+    const query = (columns: string) =>
+      supabase
+        .from('marketing_blog_posts')
+        .select(columns)
+        .eq('slug', slug)
+        .eq('published', true)
+        .maybeSingle()
+
+    let { data, error } = await query(BLOG_COLUMNS)
+    if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
     if (error || !data) return BLOG_POSTS.find((p) => p.slug === slug) || null
-    return rowToBlogPost(data)
+    return rowToBlogPost(data as unknown as BlogPostRow)
   } catch {
     return BLOG_POSTS.find((p) => p.slug === slug) || null
   }

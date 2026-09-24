@@ -191,7 +191,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
     : undefined
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: bgGradient ?? cream, color: dark ? '#E9EFF5' : '#0B2135', overflowX: 'hidden' }}>
+    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: bgGradient ?? cream, color: dark ? '#E9EFF5' : '#0B2135', overflowX: 'clip' }}>
       <AmbientOrbs dark={dark} />
       <div className="page-content">
         <SiteHeader active="home" dark={dark} onToggleDark={() => setDark((v) => !v)} />

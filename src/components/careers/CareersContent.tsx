@@ -28,7 +28,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
   const roleCount = `${shown.length} ${shown.length === 1 ? 'role open' : 'roles open'}${filter === 'All' ? ' across five teams' : ` in ${filter}`}`
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
+    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="company" />
 
       {/* Navy hero */}

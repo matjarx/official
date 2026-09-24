@@ -38,7 +38,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
   const resultLine = shown.length + (shown.length === 1 ? ' example' : ' examples') + (filter === 'All' ? ' shown · hover a site to open it' : ` in ${filter} · hover a site to open it`)
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
+    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="examples" />

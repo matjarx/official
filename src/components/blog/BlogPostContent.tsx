@@ -11,6 +11,9 @@ import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import CrossLinkRail from '@/components/CrossLinkRail'
 import { crossLinksForPost } from '@/lib/cross-links'
+import ArticleToc from './ArticleToc'
+import AuthorCard, { AuthorByline } from './AuthorCard'
+import NewsletterSignup from './NewsletterSignup'
 import { routes } from '@/lib/routes'
 import { AUTHOR, SHARE_LINKS, type BlogPost } from '@/lib/blog-data'
 
@@ -34,12 +37,13 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
   const toc = post.body
     .map((b, i) => ({ ...b, index: i }))
     .filter((b): b is typeof b & { t: 'h' } => b.t === 'h')
+  const author = post.author ?? AUTHOR
   const related = post.relatedSlugs
     .map((slug) => allPosts.find((p) => p.slug === slug))
     .filter((p): p is BlogPost => !!p)
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'hidden' }}>
+    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="resources" />
 
       {/* Navy hero */}
@@ -52,11 +56,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
           </div>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(29px, 5.2vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: '#FFFFFF' }}>{post.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 13, flexWrap: 'wrap' }}>
-            <span style={{ width: 42, height: 42, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#16210B' }}>{AUTHOR.initials}</span>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#FFFFFF' }}>{AUTHOR.name}</span>
-              <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>{post.date} · {post.readTime}</span>
-            </div>
+            <AuthorByline author={author} meta={`${post.date} · ${post.readTime}`} />
             <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
               {SHARE_LINKS.map((s) => (
                 <a key={s.name} href={`#share-${s.name.toLowerCase()}`} title={`Share on ${s.name}`} style={{ width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.14)' }}>
@@ -128,30 +128,18 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                 <Link href={routes.pricing} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 4 }}>See plans</Link>
               </div>
 
-              <div className="glass-card" style={{ marginTop: 24, padding: '26px 28px', borderRadius: 20, display: 'flex', gap: 18, alignItems: 'flex-start' }}>
-                <span style={{ width: 56, height: 56, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#16210B' }}>{AUTHOR.initials}</span>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{AUTHOR.name}</span>
-                  <span style={{ fontSize: 12.5, color: '#5A6F82' }}>{AUTHOR.role}</span>
-                </div>
-              </div>
+              <AuthorCard author={author} />
             </article>
 
-            <aside style={{ minWidth: 0, maxWidth: 340, display: 'flex', flexDirection: 'column', gap: 18, position: 'sticky', top: 100 }}>
-              <div className="glass-card" style={{ padding: '24px 26px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>In this article</span>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
-                  {toc.map((t) => (
-                    <a key={t.index} href={`#${headingId(t.text, t.index)}`} style={{ fontSize: 14, lineHeight: 1.45, color: '#3B5063' }}>{t.text}</a>
-                  ))}
-                </div>
-              </div>
+            {/* maxHeight + overflow on the ASIDE, not on an ancestor: the rail
+                has to stay usable on a post with fifteen headings, and a
+                scroll container here only affects the rail's own contents.
+                Putting overflow higher up is what broke sticky in the
+                first place. */}
+            <aside style={{ minWidth: 0, maxWidth: 340, display: 'flex', flexDirection: 'column', gap: 18, position: 'sticky', top: 100, maxHeight: 'calc(100vh - 120px)', overflowY: 'auto' }}>
+              <ArticleToc items={toc.map((t) => ({ id: headingId(t.text, t.index), text: t.text }))} />
 
-              <div style={{ padding: '24px 26px', borderRadius: 20, background: '#04121F', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#FFFFFF' }}>Get one email a month</span>
-                <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>Practical advice for growing a business online in Pakistan and the Gulf.</p>
-                <Link href={routes.blog} style={{ marginTop: 4, textAlign: 'center', padding: '13px 18px', borderRadius: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: '#16210B', background: 'var(--butter)' }}>Subscribe</Link>
-              </div>
+              <NewsletterSignup postSlug={post.slug} />
             </aside>
           </section>
 
@@ -160,8 +148,23 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
             <h2 style={{ margin: '0 0 28px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, letterSpacing: '-1px', color: '#04121F' }}>Keep reading</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
               {related.map((r) => (
-                <Link key={r.slug} href={routes.blogPost(r.slug)} style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.09)' }}>
-                  <div style={{ height: 140, background: r.tint }} />
+                <Link key={r.slug} href={routes.blogPost(r.slug)} className="keep-reading-card" style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.09)' }}>
+                  {/* The cover, not the tint. Every one of these posts has
+                      a real cover image; the card was rendering a flat
+                      colour block over the top of it. `tint` stays as the
+                      fallback for a post that genuinely has none. */}
+                  <div style={{ position: 'relative', height: 140, background: r.tint }}>
+                    {r.coverImage && (
+                      <Image
+                        src={r.coverImage.src}
+                        alt={r.coverImage.alt}
+                        title={r.coverImage.title}
+                        fill
+                        sizes="(max-width: 700px) 100vw, 420px"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    )}
+                  </div>
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 9 }}>
                     <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--olive)' }}>{r.category}</span>
                     <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, lineHeight: 1.3, letterSpacing: '-0.3px', color: '#04121F' }}>{r.title}</h3>
