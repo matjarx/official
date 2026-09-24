@@ -15,11 +15,11 @@ import dynamic from 'next/dynamic'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
+import IndustryRail from '@/components/home/IndustryRail'
 import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes, appSignup } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
-import { EXAMPLES } from '@/lib/examples-data'
 import type { HomeContentShape } from '@/lib/marketing-content'
 
 // Code-split rather than statically imported: both sit well below the
@@ -31,10 +31,7 @@ import type { HomeContentShape } from '@/lib/marketing-content'
 // own chunk so the initial bundle has less to parse before the page is
 // interactive.
 const SavingsCalculator = dynamic(() => import('@/components/SavingsCalculator'))
-const PortfolioShowcase = dynamic(() => import('@/components/examples/PortfolioShowcase'))
 
-const HOME_EXAMPLE_NAMES = ['Celestial Delicacies', 'Bin Adam Textile', 'Sacred Wellness']
-const HOME_EXAMPLES = EXAMPLES.filter((ex) => HOME_EXAMPLE_NAMES.includes(ex.name))
 
 // The marquee was sixteen plain <span>s. Every one names a business type we
 // have a landing page for -- and those pages had nothing linking to them, so
@@ -178,7 +175,6 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
   // with dark as the starting state) and now also gets a working toggle.
   const [dark, setDark] = useState(initialDark)
   const [openFaq, setOpenFaq] = useState(0)
-  const [exampleModal, setExampleModal] = useState(-1)
 
   const FAQ_DATA = content.faqs
   const VOICES_ACTIVE = content.voices
@@ -498,8 +494,13 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             </div>
             <Link href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(255,255,255,0.07)' : '#FFFFFF', border: `1.5px solid ${dark ? 'rgba(255,255,255,0.16)' : 'rgba(4,18,31,0.14)'}` }}>Browse all examples</Link>
           </div>
+          {/* Was four client screenshots. They answered "can you prove
+              it" and not "have you built one for a business like mine",
+              which is the question this heading actually provokes. The
+              screenshots are one click away behind Browse all examples,
+              on the page built for them. */}
           <div style={{ maxWidth: 1360, margin: '40px auto 0', padding: '0 24px' }}>
-            <PortfolioShowcase items={HOME_EXAMPLES} modalIndex={exampleModal} setModalIndex={setExampleModal} />
+            <IndustryRail dark={dark} />
           </div>
         </section>
 
