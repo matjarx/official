@@ -152,12 +152,19 @@ function window_<T>(list: T[], offset: number, count: number): T[] {
 }
 
 function serviceLinks(topics: Topic[], max: number): CrossLink[] {
-  return (Object.keys(SERVICE_TOPICS) as (keyof typeof SERVICE_TOPICS)[])
+  const keys = (Object.keys(SERVICE_TOPICS) as (keyof typeof SERVICE_TOPICS)[])
     .map((k) => ({ k, score: overlap(topics, SERVICE_TOPICS[k].topics) }))
     .filter((s) => s.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, max)
-    .map(({ k }) => ({ label: SERVICE_TOPICS[k].label, href: routes.service(k), kind: 'service' as const, note: SERVICE_TOPICS[k].note }))
+    .map((s) => s.k)
+  // Top up with the flagship rather than return a short rail. A page on
+  // payment gateways matches only Growth marketing, which leaves the
+  // reader one card and no way to say "just build me the site".
+  for (const fallback of ['dfy', 'concierge'] as const) {
+    if (keys.length >= max) break
+    if (!keys.includes(fallback)) keys.push(fallback)
+  }
+  return keys.slice(0, max).map((k) => ({ label: SERVICE_TOPICS[k].label, href: routes.service(k), kind: 'service' as const, note: SERVICE_TOPICS[k].note }))
 }
 
 function industryLinks(topics: Topic[], offset: number, max: number): CrossLink[] {
@@ -193,6 +200,7 @@ function cityLinks(offset: number, max: number): CrossLink[] {
     label: `Website design in ${CITY_DATA[k as CityKey].name}`,
     href: routes.location(k),
     kind: 'city' as const,
+    note: 'What we build for businesses there.',
   }))
 }
 
@@ -227,12 +235,15 @@ export function crossLinksForCity(key: CityKey): CrossLink[] {
     label: `${INDUSTRY_DATA[k].name} in ${CITY_DATA[key].name}`,
     href: routes.industry(k),
     kind: 'industry' as const,
+    note: 'Built, launched and looked after by us.',
   }))
   const posts = window_(POST_SLUGS, offset * 2, 2).map((s) => {
     const post = BLOG_POSTS.find((p) => p.slug === s)!
     return { label: post.title, href: routes.blogPost(s), kind: 'blog' as const, note: post.category }
   })
-  return [...industries, ...posts, ...serviceLinks(['local', 'seo'], 2)]
+  // Six, so the grid is two clean rows of three rather than a stray
+  // card on its own line.
+  return [...industries, ...posts, ...serviceLinks(['local', 'seo'], 1)]
 }
 
 /**
@@ -247,5 +258,5 @@ export function crossLinksForIndustry(key: IndustryKey): CrossLink[] {
   const all = Object.keys(INDUSTRY_TOPICS) as IndustryKey[]
   const i = all.indexOf(key)
   const offset = i < 0 ? 0 : i
-  return [...blogLinks(topics, offset, 3), ...cityLinks(offset * 5, 3), ...serviceLinks(topics, 1)]
+  return [...blogLinks(topics, offset, 2), ...cityLinks(offset * 5, 2), ...serviceLinks(topics, 2)]
 }

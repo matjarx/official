@@ -388,3 +388,14 @@ textarea.input {
   .cross-link-card { transition: none; }
   .cross-link-card:hover { transform: none; }
 }
+.cross-link-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 620px) {
+  .cross-link-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 980px) {
+  .cross-link-grid { grid-template-columns: repeat(3, 1fr); }
+}

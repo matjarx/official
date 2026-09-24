@@ -61,16 +61,9 @@ export default function CrossLinkRail({
         {subtitle && <p style={{ margin: 0, fontSize: 13.5, color: muted }}>{subtitle}</p>}
       </div>
 
-      <ul
-        style={{
-          listStyle: 'none',
-          margin: 0,
-          padding: 0,
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 248px), 1fr))',
-          gap: 12,
-        }}
-      >
+      {/* Three across on desktop rather than auto-fit, which gave four
+          and left six cards as a row of four and a stray row of two. */}
+      <ul className="cross-link-grid" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
         {links.map((l) => (
           <li key={`${l.kind}-${l.href}`}>
             <Link
