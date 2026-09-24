@@ -36,8 +36,14 @@ function ThemeCard({ theme }: { theme: Theme }) {
           {theme.previewImageUrl && (
             <Image src={theme.previewImageUrl} alt={`${theme.name} template preview`} fill sizes="300px" style={{ objectFit: 'cover' }} />
           )}
-          {theme.comingSoon && <span className="theme-chip theme-chip-soon">Coming soon</span>}
-          {!theme.comingSoon && theme.demoUrl && <span className="theme-chip theme-chip-live">Live preview</span>}
+          {/* Independent, not either/or. Bakery & Café is flagged
+              coming_soon and has a finished, published demo behind it —
+              under the old `!comingSoon && demoUrl` rule that theme
+              advertised no preview while the page's own intro line
+              promised one. A theme can be both still in build and
+              already walkable. */}
+          {theme.demoUrl && <span className="theme-chip theme-chip-live">Live preview</span>}
+          {theme.comingSoon && <span className={`theme-chip theme-chip-soon${theme.demoUrl ? ' theme-chip-second' : ''}`}>Coming soon</span>}
         </span>
         <span className="theme-card-body">
           <span className="theme-card-name">{theme.name}</span>

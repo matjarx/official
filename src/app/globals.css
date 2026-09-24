@@ -705,3 +705,5 @@ textarea.input {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: 22px;
 }
+/* Second chip on the same card sits under the first. */
+.theme-chip-second { top: 38px; }

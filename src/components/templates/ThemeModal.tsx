@@ -13,6 +13,16 @@
 // The grid is ThemeGrid.tsx now: plain links, rendered on the server.
 // This reads the URL and draws the modal over the top.
 //
+// ── Why it is portalled to <body> ────────────────────────────────────
+// position: fixed resolves against the viewport only if no ancestor has
+// a transform, a filter or a backdrop-filter. This page has all three
+// somewhere up the tree -- AmbientOrbs and the .glass-card recipe -- so
+// the scrim was laid out inside a section instead of over the page:
+// inset:0 covered the section, 86vh was measured against it, and the
+// preview frame came out 219px tall under a site header the modal was
+// supposed to be covering. A portal to <body> sidesteps the whole class
+// of bug rather than hunting the specific ancestor.
+//
 // ── The URL is the state ─────────────────────────────────────────────
 // Opening a preview pushes `?<slug>-website-template` — a bare query key,
 // so the URL reads /templates?leather-goods-website-template. That means
@@ -39,12 +49,16 @@
 // short enough that nobody who wants it has to wait. The countdown is
 // shown, because a button that appears unannounced reads as a pop-up.
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { createPortal } from 'react-dom'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { appSignup } from '@/lib/routes'
 import { templateParam, type Theme } from '@/lib/theme-catalogue'
 
 const REVEAL_SECONDS = 5
+
+/** No external store to watch; this only distinguishes server from client. */
+const subscribeNever = () => () => {}
 
 /**
  * Counts down, then shows the button.
@@ -94,9 +108,18 @@ export default function ThemeModal({ themes }: { themes: Theme[] }) {
     }
   }, [open, close])
 
-  return (
-    <>
-      {open && (
+  // Portal target. `document` does not exist during the server render, so
+  // this has to wait for the client — useSyncExternalStore rather than a
+  // setState in an effect, which is the same thing with a cascading
+  // render attached. Nothing to subscribe to, so the subscribe callback
+  // is a no-op; the two snapshot functions are what matter.
+  const mounted = useSyncExternalStore(subscribeNever, () => true, () => false)
+
+  if (!open || !mounted) return null
+
+  return createPortal(
+    (
+      <>
         <div className="theme-modal-scrim" role="dialog" aria-modal="true" aria-label={`${open.name} template preview`} onClick={close}>
           <div className="theme-modal" onClick={(e) => e.stopPropagation()}>
             <div className="theme-modal-bar">
@@ -145,7 +168,8 @@ export default function ThemeModal({ themes }: { themes: Theme[] }) {
             </div>
           </div>
         </div>
-      )}
-    </>
+      </>
+    ),
+    document.body
   )
 }
