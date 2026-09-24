@@ -11,6 +11,7 @@ import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import SavingsCalculator from '@/components/SavingsCalculator'
+import CardRail from '@/components/CardRail'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import type { PricingContentShape } from '@/lib/marketing-content'
@@ -259,13 +260,19 @@ export default function PricingContent({ content }: { content: PricingContentSha
           Prices in PKR, billed to Pakistani businesses. Gulf clients are quoted in AED at the equivalent rate — <Link href={routes.contact} style={{ fontWeight: 600 }}>ask for a quote</Link>.
         </p>
 
-        <div style={{ marginTop: 22, padding: 'clamp(24px, 3vw, 32px)', borderRadius: 24, background: 'rgba(4,18,31,0.9)', border: '1px solid rgba(255,255,255,0.14)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 24, alignItems: 'center' }}>
+        {/* `repeat(auto-fit, minmax(280px, 1fr))` gave the copy half the
+            banner and the button the other half, which it filled to about
+            a third — so the button sat in the middle-left with a hole of
+            dead navy to its right. The copy takes whatever it needs and
+            the button is sized to its own content, hard right. See
+            .cta-banner in globals.css for the single-column fallback. */}
+        <div className="cta-banner" style={{ marginTop: 22, padding: 'clamp(24px, 3vw, 32px)', borderRadius: 24, background: 'rgba(4,18,31,0.9)', border: '1px solid rgba(255,255,255,0.14)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 0 }}>
             <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--butter)', fontWeight: 700 }}>Have unique needs?</span>
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: '#FFFFFF' }}>Build your own plan — talk to us about Custom</span>
             <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.68)' }}>200 pages, CRM integration, a specific API, or something none of these four cover — tell us what you need and we&apos;ll scope it, price it and build it.</span>
           </div>
-          <Link href={routes.plan('custom')} className="btn-primary" style={{ justifySelf: 'start' }}>Talk to us about Custom</Link>
+          <Link href={routes.plan('custom')} className="btn-primary">Talk to us about Custom</Link>
         </div>
       </section>
 
@@ -356,9 +363,13 @@ export default function PricingContent({ content }: { content: PricingContentSha
           <h2 style={{ margin: '0 0 40px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>
             Join 70,000+ business owners <span style={{ background: 'var(--moss-light)', padding: '0 9px', borderRadius: 3 }}>who love MatjarX</span>
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
+          {/* Seven reviews in an auto-fit grid came out as three, three and
+              a lone one, and the odd card at the end reads as a mistake.
+              A rail shows three at a time at any width and the seventh is
+              a swipe away rather than a stray row. */}
+          <CardRail className="testimonial-rail" label="What our clients say">
             {TESTIMONIALS.map((t) => (
-              <div key={t.name} className="glass-card" style={{ padding: '30px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 18 }}>
+              <li key={t.name} className="glass-card" style={{ padding: '30px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 18, listStyle: 'none' }}>
                 <span style={{ fontSize: 15, letterSpacing: '2.5px', color: '#C6A20E' }}>★★★★★</span>
                 <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: '#24384A' }}>&ldquo;{t.quote}&rdquo;</p>
                 <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -368,9 +379,9 @@ export default function PricingContent({ content }: { content: PricingContentSha
                     <span style={{ fontSize: 12.5, color: '#5A6F82' }}>{t.company}</span>
                   </div>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </CardRail>
           <div className="glass-card" style={{ margin: '34px auto 0', maxWidth: 560, padding: '22px 26px', borderRadius: 18, display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap', justifyContent: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="#00B67A" style={{ flex: '0 0 auto' }}><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" /></svg>

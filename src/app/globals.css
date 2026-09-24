@@ -726,3 +726,41 @@ textarea.input {
 }
 /* Second chip on the same card sits under the first. */
 .theme-chip-second { top: 38px; }
+
+/* The "copy on the left, one button on the right" banner.
+   It was a two-equal-column grid, so the button got half the width and
+   filled about a third of it, leaving a hole of dead colour to its
+   right. The copy takes what it needs; the button is sized to its own
+   content and sits hard right. One column below 720px, where side by
+   side stops working at all. */
+.cta-banner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+}
+.cta-banner > :last-child { justify-self: end; white-space: nowrap; }
+@media (max-width: 720px) {
+  .cta-banner { grid-template-columns: 1fr; gap: 20px; }
+  .cta-banner > :last-child { justify-self: start; white-space: normal; }
+}
+
+/* Testimonials rail (CardRail on /pricing). Three at a time on desktop,
+   one-and-a-bit on a phone. */
+.testimonial-rail {
+  list-style: none;
+  margin: 0;
+  padding: 2px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 2 * 20px) / 3);
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.testimonial-rail::-webkit-scrollbar { display: none; }
+.testimonial-rail > * { scroll-snap-align: start; min-width: 0; }
+@media (max-width: 980px) { .testimonial-rail { grid-auto-columns: calc((100% - 20px) / 2); } }
+@media (max-width: 640px) { .testimonial-rail { grid-auto-columns: 84%; } }

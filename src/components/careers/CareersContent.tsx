@@ -127,12 +127,13 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
 
           {/* Nothing fits CTA */}
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '66px 24px 74px' }}>
-            <div style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: '#04121F', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: 36, alignItems: 'center' }}>
+            {/* Same banner shape, same fix. See .cta-banner. */}
+            <div className="cta-banner" style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: '#04121F' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(23px, 3.6vw, 30px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Nothing fits, but you&rsquo;d be good here?</h2>
                 <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.65)' }}>Send us your work and tell us what you&rsquo;d want to do. We&rsquo;ve hired several people who wrote in before a role existed.</p>
               </div>
-              <a href="mailto:careers@matjarx.com" className="btn-primary" style={{ justifySelf: 'start' }}>careers@matjarx.com</a>
+              <a href="mailto:careers@matjarx.com" className="btn-primary">careers@matjarx.com</a>
             </div>
           </section>
 
