@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import HelpArticleContent from '@/components/help/HelpArticleContent'
-import { getMergedContent, getSeoOverride, pageTitle } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
 import type { HelpArticle } from '@/lib/help-articles-data'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/help/ecommerce-and-payments' },
     title: pageTitle(seo?.title || "E-Commerce & Payments - Accept Payments Online & Gateways"),
-    description: seo?.description || "Learn to accept payments on your MatjarX website. Payment gateway setup, JazzCash integration, and online transaction processing.",
+    description: pageDescription(seo?.description || "Learn to accept payments on your MatjarX website. Payment gateway setup, JazzCash integration, and online transaction processing."),
   }
 }
 

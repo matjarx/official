@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import LocationContent, { type LocationContentShape } from '@/components/locations/LocationContent'
-import { getMergedContent, getSeoOverride, pageTitle } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
 import { CITY_DATA } from '@/lib/location-data'
 
 const city = CITY_DATA['larkana']
@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/website-design-larkana' },
     title: pageTitle(seo?.title || city.metaTitle),
-    description: seo?.description || city.metaDesc,
+    description: pageDescription(seo?.description || city.metaDesc),
   }
 }
 

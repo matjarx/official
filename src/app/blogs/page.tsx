@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import BlogContent from '@/components/blog/BlogContent'
-import { getSeoOverride, getBlogPosts, pageTitle, toCard } from '@/lib/marketing-content'
+import { getSeoOverride, getBlogPosts, pageTitle, toCard, pageDescription } from '@/lib/marketing-content'
 
 // Re-checks marketing_blog_posts at most once a minute — a new/edited post
 // shows up without a redeploy.
@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/blogs' },
     title: pageTitle(seo?.title || 'Blog'),
-    description: seo?.description || 'Practical guides for Pakistani and Gulf business owners — getting started, SEO, e-commerce, payments, marketing and client stories.',
+    description: pageDescription(seo?.description || 'Practical guides for Pakistani and Gulf business owners — getting started, SEO, e-commerce, payments, marketing and client stories.'),
   }
 }
 

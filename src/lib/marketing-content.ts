@@ -217,9 +217,39 @@ export async function getSeoOverride(slug: string): Promise<SeoOverride | null> 
 // the brand for pages that never mention it themselves — the
 // unbranded hardcoded default case) otherwise. Branded exactly once,
 // regardless of which of the two ways the title got written.
+/**
+ * Trim a meta description to something Google will actually show.
+ *
+ * Three pages were over: /legal/terms at 443 characters (it was using
+ * the document's whole intro paragraph), /alternatives at 173 and the
+ * website audit at 169. Cut on a word boundary and end with an ellipsis
+ * rather than mid-word.
+ */
+export function pageDescription(raw: string | undefined | null, limit = 158): string | undefined {
+  if (!raw) return undefined
+  const text = raw.replace(/\s+/g, ' ').trim()
+  if (text.length <= limit) return text
+  const cut = text.slice(0, limit)
+  const lastSpace = cut.lastIndexOf(' ')
+  return (lastSpace > limit * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[,;:.\u2014-]+$/, '') + '\u2026'
+}
+
+/** Google truncates a title at roughly 600px, which is about 60 characters. */
+const TITLE_BUDGET = 60
+
 export function pageTitle(raw: string | undefined | null): import('next').Metadata['title'] {
   if (!raw) return undefined // no override and no hardcoded default — let the parent's own default show
-  return /matjarx/i.test(raw) ? { absolute: raw } : raw
+  if (/matjarx/i.test(raw)) return { absolute: raw }
+  // The root layout's template appends " | MatjarX", ten characters that
+  // are worth having on a short title and not worth losing the end of a
+  // sentence for. Twelve blog posts were running to 69–82 characters,
+  // where Google truncates at roughly 60 and then writes its own title
+  // from the page instead. Over budget, the brand suffix is dropped.
+  //
+  // This is a backstop, not the fix. A post whose own title is 70
+  // characters is still too long, and the admin's per-page SEO title is
+  // where that gets solved properly.
+  return raw.length + ' | MatjarX'.length > TITLE_BUDGET ? { absolute: raw } : raw
 }
 
 // Site-wide settings — GA4/Meta Pixel IDs, social links, contact email,

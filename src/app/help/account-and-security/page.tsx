@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import HelpArticleContent from '@/components/help/HelpArticleContent'
-import { getMergedContent, getSeoOverride, pageTitle } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
 import type { HelpArticle } from '@/lib/help-articles-data'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/help/account-and-security' },
     title: pageTitle(seo?.title || "Account & Security - Password Reset, Login Help & 2FA"),
-    description: seo?.description || "Manage your MatjarX account securely. Password reset, login help, account settings, and two-factor authentication guide.",
+    description: pageDescription(seo?.description || "Manage your MatjarX account securely. Password reset, login help, account settings, and two-factor authentication guide."),
   }
 }
 

@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import ComparisonContent, { type ComparisonContentShape } from '@/components/comparisons/ComparisonContent'
-import { getMergedContent, getSeoOverride, pageTitle } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('comparisons/squarespace')
   return {
     alternates: { canonical: '/alternatives/matjarx-vs-squarespace' },
     title: pageTitle(seo?.title || 'MatjarX vs Squarespace'),
-    description: seo?.description || 'An honest comparison of MatjarX and Squarespace — local payments, PKR pricing, and when Squarespace is genuinely the better pick.',
+    description: pageDescription(seo?.description || 'An honest comparison of MatjarX and Squarespace — local payments, PKR pricing, and when Squarespace is genuinely the better pick.'),
   }
 }
 

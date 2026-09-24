@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import BlogPostContent from '@/components/blog/BlogPostContent'
 import { BLOG_POSTS, AUTHOR } from '@/lib/blog-data'
 import { routes } from '@/lib/routes'
-import { getBlogPost, getBlogPosts, toCard } from '@/lib/marketing-content'
+import { getBlogPost, getBlogPosts, toCard, pageTitle } from '@/lib/marketing-content'
 
 // Re-checks marketing_blog_posts at most once a minute rather than only at
 // build time — otherwise a new/edited post would need a full redeploy to
@@ -23,7 +23,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await getBlogPost(slug)
   if (!post) return {}
   return {
-    title: post.title,
+    // Through pageTitle, not raw: the root layout's template appends
+    // " | MatjarX", and a 59-character post title plus that is 69 — past
+    // the ~60 Google will show, after which it writes its own title from
+    // the page instead. pageTitle drops the suffix when the sum is over
+    // budget.
+    title: pageTitle(post.title),
     description: post.excerpt,
     alternates: { canonical: routes.blogPost(post.slug) },
     openGraph: { type: 'article', title: post.title, description: post.excerpt, publishedTime: post.date },

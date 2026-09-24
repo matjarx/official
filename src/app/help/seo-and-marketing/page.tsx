@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import HelpArticleContent from '@/components/help/HelpArticleContent'
-import { getMergedContent, getSeoOverride, pageTitle } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
 import type { HelpArticle } from '@/lib/help-articles-data'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/help/seo-and-marketing' },
     title: pageTitle(seo?.title || "SEO & Marketing Help - Improve Google Rankings & Traffic"),
-    description: seo?.description || "Complete guide to improving your Google rankings and attracting customers. Local SEO, content strategy, marketing tips for MatjarX websites.",
+    description: pageDescription(seo?.description || "Complete guide to improving your Google rankings and attracting customers. Local SEO, content strategy, marketing tips for MatjarX websites."),
   }
 }
 

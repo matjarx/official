@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import TemplatesContent, { type TemplatesContentShape } from '@/components/templates/TemplatesContent'
 import { META } from '@/lib/templates-data'
-import { getMergedContent, getSeoOverride, pageTitle } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
 import { getThemes, groupByIndustry } from '@/lib/theme-catalogue'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/templates' },
     title: pageTitle(seo?.title || META.title),
-    description: seo?.description || META.description,
+    description: pageDescription(seo?.description || META.description),
   }
 }
 
