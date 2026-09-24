@@ -6,13 +6,16 @@
 // rather than fabricated thumbnails. TEMPLATE_PREVIEWS below are real
 // preview renders (from matjarx.com's own media library) for 6 niches.
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appLogin } from '@/lib/routes'
+import ThemeGrid from './ThemeGrid'
+import ThemeModal from './ThemeModal'
+import type { IndustryGroup, Theme } from '@/lib/theme-catalogue'
 import {
   HERO, WHY_TEMPLATES, TEMPLATE_FEATURES, CATEGORIES, SELECTION_PROCESS,
   CUSTOMIZATION, POPULAR, TEMPLATE_UPDATES, MIGRATION, TEMPLATE_FAQS, RELATED,
@@ -45,13 +48,21 @@ function IconCardGrid({ items, cols = 4 }: { items: IconCard[]; cols?: number })
 export type TemplatesContentShape = { hero: typeof HERO; why: typeof WHY_TEMPLATES; features: typeof TEMPLATE_FEATURES; categories: typeof CATEGORIES; faqs: typeof TEMPLATE_FAQS; previews: typeof TEMPLATE_PREVIEWS }
 const DEFAULT_CONTENT: TemplatesContentShape = { hero: HERO, why: WHY_TEMPLATES, features: TEMPLATE_FEATURES, categories: CATEGORIES, faqs: TEMPLATE_FAQS, previews: TEMPLATE_PREVIEWS }
 
-export default function TemplatesContent({ content = DEFAULT_CONTENT }: { content?: TemplatesContentShape }) {
+export default function TemplatesContent({
+  content = DEFAULT_CONTENT,
+  themes = [],
+  groups = [],
+}: {
+  content?: TemplatesContentShape
+  /** Live rows from the platform's `themes` table. Empty if it is unreachable. */
+  themes?: Theme[]
+  groups?: IndustryGroup[]
+}) {
   const [openFaq, setOpenFaq] = useState(0)
-  const [openCat, setOpenCat] = useState(0)
+  const hasLiveDemo = themes.some((t) => !!t.demoUrl)
   const HERO_ACTIVE = content.hero
   const WHY_TEMPLATES_ACTIVE = content.why
   const TEMPLATE_FEATURES_ACTIVE = content.features
-  const CATEGORIES_ACTIVE = content.categories
   const TEMPLATE_FAQS_ACTIVE = content.faqs
   const TEMPLATE_PREVIEWS_ACTIVE = content.previews
 
@@ -103,46 +114,41 @@ export default function TemplatesContent({ content = DEFAULT_CONTENT }: { conten
             <IconCardGrid items={TEMPLATE_FEATURES_ACTIVE} cols={5} />
           </section>
 
-          {/* Categories */}
-          <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
-            <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Browse by type</span>
-            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Template categories</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {CATEGORIES_ACTIVE.map((c, i) => {
-                const open = openCat === i
-                return (
-                  <div key={c.n} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-                    <button type="button" onClick={() => setOpenCat(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '16px 20px' }}>
-                      <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: 10, background: c.tint, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: '#FFFFFF' }}>{c.n}</span>
-                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#04121F', marginRight: 'auto' }}>{c.name}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                    </button>
-                    {open && (
-                      <div style={{ padding: '4px 20px 22px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 18 }}>
-                        <div>
-                          <span style={{ display: 'block', marginBottom: 8, fontSize: 11.5, letterSpacing: 1, textTransform: 'uppercase', color: '#8A9AA6', fontWeight: 600 }}>Perfect for</span>
-                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                            {c.perfectFor.map((p) => <span key={p} style={{ padding: '5px 10px', borderRadius: 999, fontSize: 12, color: '#04121F', background: 'rgba(4,18,31,0.06)' }}>{p}</span>)}
-                          </div>
-                        </div>
-                        <div>
-                          <span style={{ display: 'block', marginBottom: 8, fontSize: 11.5, letterSpacing: 1, textTransform: 'uppercase', color: '#8A9AA6', fontWeight: 600 }}>Template features</span>
-                          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>
-                            {c.features.map((f) => <li key={f} style={{ fontSize: 13, color: '#4B5D6E' }}>{f}</li>)}
-                          </ul>
-                        </div>
-                        <div>
-                          <span style={{ display: 'block', marginBottom: 8, fontSize: 11.5, letterSpacing: 1, textTransform: 'uppercase', color: '#8A9AA6', fontWeight: 600 }}>Includes</span>
-                          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>
-                            {c.includes.map((f) => <li key={f} style={{ fontSize: 13, color: '#4B5D6E' }}>{f}</li>)}
-                          </ul>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
+          {/* Templates by industry — the real themes, from the
+              platform's own table. This was twelve "template categories"
+              (Small Business, Service Business, Blog, Corporate) written
+              before any theme existed: none of them corresponded to
+              anything a visitor could be shown or a client could pick,
+              and the accordion made you open each one to find that out.
+              The themes are real, they carry their own industries and
+              demo sites, and this list cannot go stale. */}
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }} id="browse">
+            <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Browse by industry</span>
+            <h2 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Templates, by the trade they were built for</h2>
+            {/* Conditional, because it is a claim. The preview frames the
+                real demo site — but only two themes are finished and none
+                of the six demo sites has any content in it yet, so today
+                every card opens to its details. Saying "scroll the real
+                site" over a page that cannot yet do that is the kind of
+                copy that makes the rest of the page less believable. */}
+            <p style={{ margin: '0 0 28px', maxWidth: '44em', fontSize: 15.5, lineHeight: 1.62, color: '#435A70' }}>
+              {hasLiveDemo
+                ? 'Open any one of them and you get the real demo site in the window, not a screenshot. Scroll it, click it, drag the corner to a phone width.'
+                : 'Open any one to see what it is built for and what it includes. Live previews are being fitted out now — ask us and we will walk you through one.'}
+            </p>
+            {groups.length > 0 ? (
+              <>
+                {/* Grid on the server; only the modal reads the URL. */}
+                <ThemeGrid groups={groups} />
+                <Suspense fallback={null}>
+                  <ThemeModal themes={themes} />
+                </Suspense>
+              </>
+            ) : (
+              <p style={{ margin: 0, fontSize: 15, color: '#5A6F82' }}>
+                The template list is loading from your dashboard. <Link href={appLogin} style={{ color: 'var(--olive)', fontWeight: 700 }}>Sign in</Link> to browse them all.
+              </p>
+            )}
           </section>
 
           {/* Selection process */}

@@ -526,3 +526,150 @@ textarea.input {
   .industry-card, .industry-rail-arrow { transition: none; }
   .industry-card:hover { transform: none; }
 }
+
+/* ── /templates: industry listing + theme preview modal ─────────────── */
+.theme-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 254px), 1fr));
+  gap: 16px;
+}
+.theme-card-wrap { min-width: 0; }
+.theme-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  text-align: left;
+  border: 1px solid rgba(4, 18, 31, 0.09);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+.theme-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 51, 102, 0.28);
+  box-shadow: 0 14px 30px rgba(4, 18, 31, 0.11);
+}
+.theme-card-band { position: relative; display: block; height: 128px; flex: 0 0 auto; }
+.theme-chip {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.theme-chip-soon { background: rgba(4, 18, 31, 0.68); color: #fff; }
+.theme-chip-live { background: var(--butter); color: #3d3a08; }
+.theme-card-body { display: flex; flex-direction: column; gap: 7px; flex: 1 1 auto; padding: 14px 16px 16px; }
+.theme-card-name { font-family: var(--font-lato), Lato, sans-serif; font-weight: 800; font-size: 16px; color: #04121F; }
+.theme-card-desc {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #5A6F82;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.theme-card-cta { margin-top: auto; padding-top: 8px; font-size: 12.5px; font-weight: 700; color: var(--olive); }
+
+.theme-modal-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(4, 18, 31, 0.62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.theme-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(1180px, 100%);
+  height: min(86vh, 860px);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 40px 90px rgba(4, 18, 31, 0.45);
+}
+.theme-modal-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  padding: 12px 14px;
+  background: #0B1B27;
+}
+.theme-modal-title { font-family: var(--font-lato), Lato, sans-serif; font-weight: 800; font-size: 14.5px; color: #fff; }
+.theme-modal-url {
+  margin: 0 auto;
+  padding: 4px 13px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  color: rgba(226, 236, 245, 0.6);
+  background: rgba(255, 255, 255, 0.07);
+}
+.theme-modal-close {
+  flex: 0 0 auto;
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border: none; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+}
+.theme-modal-stage { flex: 1 1 auto; min-height: 0; background: #F2EEE2; }
+.theme-modal-frame { width: 100%; height: 100%; border: 0; display: block; }
+.theme-modal-empty {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 14px; padding: 32px; text-align: center;
+  background: linear-gradient(150deg, #003366, #0A2647);
+}
+.theme-modal-foot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+  padding: 14px 18px;
+  border-top: 1px solid rgba(4, 18, 31, 0.09);
+  background: #fff;
+}
+.theme-modal-wait {
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-family: var(--font-lato), Lato, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #5A6F82;
+  background: rgba(4, 18, 31, 0.06);
+}
+.theme-modal-get { animation: theme-get-in 260ms ease both; }
+@keyframes theme-get-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@media (max-width: 640px) {
+  .theme-modal { height: 92vh; }
+  .theme-modal-url { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-card { transition: none; }
+  .theme-card:hover { transform: none; }
+  .theme-modal-get { animation: none; }
+}
