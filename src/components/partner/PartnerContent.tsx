@@ -12,6 +12,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSection from '@/components/FaqSection'
+import { PARTNER_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { supabase } from '@/lib/supabase'
@@ -249,6 +251,10 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
               <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#5A6F82' }}>By applying you agree to our <Link href={routes.legal('terms')} style={{ fontWeight: 600 }}>partner terms</Link> and <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
             </form>
           </section>
+
+          <FaqSection faqs={PARTNER_FAQS} intro="How the partnership works, what it pays and what it asks of you." />
+
+          <div style={{ height: 66 }} />
 
           <SiteFooter />
         </div>

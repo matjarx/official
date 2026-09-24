@@ -10,6 +10,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSection from '@/components/FaqSection'
+import { BLOG_INDEX_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import NewsletterSignup from './NewsletterSignup'
 import { routes } from '@/lib/routes'
@@ -122,6 +124,8 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
           </section>
 
           <div style={{ height: 60 }} />
+          <FaqSection faqs={BLOG_INDEX_FAQS} intro="About these guides and the people who write them." />
+          <div style={{ height: 66 }} />
           <SiteFooter />
         </div>
       </div>

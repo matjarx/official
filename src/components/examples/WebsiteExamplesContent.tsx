@@ -10,6 +10,8 @@
 import { useRef, useState } from 'react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSection from '@/components/FaqSection'
+import { EXAMPLES_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import PortfolioShowcase from './PortfolioShowcase'
 import { EXAMPLES, EXAMPLE_CATEGORIES, EXAMPLE_PILLARS } from '@/lib/examples-data'
@@ -116,6 +118,8 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         </section>
 
         <div style={{ height: 70 }} />
+        <FaqSection faqs={EXAMPLES_FAQS} intro="What you are looking at, and what it would take to get one." />
+        <div style={{ height: 66 }} />
         <SiteFooter />
       </div>
     </div>

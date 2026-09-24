@@ -12,6 +12,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import InstagramEmbed from './InstagramEmbed'
 import { routes } from '@/lib/routes'
@@ -182,6 +183,8 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           </section>
 
           <div style={{ height: 74 }} />
+          {/* The questions were on the page and nowhere in the structured data. */}
+          <FaqSchema faqs={fromPairs(VIDEO_FAQS_ACTIVE)} />
           <SiteFooter />
         </div>
       </div>

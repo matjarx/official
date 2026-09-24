@@ -13,6 +13,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { supabase } from '@/lib/supabase'
@@ -355,6 +356,8 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           </section>
 
           <div style={{ height: 74 }} />
+          {/* The questions were on the page and nowhere in the structured data. */}
+          <FaqSchema faqs={fromPairs(AUDIT_FAQS_ACTIVE)} />
           <SiteFooter />
         </div>
       </div>

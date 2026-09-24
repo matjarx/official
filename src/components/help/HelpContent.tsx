@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appLogin } from '@/lib/routes'
 import { HELP_TOPICS, HELP_POPULAR, HELP_CHANNELS, HELP_SUBJECTS, HELP_CONTACT_ROWS, HELP_FAQS, HELP_VIDEOS, HELP_BY_PLAN, HELP_TROUBLESHOOTING, HELP_KNOWLEDGE_BASE, HELP_BEST_PRACTICES, HELP_QUICK_LINKS } from '@/lib/help-data'
@@ -336,6 +337,8 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         </section>
 
         <div style={{ height: 70 }} />
+        {/* The questions were on the page and nowhere in the structured data. */}
+        <FaqSchema faqs={fromPairs(HELP_FAQS_ACTIVE)} />
         <SiteFooter />
       </div>
     </div>

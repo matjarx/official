@@ -8,6 +8,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSection from '@/components/FaqSection'
+import { comparisonFaqs } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { RIVAL_DATA, otherComparisonsFor, type RivalKey } from '@/lib/comparison-data'
@@ -213,6 +215,17 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
             ))}
           </div>
         </section>
+
+        {/* Every comparison page had a table, a verdict and no answer to
+            the five questions somebody actually types before switching.
+            Templated, but filled with this rival's own price and
+            positioning, so the answers differ where the data does. */}
+        <FaqSection
+          faqs={comparisonFaqs(d.name, d.price, d.mode)}
+          title={`MatjarX vs ${d.name}`}
+          titleMark="questions"
+          intro={`The things people ask before moving off ${d.name}.`}
+        />
 
         <div style={{ height: 70 }} />
         <SiteFooter />

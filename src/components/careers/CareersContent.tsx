@@ -8,6 +8,8 @@
 import { useMemo, useState } from 'react'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSection from '@/components/FaqSection'
+import { CAREERS_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { CAREERS_PERKS, CAREERS_ROLES, CAREERS_CATEGORIES } from '@/lib/careers-data'
 
@@ -136,6 +138,10 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
               <a href="mailto:careers@matjarx.com" className="btn-primary">careers@matjarx.com</a>
             </div>
           </section>
+
+          <FaqSection faqs={CAREERS_FAQS} intro="How hiring works here, including the parts most companies leave vague." />
+
+          <div style={{ height: 66 }} />
 
           <SiteFooter />
         </div>

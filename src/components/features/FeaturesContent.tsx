@@ -9,6 +9,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
@@ -198,6 +199,8 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         </section>
 
         <div style={{ height: 70 }} />
+        {/* The questions were on the page and nowhere in the structured data. */}
+        <FaqSchema faqs={fromPairs(FEATURES_FAQ_ACTIVE)} />
         <SiteFooter />
       </div>
     </div>

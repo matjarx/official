@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS, CONTACT_FAQS, CONTACT_SUPPORT_CATEGORIES, CONTACT_SUMMARY_TABLE, CONTACT_PREP_CHECKLIST, CONTACT_PREFERRED_CHANNEL, CONTACT_COMMITMENT } from '@/lib/contact-data'
@@ -293,6 +294,8 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           </section>
 
           <div style={{ height: 74 }} />
+          {/* The questions were on the page and nowhere in the structured data. */}
+          <FaqSchema faqs={fromPairs(CONTACT_FAQS_ACTIVE)} />
           <SiteFooter />
         </div>
       </div>

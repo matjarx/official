@@ -14,6 +14,7 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSchema from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import IndustryRail from '@/components/home/IndustryRail'
 import EditorShowcase from '@/components/EditorShowcase'
@@ -606,6 +607,10 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           </div>
         </section>
         </main>
+
+        {/* The questions were on the page and nowhere in the structured data. */}
+
+        <FaqSchema faqs={FAQ_DATA} />
 
         <SiteFooter />
       </div>

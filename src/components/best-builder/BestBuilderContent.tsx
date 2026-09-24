@@ -12,6 +12,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { HERO_STATS, COL_HEADS, MATRIX, PLATFORM_PROFILES, WIN_REASONS, CHOOSE_GUIDE, REASONS, DIY_CASES, VS_LINKS, BEST_BUILDER_FAQS } from '@/lib/best-builder-data'
@@ -291,6 +292,8 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         </section>
 
         <div style={{ height: 70 }} />
+        {/* The questions were on the page and nowhere in the structured data. */}
+        <FaqSchema faqs={fromPairs(BEST_BUILDER_FAQS_ACTIVE)} />
         <SiteFooter />
       </div>
     </div>

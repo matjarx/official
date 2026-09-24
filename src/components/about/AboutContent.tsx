@@ -10,6 +10,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { ABOUT_STATS, ABOUT_VALUES, ABOUT_TEAM, ABOUT_FAQS } from '@/lib/about-data'
@@ -156,6 +157,10 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
               </div>
             </div>
           </section>
+
+          {/* The questions were on the page and nowhere in the structured data. */}
+
+          <FaqSchema faqs={fromPairs(ABOUT_FAQS_ACTIVE)} />
 
           <SiteFooter />
         </div>

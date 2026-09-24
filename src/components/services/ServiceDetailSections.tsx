@@ -7,6 +7,7 @@
 // ServicesContent's existing sections, per the active tab.
 
 import { useState } from 'react'
+import FaqSchema from '@/components/FaqSchema'
 import type { ServiceKey } from '@/lib/services-data'
 import { DFY, SEO, CONCIERGE, GROWTH, type ServiceDetail, type Testimonial } from '@/lib/service-detail-data'
 import type { Block } from '@/lib/plan-detail-data'
@@ -291,6 +292,8 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
 
       {/* FAQ */}
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
+        {/* Rendered since launch, never declared. */}
+        <FaqSchema faqs={d.faqs.items.map((f) => ({ question: f.q, answer: f.a }))} />
         <h2 style={{ ...H2, textAlign: 'center' }}>{d.faqs.title}</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {d.faqs.items.map((f, i) => {

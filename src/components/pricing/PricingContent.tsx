@@ -10,6 +10,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSchema from '@/components/FaqSchema'
 import SavingsCalculator from '@/components/SavingsCalculator'
 import CardRail from '@/components/CardRail'
 import { routes, appSignup } from '@/lib/routes'
@@ -423,6 +424,10 @@ export default function PricingContent({ content }: { content: PricingContentSha
           </div>
         </div>
       </section>
+
+      {/* The questions were on the page and nowhere in the structured data. */}
+
+      <FaqSchema faqs={FAQ_DATA} />
 
       <SiteFooter />
     </div>

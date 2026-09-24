@@ -7,6 +7,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import FaqSection from '@/components/FaqSection'
+import { ALTERNATIVES_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { HERO, GROUPS, WHY_COMPARE, CANT_FIND, CLOSING } from '@/lib/alternatives-data'
@@ -95,6 +97,8 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
           </section>
 
           <div style={{ height: 74 }} />
+          <FaqSection faqs={ALTERNATIVES_FAQS} intro="Choosing between us and someone else. The awkward questions first." />
+          <div style={{ height: 66 }} />
           <SiteFooter />
         </div>
       </div>
