@@ -125,7 +125,7 @@ const WHY_CHOOSE = [
 
 export const DEFAULT_FAQ_DATA = [
   { question: 'How does it actually work?', answer: 'Pick a plan and check out. You fill in a short questionnaire about your business, our team builds the whole site in seven days, then we launch it with you on a live call and show you how to edit it yourself.' },
-  { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional site, domain, email and hosting. Boost is our most popular — it adds unlimited edits done by us, advanced SEO and selling on Google, Facebook and Instagram. Growth adds a dedicated team and monthly marketing sessions. Platinum is a fully custom build for serious e-commerce.' },
+  { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional site, domain, email and hosting. Boost adds unlimited edits done by us, advanced SEO and selling on Google, Facebook and Instagram. Growth is the one most businesses settle on — it adds a dedicated team, monthly 1-on-1 marketing sessions and fresh content written for you every month. Platinum is a fully custom build for serious e-commerce.' },
   { question: 'Can I edit the website myself afterwards?', answer: "Yes. Every site comes with our own editor — change photos, text, prices and products from any device, no technical skill needed. If you'd rather not, send the change to your concierge and we'll do it." },
   { question: 'Are hosting, domain and email included?', answer: 'Yes, in every plan: a custom domain (or connect one you already own), matching business email, fast secure hosting and an SSL certificate. There are no separate charges for these.' },
   { question: "What if I don't like the website?", answer: "You get 30 days of unlimited edits after launch so we can get it right — tell your concierge what's wrong and we'll change it. The setup fee itself isn't refundable once work has started, but there's no long-term contract: cancel your plan at any time with 30 days' notice." },
@@ -137,6 +137,18 @@ const LIGHT_PLAN_THEME = {
   ink: '#04121F', muted: '#5A6F82', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
   tick: '#707538', ctaInk: '#04121F', ctaBg: '#FCFAF3', ctaBorder: 'rgba(4,18,31,0.16)',
 }
+// Platinum is the top tier and now the second highlighted card, so it
+// needs a treatment that reads as premium WITHOUT competing with
+// Growth's badge — two dark cards side by side just look like a bug.
+// Light, like Launch, but ringed and lifted in butter.
+const PREMIUM_PLAN_THEME = {
+  bg: 'linear-gradient(165deg, rgba(255,255,255,0.86), rgba(252,250,243,0.72))',
+  border: 'var(--butter-deep)',
+  shadow: '0 18px 46px rgba(201,162,39,0.18), inset 0 1px 0 rgba(255,255,255,0.95)',
+  blur: 'blur(22px)',
+  ink: '#04121F', muted: '#5A6F82', body: '#3B5063', rule: 'rgba(138,122,18,0.22)',
+  tick: '#8A7A12', ctaInk: '#3D3A08', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter-deep)',
+}
 const DARK_PLAN_THEME = {
   bg: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: 'rgba(255,255,255,0.16)', shadow: '0 30px 66px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)', blur: 'blur(26px)',
   ink: '#FFFFFF', muted: 'rgba(255,255,255,0.62)', body: 'rgba(255,255,255,0.8)', rule: 'rgba(255,255,255,0.16)',
@@ -145,11 +157,11 @@ const DARK_PLAN_THEME = {
 const PLAN_ROWS = [
   { name: 'Launch', pitch: 'We build and launch your website.', price: 'Rs. 4,500', setup: 'Rs. 22,500', cta: 'Choose Launch', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('launch'),
     features: ['Multi-page site, written for you', 'Domain + 1 business email', 'Google Business Profile set up', 'Live chat support'] },
-  { name: 'Boost', pitch: 'We manage your online presence.', price: 'Rs. 15,600', setup: 'Rs. 22,500', cta: 'Choose Boost', theme: DARK_PLAN_THEME, tag: 'Most popular', href: appSignup('boost'),
+  { name: 'Boost', pitch: 'We manage your online presence.', price: 'Rs. 15,600', setup: 'Rs. 22,500', cta: 'Choose Boost', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('boost'),
     features: ['Everything in Launch', '4 business emails', 'Unlimited edits, done by us', 'Advanced SEO + custom logo', 'Sell on Google, Facebook, Instagram'] },
-  { name: 'Growth', pitch: 'We grow your business online.', price: 'Rs. 27,000', setup: 'Rs. 22,500', cta: 'Choose Growth', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('growth'),
+  { name: 'Growth', pitch: 'We grow your business online.', price: 'Rs. 27,000', setup: 'Rs. 22,500', cta: 'Choose Growth', theme: DARK_PLAN_THEME, tag: 'Most popular', href: appSignup('growth'),
     features: ['Everything in Boost', 'Dedicated growth team', 'Monthly 1-on-1 marketing session', '2,000 words of fresh content monthly'] },
-  { name: 'Platinum', pitch: 'We scale your e-commerce business.', price: 'Rs. 55,000', setup: 'Rs. 140,000', cta: 'Talk to us', theme: LIGHT_PLAN_THEME, tag: 'Custom', href: appSignup('platinum'),
+  { name: 'Platinum', pitch: 'We scale your e-commerce business.', price: 'Rs. 55,000', setup: 'Rs. 140,000', cta: 'Talk to us', theme: PREMIUM_PLAN_THEME, tag: '', href: appSignup('platinum'),
     features: ['Everything in Growth', 'Custom design in our own tool', 'Full webstore, unlimited products', 'Subscriptions & digital products', 'Multi-seat bookings'] },
 ]
 

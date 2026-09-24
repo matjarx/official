@@ -152,8 +152,8 @@ export const LAUNCH: StandardPlanDetail = {
 
 export const BOOST: StandardPlanDetail = {
   quickOverview: {
-    title: 'Most Popular Plan for Growing Businesses',
-    intro: 'The Boost Plan is designed for established businesses that want serious online visibility and customer growth.',
+    title: 'For Businesses That Want Their Site Looked After',
+    intro: 'The Boost Plan is designed for established businesses that want serious online visibility and customer growth, without having to maintain the website themselves.',
     ticks: ['30-page professional website', 'Monthly blog posts for SEO', 'Complete SEO optimization', 'VIP phone support', 'Unlimited edits (first 30 days)', 'Hosting and domain included'],
     setupFee: 'PKR 22,500', monthlyFee: 'PKR 15,600', totalFirstMonth: 'PKR 38,100',
   },
@@ -270,13 +270,13 @@ export const BOOST: StandardPlanDetail = {
   ],
   closing: { eyebrow: 'Ready to Boost?', title: 'Start Growing Your Online Visibility', priceLines: ['Setup: PKR 22,500 (one-time)', 'Monthly: PKR 15,600', '1 blog post included each month'], cta: 'Start Your Boost Plan',
     steps: ['Click "Get Started"', 'Tell us about your business', 'We build your 30-page website + blog strategy', 'You start ranking and getting customers'], scheduleCta: 'Schedule a Phone Consultation' },
-  bottomLine: { title: 'The Most Popular Plan for a Reason', body: ['30-page website. Monthly blog content. SEO optimization. VIP phone support.', 'Everything you need to dominate Google and grow your business.'], cta: 'Start Boosting Today' },
+  bottomLine: { title: 'Online, Ranking, And Off Your Desk', body: ['30-page website. Monthly blog content. SEO optimization. VIP phone support.', 'Everything you need to dominate Google and grow your business.'], cta: 'Start Boosting Today' },
 }
 
 export const GROWTH: StandardPlanDetail = {
   quickOverview: {
-    title: 'The Plan for Ambitious Businesses',
-    intro: 'The Growth Plan is built for businesses that want to scale fast and need expert marketing guidance.',
+    title: 'Our Most Popular Plan for Ambitious Businesses',
+    intro: 'The Growth Plan is built for businesses that want to scale fast and need expert marketing guidance — and it is the plan most of our clients settle on.',
     ticks: ['50-page professional website', 'Dedicated marketing expert (just for you)', '3 blog posts per month', 'Monthly 1-on-1 growth strategy calls', 'VIP phone support', 'Complete SEO and marketing services'],
     setupFee: 'PKR 22,500', monthlyFee: 'PKR 27,000', totalFirstMonth: 'PKR 49,500',
   },

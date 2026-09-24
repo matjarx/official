@@ -84,7 +84,7 @@ export const PLAN_DATA: Record<PlanKey, {
     ],
   },
   boost: {
-    tag: 'Most popular', tagBg: 'var(--butter)', tagLine: 'var(--butter-deep)', tagInk: '#3D3A08', tagDot: 'var(--olive)',
+    tag: 'Hands off, once it is live', tagBg: 'rgba(198,203,138,0.4)', tagLine: 'rgba(198,203,138,0.7)', tagInk: '#3D4A16', tagDot: 'var(--olive)',
     headline: 'More Pages, More SEO, More Growth',
     subhead: 'Everything in Launch, plus unlimited edits done by our team, advanced SEO to rank on Google, and your products promoted across Google, Facebook and Instagram.',
     ctaLabel: 'Choose Boost',
@@ -111,11 +111,11 @@ export const PLAN_DATA: Record<PlanKey, {
       ['What counts as an edit?', "Anything on your site: text, photos, prices, a new section, a seasonal banner, a new product range. There's no monthly cap and no per-change fee."],
       ['How fast are edits done?', 'Your concierge replies within four working hours and most changes are live the same day. Larger requests get a stated timeline up front.'],
       ['Is the SEO work ongoing?', "Yes. On-page optimisation, technical fixes, Maps and review management continue every month — it isn't a one-off setup."],
-      ['Why is Boost the most popular plan?', "Because most small businesses don't want to maintain a website. Launch gets you online; Boost means you never think about it again."],
+      ['What does Boost add over Launch?', "Launch gets you online. Boost means you never think about the site again — we make the edits, we do the SEO, and your products go out across Google, Facebook and Instagram."],
     ],
   },
   growth: {
-    tag: 'For businesses scaling up', tagBg: 'rgba(198,203,138,0.4)', tagLine: 'rgba(198,203,138,0.7)', tagInk: '#3D4A16', tagDot: 'var(--olive)',
+    tag: 'Most popular', tagBg: 'var(--butter)', tagLine: 'var(--butter-deep)', tagInk: '#3D3A08', tagDot: 'var(--olive)',
     headline: 'A Marketing Team, Not Just A Website',
     subhead: 'Everything in Boost, plus a dedicated growth team, a marketing plan built for your business, monthly 1-on-1 sessions and 2,000 words of fresh content every month.',
     ctaLabel: 'Choose Growth',
@@ -146,7 +146,7 @@ export const PLAN_DATA: Record<PlanKey, {
     ],
   },
   platinum: {
-    tag: 'Custom built', tagBg: 'rgba(244,242,174,0.5)', tagLine: 'rgba(244,242,174,0.8)', tagInk: '#3D3A08', tagDot: '#8A7A12',
+    tag: '', tagBg: 'rgba(244,242,174,0.5)', tagLine: 'rgba(244,242,174,0.8)', tagInk: '#3D3A08', tagDot: '#8A7A12',
     headline: 'A Custom Store, Built To Scale',
     subhead: 'Everything in Growth, plus a fully custom design created in our own tool, a complete webstore with unlimited products, subscriptions, digital goods and multi-seat bookings.',
     ctaLabel: 'Talk to us about Platinum',
