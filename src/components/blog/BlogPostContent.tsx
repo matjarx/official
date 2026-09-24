@@ -9,6 +9,8 @@ import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
+import CrossLinkRail from '@/components/CrossLinkRail'
+import { crossLinksForPost } from '@/lib/cross-links'
 import { routes } from '@/lib/routes'
 import { AUTHOR, SHARE_LINKS, type BlogPost } from '@/lib/blog-data'
 
@@ -169,6 +171,12 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
               ))}
             </div>
           </section>
+
+          <CrossLinkRail
+            links={crossLinksForPost(post.slug)}
+            title="Want this done for you?"
+            subtitle="The work this article describes, and who we build it for."
+          />
 
           <div style={{ height: 60 }} />
           <SiteFooter />

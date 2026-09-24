@@ -10,6 +10,8 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
+import CrossLinkRail from '@/components/CrossLinkRail'
+import { crossLinksForIndustry } from '@/lib/cross-links'
 import { routes } from '@/lib/routes'
 import { INDUSTRY_DATA, INDUSTRY_SLUGS, otherIndustriesFor, type IndustryKey } from '@/lib/industry-data'
 import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data'
@@ -211,6 +213,12 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
             ))}
           </div>
         </section>
+
+        <CrossLinkRail
+          links={crossLinksForIndustry(industryKey)}
+          title="Read next, or start closer to home"
+          subtitle="Guides on the work these sites actually need, and the cities we build in."
+        />
 
         <div style={{ height: 70 }} />
         <SiteFooter />

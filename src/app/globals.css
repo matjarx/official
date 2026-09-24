@@ -373,3 +373,18 @@ textarea.input {
    change alone is easy to miss. */
 .mx-marquee-link { text-decoration: none; transition: color 140ms ease; }
 .mx-marquee-link:hover { color: var(--olive) !important; text-decoration: underline; text-underline-offset: 4px; }
+
+/* The "where to next" rail (CrossLinkRail). Lifts a touch on hover so the
+   cards read as clickable without needing an arrow glyph on each one. */
+.cross-link-card {
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+.cross-link-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 51, 102, 0.3);
+  box-shadow: 0 10px 24px rgba(4, 18, 31, 0.09);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cross-link-card { transition: none; }
+  .cross-link-card:hover { transform: none; }
+}

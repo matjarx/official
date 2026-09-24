@@ -11,6 +11,8 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
+import CrossLinkRail from '@/components/CrossLinkRail'
+import { crossLinksForCity } from '@/lib/cross-links'
 import { routes } from '@/lib/routes'
 import { CITY_DATA, otherCitiesFor, type CityKey } from '@/lib/location-data'
 import { CITY_DETAIL, type CityProcessStep, type CityPlanTier, type CityCompareGroup } from '@/lib/location-detail-data'
@@ -289,6 +291,12 @@ export default function LocationContent({ locationKey, content }: { locationKey:
             ))}
           </div>
         </section>
+
+        <CrossLinkRail
+          links={crossLinksForCity(locationKey)}
+          title={`Popular with businesses in ${d.name}`}
+          subtitle="The industries we build for most here, and the guides worth reading first."
+        />
 
         <div style={{ height: 70 }} />
         <SiteFooter />
