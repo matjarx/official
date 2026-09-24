@@ -36,7 +36,31 @@ const PortfolioShowcase = dynamic(() => import('@/components/examples/PortfolioS
 const HOME_EXAMPLE_NAMES = ['Celestial Delicacies', 'Bin Adam Textile', 'Sacred Wellness']
 const HOME_EXAMPLES = EXAMPLES.filter((ex) => HOME_EXAMPLE_NAMES.includes(ex.name))
 
-const CATEGORIES_BASE = ['Restaurants', 'Boutiques', 'Clinics', 'Law firms', 'Salons', 'Real estate', 'Construction', 'Gyms', 'Caterers', 'Auto repair', 'Textiles', 'Travel agents', 'Accountants', 'Event planners', 'Coffee shops', 'Furniture']
+// The marquee was sixteen plain <span>s. Every one names a business type we
+// have a landing page for -- and those pages had nothing linking to them, so
+// they sat orphaned while the word for each scrolled past the hero.
+//
+// `href: null` where no page exists yet rather than a guess: sending
+// "Accountants" to the restaurants page would be worse than not linking it,
+// and a null is a visible to-do rather than a silent wrong answer.
+const CATEGORIES_BASE: { label: string; href: string | null }[] = [
+  { label: 'Restaurants', href: routes.industry('restaurants') },
+  { label: 'Boutiques', href: routes.industry('boutiques') },
+  { label: 'Clinics', href: routes.industry('clinics-and-healthcare') },
+  { label: 'Law firms', href: routes.industry('law-firms') },
+  { label: 'Salons', href: routes.industry('salons-and-spas') },
+  { label: 'Real estate', href: routes.industry('real-estate') },
+  { label: 'Construction', href: routes.industry('construction-companies') },
+  { label: 'Gyms', href: routes.industry('gyms-and-fitness') },
+  { label: 'Caterers', href: null },
+  { label: 'Auto repair', href: routes.industry('auto-repair-shops') },
+  { label: 'Textiles', href: routes.industry('b2b-clothing-manufacturer') },
+  { label: 'Travel agents', href: null },
+  { label: 'Accountants', href: null },
+  { label: 'Event planners', href: routes.industry('wedding-and-event-planners') },
+  { label: 'Coffee shops', href: null },
+  { label: 'Furniture', href: null },
+]
 const CATEGORIES = [...CATEGORIES_BASE, ...CATEGORIES_BASE]
 
 const EDITOR_FEATURES = [
@@ -233,9 +257,18 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         {/* Category marquee */}
         <section style={{ borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.08)'}`, borderBottom: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.08)'}`, padding: '22px 0', overflow: 'hidden' }}>
           <div className="mx-marquee" style={{ display: 'flex', width: 'max-content', gap: 46, alignItems: 'center' }}>
-            {CATEGORIES.map((c, i) => (
-              <span key={i} style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'rgba(226,236,245,0.42)' : '#8C9CAA', whiteSpace: 'nowrap' }}>{c}</span>
-            ))}
+            {CATEGORIES.map((c, i) => {
+              const style = { fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'rgba(226,236,245,0.42)' : '#8C9CAA', whiteSpace: 'nowrap' as const }
+              // The duplicated half is aria-hidden: the marquee renders the
+              // list twice to loop seamlessly, and a screen reader should not
+              // read sixteen business types twice over.
+              const isDuplicate = i >= CATEGORIES_BASE.length
+              return c.href ? (
+                <Link key={i} href={c.href} aria-hidden={isDuplicate} tabIndex={isDuplicate ? -1 : undefined} className="mx-marquee-link" style={style}>{c.label}</Link>
+              ) : (
+                <span key={i} aria-hidden={isDuplicate} style={style}>{c.label}</span>
+              )
+            })}
           </div>
         </section>
 

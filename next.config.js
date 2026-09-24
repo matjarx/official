@@ -107,6 +107,12 @@ const nextConfig = {
       // are exclusively legacy, so a wildcard here can't collide with a
       // real route the way a bare one could — this alone covers every
       // post's slug, current and future, without needing its own entry.
+      // Two slugs that exist in the marketing_content SEO table but have no
+      // route, so they 404 while looking like real pages. The content they
+      // were for lives at the destinations below.
+      { source: '/about', destination: '/about-us', permanent: true },
+      { source: '/best-builder', destination: '/best-website-builder-pakistan', permanent: true },
+
       { source: '/resources-tools', destination: '/blogs', permanent: true },
       { source: '/resources-tools/:slug', destination: '/blogs/:slug', permanent: true },
       { source: '/blog', destination: '/blogs', permanent: true },

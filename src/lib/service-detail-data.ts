@@ -9,6 +9,9 @@
 // existing fields first, then everything here.
 
 import type { Section, ProcessPhase, PlanFaq, CompareTable } from './plan-detail-data'
+import { routes, appSignup } from './routes'
+
+export type ServiceCta = { label: string; href: string }
 
 export type Testimonial = { quote: string; name: string }
 export type CaseStudy = { title: string; lines: string[] }
@@ -32,7 +35,12 @@ export type ServiceDetail = {
   whyChoose: { title: string; items: WhyItem[] }
   access?: { title: string; channels: string[] }
   faqs: { title: string; items: PlanFaq[] }
-  closing: { title: string; body?: string; ctas: string[] }
+  // A CTA carries its destination. It used to be a bare string, and
+  // ServiceDetailSections rendered each one as a <span> -- styled exactly
+  // like a button, doing nothing, on all four service pages. A string is
+  // still accepted so nothing breaks mid-edit, and still renders inert, but
+  // every CTA here now has an href.
+  closing: { title: string; body?: string; ctas: (string | ServiceCta)[] }
   bottomLine: { title: string; body: string[] }
 }
 
@@ -125,7 +133,7 @@ export const DFY: ServiceDetail = {
     { q: 'Can I speak with someone before deciding?', a: 'Yes — Live Chat Mon-Fri 9am-8pm, WhatsApp, Phone +92 303 372 0953, Email office@matjarx.com. No obligation, just an honest conversation.' },
     { q: 'How much does this really cost?', a: 'One-time setup Rs. 22,500 (complete design, copywriting, setup, launch), monthly Rs. 4,500 (hosting, domain, email, support, platform, 0% fees). Annual cost: Rs. 76,500/year — one sale often covers the entire year.' },
   ] },
-  closing: { title: 'Get Started Today', body: 'Ready to see your business online in 7 days?', ctas: ['Get Started', 'Launch Your Done-For-You Website Today'] },
+  closing: { title: 'Get Started Today', body: 'Ready to see your business online in 7 days?', ctas: [{ label: 'Get started', href: appSignup('launch') }, { label: 'See pricing', href: routes.pricing }] },
   bottomLine: { title: 'Professional website done for you. 7-day turnaround.', body: ['Completely zero-risk. Unmatched customer service.', 'Your website is the foundation of your online business. Let us build it for you — right, fast, and affordable.', 'More than 70,000 businesses trust MatjarX. Your business deserves to join them.'] },
 }
 
@@ -205,7 +213,7 @@ export const SEO: ServiceDetail = {
     { q: 'Will this help me compete with chain businesses?', a: 'Yes — chain businesses often don’t invest heavily in local SEO. Local businesses with strong Google Business Profiles and reviews consistently outrank national chains in local search.' },
     { q: 'Can you handle multiple locations?', a: 'Yes — each location gets its own optimized profile, consistent branding across locations, coordinated review and content strategy. Pricing varies by number of locations — contact us for details.' },
   ] },
-  closing: { title: 'Get Found by Customers Actively Searching for Your Services', body: '70% of local searches result in a purchase within 24 hours. Your competitors who invest in SEO are stealing your customers right now.', ctas: ['Start with Boost — Rs. 15,600/month', 'Start with Growth — Rs. 27,000/month + Dedicated Expert', 'Talk to Our SEO Team'] },
+  closing: { title: 'Get Found by Customers Actively Searching for Your Services', body: '70% of local searches result in a purchase within 24 hours. Your competitors who invest in SEO are stealing your customers right now.', ctas: [{ label: 'Start with Boost — Rs. 15,600/month', href: routes.plan('boost') }, { label: 'Start with Growth — Rs. 27,000/month + Dedicated Expert', href: routes.plan('growth') }, { label: 'Talk to our SEO team', href: routes.contact }] },
   bottomLine: { title: 'Be the Highest-Ranked, Most Visible Business in Your Area', body: ['Local SEO done right transforms your online visibility from invisible to dominant.', 'Local, National & Global SEO is part of every MatjarX plan.'] },
 }
 
@@ -259,7 +267,7 @@ export const CONCIERGE: ServiceDetail = {
     { q: 'How is this different from hiring a freelancer or agency?', a: 'A dedicated relationship (not rotating freelancers), fully integrated with your MatjarX setup, 24-48 hour typical turnaround, and agency-quality support at a fraction of agency cost.' },
     { q: 'Do you offer design consultation or strategy?', a: 'Yes — Growth and Platinum members get monthly strategy discussions, recommendations, competitive analysis, conversion optimization suggestions and traffic/analytics review.' },
   ] },
-  closing: { title: 'The Better Way to Get Online', body: 'Your website is too important to neglect. Let our team make sure it’s always performing, always fresh, always converting.', ctas: ['Start with Growth — Rs. 27,000/month (includes Concierge)', 'Upgrade to Platinum — Rs. 55,000/month (full Concierge + E-commerce)', 'Talk to Our Team'] },
+  closing: { title: 'The Better Way to Get Online', body: 'Your website is too important to neglect. Let our team make sure it’s always performing, always fresh, always converting.', ctas: [{ label: 'Start with Growth — Rs. 27,000/month (includes Concierge)', href: routes.plan('growth') }, { label: 'Upgrade to Platinum — Rs. 55,000/month (full Concierge + E-commerce)', href: routes.plan('platinum') }, { label: 'Talk to our team', href: routes.contact }] },
   bottomLine: { title: 'Agency-Quality Website Management at Do-It-Yourself Pricing', body: ['Your website shouldn’t be a burden. It should be a powerful, professionally maintained asset that drives your business.', 'Concierge Service makes that possible, every step of the way.'] },
 }
 
@@ -343,6 +351,6 @@ export const GROWTH: ServiceDetail = {
     { q: 'How much time will I need to invest?', a: 'Minimum: 1 hour per month (your growth call). Recommended: 2-3 hours per month for execution and feedback. Your manager handles most execution, but your input improves results significantly.' },
     { q: 'What’s the difference between Growth marketing and Concierge Service?', a: 'Concierge Service is website management (updates, edits, features, maintenance). Growth Marketing is business growth strategy (customers, leads, revenue, branding). The Growth Plan includes both.' },
   ] },
-  closing: { title: 'Get Hands-On Marketing Support Every Month That Makes Your Business Grow', body: 'Stop doing marketing alone. Get expert help. Growth Plan: Rs. 27,000/month — professional website, dedicated marketing manager, unlimited edits (Concierge), SEO + email + social + ads + reputation, 2,000 words of content monthly, everything included.', ctas: ['Start With Growth — Unlock Your Potential', 'Talk to Our Team'] },
+  closing: { title: 'Get Hands-On Marketing Support Every Month That Makes Your Business Grow', body: 'Stop doing marketing alone. Get expert help. Growth Plan: Rs. 27,000/month — professional website, dedicated marketing manager, unlimited edits (Concierge), SEO + email + social + ads + reputation, 2,000 words of content monthly, everything included.', ctas: [{ label: 'Start with Growth — unlock your potential', href: routes.plan('growth') }, { label: 'Talk to our team', href: routes.contact }] },
   bottomLine: { title: 'VIP Marketing Service', body: ['Marketing is hard. We’re here to help.', 'You focus on your business. We focus on growing it.'] },
 }

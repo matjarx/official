@@ -319,9 +319,18 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
           {d.closing.body && <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(255,255,255,0.68)' }}>{d.closing.body}</p>}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', paddingTop: 6 }}>
-            {d.closing.ctas.map((c, i) => (
-              <span key={c} style={{ padding: '13px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: i === 0 ? '#16210B' : '#FFFFFF', background: i === 0 ? 'var(--butter)' : 'rgba(255,255,255,0.09)', border: i === 0 ? undefined : '1.5px solid rgba(255,255,255,0.2)' }}>{c}</span>
-            ))}
+            {d.closing.ctas.map((c, i) => {
+              const label = typeof c === 'string' ? c : c.label
+              const href = typeof c === 'string' ? null : c.href
+              const style = { padding: '13px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, textDecoration: 'none', display: 'inline-block', color: i === 0 ? '#16210B' : '#FFFFFF', background: i === 0 ? 'var(--butter)' : 'rgba(255,255,255,0.09)', border: i === 0 ? undefined : '1.5px solid rgba(255,255,255,0.2)' }
+              // A string with no destination still renders inert rather than
+              // as a link to nowhere -- but every CTA in the data has one.
+              return href ? (
+                <a key={label} href={href} style={style}>{label}</a>
+              ) : (
+                <span key={label} style={style}>{label}</span>
+              )
+            })}
           </div>
         </div>
       </section>

@@ -366,3 +366,10 @@ textarea.input {
   .showcase-desktop-only { display: none; }
   .showcase-mobile-only { display: block; }
 }
+
+
+/* The category marquee items are links now. Underline on hover so it is
+   discoverable that they go somewhere -- they scroll past, so a cursor
+   change alone is easy to miss. */
+.mx-marquee-link { text-decoration: none; transition: color 140ms ease; }
+.mx-marquee-link:hover { color: var(--olive) !important; text-decoration: underline; text-underline-offset: 4px; }
