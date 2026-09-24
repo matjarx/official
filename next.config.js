@@ -133,15 +133,12 @@ const nextConfig = {
       // leaving files alone.
       { source: '/blog/:slug([^.]+)', destination: '/blogs/:slug', permanent: true },
 
-      // Old WordPress portfolio/demo taxonomy (artist showcase pages,
-      // project categories, tag/category archives) — none of it has an
-      // equivalent on the new site. Catch-all patterns so any indexed
-      // variant (including /page/N pagination and /feed/ suffixes)
-      // lands on the homepage instead of 404ing.
-      { source: '/artist/:path*', destination: '/', permanent: true },
-      { source: '/project-cat/:path*', destination: '/', permanent: true },
-      { source: '/category/:path*', destination: '/', permanent: true },
-      { source: '/tag/:path*', destination: '/', permanent: true },
+      // The old WordPress taxonomy — /artist, /project-cat, /category,
+      // /tag — used to redirect here to the homepage. That is a soft 404:
+      // Google's own guidance is that redirecting a pile of unrelated
+      // dead URLs to the root is treated as one, and ranks worse than
+      // simply saying the page is gone. It now returns 410 from
+      // src/proxy.ts, along with the rest of the WordPress estate.
     ]
   },
   images: {
