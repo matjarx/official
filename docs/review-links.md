@@ -1,22 +1,74 @@
-# Page-by-page review list
+# Review list — what changed, and where
 
-Every page the marketing site builds: **184 routes**, exactly what `next build` emits.
-
-Start the server first:
+Start the server:
 
 ```
 cd ~/Projects/matjarx-marketing && npm run build && npx next start -p 3999
 ```
 
-Then work down the list. The checkbox is there to be ticked as you go.
+**Changed pages first.** Everything else is unchanged from your last look,
+apart from two things that touch every page: the footer now lists all 63
+cities, and `overflow-x` went from `hidden` to `clip` so `position: sticky`
+works.
 
-## Home (1)
+## Start here — the pages that changed
+
+- [ ] <http://localhost:3999/>  
+      industries rail replaced the 4 screenshots; editor showcase toolbar + seal realigned
+- [ ] <http://localhost:3999/templates>  
+      REBUILT — industry listing, ?slug-website-template, iframe preview; Bakery & Cafe has a live demo
+- [ ] <http://localhost:3999/pricing>  
+      Growth is Most Popular; Platinum ringed, no "Custom" tag; hidden h2 fixes the h1->h3 jump
+- [ ] <http://localhost:3999/plans/launch>  
+      badge copy follows the Growth/Platinum change
+- [ ] <http://localhost:3999/plans/boost>  
+      lost the Most Popular badge; supporting copy rewritten; h4->h3
+- [ ] <http://localhost:3999/plans/growth>  
+      took the Most Popular badge; h4->h3
+- [ ] <http://localhost:3999/plans/platinum>  
+      no more "Custom built" tag; h4->h3
+- [ ] <http://localhost:3999/website-examples>  
+      24,365 -> 3,720px on a phone (cards are a rail below 640px)
+- [ ] <http://localhost:3999/done-for-you-website>  
+      three steps are cards, not full-width rows (1,318 -> 411px); CTAs have hrefs; h4->h3
+- [ ] <http://localhost:3999/local-national-and-global-seo>  
+      same services-card change; h4->h3
+- [ ] <http://localhost:3999/concierge-service>  
+      same services-card change; h4->h3
+- [ ] <http://localhost:3999/growth-marketing-service>  
+      same services-card change; h4->h3
+- [ ] <http://localhost:3999/blogs>  
+      newsletter actually submits; 449 -> 197 KB; cover images on cards
+- [ ] <http://localhost:3999/about-us>  
+      team photos carry a title attribute
+- [ ] <http://localhost:3999/website-design-sialkot>  
+      rotating city rail + "Popular with businesses in..." cross-links; h4->h3
+- [ ] <http://localhost:3999/website-for-restaurants>  
+      "Read next" cross-links to blog and cities; h4->h3
+- [ ] <http://localhost:3999/blogs/local-seo-for-small-business-guide>  
+      sticky contents rail, numbered and clickable; working newsletter; author card; cover images in Keep reading
+
+Worth opening at phone width (390px) as well as desktop:
+
+- [ ] <http://localhost:3999/website-examples>  — the rail change is mobile-only
+- [ ] <http://localhost:3999/templates>  — same
+
+And the preview modal, direct:
+
+- [ ] <http://localhost:3999/templates?bakery-and-cafe-website-template>  — the only working live demo
+- [ ] <http://localhost:3999/templates?leather-goods-website-template>  — no demo yet, falls back to details
+
+---
+
+## Everything else
+
+All 184 routes the build emits.
+
+### Home (1)
 
 - [ ] <http://localhost:3999/>
 
-## Main pages (16)
-
-`/home-dark` and `/home-mobile` are publicly reachable and shipped in the sitemap. They look like internal variants; say the word and they get noindexed or removed.
+### Main pages (16)
 
 - [ ] <http://localhost:3999/about-us>
 - [ ] <http://localhost:3999/become-a-partner>
@@ -35,7 +87,7 @@ Then work down the list. The checkbox is there to be ticked as you go.
 - [ ] <http://localhost:3999/videos>
 - [ ] <http://localhost:3999/website-examples>
 
-## Industry pages (14)
+### Industry pages (14)
 
 - [ ] <http://localhost:3999/website-for-auto-repair-shops>
 - [ ] <http://localhost:3999/website-for-b2b-clothing-manufacturer>
@@ -52,7 +104,7 @@ Then work down the list. The checkbox is there to be ticked as you go.
 - [ ] <http://localhost:3999/website-for-salons-and-spas>
 - [ ] <http://localhost:3999/website-for-wedding-and-event-planners>
 
-## Pricing & plans (6)
+### Pricing & plans (6)
 
 - [ ] <http://localhost:3999/plans/boost>
 - [ ] <http://localhost:3999/plans/custom>
@@ -61,18 +113,13 @@ Then work down the list. The checkbox is there to be ticked as you go.
 - [ ] <http://localhost:3999/plans/platinum>
 - [ ] <http://localhost:3999/pricing>
 
-## Templates (1)
-
-Still the single old page. The industry listing, the `?industry-name-website-template` URLs and the iframe preview with the 5-second "Get This Theme" are not built yet.
+### Templates (1)
 
 - [ ] <http://localhost:3999/templates>
 
-## Alternatives index (1)
+### Alternatives (43)
 
 - [ ] <http://localhost:3999/alternatives>
-
-## Alternatives — one per competitor (42)
-
 - [ ] <http://localhost:3999/alternatives/matjarx-vs-10pearls>
 - [ ] <http://localhost:3999/alternatives/matjarx-vs-adex360>
 - [ ] <http://localhost:3999/alternatives/matjarx-vs-arpatech>
@@ -116,14 +163,9 @@ Still the single old page. The industry listing, the `?industry-name-website-tem
 - [ ] <http://localhost:3999/alternatives/matjarx-vs-zapta-technologies>
 - [ ] <http://localhost:3999/alternatives/matjarx-vs-znwebpro>
 
-## Blog index (1)
+### Blog (29)
 
 - [ ] <http://localhost:3999/blogs>
-
-## Blog posts (28)
-
-Cover images all resolve locally now — the `/blog/:slug` redirect used to swallow `/blog/*.webp`, which is why they were broken.
-
 - [ ] <http://localhost:3999/blogs/b2b-website-myths-broken>
 - [ ] <http://localhost:3999/blogs/beyond-blue-links-how-generative-engine-optimization-drives-traffic>
 - [ ] <http://localhost:3999/blogs/business-content-ideas-no-dancing>
@@ -153,12 +195,9 @@ Cover images all resolve locally now — the `/blog/:slug` redirect used to swal
 - [ ] <http://localhost:3999/blogs/whatsapp-automation-setup>
 - [ ] <http://localhost:3999/blogs/why-website-is-important-for-business>
 
-## Help centre index (1)
+### Help centre (8)
 
 - [ ] <http://localhost:3999/help>
-
-## Help articles (7)
-
 - [ ] <http://localhost:3999/help/account-and-security>
 - [ ] <http://localhost:3999/help/billing-and-plans>
 - [ ] <http://localhost:3999/help/domains-and-email>
@@ -167,9 +206,7 @@ Cover images all resolve locally now — the `/blog/:slug` redirect used to swal
 - [ ] <http://localhost:3999/help/seo-and-marketing>
 - [ ] <http://localhost:3999/help/website-editor>
 
-## City pages (63)
-
-All 63 now carry real inbound links — a rotating rail at the foot of each city page, plus one line in the footer of every page on the site. Spot-check any three and confirm the "other cities" rail differs between them.
+### City pages (63)
 
 - [ ] <http://localhost:3999/website-design-abbottabad>
 - [ ] <http://localhost:3999/website-design-attock>
@@ -235,7 +272,7 @@ All 63 now carry real inbound links — a rotating rail at the foot of each city
 - [ ] <http://localhost:3999/website-design-wah-cantonment>
 - [ ] <http://localhost:3999/website-design-zhob>
 
-## Legal (3)
+### Legal (3)
 
 - [ ] <http://localhost:3999/legal/privacy>
 - [ ] <http://localhost:3999/legal/refund>
