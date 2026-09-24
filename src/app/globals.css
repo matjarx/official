@@ -687,18 +687,37 @@ textarea.input {
   .portfolio-grid {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 82%;
+    /* Snapped to CENTRE rather than start, so a slice of the card either
+       side is always visible. At 82% snapped to start you saw one card
+       and a sliver, which reads as a cropped layout rather than a rail.
+
+       Sized in vw, not %: a percentage here resolves against the grid's
+       content box, which the bleed and the padding below make a
+       different number from the screen width — the first card came out
+       301px and the rest 223px. vw is the same for every card. */
+    grid-auto-columns: 72vw;
     grid-template-columns: none;
+    gap: 12px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
+    /* Bleed to the screen edges, then pad back in, so the first and last
+       cards can sit centred like every other one. */
+    margin-inline: -24px;
+    padding-inline: 14vw;
     padding-bottom: 4px;
   }
   .theme-grid::-webkit-scrollbar,
   .portfolio-grid::-webkit-scrollbar { display: none; }
   .theme-grid > *,
-  .portfolio-grid > * { scroll-snap-align: start; min-width: 0; }
+  .portfolio-grid > * { scroll-snap-align: center; min-width: 0; }
+
+  /* The example card is a mock website, and at full size on a phone it
+     shouted louder than the site's own header. Scaled down to match the
+     rail it now sits in. */
+  .portfolio-grid .mx-card { border-radius: 14px; }
+  .portfolio-grid .mx-card .mx-hero-line { font-size: 17px; }
 }
 .portfolio-grid {
   display: grid;

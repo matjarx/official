@@ -135,7 +135,16 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
     if (!outerEl || !innerEl) return
     const roOuter = new ResizeObserver((entries) => {
       const w = entries[0].contentRect.width
-      if (w > 0) setScale(Math.min(1, w / BASE_WIDTH))
+      // No upper clamp. Math.min(1, ...) pinned the mock at its 1,200px
+      // design width inside a 1,344px container, leaving ~150px of bare
+      // backdrop gradient down the right-hand side and a matching strip
+      // underneath -- the panel visibly not filling the frame drawn for
+      // it. The clamp was there to avoid upscaling, which matters for a
+      // bitmap and not for this: every part of the mock is a DOM node, so
+      // a transform scales the text and borders as vectors. The two
+      // photographs inside it are 600px sources shown at ~510px, which
+      // still have headroom at 1.12x.
+      if (w > 0) setScale(w / BASE_WIDTH)
     })
     const roInner = new ResizeObserver((entries) => setInnerHeight(entries[0].contentRect.height))
     roOuter.observe(outerEl)

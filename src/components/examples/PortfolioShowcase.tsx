@@ -41,7 +41,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
                   <span style={{ flex: '0 0 auto', padding: '5px 11px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 8, color: ex.ctaInk, background: ex.ctaBg, whiteSpace: 'nowrap' }}>{ex.cta}</span>
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 9, padding: '22px 26px 26px', minHeight: 0 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(20px, 2.4vw, 28px)', lineHeight: 1.04, letterSpacing: '-0.9px', color: '#FFFFFF', textShadow: '0 2px 14px rgba(0,0,0,0.4)' }}>{ex.heroLine}</span>
+                  <span className="mx-hero-line" style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(20px, 2.4vw, 28px)', lineHeight: 1.04, letterSpacing: '-0.9px', color: '#FFFFFF', textShadow: '0 2px 14px rgba(0,0,0,0.4)' }}>{ex.heroLine}</span>
                   <span style={{ maxWidth: '26em', fontSize: 11, lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>{ex.heroBlurb}</span>
                 </div>
               </div>

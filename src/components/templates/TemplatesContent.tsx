@@ -8,7 +8,6 @@
 
 import { Suspense, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -64,7 +63,6 @@ export default function TemplatesContent({
   const WHY_TEMPLATES_ACTIVE = content.why
   const TEMPLATE_FEATURES_ACTIVE = content.features
   const TEMPLATE_FAQS_ACTIVE = content.faqs
-  const TEMPLATE_PREVIEWS_ACTIVE = content.previews
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
@@ -83,36 +81,6 @@ export default function TemplatesContent({
       <div style={{ position: 'relative' }}>
         <AmbientOrbs />
         <div className="page-content">
-
-          {/* Real preview renders */}
-          <section style={{ maxWidth: 1400, margin: '0 auto', padding: '56px 24px 0' }}>
-            <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>See it for yourself</span>
-            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Real template previews</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 18 }}>
-              {TEMPLATE_PREVIEWS_ACTIVE.map((p) => (
-                <div key={p.name} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-                  <div style={{ position: 'relative', width: '100%', aspectRatio: `${p.width} / ${p.height}` }}>
-                    <Image src={p.src} alt={p.alt} title={`${p.name} website template`} fill sizes="(max-width: 700px) 100vw, 400px" style={{ objectFit: 'cover' }} />
-                  </div>
-                  <p style={{ margin: 0, padding: '12px 16px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{p.name}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Why use templates */}
-          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
-            <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>About our templates</span>
-            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Why use templates?</h2>
-            <IconCardGrid items={WHY_TEMPLATES_ACTIVE} />
-          </section>
-
-          {/* Template features */}
-          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
-            <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Template features</span>
-            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>What every template includes</h2>
-            <IconCardGrid items={TEMPLATE_FEATURES_ACTIVE} cols={5} />
-          </section>
 
           {/* Templates by industry — the real themes, from the
               platform's own table. This was twelve "template categories"
@@ -149,6 +117,20 @@ export default function TemplatesContent({
                 The template list is loading from your dashboard. <Link href={appLogin} style={{ color: 'var(--olive)', fontWeight: 700 }}>Sign in</Link> to browse them all.
               </p>
             )}
+          </section>
+
+          {/* Why use templates */}
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
+            <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>About our templates</span>
+            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Why use templates?</h2>
+            <IconCardGrid items={WHY_TEMPLATES_ACTIVE} />
+          </section>
+
+          {/* Template features */}
+          <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
+            <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Template features</span>
+            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>What every template includes</h2>
+            <IconCardGrid items={TEMPLATE_FEATURES_ACTIVE} cols={5} />
           </section>
 
           {/* Selection process */}
