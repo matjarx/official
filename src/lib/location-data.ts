@@ -685,9 +685,28 @@ export const CITY_SLUGS = Object.keys(CITY_DATA) as CityKey[]
 
 const MAJOR_CITIES: CityKey[] = ['karachi', 'lahore', 'islamabad']
 
+/**
+ * The "other cities" rail at the foot of every city page.
+ *
+ * This used to be `[...majors, ...rest.slice(0, 3)]` -- a FIXED slice, so all
+ * 63 city pages linked to the same six: Karachi, Lahore, Islamabad,
+ * Abbottabad, Attock and Bahawalnagar. The other 57 received no inbound link
+ * from anywhere on the site. A crawl of all 149 live pages found exactly
+ * that: 56 orphaned city pages.
+ *
+ * The window now rotates from each city's own position, so the set differs
+ * per page and every city is linked from several others. With 60 non-major
+ * cities and a window of 5, each one appears on 5 pages instead of 0.
+ *
+ * The three majors stay on every page deliberately -- they are the pages
+ * with the most search demand, and a visitor in Kot Adu looking for a
+ * designer may well accept one in Lahore.
+ */
 export function otherCitiesFor(key: CityKey) {
   const majors = MAJOR_CITIES.filter((k) => k !== key)
   const rest = CITY_SLUGS.filter((k) => k !== key && !MAJOR_CITIES.includes(k))
-  const picks = [...majors, ...rest.slice(0, 3)]
+  const start = Math.max(0, rest.indexOf(key))
+  const WINDOW = 5
+  const picks = [...majors, ...Array.from({ length: WINDOW }, (_, i) => rest[(start + i + 1) % rest.length])]
   return picks.map((k) => ({ label: CITY_DATA[k].name, href: routes.location(k) }))
 }

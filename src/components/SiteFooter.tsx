@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
+import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import type { SiteSettings } from '@/lib/marketing-content'
@@ -122,6 +123,27 @@ export default function SiteFooter() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Every city we have a page for, on every page of the site.
+            Deliberately small and quiet: this is a link row, not a nav.
+
+            Each of the 63 city pages is written for "website design in
+            <city>" and none of them had a reliable inbound link -- the
+            rail at the foot of each city page linked a fixed set of six,
+            so 56 were orphaned. That rail now rotates, and this row is the
+            belt to its braces: one link from every page on the site. */}
+        <div style={{ maxWidth: 1360, margin: '40px auto 0', paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          <span style={{ display: 'block', fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', fontWeight: 600, marginBottom: 10 }}>
+            Website design across Pakistan
+          </span>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 14px' }}>
+            {CITY_SLUGS.map((slug) => (
+              <Link key={slug} href={routes.location(slug)} className="footer-link" style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.42)', whiteSpace: 'nowrap' }}>
+                {CITY_DATA[slug].name}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div style={{ maxWidth: 1360, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>

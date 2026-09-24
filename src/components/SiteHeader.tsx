@@ -103,31 +103,17 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                 const color = isActive ? (dark ? 'var(--butter)' : 'var(--olive)') : dark ? 'rgba(226,236,245,0.78)' : '#1C3B56'
                 return (
                   <div key={item.key} style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                    {/* An item WITH a menu opens it on click; an item without
-                        one navigates. The top-level page is not lost by that
-                        -- it is the first entry inside its own menu (see
-                        lib/nav.ts), so "Pricing > All plans & pricing" still
-                        reaches /pricing in two clicks instead of one. */}
-                    {item.menu ? (
-                      <button
-                        type="button"
-                        onClick={() => setOpen(isOpen ? -1 : i)}
-                        aria-expanded={isOpen}
-                        aria-haspopup="true"
-                        className={dark ? 'nav-link-dark' : 'nav-link-light'}
-                        style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, padding: '9px 4px 9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
-                      >
-                        {item.label}
-                      </button>
-                    ) : (
-                      <a
-                        href={item.href}
-                        className={dark ? 'nav-link-dark' : 'nav-link-light'}
-                        style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
-                      >
-                        {item.label}
-                      </a>
-                    )}
+                    {/* The label is a real link — clicking "Pricing" (or any
+                        top-level item) navigates to its own page. The
+                        chevron is a separate click target so the dropdown
+                        can still be browsed without leaving the page. */}
+                    <a
+                      href={item.href}
+                      className={dark ? 'nav-link-dark' : 'nav-link-light'}
+                      style={{ display: 'flex', alignItems: 'center', gap: 5, padding: item.menu ? '9px 4px 9px 15px' : '9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
+                    >
+                      {item.label}
+                    </a>
                     {item.menu && (
                       <button
                         type="button"
