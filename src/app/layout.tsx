@@ -152,7 +152,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <WebVitalsReporter />
         {isWidgetActive(announcementConfig) && <AnnouncementBar config={announcementConfig} />}
         {children}
-        {isWidgetActive(popupConfig) && <SitePopup config={popupConfig} />}
+        {/* `heading` is what SitePopup keys everything off -- its own
+            render guard, and its frequency cap. An enabled popup with no
+            heading is a config that silently does nothing, which reads
+            as "the popup is broken". Checking it here at least keeps the
+            two in agreement; the admin now warns about it on the way in. */}
+        {isWidgetActive(popupConfig) && !!popupConfig.heading && <SitePopup config={popupConfig} />}
         <GoogleAnalytics gaId={gaId} />
         {/* Meta Pixel — base code + PageView, per Meta's own snippet. */}
         <Script id="meta-pixel" strategy="afterInteractive">

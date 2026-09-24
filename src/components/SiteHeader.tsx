@@ -47,26 +47,12 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
 
   return (
     <div style={{ position: 'relative', zIndex: 40 }}>
-      <div
-        style={{
-          background: 'linear-gradient(90deg, #003366 0%, #2E6EA8 20%, #707538 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)',
-          padding: '10px 20px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '10px 18px',
-          flexWrap: 'wrap',
-          textAlign: 'center',
-        }}
-      >
-        <span style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 14px', borderRadius: 999, background: 'rgba(0,0,0,0.26)', border: '1px solid rgba(255,255,255,0.32)', backdropFilter: 'blur(10px)' }}>
-          <span style={{ width: 6, height: 6, flex: '0 0 auto', borderRadius: '50%', background: 'var(--butter)' }} />
-          <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: 0.2, color: '#FFFFFF' }}>Get 49% discount on sign up now</span>
-        </span>
-        <span style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.36)' }} />
-        <span style={{ fontSize: 12.5, fontWeight: 600, color: 'rgba(255,255,255,0.95)', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Go digital with 100,000 business in 2026</span>
-      </div>
-
+      {/* The gradient announcement strip that used to sit here is now
+          <AnnouncementBar>, rendered from the root layout and edited in
+          the admin. Its markup and copy moved across unchanged; this
+          header rendering its own hardcoded copy on top of it was why
+          the site showed two strips and editing the admin one appeared
+          to do nothing. */}
       <header
         style={{
           position: 'sticky',

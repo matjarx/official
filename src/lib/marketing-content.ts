@@ -68,6 +68,11 @@ export function getDefaultContent(slug: string): Record<string, unknown> | null 
   const [category, key] = slug.includes('/') ? slug.split(/\/(.+)/) : [slug, undefined]
 
   switch (category) {
+    // The announcement strip's default is the copy that used to be
+    // hardcoded in SiteHeader — so the row can be emptied, or the table
+    // unreachable, and the site still renders what it always has.
+    case ANNOUNCEMENT_BAR_SLUG:
+      return DEFAULT_ANNOUNCEMENT as Record<string, unknown>
     case 'home':
       return { faqs: HOME_FAQS, voices: VOICES }
     case 'pricing':
@@ -245,8 +250,18 @@ export type SiteSettings = {
 export const ANNOUNCEMENT_BAR_SLUG = '_announcement_bar'
 export const POPUP_SLUG = '_popup'
 
+/**
+ * The six-stop brand gradient the strip has always used. Lives here
+ * rather than in the component because it is also the seed value stored
+ * in `bg_color`, and the admin offers it as a preset.
+ */
+export const BRAND_GRADIENT =
+  'linear-gradient(90deg, #003366 0%, #2E6EA8 20%, #707538 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)'
+
 export type AnnouncementBarConfig = {
   enabled?: boolean
+  /** The pill on the left, with the butter-coloured dot. */
+  badge_text?: string
   text?: string
   link_text?: string
   link_url?: string
@@ -276,6 +291,22 @@ export type PopupConfig = {
 // start_date/end_date. No date set on either end means no bound on that
 // side — e.g. only an end_date means "active until then", only a
 // start_date means "active from then on".
+/**
+ * Exactly the strip that was hardcoded in SiteHeader before the two
+ * copies were merged, so an empty or missing `_announcement_bar` row
+ * renders the site the way it has always rendered. `enabled: true` for
+ * the same reason -- the bar is part of the design, not a campaign
+ * someone has to switch on.
+ */
+export const DEFAULT_ANNOUNCEMENT: AnnouncementBarConfig = {
+  enabled: true,
+  badge_text: 'Get 49% discount on sign up now',
+  text: 'Go digital with 100,000 business in 2026',
+  bg_color: BRAND_GRADIENT,
+  text_color: '#FFFFFF',
+  dismissible: false,
+}
+
 export function isWidgetActive(config: { enabled?: boolean; start_date?: string; end_date?: string }): boolean {
   if (!config.enabled) return false
   const today = new Date().toISOString().slice(0, 10)

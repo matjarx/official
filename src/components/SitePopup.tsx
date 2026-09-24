@@ -10,7 +10,6 @@
 // heading text changes (a new campaign should get a fresh chance to show).
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import type { PopupConfig } from '@/lib/marketing-content'
 
 const STORAGE_KEY = 'matjarx-popup-last-dismissed'
@@ -89,7 +88,23 @@ export default function SitePopup({ config }: { config: PopupConfig }) {
         </button>
         {config.image_url && (
           <div style={{ position: 'relative', width: '100%', height: 180 }}>
-            <Image src={config.image_url} alt={config.image_alt || ''} fill sizes="420px" style={{ objectFit: 'cover' }} />
+            {/* Deliberately a plain <img>, not next/image.
+                next/image throws when handed a hostname that is not in
+                remotePatterns -- and this src is a free-text field in the
+                admin. Someone pasting an Unsplash or Drive link would not
+                get a broken popup image, they would get a 500 on every
+                page of the site, because this renders from the ROOT
+                LAYOUT. A content field must not be able to do that.
+                The image is 420x180 and shown at most once per visitor,
+                so the optimiser was buying very little anyway. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={config.image_url}
+              alt={config.image_alt || ''}
+              width={420}
+              height={180}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
         )}
         <div style={{ padding: '28px 28px 32px', textAlign: 'center' }}>
