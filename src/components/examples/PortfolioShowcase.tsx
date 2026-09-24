@@ -21,7 +21,12 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
 
   return (
     <>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 22 }}>
+      {/* A rail on a phone, a grid above it. Stacked one-per-row, the
+          examples ran to 21,000px — twenty-five phone screens of cards
+          that are all the same shape, which nobody scrolls to the end of.
+          Swiping sideways through them is both shorter and closer to how
+          you would actually compare them. */}
+      <div className="portfolio-grid">
         {items.map((ex, i) => (
           <div key={ex.name} className="mx-card" style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', background: ex.tint, border: '1px solid rgba(255,255,255,0.85)', boxShadow: '0 18px 44px rgba(4,18,31,0.1)' }}>
             <div style={{ position: 'relative' }}>

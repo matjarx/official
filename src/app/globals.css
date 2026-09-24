@@ -673,3 +673,35 @@ textarea.input {
   .theme-card:hover { transform: none; }
   .theme-modal-get { animation: none; }
 }
+
+/* ── Card sets that become rails on a phone ─────────────────────────
+   One-per-row is the honest default for a narrow screen and the wrong
+   answer for a long set of same-shaped cards: /website-examples ran to
+   21,000px and the /templates industry listing to 10,500px, which is
+   twenty-five and twelve phone screens of scrolling past things that
+   all look alike. Sideways is shorter, and it is how you would compare
+   them anyway. The part-visible next card is the only affordance
+   needed. Unchanged above 640px, where a grid fits and reads better. */
+@media (max-width: 640px) {
+  .theme-grid,
+  .portfolio-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 82%;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .theme-grid::-webkit-scrollbar,
+  .portfolio-grid::-webkit-scrollbar { display: none; }
+  .theme-grid > *,
+  .portfolio-grid > * { scroll-snap-align: start; min-width: 0; }
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 22px;
+}
