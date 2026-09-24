@@ -78,36 +78,42 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
             <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: '#435A70' }}>{d.pitchBody}</p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-            {d.blocks.map((b, i) => {
-              const textOrder = i % 2 === 0 ? 1 : 2
-              const mediaOrder = i % 2 === 0 ? 2 : 1
-              return (
-                <div key={b.titleMark} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 40, alignItems: 'center', padding: 'clamp(24px, 3.5vw, 34px) clamp(20px, 3vw, 36px)', borderRadius: 24, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', boxShadow: '0 12px 32px rgba(4,18,31,0.05)' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15, minWidth: 0, order: textOrder }}>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{b.stat}</span>
-                    <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, lineHeight: 1.14, letterSpacing: '-0.9px', color: '#04121F' }}>
-                      {b.titleLead} <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>{b.titleMark}</span>
-                    </h3>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingTop: 2 }}>
-                      {b.points.map((p) => (
-                        <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.55, color: '#3B5063' }}>
-                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                          {p}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div style={{ minWidth: 0, order: mediaOrder, position: 'relative', height: 260, borderRadius: 18, overflow: 'hidden', background: b.tint }}>
-                    {b.image ? (
-                      <Image src={b.image.src} alt={b.image.alt} title={b.mediaLabel} fill sizes="(max-width: 700px) 100vw, 500px" style={{ objectFit: 'cover' }} />
-                    ) : (
-                      <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', padding: 24, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '0.3px', textAlign: 'center', color: 'rgba(255,255,255,0.92)' }}>{b.mediaLabel}</span>
-                    )}
+          {/* Was one full-width card per step, alternating text and a
+              260px-tall image left to right. Three steps of that is
+              roughly 1,400px of scrolling for nine bullet points, and the
+              images -- screenshots of an editor and a video call -- were
+              carrying none of that weight at half a screen wide.
+
+              Same content as a card grid: a 132px image band, then the
+              step, the heading and its points. About 450px for the same
+              three steps, and the steps are now comparable side by side
+              instead of stacked in a column you have to remember. */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 292px), 1fr))', gap: 18, alignItems: 'stretch' }}>
+            {d.blocks.map((b) => (
+              <div key={b.titleMark} style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', boxShadow: '0 10px 26px rgba(4,18,31,0.05)' }}>
+                <div style={{ position: 'relative', height: 132, flex: '0 0 auto', background: b.tint }}>
+                  {b.image ? (
+                    <Image src={b.image.src} alt={b.image.alt} title={b.mediaLabel} fill sizes="(max-width: 700px) 100vw, 360px" style={{ objectFit: 'cover' }} />
+                  ) : (
+                    <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', padding: 18, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 16, letterSpacing: '0.3px', textAlign: 'center', color: 'rgba(255,255,255,0.92)' }}>{b.mediaLabel}</span>
+                  )}
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '20px 22px 24px', minWidth: 0 }}>
+                  <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{b.stat}</span>
+                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, lineHeight: 1.2, letterSpacing: '-0.5px', color: '#04121F' }}>
+                    {b.titleLead} <span style={{ background: 'var(--butter)', padding: '0 7px', borderRadius: 3 }}>{b.titleMark}</span>
+                  </h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingTop: 2 }}>
+                    {b.points.map((p) => (
+                      <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: '#3B5063' }}>
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
+                        {p}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              )
-            })}
+              </div>
+            ))}
           </div>
         </section>
 
