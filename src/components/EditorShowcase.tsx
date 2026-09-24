@@ -20,6 +20,17 @@ import Image from 'next/image'
 // drift onto the section library / structure tree and overlap real UI),
 // the whole thing now scales down as one unit via ResizeObserver, so every
 // relative position stays exactly as designed at any container width.
+// ── On the empty alt attributes below ────────────────────────────────
+// Every image in this mock takes alt="". That is correct and should stay
+// that way: they are screenshots of a pretend storefront inside an
+// illustration of an editor, and the paragraph beside the illustration
+// already says what it is. Describing "a red chikankari dupatta" aloud
+// to someone who cannot see the picture tells them nothing about MatjarX
+// and interrupts the sentence that would have.
+//
+// The same applies to the 20px platform logo beside the words "MatjarX
+// vs Wix" and to the plan tier icon beside the plan's own name. An image
+// that repeats adjacent text is decoration.
 const BASE_WIDTH = 1200
 
 const ICONS = {

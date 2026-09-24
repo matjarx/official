@@ -46,7 +46,18 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
   const drawerOpen = narrow && drawer
 
   return (
-    <div style={{ position: 'relative', zIndex: 40 }}>
+    // The sticky lives HERE, not on the <header> inside it.
+    //
+    // A sticky element sticks within its own parent's box. This wrapper
+    // was exactly as tall as the header it contained -- 83px of room for
+    // an 83px element -- so `position: sticky` on the header computed as
+    // sticky, reported as sticky, and scrolled straight off the top of
+    // the page with everything else. Measured: header top went to -2000
+    // at 2000px of scroll.
+    //
+    // On the wrapper the containing block is the page, which is where
+    // the room is.
+    <div style={{ position: 'sticky', top: 0, zIndex: 40 }}>
       {/* The gradient announcement strip that used to sit here is now
           <AnnouncementBar>, rendered from the root layout and edited in
           the admin. Its markup and copy moved across unchanged; this
@@ -55,8 +66,6 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
           to do nothing. */}
       <header
         style={{
-          position: 'sticky',
-          top: 0,
           background: dark ? 'rgba(0,20,35,0.74)' : 'rgba(252,250,243,0.72)',
           backdropFilter: 'blur(26px)',
           borderBottom: dark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(255,255,255,0.8)',

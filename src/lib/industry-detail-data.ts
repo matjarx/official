@@ -34,11 +34,6 @@ export type IndustryDetail = {
   closing: { title: string; body: string; cta: string }
 }
 
-export const INDUSTRY_KEYS: IndustryKey[] = [
-  'restaurants', 'real-estate', 'clinics-and-healthcare', 'salons-and-spas', 'gyms-and-fitness',
-  'construction-companies', 'law-firms', 'online-stores-ecommerce', 'wedding-and-event-planners',
-  'auto-repair-shops', 'b2b-clothing-manufacturer', 'b2b-leather-goods-manufacturer',
-]
 
 export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
   restaurants: {

@@ -53,7 +53,7 @@ type ThemeRow = {
 
 const APP_URL = 'https://app.matjarx.com'
 
-export function themeSlug(name: string): string {
+function themeSlug(name: string): string {
   return name
     .normalize('NFD')
     // Strip the combining marks rather than the letters they sit on:

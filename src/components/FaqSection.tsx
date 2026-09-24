@@ -23,12 +23,8 @@
 
 import { useState } from 'react'
 
+/** Shared with FaqSchema, which is where `fromPairs` lives. */
 export type Faq = { question: string; answer: string }
-
-/** `[question, answer]` pairs, which is how most of the data files store them. */
-export function pairsToFaqs(pairs: [string, string][]): Faq[] {
-  return pairs.map(([question, answer]) => ({ question, answer }))
-}
 
 export default function FaqSection({
   faqs,

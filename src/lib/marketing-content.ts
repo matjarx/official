@@ -42,8 +42,6 @@ import { THANK_YOU_STEPS, THANK_YOU_LINKS } from './thank-you-data'
 import { DEFAULT_HERO_TICKS, COMPARE_GROUPS, DEFAULT_TESTIMONIALS, DEFAULT_HOW_TO_CHOOSE, DEFAULT_FAQ_DATA as PRICING_FAQS, DEFAULT_PLAN_ROWS } from '@/components/pricing/PricingContent'
 import { DEFAULT_FAQ_DATA as HOME_FAQS } from '@/components/home/HomeContent'
 
-export type MarketingContentSlug = string
-
 // Deep-merges `override` onto `base`: objects merge key-by-key
 // recursively, arrays and primitives are replaced wholesale when the
 // override provides a value. Never mutates either input.
@@ -470,26 +468,12 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 export type Testimonial = { quote: string; name: string; company: string; initials: string; tint: string }
 export type QA = { q: string; a: string }
 export type FaqEntry = { question: string; answer: string }
-export type PlanCopyOverride = { pitch?: string; why?: string; bestFor?: string; features?: string[] }
-
-export type PricingOverride = {
-  heroTicks?: string[]
-  testimonials?: Testimonial[]
-  howToChoose?: QA[]
-  faqs?: FaqEntry[]
-  plans?: Partial<Record<'Launch' | 'Boost' | 'Growth' | 'Platinum', PlanCopyOverride>>
-}
-
-export type PlanPageOverride = {
-  headline?: string
-  subhead?: string
-  ctaLabel?: string
-  heroTicks?: string[]
-  faqs?: [string, string][]
-}
-
-export type HomeOverride = { faqs?: FaqEntry[] }
-export type FeaturesOverride = { faqs?: [string, string][] }
+// Removed: PlanCopyOverride, PricingOverride, PlanPageOverride,
+// HomeOverride, FeaturesOverride and MarketingContentSlug. They were the
+// first, narrow shape of the override system — a curated subset of
+// fields per page — and were superseded by the full-content shapes
+// below, which cover every field getDefaultContent() returns. Nothing in
+// this repo or in the admin had referenced any of them since.
 
 // Full-content shapes — every field of that page's default content is
 // covered (not a curated subset), matching what getDefaultContent()
