@@ -36,14 +36,14 @@ const ICONS = {
   footer: 'M4 14.5h16v4H4zM4 6h9M4 10h6',
 }
 
-const EE = ['/showcase/ee-hanger.jpeg', '/showcase/ee-paisley.jpeg', '/showcase/ee-purple.jpeg']
+const EE = ['/showcase/ee-hanger.webp', '/showcase/ee-paisley.webp', '/showcase/ee-purple.webp']
 const EE_POS = ['50% 38%', '50% 45%', '50% 40%']
-const EE_INLINE = ['/showcase/ee-chikankari.jpeg', '/showcase/ee-necklines.jpeg', '/showcase/ee-gold-paisley.jpeg']
+const EE_INLINE = ['/showcase/ee-chikankari.webp', '/showcase/ee-necklines.webp', '/showcase/ee-gold-paisley.webp']
 const EE_NAMES = ['hero-chikankari.jpg', 'hero-paisley.jpg', 'hero-purple.jpg']
 
-const SCB = ['/showcase/scb-hero.jpg', '/showcase/scb-shelf.jpeg', '/showcase/scb-croissants.jpeg']
+const SCB = ['/showcase/scb-hero.webp', '/showcase/scb-shelf.webp', '/showcase/scb-croissants.webp']
 const SCB_POS = ['50% 48%', '50% 55%', '50% 45%']
-const SCB_INLINE = ['/showcase/scb-croissants.jpeg', '/showcase/scb-cookies.jpg', '/showcase/scb-baguettes.webp']
+const SCB_INLINE = ['/showcase/scb-croissants.webp', '/showcase/scb-cookies.webp', '/showcase/scb-baguettes.webp']
 const SCB_NAMES = ['hero-bread.jpg', 'hero-shelf.jpg', 'hero-croissants.jpg']
 
 const EE_SCRIMS = [
@@ -58,9 +58,9 @@ const SCB_SCRIMS = [
 ]
 
 const SHOP_ITEMS = [
-  { name: 'Chikankari 3-piece — red', price: 'Rs. 6,400', img: '/showcase/ee-hanger.jpeg' },
-  { name: 'Kashmiri paisley shawl', price: 'Rs. 12,800', img: '/showcase/ee-paisley.jpeg' },
-  { name: 'Purple diamond dupatta', price: 'Rs. 5,200', img: '/showcase/ee-purple.jpeg' },
+  { name: 'Chikankari 3-piece — red', price: 'Rs. 6,400', img: '/showcase/ee-hanger.webp' },
+  { name: 'Kashmiri paisley shawl', price: 'Rs. 12,800', img: '/showcase/ee-paisley.webp' },
+  { name: 'Purple diamond dupatta', price: 'Rs. 5,200', img: '/showcase/ee-purple.webp' },
 ]
 
 const TOP_ICONS = [
@@ -155,11 +155,11 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
   }
 
   const thumbSrc = isProduct
-    ? ['/showcase/ee-hanger.jpeg', '/showcase/ee-paisley.jpeg', '/showcase/ee-purple.jpeg', '/showcase/ee-chikankari.jpeg', '/showcase/ee-necklines.jpeg', '/showcase/ee-blockprint.jpeg']
-    : ['/showcase/scb-hero.jpg', '/showcase/scb-shelf.jpeg', '/showcase/scb-croissants.jpeg', '/showcase/scb-cookies.jpg', '/showcase/scb-baguettes.webp', '/showcase/scb-muffins.jpeg']
+    ? ['/showcase/ee-hanger.webp', '/showcase/ee-paisley.webp', '/showcase/ee-purple.webp', '/showcase/ee-chikankari.webp', '/showcase/ee-necklines.webp', '/showcase/ee-blockprint.webp']
+    : ['/showcase/scb-hero.webp', '/showcase/scb-shelf.webp', '/showcase/scb-croissants.webp', '/showcase/scb-cookies.webp', '/showcase/scb-baguettes.webp', '/showcase/scb-muffins.webp']
   const stripSrc = isProduct
-    ? ['/showcase/ee-chikankari.jpeg', '/showcase/ee-necklines.jpeg', '/showcase/ee-blockprint.jpeg', '/showcase/ee-quilt.jpeg']
-    : ['/showcase/scb-croissants.jpeg', '/showcase/scb-cookies.jpg', '/showcase/scb-muffins.jpeg', '/showcase/scb-patties.jpeg']
+    ? ['/showcase/ee-chikankari.webp', '/showcase/ee-necklines.webp', '/showcase/ee-blockprint.webp', '/showcase/ee-quilt.webp']
+    : ['/showcase/scb-croissants.webp', '/showcase/scb-cookies.webp', '/showcase/scb-muffins.webp', '/showcase/scb-patties.webp']
 
   const domain = isProduct ? 'eleganceembroidery.pk' : 'sweetcrumbs.pk'
   const siteName = isProduct ? 'Elegance Embroidery' : 'Sweet Crumbs Bakery'
@@ -239,7 +239,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
             <span style={{ fontSize: 11, fontWeight: 600, color: '#E9EFF5' }}>Exit</span>
           </span>
           <span style={{ width: 1, height: 20, flex: '0 0 auto', background: 'rgba(255,255,255,0.12)' }} />
-          <Image src="/brand/matjarx-mark-light.png" alt="" width={18} height={18} style={{ flex: '0 0 auto', objectFit: 'contain' }} />
+          <Image src="/brand/matjarx-mark-light.webp" alt="" width={18} height={18} style={{ flex: '0 0 auto', objectFit: 'contain' }} />
           <span style={{ fontSize: 11.5, color: 'rgba(226,236,245,0.5)', whiteSpace: 'nowrap' }}>Theme editor</span>
           <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(226,236,245,0.34)" strokeWidth="2.2" strokeLinecap="round" style={{ flex: '0 0 auto' }}><path d="m9 6 6 6-6 6" /></svg>
           <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: '#F2F6FA', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{siteName}</span>

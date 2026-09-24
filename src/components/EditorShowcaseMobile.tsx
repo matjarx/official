@@ -9,9 +9,9 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-const EE = ['/showcase/ee-hanger.jpeg', '/showcase/ee-paisley.jpeg', '/showcase/ee-purple.jpeg']
+const EE = ['/showcase/ee-hanger.webp', '/showcase/ee-paisley.webp', '/showcase/ee-purple.webp']
 const EE_POS = ['50% 38%', '50% 45%', '50% 40%']
-const SCB = ['/showcase/scb-hero.jpg', '/showcase/scb-shelf.jpeg', '/showcase/scb-croissants.jpeg']
+const SCB = ['/showcase/scb-hero.webp', '/showcase/scb-shelf.webp', '/showcase/scb-croissants.webp']
 const SCB_POS = ['50% 48%', '50% 55%', '50% 45%']
 
 const EE_SCRIMS = [
@@ -52,11 +52,11 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
   }
 
   const thumbSrc = isProduct
-    ? ['/showcase/ee-hanger.jpeg', '/showcase/ee-paisley.jpeg', '/showcase/ee-purple.jpeg', '/showcase/ee-chikankari.jpeg', '/showcase/ee-necklines.jpeg', '/showcase/ee-blockprint.jpeg']
-    : ['/showcase/scb-hero.jpg', '/showcase/scb-shelf.jpeg', '/showcase/scb-croissants.jpeg', '/showcase/scb-cookies.jpg', '/showcase/scb-baguettes.webp', '/showcase/scb-muffins.jpeg']
+    ? ['/showcase/ee-hanger.webp', '/showcase/ee-paisley.webp', '/showcase/ee-purple.webp', '/showcase/ee-chikankari.webp', '/showcase/ee-necklines.webp', '/showcase/ee-blockprint.webp']
+    : ['/showcase/scb-hero.webp', '/showcase/scb-shelf.webp', '/showcase/scb-croissants.webp', '/showcase/scb-cookies.webp', '/showcase/scb-baguettes.webp', '/showcase/scb-muffins.webp']
   const stripSrc = isProduct
-    ? ['/showcase/ee-chikankari.jpeg', '/showcase/ee-necklines.jpeg', '/showcase/ee-blockprint.jpeg']
-    : ['/showcase/scb-croissants.jpeg', '/showcase/scb-cookies.jpg', '/showcase/scb-muffins.jpeg']
+    ? ['/showcase/ee-chikankari.webp', '/showcase/ee-necklines.webp', '/showcase/ee-blockprint.webp']
+    : ['/showcase/scb-croissants.webp', '/showcase/scb-cookies.webp', '/showcase/scb-muffins.webp']
 
   const siteName = isProduct ? 'Elegance Embroidery' : 'Sweet Crumbs Bakery'
   const domain = isProduct ? 'eleganceembroidery.pk' : 'sweetcrumbs.pk'
