@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import BlogPostContent from '@/components/blog/BlogPostContent'
 import { BLOG_POSTS, AUTHOR } from '@/lib/blog-data'
 import { routes } from '@/lib/routes'
-import { getBlogPost, getBlogPosts } from '@/lib/marketing-content'
+import { getBlogPost, getBlogPosts, toCard } from '@/lib/marketing-content'
 
 // Re-checks marketing_blog_posts at most once a minute rather than only at
 // build time — otherwise a new/edited post would need a full redeploy to
@@ -79,7 +79,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
-      <BlogPostContent post={post} allPosts={allPosts} />
+      {/* allPosts only resolves relatedSlugs to a title and a cover.
+          Bodies stripped, or every post ships all 28 articles. */}
+      <BlogPostContent post={post} allPosts={allPosts.map(toCard)} />
     </>
   )
 }

@@ -25,7 +25,7 @@ function BlockList({ blocks }: { blocks: Block[] }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {blocks.map((b, i) => (
         <div key={i}>
-          {b.h && <h4 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{b.h}</h4>}
+          {b.h && <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{b.h}</h3>}
           {b.p && <p style={{ margin: '0 0 8px', fontSize: 13.5, lineHeight: 1.6, color: '#4B5D6E' }}>{b.p}</p>}
           {b.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{b.items.map((it, j) => bullet(it, j))}</ul>}
           {b.sub && b.sub.map((s, k) => (
@@ -92,7 +92,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           {d.solution.steps.map((s, i) => (
             <div key={s.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
               <span style={{ display: 'block', marginBottom: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--moss-light)' }}>{i + 1}</span>
-              <h4 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{s.title}</h4>
+              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{s.title}</h3>
               <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: '#4B5D6E' }}>{s.body}</p>
             </div>
           ))}
@@ -143,7 +143,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
             {d.differentiator.groups.map((g) => (
               <div key={g.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18, border: g.positive ? '1.5px solid var(--olive)' : undefined }}>
-                <h4 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: g.positive ? 'var(--olive)' : '#04121F' }}>{g.title}</h4>
+                <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: g.positive ? 'var(--olive)' : '#04121F' }}>{g.title}</h3>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{g.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             ))}
@@ -158,7 +158,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
             {d.process.phases.map((ph) => (
               <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-                <h4 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{ph.title}</h4>
+                <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{ph.title}</h3>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             ))}
@@ -192,7 +192,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
             {d.marketingJourney.months.map((m) => (
               <div key={m.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 18 }}>
                 <div>
-                  <h4 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>{m.title}</h4>
+                  <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>{m.title}</h3>
                   <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{m.focus}</span>
                 </div>
                 <div>
@@ -273,7 +273,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
           {d.whyChoose.items.map((it) => (
             <div key={it.h} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h4 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{it.h}</h4>
+              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{it.h}</h3>
               {it.body && <p style={{ margin: '0 0 8px', fontSize: 13.5, color: '#4B5D6E' }}>{it.body}</p>}
               {it.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{it.items.map((x, i) => bullet(x, i))}</ul>}
             </div>

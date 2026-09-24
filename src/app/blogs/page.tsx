@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import BlogContent from '@/components/blog/BlogContent'
-import { getSeoOverride, getBlogPosts, pageTitle } from '@/lib/marketing-content'
+import { getSeoOverride, getBlogPosts, pageTitle, toCard } from '@/lib/marketing-content'
 
 // Re-checks marketing_blog_posts at most once a minute — a new/edited post
 // shows up without a redeploy.
@@ -17,5 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() {
   const posts = await getBlogPosts()
-  return <BlogContent posts={posts} />
+  // Bodies stripped: BlogContent is a client component and never reads
+  // one, so passing them serialises all 28 articles into the HTML.
+  return <BlogContent posts={posts.map(toCard)} />
 }

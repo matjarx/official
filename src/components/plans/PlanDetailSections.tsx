@@ -33,7 +33,7 @@ function BlockList({ blocks }: { blocks: Block[] }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
       {blocks.map((b, i) => (
         <div key={i}>
-          {b.h && <h4 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{b.h}</h4>}
+          {b.h && <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{b.h}</h3>}
           {b.p && <p style={{ margin: '0 0 8px', fontSize: 13.5, lineHeight: 1.6, color: '#4B5D6E' }}>{b.p}</p>}
           {b.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{b.items.map((it, j) => bullet(it, j))}</ul>}
           {b.sub && b.sub.map((s, k) => (
@@ -53,7 +53,7 @@ function GroupGrid({ groups }: { groups: BestForGroup[] }) {
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
       {groups.map((g) => (
         <div key={g.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-          <h4 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{g.title}</h4>
+          <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{g.title}</h3>
           <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{g.items.map((it, i) => bullet(it, i))}</ul>
         </div>
       ))}
@@ -165,7 +165,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
 
         {d.pricing.blogNote && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
-            <h4 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>What does each blog post cost?</h4>
+            <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>What does each blog post cost?</h3>
             <p style={{ margin: '0 0 8px', fontSize: 13.5, color: '#4B5D6E' }}>Included in plan: {d.pricing.blogNote.included} · Additional blog posts: {d.pricing.blogNote.extra}</p>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.blogNote.whyMatters.map((it, i) => bullet(it, i))}</ul>
           </div>
@@ -173,7 +173,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
 
         {d.pricing.perMonthValue && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
-            <h4 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{d.pricing.perMonthValue.intro}</h4>
+            <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{d.pricing.perMonthValue.intro}</h3>
             <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
               {d.pricing.perMonthValue.items.map((it, i) => (
                 <li key={i} style={{ display: 'flex', justifyContent: 'space-between', gap: 10, fontSize: 13.5, color: '#4B5D6E' }}>
@@ -190,7 +190,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
 
         {d.pricing.roi && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginTop: 22 }}>
-            <h4 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>ROI calculation</h4>
+            <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>ROI calculation</h3>
             <p style={{ margin: '0 0 8px', fontSize: 13.5, color: '#4B5D6E' }}>{d.pricing.roi.intro}</p>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.roi.lines.map((it, i) => bullet(it, i))}</ul>
           </div>
@@ -229,7 +229,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
           {d.process.phases.map((ph) => (
             <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h4 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{ph.title}</h4>
+              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{ph.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}
@@ -321,7 +321,7 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
           {d.discovery.phases.map((ph) => (
             <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h4 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{ph.title}</h4>
+              <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{ph.title}</h3>
               {ph.body && <p style={{ margin: '0 0 8px', fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{ph.body}</p>}
               <ul style={{ margin: '0 0 8px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
               {ph.deliverable && <p style={{ margin: 0, fontSize: 12, color: '#8A9AA6' }}>Deliverable: {ph.deliverable}</p>}
@@ -336,7 +336,7 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16, marginBottom: 22 }}>
           {d.pricing.tiers.map((t) => (
             <div key={t.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h4 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{t.title}</h4>
+              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{t.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{t.body.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}
@@ -358,7 +358,7 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
           {d.whyCustom.items.map((it) => (
             <div key={it.h} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h4 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{it.h}</h4>
+              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{it.h}</h3>
               <p style={{ margin: '0 0 6px', fontSize: 13.5, color: '#4B5D6E' }}>{it.p}</p>
               <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{it.result}</p>
             </div>
@@ -371,7 +371,7 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
           {d.team.roles.map((r) => (
             <div key={r.title} className="glass-card" style={{ padding: '18px 20px 20px', borderRadius: 18 }}>
-              <h4 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{r.title}</h4>
+              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{r.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{r.items.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}
@@ -390,7 +390,7 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16, marginBottom: 20 }}>
           {d.support.options.map((o) => (
             <div key={o.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h4 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{o.title}</h4>
+              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{o.title}</h3>
               <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{o.items.map((it, i) => bullet(it, i))}</ul>
               <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{o.cost}</span>
             </div>
@@ -410,7 +410,7 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
           {d.gettingStarted.steps.map((s) => (
             <div key={s.title} className="glass-card" style={{ padding: '18px 20px 20px', borderRadius: 18 }}>
-              <h4 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#04121F' }}>{s.title}</h4>
+              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#04121F' }}>{s.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}

@@ -205,7 +205,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
             {detail.whyOver.map((g) => (
               <div key={g.label} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-                <h4 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{g.label}</h4>
+                <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{g.label}</h3>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{g.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             ))}

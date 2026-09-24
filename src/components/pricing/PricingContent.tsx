@@ -179,7 +179,15 @@ export default function PricingContent({ content }: { content: PricingContentSha
       </section>
 
       {/* Plans */}
-      <section id="plans" style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 20px' }}>
+      <section id="plans" aria-labelledby="plans-heading" style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 20px' }}>
+        {/* The four plan names are h3s and this section had nothing above
+            them, so the page went h1 -> h3 and the outline claimed the
+            plans were subsections of nothing. The heading is visually
+            hidden rather than invented copy: the section is obviously the
+            plans, the h1 four lines up says so, and adding a redundant
+            "Our plans" banner to a page that opens with a price table is
+            noise for a sighted reader. */}
+        <h2 id="plans-heading" className="sr-only">Our plans</h2>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, flexWrap: 'wrap', marginBottom: 12 }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
             <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)', fontStyle: 'italic' }}>{saveNote}</span>

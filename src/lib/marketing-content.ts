@@ -403,6 +403,21 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
+/**
+ * A post with its body removed.
+ *
+ * BlogContent and the "Keep reading" cards are CLIENT components, so
+ * every prop they receive is serialised into the RSC payload embedded in
+ * the HTML. Neither reads `body`, and handing them the full list shipped
+ * all 28 articles' complete text to anyone who opened the index: 449 KB
+ * of HTML for a page of 28 cards.
+ */
+export type BlogCard = Omit<BlogPost, 'body'> & { body: [] }
+
+export function toCard(p: BlogPost): BlogCard {
+  return { ...p, body: [] }
+}
+
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
     const query = (columns: string) =>
