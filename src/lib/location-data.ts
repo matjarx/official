@@ -705,8 +705,13 @@ const MAJOR_CITIES: CityKey[] = ['karachi', 'lahore', 'islamabad']
 export function otherCitiesFor(key: CityKey) {
   const majors = MAJOR_CITIES.filter((k) => k !== key)
   const rest = CITY_SLUGS.filter((k) => k !== key && !MAJOR_CITIES.includes(k))
-  const start = Math.max(0, rest.indexOf(key))
+  // The offset has to come from the FULL list. `rest` has `key` filtered
+  // out of it by construction, so rest.indexOf(key) is always -1 -- which
+  // clamped to 0 and handed every one of the 63 pages the same five
+  // cities. A rotation that does not rotate looks exactly like the fixed
+  // slice it replaced, and a crawl found the same 8 targets as before.
+  const start = CITY_SLUGS.indexOf(key)
   const WINDOW = 5
-  const picks = [...majors, ...Array.from({ length: WINDOW }, (_, i) => rest[(start + i + 1) % rest.length])]
+  const picks = [...majors, ...Array.from({ length: WINDOW }, (_, i) => rest[(start + i) % rest.length])]
   return picks.map((k) => ({ label: CITY_DATA[k].name, href: routes.location(k) }))
 }
