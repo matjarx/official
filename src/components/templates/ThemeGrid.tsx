@@ -34,7 +34,7 @@ function ThemeCard({ theme }: { theme: Theme }) {
       >
         <span className="theme-card-band" style={{ background: band }}>
           {theme.previewImageUrl && (
-            <Image src={theme.previewImageUrl} alt={`${theme.name} template preview`} fill sizes="300px" style={{ objectFit: 'cover' }} />
+            <Image src={theme.previewImageUrl} alt={`${theme.name} template preview`} fill sizes="(max-width: 700px) 100vw, 360px" style={{ objectFit: 'cover' }} />
           )}
           {/* Independent, not either/or. Bakery & Café is flagged
               coming_soon and has a finished, published demo behind it —

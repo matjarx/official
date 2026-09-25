@@ -378,7 +378,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
                 </div>
 
                 <div style={{ position: 'relative', minHeight: 226, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', alignItems: 'center', gap: 18, padding: '28px 22px 32px', overflow: 'hidden', background: heroBase }}>
-                  <Image src={heroImg} alt="" fill sizes="600px" priority style={{ objectFit: 'cover', objectPosition: heroPos, zIndex: 0 }} />
+                  <Image src={heroImg} alt="" fill sizes="(max-width: 760px) 100vw, 900px" priority style={{ objectFit: 'cover', objectPosition: heroPos, zIndex: 0 }} />
                   <span style={{ position: 'absolute', inset: 0, zIndex: 1, background: heroScrim }} />
 
                   <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', gap: 9, minWidth: 0 }}>
@@ -393,7 +393,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
 
                   <div style={{ position: 'relative', zIndex: 2, minWidth: 0, display: 'flex', justifyContent: 'center' }}>
                     <span style={{ display: 'block', width: '100%', maxWidth: 176, aspectRatio: '1 / 1.04', borderRadius: 10, overflow: 'hidden', boxShadow: '0 14px 34px rgba(0,0,0,0.3)', position: 'relative' }}>
-                      <Image src={inlineImg} alt="" fill sizes="176px" priority style={{ objectFit: 'cover', objectPosition: '50% 45%' }} />
+                      <Image src={inlineImg} alt="" fill sizes="220px" priority style={{ objectFit: 'cover', objectPosition: '50% 45%' }} />
                     </span>
                   </div>
                 </div>
@@ -402,7 +402,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, padding: '12px 16px 16px', background: '#FFFCF5', borderRadius: '0 0 11px 11px' }}>
                 {stripSrc.map((s, i) => (
                   <span key={i} style={{ height: 46, borderRadius: 7, overflow: 'hidden', position: 'relative' }}>
-                    <Image src={s} alt="" fill sizes="80px" style={{ objectFit: 'cover' }} />
+                    <Image src={s} alt="" fill sizes="(max-width: 760px) 25vw, 220px" style={{ objectFit: 'cover' }} />
                   </span>
                 ))}
               </div>
