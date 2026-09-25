@@ -17,6 +17,9 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
   const [open, setOpen] = useState(-1)
   const [drawer, setDrawer] = useState(false)
   const navRef = useRef<HTMLDivElement>(null)
+  // Wraps the desktop nav AND the mobile drawer — see the outside-click
+  // effect below for why that distinction mattered.
+  const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 940px)')
@@ -33,10 +36,18 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
   // Not in the original prototype (single-file sandbox had no room for it),
   // but a dropdown that only closes by re-clicking its own trigger is a
   // real usability regression on a live site — close on outside click too.
+  //
+  // Scoped to the whole header, not just the desktop nav. navRef sits on
+  // <nav className="site-header-nav-desktop">, and the mobile drawer is a
+  // SIBLING of it -- so on a phone every tap inside the drawer counted as
+  // "outside", including taps on the submenu links themselves. mousedown
+  // closed the submenu, the link unmounted, and the click that followed
+  // landed on nothing: the mobile dropdown links could not be opened at
+  // all. headerRef wraps both, so a tap anywhere in the header is inside.
   useEffect(() => {
     if (open < 0) return
     function onDocClick(e: MouseEvent) {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) setOpen(-1)
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) setOpen(-1)
     }
     document.addEventListener('mousedown', onDocClick)
     return () => document.removeEventListener('mousedown', onDocClick)
@@ -65,6 +76,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
           the site showed two strips and editing the admin one appeared
           to do nothing. */}
       <header
+        ref={headerRef}
         style={{
           background: dark ? 'rgba(0,20,35,0.74)' : 'rgba(252,250,243,0.72)',
           backdropFilter: 'blur(26px)',
@@ -193,7 +205,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
               </button>
             )}
 
-            <a href={appSignup()} onClick={() => trackEvent('cta_click', { label: 'header_get_started' })} className="btn-navy" style={{ flex: '0 0 auto' }}>Get started</a>
+            <a href={appSignup()} onClick={() => trackEvent('cta_click', { label: 'header_get_started' })} className="btn-navy btn-trace" style={{ flex: '0 0 auto' }}>Get started</a>
 
             <button
               type="button"
