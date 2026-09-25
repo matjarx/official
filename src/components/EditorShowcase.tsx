@@ -511,9 +511,11 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
         type="button"
         onClick={toggleMode}
         title="Click to switch the business type"
+        aria-label="Switch this demo between a shop and a bookings business"
         className="showcase-overlay-1"
         style={{ all: 'unset', cursor: 'pointer', position: 'absolute', zIndex: 20, left: '4%', top: '46%', width: 208, padding: '13px 15px 14px', borderRadius: 12, background: bookingBg, boxShadow: '0 22px 48px rgba(0,8,18,0.44)', display: 'flex', flexDirection: 'column', gap: 8 }}
       >
+        <span className="showcase-hint" aria-hidden="true">Click to switch</span>
         <span style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
           <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 1.1, textTransform: 'uppercase', color: panelLabelInk, marginRight: 'auto' }}>{panelLabel}</span>
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke={panelLabelInk} strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M4 8h13l-3-3M20 16H7l3 3" /></svg>
@@ -552,9 +554,11 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
         type="button"
         onClick={toggleMode}
         title="Click to switch the business type"
+        aria-label="Switch this demo between a shop and a bookings business"
         className="showcase-overlay-2"
         style={{ all: 'unset', cursor: 'pointer', position: 'absolute', zIndex: 20, left: '24%', bottom: '6.5%', padding: 5, borderRadius: 4, border: '1.5px solid #37B6F0', boxShadow: '0 20px 44px rgba(0,8,18,0.5)' }}
       >
+        <span className="showcase-hint" aria-hidden="true">Click to switch</span>
         <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 9, width: 152, padding: '20px 16px 18px', background: '#1C1C1C' }}>
           <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#FFFFFF" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d={modeIcon} /></svg>
           <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, letterSpacing: 1.1, textTransform: 'uppercase', color: '#FFFFFF', textAlign: 'center', whiteSpace: 'nowrap' }}>{modeIconLabel}</span>
@@ -566,9 +570,11 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
         type="button"
         onClick={cycleImage}
         title="Click to change the banner image"
+        aria-label="Change the banner image in this demo"
         className="showcase-overlay-3"
         style={{ all: 'unset', cursor: 'pointer', position: 'absolute', zIndex: 20, right: '8%', bottom: '16%', width: 196, borderRadius: 12, overflow: 'hidden', background: '#0B1B27', border: '1px solid #37B6F0', boxShadow: '0 22px 48px rgba(0,8,18,0.48)' }}
       >
+        <span className="showcase-hint" aria-hidden="true">Click to change the image</span>
         <span style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 10px', background: 'rgba(255,255,255,0.06)' }}>
           <span style={{ fontSize: 9.5, fontWeight: 600, color: '#E9EFF5', marginRight: 'auto' }}>Media Library</span>
           <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.6)" strokeWidth="2.2" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>

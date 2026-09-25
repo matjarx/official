@@ -387,9 +387,88 @@ textarea.input {
 .mx-get-site:hover { background: var(--butter) !important; color: #16210B !important; }
 
 /* Editor Showcase overlay hover states */
-.showcase-overlay-1:hover { box-shadow: 0 26px 56px rgba(0,8,18,0.5) !important; }
-.showcase-overlay-2:hover { border-color: var(--butter) !important; }
-.showcase-overlay-3:hover { border-color: var(--butter) !important; }
+/* ── The three overlays in the editor showcase ──────────────────────
+   All three have been <button>s with an onClick and a title attribute
+   since they were written. Nobody could tell. They sit inside an
+   illustration of an editor, styled as part of that illustration, so
+   there was nothing to separate "a picture of a media library" from "a
+   media library you can press".
+
+   A hover shadow does not fix that: it only appears once you already
+   know to hover, and on a touchscreen it never appears at all.
+
+   So each one now carries a standing cue — a butter ring and a small
+   labelled pill — plus a real hover and focus state. The pill says what
+   pressing it does, because "this is clickable" is half an answer. */
+.showcase-overlay-1,
+.showcase-overlay-2,
+.showcase-overlay-3 {
+  outline: 2px dashed rgba(244, 242, 174, 0.55);
+  outline-offset: 3px;
+  transition: outline-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+.showcase-overlay-1:hover,
+.showcase-overlay-2:hover,
+.showcase-overlay-3:hover,
+.showcase-overlay-1:focus-visible,
+.showcase-overlay-2:focus-visible,
+.showcase-overlay-3:focus-visible {
+  outline-style: solid;
+  outline-color: var(--butter);
+  transform: translateY(-2px);
+  box-shadow: 0 26px 56px rgba(0, 8, 18, 0.5) !important;
+}
+
+/* The label.
+   Sits just inside the top edge rather than above it: overlay 3 carries
+   overflow:hidden to keep its rounded corners, so a pill at top:-11px
+   was sliced in half by the clip. Inside is the one position that works
+   for all three without giving one of them a special case. */
+.showcase-hint {
+  position: absolute;
+  z-index: 21;
+  top: 6px;
+  left: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--butter);
+  color: #3d3a08;
+  font-family: var(--font-lato), Lato, sans-serif;
+  font-weight: 800;
+  font-size: 8.5px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 8, 18, 0.35);
+  pointer-events: none;
+}
+
+/* One slow pulse on the ring, so the eye finds them without anything
+   moving distractingly. Off for anyone who has asked for less motion. */
+@keyframes showcase-cue {
+  0%, 100% { outline-color: rgba(244, 242, 174, 0.35); }
+  50%      { outline-color: rgba(244, 242, 174, 0.9); }
+}
+.showcase-overlay-1,
+.showcase-overlay-2,
+.showcase-overlay-3 { animation: showcase-cue 2.8s ease-in-out infinite; }
+
+/* Overlay 3's first row is a title bar the pill would otherwise cover. */
+.showcase-overlay-3 > span:nth-child(2) { padding-top: 22px !important; }
+.showcase-overlay-1:hover, .showcase-overlay-2:hover, .showcase-overlay-3:hover,
+.showcase-overlay-1:focus-visible, .showcase-overlay-2:focus-visible, .showcase-overlay-3:focus-visible { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-overlay-1, .showcase-overlay-2, .showcase-overlay-3 {
+    animation: none;
+    transition: none;
+    outline-color: rgba(244, 242, 174, 0.75);
+  }
+  .showcase-overlay-1:hover, .showcase-overlay-2:hover, .showcase-overlay-3:hover { transform: none; }
+}
 
 /* Desktop Editor Showcase uses a fixed 186px|1fr|216px grid that has no
    room on a phone; Editor Showcase Mobile takes over below the same
