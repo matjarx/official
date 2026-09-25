@@ -338,10 +338,12 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         </div>
       </section>
 
-      <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
-        <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: '#04121F' }}>{d.bottomLine.title}</h3>
-        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: '#4B5D6E' }}>{p}</p>)}
-      </section>
+      {d.bottomLine && (
+        <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
+          <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: '#04121F' }}>{d.bottomLine.title}</h3>
+          {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: '#4B5D6E' }}>{p}</p>)}
+        </section>
+      )}
     </>
   )
 }

@@ -41,7 +41,8 @@ export type ServiceDetail = {
   // still accepted so nothing breaks mid-edit, and still renders inert, but
   // every CTA here now has an href.
   closing: { title: string; body?: string; ctas: (string | ServiceCta)[] }
-  bottomLine: { title: string; body: string[] }
+  /** Optional: DFY's moved into the footer CTA, which every page carries. */
+  bottomLine?: { title: string; body: string[] }
 }
 
 export const DFY: ServiceDetail = {
@@ -134,7 +135,9 @@ export const DFY: ServiceDetail = {
     { q: 'How much does this really cost?', a: 'One-time setup Rs. 22,500 (complete design, copywriting, setup, launch), monthly Rs. 4,500 (hosting, domain, email, support, platform, 0% fees). Annual cost: Rs. 76,500/year — one sale often covers the entire year.' },
   ] },
   closing: { title: 'Get Started Today', body: 'Ready to see your business online in 7 days?', ctas: [{ label: 'Get started', href: appSignup('launch') }, { label: 'See pricing', href: routes.pricing }] },
-  bottomLine: { title: 'Professional website done for you. 7-day turnaround.', body: ['Completely zero-risk. Unmatched customer service.', 'Your website is the foundation of your online business. Let us build it for you — right, fast, and affordable.', 'More than 70,000 businesses trust MatjarX. Your business deserves to join them.'] },
+  // No bottomLine: this copy is now the footer CTA on every page, and it
+  // used to render here as well — immediately above that card. The other
+  // three services keep theirs, which say something different.
 }
 
 export const SEO: ServiceDetail = {

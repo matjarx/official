@@ -65,13 +65,26 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                 <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: '#33485B' }}>Neither answer was reasonable for a business doing solid trade with twelve staff. So we built the option that should have existed: a fixed price, a fixed timeline, and a team that does the work.</p>
                 <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: '#33485B' }}>Eight years later we&rsquo;ve built 70,000+ websites. The model hasn&rsquo;t changed much — you tell us about your business, we build the whole thing, and we stay on to keep it working.</p>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
-                <div style={{ height: 300, borderRadius: 22, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'grid', placeItems: 'center' }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'rgba(255,255,255,0.85)' }}>Team photo</span>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
-                  <div style={{ height: 150, borderRadius: 18, background: 'linear-gradient(150deg, var(--moss-light), var(--olive))' }} />
-                  <div style={{ height: 150, borderRadius: 18, background: 'linear-gradient(150deg, #2E6EA8, var(--navy))' }} />
+              {/* The real team photo, where a gradient box saying "Team
+                  photo" used to sit. The two smaller gradient panels under
+                  it went with it — they were placeholders for pictures that
+                  were never taken, and two empty coloured rectangles under a
+                  real photograph look like something failed to load.
+
+                  aspectRatio rather than a fixed height: the source is
+                  1400x933 and a fixed 300px box would have cropped it to a
+                  letterbox, which is what happens to the team cards further
+                  down this page. */}
+              <div style={{ minWidth: 0 }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '1400 / 933', borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 48px rgba(4,18,31,0.14)' }}>
+                  <Image
+                    src="/about/matjarx-team.webp"
+                    alt="The MatjarX team together in the main office in Lahore, in navy MatjarX polo shirts, under the MatjarX &ldquo;Build. Launch. Scale.&rdquo; wall sign"
+                    title="The MatjarX team at the main office"
+                    fill
+                    sizes="(max-width: 900px) 100vw, 640px"
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
               </div>
             </div>
@@ -106,9 +119,20 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 20 }}>
               {ABOUT_TEAM_ACTIVE.map((t) => (
                 <div key={t.name} style={{ borderRadius: 22, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)' }}>
-                  <div style={{ position: 'relative', height: 210, background: t.photo ? undefined : t.tint, display: 'grid', placeItems: 'center' }}>
+                  {/* Two things were wrong here.
+                      The box was a fixed 210px tall and 422px wide — a 2:1
+                      crop of a 1.29:1 photograph, which took the top off
+                      everyone's head. aspectRatio 4/3 is close to the
+                      source, so the crop is now a trim rather than a
+                      decapitation, and objectPosition favours the upper
+                      half where the faces are.
+                      And sizes said 220px while the card renders at 422,
+                      so Next served a 220px file into a box nearly twice
+                      that and the browser upscaled it. That is why they
+                      looked washed out. */}
+                  <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', background: t.photo ? undefined : t.tint, display: 'grid', placeItems: 'center' }}>
                     {t.photo ? (
-                      <Image src={t.photo.src} alt={t.photo.alt} title={`${t.name} — ${t.role}`} fill sizes="220px" style={{ objectFit: 'cover' }} />
+                      <Image src={t.photo.src} alt={t.photo.alt} title={`${t.name} — ${t.role}`} fill sizes="(max-width: 700px) 100vw, 440px" style={{ objectFit: 'cover', objectPosition: '50% 22%' }} />
                     ) : (
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.6px', color: 'rgba(255,255,255,0.92)' }}>{t.initials}</span>
                     )}

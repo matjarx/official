@@ -57,9 +57,22 @@ export default function SiteFooter() {
           }}
         >
           <h2 style={{ margin: 0, maxWidth: '22em', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 40, lineHeight: 1.08, letterSpacing: '-1.4px', color: '#1F2A08' }}>
-            Professional websites, ready in just 7 days.
+            Professional website done for you. 7-day turnaround.
           </h2>
-          <p style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.6, color: '#3D4A16' }}>Built by a real team, with unmatched customer support.</p>
+          {/* Moved here from the closing block on /done-for-you-website,
+              where it sat directly above this card — two closing pitches
+              stacked, saying the same thing twice in different words.
+              This card is on all 184 pages, so the better-written one
+              belongs in it. */}
+          <p style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.6, color: '#3D4A16', fontWeight: 600 }}>
+            Completely zero-risk. Unmatched customer service.
+          </p>
+          <p style={{ margin: 0, maxWidth: '38em', fontSize: 16, lineHeight: 1.6, color: '#3D4A16' }}>
+            Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.
+          </p>
+          <p style={{ margin: 0, maxWidth: '38em', fontSize: 16, lineHeight: 1.6, color: '#3D4A16' }}>
+            More than 70,000 businesses trust MatjarX. Your business deserves to join them.
+          </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 8 }}>
             <a
               href={appSignup()}

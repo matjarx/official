@@ -302,8 +302,12 @@ export default function HomeMobileContent() {
 
           {/* CTA */}
           <div style={{ padding: '26px 22px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(244,242,174,0.94), rgba(198,203,138,0.94))', border: '1px solid rgba(255,255,255,0.7)', boxShadow: '0 22px 50px rgba(112,117,56,0.24), inset 0 1px 0 rgba(255,255,255,0.85)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 13, textAlign: 'center' }}>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.12, letterSpacing: '-0.9px', color: '#1F2A08' }}>Professional websites, ready in just 7 days.</h2>
-            <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Built by a real team, with unmatched customer support.</span>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.12, letterSpacing: '-0.9px', color: '#1F2A08' }}>Professional website done for you. 7-day turnaround.</h2>
+            {/* Same copy as the footer CTA, kept in step deliberately —
+                /home-mobile renders this instead of SiteFooter's card. */}
+            <span style={{ fontSize: 13.5, lineHeight: 1.6, fontWeight: 600, color: '#3D4A16' }}>Completely zero-risk. Unmatched customer service.</span>
+            <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.</span>
+            <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>More than 70,000 businesses trust MatjarX. Your business deserves to join them.</span>
             <a href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: '#04121F' }}>Get started</a>
             <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(255,255,255,0.9)' }}>Talk to us on WhatsApp</a>
           </div>
