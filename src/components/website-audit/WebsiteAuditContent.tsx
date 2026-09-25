@@ -350,7 +350,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               <p style={{ margin: 0, maxWidth: '38em', fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>70,000+ small businesses use MatjarX to improve their online visibility. Your website could be next.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>
                 <a href={`https://wa.me/${CHANNELS.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="btn-primary">Request your free consultation</a>
-                <a href={`mailto:${CHANNELS.email}`} style={{ padding: '15px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#FFFFFF', background: 'rgba(255,255,255,0.09)', border: '1.5px solid rgba(255,255,255,0.2)' }}>Email us</a>
+                <a href={`mailto:${CHANNELS.email}`} className="btn-ghost">Email us</a>
               </div>
             </div>
           </section>

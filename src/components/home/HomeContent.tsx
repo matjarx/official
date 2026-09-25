@@ -493,7 +493,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Real sites, real businesses</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>70,000 websites built and counting</h2>
             </div>
-            <Link href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(255,255,255,0.07)' : '#FFFFFF', border: `1.5px solid ${dark ? 'rgba(255,255,255,0.16)' : 'rgba(4,18,31,0.14)'}` }}>Browse all examples</Link>
+            <Link className="btn-trace" href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(255,255,255,0.07)' : '#FFFFFF', border: `1.5px solid ${dark ? 'rgba(255,255,255,0.16)' : 'rgba(4,18,31,0.14)'}` }}>Browse all examples</Link>
           </div>
           {/* Was four client screenshots. They answered "can you prove
               it" and not "have you built one for a business like mine",

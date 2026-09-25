@@ -98,7 +98,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#FFFFFF' }}>Change a photo. Take a booking. Start selling.</h2>
                 <p style={{ margin: 0, maxWidth: '34em', fontSize: 15, lineHeight: 1.65, color: 'rgba(226,236,245,0.68)' }}>Switch between a product business and a service business and watch the buttons, panels and layout change with it. That&apos;s the same editor your site ships with.</p>
               </div>
-              <Link href={routes.pricing} style={{ padding: '15px 26px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#16210B', background: 'var(--butter)' }}>Get the editor</Link>
+              <Link className="btn-trace" href={routes.pricing} style={{ padding: '15px 26px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#16210B', background: 'var(--butter)' }}>Get the editor</Link>
             </div>
             <div className="showcase-desktop-only"><EditorShowcase /></div>
             <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>

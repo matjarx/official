@@ -114,7 +114,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
                 <a href="tel:+923033720953" className="btn-primary" style={{ textAlign: 'center' }}>Call +92 303 372 0953</a>
-                <Link href={routes.contact} style={{ textAlign: 'center', padding: '15px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#FFFFFF', background: 'rgba(255,255,255,0.09)', border: '1.5px solid rgba(255,255,255,0.2)' }}>Send us a message</Link>
+                <Link href={routes.contact} className="btn-ghost">Send us a message</Link>
               </div>
             </div>
           </section>

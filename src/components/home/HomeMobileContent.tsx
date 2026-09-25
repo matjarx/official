@@ -137,7 +137,7 @@ export default function HomeMobileContent() {
 
             <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 9, paddingTop: 4 }}>
               <a href="/pricing" className="btn-primary" style={{ textAlign: 'center' }}>Let&rsquo;s begin</a>
-              <a href="/website-examples" style={{ textAlign: 'center', padding: '16px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, letterSpacing: '0.8px', textTransform: 'uppercase', color: theme.ink1, background: theme.chipBg, border: `1.5px solid ${theme.chipLine}` }}>See our websites</a>
+              <a className="btn-trace" href="/website-examples" style={{ textAlign: 'center', padding: '16px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, letterSpacing: '0.8px', textTransform: 'uppercase', color: theme.ink1, background: theme.chipBg, border: `1.5px solid ${theme.chipLine}` }}>See our websites</a>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', justifyContent: 'center', paddingTop: 8 }}>
@@ -308,8 +308,8 @@ export default function HomeMobileContent() {
             <span style={{ fontSize: 13.5, lineHeight: 1.6, fontWeight: 600, color: '#3D4A16' }}>Completely zero-risk. Unmatched customer service.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>More than 70,000 businesses trust MatjarX. Your business deserves to join them.</span>
-            <a href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: '#04121F' }}>Get started</a>
-            <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(255,255,255,0.9)' }}>Talk to us on WhatsApp</a>
+            <a className="btn-trace" href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: '#04121F' }}>Get started</a>
+            <a className="btn-trace" href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(255,255,255,0.9)' }}>Talk to us on WhatsApp</a>
           </div>
 
           {/* Footer */}

@@ -248,10 +248,19 @@ p {
 .btn-secondary:hover {
   border-color: var(--olive);
 }
-/* ── .btn-trace — a beam running one lap of a button's border on hover ───
-   Added alongside whatever the button already is (.btn-navy, .mx-get-site,
-   a plan CTA), rather than replacing it: it only paints a border, so it
-   composes instead of forcing every button through one new class.
+/* ── The beam that runs one lap of a button's border on hover ───────────
+   Applied to the button classes themselves, not spelled onto 52 call
+   sites: it only paints a border, so it composes with whatever the button
+   already is, and keying it here means a button added next month gets it
+   without anyone remembering to.
+
+   `.btn-trace` stays in the list as an opt-in for a one-off that is not
+   one of these classes.
+
+   Deliberately NOT on the olive related-link chips (/plans, /templates).
+   Those sit five and six to a row, and on touch -- where the beam runs
+   continuously, since there is no hover -- a whole row of them animating
+   at once is the slot machine this effect exists to avoid.
 
    Rebuilt from a supplied dark-theme snippet. The original beam was
    `oklch(0.85 0.12 200)` -- an icy cyan that reads as somebody else's
@@ -267,13 +276,13 @@ p {
   initial-value: 0deg;
 }
 
-.btn-trace {
+:is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site) {
   position: relative;
   isolation: isolate;
 }
 
-.btn-trace::before,
-.btn-trace::after {
+:is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site)::before,
+:is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site)::after {
   content: '';
   position: absolute;
   /* Inset 0, not -1px. The beam rides the button's own edge, inside its
@@ -302,21 +311,21 @@ p {
 /* The second copy, blurred, is the glow the beam drags behind it. Also
    inset 0, so the glow stays on the button rather than spilling around
    it. */
-.btn-trace::after {
+:is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site)::after {
   inset: 0;
   padding: 3px;
   filter: blur(4px);
 }
 
-.btn-trace:hover::before,
-.btn-trace:hover::after,
-.btn-trace:focus-visible::before,
-.btn-trace:focus-visible::after {
+:is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):hover::before,
+:is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):hover::after,
+:is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):focus-visible::before,
+:is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):focus-visible::after {
   opacity: 1;
   animation: btn-trace-lap 1.4s linear infinite;
 }
 
-.btn-trace:focus-visible {
+:is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):focus-visible {
   outline: 2px solid var(--butter);
   outline-offset: 4px;
 }
@@ -329,6 +338,20 @@ p {
    desktop window still has a mouse and still gets the hover behaviour,
    and a large tablet has no mouse and still needs this. */
 @media (hover: none) {
+  /* Only the explicit `.btn-trace` opt-in animates at rest, NOT every
+     button carrying one of the classes above.
+     
+     The beam is keyed to hover, and on touch there is no hover, so it runs
+     continuously instead -- fine for the one header CTA it was built for.
+     Site-wide it is not: /website-examples renders 63 "Get A Site Like
+     This" buttons, and 63 beams looping at once on a phone is the slot
+     machine this effect exists to avoid, plus 63 compositor animations on
+     the weakest device that visits.
+
+     So on touch the beam belongs to the buttons that asked for it by name
+     -- the header "Get started" and the nine page CTAs -- at most three on
+     any single page. Every other button simply sits still, which is what it
+     did before any of this. */
   .btn-trace::before,
   .btn-trace::after {
     opacity: 1;
@@ -340,16 +363,16 @@ p {
    would sit frozen at one spot on hover. A steady soft edge is the better
    failure. */
 @media (prefers-reduced-motion: reduce) {
-  .btn-trace::before,
-  .btn-trace::after,
-  .btn-trace:hover::before,
-  .btn-trace:hover::after,
-  .btn-trace:focus-visible::before,
-  .btn-trace:focus-visible::after { animation: none; }
-  .btn-trace:hover::before,
-  .btn-trace:hover::after,
-  .btn-trace:focus-visible::before,
-  .btn-trace:focus-visible::after { opacity: 0.6; }
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site)::before,
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site)::after,
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):hover::before,
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):hover::after,
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):focus-visible::before,
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):focus-visible::after { animation: none; }
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):hover::before,
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):hover::after,
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):focus-visible::before,
+  :is(.btn-trace, .btn-primary, .btn-secondary, .btn-navy, .btn-ghost, .mx-get-site):focus-visible::after { opacity: 0.6; }
 }
 
 .btn-navy {
@@ -371,6 +394,59 @@ p {
 }
 .btn-navy:hover {
   background: #00274E;
+}
+
+/* ── .btn-ghost — the outline CTA that sits on a dark band ──────────────
+   This existed six times as inline style, one copy per page: /plans,
+   /about, /faqs, /videos, /templates and /website-audit. Every copy had
+   the same fill, the same border and the same font -- and three different
+   paddings (15/22, 16/24, 14/24) and three different sizes (14.5, 15, 14),
+   because each was typed out again rather than reused. The differences
+   were never a decision; they are what happens when one treatment is
+   written six times. Normalised here to the one the majority already
+   used. */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-lato), Lato, sans-serif;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.09);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.16);
+  border-color: rgba(255,255,255,0.38);
+}
+
+/* ── .mx-get-site — the "Get a site like this" button on the showcase ───
+   The class carried only its :hover; the twenty-odd declarations that
+   make it a button were inline at both call sites, duplicated in full.
+   They live here now, so the call sites carry a class and whatever
+   layout that particular instance needs (one is margin-left:auto). */
+.mx-get-site {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-lato), Lato, sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #16210B;
+  background: linear-gradient(160deg, #C6CB8A, #A8AD6A);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 160ms ease, color 160ms ease;
 }
 
 /* Inputs */

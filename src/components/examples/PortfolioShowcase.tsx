@@ -48,7 +48,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
 
               <div className="mx-overlay" style={{ position: 'absolute', inset: 0, zIndex: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap', background: 'rgba(4,18,31,0.62)', backdropFilter: 'blur(2px)' }}>
                 <button type="button" onClick={() => setModalIndex(i)} className="mx-see-full" style={{ all: 'unset', cursor: 'pointer', padding: '13px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: '#FFFFFF', borderBottom: '2px solid rgba(255,255,255,0.8)' }}>See Full Example</button>
-                <Link href={routes.pricing} className="mx-get-site" style={{ padding: '13px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: '#16210B', background: 'linear-gradient(160deg, #C6CB8A, #A8AD6A)', boxShadow: '0 10px 24px rgba(0,0,0,0.28)' }}>Get A Site Like This</Link>
+                <Link href={routes.pricing} className="mx-get-site">Get A Site Like This</Link>
               </div>
             </div>
 
@@ -77,7 +77,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
                 <Image src={modalItem.proofImage.src} alt={modalItem.proofImage.alt} title={`${modalItem.name} — proof of results`} fill sizes="132px" style={{ objectFit: 'cover' }} />
               </div>
             )}
-            <Link href={routes.pricing} className="mx-get-site" style={{ marginLeft: 'auto', padding: '12px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: '#16210B', background: 'linear-gradient(160deg, #C6CB8A, #A8AD6A)' }}>Get A Website Like This</Link>
+            <Link href={routes.pricing} className="mx-get-site" style={{ marginLeft: 'auto' }}>Get A Website Like This</Link>
             <button type="button" onClick={() => setModalIndex(-1)} title="Close" style={{ all: 'unset', cursor: 'pointer', width: 40, height: 40, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.22)' }}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
             </button>

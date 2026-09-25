@@ -177,7 +177,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
                 <Link href={routes.careers} className="btn-primary" style={{ textAlign: 'center' }}>See open roles</Link>
-                <Link href={routes.partner} style={{ textAlign: 'center', padding: '16px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#FFFFFF', background: 'rgba(255,255,255,0.09)', border: '1.5px solid rgba(255,255,255,0.2)' }}>Become a partner</Link>
+                <Link href={routes.partner} className="btn-ghost">Become a partner</Link>
               </div>
             </div>
           </section>

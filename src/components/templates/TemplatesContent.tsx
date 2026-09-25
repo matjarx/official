@@ -246,7 +246,7 @@ export default function TemplatesContent({
               <p style={{ margin: 0, maxWidth: '30em', fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>All templates are available in your MatjarX dashboard.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>
                 <a href={appLogin} className="btn-primary">Login &amp; Browse Templates</a>
-                <Link href={routes.pricing} style={{ padding: '15px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#FFFFFF', background: 'rgba(255,255,255,0.09)', border: '1.5px solid rgba(255,255,255,0.2)' }}>Choose Your Plan</Link>
+                <Link href={routes.pricing} className="btn-ghost">Choose Your Plan</Link>
               </div>
             </div>
           </section>

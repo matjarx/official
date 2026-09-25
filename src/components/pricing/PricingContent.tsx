@@ -202,7 +202,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
               })}
             </div>
           </div>
-          <a href="tel:+923033720953" className="pricing-call-cta" style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '12px 20px', borderRadius: 999, background: '#04121F' }}>
+          <a href="tel:+923033720953" className="pricing-call-cta btn-trace" style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '12px 20px', borderRadius: 999, background: '#04121F' }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z" /></svg>
             <span style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
               <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>Got questions? Call us</span>

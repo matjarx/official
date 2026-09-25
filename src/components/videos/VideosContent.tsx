@@ -176,7 +176,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Videos show what we do. But they don&apos;t compare to seeing your own website built in 7 days.</h2>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>
                 <Link href={routes.pricing} className="btn-primary">View pricing</Link>
-                <a href={`https://wa.me/${CHANNELS.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" style={{ padding: '15px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#FFFFFF', background: 'rgba(255,255,255,0.09)', border: '1.5px solid rgba(255,255,255,0.2)' }}>Talk to our team</a>
+                <a href={`https://wa.me/${CHANNELS.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="btn-ghost">Talk to our team</a>
               </div>
               <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Call {CHANNELS.whatsapp} · {CHANNELS.email}</span>
             </div>

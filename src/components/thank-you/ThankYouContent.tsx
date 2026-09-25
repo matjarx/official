@@ -72,7 +72,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
                 <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" className="btn-navy" style={{ textAlign: 'center' }}>Message on WhatsApp</a>
-                <a href="tel:+923033720953" style={{ textAlign: 'center', padding: '15px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(31,42,8,0.2)' }}>Call +92 303 372 0953</a>
+                <a className="btn-trace" href="tel:+923033720953" style={{ textAlign: 'center', padding: '15px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(31,42,8,0.2)' }}>Call +92 303 372 0953</a>
               </div>
             </div>
           </section>

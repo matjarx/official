@@ -190,8 +190,8 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#FFFFFF' }}>{d.compareTitle}</h2>
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.62, color: 'rgba(226,236,245,0.68)' }}>{d.compareBody}</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, paddingTop: 4 }}>
-                <Link href={routes.pricing} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#16210B', background: 'var(--butter)' }}>Compare all plans</Link>
-                <Link href={d.otherHref} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: 'rgba(255,255,255,0.09)', border: '1.5px solid rgba(255,255,255,0.2)' }}>{d.otherLabel}</Link>
+                <Link className="btn-trace" href={routes.pricing} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#16210B', background: 'var(--butter)' }}>Compare all plans</Link>
+                <Link href={d.otherHref} className="btn-ghost">{d.otherLabel}</Link>
               </div>
             </div>
             <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
