@@ -1169,3 +1169,42 @@ textarea.input {
 @media (min-width: 720px) {
   .theme-landing-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+
+/* ── /templates — one rail per industry, above the phone breakpoint ─────
+   The listing was a stacked grid per industry, so reaching the industry
+   you came for meant scrolling past all the others. A rail keeps the set
+   of industries in view and moves the browsing sideways, which is how you
+   compare same-shaped cards anyway.
+
+   Under 640px .theme-grid's own rail already does this — see the block
+   above — so this only applies from 641px up. */
+@media (min-width: 641px) {
+  .theme-rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(250px, 282px);
+    grid-template-columns: none;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(4,18,31,0.22) transparent;
+  }
+  .theme-rail > * { scroll-snap-align: start; }
+  .theme-rail::-webkit-scrollbar { height: 8px; }
+  .theme-rail::-webkit-scrollbar-track { background: transparent; }
+  .theme-rail::-webkit-scrollbar-thumb {
+    background: rgba(4,18,31,0.18);
+    border-radius: 999px;
+  }
+  .theme-rail:hover::-webkit-scrollbar-thumb { background: rgba(4,18,31,0.3); }
+}
+
+/* A rail that does not overflow should not look like one — no scrollbar
+   gutter under a single card. */
+@media (min-width: 641px) {
+  .theme-rail:not(:hover)::-webkit-scrollbar-thumb { transition: background 150ms ease; }
+}

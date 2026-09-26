@@ -59,7 +59,11 @@ export default function TemplatesContent({
   groups?: IndustryGroup[]
 }) {
   const [openFaq, setOpenFaq] = useState(0)
-  const hasLiveDemo = themes.some((t) => !!t.demoUrl)
+  // A theme is walkable when it has a landing page, which frames its real
+  // pages. demoUrl was the old test and it has always been false for every
+  // theme — the demo sites it pointed at are empty shells — which is why
+  // this page has promised a preview it could not show.
+  const hasLiveDemo = themes.some((t) => !!t.landingHref || !!t.demoUrl)
   const HERO_ACTIVE = content.hero
   const WHY_TEMPLATES_ACTIVE = content.why
   const TEMPLATE_FEATURES_ACTIVE = content.features
@@ -102,7 +106,7 @@ export default function TemplatesContent({
                 copy that makes the rest of the page less believable. */}
             <p style={{ margin: '0 0 28px', maxWidth: '44em', fontSize: 15.5, lineHeight: 1.62, color: '#435A70' }}>
               {hasLiveDemo
-                ? 'Open any one of them and you get the real demo site in the window, not a screenshot. Scroll it, click it, drag the corner to a phone width.'
+                ? 'Open any one and you get the real thing — the template on a desktop and a phone, every page it ships with, and what it costs to have it built for you.'
                 : 'Open any one to see what it is built for and what it includes. Live previews are being fitted out now — ask us and we will walk you through one.'}
             </p>
             {groups.length > 0 ? (

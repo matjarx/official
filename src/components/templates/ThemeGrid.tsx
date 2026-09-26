@@ -7,9 +7,28 @@
 // Suspense boundary to render in the browser, so `curl /templates`
 // returned the fallback and zero theme cards.
 //
-// So: plain <Link>s here, rendered on the server. Pressing one puts
-// ?<slug>-website-template in the URL; ThemeModal reads it and draws the
-// preview over the top.
+// So: plain <Link>s here, rendered on the server.
+//
+// ── Where a card goes ────────────────────────────────────────────────────
+//
+// To the theme's own landing page (/templates/salon-matjar) where one
+// exists — a real, indexable page with the theme on a desktop and a phone.
+// Themes with no landing page yet (Coffee and MatjarX Classic, both
+// without content) keep the old behaviour: ?<slug>-website-template, which
+// ThemeModal reads and draws over the top.
+//
+// ── Why each industry is a rail ──────────────────────────────────────────
+//
+// Stacked grids meant scrolling past every industry to reach the one you
+// came for. A horizontal rail per industry keeps the whole list in view.
+// It is plain overflow with scroll-snap — no JS, so it works with a
+// trackpad, a touchscreen, arrow keys and a screen reader without any of
+// them being special-cased.
+//
+// Both classes, deliberately: .theme-grid already carries a phone rail
+// under 640px (added when this listing ran to 10,500px on a phone), and
+// dropping it would have undone that. .theme-rail only takes over above
+// that width.
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -27,10 +46,10 @@ function ThemeCard({ theme }: { theme: Theme }) {
   return (
     <li className="theme-card-wrap">
       <Link
-        href={`/templates?${templateParam(theme.slug)}`}
-        scroll={false}
+        href={theme.landingHref ?? `/templates?${templateParam(theme.slug)}`}
+        scroll={theme.landingHref ? undefined : false}
         className="theme-card"
-        aria-label={`Preview the ${theme.name} template`}
+        aria-label={theme.landingHref ? `See the ${theme.name} template` : `Preview the ${theme.name} template`}
       >
         <span className="theme-card-band" style={{ background: band }}>
           {theme.previewImageUrl && (
@@ -42,13 +61,13 @@ function ThemeCard({ theme }: { theme: Theme }) {
               advertised no preview while the page's own intro line
               promised one. A theme can be both still in build and
               already walkable. */}
-          {theme.demoUrl && <span className="theme-chip theme-chip-live">Live preview</span>}
-          {theme.comingSoon && <span className={`theme-chip theme-chip-soon${theme.demoUrl ? ' theme-chip-second' : ''}`}>Coming soon</span>}
+          {(theme.landingHref || theme.demoUrl) && <span className="theme-chip theme-chip-live">Live preview</span>}
+          {theme.comingSoon && <span className={`theme-chip theme-chip-soon${theme.landingHref || theme.demoUrl ? ' theme-chip-second' : ''}`}>Coming soon</span>}
         </span>
         <span className="theme-card-body">
           <span className="theme-card-name">{theme.name}</span>
           {theme.description && <span className="theme-card-desc">{theme.description}</span>}
-          <span className="theme-card-cta">{theme.demoUrl ? 'Preview it →' : 'See the details →'}</span>
+          <span className="theme-card-cta">{theme.landingHref ? 'See this template →' : 'See the details →'}</span>
         </span>
       </Link>
     </li>
@@ -71,7 +90,7 @@ export default function ThemeGrid({ groups }: { groups: IndustryGroup[] }) {
               {g.themes.length} {g.themes.length === 1 ? 'template' : 'templates'}
             </span>
           </div>
-          <ul className="theme-grid">
+          <ul className="theme-grid theme-rail">
             {g.themes.map((t) => (
               <ThemeCard key={`${g.industry}-${t.id}`} theme={t} />
             ))}

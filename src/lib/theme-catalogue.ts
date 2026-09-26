@@ -20,6 +20,7 @@
 // these by hand and a migration would just let them drift again.
 
 import { supabase } from './supabase'
+import { THEME_LANDINGS } from './theme-landing-data'
 
 export type Theme = {
   id: number
@@ -31,6 +32,8 @@ export type Theme = {
   comingSoon: boolean
   /** Live demo we can put in an iframe, or null. */
   demoUrl: string | null
+  /** The theme's own landing page on this site, when it has one. */
+  landingHref: string | null
   previewImageUrl: string | null
   primaryColor: string | null
   secondaryColor: string | null
@@ -45,6 +48,7 @@ type ThemeRow = {
   industries: string[] | null
   category: string | null
   coming_soon: boolean | null
+  structure_key?: string | null
   demo_site_id: number | null
   preview_image_url: string | null
   primary_color: string | null
@@ -64,6 +68,19 @@ function themeSlug(name: string): string {
     .replace(/&/g, 'and')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
+}
+
+/**
+ * The theme's landing page, by structure_key.
+ *
+ * Derived from THEME_LANDINGS so the two cannot drift: a theme with no
+ * landing page (Coffee and MatjarX Classic, which have no content yet)
+ * returns null and the card keeps opening the modal instead.
+ */
+function landingHrefFor(structureKey: string | null | undefined): string | null {
+  if (!structureKey) return null
+  const match = THEME_LANDINGS.find((l) => l.themeKey === structureKey)
+  return match ? `/templates/${match.slug}` : null
 }
 
 /** The query-string key a theme's preview opens under. */
@@ -96,7 +113,18 @@ export async function getThemes(): Promise<Theme[]> {
   try {
     const { data, error } = await supabase
       .from('themes')
-      .select('id, name, description, industries, category, coming_soon, demo_site_id, preview_image_url, primary_color, secondary_color')
+      .select('id, name, description, industries, category, coming_soon, demo_site_id, preview_image_url, primary_color, secondary_color, structure_key')
+      // Templates only — never a client's private clone.
+      //
+      // Picking a theme clones it into a private row for that site, so the
+      // client can recolour it without changing anyone else's. Those rows
+      // live in the same table, and nothing here excluded them: the public
+      // /templates page was listing two of them already, both called "Pet
+      // Store Matjar" because a clone is named after its template, which
+      // is why it read as duplicate cards rather than as a leak. It grows
+      // by one per signup, and the moment a client renames their theme
+      // their name appears on matjarx.com.
+      .is('cloned_from_theme_id', null)
       .order('coming_soon', { ascending: true })
       .order('id', { ascending: true })
     if (error || !data) return []
@@ -142,7 +170,15 @@ export async function getThemes(): Promise<Theme[]> {
           industries: normaliseIndustries(r.industries),
           category: r.category,
           comingSoon: !!r.coming_soon,
+          // The theme's own pages, not its demo site.
+          //
+          // demo_site_id points at a shell with zero sections on every
+          // single theme, which is why getThemes has always refused to
+          // link one and /templates has never shown a preview. The
+          // landing page frames /themes/<structure_key>, which renders
+          // the theme's real pages.
           demoUrl: subdomain ? `${APP_URL}/site/${subdomain}/` : null,
+          landingHref: landingHrefFor(r.structure_key),
           previewImageUrl: r.preview_image_url,
           primaryColor: r.primary_color,
           secondaryColor: r.secondary_color,
