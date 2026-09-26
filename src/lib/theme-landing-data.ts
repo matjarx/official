@@ -19,13 +19,11 @@
 // belongs to the marketing site, and a literal here needs no migration and
 // no second source of truth.
 //
-// ── The three that are missing on purpose ────────────────────────────────
-//
-// Coffee has four pages and no sections on any of them; MatjarX Classic has
-// no pages at all. A landing page framing an empty theme is worse than no
-// landing page — it reads as a broken product rather than an unfinished one,
-// which is the same reasoning getThemes() already applies to the empty demo
-// sites. They arrive when their content does.
+// All ten themes now have one. Coffee and MatjarX Classic were held back
+// while they had no content — Coffee had four pages and no sections, Classic
+// had no pages at all — because a landing page framing an empty theme reads
+// as a broken product rather than an unfinished one. Both were built out on
+// 2026-09-26 and joined the list.
 
 /** Which industry page carries the full commercial pitch, where one exists.
  *  Deliberately NOT repeated on the landing page: two pages arguing the same
@@ -231,8 +229,47 @@ export const THEME_LANDINGS: ThemeLanding[] = [
     industryLabel: null,
     cities: COMMON_CITIES,
   },
+  {
+    slug: 'coffee-matjar',
+    themeKey: 'coffee',
+    name: 'Coffee Matjar',
+    tagline: 'A roastery storefront built around subscriptions.',
+    metaTitle: 'Coffee Shop & Roastery Website Template | Coffee Matjar',
+    metaDesc:
+      'A ready-made coffee website — shop by roast, recurring subscriptions people can pause themselves, and a café page that brings them in.',
+    highlights: [
+      { title: 'Subscriptions that do not trap anyone', body: 'Skip, pause or cancel from an account. The reason people sign up is knowing they can stop.' },
+      { title: 'Roast date on every bag', body: 'Freshness is the whole pitch for speciality coffee, so it is on the product, not buried in an FAQ.' },
+      { title: 'The café gets a page', body: 'A roastery with a room is two businesses. Both are findable.' },
+    ],
+    pages: ['Home', 'Shop', 'Subscriptions', 'The café', 'Brew guides', 'About', 'Contact', 'Blog'],
+    primary: '#1A1512',
+    accent: '#C8A04A',
+    industryHref: '/website-for-restaurants',
+    industryLabel: 'restaurants and cafés',
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'classic-matjar',
+    themeKey: 'matjarx-classic-18',
+    name: 'MatjarX Classic',
+    tagline: 'A clean, conversion-focused site for any service business.',
+    metaTitle: 'Professional Services Website Template | MatjarX Classic',
+    metaDesc:
+      'A ready-made website for consultants, agencies, clinics and trades — services, process, case studies, FAQs and a quote form that actually gets used.',
+    highlights: [
+      { title: 'Built to produce enquiries', body: 'No cart anywhere. Every page ends in a quote request instead of a checkout.' },
+      { title: 'Your process, written down', body: 'Four steps with what happens at each — the thing that turns a browser into a caller.' },
+      { title: 'Neutral enough for any trade', body: 'A clinic, a law firm and a builder can all wear it without it looking borrowed.' },
+    ],
+    pages: ['Home', 'Services', 'About', 'Get a quote', 'Contact', 'Thank you', 'Blog'],
+    primary: '#003366',
+    accent: '#707538',
+    industryHref: null,
+    industryLabel: null,
+    cities: COMMON_CITIES,
+  },
 ]
-
 export function themeLandingFor(slug: string): ThemeLanding | null {
   return THEME_LANDINGS.find((t) => t.slug === slug) ?? null
 }
