@@ -467,8 +467,8 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 
 export type Testimonial = { quote: string; name: string; company: string; initials: string; tint: string }
 export type QA = { q: string; a: string }
-export type FaqEntry = { question: string; answer: string }
-// Removed: PlanCopyOverride, PricingOverride, PlanPageOverride,
+// Removed: FaqEntry, which nothing ever imported — the FAQ shapes in use
+// are QA above and SchemaFaq in FaqSchema.tsx. Also removed: PlanCopyOverride, PricingOverride, PlanPageOverride,
 // HomeOverride, FeaturesOverride and MarketingContentSlug. They were the
 // first, narrow shape of the override system — a curated subset of
 // fields per page — and were superseded by the full-content shapes
