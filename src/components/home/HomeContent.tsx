@@ -22,6 +22,7 @@ import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes, appSignup } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
 import type { HomeContentShape } from '@/lib/marketing-content'
+import { FaqList } from '@/components/FaqList'
 
 // Code-split rather than statically imported: both sit well below the
 // fold (savings calculator, website-examples grid + its full-screen
@@ -208,7 +209,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 4 }}>
             <Link href={routes.pricing} className="btn-primary">Let&apos;s begin</Link>
-            <a href="#examples" className="btn-secondary" style={dark ? { color: '#FFFFFF', background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.18)' } : undefined}>See the quality of our websites</a>
+            <Link href={routes.websiteExamples} className="btn-secondary" style={dark ? { color: '#FFFFFF', background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.18)' } : undefined}>See the quality of our websites</Link>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'center', paddingTop: 12 }}>
@@ -590,20 +591,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>Frequently asked</h2>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {FAQ_DATA.map((q, i) => {
-              const open = openFaq === i
-              return (
-                <div key={q.question} className={dark ? 'glass-dark-inner' : 'glass-card'} style={{ borderRadius: 18, overflow: 'hidden' }}>
-                  <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 16, padding: '21px 24px' }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: ink1, marginRight: 'auto', textAlign: 'left' }}>{q.question}</span>
-                    <span style={{ width: 28, height: 28, flex: '0 0 auto', borderRadius: '50%', background: dark ? 'rgba(255,255,255,0.08)' : '#F2EEE2', display: 'grid', placeItems: 'center' }}>
-                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke={ink1} strokeWidth="2.4" strokeLinecap="round" style={{ transform: open ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="M12 5v14M5 12h14" /></svg>
-                    </span>
-                  </button>
-                  {open && <p style={{ margin: 0, padding: '0 24px 24px', fontSize: 15, lineHeight: 1.65, color: ink4 }}>{q.answer}</p>}
-                </div>
-              )
-            })}
+            <FaqList items={FAQ_DATA.map((q) => ({ q: q.question, a: q.answer }))} openIdx={openFaq} onToggle={setOpenFaq} dark={dark} />
           </div>
         </section>
         </main>

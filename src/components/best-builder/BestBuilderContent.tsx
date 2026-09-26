@@ -276,7 +276,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>Still deciding? Call +92 303 372 0953 and we&rsquo;ll tell you honestly which option fits.</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-              <FaqList items={BEST_BUILDER_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} size="md" />
+              <FaqList items={BEST_BUILDER_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} />
             </div>
           </div>
         </section>

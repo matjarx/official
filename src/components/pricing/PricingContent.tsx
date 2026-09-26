@@ -16,6 +16,7 @@ import CardRail from '@/components/CardRail'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import type { PricingContentShape } from '@/lib/marketing-content'
+import { FaqList } from '@/components/FaqList'
 
 export const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
 
@@ -409,18 +410,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-            {FAQ_DATA.map((q, i) => {
-              const open = openFaq === i
-              return (
-                <div key={q.question} className="glass-card" style={{ borderRadius: 16, overflow: 'hidden' }}>
-                  <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '18px 20px' }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q.question}</span>
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                  </button>
-                  {open && <p style={{ margin: 0, padding: '0 20px 20px', fontSize: 14.5, lineHeight: 1.65, color: '#435A70' }}>{q.answer}</p>}
-                </div>
-              )
-            })}
+            <FaqList items={FAQ_DATA.map((q) => ({ q: q.question, a: q.answer }))} openIdx={openFaq} onToggle={setOpenFaq} />
           </div>
         </div>
       </section>

@@ -22,6 +22,7 @@
 // Google reads them.
 
 import { useState } from 'react'
+import { FaqList } from '@/components/FaqList'
 
 /** Shared with FaqSchema, which is where `fromPairs` lives. */
 export type Faq = { question: string; answer: string }
@@ -45,7 +46,6 @@ export default function FaqSection({
 
   const ink = dark ? '#FFFFFF' : '#04121F'
   const body = dark ? 'rgba(255,255,255,0.72)' : '#435A70'
-  const chev = dark ? 'rgba(255,255,255,0.6)' : '#5A6F82'
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -75,23 +75,12 @@ export default function FaqSection({
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-          {faqs.map((q, i) => {
-            const isOpen = open === i
-            return (
-              <div key={q.question} className="glass-card" style={{ borderRadius: 16, overflow: 'hidden' }}>
-                <button
-                  type="button"
-                  onClick={() => setOpen(isOpen ? -1 : i)}
-                  aria-expanded={isOpen}
-                  style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '18px 20px' }}
-                >
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q.question}</span>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={chev} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                </button>
-                {isOpen && <p style={{ margin: 0, padding: '0 20px 20px', fontSize: 14.5, lineHeight: 1.65, color: '#435A70' }}>{q.answer}</p>}
-              </div>
-            )
-          })}
+          <FaqList
+            items={faqs.map((f) => ({ q: f.question, a: f.answer }))}
+            openIdx={open}
+            onToggle={setOpen}
+            dark={dark}
+          />
         </div>
       </div>
     </section>

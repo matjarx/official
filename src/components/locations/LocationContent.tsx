@@ -265,7 +265,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>{d.officeLine ?? `Still deciding? Call +92 303 372 0953 and we'll walk you through it.`}</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-              <FaqList items={d.faqs.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} size="md" />
+              <FaqList items={d.faqs.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} />
             </div>
           </div>
         </section>

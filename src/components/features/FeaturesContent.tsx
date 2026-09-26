@@ -183,7 +183,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
               <Link href={routes.help} className="btn-secondary" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Talk to us</Link>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-              <FaqList items={FEATURES_FAQ_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} size="md" />
+              <FaqList items={FEATURES_FAQ_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} />
             </div>
           </div>
         </section>

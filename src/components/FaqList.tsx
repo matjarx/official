@@ -1,34 +1,39 @@
 'use client'
 
-// The FAQ accordion, which sixteen components had each written out by hand.
+// The FAQ accordion. One of them, for the whole site.
 //
-// Every marketing page family carries an FAQ, and every one of them had its
-// own copy of the same ~12 lines: a glass-card row, an `all: unset` button
-// that flips `openIdx`, a chevron rotated 180deg when open, and the answer
-// underneath. Copying it is how the site got built, and it worked -- but a
-// question row is a control, and sixteen hand-written controls is sixteen
-// places for the hit area, the rotation or the open/close state to drift
-// apart without anyone noticing, because no two of them appear on the same
-// page.
+// There were five looks, none of them decided:
 //
-// ── Why `size` and not one look ──────────────────────────────────────────
-// They had already drifted, in exactly two directions:
+//   home         plus-in-a-disc, 21px 24px, 16.5px question, radius 18
+//   pricing      chevron, centre-aligned, 18px 20px, 15px, radius 16
+//   FaqSection   chevron, centre-aligned, 18px 20px, 15px, radius 16
+//   "sm"         chevron, top-aligned,    18px 22px, 15px, radius 18
+//   "md"         chevron, top-aligned,    19px 22px, 15.5px, radius 18
 //
-//   'sm'  18px 22px padding, 15px question, 20px answer padding
-//         contact, about, videos, templates, help, help articles, audit,
-//         and the three detail sections (industry, service, plan)
-//   'md'  19px 22px padding, 15.5px question, 21px answer padding
-//         plans, features, industries, best-builder, locations
+// Nobody chose to make the pricing page feel different from the plans
+// page; it got built on a different day. Two of those five differ by two
+// pixels of radius and a text alignment, which is drift, not design.
 //
-// Collapsing those to one size would be a visual change to fifteen page
-// families, which is a design decision and not a refactor. So `size` keeps
-// both, pixel for pixel, and the choice stays visible in the call site.
+// ── The canonical look ───────────────────────────────────────────────────
+// The top-aligned chevron at 18px 22px, question at 16.5px. Top alignment
+// is the right call for a control whose label wraps to two lines on a
+// phone -- centring puts the chevron against the middle of a two-line
+// question, which reads as misaligned rather than centred.
 //
-// Two accordions are deliberately NOT here: the home page's (a plus-sign in
-// a filled disc, and it has to follow dark mode) and the pricing page's
-// (centre-aligned, tighter radius). Those are different designs rather than
-// drifted copies, and folding them in would mean parameterising the icon
-// and the alignment until the component says less than the markup did.
+// The question is 16.5px, not the 15px that was most common. The answer
+// below it is 14.5px, so at 15px a question was half a pixel larger than
+// its own answer and the hierarchy rested entirely on font weight. 16.5px
+// is the size the home page already used, and it is the only one of the
+// five that got that relationship right.
+//
+// Home's plus-in-a-disc is gone with the rest. The one real requirement it
+// had is dark mode, which is `dark` below -- not a second icon system.
+//
+// ── aria-expanded ────────────────────────────────────────────────────────
+// FaqSection set it. The sixteen hand-written copies did not, so on most of
+// the site a screen reader announced a button that gave no indication it
+// disclosed anything, or of whether it was currently open. Every row has it
+// now. That is the part of this change that is not cosmetic.
 
 import type React from 'react'
 
@@ -36,7 +41,7 @@ export type FaqEntry = {
   q: string
   a: string
   /** Rendered as a bullet list under the answer. Only the detail sections
-   *  use it; without it the answer is a plain paragraph, as before. */
+   *  use it; without it the answer is a plain paragraph. */
   items?: string[]
 }
 
@@ -49,52 +54,53 @@ export const bullet = (text: string, key?: React.Key) => (
   </li>
 )
 
-const SIZES = {
-  sm: { buttonPad: '18px 22px', question: 15, answerPad: '0 22px 20px' },
-  md: { buttonPad: '19px 22px', question: 15.5, answerPad: '0 22px 21px' },
-} as const
-
 export function FaqList({
   items,
   openIdx,
   onToggle,
-  size = 'sm',
-  /** Defaults to the entry's question. Some callers keyed by index when two
-   *  questions could repeat; pass `(_, i) => i` to keep that. */
+  dark = false,
+  /** Defaults to the entry's question. Some callers keyed by index, where
+   *  two questions on a page could repeat; pass `(_, i) => i` to keep that. */
   itemKey,
   /** The three detail sections wrap every answer in a <div> because some of
    *  their entries carry bullets. They do it for ALL their rows, bullets or
-   *  not, so the flag is per-list rather than per-entry -- otherwise the
-   *  bullet-less rows in those lists would lose a wrapper element they have
-   *  today. */
+   *  not, so the flag is per-list rather than per-entry. */
   bullets = false,
 }: {
   items: readonly FaqEntry[]
   openIdx: number
   onToggle: (next: number) => void
-  size?: keyof typeof SIZES
+  dark?: boolean
   itemKey?: (entry: FaqEntry, index: number) => React.Key
   bullets?: boolean
 }) {
-  const s = SIZES[size]
+  const ink = dark ? '#FFFFFF' : '#04121F'
+  const body = dark ? 'rgba(255,255,255,0.7)' : '#435A70'
+  const chev = dark ? 'rgba(255,255,255,0.6)' : '#5A6F82'
+
   return (
     <>
       {items.map((f, i) => {
         const open = openIdx === i
         return (
-          <div key={itemKey ? itemKey(f, i) : f.q} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-            <button type="button" onClick={() => onToggle(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: s.buttonPad }}>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: s.question, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{f.q}</span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+          <div key={itemKey ? itemKey(f, i) : f.q} className={dark ? 'glass-dark-inner' : 'glass-card'} style={{ borderRadius: 18, overflow: 'hidden' }}>
+            <button
+              type="button"
+              onClick={() => onToggle(open ? -1 : i)}
+              aria-expanded={open}
+              style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}
+            >
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, lineHeight: 1.35, color: ink, marginRight: 'auto', textAlign: 'left' }}>{f.q}</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={chev} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
             </button>
             {open && (
               bullets ? (
-                <div style={{ padding: s.answerPad }}>
-                  <p style={{ margin: f.items ? '0 0 8px' : 0, fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{f.a}</p>
+                <div style={{ padding: '0 22px 20px' }}>
+                  <p style={{ margin: f.items ? '0 0 8px' : 0, fontSize: 14.5, lineHeight: 1.68, color: body }}>{f.a}</p>
                   {f.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{f.items.map((it, j) => bullet(it, j))}</ul>}
                 </div>
               ) : (
-                <p style={{ margin: 0, padding: s.answerPad, fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{f.a}</p>
+                <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: body }}>{f.a}</p>
               )
             )}
           </div>

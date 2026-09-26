@@ -214,7 +214,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>Anything else, call us on +92 303 372 0953 — a real person answers.</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-              <FaqList items={d.faqs.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} size="md" />
+              <FaqList items={d.faqs.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} />
             </div>
           </div>
         </section>
