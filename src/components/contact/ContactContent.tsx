@@ -15,6 +15,7 @@ import { routes } from '@/lib/routes'
 import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS, CONTACT_FAQS, CONTACT_SUPPORT_CATEGORIES, CONTACT_SUMMARY_TABLE, CONTACT_PREP_CHECKLIST, CONTACT_PREFERRED_CHANNEL, CONTACT_COMMITMENT } from '@/lib/contact-data'
 import { supabase } from '@/lib/supabase'
 import { trackEvent } from '@/lib/analytics'
+import { FaqList } from '@/components/FaqList'
 
 export type ContactContentShape = { channels: typeof CONTACT_CHANNELS; topics: typeof CONTACT_TOPICS; officeRows: typeof CONTACT_OFFICE_ROWS; faqs: typeof CONTACT_FAQS }
 const DEFAULT_CONTENT: ContactContentShape = { channels: CONTACT_CHANNELS, topics: CONTACT_TOPICS, officeRows: CONTACT_OFFICE_ROWS, faqs: CONTACT_FAQS }
@@ -197,18 +198,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Common questions about contacting us</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {CONTACT_FAQS_ACTIVE.map(([q, a], i) => {
-                const open = openFaq === i
-                return (
-                  <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-                    <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
-                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                    </button>
-                    {open && <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{a}</p>}
-                  </div>
-                )
-              })}
+              <FaqList items={CONTACT_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} itemKey={(_, i) => i} />
             </div>
           </section>
 

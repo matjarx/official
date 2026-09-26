@@ -16,6 +16,7 @@ import { crossLinksForCity } from '@/lib/cross-links'
 import { routes } from '@/lib/routes'
 import { CITY_DATA, otherCitiesFor, type CityKey } from '@/lib/location-data'
 import { CITY_DETAIL, type CityProcessStep, type CityPlanTier, type CityCompareGroup } from '@/lib/location-detail-data'
+import { FaqList } from '@/components/FaqList'
 
 const bullet = (text: string, key?: React.Key) => (
   <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: '#4B5D6E' }}>
@@ -264,18 +265,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>{d.officeLine ?? `Still deciding? Call +92 303 372 0953 and we'll walk you through it.`}</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-              {d.faqs.map(([question, answer], i) => {
-                const open = openFaq === i
-                return (
-                  <div key={question} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-                    <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '19px 22px' }}>
-                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{question}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                    </button>
-                    {open && <p style={{ margin: 0, padding: '0 22px 21px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{answer}</p>}
-                  </div>
-                )
-              })}
+              <FaqList items={d.faqs.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} size="md" />
             </div>
           </div>
         </section>

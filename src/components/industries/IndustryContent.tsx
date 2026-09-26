@@ -16,6 +16,7 @@ import { routes } from '@/lib/routes'
 import { INDUSTRY_DATA, INDUSTRY_SLUGS, otherIndustriesFor, type IndustryKey } from '@/lib/industry-data'
 import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data'
 import IndustryDetailSections from './IndustryDetailSections'
+import { FaqList } from '@/components/FaqList'
 
 export type IndustryContentShape = (typeof INDUSTRY_DATA)[IndustryKey] & { detail?: IndustryDetail | null }
 
@@ -184,18 +185,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>Call +92 303 372 0953 and ask for someone who has built for {d.lower} before.</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-              {d.faqs.map(([question, answer], i) => {
-                const open = openFaq === i
-                return (
-                  <div key={question} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-                    <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '19px 22px' }}>
-                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{question}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                    </button>
-                    {open && <p style={{ margin: 0, padding: '0 22px 21px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{answer}</p>}
-                  </div>
-                )
-              })}
+              <FaqList items={d.faqs.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} size="md" />
             </div>
           </div>
         </section>

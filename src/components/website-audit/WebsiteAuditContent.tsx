@@ -22,6 +22,7 @@ import {
   HERO, PROBLEMS, AUDIT_INTRO, WHAT_IS_AUDIT, WHY_NEEDED, AUDIT_AREAS, PROCESS_STEPS,
   TIMELINE_ROWS, TIMELINE_TOTAL, RUSH_NOTE, OUTCOMES, BENEFITS, COMPARISON_TABLE, AUDIT_FAQS, CHANNELS,
 } from '@/lib/website-audit-data'
+import { FaqList } from '@/components/FaqList'
 
 function IntakeForm() {
   const [name, setName] = useState('')
@@ -309,18 +310,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>FAQ: Website audit</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 40 }}>
-              {AUDIT_FAQS_ACTIVE.map(([q, a], i) => {
-                const open = openFaq === i
-                return (
-                  <div key={i} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-                    <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
-                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                    </button>
-                    {open && <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{a}</p>}
-                  </div>
-                )
-              })}
+              <FaqList items={AUDIT_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} itemKey={(_, i) => i} />
             </div>
             <span style={{ display: 'block', textAlign: 'center', marginBottom: 16, fontSize: 13.5, fontWeight: 600, color: '#04121F' }}>Free tools vs. MatjarX audit</span>
             <div className="glass-card table-scroll" style={{ borderRadius: 20, overflowY: 'hidden' }}>

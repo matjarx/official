@@ -17,17 +17,12 @@ import {
   LAUNCH, BOOST, GROWTH, PLATINUM, CUSTOM,
   type StandardPlanDetail, type Block, type PlanFaq, type BestForGroup,
 } from '@/lib/plan-detail-data'
+import { FaqList, bullet } from '@/components/FaqList'
 
 const STANDARD: Partial<Record<PlanKey, StandardPlanDetail>> = { launch: LAUNCH, boost: BOOST, growth: GROWTH, platinum: PLATINUM }
 
 const H2: React.CSSProperties = { margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }
 const EYEBROW: React.CSSProperties = { display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }
-const bullet = (text: string, key?: React.Key) => (
-  <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: '#4B5D6E' }}>
-    <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{text}
-  </li>
-)
-
 function BlockList({ blocks }: { blocks: Block[] }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -64,23 +59,7 @@ function GroupGrid({ groups }: { groups: BestForGroup[] }) {
 function FaqAccordion({ faqs, openIdx, setOpenIdx }: { faqs: PlanFaq[]; openIdx: number; setOpenIdx: (n: number) => void }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      {faqs.map((f, i) => {
-        const open = openIdx === i
-        return (
-          <div key={f.q} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-            <button type="button" onClick={() => setOpenIdx(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{f.q}</span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-            </button>
-            {open && (
-              <div style={{ padding: '0 22px 20px' }}>
-                <p style={{ margin: f.items ? '0 0 8px' : 0, fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{f.a}</p>
-                {f.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{f.items.map((it, j) => bullet(it, j))}</ul>}
-              </div>
-            )}
-          </div>
-        )
-      })}
+      <FaqList items={faqs} openIdx={openIdx} onToggle={setOpenIdx} bullets />
     </div>
   )
 }

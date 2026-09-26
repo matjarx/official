@@ -17,6 +17,7 @@ import { routes } from '@/lib/routes'
 import { FEATURE_GROUPS, ALWAYS_ON, FEATURES_FAQ, type FeatureGroupKey } from '@/lib/features-data'
 import { INTEGRATION_ICONS, SOCIAL_FEED_ICONS, ENGAGEMENT_ICONS } from '@/lib/feature-icons-data'
 import type { FeaturesContentShape } from '@/lib/marketing-content'
+import { FaqList } from '@/components/FaqList'
 
 const TAB_KEYS = Object.keys(FEATURE_GROUPS) as FeatureGroupKey[]
 const DEFAULT_CONTENT: FeaturesContentShape = { groups: FEATURE_GROUPS, alwaysOn: ALWAYS_ON, faqs: FEATURES_FAQ }
@@ -182,18 +183,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
               <Link href={routes.help} className="btn-secondary" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Talk to us</Link>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-              {FEATURES_FAQ_ACTIVE.map(([question, answer], i) => {
-                const open = openFaq === i
-                return (
-                  <div key={question} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
-                    <button type="button" onClick={() => setOpenFaq(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '19px 22px' }}>
-                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{question}</span>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                    </button>
-                    {open && <p style={{ margin: 0, padding: '0 22px 21px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{answer}</p>}
-                  </div>
-                )
-              })}
+              <FaqList items={FEATURES_FAQ_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} size="md" />
             </div>
           </div>
         </section>
