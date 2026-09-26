@@ -1047,3 +1047,125 @@ textarea.input {
 .testimonial-rail > * { scroll-snap-align: start; min-width: 0; }
 @media (max-width: 980px) { .testimonial-rail { grid-auto-columns: calc((100% - 20px) / 2); } }
 @media (max-width: 640px) { .testimonial-rail { grid-auto-columns: 84%; } }
+
+/* ── Theme landing pages (/templates/<slug>) ────────────────────────────
+   A desktop frame with a phone in front of it, both holding a live iframe
+   of the real theme rather than a screenshot — so they cannot go stale when
+   the theme is edited, which is the whole reason /themes/<key> exists.
+
+   The iframe is SCALED, not resized. A theme laid out for 1440px inside a
+   500px frame would trip its own mobile breakpoints and show the phone
+   layout in the "desktop" mockup; transform: scale keeps it rendering at
+   full width and shrinks the result.
+
+   The scale comes from a container query, because the frame is a fluid grid
+   column — it measured 499px where a hand-set scale had assumed 610px, and
+   the theme overflowed its own frame by a fifth. Any fixed scale is wrong at
+   every width except one. `calc(100cqw / 1440px)` divides a length by a
+   length, which is a plain number, so the scale is exact at any size. The
+   preceding unitless declaration is the fallback for engines that will not
+   do that division.
+
+   pointer-events: none: this is a picture of a site, and a visitor who
+   scrolls inside it instead of down the page has lost the thread. "Open
+   live preview" is right there for the real thing. */
+.theme-landing-devices {
+  position: relative;
+  padding-bottom: 42px;
+}
+.theme-landing-desktop {
+  position: relative;
+  border: 2px solid var(--navy);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow: 0 24px 60px rgba(4,18,31,0.18);
+}
+.theme-landing-chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  background: var(--cream-deep);
+  border-bottom: 1px solid rgba(4,18,31,0.1);
+}
+.theme-landing-chrome span {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(4,18,31,0.2);
+  flex-shrink: 0;
+}
+.theme-landing-chrome em {
+  margin-left: 10px;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* The window the scaled iframe is seen through. aspect-ratio rather than a
+   height per breakpoint, so the frame is always exactly as tall as the
+   scaled page is — no letterbox, no crop. */
+.theme-landing-viewport {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1440 / 940;
+  overflow: hidden;
+}
+.theme-landing-viewport iframe {
+  position: absolute;
+  inset: 0;
+  width: 1440px;
+  height: 940px;
+  border: 0;
+  transform-origin: 0 0;
+  transform: scale(0.35);
+  transform: scale(calc(100cqw / 1440px));
+  pointer-events: none;
+}
+
+.theme-landing-phone {
+  position: absolute;
+  right: -6px;
+  bottom: 0;
+  width: 172px;
+  border: 7px solid var(--navy);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow: 0 18px 40px rgba(4,18,31,0.26);
+}
+.theme-landing-viewport-phone {
+  aspect-ratio: 390 / 780;
+}
+.theme-landing-viewport-phone iframe {
+  width: 390px;
+  height: 780px;
+  transform: scale(0.44);
+  transform: scale(calc(100cqw / 390px));
+}
+
+@media (min-width: 768px) {
+  .theme-landing-phone { width: 190px; }
+}
+
+@media (min-width: 1024px) {
+  .theme-landing-hero {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr) !important;
+    gap: 52px !important;
+    align-items: center !important;
+  }
+}
+
+.theme-landing-grid-3 {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 720px) {
+  .theme-landing-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

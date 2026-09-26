@@ -1,0 +1,238 @@
+// One landing page per theme, at /templates/<slug>.
+//
+// ── The naming ───────────────────────────────────────────────────────────
+//
+// "Matjar" is متجر — shop, in Arabic — and it is the brand's own word, so
+// every theme is named as a shop rather than as a website: Flower Matjar is
+// a flower shop, Salon Matjar is a salon. The suffix is the product's
+// identity and it stays.
+//
+// The keyword is not lost, it just moves. "Salon Matjar" is the <h1> and the
+// name a returning visitor remembers; "salon website template" is the
+// <title> and the meta description, which is what anybody actually types
+// into Google. Brand in the heading, intent in the metadata.
+//
+// Slugs are hand-picked here rather than derived from the theme's
+// structure_key, which is inconsistent by nature — `salon` next to
+// `flower-matjar` next to `minimalist-matjar-product`. A column in the
+// database was drafted for this and withdrawn: this is a marketing URL, it
+// belongs to the marketing site, and a literal here needs no migration and
+// no second source of truth.
+//
+// ── The three that are missing on purpose ────────────────────────────────
+//
+// Coffee has four pages and no sections on any of them; MatjarX Classic has
+// no pages at all. A landing page framing an empty theme is worse than no
+// landing page — it reads as a broken product rather than an unfinished one,
+// which is the same reasoning getThemes() already applies to the empty demo
+// sites. They arrive when their content does.
+
+/** Which industry page carries the full commercial pitch, where one exists.
+ *  Deliberately NOT repeated on the landing page: two pages arguing the same
+ *  case for "salon website" split the signal and Google picks one. The
+ *  landing page sells the design; the industry page sells the service. */
+export type ThemeLanding = {
+  /** URL: /templates/<slug> */
+  slug: string
+  /** The theme's `structure_key` in the platform — what /themes/<key> serves. */
+  themeKey: string
+  /** Display name, Matjar convention. */
+  name: string
+  /** One line under the H1. Says what it is for, not why websites matter. */
+  tagline: string
+  /** <title> and meta description carry the search intent, not the brand. */
+  metaTitle: string
+  metaDesc: string
+  /** Pitch: three things this theme does that a generic template does not. */
+  highlights: { title: string; body: string }[]
+  /** The pages a client gets on day one, in the theme's own words. */
+  pages: string[]
+  /** The theme's real colours, sampled from its own CSS.
+   *
+   *  NOT read from `themes.primary_color`: four of the ten still hold the
+   *  admin form's default #2563eb, a generic blue that appears nowhere in
+   *  the actual design — Salon's site is gold and near-black, Sports Shoes
+   *  is acid yellow on black. A landing page painted from that column would
+   *  misrepresent the very thing it is selling.
+   *
+   *  `primary` is dark enough to carry white text (the closing band); it is
+   *  the CTA surface, not necessarily the theme's loudest colour. `accent`
+   *  is the bright one, used at small sizes where contrast does not apply. */
+  primary: string
+  accent: string
+  /** Industry page slug, or null where no matching page exists yet. */
+  industryHref: string | null
+  industryLabel: string | null
+  /** City page keys this trade actually clusters in — used for the local
+   *  links block. Every one is a real /website-design-<key> page. */
+  cities: string[]
+}
+
+const COMMON_CITIES = ['lahore', 'karachi', 'islamabad', 'faisalabad', 'rawalpindi', 'multan', 'peshawar', 'gujranwala']
+
+export const THEME_LANDINGS: ThemeLanding[] = [
+  {
+    slug: 'salon-matjar',
+    themeKey: 'salon',
+    name: 'Salon Matjar',
+    tagline: 'A booking-first storefront for salons, spas and barbers.',
+    metaTitle: 'Salon Website Design & Template | Salon Matjar',
+    metaDesc:
+      'A ready-made salon website with online booking, a service menu with prices, stylist profiles and a gallery. Live in seven days, built for you.',
+    highlights: [
+      { title: 'Booking before browsing', body: 'The appointment form sits above the fold on every page, because a salon site has one job.' },
+      { title: 'A service menu that prices itself', body: 'Treatments, durations and prices in a layout that reads on a phone at arm’s length.' },
+      { title: 'Stylists, not stock photos', body: 'Team profiles with specialities, so a client can ask for someone by name.' },
+    ],
+    pages: ['Home', 'Services & prices', 'Book an appointment', 'Our stylists', 'Gallery', 'About', 'Contact', 'Blog'],
+    primary: '#5C4526',
+    accent: '#C9A96A',
+    industryHref: '/website-for-salons-and-spas',
+    industryLabel: 'salons and spas',
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'flower-matjar',
+    themeKey: 'flower-matjar',
+    name: 'Flower Matjar',
+    tagline: 'A florist storefront built around occasions and same-day delivery.',
+    metaTitle: 'Florist Website Design & Flower Shop Template | Flower Matjar',
+    metaDesc:
+      'A ready-made flower shop website — shop by occasion, gift sets, wedding enquiries and same-day delivery. Built for you in seven days.',
+    highlights: [
+      { title: 'Shop by occasion', body: 'Birthdays, condolences, weddings — how people actually buy flowers, not by stem type.' },
+      { title: 'Gift sets that upsell themselves', body: 'Bundles with add-ons at checkout, because a bouquet is rarely the whole order.' },
+      { title: 'Weddings get their own room', body: 'A separate enquiry path for events, kept clear of the everyday delivery flow.' },
+    ],
+    pages: ['Home', 'Shop by occasion', 'Gift sets', 'Weddings & events', 'About', 'Contact', 'Blog'],
+    primary: '#54603F',
+    accent: '#B9836F',
+    industryHref: null,
+    industryLabel: null,
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'pet-store-matjar',
+    themeKey: 'pet-store-matjar',
+    name: 'Pet Store Matjar',
+    tagline: 'A vet clinic, grooming spa and pet shop under one roof.',
+    metaTitle: 'Pet Shop & Vet Clinic Website Template | Pet Store Matjar',
+    metaDesc:
+      'A ready-made pet store website with appointment booking, a shop by pet catalogue, grooming services and 24/7 emergency contact.',
+    highlights: [
+      { title: 'Two businesses, one site', body: 'A clinic that books and a shop that sells, without either burying the other.' },
+      { title: 'Shop by pet', body: 'Dogs, cats, small pets — the first question every customer asks themselves.' },
+      { title: 'Emergency, always visible', body: 'A 24/7 line pinned in the header, where a worried owner will find it.' },
+    ],
+    pages: ['Home', 'Shop', 'Book an appointment', 'Services', 'Grooming', 'Meet the vets', 'Emergency 24/7', 'Blog'],
+    primary: '#173F35',
+    accent: '#F0A83C',
+    industryHref: null,
+    industryLabel: null,
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'sports-shoes-matjar',
+    themeKey: 'sports-shoes-matjar',
+    name: 'Sports Shoes Matjar',
+    tagline: 'A footwear storefront with sizes, variants and a size guide.',
+    metaTitle: 'Shoe Store & Footwear Website Template | Sports Shoes Matjar',
+    metaDesc:
+      'A ready-made online shoe store — size and colour variants, a size guide, reviews and a checkout that takes cash on delivery.',
+    highlights: [
+      { title: 'Sizes done properly', body: 'Variants per size and colour, with stock per variant, so nobody orders what you cannot ship.' },
+      { title: 'A real size guide', body: 'Its own page, because returns in footwear are almost always a sizing problem.' },
+      { title: 'Reviews near the button', body: 'Social proof beside the price, not buried at the bottom of the page.' },
+    ],
+    pages: ['Home', 'Shop', 'Collections', 'Size guide', 'Reviews', 'About', 'Contact', 'Blog'],
+    primary: '#0B0B0B',
+    accent: '#D7FF2B',
+    industryHref: '/website-for-online-stores-ecommerce',
+    industryLabel: 'online stores',
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'leather-matjar',
+    themeKey: 'leather-goods',
+    name: 'Leather Matjar',
+    tagline: 'A B2B catalogue for manufacturers who quote rather than sell.',
+    metaTitle: 'Leather Goods Manufacturer Website Template | Leather Matjar',
+    metaDesc:
+      'A ready-made B2B leather goods website — product catalogue, quote requests instead of a cart, material specs and export enquiries.',
+    highlights: [
+      { title: 'Quotes, not carts', body: 'Wholesale does not check out. Every product ends in a request, with quantities and specs.' },
+      { title: 'Built for export enquiries', body: 'MOQ, materials and lead times stated up front, so the first email is already qualified.' },
+      { title: 'A catalogue buyers can browse', body: 'Deep category nesting for ranges that run to hundreds of SKUs.' },
+    ],
+    pages: ['Home', 'Catalogue', 'Request a quote', 'Materials', 'Our process', 'About', 'Contact', 'Blog'],
+    primary: '#1C1917',
+    accent: '#D4AF37',
+    industryHref: '/website-for-b2b-leather-goods-manufacturer',
+    industryLabel: 'leather goods manufacturers',
+    cities: ['sialkot', 'lahore', 'karachi', 'faisalabad', 'gujranwala', 'multan'],
+  },
+  {
+    slug: 'bakery-matjar',
+    themeKey: 'bakery-and-cafe',
+    name: 'Bakery Matjar',
+    tagline: 'A bakery and café storefront with a menu and custom orders.',
+    metaTitle: 'Bakery & Café Website Design Template | Bakery Matjar',
+    metaDesc:
+      'A ready-made bakery website — daily menu, custom cake orders, delivery and a shop people can actually order from.',
+    highlights: [
+      { title: 'The menu is the homepage', body: 'What is fresh today, priced and photographed, before anything else.' },
+      { title: 'Custom orders have a form', body: 'Cakes get their own enquiry path — date, size, message, photo reference.' },
+      { title: 'Built for repeat orders', body: 'Reorder from an account, because a bakery lives on the same people every week.' },
+    ],
+    pages: ['Home', 'Menu', 'Custom orders', 'Shop', 'About', 'Contact'],
+    primary: '#7A3D11',
+    accent: '#D2691E',
+    industryHref: '/website-for-restaurants',
+    industryLabel: 'restaurants and cafés',
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'minimalist-matjar',
+    themeKey: 'minimalist-matjar-product',
+    name: 'Minimalist Matjar',
+    tagline: 'A clean product storefront that gets out of the way.',
+    metaTitle: 'Minimal Online Store Website Template | Minimalist Matjar',
+    metaDesc:
+      'A ready-made minimal ecommerce website — product catalogue, mega-menu navigation, blog and checkout. Neutral enough for any brand.',
+    highlights: [
+      { title: 'Your photography does the talking', body: 'Neutral type and generous space, designed to disappear behind good product shots.' },
+      { title: 'A mega-menu that scales', body: 'Built for a catalogue that grows past what a simple nav can hold.' },
+      { title: 'Fits any palette', body: 'Colours are tokens — change three and the whole store follows.' },
+    ],
+    pages: ['Home', 'Shop', 'Collections', 'Product pages', 'About', 'Contact', 'Blog'],
+    primary: '#003366',
+    accent: '#707538',
+    industryHref: '/website-for-online-stores-ecommerce',
+    industryLabel: 'online stores',
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'minimalist-service-matjar',
+    themeKey: 'minimalist-matjar-service',
+    name: 'Minimalist Service Matjar',
+    tagline: 'A clean service site for consultants, agencies and studios.',
+    metaTitle: 'Service Business Website Template | Minimalist Service Matjar',
+    metaDesc:
+      'A ready-made website for a service business — service pages, enquiry forms, case studies and a blog. No cart, no clutter.',
+    highlights: [
+      { title: 'Enquiries, not checkout', body: 'No cart anywhere. Every page ends in a conversation instead of a transaction.' },
+      { title: 'A page per service', body: 'Each one can rank on its own, which is how service businesses get found.' },
+      { title: 'Proof built in', body: 'Case studies and testimonials as real sections, not an afterthought.' },
+    ],
+    pages: ['Home', 'Services', 'Case studies', 'About', 'Contact', 'Blog'],
+    primary: '#003366',
+    accent: '#707538',
+    industryHref: null,
+    industryLabel: null,
+    cities: COMMON_CITIES,
+  },
+]
+
+export function themeLandingFor(slug: string): ThemeLanding | null {
+  return THEME_LANDINGS.find((t) => t.slug === slug) ?? null
+}
