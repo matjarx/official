@@ -131,38 +131,16 @@ export async function getThemes(): Promise<Theme[]> {
 
     const rows = data as unknown as ThemeRow[]
 
-    // A demo_site_id is not enough, on two counts.
-    //
-    // An unpublished demo 404s for a stranger — deliberately; that
-    // lock-down is why unfinished client sites are not readable — and an
-    // iframe of a 404 is worse than no iframe.
-    //
-    // And a published demo can still be an empty shell. Every one of the
-    // six demo sites currently linked from `themes` has zero pages and
-    // zero sections, so the storefront renders its own "No pages found"
-    // screen. Framing that is worse than saying there is no demo: it
-    // reads as a broken template rather than an unfinished one.
-    //
-    // `pages` is not readable with the anon key, so the count cannot be
-    // checked from here. `sections` is what the storefront actually
-    // renders, and a site with none has nothing to show.
-    const ids = rows.map((r) => r.demo_site_id).filter((id): id is number => typeof id === 'number')
-    const demos = new Map<number, string>()
-    if (ids.length > 0) {
-      const [{ data: sites }, { data: sections }] = await Promise.all([
-        supabase.from('sites').select('id, subdomain, published').in('id', ids),
-        supabase.from('sections').select('site_id').in('site_id', ids),
-      ])
-      const hasContent = new Set((sections || []).map((s) => (s as { site_id: number }).site_id))
-      for (const s of (sites || []) as { id: number; subdomain: string; published: unknown }[]) {
-        if (String(s.published) === 'true' && s.subdomain && hasContent.has(s.id)) demos.set(s.id, s.subdomain)
-      }
-    }
+    // The demo-site lookup that used to live here is gone with the link it
+    // fed: two extra Supabase round trips per render, building a Map that
+    // nothing reads any more. Its comment already explained that an
+    // unpublished demo 404s and a published one can still be an empty
+    // shell -- both true, both measured, and both now moot because the
+    // link points at the theme's own pages instead.
 
     return rows
       .filter((r) => !!r.name)
       .map((r) => {
-        const subdomain = r.demo_site_id ? demos.get(r.demo_site_id) : undefined
         return {
           id: r.id,
           name: r.name as string,
@@ -172,12 +150,18 @@ export async function getThemes(): Promise<Theme[]> {
           comingSoon: !!r.coming_soon,
           // The theme's own pages, not its demo site.
           //
-          // demo_site_id points at a shell with zero sections on every
-          // single theme, which is why getThemes has always refused to
-          // link one and /templates has never shown a preview. The
-          // landing page frames /themes/<structure_key>, which renders
-          // the theme's real pages.
-          demoUrl: subdomain ? `${APP_URL}/site/${subdomain}/` : null,
+          // This comment already said demo_site_id points at an empty
+          // shell -- and the line under it linked one anyway. Measured on
+          // production: of seven themes with a demo site, TWO returned 404
+          // (the unpublished ones) and FOUR rendered "No pages found".
+          // One worked. The comment had been right and the code had not
+          // caught up.
+          //
+          // /themes/<structure_key> renders the theme's real pages and
+          // returns 200 for all ten. It is also what the landing pages
+          // already frame, so the modal and the landing page now show the
+          // same thing.
+          demoUrl: r.structure_key ? `${APP_URL}/themes/${r.structure_key}` : null,
           landingHref: landingHrefFor(r.structure_key),
           previewImageUrl: r.preview_image_url,
           primaryColor: r.primary_color,

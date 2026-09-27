@@ -134,7 +134,10 @@ export default function ThemeModal({ themes }: { themes: Theme[] }) {
               {open.demoUrl ? (
                 <iframe
                   key={open.id}
-                  src={open.demoUrl}
+                  // ?framed=1 drops the preview banner, the same way the
+                  // theme landing pages frame it. The displayed URL above
+                  // stays clean.
+                  src={`${open.demoUrl}?framed=1`}
                   title={`${open.name} template, live preview`}
                   loading="lazy"
                   // allow-same-origin looks alarming next to allow-scripts
