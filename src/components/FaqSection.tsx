@@ -64,7 +64,7 @@ export default function FaqSection({
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 4vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: ink }}>
             {title}{' '}
-            <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3, color: '#04121F' }}>{titleMark}</span>
+            <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3, color: 'var(--ink-1)' }}>{titleMark}</span>
           </h2>
           <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: body }}>{intro}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 6 }}>

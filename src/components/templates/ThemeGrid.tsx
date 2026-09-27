@@ -82,11 +82,11 @@ export default function ThemeGrid({ groups }: { groups: IndustryGroup[] }) {
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 16 }}>
             <h3
               id={anchorId(g.industry)}
-              style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(19px, 2.6vw, 24px)', letterSpacing: '-0.6px', color: '#04121F' }}
+              style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(19px, 2.6vw, 24px)', letterSpacing: '-0.6px', color: 'var(--ink-1)' }}
             >
               {g.industry}
             </h3>
-            <span style={{ fontSize: 13, color: '#5A6E81' }}>
+            <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>
               {g.themes.length} {g.themes.length === 1 ? 'template' : 'templates'}
             </span>
           </div>

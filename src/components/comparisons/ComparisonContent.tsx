@@ -42,28 +42,28 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6E81' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: 'var(--ink-muted)' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
             <Link href={routes.bestBuilder}>Alternatives</Link>
             <span>/</span>
-            <span style={{ fontWeight: 600, color: '#04121F' }}>MatjarX vs {d.name}</span>
+            <span style={{ fontWeight: 600, color: 'var(--ink-1)' }}>MatjarX vs {d.name}</span>
           </div>
         </section>
 
         {/* Hero */}
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '28px 24px 0', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
-          <span className="glass-chip" style={{ padding: '8px 16px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: '#3B5063' }}>Honest comparison</span>
+          <span className="glass-chip" style={{ padding: '8px 16px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-4-alt)' }}>Honest comparison</span>
           {PLATFORM_LOGOS[d.name] && (
             <span style={{ position: 'relative', width: 40, height: 40 }}>
               <Image src={PLATFORM_LOGOS[d.name]} alt="" fill sizes="40px" style={{ objectFit: 'contain' }} />
             </span>
           )}
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 54px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: '#04121F' }}>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 54px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
             MatjarX vs <span className="marker">{d.name}</span>
           </h1>
           {d.intro.map((p) => (
-            <p key={p} style={{ margin: 0, maxWidth: '38em', fontSize: 'clamp(14.5px, 1.8vw, 18px)', lineHeight: 1.62, color: '#435A70' }}>{p}</p>
+            <p key={p} style={{ margin: 0, maxWidth: '38em', fontSize: 'clamp(14.5px, 1.8vw, 18px)', lineHeight: 1.62, color: 'var(--ink-4)' }}>{p}</p>
           ))}
         </section>
 
@@ -91,21 +91,21 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
 
             <div className="glass-card" style={{ padding: 'clamp(26px, 3.2vw, 34px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 18 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: '#04121F' }}>{d.name}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{d.name}</span>
                 {d.mode && <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', textTransform: 'uppercase', color: '#8A6A4B', background: 'rgba(180,135,79,0.14)', padding: '4px 10px', borderRadius: 999 }}>{d.mode}</span>}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {d.points.map((p) => (
                   <div key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 11 }}>
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#B4874F" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
-                    <span style={{ fontSize: 14, lineHeight: 1.55, color: '#4B5D6E' }}>{p}</span>
+                    <span style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink-5)' }}>{p}</span>
                   </div>
                 ))}
               </div>
               {d.price && (
                 <div style={{ marginTop: 'auto', paddingTop: 10, borderTop: '1px solid rgba(4,18,31,0.09)', display: 'flex', flexDirection: 'column', gap: 3 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: '#04121F' }}>{d.price}</span>
-                  <span style={{ fontSize: 12.5, color: '#5A6E81' }}>{d.priceNote}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--ink-1)' }}>{d.price}</span>
+                  <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>{d.priceNote}</span>
                 </div>
               )}
             </div>
@@ -116,19 +116,19 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Side by side</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>MatjarX vs {d.name}, feature by feature</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>MatjarX vs {d.name}, feature by feature</h2>
           </div>
           <div className="glass-card" style={{ borderRadius: 22, overflow: 'hidden' }}>
             <div className="table-scroll" style={{ padding: '22px 24px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.6fr) repeat(2, minmax(120px, 1fr))', gap: '8px 14px', alignItems: 'center', minWidth: 560 }}>
                 <span />
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: 'var(--navy)', textAlign: 'center' }}>MatjarX</span>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: '#5A6E81', textAlign: 'center' }}>{d.name}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: 'var(--ink-muted)', textAlign: 'center' }}>{d.name}</span>
                 {d.table.map(([label, us, them]) => {
                   const themColor = them === 'No' || them === 'Not supported' ? '#B4874F' : '#8A6A4B'
                   return (
                     <div key={label} style={{ display: 'contents' }}>
-                      <span style={{ fontSize: 13.5, lineHeight: 1.45, color: '#24384A', padding: '11px 0', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{label}</span>
+                      <span style={{ fontSize: 13.5, lineHeight: 1.45, color: 'var(--ink-3)', padding: '11px 0', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{label}</span>
                       <span style={{ textAlign: 'center', padding: '11px 0', borderTop: '1px solid rgba(4,18,31,0.07)', fontSize: 12.5, fontWeight: 600, color: 'var(--olive-active)' }}>{us}</span>
                       <span style={{ textAlign: 'center', padding: '11px 0', borderTop: '1px solid rgba(4,18,31,0.07)', fontSize: 12.5, fontWeight: 600, color: themColor }}>{them}</span>
                     </div>
@@ -144,8 +144,8 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 14 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>Being straight with you</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(21px, 3vw, 27px)', lineHeight: 1.2, letterSpacing: '-0.8px', color: '#04121F' }}>When {d.name} is the better choice</h2>
-              <p style={{ margin: 0, maxWidth: '46em', fontSize: 14.5, lineHeight: 1.65, color: '#4B5D6E' }}>{d.honest}</p>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(21px, 3vw, 27px)', lineHeight: 1.2, letterSpacing: '-0.8px', color: 'var(--ink-1)' }}>When {d.name} is the better choice</h2>
+              <p style={{ margin: 0, maxWidth: '46em', fontSize: 14.5, lineHeight: 1.65, color: 'var(--ink-5)' }}>{d.honest}</p>
             </div>
           </section>
         )}
@@ -155,11 +155,11 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Why MatjarX wins</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 34px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Against {d.name}, here&rsquo;s what actually changes</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 34px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>Against {d.name}, here&rsquo;s what actually changes</h2>
             </div>
             <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 16 }}>
               {d.whyWeWin.map((p) => (
-                <p key={p} style={{ margin: 0, fontSize: 15, lineHeight: 1.68, color: '#33485B' }}>{p}</p>
+                <p key={p} style={{ margin: 0, fontSize: 15, lineHeight: 1.68, color: 'var(--ink-3-alt)' }}>{p}</p>
               ))}
             </div>
           </section>
@@ -170,16 +170,16 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you&rsquo;ll love</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 34px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>About switching to MatjarX</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 34px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>About switching to MatjarX</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
               {d.checklist.map((c) => (
                 <div key={c.title} className="glass-card" style={{ padding: '22px 24px', borderRadius: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
                     <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, letterSpacing: '-0.3px', color: '#04121F' }}>{c.title}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{c.title}</span>
                   </div>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: '#4B5D6E' }}>{c.body}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-5)' }}>{c.body}</span>
                 </div>
               ))}
             </div>
@@ -210,8 +210,8 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
             {others.map((c) => (
               <Link key={c.title} href={c.href} className="glass-card" style={{ padding: '22px 24px', borderRadius: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, letterSpacing: '-0.3px', color: '#04121F' }}>{c.title}</span>
-                <span style={{ fontSize: 13, lineHeight: 1.5, color: '#5A6E81' }}>{c.body}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{c.title}</span>
+                <span style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--ink-muted)' }}>{c.body}</span>
               </Link>
             ))}
           </div>

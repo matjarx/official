@@ -60,7 +60,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Get in touch</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>
-            Talk to a real person, <span style={{ background: 'var(--moss-light)', color: '#16210B', padding: '0 10px', borderRadius: 3 }}>today</span>
+            Talk to a real person, <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>today</span>
           </h1>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>No bots, no ticket queues. Ask us anything about plans, timelines or what your business needs.</p>
         </div>
@@ -90,17 +90,17 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What type of support do you need?</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Support categories</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Support categories</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: 18 }}>
               {CONTACT_SUPPORT_CATEGORIES.map((c, i) => (
                 <div key={c.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <span style={{ fontSize: 11.5, fontWeight: 700, color: '#A08A5E' }}>{i + 1}.</span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F' }}>{c.title}</span>
-                  <span style={{ fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>{c.body}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{c.title}</span>
+                  <span style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>{c.body}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 2 }}>
                     {c.items.map((it) => (
-                      <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.5, color: '#4B5D6E' }}>
+                      <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                         <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                         {it}
                       </span>
@@ -118,31 +118,31 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
 
                 <form onSubmit={handleSubmit} className="glass-card" style={{ padding: 'clamp(24px, 3.5vw, 34px) clamp(20px, 3vw, 34px) clamp(26px, 3.5vw, 36px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: '#04121F' }}>Send us a message</h2>
-                    <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>We reply within 24 business hours — sooner over WhatsApp.</p>
+                    <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>Send us a message</h2>
+                    <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>We reply within 24 business hours — sooner over WhatsApp.</p>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 16 }}>
                     <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Your name</span>
+                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Your name</span>
                       <input required type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
                     </label>
                     <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Business name</span>
+                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Business name</span>
                       <input type="text" value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder="Al-Falah Traders" className="input" style={{ width: '100%' }} />
                     </label>
                     <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Phone / WhatsApp</span>
+                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Phone / WhatsApp</span>
                       <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
                     </label>
                     <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Email</span>
+                      <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Email</span>
                       <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@yourbusiness.pk" className="input" style={{ width: '100%' }} />
                     </label>
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>What do you need?</span>
+                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>What do you need?</span>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                       {CONTACT_TOPICS_ACTIVE.map((label) => {
                         const active = topic === label
@@ -154,18 +154,18 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                   </div>
 
                   <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Tell us about your business</span>
+                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Tell us about your business</span>
                     <textarea required rows={5} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="What you sell, who your customers are, and what you'd like the website to do." className="input" style={{ width: '100%' }} />
                   </label>
 
                   {status === 'error' && <p style={{ margin: 0, fontSize: 13, color: '#B4432F' }}>Something went wrong sending that — please try again or message us on WhatsApp instead.</p>}
 
                   <button type="submit" disabled={status === 'submitting'} className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(0,51,102,0.24)' }}>{status === 'submitting' ? 'Sending…' : 'Send message'}</button>
-                  <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#5A6E81' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>. We never share your details.</span>
+                  <span style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>. We never share your details.</span>
                 </form>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
-                <div style={{ padding: '28px 30px', borderRadius: 24, background: '#04121F', display: 'flex', flexDirection: 'column', gap: 18 }}>
+                <div style={{ padding: '28px 30px', borderRadius: 24, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', gap: 18 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, color: '#FFFFFF' }}>Our office</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                     {CONTACT_OFFICE_ROWS_ACTIVE.map((o) => (
@@ -196,7 +196,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Getting support</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Common questions about contacting us</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>Common questions about contacting us</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <FaqList items={CONTACT_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} itemKey={(_, i) => i} />
@@ -208,18 +208,18 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
             <div className="glass-card" style={{ padding: 'clamp(24px, 3.5vw, 34px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Help us help you faster</span>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: '#04121F' }}>Before you contact us</h2>
-                <p style={{ margin: 0, fontSize: 14, color: '#5A6E81' }}>Please have ready:</p>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--ink-1)' }}>Before you contact us</h2>
+                <p style={{ margin: 0, fontSize: 14, color: 'var(--ink-muted)' }}>Please have ready:</p>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 10 }}>
                 {CONTACT_PREP_CHECKLIST.map((it) => (
-                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 14, lineHeight: 1.5, color: '#33485B' }}>
+                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 14, lineHeight: 1.5, color: 'var(--ink-3-alt)' }}>
                     <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                     {it}
                   </span>
                 ))}
               </div>
-              <p style={{ margin: 0, fontSize: 13, color: '#5A6E81', fontStyle: 'italic' }}>This helps us respond faster and more accurately.</p>
+              <p style={{ margin: 0, fontSize: 13, color: 'var(--ink-muted)', fontStyle: 'italic' }}>This helps us respond faster and more accurately.</p>
             </div>
           </section>
 
@@ -229,9 +229,9 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
               {CONTACT_PREFERRED_CHANNEL.map((g) => (
                 <div key={g.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 9 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: '#04121F' }}>{g.title}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: 'var(--ink-1)' }}>{g.title}</span>
                   {g.items.map((it) => (
-                    <span key={it} style={{ fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>{it}</span>
+                    <span key={it} style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>{it}</span>
                   ))}
                 </div>
               ))}
@@ -242,14 +242,14 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you can expect</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Our commitment to support</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Our commitment to support</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
               {CONTACT_COMMITMENT.map((g) => (
                 <div key={g.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>{g.title}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: 'var(--ink-1)' }}>{g.title}</span>
                   {g.items.map((it) => (
-                    <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>
+                    <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                       <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                       {it}
                     </span>
@@ -267,7 +267,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                 <thead>
                   <tr>
                     {CONTACT_SUMMARY_TABLE.headers.map((h) => (
-                      <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: '#04121F', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+                      <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: 'var(--ink-1)', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -275,7 +275,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                   {CONTACT_SUMMARY_TABLE.rows.map((row, ri) => (
                     <tr key={ri}>
                       {row.map((cell, ci) => (
-                        <td key={ci} style={{ padding: '14px 20px', fontSize: 13.5, lineHeight: 1.5, color: '#33485B', borderTop: '1px solid rgba(4,18,31,0.07)', fontWeight: ci === 0 ? 700 : 400 }}>{cell}</td>
+                        <td key={ci} style={{ padding: '14px 20px', fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-3-alt)', borderTop: '1px solid rgba(4,18,31,0.07)', fontWeight: ci === 0 ? 700 : 400 }}>{cell}</td>
                       ))}
                     </tr>
                   ))}

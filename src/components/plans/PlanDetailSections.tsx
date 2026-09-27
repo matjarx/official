@@ -21,19 +21,19 @@ import { FaqList, bullet } from '@/components/FaqList'
 
 const STANDARD: Partial<Record<PlanKey, StandardPlanDetail>> = { launch: LAUNCH, boost: BOOST, growth: GROWTH, platinum: PLATINUM }
 
-const H2: React.CSSProperties = { margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }
+const H2: React.CSSProperties = { margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }
 const EYEBROW: React.CSSProperties = { display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }
 function BlockList({ blocks }: { blocks: Block[] }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
       {blocks.map((b, i) => (
         <div key={i}>
-          {b.h && <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{b.h}</h3>}
-          {b.p && <p style={{ margin: '0 0 8px', fontSize: 13.5, lineHeight: 1.6, color: '#4B5D6E' }}>{b.p}</p>}
+          {b.h && <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{b.h}</h3>}
+          {b.p && <p style={{ margin: '0 0 8px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{b.p}</p>}
           {b.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{b.items.map((it, j) => bullet(it, j))}</ul>}
           {b.sub && b.sub.map((s, k) => (
             <div key={k} style={{ marginTop: b.h || b.p ? 10 : 0 }}>
-              <span style={{ display: 'block', marginBottom: 6, fontSize: 13.5, fontWeight: 700, color: '#04121F' }}>{s.h}</span>
+              <span style={{ display: 'block', marginBottom: 6, fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{s.h}</span>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, j) => bullet(it, j))}</ul>
             </div>
           ))}
@@ -48,7 +48,7 @@ function GroupGrid({ groups }: { groups: BestForGroup[] }) {
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
       {groups.map((g) => (
         <div key={g.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-          <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{g.title}</h3>
+          <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{g.title}</h3>
           <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{g.items.map((it, i) => bullet(it, i))}</ul>
         </div>
       ))}
@@ -68,7 +68,7 @@ function CompareTableEl({ headers, rows }: { headers: string[]; rows: string[][]
   return (
     <div className="glass-card table-scroll" style={{ borderRadius: 18, overflowY: 'hidden' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
-        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: '#5A6E81', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
+        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: 'var(--ink-muted)', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i} style={{ borderTop: '1px solid rgba(4,18,31,0.06)' }}>
@@ -89,11 +89,11 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '76px 24px 0' }}>
         <span style={EYEBROW}>{d.quickOverview.title}</span>
         <h2 style={H2}>{d.whatYouGet.title}</h2>
-        <p style={{ margin: '-10px 0 26px', fontSize: 15, color: '#435A70' }}>{d.quickOverview.intro}</p>
+        <p style={{ margin: '-10px 0 26px', fontSize: 15, color: 'var(--ink-4)' }}>{d.quickOverview.intro}</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 18 }}>
           {d.whatYouGet.sections.map((s) => (
             <div key={s.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-              <h3 style={{ margin: '0 0 14px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F' }}>{s.title}</h3>
+              <h3 style={{ margin: '0 0 14px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{s.title}</h3>
               <BlockList blocks={s.blocks} />
             </div>
           ))}
@@ -131,56 +131,56 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         <h2 style={H2}>Pricing, in full</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18, marginBottom: 22 }}>
           <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: '#5A6E81' }}>One-time setup</span>
-            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: '#04121F' }}>{d.pricing.setupFee}</span>
+            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' }}>One-time setup</span>
+            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{d.pricing.setupFee}</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.setupItems.map((it, i) => bullet(it, i))}</ul>
           </div>
           <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: '#5A6E81' }}>Monthly fee</span>
-            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: '#04121F' }}>{d.pricing.monthlyFee}</span>
+            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' }}>Monthly fee</span>
+            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{d.pricing.monthlyFee}</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.monthlyItems.map((it, i) => bullet(it, i))}</ul>
           </div>
         </div>
 
         {d.pricing.blogNote && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
-            <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>What does each blog post cost?</h3>
-            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: '#4B5D6E' }}>Included in plan: {d.pricing.blogNote.included} · Additional blog posts: {d.pricing.blogNote.extra}</p>
+            <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>What does each blog post cost?</h3>
+            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>Included in plan: {d.pricing.blogNote.included} · Additional blog posts: {d.pricing.blogNote.extra}</p>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.blogNote.whyMatters.map((it, i) => bullet(it, i))}</ul>
           </div>
         )}
 
         {d.pricing.perMonthValue && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
-            <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{d.pricing.perMonthValue.intro}</h3>
+            <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{d.pricing.perMonthValue.intro}</h3>
             <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
               {d.pricing.perMonthValue.items.map((it, i) => (
-                <li key={i} style={{ display: 'flex', justifyContent: 'space-between', gap: 10, fontSize: 13.5, color: '#4B5D6E' }}>
+                <li key={i} style={{ display: 'flex', justifyContent: 'space-between', gap: 10, fontSize: 13.5, color: 'var(--ink-5)' }}>
                   <span>{it.label}</span>{it.value && <span style={{ fontWeight: 600, color: 'var(--olive)', whiteSpace: 'nowrap' }}>{it.value}</span>}
                 </li>
               ))}
             </ul>
-            <span style={{ fontSize: 13.5, fontWeight: 700, color: '#04121F' }}>{d.pricing.perMonthValue.total}</span>
+            <span style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{d.pricing.perMonthValue.total}</span>
           </div>
         )}
 
-        <span style={{ display: 'block', marginBottom: 12, fontSize: 13.5, fontWeight: 600, color: '#04121F' }}>Annual savings</span>
+        <span style={{ display: 'block', marginBottom: 12, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)' }}>Annual savings</span>
         <CompareTableEl headers={d.pricing.savings.headers} rows={d.pricing.savings.rows} />
 
         {d.pricing.roi && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginTop: 22 }}>
-            <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>ROI calculation</h3>
-            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: '#4B5D6E' }}>{d.pricing.roi.intro}</p>
+            <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>ROI calculation</h3>
+            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>{d.pricing.roi.intro}</p>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.roi.lines.map((it, i) => bullet(it, i))}</ul>
           </div>
         )}
 
         {d.pricing.notIncluded.length > 0 && (
           <div style={{ marginTop: 22 }}>
-            <span style={{ display: 'block', marginBottom: 10, fontSize: 13.5, fontWeight: 600, color: '#04121F' }}>What&apos;s NOT included</span>
+            <span style={{ display: 'block', marginBottom: 10, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)' }}>What&apos;s NOT included</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
               {d.pricing.notIncluded.map((it, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: '#4B5D6E' }}>
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: 'var(--ink-5)' }}>
                   <span style={{ color: '#B0473F', flex: '0 0 auto' }}>✕</span>{it}
                 </li>
               ))}
@@ -195,7 +195,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
           {d.examples.items.map((ex) => (
             <div key={ex.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-              <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{ex.title}</h3>
+              <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: 'var(--ink-1)' }}>{ex.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{ex.lines.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}
@@ -208,7 +208,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
           {d.process.phases.map((ph) => (
             <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{ph.title}</h3>
+              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{ph.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}
@@ -231,7 +231,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
 
       {/* Closing + bottom line + guarantee */}
       <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
-        <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
+        <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{d.closing.eyebrow}</span>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -246,8 +246,8 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       </section>
 
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
-        <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: '#04121F' }}>{d.bottomLine.title}</h3>
-        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: '#4B5D6E' }}>{p}</p>)}
+        <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{d.bottomLine.title}</h3>
+        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{p}</p>)}
         <p style={{ margin: '10px 0 0', fontSize: 12.5, color: '#8A9AA6' }}>100% refund within 24 hours if we haven&apos;t substantially started work.</p>
       </section>
 
@@ -269,9 +269,9 @@ function CustomDetail() {
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: '76px 24px 0' }}>
         <span style={EYEBROW}>How it works</span>
         <h2 style={H2}>{d.quickOverview.title}</h2>
-        <p style={{ margin: '-10px 0 20px', fontSize: 15, color: '#435A70' }}>{d.quickOverview.intro}</p>
+        <p style={{ margin: '-10px 0 20px', fontSize: 15, color: 'var(--ink-4)' }}>{d.quickOverview.intro}</p>
         <ol style={{ margin: 0, padding: '0 0 0 22px', display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {d.quickOverview.howItWorks.map((s) => <li key={s} style={{ fontSize: 14.5, color: '#4B5D6E' }}>{s}</li>)}
+          {d.quickOverview.howItWorks.map((s) => <li key={s} style={{ fontSize: 14.5, color: 'var(--ink-5)' }}>{s}</li>)}
         </ol>
       </section>
 
@@ -285,11 +285,11 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
           {d.examples.items.map((ex) => (
             <div key={ex.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-              <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, color: '#04121F' }}>{ex.title}</h3>
+              <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, color: 'var(--ink-1)' }}>{ex.title}</h3>
               <p style={{ margin: '0 0 10px', fontSize: 12.5, color: '#8A9AA6' }}>{ex.business}</p>
               <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ex.needs.map((it, i) => bullet(it, i))}</ul>
-              <p style={{ margin: '0 0 4px', fontSize: 13, color: '#4B5D6E' }}><strong>Solution:</strong> {ex.solution}</p>
-              <p style={{ margin: 0, fontSize: 13, color: '#4B5D6E' }}><strong>Timeline:</strong> {ex.timeline} · <strong>Price:</strong> {ex.price}</p>
+              <p style={{ margin: '0 0 4px', fontSize: 13, color: 'var(--ink-5)' }}><strong>Solution:</strong> {ex.solution}</p>
+              <p style={{ margin: 0, fontSize: 13, color: 'var(--ink-5)' }}><strong>Timeline:</strong> {ex.timeline} · <strong>Price:</strong> {ex.price}</p>
             </div>
           ))}
         </div>
@@ -300,7 +300,7 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
           {d.discovery.phases.map((ph) => (
             <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{ph.title}</h3>
+              <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{ph.title}</h3>
               {ph.body && <p style={{ margin: '0 0 8px', fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{ph.body}</p>}
               <ul style={{ margin: '0 0 8px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
               {ph.deliverable && <p style={{ margin: 0, fontSize: 12, color: '#8A9AA6' }}>Deliverable: {ph.deliverable}</p>}
@@ -311,19 +311,19 @@ function CustomDetail() {
 
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>Custom Pricing</h2>
-        <p style={{ margin: '-10px 0 20px', fontSize: 14.5, color: '#4B5D6E' }}>{d.pricing.intro}</p>
+        <p style={{ margin: '-10px 0 20px', fontSize: 14.5, color: 'var(--ink-5)' }}>{d.pricing.intro}</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16, marginBottom: 22 }}>
           {d.pricing.tiers.map((t) => (
             <div key={t.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{t.title}</h3>
+              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{t.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{t.body.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}
         </div>
         <p style={{ margin: '0 0 20px', fontSize: 13.5, fontWeight: 600, color: 'var(--olive)' }}>{d.pricing.ongoingSupport}</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
-          <div><span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: '#04121F' }}>What increases cost</span><ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.increaseCost.map((it, i) => bullet(it, i))}</ul></div>
-          <div><span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: '#04121F' }}>What decreases cost</span><ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.decreaseCost.map((it, i) => bullet(it, i))}</ul></div>
+          <div><span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>What increases cost</span><ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.increaseCost.map((it, i) => bullet(it, i))}</ul></div>
+          <div><span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>What decreases cost</span><ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.decreaseCost.map((it, i) => bullet(it, i))}</ul></div>
         </div>
       </section>
 
@@ -337,8 +337,8 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
           {d.whyCustom.items.map((it) => (
             <div key={it.h} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{it.h}</h3>
-              <p style={{ margin: '0 0 6px', fontSize: 13.5, color: '#4B5D6E' }}>{it.p}</p>
+              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{it.h}</h3>
+              <p style={{ margin: '0 0 6px', fontSize: 13.5, color: 'var(--ink-5)' }}>{it.p}</p>
               <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{it.result}</p>
             </div>
           ))}
@@ -350,7 +350,7 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
           {d.team.roles.map((r) => (
             <div key={r.title} className="glass-card" style={{ padding: '18px 20px 20px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{r.title}</h3>
+              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{r.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{r.items.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}
@@ -369,13 +369,13 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16, marginBottom: 20 }}>
           {d.support.options.map((o) => (
             <div key={o.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{o.title}</h3>
+              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{o.title}</h3>
               <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{o.items.map((it, i) => bullet(it, i))}</ul>
               <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{o.cost}</span>
             </div>
           ))}
         </div>
-        <span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: '#04121F' }}>Add-on services available</span>
+        <span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>Add-on services available</span>
         <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.support.addOns.map((it, i) => bullet(it, i))}</ul>
       </section>
 
@@ -389,7 +389,7 @@ function CustomDetail() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
           {d.gettingStarted.steps.map((s) => (
             <div key={s.title} className="glass-card" style={{ padding: '18px 20px 20px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#04121F' }}>{s.title}</h3>
+              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{s.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}
@@ -399,13 +399,13 @@ function CustomDetail() {
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0', textAlign: 'center' }}>
         <span style={EYEBROW}>{d.showcase.title}</span>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 10 }}>
-          {d.showcase.items.map((it) => <span key={it} style={{ padding: '8px 14px', borderRadius: 999, fontSize: 13, background: 'rgba(4,18,31,0.06)', color: '#04121F' }}>{it}</span>)}
+          {d.showcase.items.map((it) => <span key={it} style={{ padding: '8px 14px', borderRadius: 999, fontSize: 13, background: 'rgba(4,18,31,0.06)', color: 'var(--ink-1)' }}>{it}</span>)}
         </div>
         <p style={{ margin: 0, fontSize: 13, color: '#8A9AA6' }}>{d.showcase.note}</p>
       </section>
 
       <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
-        <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
+        <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(255,255,255,0.68)' }}>{d.closing.body}</p>
           <Link href={routes.contact} className="btn-primary">{d.closing.cta}</Link>
@@ -417,8 +417,8 @@ function CustomDetail() {
       </section>
 
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
-        <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: '#04121F' }}>{d.bottomLine.title}</h3>
-        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: '#4B5D6E' }}>{p}</p>)}
+        <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{d.bottomLine.title}</h3>
+        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{p}</p>)}
         <p style={{ margin: '10px 0 0', fontSize: 12.5, color: '#8A9AA6' }}>{d.guarantee}</p>
       </section>
 

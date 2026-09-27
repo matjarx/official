@@ -19,7 +19,7 @@ import { CITY_DETAIL, type CityProcessStep, type CityPlanTier, type CityCompareG
 import { FaqList } from '@/components/FaqList'
 
 const bullet = (text: string, key?: React.Key) => (
-  <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: '#4B5D6E' }}>
+  <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-5)' }}>
     <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{text}
   </li>
 )
@@ -63,12 +63,12 @@ export default function LocationContent({ locationKey, content }: { locationKey:
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6E81' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: 'var(--ink-muted)' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
             <span>Locations</span>
             <span>/</span>
-            <span style={{ fontWeight: 600, color: '#04121F' }}>{d.name}</span>
+            <span style={{ fontWeight: 600, color: 'var(--ink-1)' }}>{d.name}</span>
           </div>
         </section>
 
@@ -76,17 +76,17 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '28px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 'clamp(30px, 4vw, 52px)', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
             {d.built && (
-              <span className="glass-chip" style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: '#3B5063' }}>
+              <span className="glass-chip" style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-4-alt)' }}>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--olive)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /></svg>
                 {d.built}
               </span>
             )}
 
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.6vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: '#04121F' }}>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.6vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: 'var(--ink-1)' }}>
               Website design in <span className="marker">{d.name}</span> — launched in 7 days
             </h1>
 
-            <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: '#435A70' }}>{d.intro[0]}</p>
+            <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>{d.intro[0]}</p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, paddingTop: 4 }}>
               <Link href={routes.pricing} className="btn-primary">Start my website</Link>
@@ -121,7 +121,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Local, not generic</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Why {d.name} businesses choose MatjarX</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Why {d.name} businesses choose MatjarX</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
             {d.why.map((f) => (
@@ -129,8 +129,8 @@ export default function LocationContent({ locationKey, content }: { locationKey:
                 <span style={{ width: 42, height: 42, borderRadius: 13, background: 'var(--navy)', display: 'grid', placeItems: 'center' }}>
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                 </span>
-                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: '#04121F' }}>{f.title}</h3>
-                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{f.body}</p>
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{f.title}</h3>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{f.body}</p>
               </div>
             ))}
           </div>
@@ -141,21 +141,21 @@ export default function LocationContent({ locationKey, content }: { locationKey:
           <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What we build</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Websites for {d.name}&rsquo;s industries</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>Websites for {d.name}&rsquo;s industries</h2>
             </div>
             {d.industries.some((i) => i.body) ? (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
                 {d.industries.map((i) => (
                   <div key={i.title} style={{ padding: '18px 20px', borderRadius: 16, background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(255,255,255,0.9)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{i.title}</span>
-                    {i.body && <span style={{ fontSize: 13, lineHeight: 1.55, color: '#4B5D6E' }}>{i.body}</span>}
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{i.title}</span>
+                    {i.body && <span style={{ fontSize: 13, lineHeight: 1.55, color: 'var(--ink-5)' }}>{i.body}</span>}
                   </div>
                 ))}
               </div>
             ) : (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9 }}>
                 {d.industries.map((i) => (
-                  <span key={i.title} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: '#3B5063', background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(255,255,255,0.9)', whiteSpace: 'nowrap' }}>{i.title}</span>
+                  <span key={i.title} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--ink-4-alt)', background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(255,255,255,0.9)', whiteSpace: 'nowrap' }}>{i.title}</span>
                 ))}
               </div>
             )}
@@ -166,14 +166,14 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '70px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>How it works</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Our 3-step process for {d.name} businesses</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Our 3-step process for {d.name} businesses</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
             {detail.process.map((s, i) => (
               <div key={s.title} className="glass-card" style={{ padding: '26px 24px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, lineHeight: 1, color: 'var(--moss-light)' }}>{i + 1}</span>
-                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#04121F' }}>{s.title}</h3>
-                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{s.body}</p>
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: 'var(--ink-1)' }}>{s.title}</h3>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{s.body}</p>
               </div>
             ))}
           </div>
@@ -183,13 +183,13 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '70px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Pricing</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Plans for {d.name} businesses</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Plans for {d.name} businesses</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
             {detail.plans.map((p) => (
               <div key={p.name} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: '#04121F' }}>{p.name}</span>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, color: '#04121F' }}>{p.price}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{p.name}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, color: 'var(--ink-1)' }}>{p.price}</span>
                 {p.items.length > 0 && <ul style={{ margin: '4px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{p.items.map((it, i) => bullet(it, i))}</ul>}
                 {p.setup && <span style={{ marginTop: 'auto', paddingTop: 8, fontSize: 12.5, color: '#8A9AA6' }}>Setup: {p.setup}</span>}
               </div>
@@ -202,12 +202,12 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '70px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>The comparison</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Why MatjarX over other options</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Why MatjarX over other options</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
             {detail.whyOver.map((g) => (
               <div key={g.label} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-                <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{g.label}</h3>
+                <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{g.label}</h3>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{g.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             ))}
@@ -220,14 +220,14 @@ export default function LocationContent({ locationKey, content }: { locationKey:
             <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>Areas we serve</span>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Businesses across {d.name} and around it</h2>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>Businesses across {d.name} and around it</h2>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9 }}>
                 {d.areas.map((a) => (
-                  <span key={a} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: '#3B5063', background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(255,255,255,0.9)', whiteSpace: 'nowrap' }}>{a}</span>
+                  <span key={a} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--ink-4-alt)', background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(255,255,255,0.9)', whiteSpace: 'nowrap' }}>{a}</span>
                 ))}
               </div>
-              {d.areasNote && <p style={{ margin: 0, fontSize: 14, lineHeight: 1.62, color: '#4B5D6E' }}>{d.areasNote}</p>}
+              {d.areasNote && <p style={{ margin: 0, fontSize: 14, lineHeight: 1.62, color: 'var(--ink-5)' }}>{d.areasNote}</p>}
             </div>
           </section>
         )}
@@ -262,8 +262,8 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>{d.name} <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>{d.officeLine ?? `Still deciding? Call +92 303 372 0953 and we'll walk you through it.`}</p>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>{d.name} <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>{d.officeLine ?? `Still deciding? Call +92 303 372 0953 and we'll walk you through it.`}</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
               <FaqList items={d.faqs.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} />
@@ -276,7 +276,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
           <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Other cities we work in</span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             {others.map((c) => (
-              <Link key={c.label} href={c.href} className="plan-other-card glass-chip" style={{ padding: '11px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: '#3B5063', whiteSpace: 'nowrap' }}>
+              <Link key={c.label} href={c.href} className="plan-other-card glass-chip" style={{ padding: '11px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-4-alt)', whiteSpace: 'nowrap' }}>
                 Website design {c.label}
               </Link>
             ))}

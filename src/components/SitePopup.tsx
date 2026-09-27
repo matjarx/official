@@ -108,7 +108,7 @@ export default function SitePopup({ config }: { config: PopupConfig }) {
           </div>
         )}
         <div style={{ padding: '28px 28px 32px', textAlign: 'center' }}>
-          <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 24, color: '#04121F' }}>{config.heading}</h3>
+          <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 24, color: 'var(--ink-1)' }}>{config.heading}</h3>
           {config.body && <p style={{ margin: '0 0 20px', fontSize: 14.5, lineHeight: 1.6, color: '#3D4A16' }}>{config.body}</p>}
           {config.cta_text && config.cta_url && (
             <a className="btn-trace"

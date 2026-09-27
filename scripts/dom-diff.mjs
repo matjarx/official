@@ -29,6 +29,31 @@ import { createHash } from 'crypto'
 import path from 'path'
 
 const BASE = process.env.DIFF_BASE || 'http://localhost:3100'
+// RESOLVE_VARS=1 rewrites var(--token) back to the value :root gives it
+// before comparing.
+//
+// Needed for the tokenisation pass, where the rendered HTML legitimately
+// changes -- an inline style says var(--ink-1) where it used to say
+// #04121F -- while the COLOUR must not. Resolving makes the two captures
+// comparable again, and still catches the failure that matters: swap in
+// the wrong token and it resolves to a different hex, so the diff fires.
+//
+// It reads :root only. A token's .dark-theme value is not a name for that
+// colour in light mode.
+const RESOLVE = process.env.RESOLVE_VARS === '1'
+let ROOT_VARS = null
+async function rootVars() {
+  if (ROOT_VARS) return ROOT_VARS
+  const css = await readFile('src/app/globals.css', 'utf8')
+  const open = css.indexOf('{', css.indexOf(':root'))
+  let d = 0, j = open
+  for (;; j++) { if (css[j] === '{') d++; else if (css[j] === '}') d--; if (d === 0) break }
+  ROOT_VARS = new Map()
+  for (const m of css.slice(open, j).matchAll(/--([a-z0-9-]+)\s*:\s*([^;]+);/g)) {
+    ROOT_VARS.set('--' + m[1], m[2].trim())
+  }
+  return ROOT_VARS
+}
 const ROOT = '.domdiff'
 const CONCURRENCY = 6
 
@@ -52,6 +77,11 @@ function normalise(html) {
     // Chunk filenames carry content hashes; a rebuild moves them even when
     // nothing rendered changes.
     .replace(/\/_next\/static\/[^"']*/g, '/_next/static/HASH')
+    // Next fingerprints the generated OG image per BUILD, so this moves on
+    // every rebuild even when nothing rendered changed. Note the trade-off:
+    // it also hides a genuine change to the OG image itself, which this
+    // harness does not check anyway (it compares HTML, not rendered PNGs).
+    .replace(/opengraph-image\?[0-9a-f]+/g, 'opengraph-image?HASH')
     // Build id, and the nonce if CSP is on.
     .replace(/"buildId":"[^"]*"/g, '"buildId":"ID"')
     .replace(/\snonce="[^"]*"/g, '')
@@ -100,11 +130,36 @@ async function compare(a, b) {
   const da = path.join(ROOT, a), db = path.join(ROOT, b)
   for (const d of [da, db]) if (!existsSync(d)) { console.error(`missing capture: ${d}`); process.exit(2) }
   const fa = new Set(await readdir(da)), fb = new Set(await readdir(db))
+  const vars = RESOLVE ? await rootVars() : new Map()
   const only = [...[...fa].filter((f) => !fb.has(f)).map((f) => `only in ${a}: ${f}`),
                 ...[...fb].filter((f) => !fa.has(f)).map((f) => `only in ${b}: ${f}`)]
   const changed = []
   for (const f of [...fa].filter((x) => fb.has(x)).sort()) {
-    const [x, y] = await Promise.all([readFile(path.join(da, f), 'utf8'), readFile(path.join(db, f), 'utf8')])
+    // Applied here as well as at capture time, so a baseline taken before
+    // a rule existed is still comparable without recapturing it -- the old
+    // build it came from is gone.
+    const late = (t) => {
+      t = t.replace(/opengraph-image\?[0-9a-f]+/g, 'opengraph-image?HASH')
+      // Three kinds of framework noise, each caught by capturing the SAME
+      // build twice and seeing it move. None is content:
+      //
+      //   next-size-adjust  an empty Next font meta that is emitted or not
+      //                     depending on when the font loader resolves
+      //   <!-- -->          React's text-node separator, invisible, and it
+      //                     appeared in OPPOSITE directions on two similar
+      //                     pages in one run
+      //   preload links     resource hints, emitted in varying order and
+      //                     completeness; they are not rendered content
+      t = t.replace(/<meta name="next-size-adjust"[^>]*\/?>/g, '')
+      t = t.replace(/<!-- -->/g, '')
+      t = t.replace(/<link rel="preload"[^>]*\/?>/g, '')
+      // Resolution must apply to BOTH sides. The layout already used
+      // var(--cream) before any of this, so resolving only the newer
+      // capture reports every such style as a change.
+      if (RESOLVE) t = t.replace(/var\((--[a-z0-9-]+)\)/g, (all, n) => vars.get(n) ?? all)
+      return t
+    }
+    const [x, y] = (await Promise.all([readFile(path.join(da, f), 'utf8'), readFile(path.join(db, f), 'utf8')])).map(late)
     if (x === y) continue
     const hx = createHash('sha1').update(x).digest('hex').slice(0, 8)
     const hy = createHash('sha1').update(y).digest('hex').slice(0, 8)

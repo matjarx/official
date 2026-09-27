@@ -42,7 +42,7 @@ function Avatar({ author, size }: { author: BlogAuthor; size: number }) {
         fontFamily: 'var(--font-lato), Lato, sans-serif',
         fontWeight: 700,
         fontSize: Math.round(size * 0.3),
-        color: '#16210B',
+        color: 'var(--ink-on-butter)',
       }}
     >
       {authorInitials(author)}
@@ -79,9 +79,9 @@ export default function AuthorCard({ author }: { author: BlogAuthor }) {
     <div className="glass-card" style={{ marginTop: 24, padding: '26px 28px', borderRadius: 20, display: 'flex', gap: 18, alignItems: 'flex-start' }}>
       <Avatar author={author} size={56} />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
-        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{name}</span>
-        {author.role && <span style={{ fontSize: 12.5, color: '#5A6E81' }}>{author.role}</span>}
-        {author.bio && <p style={{ margin: '4px 0 0', fontSize: 14, lineHeight: 1.6, color: '#3B5063' }}>{author.bio}</p>}
+        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: 'var(--ink-1)' }}>{name}</span>
+        {author.role && <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>{author.role}</span>}
+        {author.bio && <p style={{ margin: '4px 0 0', fontSize: 14, lineHeight: 1.6, color: 'var(--ink-4-alt)' }}>{author.bio}</p>}
       </div>
     </div>
   )

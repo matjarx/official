@@ -33,7 +33,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>About MatjarX</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(31px, 5.8vw, 52px)', lineHeight: 1.08, letterSpacing: '-1.8px', color: '#FFFFFF' }}>
-            We think every business deserves to be <span style={{ background: 'var(--moss-light)', color: '#16210B', padding: '0 10px', borderRadius: 3 }}>findable</span>
+            We think every business deserves to be <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>findable</span>
           </h1>
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>Not just the ones who can afford an agency, or who have the spare evenings to learn a website builder.</p>
         </div>
@@ -49,8 +49,8 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(50%, 200px), 1fr))', gap: 2, borderRadius: 22, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.09)', boxShadow: '0 20px 46px rgba(4,18,31,0.1)' }}>
                 {ABOUT_STATS_ACTIVE.map((s) => (
                   <div key={s.label} style={{ padding: '30px 26px', display: 'flex', flexDirection: 'column', gap: 6, background: '#FFFFFF' }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-1.2px', color: '#04121F' }}>{s.value}</span>
-                    <span style={{ fontSize: 13.5, color: '#5A6E81' }}>{s.label}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>{s.value}</span>
+                    <span style={{ fontSize: 13.5, color: 'var(--ink-muted)' }}>{s.label}</span>
                   </div>
                 ))}
               </div>
@@ -62,10 +62,10 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 48, alignItems: 'start' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
                 <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Our story</span>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: '#04121F' }}>It started with a question we couldn&rsquo;t answer well</h2>
-                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: '#33485B' }}>A fabric wholesaler in Faisalabad asked us what a website would cost him. The honest answer at the time was uncomfortable: either several hundred thousand rupees to an agency, or a year of his own evenings learning a builder he would probably abandon.</p>
-                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: '#33485B' }}>Neither answer was reasonable for a business doing solid trade with twelve staff. So we built the option that should have existed: a fixed price, a fixed timeline, and a team that does the work.</p>
-                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: '#33485B' }}>Eight years later we&rsquo;ve built 70,000+ websites. The model hasn&rsquo;t changed much — you tell us about your business, we build the whole thing, and we stay on to keep it working.</p>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: 'var(--ink-1)' }}>It started with a question we couldn&rsquo;t answer well</h2>
+                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: 'var(--ink-3-alt)' }}>A fabric wholesaler in Faisalabad asked us what a website would cost him. The honest answer at the time was uncomfortable: either several hundred thousand rupees to an agency, or a year of his own evenings learning a builder he would probably abandon.</p>
+                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: 'var(--ink-3-alt)' }}>Neither answer was reasonable for a business doing solid trade with twelve staff. So we built the option that should have existed: a fixed price, a fixed timeline, and a team that does the work.</p>
+                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: 'var(--ink-3-alt)' }}>Eight years later we&rsquo;ve built 70,000+ websites. The model hasn&rsquo;t changed much — you tell us about your business, we build the whole thing, and we stay on to keep it working.</p>
               </div>
               {/* The real team photo, where a gradient box saying "Team
                   photo" used to sit. The two smaller gradient panels under
@@ -96,7 +96,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
           <section style={{ background: 'var(--cream-deep)', padding: '76px 24px' }}>
             <div style={{ maxWidth: 1360, margin: '0 auto' }}>
               <div style={{ maxWidth: 640, margin: '0 auto 42px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: '#04121F' }}>What we <span className="marker">believe</span></h2>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: 'var(--ink-1)' }}>What we <span className="marker">believe</span></h2>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
                 {ABOUT_VALUES_ACTIVE.map((v) => (
@@ -104,8 +104,8 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                     <span style={{ width: 44, height: 44, borderRadius: 13, background: 'var(--navy)', display: 'grid', placeItems: 'center' }}>
                       <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={v.icon} /></svg>
                     </span>
-                    <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, letterSpacing: '-0.35px', color: '#04121F' }}>{v.title}</h3>
-                    <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.62, color: '#4B5D6E' }}>{v.body}</p>
+                    <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{v.title}</h3>
+                    <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.62, color: 'var(--ink-5)' }}>{v.body}</p>
                   </div>
                 ))}
               </div>
@@ -115,8 +115,8 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
           {/* Team */}
           <section style={{ maxWidth: 1360, margin: '0 auto', padding: '76px 24px' }}>
             <div style={{ maxWidth: 640, margin: '0 auto 42px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: '#04121F' }}>The people behind it</h2>
-              <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: '#435A70' }}>A team of designers, writers, SEO specialists and concierges across Lahore and Karachi.</p>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: 'var(--ink-1)' }}>The people behind it</h2>
+              <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--ink-4)' }}>A team of designers, writers, SEO specialists and concierges across Lahore and Karachi.</p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 20 }}>
               {ABOUT_TEAM_ACTIVE.map((t) => (
@@ -140,8 +140,8 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                     )}
                   </div>
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 4 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{t.name}</span>
-                    <span style={{ fontSize: 13, color: '#5A6E81' }}>{t.role}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: 'var(--ink-1)' }}>{t.name}</span>
+                    <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>{t.role}</span>
                   </div>
                 </div>
               ))}
@@ -152,7 +152,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '0 24px 76px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Questions about our company</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>About MatjarX</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>About MatjarX</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <FaqList items={ABOUT_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} itemKey={(_, i) => i} />
@@ -161,7 +161,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
 
           {/* Want to work with us CTA */}
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '0 24px 76px' }}>
-            <div style={{ padding: 'clamp(28px, 4vw, 44px) clamp(22px, 3.5vw, 46px)', borderRadius: 26, background: '#04121F', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'center' }}>
+            <div style={{ padding: 'clamp(28px, 4vw, 44px) clamp(22px, 3.5vw, 46px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#FFFFFF' }}>Want to work with us?</h2>
                 <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: 'rgba(255,255,255,0.65)' }}>We&rsquo;re hiring designers, copywriters and SEO specialists in Lahore — and we work with agencies and freelancers through our partner program.</p>

@@ -35,7 +35,7 @@ export default async function Image() {
             display: 'flex',
             fontSize: 40,
             fontWeight: 700,
-            color: '#F4F2AE',
+            color: 'var(--butter)',
             textAlign: 'center',
           }}
         >

@@ -132,7 +132,7 @@ export default function HomeMobileContent() {
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
             <span style={{ fontSize: 12, lineHeight: 1.5, color: theme.ink3 }}>Having trouble launching the right website for your business?</span>
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, lineHeight: 1.1, letterSpacing: '-1.1px', color: theme.ink1 }}>We&rsquo;ll build complete <span style={{ background: 'var(--moss-light)', color: '#16210B', padding: '0 6px', borderRadius: 3 }}>small business websites</span> in 7 days for Rs. 22,500</h1>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, lineHeight: 1.1, letterSpacing: '-1.1px', color: theme.ink1 }}>We&rsquo;ll build complete <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 6px', borderRadius: 3 }}>small business websites</span> in 7 days for Rs. 22,500</h1>
             <span style={{ fontSize: 13.5, lineHeight: 1.6, color: theme.ink3 }}>Support your business growth with affordable agency services.</span>
 
             <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 9, paddingTop: 4 }}>
@@ -144,7 +144,7 @@ export default function HomeMobileContent() {
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12, color: theme.ink1 }}>RATED 4.8 EXCELLENT</span>
               <span style={{ display: 'flex', gap: 2 }}>
                 {[1, 2, 3, 4, 5].map((n) => (
-                  <span key={n} style={{ width: 17, height: 17, display: 'grid', placeItems: 'center', background: '#00B67A' }}>
+                  <span key={n} style={{ width: 17, height: 17, display: 'grid', placeItems: 'center', background: 'var(--trustpilot)' }}>
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="#FFFFFF"><path d="m12 3.4 2.7 6.1 6.6.5-5 4.3 1.5 6.4L12 17.2l-5.8 3.5 1.5-6.4-5-4.3 6.6-.5z" /></svg>
                   </span>
                 ))}
@@ -288,7 +288,7 @@ export default function HomeMobileContent() {
                 <div key={key} style={{ padding: 20, borderRadius: 20, background: t.bg, border: `1.5px solid ${t.border}`, backdropFilter: 'blur(22px)', boxShadow: t.shadow, display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: t.ink, marginRight: 'auto' }}>{p.name}</span>
-                    {tag && <span style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.7px', textTransform: 'uppercase', padding: '5px 9px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{tag}</span>}
+                    {tag && <span style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.7px', textTransform: 'uppercase', padding: '5px 9px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{tag}</span>}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 5 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 25, letterSpacing: '-0.9px', color: t.ink }}>{p.price}</span>
@@ -308,7 +308,7 @@ export default function HomeMobileContent() {
             <span style={{ fontSize: 13.5, lineHeight: 1.6, fontWeight: 600, color: '#3D4A16' }}>Completely zero-risk. Unmatched customer service.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>More than 70,000 businesses trust MatjarX. Your business deserves to join them.</span>
-            <a className="btn-trace" href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: '#04121F' }}>Get started</a>
+            <a className="btn-trace" href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: 'var(--navy-deepest)' }}>Get started</a>
             <a className="btn-trace" href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(255,255,255,0.9)' }}>Talk to us on WhatsApp</a>
           </div>
 
@@ -317,8 +317,8 @@ export default function HomeMobileContent() {
             <Image src="/brand/matjarx-logo-light.png" alt="MatjarX" width={124} height={36} style={{ width: 124, height: 'auto' }} />
             <span style={{ fontSize: 12, lineHeight: 1.6, color: theme.ink4 }}>Done-for-you websites, SEO and growth marketing for small businesses across Pakistan and the Gulf.</span>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-              <a href="tel:+923033720953" style={{ fontSize: 12.5, color: '#E7E49B' }}>+92 303 372 0953</a>
-              <a href="mailto:office@matjarx.com" style={{ fontSize: 12.5, color: '#E7E49B' }}>office@matjarx.com</a>
+              <a href="tel:+923033720953" style={{ fontSize: 12.5, color: 'var(--butter-deep)' }}>+92 303 372 0953</a>
+              <a href="mailto:office@matjarx.com" style={{ fontSize: 12.5, color: 'var(--butter-deep)' }}>office@matjarx.com</a>
             </div>
             <span style={{ fontSize: 11, color: theme.ink5, paddingTop: 6, borderTop: `1px solid ${theme.headerLine}` }}>© 2018–2026 MatjarX. All rights reserved.</span>
           </div>

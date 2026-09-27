@@ -24,19 +24,19 @@ function renderInline(text: string): ReactNode {
 
 function renderLegalBlock(block: LegalBlock, i: number) {
   if (block.type === 'h3') {
-    return <h3 key={i} style={{ margin: '6px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 18.5, letterSpacing: '-0.3px', color: '#04121F' }}>{block.text}</h3>
+    return <h3 key={i} style={{ margin: '6px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 18.5, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{block.text}</h3>
   }
   if (block.type === 'h4') {
     return <h4 key={i} style={{ margin: '2px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, color: '#1B4B6E' }}>{block.text}</h4>
   }
   if (block.type === 'p') {
-    return <p key={i} style={{ margin: 0, fontSize: 16, lineHeight: 1.72, color: '#33485B' }}>{renderInline(block.text)}</p>
+    return <p key={i} style={{ margin: 0, fontSize: 16, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{renderInline(block.text)}</p>
   }
   if (block.type === 'ul') {
     return (
       <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 11, paddingLeft: 2 }}>
         {block.items.map((li, j) => (
-          <span key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 16, lineHeight: 1.65, color: '#33485B' }}>
+          <span key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 16, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
             <span style={{ width: 6, height: 6, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
             <span>{renderInline(li)}</span>
           </span>
@@ -51,7 +51,7 @@ function renderLegalBlock(block: LegalBlock, i: number) {
         <thead>
           <tr>
             {block.headers.map((h, hi) => (
-              <th key={hi} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: '#04121F', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+              <th key={hi} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: 'var(--ink-1)', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
             ))}
           </tr>
         </thead>
@@ -59,7 +59,7 @@ function renderLegalBlock(block: LegalBlock, i: number) {
           {block.rows.map((row, ri) => (
             <tr key={ri}>
               {row.map((cell, ci) => (
-                <td key={ci} style={{ padding: '12px 16px', fontSize: 14, lineHeight: 1.5, color: '#33485B', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{cell}</td>
+                <td key={ci} style={{ padding: '12px 16px', fontSize: 14, lineHeight: 1.5, color: 'var(--ink-3-alt)', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{cell}</td>
               ))}
             </tr>
           ))}
@@ -103,24 +103,24 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
                   })}
                 </div>
                 <div style={{ padding: '22px 24px', borderRadius: 20, background: 'rgba(242,238,226,0.6)', border: '1px solid rgba(255,255,255,0.7)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8)', display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#04121F' }}>Questions about this?</span>
-                  <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: '#4B5D6E' }}>Email us and a person will answer — not a form letter.</p>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-1)' }}>Questions about this?</span>
+                  <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>Email us and a person will answer — not a form letter.</p>
                   <a href="mailto:office@matjarx.com" style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--olive)' }}>office@matjarx.com</a>
                 </div>
               </aside>
 
               <article style={{ minWidth: 0, maxWidth: 700, display: 'flex', flexDirection: 'column', gap: 22 }}>
-                <p style={{ margin: 0, fontSize: 17.5, lineHeight: 1.65, fontWeight: 500, color: '#24384A' }}>{renderInline(d.intro)}</p>
+                <p style={{ margin: 0, fontSize: 17.5, lineHeight: 1.65, fontWeight: 500, color: 'var(--ink-3)' }}>{renderInline(d.intro)}</p>
                 {d.sections.map((s) => (
                   <div key={s.heading} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
-                    <h2 style={{ margin: '12px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.2, letterSpacing: '-0.7px', color: '#04121F' }}>{s.heading}</h2>
+                    <h2 style={{ margin: '12px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.2, letterSpacing: '-0.7px', color: 'var(--ink-1)' }}>{s.heading}</h2>
                     {s.blocks.map((b, i) => renderLegalBlock(b, i))}
                   </div>
                 ))}
 
                 <div className="glass-card" style={{ marginTop: 20, padding: '26px 28px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 9 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>MatjarX (Sole Proprietorship)</span>
-                  <span style={{ fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>B6, 4th Street, Zamzama, Clifton, Karachi, Sindh, Pakistan</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: 'var(--ink-1)' }}>MatjarX (Sole Proprietorship)</span>
+                  <span style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>B6, 4th Street, Zamzama, Clifton, Karachi, Sindh, Pakistan</span>
                   <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', paddingTop: 4 }}>
                     <a href="mailto:office@matjarx.com" style={{ fontSize: 14, fontWeight: 600 }}>office@matjarx.com</a>
                     <a href="tel:+923033720953" style={{ fontSize: 14, fontWeight: 600 }}>+92 303 372 0953</a>

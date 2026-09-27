@@ -50,13 +50,13 @@ function mapHref(href: string): string {
 
 function renderBlock(block: HelpBlock, i: number) {
   if (block.type === 'h3') {
-    return <h3 key={i} style={{ margin: '4px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 17.5, letterSpacing: '-0.3px', color: '#04121F' }}>{block.text}</h3>
+    return <h3 key={i} style={{ margin: '4px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 17.5, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{block.text}</h3>
   }
   if (block.type === 'h4') {
     return <h4 key={i} style={{ margin: '2px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#1B4B6E' }}>{block.text}</h4>
   }
   if (block.type === 'p') {
-    return <p key={i} style={{ margin: 0, fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{renderInline(block.text)}</p>
+    return <p key={i} style={{ margin: 0, fontSize: 14.5, lineHeight: 1.68, color: 'var(--ink-4)' }}>{renderInline(block.text)}</p>
   }
   return (
     <ul key={i} style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -65,7 +65,7 @@ function renderBlock(block: HelpBlock, i: number) {
         const isCross = item.startsWith('❌')
         const clean = isTick || isCross ? item.replace(/^[✅❌]\s*/, '') : item
         return (
-          <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.6, color: '#435A70' }}>
+          <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-4)' }}>
             <span style={{ flex: '0 0 auto', marginTop: 6, width: 5, height: 5, borderRadius: '50%', background: isTick ? '#6E8F3F' : isCross ? '#B5533C' : 'var(--olive)' }} />
             <span>{renderInline(clean)}</span>
           </li>
@@ -130,7 +130,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '44px 24px 0', display: 'flex', flexDirection: 'column', gap: 18 }}>
             {d.sections.map((s, i) => (
               <div key={i} className="glass-card" style={{ padding: '26px 28px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '-0.5px', color: '#04121F' }}>{s.heading}</h2>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{s.heading}</h2>
                 {s.blocks.map((b, j) => renderBlock(b, j))}
               </div>
             ))}
@@ -152,7 +152,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
               <span style={{ display: 'block', marginBottom: 16, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Keep exploring</span>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
                 {d.related.map(([label, href], i) => (
-                  <Link key={i} href={mapHref(href)} className="glass-chip" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: '#3B5063' }}>
+                  <Link key={i} href={mapHref(href)} className="glass-chip" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-4-alt)' }}>
                     {label} <span style={{ color: 'var(--olive)' }}>→</span>
                   </Link>
                 ))}

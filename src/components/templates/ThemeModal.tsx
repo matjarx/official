@@ -164,7 +164,7 @@ export default function ThemeModal({ themes }: { themes: Theme[] }) {
             </div>
 
             <div className="theme-modal-foot">
-              <span style={{ fontSize: 13, color: '#5A6E81', marginRight: 'auto' }}>
+              <span style={{ fontSize: 13, color: 'var(--ink-muted)', marginRight: 'auto' }}>
                 {open.comingSoon ? 'In build — tell us if you want it first.' : 'Scroll and click inside the preview. It is the real site.'}
               </span>
               <GetThisTheme key={open.id} href={appSignup('launch')} />

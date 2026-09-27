@@ -53,11 +53,11 @@ export default function NotFound() {
 
           {/* Quick links */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '54px 24px 0' }}>
-            <h2 style={{ margin: '0 0 24px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.9px', color: '#04121F' }}>Or try one of these</h2>
+            <h2 style={{ margin: '0 0 24px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>Or try one of these</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {QUICK_LINKS.map((l) => (
                 <Link key={l.title} href={l.href} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '24px 26px', borderRadius: 20 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: '#04121F' }}>{l.title}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{l.title}</span>
                   <span style={{ fontSize: 13.5, lineHeight: 1.58, color: 'var(--ink-4-alt)' }}>{l.body}</span>
                 </Link>
               ))}

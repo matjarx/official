@@ -64,14 +64,14 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Help centre</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: '#04121F' }}>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
             How can we <span className="marker">help you</span>?
           </h1>
-          <p style={{ margin: 0, maxWidth: '32em', fontSize: 'clamp(14.5px, 1.7vw, 17px)', lineHeight: 1.6, color: '#435A70' }}>Search the guides below, or talk to a real person — whichever you prefer.</p>
+          <p style={{ margin: 0, maxWidth: '32em', fontSize: 'clamp(14.5px, 1.7vw, 17px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>Search the guides below, or talk to a real person — whichever you prefer.</p>
 
           <div className="glass-chip" style={{ width: 'min(560px, 100%)', display: 'flex', alignItems: 'center', gap: 12, padding: '15px 18px', borderRadius: 16 }}>
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#5A6E81" strokeWidth="1.9" strokeLinecap="round" style={{ flex: '0 0 auto' }}><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
-            <input type="text" placeholder="Search help articles…" style={{ all: 'unset', flex: 1, minWidth: 0, fontFamily: 'var(--font-open-sans), sans-serif', fontSize: 14.5, color: '#0B2135' }} />
+            <input type="text" placeholder="Search help articles…" style={{ all: 'unset', flex: 1, minWidth: 0, fontFamily: 'var(--font-open-sans), sans-serif', fontSize: 14.5, color: 'var(--ink-2)' }} />
           </div>
         </section>
 
@@ -83,8 +83,8 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
                 <span style={{ width: 42, height: 42, borderRadius: 13, background: 'var(--navy)', display: 'grid', placeItems: 'center' }}>
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={t.icon} /></svg>
                 </span>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18.5, letterSpacing: '-0.35px', color: '#04121F' }}>{t.title}</span>
-                <span style={{ fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{t.body}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18.5, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{t.title}</span>
+                <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{t.body}</span>
                 <span style={{ marginTop: 'auto', paddingTop: 10, display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)', marginLeft: 'auto' }}>Read the guide →</span>
                 </span>
@@ -103,8 +103,8 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
                 <Link key={p.title} href={topicSlug ? routes.helpArticle(topicSlug) : routes.help} className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 13, padding: '18px 20px', borderRadius: 16 }}>
                   <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--olive)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4" /></svg>
                   <span style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
-                    <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: '#04121F' }}>{p.title}</span>
-                    <span style={{ fontSize: 11.5, color: '#5A6E81' }}>{p.topic}</span>
+                    <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: 'var(--ink-1)' }}>{p.title}</span>
+                    <span style={{ fontSize: 11.5, color: 'var(--ink-muted)' }}>{p.topic}</span>
                   </span>
                 </Link>
               )
@@ -126,10 +126,10 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
             {HELP_VIDEOS.map((v) => (
               <div key={v.group} className="glass-card" style={{ padding: '24px 26px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F' }}>{v.group}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{v.group}</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {v.items.map((it) => (
-                    <span key={it} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: '#4B5D6E' }}>
+                    <span key={it} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: 'var(--ink-5)' }}>
                       <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="1.9" style={{ flex: '0 0 auto' }}><circle cx="12" cy="12" r="9" /><path d="m10 9 5 3-5 3z" /></svg>
                       {it}
                     </span>
@@ -146,9 +146,9 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
             {HELP_BY_PLAN.map((p) => (
               <div key={p.plan} style={{ padding: '22px 24px 24px', borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: '#04121F' }}>{p.plan} plan members</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{p.plan} plan members</span>
                 {p.items.map((it) => (
-                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>
+                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                     <span style={{ width: 5, height: 5, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                     {it}
                   </span>
@@ -166,7 +166,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
               const slug = slugFor(t.topic)
               return (
                 <Link key={t.issue} href={slug ? routes.helpArticle(slug) : routes.help} className="glass-chip" style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '18px 20px', borderRadius: 16 }}>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: '#04121F' }}>{t.issue}</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--ink-1)' }}>{t.issue}</span>
                   <span style={{ fontSize: 12.5, color: 'var(--olive)', fontWeight: 600 }}>{t.topic} guide →</span>
                 </Link>
               )
@@ -180,9 +180,9 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 18 }}>
             {HELP_KNOWLEDGE_BASE.map((k) => (
               <div key={k.group} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>{k.group}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: 'var(--ink-1)' }}>{k.group}</span>
                 {k.items.map((it) => (
-                  <span key={it} style={{ fontSize: 13.5, color: '#4B5D6E' }}>{it}</span>
+                  <span key={it} style={{ fontSize: 13.5, color: 'var(--ink-5)' }}>{it}</span>
                 ))}
               </div>
             ))}
@@ -195,9 +195,9 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
             {HELP_BEST_PRACTICES.map((b) => (
               <div key={b.group} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 9 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: '#04121F' }}>{b.group}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{b.group}</span>
                 {b.items.map((it) => (
-                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>
+                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                     <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                     {it}
                   </span>
@@ -215,7 +215,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
               const slug = slugFor(row.goTo)
               return (
                 <Link key={row.topic} href={slug ? routes.helpArticle(slug) : routes.help} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, padding: '15px 22px', borderTop: i > 0 ? '1px solid rgba(4,18,31,0.07)' : undefined }}>
-                  <span style={{ fontSize: 14.5, color: '#24384A' }}>{row.topic}</span>
+                  <span style={{ fontSize: 14.5, color: 'var(--ink-3)' }}>{row.topic}</span>
                   <span style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--olive)', whiteSpace: 'nowrap' }}>{row.goTo} →</span>
                 </Link>
               )
@@ -227,7 +227,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Talk to us</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>A real person, not a ticket queue</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>A real person, not a ticket queue</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
             {HELP_CHANNELS.map((c) => (
@@ -249,31 +249,31 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
 
               <form onSubmit={handleSubmit} style={{ padding: '32px 32px 34px', borderRadius: 26, background: 'rgba(255,255,255,0.66)', border: '1px solid rgba(255,255,255,0.9)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 48px rgba(4,18,31,0.09), inset 0 1px 0 rgba(255,255,255,0.95)', display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.4vw, 30px)', letterSpacing: '-1px', color: '#04121F' }}>Send us a message</h2>
-                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#4B5D6E' }}>Monday to Saturday, 11am to 8pm. We reply the same working day.</p>
+                  <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.4vw, 30px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Send us a message</h2>
+                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>Monday to Saturday, 11am to 8pm. We reply the same working day.</p>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 16 }}>
                   <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Your name</span>
+                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Your name</span>
                     <input required type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
                   </label>
                   <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Business name</span>
+                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Business name</span>
                     <input type="text" value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder="Al-Falah Traders" className="input" style={{ width: '100%' }} />
                   </label>
                   <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Phone / WhatsApp</span>
+                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Phone / WhatsApp</span>
                     <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
                   </label>
                   <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Email</span>
+                    <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Email</span>
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@yourbusiness.pk" className="input" style={{ width: '100%' }} />
                   </label>
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>What&rsquo;s this about?</span>
+                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>What&rsquo;s this about?</span>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                     {HELP_SUBJECTS.map((label) => {
                       const active = subject === label
@@ -285,14 +285,14 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
                 </div>
 
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>How can we help?</span>
+                  <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>How can we help?</span>
                   <textarea required rows={5} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Tell us what you need — the more detail, the better we can answer first time." className="input" style={{ width: '100%' }} />
                 </label>
 
                 {status === 'error' && <p style={{ margin: 0, fontSize: 13, color: '#B4432F' }}>Something went wrong sending that — please try again or message us on WhatsApp instead.</p>}
 
                 <button type="submit" disabled={status === 'submitting'} className="btn-primary" style={{ textAlign: 'center' }}>{status === 'submitting' ? 'Sending…' : 'Send message'}</button>
-                <span style={{ fontSize: 12.5, lineHeight: 1.55, color: '#5A6E81' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>. We never share your details.</span>
+                <span style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>. We never share your details.</span>
               </form>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>

@@ -216,7 +216,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, letterSpacing: '0.3px', color: ink1 }}>RATED 4.8 EXCELLENT</span>
             <span style={{ display: 'flex', gap: 2 }}>
               {[1, 2, 3, 4, 5].map((n) => (
-                <span key={n} style={{ width: 21, height: 21, display: 'grid', placeItems: 'center', background: '#00B67A' }}>
+                <span key={n} style={{ width: 21, height: 21, display: 'grid', placeItems: 'center', background: 'var(--trustpilot)' }}>
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="#FFFFFF"><path d="m12 3.4 2.7 6.1 6.6.5-5 4.3 1.5 6.4L12 17.2l-5.8 3.5 1.5-6.4-5-4.3 6.6-.5z" /></svg>
                 </span>
               ))}
@@ -347,7 +347,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               </div>
               <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? '#E5A97F' : '#8A5B3C' }}>Rs. 420,000–840,000 + upkeep</span>
             </div>
-            <div style={{ padding: '30px 28px', borderRadius: 22, background: '#003366', display: 'flex', flexDirection: 'column', gap: 12, boxShadow: '0 24px 50px rgba(0,51,102,0.28)' }}>
+            <div style={{ padding: '30px 28px', borderRadius: 22, background: 'var(--navy)', display: 'flex', flexDirection: 'column', gap: 12, boxShadow: '0 24px 50px rgba(0,51,102,0.28)' }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--butter)', fontWeight: 600 }}>Option three</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: '#FFFFFF' }}>MatjarX</h3>
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.78)' }}>Agency quality, built for you in a week, with an editor simple enough to actually use.</p>
@@ -452,7 +452,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>How it works</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>Three steps. Seven days.</h2>
             </div>
-            <span style={{ padding: '11px 18px', borderRadius: 999, background: 'var(--butter)', fontSize: 13.5, fontWeight: 600, color: '#3D3A08' }}>Start today → live next Friday</span>
+            <span style={{ padding: '11px 18px', borderRadius: 999, background: 'var(--butter)', fontSize: 13.5, fontWeight: 600, color: 'var(--ink-on-butter-alt)' }}>Start today → live next Friday</span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
             {STEPS.map((s) => (
@@ -525,7 +525,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 <div key={p.name} style={{ padding: '28px 26px 30px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 14, background: t.bg, border: `1.5px solid ${t.border}`, backdropFilter: t.blur, boxShadow: t.shadow }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '-0.5px', color: t.ink, marginRight: 'auto' }}>{p.name}</span>
-                    {p.tag && <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.8px', textTransform: 'uppercase', padding: '5px 10px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{p.tag}</span>}
+                    {p.tag && <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.8px', textTransform: 'uppercase', padding: '5px 10px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{p.tag}</span>}
                   </div>
                   <span style={{ fontSize: 13.5, lineHeight: 1.5, color: t.muted }}>{p.pitch}</span>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, paddingTop: 6 }}>
@@ -552,7 +552,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Trust band */}
-        <section style={{ background: '#003366', padding: '78px 24px' }}>
+        <section style={{ background: 'var(--navy)', padding: '78px 24px' }}>
           <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 44, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>

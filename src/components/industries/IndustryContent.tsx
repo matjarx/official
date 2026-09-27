@@ -54,12 +54,12 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6E81' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: 'var(--ink-muted)' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
             <span>Industries</span>
             <span>/</span>
-            <span style={{ fontWeight: 600, color: '#04121F' }}>{d.name}</span>
+            <span style={{ fontWeight: 600, color: 'var(--ink-1)' }}>{d.name}</span>
           </div>
         </section>
 
@@ -67,17 +67,17 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '28px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 'clamp(30px, 4vw, 52px)', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
             {d.built && (
-              <span className="glass-chip" style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: '#3B5063' }}>
+              <span className="glass-chip" style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-4-alt)' }}>
                 <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)' }} />
                 {d.built}
               </span>
             )}
 
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5vw, 52px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: '#04121F' }}>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5vw, 52px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
               {d.headline ?? <>Websites for <span className="marker">{d.lower}</span> — built in 7 days</>}
             </h1>
 
-            <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: '#435A70' }}>{d.subhead}</p>
+            <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>{d.subhead}</p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, paddingTop: 4 }}>
               <Link href={routes.pricing} className="btn-primary">Start my website</Link>
@@ -87,7 +87,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
             {d.ticks && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 26px', paddingTop: 6 }}>
                 {d.ticks.map((t) => (
-                  <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13.5, color: '#435A70' }}>
+                  <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13.5, color: 'var(--ink-4)' }}>
                     <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                     {t}
                   </span>
@@ -137,7 +137,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 38 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What your site needs</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{d.needsTitle ?? `What a ${d.lower} website needs to do`}</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>{d.needsTitle ?? `What a ${d.lower} website needs to do`}</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
             {d.features.map((f) => (
@@ -145,8 +145,8 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
                 <span style={{ width: 42, height: 42, borderRadius: 13, background: 'var(--navy)', display: 'grid', placeItems: 'center' }}>
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
                 </span>
-                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: '#04121F' }}>{f.title}</h3>
-                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{f.body}</p>
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{f.title}</h3>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{f.body}</p>
               </div>
             ))}
           </div>
@@ -182,8 +182,8 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>{d.name} <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>Call +92 303 372 0953 and ask for someone who has built for {d.lower} before.</p>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>{d.name} <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Call +92 303 372 0953 and ask for someone who has built for {d.lower} before.</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
               <FaqList items={d.faqs.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} />
@@ -198,7 +198,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
           <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Other industries we build for</span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             {others.map((o) => (
-              <Link key={o.label} href={o.href} className="plan-other-card glass-chip" style={{ padding: '11px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: '#3B5063', whiteSpace: 'nowrap' }}>
+              <Link key={o.label} href={o.href} className="plan-other-card glass-chip" style={{ padding: '11px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-4-alt)', whiteSpace: 'nowrap' }}>
                 {o.label}
               </Link>
             ))}

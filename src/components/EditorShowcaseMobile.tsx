@@ -120,7 +120,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0 12px 8px' }}>
-          <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#C6CB8A' }} />
+          <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--moss-light)' }} />
           <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.42)', marginRight: 'auto' }}>Saved just now</span>
           <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.3)' }}>v2.4 draft</span>
         </div>
@@ -135,7 +135,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
             </div>
 
             <div style={{ position: 'relative', outline: '2px solid #F4F2AE', outlineOffset: -2 }}>
-              <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '2px 8px', borderRadius: '0 0 6px 0', background: '#E7E49B', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 7.5, letterSpacing: 0.5, textTransform: 'uppercase', color: '#14210b' }}>Hero</span>
+              <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '2px 8px', borderRadius: '0 0 6px 0', background: 'var(--butter-deep)', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 7.5, letterSpacing: 0.5, textTransform: 'uppercase', color: '#14210b' }}>Hero</span>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '9px 12px', background: navBg, borderBottom: `1px solid ${navLine}` }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 8.5, letterSpacing: 1, lineHeight: 1.1, color: navInk, whiteSpace: 'nowrap', marginRight: 'auto' }}>{brandMark}</span>

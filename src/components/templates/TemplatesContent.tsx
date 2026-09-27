@@ -31,10 +31,10 @@ function IconCardGrid({ items, cols = 4 }: { items: IconCard[]; cols?: number })
           <span style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--navy)', display: 'grid', placeItems: 'center' }}>
             <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={c.icon} /></svg>
           </span>
-          <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: '#04121F' }}>{c.title}</h3>
+          <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{c.title}</h3>
           <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
             {c.body.map((b) => (
-              <li key={b} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: '#4B5D6E' }}>
+              <li key={b} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                 <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />
                 {b}
               </li>
@@ -99,14 +99,14 @@ export default function TemplatesContent({
               demo sites, and this list cannot go stale. */}
           <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }} id="browse">
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Browse by industry</span>
-            <h2 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Templates, by the trade they were built for</h2>
+            <h2 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Templates, by the trade they were built for</h2>
             {/* Conditional, because it is a claim. The preview frames the
                 real demo site — but only two themes are finished and none
                 of the six demo sites has any content in it yet, so today
                 every card opens to its details. Saying "scroll the real
                 site" over a page that cannot yet do that is the kind of
                 copy that makes the rest of the page less believable. */}
-            <p style={{ margin: '0 0 28px', maxWidth: '44em', fontSize: 15.5, lineHeight: 1.62, color: '#435A70' }}>
+            <p style={{ margin: '0 0 28px', maxWidth: '44em', fontSize: 15.5, lineHeight: 1.62, color: 'var(--ink-4)' }}>
               {hasLiveDemo
                 ? 'Open any one and you get the real thing — the template on a desktop and a phone, every page it ships with, and what it costs to have it built for you.'
                 : 'Open any one to see what it is built for and what it includes. Live previews are being fitted out now — ask us and we will walk you through one.'}
@@ -120,7 +120,7 @@ export default function TemplatesContent({
                 </Suspense>
               </>
             ) : (
-              <p style={{ margin: 0, fontSize: 15, color: '#5A6E81' }}>
+              <p style={{ margin: 0, fontSize: 15, color: 'var(--ink-muted)' }}>
                 The template list is loading from your dashboard. <Link href={appLogin} style={{ color: 'var(--olive)', fontWeight: 700 }}>Sign in</Link> to browse them all.
               </p>
             )}
@@ -129,30 +129,30 @@ export default function TemplatesContent({
           {/* Why use templates */}
           <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>About our templates</span>
-            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Why use templates?</h2>
+            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Why use templates?</h2>
             <IconCardGrid items={WHY_TEMPLATES_ACTIVE} />
           </section>
 
           {/* Template features */}
           <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Template features</span>
-            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>What every template includes</h2>
+            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>What every template includes</h2>
             <IconCardGrid items={TEMPLATE_FEATURES_ACTIVE} cols={5} />
           </section>
 
           {/* Selection process */}
           <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>How to choose your template</span>
-            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Template selection process</h2>
+            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Template selection process</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
               {SELECTION_PROCESS.map((s) => (
                 <div key={s.n} className="glass-card" style={{ padding: '26px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, lineHeight: 1, color: 'var(--moss-light)' }}>{s.n}</span>
-                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#04121F' }}>{s.title}</h3>
+                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: 'var(--ink-1)' }}>{s.title}</h3>
                   <span style={{ fontSize: 13, fontWeight: 600, color: '#8A9AA6' }}>{s.lead}</span>
                   <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>
                     {s.items.map((it) => (
-                      <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: '#4B5D6E' }}>
+                      <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                         <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />
                         {it}
                       </li>
@@ -166,24 +166,24 @@ export default function TemplatesContent({
           {/* Customization */}
           <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Making templates your own</span>
-            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Template customization</h2>
+            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Template customization</h2>
             <IconCardGrid items={CUSTOMIZATION} />
           </section>
 
           {/* Popular templates */}
           <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0' }}>
             <span style={{ display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Most used templates</span>
-            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Popular templates</h2>
+            <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Popular templates</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
               {POPULAR.map((p) => (
                 <div key={p.name} style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(4,18,31,0.08)', boxShadow: '0 10px 26px rgba(4,18,31,0.08)' }}>
                   <div style={{ height: 84, background: p.tint }} />
                   <div style={{ padding: '18px 20px 20px', background: '#FFFFFF', display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#04121F' }}>{p.name}</span>
-                    <span style={{ fontSize: 12.5, color: '#5A6E81' }}>{p.used}</span>
-                    <span style={{ fontSize: 13, color: '#4B5D6E' }}>{p.features}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-1)' }}>{p.name}</span>
+                    <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>{p.used}</span>
+                    <span style={{ fontSize: 13, color: 'var(--ink-5)' }}>{p.features}</span>
                     <div style={{ display: 'flex', gap: 8, paddingTop: 6 }}>
-                      <span style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)' }}>{p.rating}</span>
+                      <span style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)' }}>{p.rating}</span>
                       <span style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 999, color: 'var(--olive)', background: 'rgba(112,117,56,0.12)' }}>{p.launch}</span>
                     </div>
                   </div>
@@ -195,11 +195,11 @@ export default function TemplatesContent({
           {/* Updates + migration */}
           <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
             <div className="glass-card" style={{ padding: '28px 26px', borderRadius: 22 }}>
-              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: '#04121F' }}>{TEMPLATE_UPDATES.title}</h3>
-              <p style={{ margin: '0 0 12px', fontSize: 13.5, color: '#4B5D6E' }}>{TEMPLATE_UPDATES.intro}</p>
+              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: 'var(--ink-1)' }}>{TEMPLATE_UPDATES.title}</h3>
+              <p style={{ margin: '0 0 12px', fontSize: 13.5, color: 'var(--ink-5)' }}>{TEMPLATE_UPDATES.intro}</p>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 12 }}>
                 {TEMPLATE_UPDATES.items.map((it) => (
-                  <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: '#4B5D6E' }}>
+                  <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: 'var(--ink-5)' }}>
                     <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{it}
                   </li>
                 ))}
@@ -207,11 +207,11 @@ export default function TemplatesContent({
               <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{TEMPLATE_UPDATES.note}</span>
             </div>
             <div className="glass-card" style={{ padding: '28px 26px', borderRadius: 22 }}>
-              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: '#04121F' }}>{MIGRATION.title}</h3>
-              <p style={{ margin: '0 0 12px', fontSize: 13.5, color: '#4B5D6E' }}>{MIGRATION.intro}</p>
+              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: 'var(--ink-1)' }}>{MIGRATION.title}</h3>
+              <p style={{ margin: '0 0 12px', fontSize: 13.5, color: 'var(--ink-5)' }}>{MIGRATION.intro}</p>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 12 }}>
                 {MIGRATION.items.map((it) => (
-                  <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: '#4B5D6E' }}>
+                  <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: 'var(--ink-5)' }}>
                     <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{it}
                   </li>
                 ))}
@@ -222,7 +222,7 @@ export default function TemplatesContent({
 
           {/* FAQ */}
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
-            <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }}>Frequently asked questions</h2>
+            <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Frequently asked questions</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <FaqList items={TEMPLATE_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} />
             </div>
@@ -230,13 +230,13 @@ export default function TemplatesContent({
 
           {/* Support */}
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0', textAlign: 'center' }}>
-            <h2 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: '#04121F' }}>Questions about templates?</h2>
-            <p style={{ margin: 0, fontSize: 14.5, color: '#4B5D6E' }}>WhatsApp / phone +92 303 372 0953 · office@matjarx.com · Monday–Saturday, 11 AM–8 PM PKT</p>
+            <h2 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>Questions about templates?</h2>
+            <p style={{ margin: 0, fontSize: 14.5, color: 'var(--ink-5)' }}>WhatsApp / phone +92 303 372 0953 · office@matjarx.com · Monday–Saturday, 11 AM–8 PM PKT</p>
           </section>
 
           {/* Closing CTA */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
-            <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
+            <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Browse templates now</h2>
               <p style={{ margin: 0, maxWidth: '30em', fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>All templates are available in your MatjarX dashboard.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>

@@ -295,7 +295,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
           </span>
 
           <span style={{ display: 'flex', alignItems: 'center', gap: 6, flex: '0 0 auto' }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#C6CB8A' }} />
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--moss-light)' }} />
             <span style={{ fontSize: 10.5, color: 'rgba(226,236,245,0.45)', whiteSpace: 'nowrap' }}>Saved just now</span>
           </span>
           <span style={{ flex: '0 0 auto', padding: '7px 13px', borderRadius: 8, fontSize: 11, fontWeight: 600, color: '#E9EFF5', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', whiteSpace: 'nowrap' }}>Preview</span>
@@ -354,7 +354,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
               </div>
 
               <div style={{ position: 'relative', outline: '2px solid #F4F2AE', outlineOffset: -2 }}>
-                <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '3px 10px', borderRadius: '0 0 7px 0', background: '#E7E49B', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 8.5, letterSpacing: 0.5, textTransform: 'uppercase', color: '#14210b' }}>Hero</span>
+                <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '3px 10px', borderRadius: '0 0 7px 0', background: 'var(--butter-deep)', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 8.5, letterSpacing: 0.5, textTransform: 'uppercase', color: '#14210b' }}>Hero</span>
                 {/* Straddling the section's top edge, not floating inside it.
                     At top:6 this sat squarely on the storefront's own
                     "Order Now" button -- you could read the CTA's text
@@ -492,7 +492,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
                   <span style={{ fontSize: 10, color: 'rgba(233,239,245,0.78)' }}>Show kicker</span>
                   <span style={{ fontSize: 8, color: 'rgba(226,236,245,0.4)' }}>Line above the heading</span>
                 </span>
-                <span style={{ width: 34, height: 20, flex: '0 0 auto', borderRadius: 999, padding: 2, background: '#C6CB8A' }}>
+                <span style={{ width: 34, height: 20, flex: '0 0 auto', borderRadius: 999, padding: 2, background: 'var(--moss-light)' }}>
                   <span style={{ display: 'block', width: 16, height: 16, borderRadius: '50%', background: '#FFFFFF', marginLeft: 14 }} />
                 </span>
               </div>
@@ -525,7 +525,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
           <span style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             {[{ label: 'Table for 2' }, { label: 'Date' }, { label: 'Time' }].map((b) => (
               <span key={b.label} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 10px', borderRadius: 7, background: '#FFFCF5', border: '1px solid rgba(27,44,58,0.16)' }}>
-                <span style={{ fontSize: 9, color: '#4B5D6E', marginRight: 'auto' }}>{b.label}</span>
+                <span style={{ fontSize: 9, color: 'var(--ink-5)', marginRight: 'auto' }}>{b.label}</span>
                 <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="#8A9AA6" strokeWidth="2.6" strokeLinecap="round"><path d="m6 9 6 6 6-6" /></svg>
               </span>
             ))}
@@ -541,7 +541,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
               </span>
               <span style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
                 <span style={{ fontSize: 9, fontWeight: 600, lineHeight: 1.3, color: '#E9EFF5' }}>{shopItem.name}</span>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 10, color: '#F4F2AE' }}>{shopItem.price}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 10, color: 'var(--butter)' }}>{shopItem.price}</span>
               </span>
             </span>
             <span style={{ textAlign: 'center', padding: 9, borderRadius: 7, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9.5, letterSpacing: 0.4, color: '#14210b', background: 'linear-gradient(160deg, #F7F5C0, #E7E49B)' }}>Add to Cart</span>
@@ -588,7 +588,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
         </span>
         <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, margin: '0 8px 9px', padding: 8, borderRadius: 7, background: '#FFFCF5' }}>
           <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#04121F" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6.5h16v11H4zM8.5 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM4 15l4-3.5 3.5 3 2-2L20 16" /></svg>
-          <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 0.4, color: '#04121F' }}>Change Image</span>
+          <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 0.4, color: 'var(--ink-1)' }}>Change Image</span>
         </span>
       </button>
       </div>

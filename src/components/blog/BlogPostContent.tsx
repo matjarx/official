@@ -89,7 +89,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                   />
                 </div>
                 {post.coverImage.caption && (
-                  <figcaption style={{ margin: '10px 4px 0', fontSize: 13.5, lineHeight: 1.5, color: '#5A6E81', textAlign: 'center' }}>{post.coverImage.caption}</figcaption>
+                  <figcaption style={{ margin: '10px 4px 0', fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-muted)', textAlign: 'center' }}>{post.coverImage.caption}</figcaption>
                 )}
               </figure>
             ) : (
@@ -104,17 +104,17 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
 
             <article style={{ minWidth: 0, maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 24 }}>
               {post.body.map((b, i) => {
-                if (b.t === 'h') return <h2 key={i} id={headingId(b.text, i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: '#04121F' }}>{b.text}</h2>
-                if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: '#33485B' }}>{b.text}</p>
+                if (b.t === 'h') return <h2 key={i} id={headingId(b.text, i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{b.text}</h2>
+                if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{b.text}</p>
                 if (b.t === 'q') return (
                   <blockquote key={i} style={{ margin: '8px 0', padding: '24px 28px', borderRadius: 18, background: 'var(--cream-deep)', borderLeft: '4px solid var(--moss-light)' }}>
-                    <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: '#04121F' }}>{b.text}</p>
+                    <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{b.text}</p>
                   </blockquote>
                 )
                 return (
                   <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
                     {b.items.map((li) => (
-                      <span key={li} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: '#33485B' }}>
+                      <span key={li} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
                         <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
                         {li}
                       </span>
@@ -146,7 +146,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
 
           {/* Keep reading */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '74px 24px 20px' }}>
-            <h2 style={{ margin: '0 0 28px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, letterSpacing: '-1px', color: '#04121F' }}>Keep reading</h2>
+            <h2 style={{ margin: '0 0 28px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, letterSpacing: '-1px', color: 'var(--ink-1)' }}>Keep reading</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
               {related.map((r) => (
                 <Link key={r.slug} href={routes.blogPost(r.slug)} className="keep-reading-card" style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.09)' }}>
@@ -168,8 +168,8 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                   </div>
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 9 }}>
                     <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--olive)' }}>{r.category}</span>
-                    <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, lineHeight: 1.3, letterSpacing: '-0.3px', color: '#04121F' }}>{r.title}</h3>
-                    <span style={{ fontSize: 12, color: '#90A2B1' }}>{r.readTime}</span>
+                    <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, lineHeight: 1.3, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{r.title}</h3>
+                    <span style={{ fontSize: 12, color: 'var(--ink-faint)' }}>{r.readTime}</span>
                   </div>
                 </Link>
               ))}

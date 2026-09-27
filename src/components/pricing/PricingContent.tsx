@@ -24,7 +24,7 @@ type Cell = 1 | 0 | string
 const YES = { mark: '✓', color: 'var(--olive)' }
 const NO = { mark: '—', color: '#B4C0CA' }
 function cellsFor(a: Cell, b: Cell, c: Cell, d: Cell) {
-  return [a, b, c, d].map((v) => (v === 1 ? YES : v === 0 ? NO : { mark: String(v), color: '#04121F' }))
+  return [a, b, c, d].map((v) => (v === 1 ? YES : v === 0 ? NO : { mark: String(v), color: 'var(--ink-1)' }))
 }
 
 export const COMPARE_GROUPS: { title: string; rows: [string, Cell, Cell, Cell, Cell][] }[] = [
@@ -169,7 +169,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>MatjarX website pricing</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 6vw, 54px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: '#FFFFFF' }}>
-            Launch, manage and grow your <span style={{ background: 'var(--moss-light)', color: '#16210B', padding: '0 10px', borderRadius: 3 }}>business online</span>
+            Launch, manage and grow your <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>business online</span>
           </h1>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px 30px', paddingTop: 6 }}>
             {HERO_TICKS.map((t) => (
@@ -204,7 +204,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
               })}
             </div>
           </div>
-          <a href="tel:+923033720953" className="pricing-call-cta btn-trace" style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '12px 20px', borderRadius: 999, background: '#04121F' }}>
+          <a href="tel:+923033720953" className="pricing-call-cta btn-trace" style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '12px 20px', borderRadius: 999, background: 'var(--navy-deepest)' }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z" /></svg>
             <span style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
               <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>Got questions? Call us</span>
@@ -220,7 +220,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
             const saving = savingFor(p.base)
             return (
               <div key={p.name} style={{ padding: '28px 25px 30px', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 12, background: t.bg, border: `1.5px solid ${t.border}`, backdropFilter: t.blur, boxShadow: t.shadow }}>
-                {p.tag && <span style={{ alignSelf: 'flex-start', fontSize: 10.5, fontWeight: 700, letterSpacing: '0.9px', textTransform: 'uppercase', padding: '6px 12px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)' }}>{p.tag}</span>}
+                {p.tag && <span style={{ alignSelf: 'flex-start', fontSize: 10.5, fontWeight: 700, letterSpacing: '0.9px', textTransform: 'uppercase', padding: '6px 12px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)' }}>{p.tag}</span>}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   {TIER_ICONS[p.name as keyof typeof TIER_ICONS] && (
                     <div style={{ position: 'relative', width: 26, height: 26, flex: '0 0 auto' }}>
@@ -259,7 +259,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
             )
           })}
         </div>
-        <p style={{ margin: '26px auto 0', maxWidth: 660, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: '#5A6E81' }}>
+        <p style={{ margin: '26px auto 0', maxWidth: 660, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-muted)' }}>
           Prices in PKR, billed to Pakistani businesses. Gulf clients are quoted in AED at the equivalent rate — <Link href={routes.contact} style={{ fontWeight: 600 }}>ask for a quote</Link>.
         </p>
 
@@ -281,12 +281,12 @@ export default function PricingContent({ content }: { content: PricingContentSha
 
       {/* How to choose your plan */}
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={{ margin: '0 0 30px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>How to choose your plan</h2>
+        <h2 style={{ margin: '0 0 30px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>How to choose your plan</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
           {HOW_TO_CHOOSE.map((h) => (
             <div key={h.q} className="glass-card" style={{ padding: '22px 22px 24px', borderRadius: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{h.q}</span>
-              <span style={{ fontSize: 13.5, lineHeight: 1.58, color: '#4B5D6E' }}>{h.a}</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{h.q}</span>
+              <span style={{ fontSize: 13.5, lineHeight: 1.58, color: 'var(--ink-5)' }}>{h.a}</span>
             </div>
           ))}
         </div>
@@ -301,26 +301,26 @@ export default function PricingContent({ content }: { content: PricingContentSha
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0' }}>
         <div className="glass-card" style={{ padding: 'clamp(24px, 3.4vw, 34px)', borderRadius: 22 }}>
           <span style={{ display: 'block', marginBottom: 6, fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Special savings</span>
-          <h3 style={{ margin: '0 0 16px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 20, letterSpacing: '-0.4px', color: '#04121F' }}>Save more with longer commitments</h3>
+          <h3 style={{ margin: '0 0 16px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 20, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>Save more with longer commitments</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 18 }}>
-            <span style={{ fontSize: 14, color: '#3B5063' }}><strong>Monthly plan:</strong> full price, cancel anytime — no long-term commitment</span>
-            <span style={{ fontSize: 14, color: '#3B5063' }}><strong>Yearly plan:</strong> get 2 months free (17% savings)</span>
-            <span style={{ fontSize: 14, color: '#3B5063' }}><strong>Two-year plan:</strong> get 6 months free (25% savings)</span>
+            <span style={{ fontSize: 14, color: 'var(--ink-4-alt)' }}><strong>Monthly plan:</strong> full price, cancel anytime — no long-term commitment</span>
+            <span style={{ fontSize: 14, color: 'var(--ink-4-alt)' }}><strong>Yearly plan:</strong> get 2 months free (17% savings)</span>
+            <span style={{ fontSize: 14, color: 'var(--ink-4-alt)' }}><strong>Two-year plan:</strong> get 6 months free (25% savings)</span>
           </div>
           <div style={{ padding: '16px 18px', borderRadius: 14, background: 'var(--cream-deep)', display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <span style={{ fontSize: 13.5, color: '#435A70' }}>Example: Boost at Rs. 15,600/month = Rs. 187,200/year full price</span>
-            <span style={{ fontSize: 13.5, color: '#435A70' }}>Yearly commitment: save Rs. 31,200 (2 months free)</span>
-            <span style={{ fontSize: 13.5, color: '#435A70' }}>Two-year commitment: save Rs. 93,600 (6 months free)</span>
+            <span style={{ fontSize: 13.5, color: 'var(--ink-4)' }}>Example: Boost at Rs. 15,600/month = Rs. 187,200/year full price</span>
+            <span style={{ fontSize: 13.5, color: 'var(--ink-4)' }}>Yearly commitment: save Rs. 31,200 (2 months free)</span>
+            <span style={{ fontSize: 13.5, color: 'var(--ink-4)' }}>Two-year commitment: save Rs. 93,600 (6 months free)</span>
           </div>
-          <p style={{ margin: '16px 0 0', fontSize: 13.5, lineHeight: 1.55, color: '#5A6E81' }}>Commit longer, invest less. All plans include the same quality, features and support.</p>
+          <p style={{ margin: '16px 0 0', fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>Commit longer, invest less. All plans include the same quality, features and support.</p>
         </div>
       </section>
 
       {/* Compare plans */}
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '76px 24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, textAlign: 'center', marginBottom: 34 }}>
-          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: '#04121F' }}>Compare our <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3 }}>plans</span></h2>
-          <p style={{ margin: 0, fontSize: 15.5, color: '#435A70' }}>The best investment you&apos;ll make all year.</p>
+          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Compare our <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3 }}>plans</span></h2>
+          <p style={{ margin: 0, fontSize: 15.5, color: 'var(--ink-4)' }}>The best investment you&apos;ll make all year.</p>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {COMPARE_GROUPS.map((g, i) => {
@@ -328,7 +328,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
             return (
               <div key={g.title} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
                 <button type="button" onClick={() => setOpenGroup(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 16, padding: '20px 24px' }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{g.title}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: 'var(--ink-1)', marginRight: 'auto', textAlign: 'left' }}>{g.title}</span>
                   <span className="glass-cream" style={{ width: 28, height: 28, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center' }}>
                     <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#04121F" strokeWidth="2.4" strokeLinecap="round" style={{ transform: open ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="M12 5v14M5 12h14" /></svg>
                   </span>
@@ -338,13 +338,13 @@ export default function PricingContent({ content }: { content: PricingContentSha
                     <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.7fr) repeat(4, minmax(58px, 0.55fr))', gap: '8px 10px', alignItems: 'center', minWidth: 520 }}>
                       <span />
                       {['Launch', 'Boost', 'Growth', 'Platinum'].map((h) => (
-                        <span key={h} style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: '#5A6E81', textAlign: 'center' }}>{h}</span>
+                        <span key={h} style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: 'var(--ink-muted)', textAlign: 'center' }}>{h}</span>
                       ))}
                       {g.rows.map((r) => {
                         const [label, a, b, c, d] = r
                         return (
                           <Fragment key={label}>
-                            <span style={{ fontSize: 13.5, lineHeight: 1.45, color: '#24384A', padding: '9px 0', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{label}</span>
+                            <span style={{ fontSize: 13.5, lineHeight: 1.45, color: 'var(--ink-3)', padding: '9px 0', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{label}</span>
                             {cellsFor(a, b, c, d).map((cell, ci) => (
                               <span key={ci} style={{ display: 'grid', placeItems: 'center', padding: '9px 0', borderTop: '1px solid rgba(4,18,31,0.07)', fontSize: 12.5, fontWeight: 600, color: cell.color }}>{cell.mark}</span>
                             ))}
@@ -363,7 +363,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       {/* Testimonials */}
       <section style={{ background: 'var(--cream-deep)', padding: '78px 24px' }}>
         <div style={{ maxWidth: 1260, margin: '0 auto' }}>
-          <h2 style={{ margin: '0 0 40px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>
+          <h2 style={{ margin: '0 0 40px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>
             Join 70,000+ business owners <span style={{ background: 'var(--moss-light)', padding: '0 9px', borderRadius: 3 }}>who love MatjarX</span>
           </h2>
           {/* Seven reviews in an auto-fit grid came out as three, three and
@@ -374,12 +374,12 @@ export default function PricingContent({ content }: { content: PricingContentSha
             {TESTIMONIALS.map((t) => (
               <li key={t.name} className="glass-card" style={{ padding: '30px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 18, listStyle: 'none' }}>
                 <span style={{ fontSize: 15, letterSpacing: '2.5px', color: '#C6A20E' }}>★★★★★</span>
-                <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: '#24384A' }}>&ldquo;{t.quote}&rdquo;</p>
+                <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: 'var(--ink-3)' }}>&ldquo;{t.quote}&rdquo;</p>
                 <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ width: 42, height: 42, flex: '0 0 auto', borderRadius: '50%', background: t.tint, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#04121F' }}>{t.initials}</span>
+                  <span style={{ width: 42, height: 42, flex: '0 0 auto', borderRadius: '50%', background: t.tint, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{t.initials}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: '#04121F' }}>{t.name}</span>
-                    <span style={{ fontSize: 12.5, color: '#5A6E81' }}>{t.company}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{t.name}</span>
+                    <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>{t.company}</span>
                   </div>
                 </div>
               </li>
@@ -388,12 +388,12 @@ export default function PricingContent({ content }: { content: PricingContentSha
           <div className="glass-card" style={{ margin: '34px auto 0', maxWidth: 560, padding: '22px 26px', borderRadius: 18, display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap', justifyContent: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="#00B67A" style={{ flex: '0 0 auto' }}><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" /></svg>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 15.5, color: '#04121F' }}>Trustpilot</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 15.5, color: 'var(--ink-1)' }}>Trustpilot</span>
             </span>
             <span style={{ width: 1, height: 26, background: 'rgba(4,18,31,0.12)' }} />
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: '#04121F' }}>4.8 / 5</span>
-            <span style={{ fontSize: 14, letterSpacing: '2px', color: '#00B67A' }}>★★★★★</span>
-            <span style={{ fontSize: 13, color: '#5A6E81' }}>Rated &lsquo;Excellent&rsquo; by our clients</span>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'var(--ink-1)' }}>4.8 / 5</span>
+            <span style={{ fontSize: 14, letterSpacing: '2px', color: 'var(--trustpilot)' }}>★★★★★</span>
+            <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>Rated &lsquo;Excellent&rsquo; by our clients</span>
           </div>
         </div>
       </section>
@@ -402,10 +402,10 @@ export default function PricingContent({ content }: { content: PricingContentSha
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: '78px 24px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 4vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Frequently asked <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
-            <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>Everything you need to use MatjarX like a pro.</p>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 4vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Frequently asked <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
+            <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Everything you need to use MatjarX like a pro.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 6 }}>
-              <span style={{ fontSize: 14, fontWeight: 600, color: '#04121F' }}>Still have questions?</span>
+              <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--ink-1)' }}>Still have questions?</span>
               <a href="tel:+923033720953" style={{ fontSize: 14, fontWeight: 600, color: 'var(--olive)' }}>Call us: +92 303 372 0953</a>
               <a href="mailto:office@matjarx.com" style={{ fontSize: 14, fontWeight: 600, color: 'var(--olive)' }}>office@matjarx.com</a>
             </div>

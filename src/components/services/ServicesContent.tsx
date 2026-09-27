@@ -43,7 +43,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
           <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
             <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{d.kicker}</span>
             <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(31px, 5.8vw, 52px)', lineHeight: 1.08, letterSpacing: '-1.8px', color: '#FFFFFF' }}>
-              {d.titleLead} <span style={{ background: 'var(--moss-light)', color: '#16210B', padding: '0 10px', borderRadius: 3 }}>{d.titleMark}</span>
+              {d.titleLead} <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>{d.titleMark}</span>
             </h1>
             <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>{d.subtitle}</p>
             <Link href={routes.pricing} className="btn-primary" style={{ marginTop: 6 }}>{d.heroCta}</Link>
@@ -75,8 +75,8 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
         {/* Pitch + blocks */}
         <section style={{ maxWidth: 1360, margin: '0 auto', padding: '66px 24px 20px' }}>
           <div style={{ maxWidth: 760, margin: '0 auto 46px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{d.pitchTitle}</h2>
-            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: '#435A70' }}>{d.pitchBody}</p>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>{d.pitchTitle}</h2>
+            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: 'var(--ink-4)' }}>{d.pitchBody}</p>
           </div>
 
           {/* Was one full-width card per step, alternating text and a
@@ -101,12 +101,12 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '20px 22px 24px', minWidth: 0 }}>
                   <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{b.stat}</span>
-                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, lineHeight: 1.2, letterSpacing: '-0.5px', color: '#04121F' }}>
+                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, lineHeight: 1.2, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>
                     {b.titleLead} <span style={{ background: 'var(--butter)', padding: '0 7px', borderRadius: 3 }}>{b.titleMark}</span>
                   </h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingTop: 2 }}>
                     {b.points.map((p) => (
-                      <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: '#3B5063' }}>
+                      <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-4-alt)' }}>
                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                         {p}
                       </span>
@@ -121,15 +121,15 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
         {/* Grid */}
         <section style={{ background: 'var(--cream-deep)', padding: '74px 24px' }}>
           <div style={{ maxWidth: 1360, margin: '0 auto' }}>
-            <h2 style={{ margin: '0 0 38px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{d.gridTitle}</h2>
+            <h2 style={{ margin: '0 0 38px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>{d.gridTitle}</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {d.gridItems.map((g) => (
                 <div key={g.title} className="glass-card" style={{ padding: '26px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <span style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--butter)', display: 'grid', placeItems: 'center' }}>
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3D3A08" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={g.icon} /></svg>
                   </span>
-                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: '#04121F' }}>{g.title}</h3>
-                  <p style={{ margin: 0, fontSize: 14, lineHeight: 1.58, color: '#4B5D6E' }}>{g.body}</p>
+                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{g.title}</h3>
+                  <p style={{ margin: 0, fontSize: 14, lineHeight: 1.58, color: 'var(--ink-5)' }}>{g.body}</p>
                 </div>
               ))}
             </div>
@@ -138,7 +138,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
 
         {/* Testimonial */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '74px 24px' }}>
-          <div style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: '#04121F', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
+          <div style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
               <p style={{ margin: 0, fontSize: 17, lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{d.quote}&rdquo;</p>

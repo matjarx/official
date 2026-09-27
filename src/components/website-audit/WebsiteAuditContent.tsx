@@ -51,25 +51,25 @@ function IntakeForm() {
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14, width: '100%' }}>
       <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Website URL</span>
+        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Website URL</span>
         <input required type="text" value={websiteUrl} onChange={(e) => setWebsiteUrl(e.target.value)} placeholder="https://yourbusiness.pk" className="input" style={{ width: '100%' }} />
       </label>
       <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Your name</span>
+        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Your name</span>
         <input required type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
       </label>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 14 }}>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Email</span>
+          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Email</span>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@yourbusiness.pk" className="input" style={{ width: '100%' }} />
         </label>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>WhatsApp / phone</span>
+          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>WhatsApp / phone</span>
           <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
         </label>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Where should we send your report?</span>
+        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Where should we send your report?</span>
         <div style={{ display: 'flex', gap: 8 }}>
           {(['whatsapp', 'email'] as const).map((c) => (
             <button key={c} type="button" onClick={() => setPreferredChannel(c)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 16px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: preferredChannel === c ? '#FFFFFF' : '#3B5063', background: preferredChannel === c ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${preferredChannel === c ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>
@@ -82,7 +82,7 @@ function IntakeForm() {
         {status === 'submitting' ? 'Sending…' : 'Get Your Website Audit'}
       </button>
       {status === 'error' && <p style={{ margin: 0, fontSize: 13, color: '#B4543C' }}>Something went wrong — please try again, or message us on WhatsApp at {CHANNELS.whatsapp}.</p>}
-      <span style={{ fontSize: 12, lineHeight: 1.5, color: '#5A6E81' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
+      <span style={{ fontSize: 12, lineHeight: 1.5, color: 'var(--ink-muted)' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
     </form>
   )
 }
@@ -132,16 +132,16 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 28 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What is a website audit?</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>A complete analysis of your online presence</h2>
-              <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: '#33485B' }}>{AUDIT_INTRO}</p>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>A complete analysis of your online presence</h2>
+              <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: 'var(--ink-3-alt)' }}>{AUDIT_INTRO}</p>
             </div>
             <div style={{ position: 'relative', width: '100%', maxWidth: 560, height: 220, margin: '0 auto 28px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 44px rgba(4,18,31,0.14)' }}>
               <Image src="/website-audit/audit-report.webp" alt="A dashboard showing website traffic growth and Google ranking improvement" fill sizes="(max-width: 600px) 100vw, 560px" style={{ objectFit: 'cover' }} />
             </div>
-            <p style={{ margin: '0 0 18px', fontSize: 16, lineHeight: 1.62, color: '#33485B', textAlign: 'center' }}>{WHAT_IS_AUDIT.intro}</p>
+            <p style={{ margin: '0 0 18px', fontSize: 16, lineHeight: 1.62, color: 'var(--ink-3-alt)', textAlign: 'center' }}>{WHAT_IS_AUDIT.intro}</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 10 }}>
               {WHAT_IS_AUDIT.checks.map((c) => (
-                <span key={c} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 14, lineHeight: 1.5, color: '#33485B' }}>
+                <span key={c} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 14, lineHeight: 1.5, color: 'var(--ink-3-alt)' }}>
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 2 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                   {c}
                 </span>
@@ -169,7 +169,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           <section style={{ maxWidth: 900, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>A thorough analysis across 10 key areas</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>What&apos;s included in the audit</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>What&apos;s included in the audit</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {AUDIT_AREAS_ACTIVE.map((area, i) => {
@@ -178,7 +178,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                   <div key={area.number} className="glass-card" style={{ borderRadius: 20, overflow: 'hidden' }}>
                     <button type="button" onClick={() => setOpenArea(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '20px 24px' }}>
                       <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'var(--navy)', color: 'var(--butter)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13 }}>{area.number}</span>
-                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F', marginRight: 'auto' }}>{area.title}</span>
+                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)', marginRight: 'auto' }}>{area.title}</span>
                       <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#5A6E81" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                     </button>
                     {open && (
@@ -188,9 +188,9 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 14, marginTop: 10 }}>
                             {area.analyze.map((a) => (
                               <div key={a.heading} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                                {a.heading && <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#04121F' }}>{a.heading}</span>}
+                                {a.heading && <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{a.heading}</span>}
                                 {a.items.map((it) => (
-                                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>
+                                  <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                                     <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                                     {it}
                                   </span>
@@ -200,7 +200,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                           </div>
                         </div>
                         <div style={{ padding: '14px 18px', borderRadius: 16, background: 'rgba(0,51,102,0.05)', display: 'flex', flexDirection: 'column', gap: 6 }}>
-                          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: '#5A6E81' }}>What you&apos;ll learn</span>
+                          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: 'var(--ink-muted)' }}>What you&apos;ll learn</span>
                           {area.learn.map((l) => (
                             <span key={l} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: '#1B2E3F' }}>
                               <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--navy)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
@@ -220,23 +220,23 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>How to get your website audit</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>The audit process</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>The audit process</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
               {PROCESS_STEPS_ACTIVE.map((s) => (
                 <div key={s.step} className="glass-card" style={{ padding: '24px 24px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <span style={{ width: 34, height: 34, borderRadius: '50%', background: 'var(--navy)', color: 'var(--butter)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 14 }}>{s.step}</span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 17, color: '#04121F' }}>{s.title}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 17, color: 'var(--ink-1)' }}>{s.title}</span>
                   <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{s.time}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 4 }}>
                     {s.items.map((it) => (
-                      <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.5, color: '#4B5D6E' }}>
+                      <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                         <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                         {it}
                       </span>
                     ))}
                   </div>
-                  {s.note && <span style={{ fontSize: 12, fontStyle: 'italic', color: '#5A6E81', paddingTop: 4 }}>{s.note}</span>}
+                  {s.note && <span style={{ fontSize: 12, fontStyle: 'italic', color: 'var(--ink-muted)', paddingTop: 4 }}>{s.note}</span>}
                 </div>
               ))}
             </div>
@@ -249,36 +249,36 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 520 }}>
                 <thead><tr>
                   {['Phase', 'Duration', 'What Happens'].map((h) => (
-                    <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, color: '#04121F', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+                    <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, color: 'var(--ink-1)', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
                   ))}
                 </tr></thead>
                 <tbody>
                   {TIMELINE_ROWS.map((row, ri) => (
                     <tr key={ri}>
                       {row.map((cell, ci) => (
-                        <td key={ci} style={{ padding: '14px 20px', fontSize: 13.5, color: '#33485B', borderTop: '1px solid rgba(4,18,31,0.07)', fontWeight: ci === 0 ? 700 : 400 }}>{cell}</td>
+                        <td key={ci} style={{ padding: '14px 20px', fontSize: 13.5, color: 'var(--ink-3-alt)', borderTop: '1px solid rgba(4,18,31,0.07)', fontWeight: ci === 0 ? 700 : 400 }}>{cell}</td>
                       ))}
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <p style={{ margin: '16px 0 0', fontSize: 14, fontWeight: 700, color: '#04121F', textAlign: 'center' }}>{TIMELINE_TOTAL}</p>
-            <p style={{ margin: '4px 0 0', fontSize: 13, color: '#5A6E81', textAlign: 'center' }}>{RUSH_NOTE}</p>
+            <p style={{ margin: '16px 0 0', fontSize: 14, fontWeight: 700, color: 'var(--ink-1)', textAlign: 'center' }}>{TIMELINE_TOTAL}</p>
+            <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--ink-muted)', textAlign: 'center' }}>{RUSH_NOTE}</p>
           </section>
 
           {/* Outcomes */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you&apos;ll know after your audit</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>The report includes</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>The report includes</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
               {OUTCOMES.map((o) => (
                 <div key={o.title} style={{ padding: '22px 24px 24px', borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: '#04121F' }}>{o.title}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{o.title}</span>
                   {o.items.map((it) => (
-                    <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>
+                    <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                       <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                       {it}
                     </span>
@@ -292,13 +292,13 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Why small business owners love website audits</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>Benefits for small businesses</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Benefits for small businesses</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 18 }}>
               {BENEFITS.map((b) => (
                 <div key={b.title} className="glass-card" style={{ padding: '24px 26px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 17, color: '#04121F' }}>{b.title}</h3>
-                  <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: '#4B5D6E' }}>{b.body}</p>
+                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 17, color: 'var(--ink-1)' }}>{b.title}</h3>
+                  <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{b.body}</p>
                 </div>
               ))}
             </div>
@@ -308,17 +308,17 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Common questions about our audit</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>FAQ: Website audit</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>FAQ: Website audit</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 40 }}>
               <FaqList items={AUDIT_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} itemKey={(_, i) => i} />
             </div>
-            <span style={{ display: 'block', textAlign: 'center', marginBottom: 16, fontSize: 13.5, fontWeight: 600, color: '#04121F' }}>Free tools vs. MatjarX audit</span>
+            <span style={{ display: 'block', textAlign: 'center', marginBottom: 16, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)' }}>Free tools vs. MatjarX audit</span>
             <div className="glass-card table-scroll" style={{ borderRadius: 20, overflowY: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
                 <thead><tr>
                   {COMPARISON_TABLE.headers.map((h) => (
-                    <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, color: '#04121F', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+                    <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, color: 'var(--ink-1)', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
                   ))}
                 </tr></thead>
                 <tbody>
@@ -336,7 +336,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
 
           {/* Closing CTA */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
-            <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
+            <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Your website could be perfectly optimized. Or severely underperforming. You won&apos;t know until you look.</h2>
               <p style={{ margin: 0, maxWidth: '38em', fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>70,000+ small businesses use MatjarX to improve their online visibility. Your website could be next.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>

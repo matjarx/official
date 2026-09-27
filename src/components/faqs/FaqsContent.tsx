@@ -55,10 +55,10 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
         return (
           <div key={q.key} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
             <button type="button" onClick={() => setOpenKey(open ? '' : q.key)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '19px 22px' }}>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, lineHeight: 1.35, color: '#04121F', marginRight: 'auto', textAlign: 'left' }}>{q.question}</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, lineHeight: 1.35, color: 'var(--ink-1)', marginRight: 'auto', textAlign: 'left' }}>{q.question}</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6E81" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
             </button>
-            {open && <p style={{ margin: 0, padding: '0 22px 21px', fontSize: 14.5, lineHeight: 1.68, color: '#435A70' }}>{q.answer}</p>}
+            {open && <p style={{ margin: 0, padding: '0 22px 21px', fontSize: 14.5, lineHeight: 1.68, color: 'var(--ink-4)' }}>{q.answer}</p>}
           </div>
         )
       })}
@@ -76,7 +76,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Help centre</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>
-            Frequently asked <span style={{ background: 'var(--moss-light)', color: '#16210B', padding: '0 10px', borderRadius: 3 }}>questions</span>
+            Frequently asked <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>questions</span>
           </h1>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>Everything you need to use MatjarX like a pro. Still stuck? We&rsquo;re a phone call away.</p>
         </div>
@@ -108,7 +108,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
 
           {/* Still have questions CTA */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
-            <div style={{ padding: 'clamp(26px, 4vw, 40px) clamp(22px, 3.5vw, 42px)', borderRadius: 26, background: '#04121F', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
+            <div style={{ padding: 'clamp(26px, 4vw, 40px) clamp(22px, 3.5vw, 42px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(23px, 3.6vw, 30px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Still have questions?</h2>
                 <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.65)' }}>Get started today — or just ask us anything before you commit to anything.</p>

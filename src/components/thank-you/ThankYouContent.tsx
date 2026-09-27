@@ -40,7 +40,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 48px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>Thank you — we&rsquo;ve got it</h1>
           <p style={{ margin: 0, maxWidth: '30em', fontSize: 17.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.75)' }}>{subtitle}</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 20px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.16)' }}>
-            <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: '#16210B' }}>JA</span>
+            <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: 'var(--ink-on-butter)' }}>JA</span>
             <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>Junaid Ahmed will most likely be the one replying</span>
           </div>
         </div>
@@ -52,13 +52,13 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
 
           {/* What happens next */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '48px 24px 0' }}>
-            <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-1px', color: '#04121F' }}>What happens next</h2>
+            <h2 style={{ margin: '0 0 26px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-1px', color: 'var(--ink-1)' }}>What happens next</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {THANK_YOU_STEPS_ACTIVE.map((s) => (
                 <div key={s.title} className="glass-card" style={{ padding: '26px 26px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 11 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.4px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>{s.when}</span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: '#04121F' }}>{s.title}</span>
-                  <span style={{ fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{s.body}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{s.title}</span>
+                  <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{s.body}</span>
                 </div>
               ))}
             </div>
@@ -80,12 +80,12 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
 
           {/* While you wait */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '54px 24px 0' }}>
-            <h2 style={{ margin: '0 0 24px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.9px', color: '#04121F' }}>While you wait</h2>
+            <h2 style={{ margin: '0 0 24px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>While you wait</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {THANK_YOU_LINKS_ACTIVE.map((l) => (
                 <Link key={l.title} href={l.href} style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '24px 26px', borderRadius: 20, background: '#FFFFFF', border: '1.5px solid rgba(4,18,31,0.1)' }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: '#04121F' }}>{l.title}</span>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.58, color: '#4B5D6E' }}>{l.body}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{l.title}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.58, color: 'var(--ink-5)' }}>{l.body}</span>
                   <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{l.cta}</span>
                 </Link>
               ))}

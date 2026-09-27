@@ -39,7 +39,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Careers at MatjarX</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>
-            Build things that put real businesses <span style={{ background: 'var(--moss-light)', color: '#16210B', padding: '0 10px', borderRadius: 3 }}>on the map</span>
+            Build things that put real businesses <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>on the map</span>
           </h1>
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>Every site we ship belongs to someone who runs a shop, a clinic or a factory. The work lands somewhere you can point at.</p>
         </div>
@@ -57,8 +57,8 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                   <span style={{ width: 42, height: 42, borderRadius: 12, background: 'var(--butter)', display: 'grid', placeItems: 'center' }}>
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3D3A08" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={p.icon} /></svg>
                   </span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: '#04121F' }}>{p.title}</span>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: '#4B5D6E' }}>{p.body}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{p.title}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{p.body}</span>
                 </div>
               ))}
             </div>
@@ -68,8 +68,8 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', alignItems: 'flex-end', gap: 22, flexWrap: 'wrap', marginBottom: 28 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginRight: 'auto' }}>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Open roles</h2>
-                <p style={{ margin: 0, fontSize: 15.5, color: '#435A70' }}>{roleCount}</p>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Open roles</h2>
+                <p style={{ margin: 0, fontSize: 15.5, color: 'var(--ink-4)' }}>{roleCount}</p>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {CAREERS_CATEGORIES.map((c) => {
@@ -88,22 +88,22 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                   <div key={r.title} className="glass-card" style={{ borderRadius: 20, overflow: 'hidden' }}>
                     <button type="button" onClick={() => setOpenIndex(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 18, padding: '24px 26px', flexWrap: 'wrap' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginRight: 'auto', minWidth: 0, textAlign: 'left' }}>
-                        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, letterSpacing: '-0.35px', color: '#04121F' }}>{r.title}</span>
-                        <span style={{ fontSize: 13, color: '#5A6E81' }}>{r.team} · {r.location} · {r.type}</span>
+                        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{r.title}</span>
+                        <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>{r.team} · {r.location} · {r.type}</span>
                       </div>
-                      <span style={{ fontSize: 12, fontWeight: 600, padding: '7px 13px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{r.level}</span>
+                      <span style={{ fontSize: 12, fontWeight: 600, padding: '7px 13px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{r.level}</span>
                       <span className="glass-chip" style={{ width: 30, height: 30, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center' }}>
                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#04121F" strokeWidth="2.4" strokeLinecap="round" style={{ transform: open ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="M12 5v14M5 12h14" /></svg>
                       </span>
                     </button>
                     {open && (
                       <div style={{ padding: '0 26px 26px', display: 'flex', flexDirection: 'column', gap: 18 }}>
-                        <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.68, color: '#33485B' }}>{r.summary}</p>
+                        <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.68, color: 'var(--ink-3-alt)' }}>{r.summary}</p>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 24 }}>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 11, minWidth: 0 }}>
                             <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What you&rsquo;ll do</span>
                             {r.duties.map((d) => (
-                              <span key={d} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.58, color: '#3B5063' }}>
+                              <span key={d} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.58, color: 'var(--ink-4-alt)' }}>
                                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                                 {d}
                               </span>
@@ -112,7 +112,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 11, minWidth: 0 }}>
                             <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What we&rsquo;re looking for</span>
                             {r.needs.map((n) => (
-                              <span key={n} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.58, color: '#3B5063' }}>
+                              <span key={n} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.58, color: 'var(--ink-4-alt)' }}>
                                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                                 {n}
                               </span>
@@ -131,7 +131,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
           {/* Nothing fits CTA */}
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '66px 24px 74px' }}>
             {/* Same banner shape, same fix. See .cta-banner. */}
-            <div className="cta-banner" style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: '#04121F' }}>
+            <div className="cta-banner" style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(23px, 3.6vw, 30px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Nothing fits, but you&rsquo;d be good here?</h2>
                 <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.65)' }}>Send us your work and tell us what you&rsquo;d want to do. We&rsquo;ve hired several people who wrote in before a role existed.</p>

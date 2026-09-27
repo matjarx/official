@@ -49,7 +49,7 @@ export type FaqEntry = {
  *  had each declared identically, and use well beyond their FAQ (7, 12 and
  *  18 call sites). One copy, here, because the accordion needs it too. */
 export const bullet = (text: string, key?: React.Key) => (
-  <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: '#4B5D6E' }}>
+  <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-5)' }}>
     <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{text}
   </li>
 )

@@ -15,18 +15,18 @@ import { FaqList, bullet } from '@/components/FaqList'
 
 const DETAIL: Record<ServiceKey, ServiceDetail> = { dfy: DFY, seo: SEO, concierge: CONCIERGE, growth: GROWTH }
 
-const H2: React.CSSProperties = { margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: '#04121F' }
+const H2: React.CSSProperties = { margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }
 function BlockList({ blocks }: { blocks: Block[] }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {blocks.map((b, i) => (
         <div key={i}>
-          {b.h && <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{b.h}</h3>}
-          {b.p && <p style={{ margin: '0 0 8px', fontSize: 13.5, lineHeight: 1.6, color: '#4B5D6E' }}>{b.p}</p>}
+          {b.h && <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{b.h}</h3>}
+          {b.p && <p style={{ margin: '0 0 8px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{b.p}</p>}
           {b.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{b.items.map((it, j) => bullet(it, j))}</ul>}
           {b.sub && b.sub.map((s, k) => (
             <div key={k} style={{ marginTop: 6 }}>
-              <span style={{ display: 'block', marginBottom: 6, fontSize: 13.5, fontWeight: 700, color: '#04121F' }}>{s.h}</span>
+              <span style={{ display: 'block', marginBottom: 6, fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{s.h}</span>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, j) => bullet(it, j))}</ul>
             </div>
           ))}
@@ -40,7 +40,7 @@ function TableEl({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
     <div className="glass-card table-scroll" style={{ borderRadius: 18, overflowY: 'hidden' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
-        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: '#5A6E81', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
+        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: 'var(--ink-muted)', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i} style={{ borderTop: '1px solid rgba(4,18,31,0.06)' }}>
@@ -59,7 +59,7 @@ function TestimonialGrid({ items }: { items: Testimonial[] }) {
       {items.map((t) => (
         <div key={t.name} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
           <span style={{ display: 'block', marginBottom: 8, fontSize: 13, letterSpacing: 2, color: 'var(--butter-deep)' }}>★★★★★</span>
-          <p style={{ margin: '0 0 10px', fontSize: 13.5, lineHeight: 1.6, color: '#3B5063' }}>&ldquo;{t.quote}&rdquo;</p>
+          <p style={{ margin: '0 0 10px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-4-alt)' }}>&ldquo;{t.quote}&rdquo;</p>
           <span style={{ fontSize: 12.5, fontWeight: 600, color: '#8A9AA6' }}>{t.name}</span>
         </div>
       ))}
@@ -76,20 +76,20 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       {/* Challenge */}
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '76px 24px 0' }}>
         <h2 style={H2}>{d.challenge.title}</h2>
-        {d.challenge.intro && <p style={{ margin: '-10px 0 16px', fontSize: 15, lineHeight: 1.62, color: '#435A70' }}>{d.challenge.intro}</p>}
+        {d.challenge.intro && <p style={{ margin: '-10px 0 16px', fontSize: 15, lineHeight: 1.62, color: 'var(--ink-4)' }}>{d.challenge.intro}</p>}
         <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>{d.challenge.points.map((it, i) => bullet(it, i))}</ul>
       </section>
 
       {/* Solution / how it works */}
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.solution.title}</h2>
-        {d.solution.intro && <p style={{ margin: '-10px 0 22px', fontSize: 15, lineHeight: 1.62, color: '#435A70' }}>{d.solution.intro}</p>}
+        {d.solution.intro && <p style={{ margin: '-10px 0 22px', fontSize: 15, lineHeight: 1.62, color: 'var(--ink-4)' }}>{d.solution.intro}</p>}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
           {d.solution.steps.map((s, i) => (
             <div key={s.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
               <span style={{ display: 'block', marginBottom: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--moss-light)' }}>{i + 1}</span>
-              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{s.title}</h3>
-              <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: '#4B5D6E' }}>{s.body}</p>
+              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{s.title}</h3>
+              <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{s.body}</p>
             </div>
           ))}
         </div>
@@ -99,12 +99,12 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       {d.whoWeServe && (
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.whoWeServe.title}</h2>
-          <p style={{ margin: '-10px 0 20px', fontSize: 14.5, color: '#4B5D6E' }}>{d.whoWeServe.intro}</p>
+          <p style={{ margin: '-10px 0 20px', fontSize: 14.5, color: 'var(--ink-5)' }}>{d.whoWeServe.intro}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {d.whoWeServe.groups.map((g) => (
               <div key={g.title} className="glass-card" style={{ padding: '16px 20px', borderRadius: 16 }}>
-                <span style={{ display: 'block', marginBottom: 4, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#04121F' }}>{g.title}</span>
-                <span style={{ fontSize: 13, lineHeight: 1.6, color: '#4B5D6E' }}>{g.items}</span>
+                <span style={{ display: 'block', marginBottom: 4, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{g.title}</span>
+                <span style={{ fontSize: 13, lineHeight: 1.6, color: 'var(--ink-5)' }}>{g.items}</span>
               </div>
             ))}
           </div>
@@ -125,7 +125,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 18 }}>
           {d.included.sections.map((s) => (
             <div key={s.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-              <h3 style={{ margin: '0 0 14px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F' }}>{s.title}</h3>
+              <h3 style={{ margin: '0 0 14px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{s.title}</h3>
               <BlockList blocks={s.blocks} />
             </div>
           ))}
@@ -154,7 +154,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
             {d.process.phases.map((ph) => (
               <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-                <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{ph.title}</h3>
+                <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{ph.title}</h3>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             ))}
@@ -188,7 +188,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
             {d.marketingJourney.months.map((m) => (
               <div key={m.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 18 }}>
                 <div>
-                  <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>{m.title}</h3>
+                  <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: 'var(--ink-1)' }}>{m.title}</h3>
                   <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{m.focus}</span>
                 </div>
                 <div>
@@ -198,7 +198,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
                 <div>
                   <span style={{ display: 'block', marginBottom: 6, fontSize: 11.5, letterSpacing: 1, textTransform: 'uppercase', color: '#8A9AA6', fontWeight: 600 }}>Your Action</span>
                   <ul style={{ margin: '0 0 8px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 4 }}>{m.yourAction.map((it, i) => bullet(it, i))}</ul>
-                  <span style={{ fontSize: 12.5, color: '#4B5D6E' }}><strong>Outcome:</strong> {m.outcome}</span>
+                  <span style={{ fontSize: 12.5, color: 'var(--ink-5)' }}><strong>Outcome:</strong> {m.outcome}</span>
                 </div>
               </div>
             ))}
@@ -212,7 +212,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
           {d.caseStudies.items.map((c) => (
             <div key={c.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-              <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#04121F' }}>{c.title}</h3>
+              <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-1)' }}>{c.title}</h3>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{c.lines.map((it, i) => bullet(it, i))}</ul>
             </div>
           ))}
@@ -248,13 +248,13 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
             {d.pricing.setup && (
               <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-                <span style={{ display: 'block', marginBottom: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, color: '#04121F' }}>{d.pricing.setup.amount}</span>
+                <span style={{ display: 'block', marginBottom: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, color: 'var(--ink-1)' }}>{d.pricing.setup.amount}</span>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.setup.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             )}
             {d.pricing.monthly && (
               <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-                <span style={{ display: 'block', marginBottom: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, color: '#04121F' }}>{d.pricing.monthly.amount}</span>
+                <span style={{ display: 'block', marginBottom: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, color: 'var(--ink-1)' }}>{d.pricing.monthly.amount}</span>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.monthly.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             )}
@@ -269,8 +269,8 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
           {d.whyChoose.items.map((it) => (
             <div key={it.h} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#04121F' }}>{it.h}</h3>
-              {it.body && <p style={{ margin: '0 0 8px', fontSize: 13.5, color: '#4B5D6E' }}>{it.body}</p>}
+              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{it.h}</h3>
+              {it.body && <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>{it.body}</p>}
               {it.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{it.items.map((x, i) => bullet(x, i))}</ul>}
             </div>
           ))}
@@ -297,7 +297,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
 
       {/* Closing + bottom line */}
       <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
-        <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
+        <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
           {d.closing.body && <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(255,255,255,0.68)' }}>{d.closing.body}</p>}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', paddingTop: 6 }}>
@@ -319,8 +319,8 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
 
       {d.bottomLine && (
         <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
-          <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: '#04121F' }}>{d.bottomLine.title}</h3>
-          {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: '#4B5D6E' }}>{p}</p>)}
+          <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{d.bottomLine.title}</h3>
+          {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{p}</p>)}
         </section>
       )}
     </>

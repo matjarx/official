@@ -41,10 +41,10 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Features</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: '#04121F' }}>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
             Everything your website needs, <span className="marker">already included</span>
           </h1>
-          <p style={{ margin: 0, maxWidth: '36em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.62, color: '#435A70' }}>
+          <p style={{ margin: 0, maxWidth: '36em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.62, color: 'var(--ink-4)' }}>
             No app store, no plugins to maintain, no surprise add-on bills. Every feature below is part of the platform — we just switch on the ones your business actually uses.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 4 }}>
@@ -70,8 +70,8 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         {/* Feature cards */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '42px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, textAlign: 'center', marginBottom: 34 }}>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>{g.title}</h2>
-            <p style={{ margin: 0, maxWidth: '34em', fontSize: 15.5, lineHeight: 1.6, color: '#435A70' }}>{g.body}</p>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>{g.title}</h2>
+            <p style={{ margin: 0, maxWidth: '34em', fontSize: 15.5, lineHeight: 1.6, color: 'var(--ink-4)' }}>{g.body}</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: 20 }}>
@@ -83,8 +83,8 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
                   </span>
                   {f.tag && <span style={{ marginLeft: 'auto', fontSize: 10.5, fontWeight: 700, letterSpacing: '0.7px', textTransform: 'uppercase', padding: '5px 10px', borderRadius: 999, color: f.tagInk, background: f.tagBg, whiteSpace: 'nowrap' }}>{f.tag}</span>}
                 </div>
-                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18.5, letterSpacing: '-0.35px', color: '#04121F' }}>{f.title}</h3>
-                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#4B5D6E' }}>{f.body}</p>
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18.5, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{f.title}</h3>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{f.body}</p>
                 <span style={{ marginTop: 'auto', paddingTop: 10, fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{f.plan}</span>
               </div>
             ))}
@@ -100,7 +100,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#FFFFFF' }}>Change a photo. Take a booking. Start selling.</h2>
                 <p style={{ margin: 0, maxWidth: '34em', fontSize: 15, lineHeight: 1.65, color: 'rgba(226,236,245,0.68)' }}>Switch between a product business and a service business and watch the buttons, panels and layout change with it. That&apos;s the same editor your site ships with.</p>
               </div>
-              <Link className="btn-trace" href={routes.pricing} style={{ padding: '15px 26px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#16210B', background: 'var(--butter)' }}>Get the editor</Link>
+              <Link className="btn-trace" href={routes.pricing} style={{ padding: '15px 26px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-on-butter)', background: 'var(--butter)' }}>Get the editor</Link>
             </div>
             <div className="showcase-desktop-only"><EditorShowcase /></div>
             <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
@@ -111,13 +111,13 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Included on every plan</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>The things other builders charge extra for</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>The things other builders charge extra for</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 14 }}>
             {ALWAYS_ON_ACTIVE.map((label) => (
               <div key={label} className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '18px 20px', borderRadius: 16 }}>
                 <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--olive)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: '#04121F' }}>{label}</span>
+                <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.4, color: 'var(--ink-1)' }}>{label}</span>
               </div>
             ))}
           </div>
@@ -127,7 +127,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Integrations</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Connects to the tools you already use</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Connects to the tools you already use</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: 16 }}>
             {INTEGRATION_ICONS.map((icon) => (
@@ -135,7 +135,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
                 <div style={{ position: 'relative', width: 44, height: 44 }}>
                   <Image src={icon.src} alt={icon.label} fill sizes="44px" style={{ objectFit: 'contain' }} />
                 </div>
-                <span style={{ fontSize: 12.5, fontWeight: 600, color: '#04121F' }}>{icon.label}</span>
+                <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>{icon.label}</span>
               </div>
             ))}
           </div>
@@ -144,7 +144,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Social media</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Embed your social feeds, live</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Embed your social feeds, live</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
             {SOCIAL_FEED_ICONS.map((icon) => (
@@ -152,7 +152,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
                 <div style={{ position: 'relative', width: '100%', aspectRatio: `${icon.width} / ${icon.height}` }}>
                   <Image src={icon.src} alt={icon.label} fill sizes="(max-width: 600px) 100vw, 320px" style={{ objectFit: 'cover' }} />
                 </div>
-                <p style={{ margin: 0, padding: '10px 14px', fontSize: 13, fontWeight: 600, color: '#04121F' }}>{icon.label}</p>
+                <p style={{ margin: 0, padding: '10px 14px', fontSize: 13, fontWeight: 600, color: 'var(--ink-1)' }}>{icon.label}</p>
               </div>
             ))}
           </div>
@@ -161,7 +161,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', marginBottom: 34 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>More ways to engage customers</span>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#04121F' }}>Every widget, built in</h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Every widget, built in</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
             {ENGAGEMENT_ICONS.map((icon) => (
@@ -169,7 +169,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
                 <div style={{ position: 'relative', width: '100%', aspectRatio: `${icon.width} / ${icon.height}` }}>
                   <Image src={icon.src} alt={icon.label} fill sizes="(max-width: 600px) 100vw, 320px" style={{ objectFit: 'cover' }} />
                 </div>
-                <p style={{ margin: 0, padding: '10px 14px', fontSize: 13, fontWeight: 600, color: '#04121F' }}>{icon.label}</p>
+                <p style={{ margin: 0, padding: '10px 14px', fontSize: 13, fontWeight: 600, color: 'var(--ink-1)' }}>{icon.label}</p>
               </div>
             ))}
           </div>
@@ -179,8 +179,8 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: '#04121F' }}>Feature <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: '#435A70' }}>Need something not listed here? Ask us — if it&apos;s reasonable, we usually build it.</p>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Feature <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Need something not listed here? Ask us — if it&apos;s reasonable, we usually build it.</p>
               <Link href={routes.help} className="btn-secondary" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Talk to us</Link>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>

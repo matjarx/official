@@ -61,7 +61,7 @@ export default function NewsletterSignup({
       style={
         light
           ? { padding: '34px 32px', borderRadius: 24, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 16, justifyContent: 'center' }
-          : { padding: '24px 26px', borderRadius: 20, background: '#04121F', display: 'flex', flexDirection: 'column', gap: 12 }
+          : { padding: '24px 26px', borderRadius: 20, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', gap: 12 }
       }
     >
       {light && (
@@ -115,7 +115,7 @@ export default function NewsletterSignup({
                     fontFamily: 'var(--font-lato), Lato, sans-serif',
                     fontWeight: 700,
                     fontSize: 13.5,
-                    color: '#16210B',
+                    color: 'var(--ink-on-butter)',
                     background: 'var(--butter)',
                     cursor: status === 'submitting' ? 'default' : 'pointer',
                     opacity: status === 'submitting' ? 0.7 : 1,

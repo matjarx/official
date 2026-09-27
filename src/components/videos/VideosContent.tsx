@@ -37,21 +37,21 @@ function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos']
       )}
       <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 9 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-          <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: '#04121F' }}>{video.title}</span>
+          <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15.5, color: 'var(--ink-1)' }}>{video.title}</span>
         </div>
         <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--olive)' }}>{video.length}</span>
-        <p style={{ margin: 0, fontSize: 13, lineHeight: 1.55, color: '#4B5D6E' }}>{video.body}</p>
+        <p style={{ margin: 0, fontSize: 13, lineHeight: 1.55, color: 'var(--ink-5)' }}>{video.body}</p>
         {video.items && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 4 }}>
             {video.items.map((it) => (
-              <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.5, color: '#4B5D6E' }}>
+              <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>
                 <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                 {it}
               </span>
             ))}
           </div>
         )}
-        {video.extra && <span style={{ fontSize: 12.5, fontStyle: 'italic', color: '#5A6E81', paddingTop: 2 }}>{video.extra}</span>}
+        {video.extra && <span style={{ fontSize: 12.5, fontStyle: 'italic', color: 'var(--ink-muted)', paddingTop: 2 }}>{video.extra}</span>}
       </div>
     </div>
   )
@@ -99,13 +99,13 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Video categories</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>By purpose</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>By purpose</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
               {CATEGORIES_BY_PURPOSE.map((c) => (
                 <div key={c.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: '#04121F' }}>{c.title}</span>
-                  {c.videos.map((v) => <span key={v} style={{ fontSize: 12.5, lineHeight: 1.5, color: '#4B5D6E' }}>{v}</span>)}
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: 'var(--ink-1)' }}>{c.title}</span>
+                  {c.videos.map((v) => <span key={v} style={{ fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>{v}</span>)}
                 </div>
               ))}
             </div>
@@ -114,13 +114,13 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           {/* Categories by length */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>By length</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>By length</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
               {CATEGORIES_BY_LENGTH.map((c) => (
                 <div key={c.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: '#04121F' }}>{c.title}</span>
-                  {c.videos.map((v) => <span key={v} style={{ fontSize: 12.5, lineHeight: 1.5, color: '#4B5D6E' }}>{v}</span>)}
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: 'var(--ink-1)' }}>{c.title}</span>
+                  {c.videos.map((v) => <span key={v} style={{ fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>{v}</span>)}
                 </div>
               ))}
             </div>
@@ -130,7 +130,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Questions about our video library</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>FAQ: MatjarX videos</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>FAQ: MatjarX videos</h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <FaqList items={VIDEO_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} itemKey={(_, i) => i} />
@@ -141,17 +141,17 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Video resources</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: '#04121F' }}>Find the right video for you</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 36px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Find the right video for you</h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
               {RESOURCES_BY_AUDIENCE.map((r) => (
                 <div key={r.title} className="glass-card" style={{ padding: '24px 26px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 17, color: '#04121F' }}>{r.title}</h3>
+                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 17, color: 'var(--ink-1)' }}>{r.title}</h3>
                   {r.groups.map((g) => (
                     <div key={g.label} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                       <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.5px', textTransform: 'uppercase', color: 'var(--olive)' }}>{g.label}</span>
                       {g.videos.map((v) => (
-                        <span key={v} style={{ fontSize: 13, lineHeight: 1.5, color: '#4B5D6E' }}>{v}</span>
+                        <span key={v} style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>{v}</span>
                       ))}
                     </div>
                   ))}
@@ -162,7 +162,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
 
           {/* Closing CTA */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
-            <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: '#04121F', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
+            <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Your 7-day website awaits</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Videos show what we do. But they don&apos;t compare to seeing your own website built in 7 days.</h2>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>
