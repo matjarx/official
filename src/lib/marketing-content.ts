@@ -284,7 +284,7 @@ export const POPUP_SLUG = '_popup'
  * in `bg_color`, and the admin offers it as a preset.
  */
 export const BRAND_GRADIENT =
-  'linear-gradient(90deg, #003366 0%, #2E6EA8 20%, #6C7036 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)'
+  'linear-gradient(90deg, #003366 0%, #2E6EA8 20%, #696D34 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)'
 
 export type AnnouncementBarConfig = {
   enabled?: boolean

@@ -134,7 +134,7 @@ export const DEFAULT_FAQ_DATA = [
 const LIGHT_PLAN_THEME = {
   bg: 'rgba(255,255,255,0.62)', border: 'rgba(255,255,255,0.85)', shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)', blur: 'blur(22px)',
   ink: '#04121F', muted: '#5A6E81', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
-  tick: '#6C7036', ctaInk: '#04121F', ctaBg: '#FCFAF3', ctaBorder: 'rgba(4,18,31,0.16)',
+  tick: '#696D34', ctaInk: '#04121F', ctaBg: '#FCFAF3', ctaBorder: 'rgba(4,18,31,0.16)',
 }
 // Platinum is the top tier and now the second highlighted card, so it
 // needs a treatment that reads as premium WITHOUT competing with

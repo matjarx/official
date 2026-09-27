@@ -69,7 +69,7 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
     ticks: ['Online table bookings', 'Live menu, edit any time', 'Google Maps + reviews'],
     tint: 'linear-gradient(150deg, #8E1B22, #2A0709)',
     sample: { domain: 'celestialdelicacies.pk', kicker: 'Now taking reservations', name: 'Celestial Delicacies', blurb: 'Fine dining in Clifton. Reserve a table, or let us cater your next event.', cta: 'Book a table',
-      tiles: [{ label: 'Menu', tint: 'linear-gradient(150deg, #E8C48D, #C89A5C)' }, { label: 'Gallery', tint: 'linear-gradient(150deg, #C0392B, #5B140D)' }, { label: 'Book', tint: 'linear-gradient(150deg, #6C7036, #C6CB8A)' }] },
+      tiles: [{ label: 'Menu', tint: 'linear-gradient(150deg, #E8C48D, #C89A5C)' }, { label: 'Gallery', tint: 'linear-gradient(150deg, #C0392B, #5B140D)' }, { label: 'Book', tint: 'linear-gradient(150deg, #696D34, #C6CB8A)' }] },
     needsTitle: 'Six things every restaurant website has to get right',
     features: [
       { title: 'Bookings that reach you', body: 'A reservation form that lands in your inbox and on your phone, with the covers, time and any note the guest left.', icon: ICONS.book },
@@ -121,7 +121,7 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
     ticks: ['Appointment booking', 'Doctor profiles', 'Local SEO for your area'],
     tint: 'linear-gradient(150deg, #1B5E6E, #062730)',
     sample: { domain: 'sacredwellness.pk', kicker: 'Appointments open this week', name: 'Sacred Wellness Clinic', blurb: 'Consultations, physiotherapy and wellness programmes in Model Town, Lahore.', cta: 'Book an appointment',
-      tiles: [{ label: 'Services', tint: 'linear-gradient(150deg, #8FB4C8, #4E7E96)' }, { label: 'Our doctors', tint: 'linear-gradient(150deg, #C6CB8A, #6C7036)' }, { label: 'Contact', tint: 'linear-gradient(150deg, #2E6EA8, #10365A)' }] },
+      tiles: [{ label: 'Services', tint: 'linear-gradient(150deg, #8FB4C8, #4E7E96)' }, { label: 'Our doctors', tint: 'linear-gradient(150deg, #C6CB8A, #696D34)' }, { label: 'Contact', tint: 'linear-gradient(150deg, #2E6EA8, #10365A)' }] },
     needsTitle: 'What patients look for before they pick up the phone',
     features: [
       { title: 'Appointment booking', body: 'Patients pick a doctor, a day and a slot. You get it by email and WhatsApp; they get a confirmation.', icon: ICONS.book },
@@ -226,7 +226,7 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
     name: "B2B Clothing", lower: "B2B clothing manufacturers",
     subhead: "Professional wholesale website with product catalog, bulk pricing, and instant sample requests. Reach retailers nationwide. Process orders online.",
     headline: "Your Clothing Catalog. Online. Open for Orders 24/7.",
-    tint: "linear-gradient(150deg, #6C7036, #2E3115)",
+    tint: "linear-gradient(150deg, #696D34, #2E3115)",
     features: [{ title: "Complete Product Catalog", body: "Every product visible with photos, specs, sizing.", icon: ICONS.form }, { title: "Wholesale Pricing", body: "Clear bulk pricing tiers. Retailers know costs upfront.", icon: ICONS.doc }, { title: "Instant Sample Requests", body: "Retailers request samples online. You ship immediately.", icon: ICONS.book }, { title: "MOQ Clarity", body: "Minimum order quantities listed per product.", icon: ICONS.pin }, { title: "Online Ordering", body: "Retailers place bulk orders directly. Faster processing.", icon: ICONS.star }, { title: "24/7 Availability", body: "Retailers browse and order anytime, anywhere.", icon: ICONS.gallery }],
     faqs: [["How do I set wholesale pricing?", "Cost + margin typically 3-5x cost depending on industry. Volume discounts motivate larger orders."], ["Can I customize products?", "Yes! Setup custom options, lead times, setup fees on website."], ["How do I handle samples?", "Charge sample fee or waive for large potential orders. Track requests online."], ["Will this work internationally?", "Yes! Multi-currency support, international shipping options available."], ["Can retailers place bulk orders online?", "Yes! Online quote and order system available on Growth/Platinum plans."]],
     metaTitle: "Clothing Manufacturer B2B Website - Wholesale Catalog & Sample Requests", metaDesc: "B2B clothing manufacturer website with product catalog, bulk pricing, and sample request system. Increase wholesale orders and reach more retailers.",

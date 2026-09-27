@@ -21,7 +21,7 @@ const KIND_LABEL: Record<CrossLink['kind'], string> = {
 
 const KIND_TINT: Record<CrossLink['kind'], string> = {
   service: '#003366',
-  industry: '#6C7036',
+  industry: '#696D34',
   city: '#8E1B22',
   blog: '#2E6EA8',
   plan: '#C9A227',

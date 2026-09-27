@@ -39,9 +39,12 @@ html {
   --butter: #F4F2AE;
   --butter-deep: #E7E49B;
   --butter-light: #F7F5C0;
-  /* 4.22:1 on #F2EEE2. Dark surfaces use --moss-light, not this, so
-     darkening it is safe. */
-  --olive: #6C7036;
+  /* 4.22:1 on #F2EEE2 originally. Corrected once to #6C7036, which still
+     measured 4.44 on #EEEDE0 -- the theme landing pages' band, a surface I
+     had not tested against. This clears 4.5 on every surface it sits on:
+     #FCFAF3, #F6F3E9, #F2EEE2, #EEEDE0 and white, worst case 4.64.
+     Dark surfaces use --moss-light, not this. */
+  --olive: #696D34;
   --moss-light: #C6CB8A;
   --olive-active: #8A8F4A;
   --ink-on-butter: #16210B;

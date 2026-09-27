@@ -73,7 +73,7 @@ export default function HomeMobileContent() {
         headerBg: 'rgba(252,250,243,0.78)', headerLine: 'rgba(4,18,31,0.1)',
         logo: '/brand/matjarx-logo-black.png',
         ink1: '#04121F', ink3: '#435A70', ink4: '#5A6E81', ink5: '#90A2B1',
-        accentInk: '#6C7036', iconInk: '#04121F',
+        accentInk: '#696D34', iconInk: '#04121F',
         chipBg: 'rgba(255,255,255,0.7)', chipLine: 'rgba(255,255,255,0.95)',
         cardBg: 'rgba(255,255,255,0.7)', cardLine: 'rgba(255,255,255,0.95)',
         cardShadow: '0 12px 30px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)',
@@ -95,7 +95,7 @@ export default function HomeMobileContent() {
         </div>
 
         {/* Promo bar */}
-        <div style={{ position: 'relative', zIndex: 3, flex: '0 0 auto', background: 'linear-gradient(90deg, #003366 0%, #2E6EA8 20%, #6C7036 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)', padding: '14px 14px 9px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+        <div style={{ position: 'relative', zIndex: 3, flex: '0 0 auto', background: 'linear-gradient(90deg, #003366 0%, #2E6EA8 20%, #696D34 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)', padding: '14px 14px 9px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '4px 11px', borderRadius: 999, background: 'rgba(0,0,0,0.26)', border: '1px solid rgba(255,255,255,0.32)' }}>
             <span style={{ width: 5, height: 5, flex: '0 0 auto', borderRadius: '50%', background: 'var(--butter)' }} />
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10.5, color: '#FFFFFF', whiteSpace: 'nowrap' }}>49% off on sign up</span>
