@@ -73,6 +73,7 @@ export default function TemplatesContent({
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="resources" />
+      <main>
 
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 56px' }}>
@@ -255,9 +256,10 @@ export default function TemplatesContent({
           <div style={{ height: 74 }} />
           {/* The questions were on the page and nowhere in the structured data. */}
           <FaqSchema faqs={fromPairs(TEMPLATE_FAQS_ACTIVE)} />
-          <SiteFooter />
         </div>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }

@@ -69,6 +69,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <SiteHeader active="resources" />
+      <main>
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
@@ -120,9 +121,10 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
           </section>
 
           <div style={{ height: 74 }} />
-          <SiteFooter />
         </div>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }

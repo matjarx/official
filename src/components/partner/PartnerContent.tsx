@@ -74,6 +74,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="company" />
+      <main>
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
@@ -256,9 +257,10 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
 
           <div style={{ height: 66 }} />
 
-          <SiteFooter />
         </div>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }

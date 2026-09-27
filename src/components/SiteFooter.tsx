@@ -39,7 +39,11 @@ export default function SiteFooter() {
   const socials = FOOTER_SOCIALS.map((s) => ({ ...s, href: socialOverrides[s.name] || s.href }))
 
   return (
-    <div>
+    // position/z-index so the footer stacks above AmbientOrbs, which is
+    // `position: fixed`. It used to inherit this by sitting inside
+    // `.page-content`; it is now a sibling of <main> on those pages, so it
+    // has to carry its own.
+    <div style={{ position: 'relative', zIndex: 1 }}>
       <section style={{ maxWidth: 1360, margin: '0 auto', padding: '0 24px 78px' }}>
         <div
           style={{

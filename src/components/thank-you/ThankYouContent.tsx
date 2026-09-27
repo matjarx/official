@@ -29,6 +29,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="home" />
+      <main>
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '66px 24px 60px' }}>
@@ -92,9 +93,10 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
           </section>
 
           <div style={{ height: 74 }} />
-          <SiteFooter />
         </div>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }

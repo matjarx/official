@@ -24,6 +24,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="resources" />
+      <main>
 
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 52px' }}>
@@ -99,9 +100,10 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
           <div style={{ height: 74 }} />
           <FaqSection faqs={ALTERNATIVES_FAQS} intro="Choosing between us and someone else. The awkward questions first." />
           <div style={{ height: 66 }} />
-          <SiteFooter />
         </div>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }

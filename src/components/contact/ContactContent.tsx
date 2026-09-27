@@ -53,6 +53,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="company" />
+      <main>
 
       {/* Navy hero band */}
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
@@ -286,9 +287,10 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           <div style={{ height: 74 }} />
           {/* The questions were on the page and nowhere in the structured data. */}
           <FaqSchema faqs={fromPairs(CONTACT_FAQS_ACTIVE)} />
-          <SiteFooter />
         </div>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }

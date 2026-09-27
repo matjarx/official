@@ -75,6 +75,7 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="company" />
+      <main>
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '54px 24px 46px' }}>
@@ -130,9 +131,10 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
           </section>
 
           <div style={{ height: 74 }} />
-          <SiteFooter />
         </div>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }

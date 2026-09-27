@@ -101,6 +101,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="resources" />
+      <main>
 
       {/* Hero + form */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 60px' }}>
@@ -348,9 +349,10 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           <div style={{ height: 74 }} />
           {/* The questions were on the page and nowhere in the structured data. */}
           <FaqSchema faqs={fromPairs(AUDIT_FAQS_ACTIVE)} />
-          <SiteFooter />
         </div>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }

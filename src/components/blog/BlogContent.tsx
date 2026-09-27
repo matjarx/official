@@ -32,7 +32,9 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
     return (
       <div style={{ fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)' }}>
         <SiteHeader active="resources" />
-        <p style={{ textAlign: 'center', padding: '80px 24px', color: '#4B5D6E' }}>No posts yet.</p>
+        <main>
+          <p style={{ textAlign: 'center', padding: '80px 24px', color: '#4B5D6E' }}>No posts yet.</p>
+        </main>
         <SiteFooter />
       </div>
     )
@@ -41,6 +43,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="resources" />
+      <main>
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
@@ -126,9 +129,10 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
           <div style={{ height: 60 }} />
           <FaqSection faqs={BLOG_INDEX_FAQS} intro="About these guides and the people who write them." />
           <div style={{ height: 66 }} />
-          <SiteFooter />
         </div>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }
