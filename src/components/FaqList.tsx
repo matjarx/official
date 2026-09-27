@@ -76,7 +76,7 @@ export function FaqList({
 }) {
   const ink = dark ? '#FFFFFF' : '#04121F'
   const body = dark ? 'rgba(255,255,255,0.7)' : '#435A70'
-  const chev = dark ? 'rgba(255,255,255,0.6)' : '#5A6F82'
+  const chev = dark ? 'rgba(255,255,255,0.6)' : '#5A6E81'
 
   return (
     <>

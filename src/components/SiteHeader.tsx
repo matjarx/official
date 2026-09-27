@@ -165,7 +165,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                         {item.menu.map((m) => (
                           <Link key={m.label} href={m.href} className={dark ? 'menu-item-dark' : 'menu-item-light'} style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '11px 14px', borderRadius: 12 }}>
                             <span style={{ fontSize: 13.5, fontWeight: 600, color: dark ? '#F2F6FA' : '#04121F' }}>{m.label}</span>
-                            {m.note && <span style={{ fontSize: 11.5, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6F82' }}>{m.note}</span>}
+                            {m.note && <span style={{ fontSize: 11.5, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6E81' }}>{m.note}</span>}
                           </Link>
                         ))}
                       </div>

@@ -49,7 +49,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                 {ABOUT_STATS_ACTIVE.map((s) => (
                   <div key={s.label} style={{ padding: '30px 26px', display: 'flex', flexDirection: 'column', gap: 6, background: '#FFFFFF' }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-1.2px', color: '#04121F' }}>{s.value}</span>
-                    <span style={{ fontSize: 13.5, color: '#5A6F82' }}>{s.label}</span>
+                    <span style={{ fontSize: 13.5, color: '#5A6E81' }}>{s.label}</span>
                   </div>
                 ))}
               </div>
@@ -140,7 +140,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                   </div>
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 4 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{t.name}</span>
-                    <span style={{ fontSize: 13, color: '#5A6F82' }}>{t.role}</span>
+                    <span style={{ fontSize: 13, color: '#5A6E81' }}>{t.role}</span>
                   </div>
                 </div>
               ))}

@@ -62,7 +62,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6F82' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6E81' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
             <span>Locations</span>
@@ -139,7 +139,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
           <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>What we build</span>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What we build</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Websites for {d.name}&rsquo;s industries</h2>
             </div>
             {d.industries.some((i) => i.body) ? (
@@ -218,7 +218,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>Areas we serve</span>
+                <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>Areas we serve</span>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.16, letterSpacing: '-1px', color: '#04121F' }}>Businesses across {d.name} and around it</h2>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9 }}>
@@ -240,7 +240,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
                 <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>{d.quoteCompany}</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>{d.quoteCompany}</span>
                 </div>
               </div>
               {d.wins && (

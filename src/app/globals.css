@@ -28,7 +28,9 @@ html {
   --ink-4: #435A70;
   --ink-4-alt: #3B5063;
   --ink-5: #4B5D6E;
-  --ink-muted: #5A6F82;
+  /* 5A6F82 measured 4.49:1 on the #F2EEE2 band -- AA wants 4.5, so it
+     failed on a rounding edge across eight elements. One unit of blue. */
+  --ink-muted: #5A6E81;
   --ink-faint: #90A2B1;
   --navy: #003366;
   --navy-gradient: linear-gradient(160deg, #0A4278, #002E5C);
@@ -37,7 +39,9 @@ html {
   --butter: #F4F2AE;
   --butter-deep: #E7E49B;
   --butter-light: #F7F5C0;
-  --olive: #707538;
+  /* 4.22:1 on #F2EEE2. Dark surfaces use --moss-light, not this, so
+     darkening it is safe. */
+  --olive: #6C7036;
   --moss-light: #C6CB8A;
   --olive-active: #8A8F4A;
   --ink-on-butter: #16210B;
@@ -549,6 +553,17 @@ textarea.input {
 .footer-cta-secondary:hover { background: #FFFFFF; color: #1F2A08; }
 .footer-social:hover { background: rgba(244,242,174,0.16); color: var(--butter); }
 .footer-link { transition: color 160ms ease; }
+/* A 12px link is a 17px-tall tap target; the minimum is 24x24, and the
+   63 city links sat closer together than their own height. The padding
+   buys the height without moving the text, and the negative margin keeps
+   the row reading as the quiet link list it is rather than a nav. */
+.footer-link-tap {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
 .footer-link:hover { color: var(--butter); }
 
 .pricing-call-cta:hover { background: var(--navy) !important; color: #FFFFFF; }
@@ -860,7 +875,7 @@ textarea.input {
 .theme-card-desc {
   font-size: 12.5px;
   line-height: 1.5;
-  color: #5A6F82;
+  color: #5A6E81;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -939,7 +954,7 @@ textarea.input {
   font-family: var(--font-lato), Lato, sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #5A6F82;
+  color: #5A6E81;
   background: rgba(4, 18, 31, 0.06);
 }
 .theme-modal-get { animation: theme-get-in 260ms ease both; }

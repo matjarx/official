@@ -88,7 +88,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                     <button type="button" onClick={() => setOpenIndex(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 18, padding: '24px 26px', flexWrap: 'wrap' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginRight: 'auto', minWidth: 0, textAlign: 'left' }}>
                         <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, letterSpacing: '-0.35px', color: '#04121F' }}>{r.title}</span>
-                        <span style={{ fontSize: 13, color: '#5A6F82' }}>{r.team} · {r.location} · {r.type}</span>
+                        <span style={{ fontSize: 13, color: '#5A6E81' }}>{r.team} · {r.location} · {r.type}</span>
                       </div>
                       <span style={{ fontSize: 12, fontWeight: 600, padding: '7px 13px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{r.level}</span>
                       <span className="glass-chip" style={{ width: 30, height: 30, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center' }}>
@@ -100,7 +100,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                         <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.68, color: '#33485B' }}>{r.summary}</p>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 24 }}>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 11, minWidth: 0 }}>
-                            <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>What you&rsquo;ll do</span>
+                            <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What you&rsquo;ll do</span>
                             {r.duties.map((d) => (
                               <span key={d} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.58, color: '#3B5063' }}>
                                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
@@ -109,7 +109,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                             ))}
                           </div>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 11, minWidth: 0 }}>
-                            <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>What we&rsquo;re looking for</span>
+                            <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What we&rsquo;re looking for</span>
                             {r.needs.map((n) => (
                               <span key={n} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.58, color: '#3B5063' }}>
                                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>

@@ -133,8 +133,8 @@ export const DEFAULT_FAQ_DATA = [
 
 const LIGHT_PLAN_THEME = {
   bg: 'rgba(255,255,255,0.62)', border: 'rgba(255,255,255,0.85)', shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)', blur: 'blur(22px)',
-  ink: '#04121F', muted: '#5A6F82', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
-  tick: '#707538', ctaInk: '#04121F', ctaBg: '#FCFAF3', ctaBorder: 'rgba(4,18,31,0.16)',
+  ink: '#04121F', muted: '#5A6E81', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
+  tick: '#6C7036', ctaInk: '#04121F', ctaBg: '#FCFAF3', ctaBorder: 'rgba(4,18,31,0.16)',
 }
 // Platinum is the top tier and now the second highlighted card, so it
 // needs a treatment that reads as premium WITHOUT competing with
@@ -145,7 +145,7 @@ const PREMIUM_PLAN_THEME = {
   border: 'var(--butter-deep)',
   shadow: '0 18px 46px rgba(201,162,39,0.18), inset 0 1px 0 rgba(255,255,255,0.95)',
   blur: 'blur(22px)',
-  ink: '#04121F', muted: '#5A6F82', body: '#3B5063', rule: 'rgba(138,122,18,0.22)',
+  ink: '#04121F', muted: '#5A6E81', body: '#3B5063', rule: 'rgba(138,122,18,0.22)',
   tick: '#8A7A12', ctaInk: '#3D3A08', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter-deep)',
 }
 const DARK_PLAN_THEME = {
@@ -239,7 +239,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 14, letterSpacing: '-0.2px', color: ink1 }}>{b.name}</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span style={{ fontSize: 12, letterSpacing: '1.5px', color: b.mark }}>★★★★★</span>
-                    <span style={{ fontSize: 12, fontWeight: 600, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6F82' }}>{b.score}</span>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6E81' }}>{b.score}</span>
                   </span>
                 </span>
               </div>
@@ -273,7 +273,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         <section style={{ borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.08)'}`, borderBottom: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.08)'}`, padding: '22px 0', overflow: 'hidden' }}>
           <div className="mx-marquee" style={{ display: 'flex', width: 'max-content', gap: 46, alignItems: 'center' }}>
             {CATEGORIES.map((c, i) => {
-              const style = { fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'rgba(226,236,245,0.42)' : '#8C9CAA', whiteSpace: 'nowrap' as const }
+              const style = { fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'rgba(226,236,245,0.42)' : '#637686', whiteSpace: 'nowrap' as const }
               // The duplicated half is aria-hidden: the marquee renders the
               // list twice to loop seamlessly, and a screen reader should not
               // read sixteen business types twice over.
@@ -308,7 +308,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: ink1 }}>{v.name}</span>
-                      <span style={{ fontSize: 12, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6F82' }}>{v.trade}</span>
+                      <span style={{ fontSize: 12, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6E81' }}>{v.trade}</span>
                     </span>
                   </div>
                   <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.58, color: dark ? 'rgba(226,236,245,0.82)' : '#24384A' }}>&ldquo;{v.quote}&rdquo;</p>
@@ -322,12 +322,12 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         <section style={{ maxWidth: 1360, margin: '0 auto', padding: '72px 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20, alignItems: 'stretch' }}>
             <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(242,238,226,0.6)', border: dark ? undefined : '1px solid rgba(255,255,255,0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#8A7A5E', fontWeight: 600 }}>Option one</span>
+              <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#7C6D54', fontWeight: 600 }}>Option one</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: ink1 }}>DIY builders</h3>
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>Hand you a toolbox and a blank page. Most people never finish.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
                 {DIY_POINTS.map((p) => (
-                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6F82' }}>
+                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6E81' }}>
                     <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? '#E5A97F' : '#8A5B3C', flex: '0 0 auto' }} />{p}
                   </span>
                 ))}
@@ -335,12 +335,12 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? '#E5A97F' : '#8A5B3C' }}>Rs. 140,000 / yr + your weekends</span>
             </div>
             <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(242,238,226,0.6)', border: dark ? undefined : '1px solid rgba(255,255,255,0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#8A7A5E', fontWeight: 600 }}>Option two</span>
+              <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#7C6D54', fontWeight: 600 }}>Option two</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: ink1 }}>Web agencies</h3>
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>Good work, big invoices — and you still can&apos;t change a phone number yourself.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
                 {AGENCY_POINTS.map((p) => (
-                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6F82' }}>
+                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6E81' }}>
                     <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? '#E5A97F' : '#8A5B3C', flex: '0 0 auto' }} />{p}
                   </span>
                 ))}
@@ -381,7 +381,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 {BUILT_WITHOUT.map((it) => (
                   <div key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={dark ? '#E5A97F' : '#8A5B3C'} strokeWidth="2.4" strokeLinecap="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
-                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.62)' : '#5A6F82' }}>{it}</span>
+                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.62)' : '#5A6E81' }}>{it}</span>
                   </div>
                 ))}
               </div>
@@ -548,7 +548,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               )
             })}
           </div>
-          <p style={{ margin: '26px auto 0', maxWidth: 640, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6F82' }}>Prices in PKR. Gulf clients are billed in AED at the equivalent rate — ask us for a quote.</p>
+          <p style={{ margin: '26px auto 0', maxWidth: 640, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6E81' }}>Prices in PKR. Gulf clients are billed in AED at the equivalent rate — ask us for a quote.</p>
         </section>
 
         {/* Trust band */}
@@ -576,7 +576,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{r.quote}&rdquo;</p>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--butter)' }}>{r.name}</span>
-                    <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>{r.company}</span>
+                    <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>{r.company}</span>
                   </div>
                 </div>
               ))}

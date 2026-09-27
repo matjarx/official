@@ -100,7 +100,7 @@ export default function SiteFooter() {
         <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(200px, 1.4fr) repeat(auto-fit, minmax(148px, 1fr))', gap: '40px 30px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
             <Image src="/brand/matjarx-logo-light.png" alt="MatjarX" width={148} height={40} style={{ width: 148, height: 'auto' }} />
-            <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.55)', maxWidth: '26em' }}>
+            <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)', maxWidth: '26em' }}>
               Done-for-you websites, SEO and growth marketing for small businesses across Pakistan and the Gulf.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 4 }}>
@@ -147,12 +147,12 @@ export default function SiteFooter() {
             so 56 were orphaned. That rail now rotates, and this row is the
             belt to its braces: one link from every page on the site. */}
         <div style={{ maxWidth: 1360, margin: '40px auto 0', paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-          <span style={{ display: 'block', fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', fontWeight: 600, marginBottom: 10 }}>
+          <span style={{ display: 'block', fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', fontWeight: 600, marginBottom: 10 }}>
             Website design across Pakistan
           </span>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 14px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px 10px' }}>
             {CITY_SLUGS.map((slug) => (
-              <Link key={slug} href={routes.location(slug)} className="footer-link" style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.42)', whiteSpace: 'nowrap' }}>
+              <Link key={slug} href={routes.location(slug)} className="footer-link footer-link-tap" style={{ fontSize: 12, color: 'rgba(255,255,255,0.62)', whiteSpace: 'nowrap' }}>
                 {CITY_DATA[slug].name}
               </Link>
             ))}
@@ -161,9 +161,9 @@ export default function SiteFooter() {
 
         <div style={{ maxWidth: 1360, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
           <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.62)', marginRight: 'auto' }}>&copy; 2018&ndash;2026 MatjarX. All rights reserved.</span>
-          <Link href={routes.legal('terms')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Terms &amp; conditions</Link>
-          <Link href={routes.legal('refund')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Refund policy</Link>
-          <Link href={routes.legal('privacy')} className="footer-link" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>Privacy &amp; cookies</Link>
+          <Link href={routes.legal('terms')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>Terms &amp; conditions</Link>
+          <Link href={routes.legal('refund')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>Refund policy</Link>
+          <Link href={routes.legal('privacy')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>Privacy &amp; cookies</Link>
         </div>
       </footer>
     </div>

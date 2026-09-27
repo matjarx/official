@@ -68,7 +68,7 @@ function CompareTableEl({ headers, rows }: { headers: string[]; rows: string[][]
   return (
     <div className="glass-card table-scroll" style={{ borderRadius: 18, overflowY: 'hidden' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
-        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: '#5A6F82', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
+        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: '#5A6E81', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i} style={{ borderTop: '1px solid rgba(4,18,31,0.06)' }}>
@@ -131,12 +131,12 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         <h2 style={H2}>Pricing, in full</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18, marginBottom: 22 }}>
           <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: '#5A6F82' }}>One-time setup</span>
+            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: '#5A6E81' }}>One-time setup</span>
             <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: '#04121F' }}>{d.pricing.setupFee}</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.setupItems.map((it, i) => bullet(it, i))}</ul>
           </div>
           <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: '#5A6F82' }}>Monthly fee</span>
+            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: '#5A6E81' }}>Monthly fee</span>
             <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: '#04121F' }}>{d.pricing.monthlyFee}</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.monthlyItems.map((it, i) => bullet(it, i))}</ul>
           </div>
@@ -239,7 +239,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
           </div>
           <a href={appSignup(planKey === 'custom' ? undefined : (planKey as 'launch' | 'boost' | 'growth' | 'platinum'))} className="btn-primary">{d.closing.cta}</a>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', paddingTop: 10 }}>
-            {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
+            {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
           </div>
           <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp +92 303 372 0953</a>
         </div>
@@ -410,7 +410,7 @@ function CustomDetail() {
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(255,255,255,0.68)' }}>{d.closing.body}</p>
           <Link href={routes.contact} className="btn-primary">{d.closing.cta}</Link>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', paddingTop: 10 }}>
-            {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
+            {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
           </div>
           <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp +92 303 372 0953</a>
         </div>

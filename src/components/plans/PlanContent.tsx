@@ -66,7 +66,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6F82' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6E81' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
             <Link href={routes.pricing}>Plans</Link>
@@ -96,22 +96,22 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
 
             {planKey === 'custom' ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4, paddingTop: 4 }}>
-                <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Pricing</span>
+                <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Pricing</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 3.6vw, 34px)', letterSpacing: '-1.2px', color: '#04121F' }}>Typically Rs. 500,000 – 15M+</span>
-                <span style={{ fontSize: 13, color: '#5A6F82' }}>Scoped and quoted on a discovery call — no surprises</span>
+                <span style={{ fontSize: 13, color: '#5A6E81' }}>Scoped and quoted on a discovery call — no surprises</span>
               </div>
             ) : (
               <div style={{ display: 'flex', alignItems: 'flex-end', gap: 18, flexWrap: 'wrap', paddingTop: 4 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>Monthly</span>
+                  <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>Monthly</span>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 5 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 4vw, 40px)', letterSpacing: '-1.4px', color: '#04121F' }}>{p.price}</span>
-                    <span style={{ fontSize: 14, color: '#5A6F82' }}>/ mo</span>
+                    <span style={{ fontSize: 14, color: '#5A6E81' }}>/ mo</span>
                   </div>
                 </div>
                 <span style={{ width: 1, height: 44, background: 'rgba(4,18,31,0.14)' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#5A6F82', fontWeight: 600 }}>One-time setup</span>
+                  <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#5A6E81', fontWeight: 600 }}>One-time setup</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 28px)', letterSpacing: '-0.9px', color: '#04121F' }}>{p.setup}</span>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
                 ))}
               </div>
             </div>
-            <span style={{ textAlign: 'center', fontSize: 12.5, lineHeight: 1.55, color: '#5A6F82' }}>
+            <span style={{ textAlign: 'center', fontSize: 12.5, lineHeight: 1.55, color: '#5A6E81' }}>
               Prices in PKR. Gulf clients are quoted in AED — <Link href={routes.contact} style={{ fontWeight: 600 }}>ask for a quote</Link>.
             </span>
           </div>
@@ -231,7 +231,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
                 <span style={{ fontSize: 13.5, lineHeight: 1.55, color: '#4B5D6E' }}>{o.pitch}</span>
                 <span style={{ display: 'flex', alignItems: 'baseline', gap: 5, paddingTop: 4 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.6px', color: '#04121F' }}>{o.price}</span>
-                  {o.name !== 'Custom' && <span style={{ fontSize: 12.5, color: '#5A6F82' }}>/ mo</span>}
+                  {o.name !== 'Custom' && <span style={{ fontSize: 12.5, color: '#5A6E81' }}>/ mo</span>}
                 </span>
                 <span style={{ marginTop: 4, fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>See the {o.name} plan →</span>
               </Link>

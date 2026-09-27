@@ -119,7 +119,7 @@ export default function TemplatesContent({
                 </Suspense>
               </>
             ) : (
-              <p style={{ margin: 0, fontSize: 15, color: '#5A6F82' }}>
+              <p style={{ margin: 0, fontSize: 15, color: '#5A6E81' }}>
                 The template list is loading from your dashboard. <Link href={appLogin} style={{ color: 'var(--olive)', fontWeight: 700 }}>Sign in</Link> to browse them all.
               </p>
             )}
@@ -179,7 +179,7 @@ export default function TemplatesContent({
                   <div style={{ height: 84, background: p.tint }} />
                   <div style={{ padding: '18px 20px 20px', background: '#FFFFFF', display: 'flex', flexDirection: 'column', gap: 6 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#04121F' }}>{p.name}</span>
-                    <span style={{ fontSize: 12.5, color: '#5A6F82' }}>{p.used}</span>
+                    <span style={{ fontSize: 12.5, color: '#5A6E81' }}>{p.used}</span>
                     <span style={{ fontSize: 13, color: '#4B5D6E' }}>{p.features}</span>
                     <div style={{ display: 'flex', gap: 8, paddingTop: 6 }}>
                       <span style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 999, color: '#3D3A08', background: 'var(--butter)' }}>{p.rating}</span>

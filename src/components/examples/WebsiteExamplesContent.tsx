@@ -84,7 +84,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#04121F" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m10 6 6 6-6 6" /></svg>
             </button>
           </div>
-          <p style={{ margin: '20px 0 0', textAlign: 'center', fontSize: 13.5, color: '#5A6F82' }}>{resultLine}</p>
+          <p style={{ margin: '20px 0 0', textAlign: 'center', fontSize: 13.5, color: '#5A6E81' }}>{resultLine}</p>
         </section>
 
         {/* Example cards + iframe modal */}
@@ -94,7 +94,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
           ) : (
             <div style={{ textAlign: 'center', padding: '60px 24px', borderRadius: 20, background: 'rgba(255,255,255,0.5)', border: '1px dashed rgba(4,18,31,0.16)' }}>
               <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#04121F' }}>No examples in {filter} yet</p>
-              <p style={{ margin: '8px 0 0', fontSize: 13.5, color: '#5A6F82' }}>We&rsquo;re adding real client sites to this category — check back soon, or browse another category above.</p>
+              <p style={{ margin: '8px 0 0', fontSize: 13.5, color: '#5A6E81' }}>We&rsquo;re adding real client sites to this category — check back soon, or browse another category above.</p>
             </div>
           )}
         </section>

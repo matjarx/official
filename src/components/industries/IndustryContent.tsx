@@ -53,7 +53,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6F82' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6E81' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
             <span>Industries</span>
@@ -160,7 +160,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
                 <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>{d.quoteCompany}</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>{d.quoteCompany}</span>
                 </div>
               </div>
               {d.results && (

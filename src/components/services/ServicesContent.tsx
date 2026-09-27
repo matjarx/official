@@ -143,7 +143,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
               <p style={{ margin: 0, fontSize: 17, lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
-                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>{d.quoteCompany}</span>
+                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>{d.quoteCompany}</span>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>

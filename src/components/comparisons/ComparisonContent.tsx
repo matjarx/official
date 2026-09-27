@@ -41,7 +41,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6F82' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: '#5A6E81' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
             <Link href={routes.bestBuilder}>Alternatives</Link>
@@ -104,7 +104,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
               {d.price && (
                 <div style={{ marginTop: 'auto', paddingTop: 10, borderTop: '1px solid rgba(4,18,31,0.09)', display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: '#04121F' }}>{d.price}</span>
-                  <span style={{ fontSize: 12.5, color: '#5A6F82' }}>{d.priceNote}</span>
+                  <span style={{ fontSize: 12.5, color: '#5A6E81' }}>{d.priceNote}</span>
                 </div>
               )}
             </div>
@@ -122,7 +122,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
               <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.6fr) repeat(2, minmax(120px, 1fr))', gap: '8px 14px', alignItems: 'center', minWidth: 560 }}>
                 <span />
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: 'var(--navy)', textAlign: 'center' }}>MatjarX</span>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: '#5A6F82', textAlign: 'center' }}>{d.name}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: '#5A6E81', textAlign: 'center' }}>{d.name}</span>
                 {d.table.map(([label, us, them]) => {
                   const themColor = them === 'No' || them === 'Not supported' ? '#B4874F' : '#8A6A4B'
                   return (
@@ -142,7 +142,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         {d.honest && (
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#8A7A5E', fontWeight: 600 }}>Being straight with you</span>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>Being straight with you</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(21px, 3vw, 27px)', lineHeight: 1.2, letterSpacing: '-0.8px', color: '#04121F' }}>When {d.name} is the better choice</h2>
               <p style={{ margin: 0, maxWidth: '46em', fontSize: 14.5, lineHeight: 1.65, color: '#4B5D6E' }}>{d.honest}</p>
             </div>
@@ -193,7 +193,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
               <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;I really tried to build a website myself, but it didn&rsquo;t look good and I had no idea how to make it show up on Google. MatjarX just did the whole thing.&rdquo;</p>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>Ahmed Khan</span>
-                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>Al-Falah Traders, Lahore</span>
+                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>Al-Falah Traders, Lahore</span>
               </div>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
@@ -210,7 +210,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
             {others.map((c) => (
               <Link key={c.title} href={c.href} className="glass-card" style={{ padding: '22px 24px', borderRadius: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, letterSpacing: '-0.3px', color: '#04121F' }}>{c.title}</span>
-                <span style={{ fontSize: 13, lineHeight: 1.5, color: '#5A6F82' }}>{c.body}</span>
+                <span style={{ fontSize: 13, lineHeight: 1.5, color: '#5A6E81' }}>{c.body}</span>
               </Link>
             ))}
           </div>

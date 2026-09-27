@@ -59,7 +59,7 @@ export function AuthorByline({ author, meta, dark = true }: { author: BlogAuthor
         <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? '#FFFFFF' : '#04121F' }}>
           {author.name}
         </span>
-        <span style={{ fontSize: 13, color: dark ? 'rgba(255,255,255,0.6)' : '#5A6F82' }}>{meta}</span>
+        <span style={{ fontSize: 13, color: dark ? 'rgba(255,255,255,0.6)' : '#5A6E81' }}>{meta}</span>
       </span>
     </span>
   )
@@ -80,7 +80,7 @@ export default function AuthorCard({ author }: { author: BlogAuthor }) {
       <Avatar author={author} size={56} />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
         <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: '#04121F' }}>{name}</span>
-        {author.role && <span style={{ fontSize: 12.5, color: '#5A6F82' }}>{author.role}</span>}
+        {author.role && <span style={{ fontSize: 12.5, color: '#5A6E81' }}>{author.role}</span>}
         {author.bio && <p style={{ margin: '4px 0 0', fontSize: 14, lineHeight: 1.6, color: '#3B5063' }}>{author.bio}</p>}
       </div>
     </div>

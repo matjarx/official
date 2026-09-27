@@ -88,7 +88,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                   />
                 </div>
                 {post.coverImage.caption && (
-                  <figcaption style={{ margin: '10px 4px 0', fontSize: 13.5, lineHeight: 1.5, color: '#5A6F82', textAlign: 'center' }}>{post.coverImage.caption}</figcaption>
+                  <figcaption style={{ margin: '10px 4px 0', fontSize: 13.5, lineHeight: 1.5, color: '#5A6E81', textAlign: 'center' }}>{post.coverImage.caption}</figcaption>
                 )}
               </figure>
             ) : (

@@ -51,7 +51,7 @@ function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos']
             ))}
           </div>
         )}
-        {video.extra && <span style={{ fontSize: 12.5, fontStyle: 'italic', color: '#5A6F82', paddingTop: 2 }}>{video.extra}</span>}
+        {video.extra && <span style={{ fontSize: 12.5, fontStyle: 'italic', color: '#5A6E81', paddingTop: 2 }}>{video.extra}</span>}
       </div>
     </div>
   )
@@ -76,7 +76,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO_ACTIVE.eyebrow}</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: '#FFFFFF' }}>{HERO_ACTIVE.headline}</h1>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>{HERO_ACTIVE.subhead}</p>
-          <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.55)' }}>{INTRO}</p>
+          <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>{INTRO}</p>
         </div>
       </section>
 

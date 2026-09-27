@@ -100,7 +100,7 @@ export const CATEGORIES: TemplateCategory[] = [
     perfectFor: ['Gyms', 'Personal trainers', 'Fitness studios', 'Yoga studios', 'Wellness centers'],
     features: ['Class schedules', 'Trainer profiles', 'Membership info', 'Before/after galleries', 'Testimonials', 'Contact forms'],
     includes: ['Class schedules', 'Trainer bios', 'Pricing plans', 'Before/after', 'Member reviews'] },
-  { n: 11, name: 'Education Templates', tint: 'linear-gradient(150deg, #707538, #2E3115)',
+  { n: 11, name: 'Education Templates', tint: 'linear-gradient(150deg, #6C7036, #2E3115)',
     perfectFor: ['Online courses', 'Training centers', 'Tutoring services', 'Educational institutions', 'Coaching programs'],
     features: ['Course listings', 'Student testimonials', 'Instructor bios', 'Pricing tiers', 'Enrollment forms', 'Resource libraries'],
     includes: ['Course descriptions', 'Instructor profiles', 'Success stories', 'Pricing options', 'Enrollment system'] },

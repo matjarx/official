@@ -61,7 +61,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             {HERO_STATS_ACTIVE.map((s) => (
               <div key={s.label} className="glass-chip" style={{ minWidth: 140, display: 'flex', flexDirection: 'column', gap: 4, padding: '16px 22px', borderRadius: 18 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.8px', color: '#04121F' }}>{s.value}</span>
-                <span style={{ fontSize: 12, color: '#5A6F82' }}>{s.label}</span>
+                <span style={{ fontSize: 12, color: '#5A6E81' }}>{s.label}</span>
               </div>
             ))}
           </div>
@@ -92,7 +92,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
               </div>
             </div>
           </div>
-          <p style={{ margin: '20px auto 0', maxWidth: 700, textAlign: 'center', fontSize: 13, lineHeight: 1.6, color: '#5A6F82' }}>Year 1 costs are the realistic total including the apps, payment workarounds and marketing help most businesses end up needing on top of the platform&rsquo;s own price.</p>
+          <p style={{ margin: '20px auto 0', maxWidth: 700, textAlign: 'center', fontSize: 13, lineHeight: 1.6, color: '#5A6E81' }}>Year 1 costs are the realistic total including the apps, payment workarounds and marketing help most businesses end up needing on top of the platform&rsquo;s own price.</p>
         </section>
 
         {/* Detailed breakdown — each platform explained */}
@@ -114,9 +114,9 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                     )}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: '#04121F' }}>{i + 1}. {p.name}</span>
-                      <span style={{ fontSize: 13, color: '#5A6F82' }}>{p.tagline}</span>
+                      <span style={{ fontSize: 13, color: '#5A6E81' }}>{p.tagline}</span>
                     </div>
-                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#5A6F82" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#5A6E81" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                   </button>
                   {open && (
                     <div style={{ padding: '0 24px 26px', display: 'flex', flexDirection: 'column', gap: 18 }}>
@@ -148,7 +148,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                       </div>
 
                       <div style={{ padding: '16px 18px', borderRadius: 16, background: 'rgba(4,18,31,0.04)', display: 'flex', flexDirection: 'column', gap: 8 }}>
-                        <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: '#5A6F82' }}>Real Year 1 cost for a Pakistani business</span>
+                        <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: '#5A6E81' }}>Real Year 1 cost for a Pakistani business</span>
                         {p.costLines.map((l) => (
                           <span key={l} style={{ fontSize: 13.5, color: '#33485B' }}>{l}</span>
                         ))}
@@ -197,10 +197,10 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             {WIN_REASONS.map((w, i) => (
               <div key={w.title} className="glass-card" style={{ padding: '24px 26px 26px', borderRadius: 22, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 20, alignItems: 'start' }}>
                 <div style={{ display: 'flex', gap: 14, minWidth: 0 }}>
-                  <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'rgba(4,18,31,0.06)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: '#5A6F82' }}>{i + 1}</span>
+                  <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'rgba(4,18,31,0.06)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: '#5A6E81' }}>{i + 1}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: '#04121F' }}>{w.title}</span>
-                    <span style={{ fontSize: 13.5, lineHeight: 1.55, color: '#5A6F82' }}>{w.problem}</span>
+                    <span style={{ fontSize: 13.5, lineHeight: 1.55, color: '#5A6E81' }}>{w.problem}</span>
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: 10, padding: '14px 18px', borderRadius: 16, background: 'rgba(0,51,102,0.05)', minWidth: 0 }}>

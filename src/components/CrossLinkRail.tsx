@@ -21,11 +21,11 @@ const KIND_LABEL: Record<CrossLink['kind'], string> = {
 
 const KIND_TINT: Record<CrossLink['kind'], string> = {
   service: '#003366',
-  industry: '#707538',
+  industry: '#6C7036',
   city: '#8E1B22',
   blog: '#2E6EA8',
   plan: '#C9A227',
-  page: '#5A6F82',
+  page: '#5A6E81',
 }
 
 export default function CrossLinkRail({
@@ -42,7 +42,7 @@ export default function CrossLinkRail({
   if (links.length === 0) return null
 
   const ink = dark ? '#FFFFFF' : '#04121F'
-  const muted = dark ? 'rgba(255,255,255,0.62)' : '#5A6F82'
+  const muted = dark ? 'rgba(255,255,255,0.62)' : '#5A6E81'
   const cardBg = dark ? 'rgba(255,255,255,0.05)' : '#FFFFFF'
   const cardLine = dark ? 'rgba(255,255,255,0.13)' : 'rgba(4,18,31,0.09)'
 

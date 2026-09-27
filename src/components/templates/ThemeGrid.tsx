@@ -86,7 +86,7 @@ export default function ThemeGrid({ groups }: { groups: IndustryGroup[] }) {
             >
               {g.industry}
             </h3>
-            <span style={{ fontSize: 13, color: '#5A6F82' }}>
+            <span style={{ fontSize: 13, color: '#5A6E81' }}>
               {g.themes.length} {g.themes.length === 1 ? 'template' : 'templates'}
             </span>
           </div>
