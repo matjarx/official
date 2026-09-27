@@ -63,6 +63,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="pricing" />
+        <main>
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
@@ -240,6 +241,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
         </section>
 
         <div style={{ height: 70 }} />
+        </main>
         <SiteFooter />
       </div>
     </div>

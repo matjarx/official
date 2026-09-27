@@ -162,6 +162,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <SiteHeader active="pricing" />
+      <main>
 
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '66px 24px 58px' }}>
@@ -419,6 +420,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
 
       <FaqSchema faqs={FAQ_DATA} />
 
+      </main>
       <SiteFooter />
     </div>
   )

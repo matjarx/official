@@ -59,6 +59,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="services" />
+        <main>
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
@@ -289,6 +290,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         />
 
         <div style={{ height: 70 }} />
+        </main>
         <SiteFooter />
       </div>
     </div>

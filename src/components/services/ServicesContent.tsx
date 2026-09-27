@@ -36,6 +36,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="services" />
+        <main>
 
         {/* Hero */}
         <section style={{ background: 'var(--navy)', padding: '62px 24px 0' }}>
@@ -159,6 +160,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
 
         <ServiceDetailSections svc={svc} />
 
+        </main>
         <SiteFooter />
       </div>
     </div>

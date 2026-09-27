@@ -38,6 +38,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="resources" />
+        <main>
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
@@ -228,6 +229,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         />
 
         <div style={{ height: 70 }} />
+        </main>
         <SiteFooter />
       </div>
     </div>

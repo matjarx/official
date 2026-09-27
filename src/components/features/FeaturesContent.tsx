@@ -36,6 +36,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="pricing" />
+        <main>
 
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
@@ -191,6 +192,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         <div style={{ height: 70 }} />
         {/* The questions were on the page and nowhere in the structured data. */}
         <FaqSchema faqs={fromPairs(FEATURES_FAQ_ACTIVE)} />
+        </main>
         <SiteFooter />
       </div>
     </div>

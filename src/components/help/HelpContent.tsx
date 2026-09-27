@@ -59,6 +59,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="company" />
+        <main>
 
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
@@ -329,6 +330,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         <div style={{ height: 70 }} />
         {/* The questions were on the page and nowhere in the structured data. */}
         <FaqSchema faqs={fromPairs(HELP_FAQS_ACTIVE)} />
+        </main>
         <SiteFooter />
       </div>
     </div>

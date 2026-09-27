@@ -36,6 +36,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="resources" />
+        <main>
 
         {/* Hero */}
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '58px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
@@ -284,6 +285,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         <div style={{ height: 70 }} />
         {/* The questions were on the page and nowhere in the structured data. */}
         <FaqSchema faqs={fromPairs(BEST_BUILDER_FAQS_ACTIVE)} />
+        </main>
         <SiteFooter />
       </div>
     </div>

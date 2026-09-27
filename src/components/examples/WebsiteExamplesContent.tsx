@@ -44,6 +44,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
       <AmbientOrbs />
       <div className="page-content">
         <SiteHeader active="examples" />
+        <main>
 
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
@@ -120,6 +121,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         <div style={{ height: 70 }} />
         <FaqSection faqs={EXAMPLES_FAQS} intro="What you are looking at, and what it would take to get one." />
         <div style={{ height: 66 }} />
+        </main>
         <SiteFooter />
       </div>
     </div>
