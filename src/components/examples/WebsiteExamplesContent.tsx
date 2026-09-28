@@ -8,8 +8,7 @@
 // a fallback layer for sites that block embedding.
 
 import { useRef, useState } from 'react'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSection from '@/components/FaqSection'
 import { EXAMPLES_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -43,8 +42,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs />
       <div className="page-content">
-        <SiteHeader active="examples" />
-        <main>
+        <SiteChrome active="examples">
 
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
@@ -121,8 +119,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         <div style={{ height: 70 }} />
         <FaqSection faqs={EXAMPLES_FAQS} intro="What you are looking at, and what it would take to get one." />
         <div style={{ height: 66 }} />
-        </main>
-        <SiteFooter />
+        </SiteChrome>
       </div>
     </div>
   )

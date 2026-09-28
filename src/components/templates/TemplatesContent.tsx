@@ -8,8 +8,7 @@
 
 import { Suspense, useState } from 'react'
 import Link from 'next/link'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appLogin } from '@/lib/routes'
@@ -72,8 +71,7 @@ export default function TemplatesContent({
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteHeader active="resources" />
-      <main>
+      <SiteChrome active="resources">
 
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 56px' }}>
@@ -258,8 +256,7 @@ export default function TemplatesContent({
           <FaqSchema faqs={fromPairs(TEMPLATE_FAQS_ACTIVE)} />
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

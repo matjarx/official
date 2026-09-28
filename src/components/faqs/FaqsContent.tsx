@@ -7,8 +7,7 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { FAQ_GROUPS, FAQ_GROUP_NAMES, type FaqGroupName } from '@/lib/faqs-data'
@@ -68,8 +67,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <SiteHeader active="resources" />
-      <main>
+      <SiteChrome active="resources">
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
@@ -123,8 +121,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
           <div style={{ height: 74 }} />
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

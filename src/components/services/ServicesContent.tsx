@@ -15,8 +15,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
@@ -35,8 +34,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs />
       <div className="page-content">
-        <SiteHeader active="services" />
-        <main>
+        <SiteChrome active="services">
 
         {/* Hero */}
         <section style={{ background: 'var(--navy)', padding: '62px 24px 0' }}>
@@ -160,8 +158,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
 
         <ServiceDetailSections svc={svc} />
 
-        </main>
-        <SiteFooter />
+        </SiteChrome>
       </div>
     </div>
   )

@@ -8,8 +8,7 @@
 import { Fragment, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSchema from '@/components/FaqSchema'
 import SavingsCalculator from '@/components/SavingsCalculator'
 import CardRail from '@/components/CardRail'
@@ -161,8 +160,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteHeader active="pricing" />
-      <main>
+      <SiteChrome active="pricing">
 
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '66px 24px 58px' }}>
@@ -420,8 +418,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
 
       <FaqSchema faqs={FAQ_DATA} />
 
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

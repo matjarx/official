@@ -5,8 +5,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSection from '@/components/FaqSection'
 import { ALTERNATIVES_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -23,8 +22,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
   const WHY_COMPARE_ACTIVE = content.whyCompare
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteHeader active="resources" />
-      <main>
+      <SiteChrome active="resources">
 
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 52px' }}>
@@ -102,8 +100,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
           <div style={{ height: 66 }} />
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

@@ -10,8 +10,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import InstagramEmbed from './InstagramEmbed'
@@ -68,8 +67,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteHeader active="resources" />
-      <main>
+      <SiteChrome active="resources">
 
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 52px' }}>
@@ -178,8 +176,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           <FaqSchema faqs={fromPairs(VIDEO_FAQS_ACTIVE)} />
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

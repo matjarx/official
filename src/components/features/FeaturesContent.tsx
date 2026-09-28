@@ -7,8 +7,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import EditorShowcase from '@/components/EditorShowcase'
@@ -35,8 +34,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs />
       <div className="page-content">
-        <SiteHeader active="pricing" />
-        <main>
+        <SiteChrome active="pricing">
 
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
@@ -192,8 +190,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         <div style={{ height: 70 }} />
         {/* The questions were on the page and nowhere in the structured data. */}
         <FaqSchema faqs={fromPairs(FEATURES_FAQ_ACTIVE)} />
-        </main>
-        <SiteFooter />
+        </SiteChrome>
       </div>
     </div>
   )

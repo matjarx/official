@@ -8,8 +8,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import CrossLinkRail from '@/components/CrossLinkRail'
 import { crossLinksForCity } from '@/lib/cross-links'
@@ -58,8 +57,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       <AmbientOrbs />
       <div className="page-content">
-        <SiteHeader active="services" />
-        <main>
+        <SiteChrome active="services">
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
@@ -290,8 +288,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         />
 
         <div style={{ height: 70 }} />
-        </main>
-        <SiteFooter />
+        </SiteChrome>
       </div>
     </div>
   )

@@ -6,8 +6,7 @@
 // "nothing fits?" CTA panel.
 
 import { useMemo, useState } from 'react'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSection from '@/components/FaqSection'
 import { CAREERS_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -31,8 +30,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteHeader active="company" />
-      <main>
+      <SiteChrome active="company">
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
@@ -146,8 +144,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
 
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

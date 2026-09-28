@@ -3,8 +3,7 @@
 // next" timeline, a butter WhatsApp panel, "while you wait" link grid.
 
 import Link from 'next/link'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { THANK_YOU_STEPS, THANK_YOU_LINKS } from '@/lib/thank-you-data'
 
@@ -28,8 +27,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
   const subtitle = (source && SOURCE_SUBTITLE[source]) || DEFAULT_SUBTITLE
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteHeader active="home" />
-      <main>
+      <SiteChrome active="home">
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '66px 24px 60px' }}>
@@ -95,8 +93,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
           <div style={{ height: 74 }} />
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

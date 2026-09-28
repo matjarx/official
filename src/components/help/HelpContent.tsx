@@ -8,8 +8,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appLogin } from '@/lib/routes'
@@ -58,8 +57,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs />
       <div className="page-content">
-        <SiteHeader active="company" />
-        <main>
+        <SiteChrome active="company">
 
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
@@ -330,8 +328,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         <div style={{ height: 70 }} />
         {/* The questions were on the page and nowhere in the structured data. */}
         <FaqSchema faqs={fromPairs(HELP_FAQS_ACTIVE)} />
-        </main>
-        <SiteFooter />
+        </SiteChrome>
       </div>
     </div>
   )

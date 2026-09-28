@@ -6,8 +6,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import CrossLinkRail from '@/components/CrossLinkRail'
 import { crossLinksForPost } from '@/lib/cross-links'
@@ -44,8 +43,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteHeader active="resources" />
-      <main>
+      <SiteChrome active="resources">
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '46px 24px 54px' }}>
@@ -185,8 +183,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
           <div style={{ height: 60 }} />
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

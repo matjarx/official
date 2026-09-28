@@ -7,8 +7,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
@@ -52,8 +51,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteHeader active="company" />
-      <main>
+      <SiteChrome active="company">
 
       {/* Navy hero band */}
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
@@ -289,8 +287,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
           <FaqSchema faqs={fromPairs(CONTACT_FAQS_ACTIVE)} />
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

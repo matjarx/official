@@ -7,8 +7,7 @@
 
 import { Fragment, type ReactNode } from 'react'
 import Link from 'next/link'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc, type LegalBlock, type LegalDocData } from '@/lib/legal-data'
@@ -74,8 +73,7 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteHeader active="company" />
-      <main>
+      <SiteChrome active="company">
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '54px 24px 46px' }}>
@@ -133,8 +131,7 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
           <div style={{ height: 74 }} />
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

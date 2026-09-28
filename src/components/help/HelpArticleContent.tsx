@@ -10,8 +10,7 @@
 import { useState, Fragment, type ReactNode } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { HELP_ARTICLES, type HelpSlug, type HelpBlock, type HelpArticle } from '@/lib/help-articles-data'
@@ -90,8 +89,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
-      <SiteHeader active="company" />
-      <main>
+      <SiteChrome active="company">
 
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '52px 24px 46px' }}>
@@ -183,8 +181,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
           <div style={{ height: 70 }} />
         </div>
       </div>
-      </main>
-      <SiteFooter />
+      </SiteChrome>
     </div>
   )
 }

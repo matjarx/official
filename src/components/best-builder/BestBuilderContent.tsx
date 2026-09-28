@@ -10,8 +10,7 @@
 import { Fragment, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
@@ -35,8 +34,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs />
       <div className="page-content">
-        <SiteHeader active="resources" />
-        <main>
+        <SiteChrome active="resources">
 
         {/* Hero */}
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '58px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
@@ -285,8 +283,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         <div style={{ height: 70 }} />
         {/* The questions were on the page and nowhere in the structured data. */}
         <FaqSchema faqs={fromPairs(BEST_BUILDER_FAQS_ACTIVE)} />
-        </main>
-        <SiteFooter />
+        </SiteChrome>
       </div>
     </div>
   )

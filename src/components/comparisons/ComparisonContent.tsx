@@ -6,8 +6,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import FaqSection from '@/components/FaqSection'
 import { comparisonFaqs } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
@@ -37,8 +36,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <AmbientOrbs />
       <div className="page-content">
-        <SiteHeader active="resources" />
-        <main>
+        <SiteChrome active="resources">
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
@@ -229,8 +227,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
         />
 
         <div style={{ height: 70 }} />
-        </main>
-        <SiteFooter />
+        </SiteChrome>
       </div>
     </div>
   )

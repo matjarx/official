@@ -9,8 +9,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
+import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
@@ -62,8 +61,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
       {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       <AmbientOrbs />
       <div className="page-content">
-        <SiteHeader active="pricing" />
-        <main>
+        <SiteChrome active="pricing">
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
@@ -241,8 +239,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
         </section>
 
         <div style={{ height: 70 }} />
-        </main>
-        <SiteFooter />
+        </SiteChrome>
       </div>
     </div>
   )
