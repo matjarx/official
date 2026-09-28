@@ -11,8 +11,19 @@ import Image from 'next/image'
 import { NAV_ITEMS, type NavKey } from '@/lib/nav'
 import { routes, appLogin, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
+import { useTheme } from '@/components/ThemeProvider'
 
-export default function SiteHeader({ active, dark = false, onToggleDark }: { active: NavKey; dark?: boolean; onToggleDark?: () => void }) {
+export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { active: NavKey; dark?: boolean; onToggleDark?: () => void }) {
+  // The theme comes from context unless a caller overrides it. That is what
+  // gives all 27 pages the toggle without editing 27 files: they render
+  // <SiteHeader active="..."/> exactly as before and pick it up.
+  //
+  // HomeContent still passes both explicitly, because its own `dark` prop
+  // drives ~40 JS branches that the CSS tokens do not cover yet. Its
+  // override wins, so the two mechanisms cannot disagree on one page.
+  const theme = useTheme()
+  const dark = darkProp ?? theme.dark
+  const toggleDark = onToggleDark ?? theme.toggle
   const [narrow, setNarrow] = useState(false)
   const [open, setOpen] = useState(-1)
   const [drawer, setDrawer] = useState(false)
@@ -183,10 +194,22 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
             </nav>
 
           <div className="site-header-actions" style={{ display: 'flex', alignItems: 'center', gap: 10, flex: '0 0 auto' }}>
+            {/* Opt-in until the surfaces flip too.
+                The provider and the tokens work -- clicking this does
+                re-point every token and the page background. What does NOT
+                yet flip is a white CARD: 377 rgba(255,255,255,a) uses were
+                mapped to --ink-inverse-rgb, which is fixed white because
+                white TEXT never changes. Many of them are surfaces, not
+                ink, so the text goes light and the card stays white. On
+                /pricing that is 81 elements below 3:1, some at 1.04.
+                So only a caller that has a real dark treatment passes
+                onToggleDark today. Restore this to `{(` once the surface
+                split lands. */}
             {onToggleDark && (
+
               <button
                 type="button"
-                onClick={onToggleDark}
+                onClick={toggleDark}
                 title={dark ? 'Switch to light' : 'Switch to dark'}
                 style={{
                   all: 'unset', cursor: 'pointer', flex: '0 0 auto', width: 40, height: 40, borderRadius: 12,

@@ -16,6 +16,7 @@ import {
   type PopupConfig,
 } from '@/lib/marketing-content'
 import AnnouncementBar from '@/components/AnnouncementBar'
+import ThemeProvider from '@/components/ThemeProvider'
 import SitePopup from '@/components/SitePopup'
 import './globals.css'
 
@@ -150,14 +151,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <PageviewTracker />
         </Suspense>
         <WebVitalsReporter />
-        {isWidgetActive(announcementConfig) && <AnnouncementBar config={announcementConfig} />}
-        {children}
+        {/* Only what actually reads the theme sits inside the provider.
+            The analytics scripts below do not, and wrapping them would put
+            a client boundary around markup that has no reason to be one. */}
+        <ThemeProvider>
+          {isWidgetActive(announcementConfig) && <AnnouncementBar config={announcementConfig} />}
+          {children}
         {/* `heading` is what SitePopup keys everything off -- its own
             render guard, and its frequency cap. An enabled popup with no
             heading is a config that silently does nothing, which reads
             as "the popup is broken". Checking it here at least keeps the
             two in agreement; the admin now warns about it on the way in. */}
-        {isWidgetActive(popupConfig) && !!popupConfig.heading && <SitePopup config={popupConfig} />}
+          {isWidgetActive(popupConfig) && !!popupConfig.heading && <SitePopup config={popupConfig} />}
+        </ThemeProvider>
         <GoogleAnalytics gaId={gaId} />
         {/* Meta Pixel — base code + PageView, per Meta's own snippet. */}
         <Script id="meta-pixel" strategy="afterInteractive">
