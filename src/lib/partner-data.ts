@@ -11,9 +11,6 @@ export const PARTNER_PLAN_RATES: Record<PlanKey, number> = {
 
 export const PARTNER_COMMISSION_PCT = 0.15
 
-export function money(n: number) {
-  return 'Rs. ' + Math.round(n).toLocaleString('en-US')
-}
 
 export type PartnerTier = {
   name: string; who: string; rate: string; bonus: string; tag: string

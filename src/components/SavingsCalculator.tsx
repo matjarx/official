@@ -7,14 +7,12 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { routes } from '@/lib/routes'
+import { money } from '@/lib/money'
 
 const HOUR_STEPS = [10, 15, 25, 40, 60]
 const RATE_STEPS = [2500, 5000, 7500, 10000]
 const MATJARX_FEE = 22500
 
-function money(n: number) {
-  return 'Rs. ' + n.toLocaleString('en-US')
-}
 
 export default function SavingsCalculator() {
   const [hours, setHours] = useState(15)

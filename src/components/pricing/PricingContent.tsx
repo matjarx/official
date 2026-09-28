@@ -14,6 +14,7 @@ import SavingsCalculator from '@/components/SavingsCalculator'
 import CardRail from '@/components/CardRail'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
+import { amount } from '@/lib/money'
 import type { PricingContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 
@@ -128,9 +129,6 @@ const CYCLES = [
 ]
 const CYCLE_FACTOR = { monthly: 1, yearly: 10 / 12, two: 0.75 }
 
-function money(n: number) {
-  return n.toLocaleString('en-US')
-}
 
 export default function PricingContent({ content }: { content: PricingContentShape }) {
   const [cycle, setCycle] = useState<'monthly' | 'yearly' | 'two'>('monthly')
@@ -154,7 +152,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
   const savingFor = (base: number) => {
     if (cycle === 'monthly') return ''
     const saved = (base - fmt(base)) * 12
-    return `Save Rs. ${money(saved)} a year`
+    return `Save Rs. ${amount(saved)} a year`
   }
   const saveNote = cycle === 'monthly' ? '2 months free on yearly billing' : cycle === 'yearly' ? '2 months free applied' : 'Best value — 25% off every month'
 
@@ -230,7 +228,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
                 <span style={{ fontSize: 13.5, lineHeight: 1.5, color: t.muted }}>{p.pitch}</span>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 5, paddingTop: 8 }}>
                   <span style={{ fontSize: 15, fontWeight: 600, color: t.muted }}>Rs.</span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-1.3px', color: t.ink }}>{money(price)}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-1.3px', color: t.ink }}>{amount(price)}</span>
                   <span style={{ fontSize: 14, color: t.muted }}>/mo</span>
                 </div>
                 <span style={{ fontSize: 12.5, color: t.muted }}>+ Rs. {p.setup} one-time setup</span>

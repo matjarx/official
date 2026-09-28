@@ -16,6 +16,7 @@ import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
 import { ALL_PLANS, type PlanKey } from '@/lib/plan-data'
 import { appLogin, appSignup } from '@/lib/routes'
+import { money } from '@/lib/money'
 
 const NAV_ITEMS = [
   { label: 'Services', href: '/done-for-you-website' },
@@ -33,9 +34,6 @@ const SETUP_FEE = 22500
 const PLAN_TAGS: Record<PlanKey, string> = { launch: '', boost: '', growth: 'Most popular', platinum: 'Enterprise', custom: '' }
 const PLAN_ORDER: PlanKey[] = ['launch', 'boost', 'growth', 'platinum']
 
-function money(n: number) {
-  return 'Rs. ' + Math.round(n).toLocaleString('en-US')
-}
 
 export default function HomeMobileContent() {
   const [skin, setSkin] = useState<'dark' | 'light'>('dark')

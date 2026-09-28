@@ -19,8 +19,9 @@ import { supabase } from '@/lib/supabase'
 import { trackEvent } from '@/lib/analytics'
 import {
   PARTNER_TIERS, PARTNER_STEPS, PARTNER_CLIENT_STEPS, PARTNER_PLAN_PICKS, PARTNER_TYPES,
-  PARTNER_PLAN_RATES, PARTNER_COMMISSION_PCT, money, type PlanKey,
+  PARTNER_PLAN_RATES, PARTNER_COMMISSION_PCT, type PlanKey,
 } from '@/lib/partner-data'
+import { money } from '@/lib/money'
 import { PARTNER_CATEGORY_ICONS, PARTNER_TOOL_LOGOS } from '@/lib/partner-icons-data'
 
 export type PartnerContentShape = { tiers: typeof PARTNER_TIERS; steps: typeof PARTNER_STEPS; toolLogos: typeof PARTNER_TOOL_LOGOS; categoryIcons: typeof PARTNER_CATEGORY_ICONS }

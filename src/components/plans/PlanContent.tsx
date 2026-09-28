@@ -13,7 +13,8 @@ import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
-import { ALL_PLANS, PLAN_DATA, otherPlansFor, CYCLE_FACTOR, moneyPKR, type PlanKey } from '@/lib/plan-data'
+import { ALL_PLANS, PLAN_DATA, otherPlansFor, CYCLE_FACTOR, type PlanKey } from '@/lib/plan-data'
+import { money } from '@/lib/money'
 import { PLAN_TIER_ICONS } from '@/lib/partner-icons-data'
 import type { PlanContentShape } from '@/lib/marketing-content'
 import PlanDetailSections from './PlanDetailSections'
@@ -118,7 +119,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
 
             {planKey !== 'custom' && monthlyNum > 0 && (
               <p style={{ margin: 0, fontSize: 12.5, color: 'var(--olive)' }}>
-                Pay yearly and save {moneyPKR(yearlySaving)}, or two years upfront and save {moneyPKR(twoYearSaving)} — <Link href={routes.pricing} style={{ fontWeight: 600 }}>see the full breakdown</Link>
+                Pay yearly and save {money(yearlySaving)}, or two years upfront and save {money(twoYearSaving)} — <Link href={routes.pricing} style={{ fontWeight: 600 }}>see the full breakdown</Link>
               </p>
             )}
 

@@ -38,9 +38,6 @@ export const ALL_PLANS: Record<PlanKey, { name: string; price: string; setup: st
 // here too so a plan page's own annual-savings figures always agree with
 // what the toggle on /pricing actually charges.
 export const CYCLE_FACTOR = { monthly: 1, yearly: 10 / 12, two: 0.75 } as const
-export function moneyPKR(n: number) {
-  return 'Rs. ' + Math.round(n).toLocaleString('en-US')
-}
 
 export const PLAN_DATA: Record<PlanKey, {
   tag: string; tagBg: string; tagLine: string; tagInk: string; tagDot: string
