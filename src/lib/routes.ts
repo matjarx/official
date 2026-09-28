@@ -59,7 +59,15 @@ const APP_PLAN_ID: Record<'launch' | 'boost' | 'growth' | 'platinum', string> = 
 
 export const appLogin = `${APP_URL}/login`
 
-export function appSignup(plan?: 'launch' | 'boost' | 'growth' | 'platinum'): string {
+/**
+ * @param theme A theme's structure_key (`salon`, `flower-matjar`). Passed
+ *   when the visitor pressed "Get a website like this" on a specific
+ *   template rather than on a plan: the app holds on to it through email
+ *   confirmation, payment and the questionnaire, and opens that theme's
+ *   preview at the end instead of the full grid.
+ */
+export function appSignup(plan?: 'launch' | 'boost' | 'growth' | 'platinum', theme?: string): string {
   if (!plan) return `${APP_URL}/signup`
-  return `${APP_URL}/signup?plan=${APP_PLAN_ID[plan]}&source=marketing`
+  const themeParam = theme ? `&theme=${encodeURIComponent(theme)}` : ''
+  return `${APP_URL}/signup?plan=${APP_PLAN_ID[plan]}${themeParam}&source=marketing`
 }

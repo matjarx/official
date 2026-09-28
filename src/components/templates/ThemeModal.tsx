@@ -77,9 +77,9 @@ function GetThisTheme({ href }: { href: string }) {
   }, [])
 
   if (seconds > 0) {
-    return <span className="theme-modal-wait" aria-live="polite">Get this theme in {seconds}s</span>
+    return <span className="theme-modal-wait" aria-live="polite">Get a website like this in {seconds}s</span>
   }
-  return <a href={href} className="btn-navy theme-modal-get">Get This Theme</a>
+  return <a href={href} className="btn-navy theme-modal-get">Get a website like this</a>
 }
 
 export default function ThemeModal({ themes }: { themes: Theme[] }) {
@@ -167,7 +167,7 @@ export default function ThemeModal({ themes }: { themes: Theme[] }) {
               <span style={{ fontSize: 13, color: 'var(--ink-muted)', marginRight: 'auto' }}>
                 {open.comingSoon ? 'In build — tell us if you want it first.' : 'Scroll and click inside the preview. It is the real site.'}
               </span>
-              <GetThisTheme key={open.id} href={appSignup('launch')} />
+              <GetThisTheme key={open.id} href={appSignup('launch', open.slug)} />
             </div>
           </div>
         </div>

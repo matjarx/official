@@ -32,7 +32,7 @@
 
 import Link from 'next/link'
 import { CITY_DATA, type CityKey } from '@/lib/location-data'
-import { routes } from '@/lib/routes'
+import { routes, appSignup } from '@/lib/routes'
 import type { ThemeLanding } from '@/lib/theme-landing-data'
 import SiteChrome from '@/components/SiteChrome'
 
@@ -105,9 +105,9 @@ export default function ThemeLandingContent({ landing }: Props) {
               </p>
 
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <Link href={routes.pricing} className="btn-primary">
-                  Get this site
-                </Link>
+                <a href={appSignup('launch', landing.themeKey)} className="btn-primary">
+                  Get a website like this
+                </a>
                 <a href={previewUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary">
                   Open live preview
                 </a>
@@ -291,9 +291,9 @@ export default function ThemeLandingContent({ landing }: Props) {
             seven days.
           </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href={routes.pricing} className="btn-primary">
-              See plans
-            </Link>
+            <a href={appSignup('launch', landing.themeKey)} className="btn-primary">
+              Get a website like this
+            </a>
             <Link href="/templates" className="btn-ghost">
               Browse other templates
             </Link>
