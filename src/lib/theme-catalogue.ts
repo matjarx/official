@@ -141,6 +141,15 @@ export async function getThemes(): Promise<Theme[]> {
 
     return rows
       .filter((r) => !!r.name)
+      // Coming-soon themes are not listed at all any more.
+      //
+      // They used to appear as a greyed "Coming Soon" card, which asks a
+      // visitor to want something we will not sell them today -- and on a
+      // page whose whole job is "pick one of these", an entry you cannot
+      // pick is a dead end. Their landing pages stay: those are written,
+      // indexed, and the right place to be found from search while a theme
+      // is still being built.
+      .filter((r) => !r.coming_soon)
       .map((r) => {
         return {
           id: r.id,
