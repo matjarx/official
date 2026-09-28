@@ -257,7 +257,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               corner now, overlapping it, which both fixes the alignment
               and reclaims the 14px dead row above. */}
           <div style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', inset: '-16px -12px -20px -12px', borderRadius: 34, background: 'linear-gradient(150deg, rgba(var(--navy-rgb), 0.92), rgba(112,117,56,0.86))', boxShadow: '0 44px 96px rgba(var(--ink-1-rgb), 0.3)', zIndex: 0 }} />
+            <div style={{ position: 'absolute', inset: '-16px -12px -20px -12px', borderRadius: 34, background: 'linear-gradient(150deg, rgba(var(--navy-rgb), 0.92), rgba(var(--olive-rgb), 0.86))', boxShadow: '0 44px 96px rgba(var(--ink-1-rgb), 0.3)', zIndex: 0 }} />
             <span style={{ position: 'absolute', top: -32, right: -12, zIndex: 3, display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 12px', borderRadius: 999, background: 'var(--navy-gradient)', border: '1.5px solid rgba(var(--butter-rgb), 0.5)', boxShadow: '0 12px 28px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
               <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>No long-term contract</span>
@@ -301,7 +301,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             {VOICES_ACTIVE.map((v) => (
               <div key={v.name} style={{ position: 'relative', marginBottom: 8 }}>
                 <div style={{ position: 'absolute', inset: '8px -8px -8px 8px', borderRadius: 20, background: dark ? '#3A3F1E' : '#A8AD6A', zIndex: 0 }} />
-                <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? '#0B2138' : 'var(--surface)', border: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.1)' : 'rgba(var(--ink-1-rgb), 0.06)'}`, boxShadow: '0 10px 26px rgba(var(--ink-1-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
+                <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? 'var(--ink-2)' : 'var(--surface)', border: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.1)' : 'rgba(var(--ink-1-rgb), 0.06)'}`, boxShadow: '0 10px 26px rgba(var(--ink-1-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <span style={{ position: 'relative', width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid var(--ink-inverse)', boxShadow: '0 3px 10px rgba(var(--ink-1-rgb), 0.16)' }}>
                       <Image src={v.photo.src} alt={v.photo.alt} title={v.photo.alt} fill sizes="44px" style={{ objectFit: 'cover' }} />

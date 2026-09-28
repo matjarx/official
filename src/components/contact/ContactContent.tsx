@@ -178,7 +178,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                       </div>
                     ))}
                   </div>
-                  <div style={{ height: 170, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, #0A2233)', display: 'grid', placeItems: 'center', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
+                  <div style={{ height: 170, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, var(--ink-2))', display: 'grid', placeItems: 'center', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
                     <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.5)' }}>Map — Zamzama, Clifton, Karachi</span>
                   </div>
                 </div>

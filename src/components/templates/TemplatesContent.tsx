@@ -184,7 +184,7 @@ export default function TemplatesContent({
                     <span style={{ fontSize: 13, color: 'var(--ink-5)' }}>{p.features}</span>
                     <div style={{ display: 'flex', gap: 8, paddingTop: 6 }}>
                       <span style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)' }}>{p.rating}</span>
-                      <span style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 999, color: 'var(--olive)', background: 'rgba(112,117,56,0.12)' }}>{p.launch}</span>
+                      <span style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 999, color: 'var(--olive)', background: 'rgba(var(--olive-rgb), 0.12)' }}>{p.launch}</span>
                     </div>
                   </div>
                 </div>
@@ -249,7 +249,7 @@ export default function TemplatesContent({
           {/* Related */}
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
             {RELATED.map((r) => (
-              <Link key={r.href} href={r.href} style={{ padding: '10px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: 'var(--olive)', background: 'rgba(112,117,56,0.1)' }}>{r.label} →</Link>
+              <Link key={r.href} href={r.href} style={{ padding: '10px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: 'var(--olive)', background: 'rgba(var(--olive-rgb), 0.1)' }}>{r.label} →</Link>
             ))}
           </section>
 

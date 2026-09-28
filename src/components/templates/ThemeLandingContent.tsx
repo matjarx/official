@@ -231,7 +231,7 @@ export default function ThemeLandingContent({ landing }: Props) {
                     fontSize: 13.5,
                     fontWeight: 600,
                     color: 'var(--olive)',
-                    background: 'rgba(112,117,56,0.1)',
+                    background: 'rgba(var(--olive-rgb), 0.1)',
                   }}
                 >
                   {CITY_DATA[c].name} →
@@ -250,8 +250,8 @@ export default function ThemeLandingContent({ landing }: Props) {
               margin: '0 auto',
               padding: '30px 30px',
               borderRadius: 20,
-              background: 'rgba(112,117,56,0.08)',
-              border: '1px solid rgba(112,117,56,0.18)',
+              background: 'rgba(var(--olive-rgb), 0.08)',
+              border: '1px solid rgba(var(--olive-rgb), 0.18)',
             }}
           >
             <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.62, color: 'var(--ink-3)' }}>

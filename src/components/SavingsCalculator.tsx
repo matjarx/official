@@ -39,7 +39,7 @@ export default function SavingsCalculator() {
               {HOUR_STEPS.map((h) => {
                 const on = hours === h
                 return (
-                  <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 4px', borderRadius: 11, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: on ? '#14210b' : 'rgba(233,239,245,0.75)', background: on ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${on ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}`, transition: 'background 160ms ease' }}>{h}</button>
+                  <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 4px', borderRadius: 11, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: on ? 'var(--ink-on-butter)' : 'rgba(233,239,245,0.75)', background: on ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${on ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}`, transition: 'background 160ms ease' }}>{h}</button>
                 )
               })}
             </div>
@@ -54,7 +54,7 @@ export default function SavingsCalculator() {
               {RATE_STEPS.map((r) => {
                 const on = rate === r
                 return (
-                  <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 4px', borderRadius: 11, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: on ? '#14210b' : 'rgba(233,239,245,0.75)', background: on ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${on ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}`, transition: 'background 160ms ease' }}>{r / 1000}k</button>
+                  <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 4px', borderRadius: 11, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: on ? 'var(--ink-on-butter)' : 'rgba(233,239,245,0.75)', background: on ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${on ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}`, transition: 'background 160ms ease' }}>{r / 1000}k</button>
                 )
               })}
             </div>

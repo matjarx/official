@@ -254,7 +254,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       {/* Compare all plans */}
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '46px 24px 0', display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
         {d.allPlans.map((pl) => (
-          <Link key={pl.name} href={routes.plan(pl.name.toLowerCase() as PlanKey)} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--olive)', background: 'rgba(112,117,56,0.1)' }}>{pl.name} — {pl.desc}</Link>
+          <Link key={pl.name} href={routes.plan(pl.name.toLowerCase() as PlanKey)} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--olive)', background: 'rgba(var(--olive-rgb), 0.1)' }}>{pl.name} — {pl.desc}</Link>
         ))}
       </section>
     </>
@@ -424,7 +424,7 @@ function CustomDetail() {
 
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '46px 24px 0', display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
         {d.allPlans.map((pl) => (
-          <Link key={pl.name} href={routes.plan(pl.name.toLowerCase() as PlanKey)} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--olive)', background: 'rgba(112,117,56,0.1)' }}>{pl.name} — {pl.desc}</Link>
+          <Link key={pl.name} href={routes.plan(pl.name.toLowerCase() as PlanKey)} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--olive)', background: 'rgba(var(--olive-rgb), 0.1)' }}>{pl.name} — {pl.desc}</Link>
         ))}
       </section>
     </>

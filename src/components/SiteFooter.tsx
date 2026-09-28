@@ -52,7 +52,7 @@ export default function SiteFooter() {
             background: 'linear-gradient(150deg, rgba(var(--butter-rgb), 0.9), rgba(var(--moss-light-rgb), 0.9))',
             border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)',
             backdropFilter: 'blur(24px)',
-            boxShadow: '0 26px 60px rgba(112,117,56,0.24), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.85)',
+            boxShadow: '0 26px 60px rgba(var(--olive-rgb), 0.24), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.85)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

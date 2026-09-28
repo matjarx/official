@@ -312,13 +312,13 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
                     </div>
                   ))}
                 </div>
-                <div style={{ height: 168, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, #0A2233)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <div style={{ height: 168, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, var(--ink-2))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                   <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--moss-light)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /></svg>
                   <span style={{ fontSize: 12.5, color: 'rgba(226,236,245,0.55)' }}>Zamzama, Clifton, Karachi</span>
                 </div>
               </div>
 
-              <div style={{ padding: '26px 28px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(var(--butter-rgb), 0.9), rgba(var(--moss-light-rgb), 0.9))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)', backdropFilter: 'blur(22px)', boxShadow: '0 22px 50px rgba(112,117,56,0.22), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.85)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ padding: '26px 28px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(var(--butter-rgb), 0.9), rgba(var(--moss-light-rgb), 0.9))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)', backdropFilter: 'blur(22px)', boxShadow: '0 22px 50px rgba(var(--olive-rgb), 0.22), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.85)', display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: '#4A5518', fontWeight: 700 }}>Already a client?</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.18, letterSpacing: '-0.7px', color: '#1F2A08' }}>Message your concierge from the dashboard for a reply within four working hours.</span>
                 <a href={appLogin} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Open my dashboard</a>

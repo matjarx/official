@@ -191,7 +191,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
   const navHeadInk = isProduct ? 'var(--ink-inverse)' : '#2A1608'
   const navCta = isProduct ? 'Order Now' : 'Book Now'
   const navCtaBg = isProduct ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : '#6B4A22'
-  const navCtaInk = isProduct ? '#14210b' : 'var(--ink-inverse)'
+  const navCtaInk = isProduct ? 'var(--ink-on-butter)' : 'var(--ink-inverse)'
 
   const heroImg = isProduct ? EE[img] : SCB[img]
   const heroPos = isProduct ? EE_POS[img] : SCB_POS[img]
@@ -210,7 +210,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
   const bodyInk = isProduct ? 'rgba(var(--ink-inverse-rgb), 0.82)' : '#6B5340'
 
   const ctaBg = isProduct ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'linear-gradient(160deg, #7C5628, #5A3C18)'
-  const ctaInk = isProduct ? '#14210b' : 'var(--ink-inverse)'
+  const ctaInk = isProduct ? 'var(--ink-on-butter)' : 'var(--ink-inverse)'
   const ctaGhost = isProduct ? 'View collection' : 'See the menu'
   const ghostBg = isProduct ? 'rgba(var(--ink-inverse-rgb), 0.12)' : 'rgba(42,22,8,0.06)'
   const ghostLine = isProduct ? 'rgba(var(--ink-inverse-rgb), 0.3)' : 'rgba(42,22,8,0.22)'
@@ -299,7 +299,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
             <span style={{ fontSize: 10.5, color: 'rgba(226,236,245,0.45)', whiteSpace: 'nowrap' }}>Saved just now</span>
           </span>
           <span style={{ flex: '0 0 auto', padding: '7px 13px', borderRadius: 8, fontSize: 11, fontWeight: 600, color: '#E9EFF5', background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.15)', whiteSpace: 'nowrap' }}>Preview</span>
-          <span style={{ flex: '0 0 auto', padding: '7px 14px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.6)', whiteSpace: 'nowrap' }}>Publish</span>
+          <span style={{ flex: '0 0 auto', padding: '7px 14px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, color: 'var(--ink-on-butter)', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.6)', whiteSpace: 'nowrap' }}>Publish</span>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '186px minmax(0, 1fr) 216px' }}>
@@ -354,7 +354,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
               </div>
 
               <div style={{ position: 'relative', outline: '2px solid var(--butter)', outlineOffset: -2 }}>
-                <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '3px 10px', borderRadius: '0 0 7px 0', background: 'var(--butter-deep)', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 8.5, letterSpacing: 0.5, textTransform: 'uppercase', color: '#14210b' }}>Hero</span>
+                <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '3px 10px', borderRadius: '0 0 7px 0', background: 'var(--butter-deep)', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 8.5, letterSpacing: 0.5, textTransform: 'uppercase', color: 'var(--ink-on-butter)' }}>Hero</span>
                 {/* Straddling the section's top edge, not floating inside it.
                     At top:6 this sat squarely on the storefront's own
                     "Order Now" button -- you could read the CTA's text
@@ -544,7 +544,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 10, color: 'var(--butter)' }}>{shopItem.price}</span>
               </span>
             </span>
-            <span style={{ textAlign: 'center', padding: 9, borderRadius: 7, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9.5, letterSpacing: 0.4, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' }}>Add to Cart</span>
+            <span style={{ textAlign: 'center', padding: 9, borderRadius: 7, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9.5, letterSpacing: 0.4, color: 'var(--ink-on-butter)', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' }}>Add to Cart</span>
           </span>
         )}
       </button>

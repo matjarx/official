@@ -66,7 +66,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
   const navInk = isProduct ? 'var(--ink-inverse)' : '#2A1608'
   const navCta = isProduct ? 'Order Now' : 'Book Now'
   const navCtaBg = isProduct ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : '#6B4A22'
-  const navCtaInk = isProduct ? '#14210b' : 'var(--ink-inverse)'
+  const navCtaInk = isProduct ? 'var(--ink-on-butter)' : 'var(--ink-inverse)'
 
   const heroImg = isProduct ? EE[img] : SCB[img]
   const heroPos = isProduct ? EE_POS[img] : SCB_POS[img]
@@ -80,7 +80,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
   const blurb = isProduct ? 'Chikankari and ajrak work, delivered nationwide.' : 'Order online for pickup, or reserve your table.'
   const bodyInk = isProduct ? 'rgba(var(--ink-inverse-rgb), 0.82)' : '#6B5340'
   const ctaBg = isProduct ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'linear-gradient(160deg, #7C5628, #5A3C18)'
-  const ctaInk = isProduct ? '#14210b' : 'var(--ink-inverse)'
+  const ctaInk = isProduct ? 'var(--ink-on-butter)' : 'var(--ink-inverse)'
 
   const modeIconLabel = isProduct ? 'Book Now!' : 'Sell Products'
   const modeIcon = isProduct
@@ -116,7 +116,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
           <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.13)' }}>
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" /><circle cx="12" cy="12" r="2.8" /></svg>
           </span>
-          <span style={{ flex: '0 0 auto', padding: '7px 12px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.6)' }}>Publish</span>
+          <span style={{ flex: '0 0 auto', padding: '7px 12px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: 'var(--ink-on-butter)', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.6)' }}>Publish</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0 12px 8px' }}>
@@ -135,7 +135,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
             </div>
 
             <div style={{ position: 'relative', outline: '2px solid var(--butter)', outlineOffset: -2 }}>
-              <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '2px 8px', borderRadius: '0 0 6px 0', background: 'var(--butter-deep)', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 7.5, letterSpacing: 0.5, textTransform: 'uppercase', color: '#14210b' }}>Hero</span>
+              <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '2px 8px', borderRadius: '0 0 6px 0', background: 'var(--butter-deep)', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 7.5, letterSpacing: 0.5, textTransform: 'uppercase', color: 'var(--ink-on-butter)' }}>Hero</span>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '9px 12px', background: navBg, borderBottom: `1px solid ${navLine}` }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 8.5, letterSpacing: 1, lineHeight: 1.1, color: navInk, whiteSpace: 'nowrap', marginRight: 'auto' }}>{brandMark}</span>

@@ -50,7 +50,7 @@ export default function HomeMobileContent() {
   const theme = dark
     ? {
         pageBg: 'linear-gradient(172deg, #001C33 0%, #00263F 55%, #001526 100%)',
-        orb1: 'radial-gradient(circle, rgba(112,117,56,0.5) 0%, rgba(112,117,56,0) 68%)',
+        orb1: 'radial-gradient(circle, rgba(var(--olive-rgb), 0.5) 0%, rgba(var(--olive-rgb), 0) 68%)',
         orb2: 'radial-gradient(circle, rgba(41,110,177,0.44) 0%, rgba(41,110,177,0) 68%)',
         headerBg: 'rgba(0,20,35,0.74)', headerLine: 'rgba(var(--ink-inverse-rgb), 0.12)',
         logo: '/brand/matjarx-logo-light.png',
@@ -67,7 +67,7 @@ export default function HomeMobileContent() {
         planLight: { bg: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.095), rgba(var(--ink-inverse-rgb), 0.03))', border: 'rgba(var(--ink-inverse-rgb), 0.13)', shadow: '0 16px 40px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)', ink: '#F5F8FB', muted: 'rgba(226,236,245,0.6)' },
       }
     : {
-        pageBg: 'linear-gradient(172deg, var(--cream) 0%, #F4EFE2 100%)',
+        pageBg: 'linear-gradient(172deg, var(--cream) 0%, var(--cream-deep) 100%)',
         orb1: 'radial-gradient(circle, rgba(var(--moss-light-rgb), 0.5) 0%, rgba(var(--moss-light-rgb), 0) 68%)',
         orb2: 'radial-gradient(circle, rgba(120,170,215,0.4) 0%, rgba(120,170,215,0) 68%)',
         headerBg: 'rgba(var(--cream-rgb), 0.78)', headerLine: 'rgba(var(--ink-1-rgb), 0.1)',
@@ -175,7 +175,7 @@ export default function HomeMobileContent() {
           </div>
 
           <div style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', inset: '-10px -8px -12px -8px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(var(--navy-rgb), 0.92), rgba(112,117,56,0.86))', zIndex: 0 }} />
+            <div style={{ position: 'absolute', inset: '-10px -8px -12px -8px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(var(--navy-rgb), 0.92), rgba(var(--olive-rgb), 0.86))', zIndex: 0 }} />
             <div style={{ position: 'relative', zIndex: 1, padding: 3 }}>
               <EditorShowcaseMobile />
             </div>
@@ -232,7 +232,7 @@ export default function HomeMobileContent() {
                 {HOUR_STEPS.map((h) => {
                   const active = hours === h
                   return (
-                    <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}` }}>{h}</button>
+                    <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? 'var(--ink-on-butter)' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}` }}>{h}</button>
                   )
                 })}
               </div>
@@ -247,7 +247,7 @@ export default function HomeMobileContent() {
                 {RATE_STEPS.map((r) => {
                   const active = rate === r
                   return (
-                    <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}` }}>{r / 1000}k</button>
+                    <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? 'var(--ink-on-butter)' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}` }}>{r / 1000}k</button>
                   )
                 })}
               </div>
@@ -272,7 +272,7 @@ export default function HomeMobileContent() {
                 <span style={{ fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>You save</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, lineHeight: 1.05, letterSpacing: '-1.2px', color: 'var(--butter)' }}>{money(saved)}</span>
               </div>
-              <a href="/pricing" style={{ textAlign: 'center', padding: '15px 20px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.65)' }}>Sign up now</a>
+              <a href="/pricing" style={{ textAlign: 'center', padding: '15px 20px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-on-butter)', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.65)' }}>Sign up now</a>
             </div>
           </div>
 
@@ -301,7 +301,7 @@ export default function HomeMobileContent() {
           </div>
 
           {/* CTA */}
-          <div style={{ padding: '26px 22px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(var(--butter-rgb), 0.94), rgba(var(--moss-light-rgb), 0.94))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)', boxShadow: '0 22px 50px rgba(112,117,56,0.24), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.85)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 13, textAlign: 'center' }}>
+          <div style={{ padding: '26px 22px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(var(--butter-rgb), 0.94), rgba(var(--moss-light-rgb), 0.94))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)', boxShadow: '0 22px 50px rgba(var(--olive-rgb), 0.24), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.85)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 13, textAlign: 'center' }}>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.12, letterSpacing: '-0.9px', color: '#1F2A08' }}>Professional website done for you. 7-day turnaround.</h2>
             {/* Same copy as the footer CTA, kept in step deliberately —
                 /home-mobile renders this instead of SiteFooter's card. */}
