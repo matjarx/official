@@ -35,7 +35,7 @@ export default function NotFound() {
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '66px 24px 60px' }}>
         <div style={{ maxWidth: 780, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
-          <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 15, letterSpacing: '2px', padding: '9px 18px', borderRadius: 999, background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', color: 'var(--moss-light)' }}>404</span>
+          <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 15, letterSpacing: '2px', padding: '9px 18px', borderRadius: 999, background: 'rgba(var(--surface-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', color: 'var(--moss-light)' }}>404</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 48px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>We can&rsquo;t find that page</h1>
           <p style={{ margin: 0, maxWidth: '30em', fontSize: 17.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.75)' }}>
             It may have been moved, renamed, or never existed. Let&rsquo;s get you back on track.

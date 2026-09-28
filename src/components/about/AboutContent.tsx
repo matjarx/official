@@ -46,7 +46,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
           {/* Stats strip, overlapping the hero */}
           <section style={{ maxWidth: 1360, margin: '0 auto', padding: 0 }}>
             <div style={{ maxWidth: 1300, margin: '-34px auto 0', padding: '0 24px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(50%, 200px), 1fr))', gap: 2, borderRadius: 22, overflow: 'hidden', background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.09)', boxShadow: '0 20px 46px rgba(var(--ink-1-rgb), 0.1)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(50%, 200px), 1fr))', gap: 2, borderRadius: 22, overflow: 'hidden', background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.09)', boxShadow: '0 20px 46px rgba(var(--scrim-rgb), 0.1)' }}>
                 {ABOUT_STATS_ACTIVE.map((s) => (
                   <div key={s.label} style={{ padding: '30px 26px', display: 'flex', flexDirection: 'column', gap: 6, background: 'var(--surface)' }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>{s.value}</span>
@@ -78,7 +78,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                   letterbox, which is what happens to the team cards further
                   down this page. */}
               <div style={{ minWidth: 0 }}>
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '1400 / 933', borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 48px rgba(var(--ink-1-rgb), 0.14)' }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '1400 / 933', borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 48px rgba(var(--scrim-rgb), 0.14)' }}>
                   <Image
                     src="/about/matjarx-team.webp"
                     alt="The MatjarX team together in the main office in Lahore, in navy MatjarX polo shirts, under the MatjarX &ldquo;Build. Launch. Scale.&rdquo; wall sign"

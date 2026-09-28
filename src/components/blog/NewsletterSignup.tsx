@@ -97,8 +97,8 @@ export default function NewsletterSignup({
             placeholder={light ? 'you@yourbusiness.pk' : 'you@yourbusiness.com'}
             style={
               light
-                ? { width: '100%', padding: '15px 17px', borderRadius: 13, fontFamily: 'inherit', fontSize: 14.5, color: '#1F2A08', background: 'rgba(var(--ink-inverse-rgb), 0.75)', border: '1.5px solid rgba(31,42,8,0.18)', outline: 'none' }
-                : { padding: '12px 14px', borderRadius: 12, border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', background: 'rgba(var(--ink-inverse-rgb), 0.07)', color: 'var(--ink-inverse)', fontSize: 14, fontFamily: 'inherit' }
+                ? { width: '100%', padding: '15px 17px', borderRadius: 13, fontFamily: 'inherit', fontSize: 14.5, color: '#1F2A08', background: 'rgba(var(--surface-rgb), 0.75)', border: '1.5px solid rgba(31,42,8,0.18)', outline: 'none' }
+                : { padding: '12px 14px', borderRadius: 12, border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', background: 'rgba(var(--surface-rgb), 0.07)', color: 'var(--surface)', fontSize: 14, fontFamily: 'inherit' }
             }
           />
           <button

@@ -110,7 +110,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
                     <span style={{ fontSize: 14, color: 'var(--ink-muted)' }}>/ mo</span>
                   </div>
                 </div>
-                <span style={{ width: 1, height: 44, background: 'rgba(var(--ink-1-rgb), 0.14)' }} />
+                <span style={{ width: 1, height: 44, background: 'rgba(var(--scrim-rgb), 0.14)' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>One-time setup</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 28px)', letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{p.setup}</span>

@@ -29,7 +29,7 @@ function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos']
         <InstagramEmbed url={video.url} />
       ) : (
         <div style={{ height: 140, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          <span style={{ width: 42, height: 42, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.14)', display: 'grid', placeItems: 'center' }}>
+          <span style={{ width: 42, height: 42, borderRadius: '50%', background: 'rgba(var(--surface-rgb), 0.14)', display: 'grid', placeItems: 'center' }}>
             <svg viewBox="0 0 24 24" width="18" height="18" fill="rgba(var(--ink-inverse-rgb), 0.85)"><path d="M8 5v14l11-7z" /></svg>
           </span>
           <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', color: 'rgba(var(--ink-inverse-rgb), 0.7)' }}>Video coming soon</span>

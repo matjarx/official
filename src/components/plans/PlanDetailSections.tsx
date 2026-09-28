@@ -399,7 +399,7 @@ function CustomDetail() {
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0', textAlign: 'center' }}>
         <span style={EYEBROW}>{d.showcase.title}</span>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 10 }}>
-          {d.showcase.items.map((it) => <span key={it} style={{ padding: '8px 14px', borderRadius: 999, fontSize: 13, background: 'rgba(var(--ink-1-rgb), 0.06)', color: 'var(--ink-1)' }}>{it}</span>)}
+          {d.showcase.items.map((it) => <span key={it} style={{ padding: '8px 14px', borderRadius: 999, fontSize: 13, background: 'rgba(var(--scrim-rgb), 0.06)', color: 'var(--ink-1)' }}>{it}</span>)}
         </div>
         <p style={{ margin: 0, fontSize: 13, color: '#8A9AA6' }}>{d.showcase.note}</p>
       </section>

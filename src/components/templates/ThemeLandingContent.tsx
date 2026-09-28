@@ -164,7 +164,7 @@ export default function ThemeLandingContent({ landing }: Props) {
                   borderRadius: 18,
                   background: 'var(--surface)',
                   border: '1px solid rgba(var(--ink-1-rgb), 0.08)',
-                  boxShadow: '0 10px 30px rgba(var(--ink-1-rgb), 0.05)',
+                  boxShadow: '0 10px 30px rgba(var(--scrim-rgb), 0.05)',
                 }}
               >
                 <span

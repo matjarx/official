@@ -81,7 +81,7 @@ export default function SiteFooter() {
             <a
               href={appSignup()}
               onClick={() => trackEvent('cta_click', { label: 'footer_get_started' })}
-              style={{ padding: '17px 32px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-inverse)', background: 'linear-gradient(160deg, #10293D, var(--navy-deepest))', boxShadow: '0 12px 26px rgba(var(--ink-1-rgb), 0.28), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.18)' }}
+              style={{ padding: '17px 32px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-inverse)', background: 'linear-gradient(160deg, #10293D, var(--navy-deepest))', boxShadow: '0 12px 26px rgba(var(--scrim-rgb), 0.28), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.18)' }}
               className="footer-cta-primary"
             >
               Get started
@@ -91,7 +91,7 @@ export default function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('cta_click', { label: 'footer_whatsapp' })}
-              style={{ padding: '17px 30px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#1F2A08', background: 'rgba(var(--ink-inverse-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.85)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)' }}
+              style={{ padding: '17px 30px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#1F2A08', background: 'rgba(var(--surface-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.85)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)' }}
               className="footer-cta-secondary"
             >
               Talk to us on WhatsApp
@@ -120,7 +120,7 @@ export default function SiteFooter() {
                   target={s.href.startsWith('http') ? '_blank' : undefined}
                   rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="footer-social"
-                  style={{ width: 34, height: 34, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}
+                  style={{ width: 34, height: 34, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--surface-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}
                 >
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(var(--ink-inverse-rgb), 0.72)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
                 </a>

@@ -55,7 +55,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
 
         {/* Tabs */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
-          <div className="glass-nav-pill" style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', padding: 7, borderRadius: 999, width: 'fit-content', margin: '0 auto', boxShadow: '0 12px 30px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)' }}>
+          <div className="glass-nav-pill" style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', padding: 7, borderRadius: 999, width: 'fit-content', margin: '0 auto', boxShadow: '0 12px 30px rgba(var(--scrim-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)' }}>
             {TAB_KEYS.map((k) => {
               const on = tab === k
               return (

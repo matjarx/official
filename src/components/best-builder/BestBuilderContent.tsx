@@ -148,7 +148,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                         </div>
                       </div>
 
-                      <div style={{ padding: '16px 18px', borderRadius: 16, background: 'rgba(var(--ink-1-rgb), 0.04)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <div style={{ padding: '16px 18px', borderRadius: 16, background: 'rgba(var(--scrim-rgb), 0.04)', display: 'flex', flexDirection: 'column', gap: 8 }}>
                         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Real Year 1 cost for a Pakistani business</span>
                         {p.costLines.map((l) => (
                           <span key={l} style={{ fontSize: 13.5, color: 'var(--ink-3-alt)' }}>{l}</span>
@@ -198,7 +198,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             {WIN_REASONS.map((w, i) => (
               <div key={w.title} className="glass-card" style={{ padding: '24px 26px 26px', borderRadius: 22, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 20, alignItems: 'start' }}>
                 <div style={{ display: 'flex', gap: 14, minWidth: 0 }}>
-                  <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'rgba(var(--ink-1-rgb), 0.06)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: 'var(--ink-muted)' }}>{i + 1}</span>
+                  <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'rgba(var(--scrim-rgb), 0.06)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: 'var(--ink-muted)' }}>{i + 1}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{w.title}</span>
                     <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>{w.problem}</span>
@@ -238,7 +238,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
 
         {/* When DIY is right */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
-          <div style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, background: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(26px)', boxShadow: '0 34px 76px rgba(var(--ink-1-rgb), 0.34), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
+          <div style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, background: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(26px)', boxShadow: '0 34px 76px rgba(var(--scrim-rgb), 0.34), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Be honest with yourself</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-inverse)' }}>When a DIY builder genuinely is the right answer</h2>
@@ -246,7 +246,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             </div>
             <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {DIY_CASES.map((c) => (
-                <div key={c} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '15px 17px', borderRadius: 15, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
+                <div key={c} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '15px 17px', borderRadius: 15, background: 'rgba(var(--surface-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--moss-light)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                   <span style={{ fontSize: 13.5, lineHeight: 1.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.86)' }}>{c}</span>
                 </div>

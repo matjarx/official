@@ -63,7 +63,7 @@ export default function SavingsCalculator() {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: '26px 28px', borderRadius: 22, background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 46px rgba(0,10,25,0.28), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: '26px 28px', borderRadius: 22, background: 'rgba(var(--surface-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 46px rgba(0,10,25,0.28), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, paddingBottom: 13, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
               <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>Doing it yourself</span>

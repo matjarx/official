@@ -28,7 +28,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
           you would actually compare them. */}
       <div className="portfolio-grid">
         {items.map((ex, i) => (
-          <div key={ex.name} className="mx-card" style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', background: ex.tint, border: '1px solid rgba(var(--ink-inverse-rgb), 0.85)', boxShadow: '0 18px 44px rgba(var(--ink-1-rgb), 0.1)' }}>
+          <div key={ex.name} className="mx-card" style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', background: ex.tint, border: '1px solid rgba(var(--ink-inverse-rgb), 0.85)', boxShadow: '0 18px 44px rgba(var(--scrim-rgb), 0.1)' }}>
             <div style={{ position: 'relative' }}>
               <div style={{ position: 'relative', aspectRatio: '16 / 10', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '11px 16px', background: 'rgba(var(--shadow-rgb), 0.28)' }}>
@@ -46,13 +46,13 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
                 </div>
               </div>
 
-              <div className="mx-overlay" style={{ position: 'absolute', inset: 0, zIndex: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap', background: 'rgba(var(--ink-1-rgb), 0.62)', backdropFilter: 'blur(2px)' }}>
+              <div className="mx-overlay" style={{ position: 'absolute', inset: 0, zIndex: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap', background: 'rgba(var(--scrim-rgb), 0.62)', backdropFilter: 'blur(2px)' }}>
                 <button type="button" onClick={() => setModalIndex(i)} className="mx-see-full" style={{ all: 'unset', cursor: 'pointer', padding: '13px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: 'var(--ink-inverse)', borderBottom: '2px solid rgba(var(--ink-inverse-rgb), 0.8)' }}>See Full Example</button>
                 <Link href={routes.pricing} className="mx-get-site">Get A Site Like This</Link>
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px 18px', background: 'rgba(var(--ink-inverse-rgb), 0.72)', backdropFilter: 'blur(20px)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px 18px', background: 'rgba(var(--surface-rgb), 0.72)', backdropFilter: 'blur(20px)' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, letterSpacing: '-0.2px', color: 'var(--ink-1)' }}>{ex.name}</span>
                 <span style={{ fontSize: 12, color: 'var(--ink-muted)' }}>{ex.category} · {ex.domain}</span>
@@ -67,7 +67,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
       {modalItem && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 60, display: 'flex', flexDirection: 'column', padding: 'clamp(12px, 3vw, 34px)', background: 'rgba(2,10,18,0.86)', backdropFilter: 'blur(8px)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '0 4px 12px', flexWrap: 'wrap' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '9px 16px', borderRadius: 999, background: 'rgba(var(--ink-inverse-rgb), 0.09)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(18px)' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '9px 16px', borderRadius: 999, background: 'rgba(var(--surface-rgb), 0.09)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(18px)' }}>
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--moss-light)' }} />
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: 'var(--ink-inverse)' }}>{modalItem.name}</span>
               <span style={{ fontSize: 12, color: 'rgba(var(--ink-on-dark-rgb), 0.55)' }}>{modalItem.domain}</span>
@@ -78,7 +78,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
               </div>
             )}
             <Link href={routes.pricing} className="mx-get-site" style={{ marginLeft: 'auto' }}>Get A Website Like This</Link>
-            <button type="button" onClick={() => setModalIndex(-1)} title="Close" style={{ all: 'unset', cursor: 'pointer', width: 40, height: 40, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.12)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.22)' }}>
+            <button type="button" onClick={() => setModalIndex(-1)} title="Close" style={{ all: 'unset', cursor: 'pointer', width: 40, height: 40, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--surface-rgb), 0.12)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.22)' }}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--ink-inverse)" strokeWidth="2.2" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
             </button>
           </div>

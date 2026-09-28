@@ -92,7 +92,7 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
           background: dark ? 'rgba(0,20,35,0.74)' : 'rgba(var(--cream-rgb), 0.72)',
           backdropFilter: 'blur(26px)',
           borderBottom: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.12)' : '1px solid rgba(var(--ink-inverse-rgb), 0.8)',
-          boxShadow: dark ? '0 10px 30px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.14)' : '0 10px 30px rgba(var(--ink-1-rgb), 0.05), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
+          boxShadow: dark ? '0 10px 30px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.14)' : '0 10px 30px rgba(var(--scrim-rgb), 0.05), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
         }}
       >
         <div style={{ maxWidth: 1360, margin: '0 auto', padding: '15px 20px', display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -112,7 +112,7 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
               background: dark ? 'rgba(var(--ink-inverse-rgb), 0.07)' : 'rgba(var(--ink-inverse-rgb), 0.5)',
               border: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.14)' : '1px solid rgba(var(--ink-inverse-rgb), 0.85)',
               backdropFilter: 'blur(24px)',
-              boxShadow: dark ? '0 14px 34px rgba(0,8,18,0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' : '0 14px 34px rgba(var(--ink-1-rgb), 0.09), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
+              boxShadow: dark ? '0 14px 34px rgba(0,8,18,0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' : '0 14px 34px rgba(var(--scrim-rgb), 0.09), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
             }}
           >
               {NAV_ITEMS.map((item, i) => {
@@ -167,7 +167,7 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
                           background: dark ? 'rgba(4,24,42,0.94)' : 'rgba(var(--ink-inverse-rgb), 0.86)',
                           border: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.14)' : '1px solid rgba(var(--ink-inverse-rgb), 0.9)',
                           backdropFilter: 'blur(28px)',
-                          boxShadow: dark ? '0 22px 50px rgba(0,8,18,0.5), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.14)' : '0 22px 50px rgba(var(--ink-1-rgb), 0.16), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
+                          boxShadow: dark ? '0 22px 50px rgba(0,8,18,0.5), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.14)' : '0 22px 50px rgba(var(--scrim-rgb), 0.16), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
                           display: 'flex',
                           flexDirection: 'column',
                           gap: 2,
@@ -194,18 +194,12 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
             </nav>
 
           <div className="site-header-actions" style={{ display: 'flex', alignItems: 'center', gap: 10, flex: '0 0 auto' }}>
-            {/* Opt-in until the surfaces flip too.
-                The provider and the tokens work -- clicking this does
-                re-point every token and the page background. What does NOT
-                yet flip is a white CARD: 377 rgba(255,255,255,a) uses were
-                mapped to --ink-inverse-rgb, which is fixed white because
-                white TEXT never changes. Many of them are surfaces, not
-                ink, so the text goes light and the card stays white. On
-                /pricing that is 81 elements below 3:1, some at 1.04.
-                So only a caller that has a real dark treatment passes
-                onToggleDark today. Restore this to `{(` once the surface
-                split lands. */}
-            {onToggleDark && (
+            {/* Every page gets the toggle. A caller may still pass
+                onToggleDark to drive its own dark treatment -- HomeContent
+                does, because its `dark` prop controls ~40 JS branches the
+                tokens do not cover. Its override wins so the two
+                mechanisms cannot disagree on one page. */}
+            {(
 
               <button
                 type="button"

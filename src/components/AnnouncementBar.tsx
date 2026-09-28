@@ -132,7 +132,7 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
         )}
 
         {config.badge_text && config.text && (
-          <span aria-hidden="true" style={{ width: 1, height: 16, background: 'rgba(var(--ink-inverse-rgb), 0.36)' }} />
+          <span aria-hidden="true" style={{ width: 1, height: 16, background: 'rgba(var(--surface-rgb), 0.36)' }} />
         )}
 
         {config.text && (

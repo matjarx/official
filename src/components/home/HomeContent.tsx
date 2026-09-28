@@ -132,7 +132,7 @@ export const DEFAULT_FAQ_DATA = [
 ]
 
 const LIGHT_PLAN_THEME = {
-  bg: 'rgba(var(--ink-inverse-rgb), 0.62)', border: 'rgba(var(--ink-inverse-rgb), 0.85)', shadow: '0 16px 40px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)', blur: 'blur(22px)',
+  bg: 'rgba(var(--surface-rgb), 0.62)', border: 'rgba(var(--ink-inverse-rgb), 0.85)', shadow: '0 16px 40px rgba(var(--scrim-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)', blur: 'blur(22px)',
   ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(var(--ink-1-rgb), 0.09)',
   tick: 'var(--olive)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--cream)', ctaBorder: 'rgba(var(--ink-1-rgb), 0.16)',
 }
@@ -141,7 +141,7 @@ const LIGHT_PLAN_THEME = {
 // Growth's badge — two dark cards side by side just look like a bug.
 // Light, like Launch, but ringed and lifted in butter.
 const PREMIUM_PLAN_THEME = {
-  bg: 'linear-gradient(165deg, rgba(var(--ink-inverse-rgb), 0.86), rgba(var(--cream-rgb), 0.72))',
+  bg: 'linear-gradient(165deg, rgba(var(--surface-rgb), 0.86), rgba(var(--cream-rgb), 0.72))',
   border: 'var(--butter-deep)',
   shadow: '0 18px 46px rgba(201,162,39,0.18), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
   blur: 'blur(22px)',
@@ -149,7 +149,7 @@ const PREMIUM_PLAN_THEME = {
   tick: '#8A7A12', ctaInk: 'var(--ink-on-butter-alt)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter-deep)',
 }
 const DARK_PLAN_THEME = {
-  bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.16)', shadow: '0 30px 66px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', blur: 'blur(26px)',
+  bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.16)', shadow: '0 30px 66px rgba(var(--scrim-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', blur: 'blur(26px)',
   ink: 'var(--ink-inverse)', muted: 'rgba(var(--ink-inverse-rgb), 0.62)', body: 'rgba(var(--ink-inverse-rgb), 0.8)', rule: 'rgba(var(--ink-inverse-rgb), 0.16)',
   tick: 'var(--moss-light)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)',
 }
@@ -209,7 +209,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 4 }}>
             <Link href={routes.pricing} className="btn-primary">Let&apos;s begin</Link>
-            <Link href={routes.websiteExamples} className="btn-secondary" style={dark ? { color: 'var(--ink-inverse)', background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.18)' } : undefined}>See the quality of our websites</Link>
+            <Link href={routes.websiteExamples} className="btn-secondary" style={dark ? { color: 'var(--ink-inverse)', background: 'rgba(var(--surface-rgb), 0.08)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.18)' } : undefined}>See the quality of our websites</Link>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'center', paddingTop: 12 }}>
@@ -257,8 +257,8 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               corner now, overlapping it, which both fixes the alignment
               and reclaims the 14px dead row above. */}
           <div style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', inset: '-16px -12px -20px -12px', borderRadius: 34, background: 'linear-gradient(150deg, rgba(var(--navy-rgb), 0.92), rgba(var(--olive-rgb), 0.86))', boxShadow: '0 44px 96px rgba(var(--ink-1-rgb), 0.3)', zIndex: 0 }} />
-            <span style={{ position: 'absolute', top: -32, right: -12, zIndex: 3, display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 12px', borderRadius: 999, background: 'var(--navy-gradient)', border: '1.5px solid rgba(var(--butter-rgb), 0.5)', boxShadow: '0 12px 28px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
+            <div style={{ position: 'absolute', inset: '-16px -12px -20px -12px', borderRadius: 34, background: 'linear-gradient(150deg, rgba(var(--navy-rgb), 0.92), rgba(var(--olive-rgb), 0.86))', boxShadow: '0 44px 96px rgba(var(--scrim-rgb), 0.3)', zIndex: 0 }} />
+            <span style={{ position: 'absolute', top: -32, right: -12, zIndex: 3, display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 12px', borderRadius: 999, background: 'var(--navy-gradient)', border: '1.5px solid rgba(var(--butter-rgb), 0.5)', boxShadow: '0 12px 28px rgba(var(--scrim-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
               <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>No long-term contract</span>
             </span>
@@ -301,9 +301,9 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             {VOICES_ACTIVE.map((v) => (
               <div key={v.name} style={{ position: 'relative', marginBottom: 8 }}>
                 <div style={{ position: 'absolute', inset: '8px -8px -8px 8px', borderRadius: 20, background: dark ? '#3A3F1E' : '#A8AD6A', zIndex: 0 }} />
-                <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? 'var(--ink-2)' : 'var(--surface)', border: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.1)' : 'rgba(var(--ink-1-rgb), 0.06)'}`, boxShadow: '0 10px 26px rgba(var(--ink-1-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
+                <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? 'var(--ink-2)' : 'var(--surface)', border: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.1)' : 'rgba(var(--ink-1-rgb), 0.06)'}`, boxShadow: '0 10px 26px rgba(var(--scrim-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <span style={{ position: 'relative', width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid var(--ink-inverse)', boxShadow: '0 3px 10px rgba(var(--ink-1-rgb), 0.16)' }}>
+                    <span style={{ position: 'relative', width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid var(--ink-inverse)', boxShadow: '0 3px 10px rgba(var(--scrim-rgb), 0.16)' }}>
                       <Image src={v.photo.src} alt={v.photo.alt} title={v.photo.alt} fill sizes="44px" style={{ objectFit: 'cover' }} />
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
@@ -391,7 +391,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
         {/* Mascot / urgency panel */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '30px 24px 60px' }}>
-          <div style={{ position: 'relative', borderRadius: 30, overflow: 'hidden', background: 'linear-gradient(120deg, var(--navy-deepest) 0%, #00243D 46%, #0A3A63 100%)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', boxShadow: '0 34px 76px rgba(var(--ink-1-rgb), 0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}>
+          <div style={{ position: 'relative', borderRadius: 30, overflow: 'hidden', background: 'linear-gradient(120deg, var(--navy-deepest) 0%, #00243D 46%, #0A3A63 100%)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', boxShadow: '0 34px 76px rgba(var(--scrim-rgb), 0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}>
             <div style={{ position: 'absolute', width: 620, height: 620, right: -160, bottom: -220, borderRadius: '50%', background: 'radial-gradient(circle, rgba(var(--moss-light-rgb), 0.34) 0%, rgba(var(--moss-light-rgb), 0) 68%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 'clamp(34px, 5vw, 62px)', minWidth: 0, order: 1 }}>
@@ -425,7 +425,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, paddingTop: 6 }}>
                 {EDITOR_FEATURES.map((f) => (
-                  <div key={f.title} style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 20px', borderRadius: 16, background: 'rgba(var(--ink-inverse-rgb), 0.055)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
+                  <div key={f.title} style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 20px', borderRadius: 16, background: 'rgba(var(--surface-rgb), 0.055)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
                     <span style={{ width: 36, height: 36, flex: '0 0 auto', borderRadius: 11, background: 'rgba(var(--moss-light-rgb), 0.16)', display: 'grid', placeItems: 'center' }}>
                       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--moss-light)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
                     </span>
@@ -494,7 +494,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Real sites, real businesses</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>70,000 websites built and counting</h2>
             </div>
-            <Link className="btn-trace" href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(var(--ink-inverse-rgb), 0.07)' : 'var(--ink-inverse)', border: `1.5px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.16)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>Browse all examples</Link>
+            <Link className="btn-trace" href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(var(--ink-inverse-rgb), 0.07)' : 'var(--surface)', border: `1.5px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.16)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>Browse all examples</Link>
           </div>
           {/* Was four client screenshots. They answered "can you prove
               it" and not "have you built one for a business like mine",
@@ -572,7 +572,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               {REVIEWS.map((r) => (
-                <div key={r.name} style={{ padding: '24px 26px', borderRadius: 20, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <div key={r.name} style={{ padding: '24px 26px', borderRadius: 20, background: 'rgba(var(--surface-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)', display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;{r.quote}&rdquo;</p>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--butter)' }}>{r.name}</span>

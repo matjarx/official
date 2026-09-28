@@ -56,15 +56,15 @@ export default function HomeMobileContent() {
         logo: '/brand/matjarx-logo-light.png',
         ink1: '#F5F8FB', ink3: 'rgba(var(--ink-on-dark-rgb), 0.7)', ink4: 'rgba(var(--ink-on-dark-rgb), 0.5)', ink5: 'rgba(var(--ink-on-dark-rgb), 0.4)',
         accentInk: 'var(--moss-light)', iconInk: '#E9EFF5',
-        chipBg: 'rgba(var(--ink-inverse-rgb), 0.08)', chipLine: 'rgba(var(--ink-inverse-rgb), 0.16)',
-        cardBg: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.1), rgba(var(--ink-inverse-rgb), 0.035))',
+        chipBg: 'rgba(var(--surface-rgb), 0.08)', chipLine: 'rgba(var(--ink-inverse-rgb), 0.16)',
+        cardBg: 'linear-gradient(160deg, rgba(var(--surface-rgb), 0.1), rgba(var(--ink-inverse-rgb), 0.035))',
         cardLine: 'rgba(var(--ink-inverse-rgb), 0.14)',
         cardShadow: '0 14px 34px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)',
-        voiceBg: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.1), rgba(var(--ink-inverse-rgb), 0.04))',
+        voiceBg: 'linear-gradient(160deg, rgba(var(--surface-rgb), 0.1), rgba(var(--ink-inverse-rgb), 0.04))',
         voiceLine: 'rgba(var(--ink-inverse-rgb), 0.14)', offsetFill: 'rgba(168,173,106,0.55)',
         voiceInk: '#F5F8FB', voiceMeta: 'rgba(var(--ink-on-dark-rgb), 0.5)', voiceBody: 'rgba(var(--ink-on-dark-strong-rgb), 0.86)',
         skinIcon: 'M12 3.5a8.5 8.5 0 1 0 8.5 8.5c0-.4 0-.8-.1-1.2A6 6 0 0 1 12 3.6Z',
-        planLight: { bg: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.095), rgba(var(--ink-inverse-rgb), 0.03))', border: 'rgba(var(--ink-inverse-rgb), 0.13)', shadow: '0 16px 40px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)', ink: '#F5F8FB', muted: 'rgba(var(--ink-on-dark-rgb), 0.6)' },
+        planLight: { bg: 'linear-gradient(160deg, rgba(var(--surface-rgb), 0.095), rgba(var(--ink-inverse-rgb), 0.03))', border: 'rgba(var(--ink-inverse-rgb), 0.13)', shadow: '0 16px 40px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)', ink: '#F5F8FB', muted: 'rgba(var(--ink-on-dark-rgb), 0.6)' },
       }
     : {
         pageBg: 'linear-gradient(172deg, var(--cream) 0%, var(--cream-deep) 100%)',
@@ -74,16 +74,16 @@ export default function HomeMobileContent() {
         logo: '/brand/matjarx-logo-black.png',
         ink1: 'var(--ink-1)', ink3: 'var(--ink-4)', ink4: 'var(--ink-muted)', ink5: 'var(--ink-faint)',
         accentInk: 'var(--olive)', iconInk: 'var(--ink-1)',
-        chipBg: 'rgba(var(--ink-inverse-rgb), 0.7)', chipLine: 'rgba(var(--ink-inverse-rgb), 0.95)',
-        cardBg: 'rgba(var(--ink-inverse-rgb), 0.7)', cardLine: 'rgba(var(--ink-inverse-rgb), 0.95)',
-        cardShadow: '0 12px 30px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
+        chipBg: 'rgba(var(--surface-rgb), 0.7)', chipLine: 'rgba(var(--ink-inverse-rgb), 0.95)',
+        cardBg: 'rgba(var(--surface-rgb), 0.7)', cardLine: 'rgba(var(--ink-inverse-rgb), 0.95)',
+        cardShadow: '0 12px 30px rgba(var(--scrim-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
         voiceBg: 'var(--surface)', voiceLine: 'rgba(var(--ink-1-rgb), 0.07)', offsetFill: '#A8AD6A',
         voiceInk: 'var(--ink-1)', voiceMeta: 'var(--ink-muted)', voiceBody: 'var(--ink-3)',
         skinIcon: 'M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9ZM12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M18.5 5.5l-1.4 1.4M6.9 17.1 5.5 18.5',
-        planLight: { bg: 'rgba(var(--ink-inverse-rgb), 0.66)', border: 'rgba(var(--ink-inverse-rgb), 0.9)', shadow: '0 14px 34px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)', ink: 'var(--navy-deepest)', muted: 'var(--ink-muted)' },
+        planLight: { bg: 'rgba(var(--surface-rgb), 0.66)', border: 'rgba(var(--ink-inverse-rgb), 0.9)', shadow: '0 14px 34px rgba(var(--scrim-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)', ink: 'var(--navy-deepest)', muted: 'var(--ink-muted)' },
       }
 
-  const planDark = { bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.18)', shadow: '0 20px 46px rgba(var(--navy-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', ink: 'var(--ink-inverse)', muted: 'rgba(var(--ink-inverse-rgb), 0.62)' }
+  const planDark = { bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.18)', shadow: '0 20px 46px rgba(var(--navy-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', ink: 'var(--surface)', muted: 'rgba(var(--ink-inverse-rgb), 0.62)' }
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '24px 0', background: '#00121F' }}>
@@ -168,7 +168,7 @@ export default function HomeMobileContent() {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: 12 }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '9px 16px 9px 11px', borderRadius: 999, background: 'linear-gradient(160deg, #0A4278, #002E5C)', border: '1.5px solid rgba(var(--butter-rgb), 0.5)', boxShadow: '0 10px 24px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '9px 16px 9px 11px', borderRadius: 999, background: 'linear-gradient(160deg, #0A4278, #002E5C)', border: '1.5px solid rgba(var(--butter-rgb), 0.5)', boxShadow: '0 10px 24px rgba(var(--scrim-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, letterSpacing: '0.3px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>No long-term contract</span>
             </span>
@@ -208,7 +208,7 @@ export default function HomeMobileContent() {
           </div>
 
           {/* Mascot/urgency */}
-          <div style={{ borderRadius: 24, overflow: 'hidden', background: 'linear-gradient(150deg, var(--navy-deepest), #0A3A63)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', boxShadow: '0 22px 50px rgba(var(--ink-1-rgb), 0.34), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}>
+          <div style={{ borderRadius: 24, overflow: 'hidden', background: 'linear-gradient(150deg, var(--navy-deepest), #0A3A63)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.34), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}>
             <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 13 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.14, letterSpacing: '-0.8px', color: 'var(--ink-inverse)' }}>50 milliseconds. <span style={{ color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>That&rsquo;s how long you have to make a first impression.</span></h2>
               <span style={{ fontSize: 13, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.66)' }}>After that you get 3 to 8 seconds to convince a customer you&rsquo;re worth their money. If your website doesn&rsquo;t, they leave.</span>
@@ -217,13 +217,13 @@ export default function HomeMobileContent() {
           </div>
 
           {/* Savings calculator */}
-          <div style={{ padding: '22px 20px 24px', borderRadius: 24, background: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(24px)', boxShadow: '0 22px 50px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={{ padding: '22px 20px 24px', borderRadius: 24, background: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(24px)', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
               <span style={{ fontSize: 11, letterSpacing: '1.8px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Do it yourself?</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.16, letterSpacing: '-0.8px', color: 'var(--ink-inverse)' }}>Your time has a price. Work out what a DIY website costs you.</h2>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '15px 16px', borderRadius: 16, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '15px 16px', borderRadius: 16, background: 'rgba(var(--surface-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.82)', marginRight: 'auto' }}>Number of hours</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 16, color: 'var(--butter)', whiteSpace: 'nowrap' }}>{hours} hours</span>
@@ -238,7 +238,7 @@ export default function HomeMobileContent() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '15px 16px', borderRadius: 16, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '15px 16px', borderRadius: 16, background: 'rgba(var(--surface-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.82)', marginRight: 'auto' }}>Per hour cost</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 16, color: 'var(--butter)', whiteSpace: 'nowrap' }}>{money(rate)} / hr</span>
@@ -253,7 +253,7 @@ export default function HomeMobileContent() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '18px 19px 20px', borderRadius: 18, background: 'rgba(var(--ink-inverse-rgb), 0.09)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '18px 19px 20px', borderRadius: 18, background: 'rgba(var(--surface-rgb), 0.09)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)' }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, paddingBottom: 11, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 2, marginRight: 'auto', minWidth: 0 }}>
                   <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>Doing it yourself</span>
@@ -309,7 +309,7 @@ export default function HomeMobileContent() {
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>More than 70,000 businesses trust MatjarX. Your business deserves to join them.</span>
             <a className="btn-trace" href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-inverse)', background: 'var(--navy-deepest)' }}>Get started</a>
-            <a className="btn-trace" href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(var(--ink-inverse-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)' }}>Talk to us on WhatsApp</a>
+            <a className="btn-trace" href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(var(--surface-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)' }}>Talk to us on WhatsApp</a>
           </div>
 
           {/* Footer */}

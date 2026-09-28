@@ -63,12 +63,12 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
           {/* Featured + newsletter */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 22, alignItems: 'stretch' }}>
-              <Link href={routes.blogPost(featuredPost.slug)} style={{ display: 'flex', flexDirection: 'column', borderRadius: 24, overflow: 'hidden', background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.09)', boxShadow: '0 16px 40px rgba(var(--ink-1-rgb), 0.07)' }}>
+              <Link href={routes.blogPost(featuredPost.slug)} style={{ display: 'flex', flexDirection: 'column', borderRadius: 24, overflow: 'hidden', background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.09)', boxShadow: '0 16px 40px rgba(var(--scrim-rgb), 0.07)' }}>
                 <div style={{ position: 'relative', height: 280, background: featuredPost.coverImage ? undefined : 'linear-gradient(150deg, #1B7A3D, #08361B)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 26 }}>
                   {featuredPost.coverImage && (
                     <>
                       <Image src={featuredPost.coverImage.src} alt={featuredPost.coverImage.alt} title={featuredPost.coverImage.title} fill sizes="(max-width: 700px) 100vw, 700px" style={{ objectFit: 'cover', zIndex: 0 }} priority />
-                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(0deg, rgba(var(--ink-1-rgb), 0.75), rgba(var(--ink-1-rgb), 0.1))' }} />
+                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(0deg, rgba(var(--scrim-rgb), 0.75), rgba(var(--ink-1-rgb), 0.1))' }} />
                     </>
                   )}
                   <span style={{ position: 'relative', alignSelf: 'flex-start', fontSize: 10.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', padding: '6px 12px', borderRadius: 999, color: 'var(--ink-on-butter)', background: 'var(--butter)', marginBottom: 14 }}>Featured</span>
@@ -108,7 +108,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
                     {p.coverImage && (
                       <>
                         <Image src={p.coverImage.src} alt={p.coverImage.alt} title={p.coverImage.title} fill sizes="320px" style={{ objectFit: 'cover', zIndex: 0 }} />
-                        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(var(--ink-1-rgb), 0.35), rgba(var(--ink-1-rgb), 0))' }} />
+                        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(var(--scrim-rgb), 0.35), rgba(var(--ink-1-rgb), 0))' }} />
                       </>
                     )}
                     <span style={{ position: 'relative', fontSize: 10.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', padding: '6px 11px', borderRadius: 999, color: 'rgba(var(--ink-inverse-rgb), 0.94)', background: 'rgba(var(--shadow-rgb), 0.3)' }}>{p.category}</span>

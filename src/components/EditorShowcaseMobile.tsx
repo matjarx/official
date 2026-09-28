@@ -100,20 +100,20 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(var(--ink-on-da
       <div style={{ width: '100%', borderRadius: 14, overflow: 'hidden', background: 'linear-gradient(168deg, #001C33 0%, #00263F 100%)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', boxShadow: '0 20px 46px rgba(0,8,18,0.44)' }}>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '9px 10px' }}>
-          <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.13)' }}>
+          <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(var(--surface-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.13)' }}>
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6" /></svg>
           </span>
           <span style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 0, marginRight: 'auto' }}>
             <span style={{ fontSize: 7.5, letterSpacing: 1.1, textTransform: 'uppercase', color: 'rgba(var(--ink-on-dark-rgb), 0.42)' }}>Theme editor</span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10.5, color: '#F7FAFD', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{siteName}</span>
-              <span style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', gap: 3, padding: '2px 6px', borderRadius: 999, background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
+              <span style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', gap: 3, padding: '2px 6px', borderRadius: 999, background: 'rgba(var(--surface-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
                 <span style={{ fontSize: 7.5, fontWeight: 600, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.8)' }}>Home</span>
                 <svg viewBox="0 0 24 24" width="7" height="7" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.55)" strokeWidth="2.6" strokeLinecap="round"><path d="m6 9 6 6 6-6" /></svg>
               </span>
             </span>
           </span>
-          <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.13)' }}>
+          <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(var(--surface-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.13)' }}>
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" /><circle cx="12" cy="12" r="2.8" /></svg>
           </span>
           <span style={{ flex: '0 0 auto', padding: '7px 12px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: 'var(--ink-on-butter)', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.6)' }}>Publish</span>
@@ -128,10 +128,10 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(var(--ink-on-da
         <div style={{ padding: '0 6px' }}>
           <div style={{ borderRadius: 10, overflow: 'hidden', background: '#FFFCF5', boxShadow: '0 14px 32px rgba(0,8,18,0.38)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '6px 9px', background: '#0B1B27' }}>
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
-              <span style={{ margin: '0 auto', padding: '3px 10px', borderRadius: 999, fontSize: 8, color: 'rgba(var(--ink-on-dark-rgb), 0.6)', background: 'rgba(var(--ink-inverse-rgb), 0.07)' }}>{domain}</span>
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--surface-rgb), 0.16)' }} />
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--surface-rgb), 0.16)' }} />
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--surface-rgb), 0.16)' }} />
+              <span style={{ margin: '0 auto', padding: '3px 10px', borderRadius: 999, fontSize: 8, color: 'rgba(var(--ink-on-dark-rgb), 0.6)', background: 'rgba(var(--surface-rgb), 0.07)' }}>{domain}</span>
             </div>
 
             <div style={{ position: 'relative', outline: '2px solid var(--butter)', outlineOffset: -2 }}>

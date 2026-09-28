@@ -91,7 +91,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
               instead of stacked in a column you have to remember. */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 292px), 1fr))', gap: 18, alignItems: 'stretch' }}>
             {d.blocks.map((b) => (
-              <div key={b.titleMark} style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', boxShadow: '0 10px 26px rgba(var(--ink-1-rgb), 0.05)' }}>
+              <div key={b.titleMark} style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', boxShadow: '0 10px 26px rgba(var(--scrim-rgb), 0.05)' }}>
                 <div style={{ position: 'relative', height: 132, flex: '0 0 auto', background: b.tint }}>
                   {b.image ? (
                     <Image src={b.image.src} alt={b.image.alt} title={b.mediaLabel} fill sizes="(max-width: 700px) 100vw, 360px" style={{ objectFit: 'cover' }} />

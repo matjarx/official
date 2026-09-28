@@ -247,7 +247,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         <section id="contact" style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 22, alignItems: 'start' }}>
 
-              <form onSubmit={handleSubmit} style={{ padding: '32px 32px 34px', borderRadius: 26, background: 'rgba(var(--ink-inverse-rgb), 0.66)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.9)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 48px rgba(var(--ink-1-rgb), 0.09), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)', display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
+              <form onSubmit={handleSubmit} style={{ padding: '32px 32px 34px', borderRadius: 26, background: 'rgba(var(--surface-rgb), 0.66)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.9)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 48px rgba(var(--scrim-rgb), 0.09), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)', display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.4vw, 30px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Send us a message</h2>
                   <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>Monday to Saturday, 11am to 8pm. We reply the same working day.</p>

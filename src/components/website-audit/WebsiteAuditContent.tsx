@@ -135,7 +135,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>A complete analysis of your online presence</h2>
               <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: 'var(--ink-3-alt)' }}>{AUDIT_INTRO}</p>
             </div>
-            <div style={{ position: 'relative', width: '100%', maxWidth: 560, height: 220, margin: '0 auto 28px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 44px rgba(var(--ink-1-rgb), 0.14)' }}>
+            <div style={{ position: 'relative', width: '100%', maxWidth: 560, height: 220, margin: '0 auto 28px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 44px rgba(var(--scrim-rgb), 0.14)' }}>
               <Image src="/website-audit/audit-report.webp" alt="A dashboard showing website traffic growth and Google ranking improvement" fill sizes="(max-width: 600px) 100vw, 560px" style={{ objectFit: 'cover' }} />
             </div>
             <p style={{ margin: '0 0 18px', fontSize: 16, lineHeight: 1.62, color: 'var(--ink-3-alt)', textAlign: 'center' }}>{WHAT_IS_AUDIT.intro}</p>

@@ -176,7 +176,7 @@ export default function TemplatesContent({
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Popular templates</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
               {POPULAR.map((p) => (
-                <div key={p.name} style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', boxShadow: '0 10px 26px rgba(var(--ink-1-rgb), 0.08)' }}>
+                <div key={p.name} style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', boxShadow: '0 10px 26px rgba(var(--scrim-rgb), 0.08)' }}>
                   <div style={{ height: 84, background: p.tint }} />
                   <div style={{ padding: '18px 20px 20px', background: 'var(--surface)', display: 'flex', flexDirection: 'column', gap: 6 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-1)' }}>{p.name}</span>

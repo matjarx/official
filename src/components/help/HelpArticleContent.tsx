@@ -106,7 +106,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
           {d.metaLines && d.metaLines.length > 0 && (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginTop: 4 }}>
               {d.metaLines.map((m, i) => (
-                <span key={i} style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-inverse)', background: 'rgba(var(--ink-inverse-rgb), 0.1)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', borderRadius: 999, padding: '7px 14px' }}>{m}</span>
+                <span key={i} style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-inverse)', background: 'rgba(var(--surface-rgb), 0.1)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', borderRadius: 999, padding: '7px 14px' }}>{m}</span>
               ))}
             </div>
           )}
@@ -120,7 +120,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
           {/* Hero image */}
           {d.heroImage && (
             <section style={{ maxWidth: 820, margin: '0 auto', padding: '36px 24px 0' }}>
-              <div style={{ position: 'relative', width: '100%', height: 260, borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 44px rgba(var(--ink-1-rgb), 0.14)' }}>
+              <div style={{ position: 'relative', width: '100%', height: 260, borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 44px rgba(var(--scrim-rgb), 0.14)' }}>
                 <Image src={d.heroImage.src} alt={d.heroImage.alt} title={d.title} fill sizes="(max-width: 860px) 100vw, 820px" style={{ objectFit: 'cover' }} />
               </div>
             </section>

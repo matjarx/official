@@ -85,7 +85,7 @@ export default function CardRail({
               style={{
                 borderColor: dark ? 'rgba(var(--ink-inverse-rgb), 0.18)' : 'rgba(var(--ink-1-rgb), 0.12)',
                 color: dark ? 'var(--ink-inverse)' : 'var(--ink-1)',
-                background: dark ? 'rgba(var(--ink-inverse-rgb), 0.06)' : 'var(--ink-inverse)',
+                background: dark ? 'rgba(var(--ink-inverse-rgb), 0.06)' : 'var(--surface)',
               }}
             >
               <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">

@@ -47,7 +47,7 @@ function oneLine(text: string): string {
 export default function IndustryRail({ dark = false }: { dark?: boolean }) {
   const ink = dark ? 'var(--ink-inverse)' : 'var(--ink-1)'
   const muted = dark ? 'rgba(var(--ink-inverse-rgb), 0.62)' : 'var(--ink-muted)'
-  const cardBg = dark ? 'rgba(var(--ink-inverse-rgb), 0.05)' : 'var(--ink-inverse)'
+  const cardBg = dark ? 'rgba(var(--ink-inverse-rgb), 0.05)' : 'var(--surface)'
   const cardLine = dark ? 'rgba(var(--ink-inverse-rgb), 0.13)' : 'rgba(var(--ink-1-rgb), 0.09)'
 
   return (

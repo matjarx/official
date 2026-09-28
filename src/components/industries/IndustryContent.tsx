@@ -97,15 +97,15 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
           </div>
 
           <div style={{ minWidth: 0, position: 'relative' }}>
-            <div style={{ position: 'absolute', inset: '-14px -10px -18px -10px', borderRadius: 32, background: d.tint, boxShadow: '0 40px 90px rgba(var(--ink-1-rgb), 0.28)', zIndex: 0 }} />
+            <div style={{ position: 'absolute', inset: '-14px -10px -18px -10px', borderRadius: 32, background: d.tint, boxShadow: '0 40px 90px rgba(var(--scrim-rgb), 0.28)', zIndex: 0 }} />
             {d.sample ? (
               <div style={{ position: 'relative', zIndex: 1, padding: 3 }}>
                 <div style={{ borderRadius: 18, overflow: 'hidden', background: '#FFFCF5', boxShadow: '0 24px 54px rgba(0,8,18,0.34)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '9px 13px', background: '#0B1B27' }}>
-                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
-                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
-                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
-                    <span style={{ margin: '0 auto', padding: '4px 14px', borderRadius: 999, fontSize: 10, color: 'rgba(var(--ink-on-dark-rgb), 0.6)', background: 'rgba(var(--ink-inverse-rgb), 0.07)' }}>{d.sample.domain}</span>
+                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(var(--surface-rgb), 0.16)' }} />
+                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(var(--surface-rgb), 0.16)' }} />
+                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(var(--surface-rgb), 0.16)' }} />
+                    <span style={{ margin: '0 auto', padding: '4px 14px', borderRadius: 999, fontSize: 10, color: 'rgba(var(--ink-on-dark-rgb), 0.6)', background: 'rgba(var(--surface-rgb), 0.07)' }}>{d.sample.domain}</span>
                   </div>
                   <div style={{ position: 'relative', minHeight: 236, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '40px 26px', textAlign: 'center', background: d.tint }}>
                     <span style={{ fontSize: 9, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.72)', fontWeight: 600 }}>{d.sample.kicker}</span>

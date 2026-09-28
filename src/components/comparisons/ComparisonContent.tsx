@@ -188,7 +188,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
 
         {/* Testimonial */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
-          <div style={{ padding: 'clamp(26px, 3.6vw, 42px)', borderRadius: 26, background: 'linear-gradient(160deg, rgba(var(--ink-1-rgb), 0.97), rgba(0,28,51,0.97))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(24px)', boxShadow: '0 30px 66px rgba(var(--ink-1-rgb), 0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.18)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 40px)', alignItems: 'center' }}>
+          <div style={{ padding: 'clamp(26px, 3.6vw, 42px)', borderRadius: 26, background: 'linear-gradient(160deg, rgba(var(--scrim-rgb), 0.97), rgba(0,28,51,0.97))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(24px)', boxShadow: '0 30px 66px rgba(var(--scrim-rgb), 0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.18)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 40px)', alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
               <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;I really tried to build a website myself, but it didn&rsquo;t look good and I had no idea how to make it show up on Google. MatjarX just did the whole thing.&rdquo;</p>

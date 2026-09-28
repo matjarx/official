@@ -94,12 +94,12 @@ export const DEFAULT_FAQ_DATA = [
 ]
 
 const LIGHT_THEME = {
-  bg: 'rgba(var(--ink-inverse-rgb), 0.62)', border: 'rgba(var(--ink-inverse-rgb), 0.85)', shadow: '0 16px 40px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)', blur: 'blur(22px)',
+  bg: 'rgba(var(--surface-rgb), 0.62)', border: 'var(--card-line)', shadow: '0 16px 40px rgba(var(--scrim-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)', blur: 'blur(22px)',
   ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(var(--ink-1-rgb), 0.09)',
   tick: 'var(--olive)', ctaInk: 'var(--ink-inverse)', ctaBg: 'var(--navy)', ctaBorder: 'var(--navy)', savingInk: 'var(--olive)',
 }
 const DARK_THEME = {
-  bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.16)', shadow: '0 30px 66px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', blur: 'blur(26px)',
+  bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.16)', shadow: '0 30px 66px rgba(var(--scrim-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', blur: 'blur(26px)',
   ink: 'var(--ink-inverse)', muted: 'rgba(var(--ink-inverse-rgb), 0.6)', body: 'rgba(var(--ink-inverse-rgb), 0.82)', rule: 'rgba(var(--ink-inverse-rgb), 0.16)',
   tick: 'var(--moss-light)', ctaInk: 'var(--ink-on-butter)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)', savingInk: 'var(--butter)',
 }
@@ -269,7 +269,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
             dead navy to its right. The copy takes whatever it needs and
             the button is sized to its own content, hard right. See
             .cta-banner in globals.css for the single-column fallback. */}
-        <div className="cta-banner" style={{ marginTop: 22, padding: 'clamp(24px, 3vw, 32px)', borderRadius: 24, background: 'rgba(var(--ink-1-rgb), 0.9)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
+        <div className="cta-banner" style={{ marginTop: 22, padding: 'clamp(24px, 3vw, 32px)', borderRadius: 24, background: 'rgba(var(--scrim-rgb), 0.9)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 0 }}>
             <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--butter)', fontWeight: 700 }}>Have unique needs?</span>
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--ink-inverse)' }}>Build your own plan — talk to us about Custom</span>
@@ -390,7 +390,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
               <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--trustpilot)" style={{ flex: '0 0 auto' }}><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 15.5, color: 'var(--ink-1)' }}>Trustpilot</span>
             </span>
-            <span style={{ width: 1, height: 26, background: 'rgba(var(--ink-1-rgb), 0.12)' }} />
+            <span style={{ width: 1, height: 26, background: 'rgba(var(--scrim-rgb), 0.12)' }} />
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'var(--ink-1)' }}>4.8 / 5</span>
             <span style={{ fontSize: 14, letterSpacing: '2px', color: 'var(--trustpilot)' }}>★★★★★</span>
             <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>Rated &lsquo;Excellent&rsquo; by our clients</span>

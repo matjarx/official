@@ -60,7 +60,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
             <AuthorByline author={author} meta={`${post.date} · ${post.readTime}`} />
             <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
               {SHARE_LINKS.map((s) => (
-                <a key={s.name} href={`#share-${s.name.toLowerCase()}`} title={`Share on ${s.name}`} style={{ width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
+                <a key={s.name} href={`#share-${s.name.toLowerCase()}`} title={`Share on ${s.name}`} style={{ width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--surface-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(var(--ink-inverse-rgb), 0.8)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
                 </a>
               ))}
@@ -77,7 +77,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '46px 24px 0' }}>
             {post.coverImage ? (
               <figure style={{ margin: 0 }}>
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '1140 / 380', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(var(--ink-1-rgb), 0.16)' }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '1140 / 380', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
                   <Image
                     src={post.coverImage.src}
                     alt={post.coverImage.alt}
@@ -93,7 +93,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                 )}
               </figure>
             ) : (
-              <div style={{ height: 380, borderRadius: 24, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'grid', placeItems: 'center', boxShadow: '0 22px 50px rgba(var(--ink-1-rgb), 0.16)' }}>
+              <div style={{ height: 380, borderRadius: 24, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'grid', placeItems: 'center', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '0.4px', color: 'rgba(var(--ink-inverse-rgb), 0.85)' }}>Article cover image</span>
               </div>
             )}

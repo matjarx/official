@@ -69,6 +69,20 @@ html {
   /* A shadow is black in both modes. Tokenised for consistency, not
      because it will ever be re-pointed. */
   --shadow-rgb: 0,0,0;
+  /* The ink colour used as a DARK THING, not as ink. A shadow and a
+     scrim over an image are dark in both modes; --ink-1-rgb is not,
+     because ink inverts. Same value, opposite behaviour, which is why it
+     cannot be the same token. */
+  --scrim-rgb: 4,18,31;
+
+  /* A card SURFACE, as a triplet, and its edge.
+     Distinct from --ink-inverse-rgb even though both are white today.
+     White ink never changes; a white card must, or the ink flips light
+     and the card stays white. That is exactly what happened: /pricing had
+     81 elements under 3:1 in dark mode because LIGHT_THEME paired
+     bg: rgba(--ink-inverse-rgb, .62) with ink: var(--ink-1). */
+  --surface-rgb: 255,255,255;
+  --card-line: rgba(255,255,255,0.85);
   --navy: #003366;
   --navy-gradient: linear-gradient(160deg, #0A4278, #002E5C);
   --navy-deepest: #04121F;
@@ -163,6 +177,10 @@ html {
      as a hole rather than a lift. This is the dashboard's --card-fill
      composited once: white at 9.5% over --cream's dark value. */
   --surface: #183246;
+  --surface-rgb: 24,50,70;
+  /* A near-white edge would be a hard outline on a dark card; at 0.16 it
+     reads as the same lift the 0.85 gives on cream. */
+  --card-line: rgba(255,255,255,0.16);
 
   /* ── Deliberately NOT redefined, and why ──────────────────────────
      --butter, --butter-deep, --butter-light: the dashboard's approved
