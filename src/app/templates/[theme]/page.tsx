@@ -14,6 +14,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ThemeLandingContent from '@/components/templates/ThemeLandingContent'
+import { getThemes } from '@/lib/theme-catalogue'
 import { THEME_LANDINGS, themeLandingFor } from '@/lib/theme-landing-data'
 import { pageTitle, pageDescription } from '@/lib/marketing-content'
 
@@ -44,5 +45,11 @@ export default async function ThemeLandingPage({ params }: Props) {
   const landing = themeLandingFor(theme)
   if (!landing) notFound()
 
-  return <ThemeLandingContent landing={landing} />
+  // Which plan this theme is actually sold on. Hardcoding Launch sent
+  // people to a checkout for a plan that cannot have the theme they just
+  // chose -- see minPlanFor in theme-catalogue.ts.
+  const themes = await getThemes()
+  const match = themes.find((t) => t.demoUrl?.endsWith(`/themes/${landing.themeKey}`))
+
+  return <ThemeLandingContent landing={landing} minPlan={match?.minPlan ?? 'launch'} />
 }

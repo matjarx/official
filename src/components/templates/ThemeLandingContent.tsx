@@ -42,9 +42,9 @@ import SiteChrome from '@/components/SiteChrome'
 // with two 404s in it and there was no way to check the layout locally.
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.matjarx.com'
 
-type Props = { landing: ThemeLanding }
+type Props = { landing: ThemeLanding; minPlan: 'launch' | 'boost' | 'growth' | 'platinum' }
 
-export default function ThemeLandingContent({ landing }: Props) {
+export default function ThemeLandingContent({ landing, minPlan }: Props) {
   const previewUrl = `${APP_URL}/themes/${landing.themeKey}`
   // ?framed=1 drops the app's "this is a template" banner, which is noise
   // inside a mockup on a page already headed "Website template".
@@ -105,7 +105,7 @@ export default function ThemeLandingContent({ landing }: Props) {
               </p>
 
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <a href={appSignup('launch', landing.themeKey)} className="btn-primary">
+                <a href={appSignup(minPlan, landing.themeKey)} className="btn-primary">
                   Get a website like this
                 </a>
                 <a href={previewUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary">
@@ -291,7 +291,7 @@ export default function ThemeLandingContent({ landing }: Props) {
             seven days.
           </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href={appSignup('launch', landing.themeKey)} className="btn-primary">
+            <a href={appSignup(minPlan, landing.themeKey)} className="btn-primary">
               Get a website like this
             </a>
             <Link href="/templates" className="btn-ghost">

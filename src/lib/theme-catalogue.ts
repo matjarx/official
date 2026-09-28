@@ -39,6 +39,32 @@ export type Theme = {
   secondaryColor: string | null
   /** `sports-shoes-matjar`, used in the ?<slug>-website-template link. */
   slug: string
+  /** The cheapest plan this theme is available on. */
+  minPlan: 'launch' | 'boost' | 'growth' | 'platinum'
+}
+
+/**
+ * The cheapest plan a theme is actually available on.
+ *
+ * Every "Get a website like this" button used to ask for Launch, whatever
+ * the theme cost. Flower Matjar is `plans: ["growth"]`, so a visitor could
+ * pick it, sign up on Launch, pay, fill in ten steps of questionnaire and
+ * then be dropped into the theme grid with no explanation -- because the
+ * app re-checks the theme against the plan and, correctly, refuses it.
+ * Walked that exact path on production before writing this.
+ *
+ * `pro` is the database's name for the plan sold as Boost.
+ */
+const PLAN_ORDER = ['launch', 'pro', 'growth', 'platinum'] as const
+const PLAN_LABEL: Record<string, 'launch' | 'boost' | 'growth' | 'platinum'> = {
+  launch: 'launch', pro: 'boost', growth: 'growth', platinum: 'platinum',
+}
+
+function minPlanFor(plans: string[] | null | undefined): 'launch' | 'boost' | 'growth' | 'platinum' {
+  const available = (plans || []).filter((p) => PLAN_ORDER.includes(p as typeof PLAN_ORDER[number]))
+  if (available.length === 0) return 'launch'
+  const cheapest = PLAN_ORDER.find((p) => available.includes(p))
+  return cheapest ? PLAN_LABEL[cheapest] : 'launch'
 }
 
 type ThemeRow = {
@@ -48,6 +74,7 @@ type ThemeRow = {
   industries: string[] | null
   category: string | null
   coming_soon: boolean | null
+  plans: string[] | null
   structure_key?: string | null
   demo_site_id: number | null
   preview_image_url: string | null
@@ -113,7 +140,7 @@ export async function getThemes(): Promise<Theme[]> {
   try {
     const { data, error } = await supabase
       .from('themes')
-      .select('id, name, description, industries, category, coming_soon, demo_site_id, preview_image_url, primary_color, secondary_color, structure_key')
+      .select('id, name, description, industries, category, coming_soon, plans, demo_site_id, preview_image_url, primary_color, secondary_color, structure_key')
       // Templates only — never a client's private clone.
       //
       // Picking a theme clones it into a private row for that site, so the
@@ -177,6 +204,7 @@ export async function getThemes(): Promise<Theme[]> {
           primaryColor: r.primary_color,
           secondaryColor: r.secondary_color,
           slug: themeSlug(r.name as string),
+          minPlan: minPlanFor(r.plans),
         }
       })
       .sort((a, b) => rankOf(a) - rankOf(b))

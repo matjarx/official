@@ -167,7 +167,7 @@ export default function ThemeModal({ themes }: { themes: Theme[] }) {
               <span style={{ fontSize: 13, color: 'var(--ink-muted)', marginRight: 'auto' }}>
                 {open.comingSoon ? 'In build — tell us if you want it first.' : 'Scroll and click inside the preview. It is the real site.'}
               </span>
-              <GetThisTheme key={open.id} href={appSignup('launch', open.slug)} />
+              <GetThisTheme key={open.id} href={appSignup(open.minPlan, open.slug)} />
             </div>
           </div>
         </div>
