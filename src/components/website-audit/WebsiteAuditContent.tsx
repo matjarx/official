@@ -156,12 +156,12 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 28px)', lineHeight: 1.2, color: 'var(--ink-inverse)' }}>{WHY_NEEDED.stat}</span>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 10 }}>
                 {WHY_NEEDED.problems.map((p) => (
-                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'rgba(226,236,245,0.8)' }}>
+                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'rgba(var(--ink-on-dark-rgb), 0.8)' }}>
                     <span style={{ color: '#C4715A', flex: '0 0 auto' }}>✕</span>{p}
                   </span>
                 ))}
               </div>
-              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(226,236,245,0.65)' }}>{WHY_NEEDED.closing}</p>
+              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(var(--ink-on-dark-rgb), 0.65)' }}>{WHY_NEEDED.closing}</p>
             </div>
           </section>
 

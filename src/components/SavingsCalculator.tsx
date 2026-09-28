@@ -32,14 +32,14 @@ export default function SavingsCalculator() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingTop: 4 }}>
           <div className="glass-dark-inner" style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '18px 20px', borderRadius: 18 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ fontSize: 13.5, color: 'rgba(233,239,245,0.82)', marginRight: 'auto' }}>Number of hours</span>
+              <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.82)', marginRight: 'auto' }}>Number of hours</span>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>{hours} hours</span>
             </div>
             <div style={{ display: 'flex', gap: 6 }}>
               {HOUR_STEPS.map((h) => {
                 const on = hours === h
                 return (
-                  <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 4px', borderRadius: 11, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: on ? 'var(--ink-on-butter)' : 'rgba(233,239,245,0.75)', background: on ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${on ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}`, transition: 'background 160ms ease' }}>{h}</button>
+                  <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 4px', borderRadius: 11, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: on ? 'var(--ink-on-butter)' : 'rgba(var(--ink-on-dark-strong-rgb), 0.75)', background: on ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${on ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}`, transition: 'background 160ms ease' }}>{h}</button>
                 )
               })}
             </div>
@@ -47,14 +47,14 @@ export default function SavingsCalculator() {
 
           <div className="glass-dark-inner" style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '18px 20px', borderRadius: 18 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ fontSize: 13.5, color: 'rgba(233,239,245,0.82)', marginRight: 'auto' }}>Per hour cost</span>
+              <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.82)', marginRight: 'auto' }}>Per hour cost</span>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>{money(rate)} / hour</span>
             </div>
             <div style={{ display: 'flex', gap: 6 }}>
               {RATE_STEPS.map((r) => {
                 const on = rate === r
                 return (
-                  <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 4px', borderRadius: 11, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: on ? 'var(--ink-on-butter)' : 'rgba(233,239,245,0.75)', background: on ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${on ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}`, transition: 'background 160ms ease' }}>{r / 1000}k</button>
+                  <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 4px', borderRadius: 11, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: on ? 'var(--ink-on-butter)' : 'rgba(var(--ink-on-dark-strong-rgb), 0.75)', background: on ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${on ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}`, transition: 'background 160ms ease' }}>{r / 1000}k</button>
                 )
               })}
             </div>
@@ -66,15 +66,15 @@ export default function SavingsCalculator() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: '26px 28px', borderRadius: 22, background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 46px rgba(0,10,25,0.28), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, paddingBottom: 13, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
-              <span style={{ fontSize: 13.5, color: 'rgba(233,239,245,0.84)' }}>Doing it yourself</span>
-              <span style={{ fontSize: 11.5, color: 'rgba(226,236,245,0.5)' }}>{hours} hours × {money(rate)} / hour</span>
+              <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>Doing it yourself</span>
+              <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)' }}>{hours} hours × {money(rate)} / hour</span>
             </div>
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--ink-inverse)', whiteSpace: 'nowrap' }}>{money(diyTotal)}</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, paddingBottom: 13, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
-              <span style={{ fontSize: 13.5, color: 'rgba(233,239,245,0.84)' }}>MatjarX, live in 7 days</span>
-              <span style={{ fontSize: 11.5, color: 'rgba(226,236,245,0.5)' }}>One-time Launch setup fee</span>
+              <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>MatjarX, live in 7 days</span>
+              <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)' }}>One-time Launch setup fee</span>
             </div>
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--moss-light)', whiteSpace: 'nowrap' }}>{money(MATJARX_FEE)}</span>
           </div>
@@ -82,14 +82,14 @@ export default function SavingsCalculator() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 2 }}>
             <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>You save</span>
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(34px, 5vw, 46px)', lineHeight: 1.05, letterSpacing: '-1.6px', color: 'var(--butter)' }}>{money(saving > 0 ? saving : 0)}</span>
-            <span style={{ fontSize: 13, lineHeight: 1.55, color: 'rgba(226,236,245,0.6)' }}>
+            <span style={{ fontSize: 13, lineHeight: 1.55, color: 'rgba(var(--ink-on-dark-rgb), 0.6)' }}>
               {saving > 0 ? `And you don't spend a single one of those ${hours} hours.` : 'Even at this rate, your time is better spent running the business.'}
             </span>
           </div>
 
           <Link href={routes.pricing} className="btn-primary" style={{ marginTop: 6, display: 'block', textAlign: 'center' }}>Sign up now</Link>
         </div>
-        <span style={{ fontSize: 12, lineHeight: 1.55, textAlign: 'center', color: 'rgba(226,236,245,0.45)' }}>Rs. 22,500 is the one-time Launch setup fee. Hosting, domain and business email are included.</span>
+        <span style={{ fontSize: 12, lineHeight: 1.55, textAlign: 'center', color: 'rgba(var(--ink-on-dark-rgb), 0.45)' }}>Rs. 22,500 is the one-time Launch setup fee. Hosting, domain and business email are included.</span>
       </div>
     </div>
   )

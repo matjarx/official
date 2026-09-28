@@ -102,16 +102,16 @@ export default function LocationContent({ locationKey, content }: { locationKey:
                   {d.stats.map((s) => (
                     <div key={s.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.8px', color: 'var(--butter)' }}>{s.value}</span>
-                      <span style={{ fontSize: 12.5, lineHeight: 1.45, color: 'rgba(226,236,245,0.62)' }}>{s.label}</span>
+                      <span style={{ fontSize: 12.5, lineHeight: 1.45, color: 'rgba(var(--ink-on-dark-rgb), 0.62)' }}>{s.label}</span>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(226,236,245,0.8)' }}>{d.intro[1] ?? d.intro[0]}</p>
+                <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(var(--ink-on-dark-rgb), 0.8)' }}>{d.intro[1] ?? d.intro[0]}</p>
               )}
               <div style={{ height: 150, borderRadius: 16, background: d.tint ?? 'linear-gradient(150deg, var(--navy), var(--olive))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '0 20px', textAlign: 'center' }}>
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--moss-light)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /></svg>
-                <span style={{ fontSize: 12.5, color: 'rgba(226,236,245,0.6)' }}>{d.areasLine ?? `Serving ${d.name} and the surrounding area`}</span>
+                <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-on-dark-rgb), 0.6)' }}>{d.areasLine ?? `Serving ${d.name} and the surrounding area`}</span>
               </div>
             </div>
           </div>
@@ -249,7 +249,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
                   {d.wins.map((w) => (
                     <div key={w} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '15px 17px', borderRadius: 15, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--moss-light)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M12 19V5M12 5l-5 5M12 5l5 5" /></svg>
-                      <span style={{ fontSize: 13.5, lineHeight: 1.5, color: 'rgba(233,239,245,0.86)' }}>{w}</span>
+                      <span style={{ fontSize: 13.5, lineHeight: 1.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.86)' }}>{w}</span>
                     </div>
                   ))}
                 </div>

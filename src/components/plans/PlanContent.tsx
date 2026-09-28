@@ -190,7 +190,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Compared with {d.compareWith}</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-inverse)' }}>{d.compareTitle}</h2>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.62, color: 'rgba(226,236,245,0.68)' }}>{d.compareBody}</p>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.62, color: 'rgba(var(--ink-on-dark-rgb), 0.68)' }}>{d.compareBody}</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, paddingTop: 4 }}>
                 <Link className="btn-trace" href={routes.pricing} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-on-butter)', background: 'var(--butter)' }}>Compare all plans</Link>
                 <Link href={d.otherHref} className="btn-ghost">{d.otherLabel}</Link>
@@ -200,7 +200,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
               {d.deltas.map((delta) => (
                 <div key={delta.label} className="glass-dark-inner" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '15px 17px', borderRadius: 15 }}>
                   <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke={delta.ink} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d={delta.icon} /></svg>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.45, color: 'rgba(233,239,245,0.86)' }}>{delta.label}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.45, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.86)' }}>{delta.label}</span>
                 </div>
               ))}
             </div>

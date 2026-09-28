@@ -80,20 +80,20 @@ const TOP_ICONS = [
 ]
 const DEVICES = [
   { icon: 'M3.5 5.5h17v10h-17zM9 19h6M12 15.5V19', bg: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.18), rgba(var(--ink-inverse-rgb), 0.07))', ink: '#F7FAFD' },
-  { icon: 'M7 3.5h10v17H7zM11 18h2', bg: 'transparent', ink: 'rgba(226,236,245,0.55)' },
-  { icon: 'M8.5 3.5h7v17h-7zM11.5 18h1', bg: 'transparent', ink: 'rgba(226,236,245,0.55)' },
+  { icon: 'M7 3.5h10v17H7zM11 18h2', bg: 'transparent', ink: 'rgba(var(--ink-on-dark-rgb), 0.55)' },
+  { icon: 'M8.5 3.5h7v17h-7zM11.5 18h1', bg: 'transparent', ink: 'rgba(var(--ink-on-dark-rgb), 0.55)' },
 ]
 const TOOLS = [
-  { icon: 'M12 19V5M12 5l-5 5M12 5l5 5', ink: 'rgba(233,239,245,0.8)' },
-  { icon: 'M12 5v14M12 19l-5-5M12 19l5-5', ink: 'rgba(233,239,245,0.8)' },
-  { icon: 'M9 9h11v11H9zM15 5H4v11', ink: 'rgba(233,239,245,0.8)' },
+  { icon: 'M12 19V5M12 5l-5 5M12 5l5 5', ink: 'rgba(var(--ink-on-dark-strong-rgb), 0.8)' },
+  { icon: 'M12 5v14M12 19l-5-5M12 19l5-5', ink: 'rgba(var(--ink-on-dark-strong-rgb), 0.8)' },
+  { icon: 'M9 9h11v11H9zM15 5H4v11', ink: 'rgba(var(--ink-on-dark-strong-rgb), 0.8)' },
   { icon: 'm9 8-4 4 4 4M15 8l4 4-4 4', ink: 'var(--butter)' },
   { icon: 'M5 7h14M9 7V4.5h6V7M7 7l1 13h8l1-13', ink: '#E58A6B' },
 ]
 const ALIGN_OPTIONS = [
-  { label: 'Left', bg: 'transparent', ink: 'rgba(226,236,245,0.6)' },
+  { label: 'Left', bg: 'transparent', ink: 'rgba(var(--ink-on-dark-rgb), 0.6)' },
   { label: 'Center', bg: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.18), rgba(var(--ink-inverse-rgb), 0.07))', ink: '#F7FAFD' },
-  { label: 'Right', bg: 'transparent', ink: 'rgba(226,236,245,0.6)' },
+  { label: 'Right', bg: 'transparent', ink: 'rgba(var(--ink-on-dark-rgb), 0.6)' },
 ]
 const SWATCHES = [
   { fill: 'radial-gradient(120% 100% at 50% 0%, #4A2A12 0%, #1C0F05 100%)', ring: '2px var(--butter)' },
@@ -124,13 +124,13 @@ function layerRow(label: string, icon: string, on: boolean, badge = '', custom =
     label, icon, badge, custom,
     bg: on ? 'rgba(var(--butter-rgb), 0.13)' : 'transparent',
     rail: on ? 'var(--butter)' : 'rgba(var(--ink-inverse-rgb), 0.1)',
-    ink: on ? '#F7FAFD' : 'rgba(226,236,245,0.68)',
-    iconInk: on ? 'var(--butter)' : 'rgba(226,236,245,0.46)',
+    ink: on ? '#F7FAFD' : 'rgba(var(--ink-on-dark-rgb), 0.68)',
+    iconInk: on ? 'var(--butter)' : 'rgba(var(--ink-on-dark-rgb), 0.46)',
     weight: on ? 600 : 400,
   }
 }
 
-export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: { statusInk?: string }) {
+export default function EditorShowcase({ statusInk = 'rgba(var(--ink-on-dark-rgb), 0.6)' }: { statusInk?: string }) {
   const [mode, setMode] = useState<'product' | 'service'>('product')
   const [img, setImg] = useState(0)
   const isProduct = mode === 'product'
@@ -260,18 +260,18 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
           </span>
           <span style={{ width: 1, height: 20, flex: '0 0 auto', background: 'rgba(var(--ink-inverse-rgb), 0.12)' }} />
           <Image src="/brand/matjarx-mark-light.webp" alt="" width={18} height={18} style={{ flex: '0 0 auto', objectFit: 'contain' }} />
-          <span style={{ fontSize: 11.5, color: 'rgba(226,236,245,0.5)', whiteSpace: 'nowrap' }}>Theme editor</span>
-          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(226,236,245,0.34)" strokeWidth="2.2" strokeLinecap="round" style={{ flex: '0 0 auto' }}><path d="m9 6 6 6-6 6" /></svg>
+          <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)', whiteSpace: 'nowrap' }}>Theme editor</span>
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.34)" strokeWidth="2.2" strokeLinecap="round" style={{ flex: '0 0 auto' }}><path d="m9 6 6 6-6 6" /></svg>
           <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: '#F2F6FA', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{siteName}</span>
           <span style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '5px 10px', borderRadius: 999, background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.13)', flex: '0 0 auto' }}>
-            <span style={{ fontSize: 10.5, fontWeight: 600, color: 'rgba(233,239,245,0.82)' }}>Home</span>
-            <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.55)" strokeWidth="2.4" strokeLinecap="round"><path d="m6 9 6 6 6-6" /></svg>
+            <span style={{ fontSize: 10.5, fontWeight: 600, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.82)' }}>Home</span>
+            <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.55)" strokeWidth="2.4" strokeLinecap="round"><path d="m6 9 6 6 6-6" /></svg>
           </span>
 
           <span style={{ display: 'flex', gap: 4, marginLeft: 4, flex: '0 0 auto' }}>
             {TOP_ICONS.map((t, i) => (
               <span key={i} style={{ width: 26, height: 26, borderRadius: 7, display: 'grid', placeItems: 'center', opacity: t.opacity }}>
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(226,236,245,0.8)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d={t.icon} /></svg>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.8)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d={t.icon} /></svg>
               </span>
             ))}
           </span>
@@ -286,17 +286,17 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
 
           <span style={{ display: 'flex', alignItems: 'center', gap: 2, padding: 3, borderRadius: 9, background: 'rgba(0,17,32,0.42)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.09)', flex: '0 0 auto' }}>
             <span style={{ width: 24, height: 22, borderRadius: 6, display: 'grid', placeItems: 'center' }}>
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(226,236,245,0.75)" strokeWidth="2.2" strokeLinecap="round"><path d="M5 12h14" /></svg>
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.75)" strokeWidth="2.2" strokeLinecap="round"><path d="M5 12h14" /></svg>
             </span>
             <span style={{ minWidth: 38, textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11, color: '#E9EFF5' }}>100%</span>
             <span style={{ width: 24, height: 22, borderRadius: 6, display: 'grid', placeItems: 'center' }}>
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(226,236,245,0.75)" strokeWidth="2.2" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.75)" strokeWidth="2.2" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
             </span>
           </span>
 
           <span style={{ display: 'flex', alignItems: 'center', gap: 6, flex: '0 0 auto' }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--moss-light)' }} />
-            <span style={{ fontSize: 10.5, color: 'rgba(226,236,245,0.45)', whiteSpace: 'nowrap' }}>Saved just now</span>
+            <span style={{ fontSize: 10.5, color: 'rgba(var(--ink-on-dark-rgb), 0.45)', whiteSpace: 'nowrap' }}>Saved just now</span>
           </span>
           <span style={{ flex: '0 0 auto', padding: '7px 13px', borderRadius: 8, fontSize: 11, fontWeight: 600, color: '#E9EFF5', background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.15)', whiteSpace: 'nowrap' }}>Preview</span>
           <span style={{ flex: '0 0 auto', padding: '7px 14px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, color: 'var(--ink-on-butter)', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.6)', whiteSpace: 'nowrap' }}>Publish</span>
@@ -308,16 +308,16 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
           <div style={{ padding: '12px 10px', borderRight: '1px solid rgba(var(--ink-inverse-rgb), 0.09)', display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
             <div style={{ display: 'flex', gap: 4, padding: 3, borderRadius: 9, background: 'rgba(0,17,32,0.42)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.09)' }}>
               <span style={{ flex: 1, textAlign: 'center', padding: '6px 4px', borderRadius: 7, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10.5, color: '#F7FAFD', background: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.18), rgba(var(--ink-inverse-rgb), 0.07))' }}>Sections</span>
-              <span style={{ flex: 1, textAlign: 'center', padding: '6px 4px', borderRadius: 7, fontSize: 10.5, color: 'rgba(226,236,245,0.55)' }}>Globals</span>
+              <span style={{ flex: 1, textAlign: 'center', padding: '6px 4px', borderRadius: 7, fontSize: 10.5, color: 'rgba(var(--ink-on-dark-rgb), 0.55)' }}>Globals</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '7px 10px', borderRadius: 9, background: 'rgba(0,17,32,0.4)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(226,236,245,0.45)" strokeWidth="2" strokeLinecap="round" style={{ flex: '0 0 auto' }}><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
-              <span style={{ fontSize: 10, color: 'rgba(226,236,245,0.4)' }}>Search sections</span>
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.45)" strokeWidth="2" strokeLinecap="round" style={{ flex: '0 0 auto' }}><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
+              <span style={{ fontSize: 10, color: 'rgba(var(--ink-on-dark-rgb), 0.4)' }}>Search sections</span>
             </div>
 
             {LIBRARY_GROUPS.map((g) => (
               <div key={g.title} style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                <span style={{ padding: '4px 4px 5px', fontSize: 8.5, letterSpacing: 1.2, textTransform: 'uppercase', color: 'rgba(226,236,245,0.34)', fontWeight: 600 }}>{g.title}</span>
+                <span style={{ padding: '4px 4px 5px', fontSize: 8.5, letterSpacing: 1.2, textTransform: 'uppercase', color: 'rgba(var(--ink-on-dark-rgb), 0.34)', fontWeight: 600 }}>{g.title}</span>
                 {g.items.map((w) => (
                   <span key={w.name} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '7px 7px', borderRadius: 8 }}>
                     <span style={{ width: 24, height: 24, flex: '0 0 auto', borderRadius: 7, display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.06)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
@@ -325,9 +325,9 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 0, marginRight: 'auto' }}>
                       <span style={{ fontSize: 10.5, fontWeight: 600, color: '#EDF3F8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{w.name}</span>
-                      <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.42)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{w.hint}</span>
+                      <span style={{ fontSize: 8.5, color: 'rgba(var(--ink-on-dark-rgb), 0.42)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{w.hint}</span>
                     </span>
-                    <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.24)" strokeWidth="2" strokeLinecap="round" style={{ flex: '0 0 auto' }}><path d="M9 6h.01M9 12h.01M9 18h.01M15 6h.01M15 12h.01M15 18h.01" /></svg>
+                    <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.24)" strokeWidth="2" strokeLinecap="round" style={{ flex: '0 0 auto' }}><path d="M9 6h.01M9 12h.01M9 18h.01M15 6h.01M15 12h.01M15 18h.01" /></svg>
                   </span>
                 ))}
               </div>
@@ -348,8 +348,8 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
                     below now straddles the top-right corner of the selected
                     section, the way a real editor attaches it, and that
                     corner has to be clear for it. */}
-                <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.38)', flex: '0 0 auto', marginLeft: 4 }}>Desktop 1440</span>
-                <span style={{ margin: '0 auto', padding: '3px 12px', borderRadius: 999, fontSize: 9.5, color: 'rgba(226,236,245,0.6)', background: 'rgba(var(--ink-inverse-rgb), 0.07)' }}>{domain}</span>
+                <span style={{ fontSize: 8.5, color: 'rgba(var(--ink-on-dark-rgb), 0.38)', flex: '0 0 auto', marginLeft: 4 }}>Desktop 1440</span>
+                <span style={{ margin: '0 auto', padding: '3px 12px', borderRadius: 999, fontSize: 9.5, color: 'rgba(var(--ink-on-dark-rgb), 0.6)', background: 'rgba(var(--ink-inverse-rgb), 0.07)' }}>{domain}</span>
                 <span style={{ width: 74, flex: '0 0 auto' }} aria-hidden="true" />
               </div>
 
@@ -386,13 +386,13 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 23, lineHeight: 1.05, letterSpacing: '-0.9px', color: headInk }}>{headline}</span>
                     <span style={{ maxWidth: '21em', fontSize: 9.5, lineHeight: 1.6, color: bodyInk }}>{blurb}</span>
                     <span style={{ display: 'flex', gap: 7, flexWrap: 'wrap', paddingTop: 5 }}>
-                      <span style={{ padding: '8px 17px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9.5, color: ctaInk, background: ctaBg, boxShadow: '0 6px 16px rgba(0,0,0,0.2)' }}>{navCta}</span>
+                      <span style={{ padding: '8px 17px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9.5, color: ctaInk, background: ctaBg, boxShadow: '0 6px 16px rgba(var(--shadow-rgb), 0.2)' }}>{navCta}</span>
                       <span style={{ padding: '8px 15px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9.5, color: ghostInk, background: ghostBg, border: `1px solid ${ghostLine}` }}>{ctaGhost}</span>
                     </span>
                   </div>
 
                   <div style={{ position: 'relative', zIndex: 2, minWidth: 0, display: 'flex', justifyContent: 'center' }}>
-                    <span style={{ display: 'block', width: '100%', maxWidth: 176, aspectRatio: '1 / 1.04', borderRadius: 10, overflow: 'hidden', boxShadow: '0 14px 34px rgba(0,0,0,0.3)', position: 'relative' }}>
+                    <span style={{ display: 'block', width: '100%', maxWidth: 176, aspectRatio: '1 / 1.04', borderRadius: 10, overflow: 'hidden', boxShadow: '0 14px 34px rgba(var(--shadow-rgb), 0.3)', position: 'relative' }}>
                       <Image src={inlineImg} alt="" fill sizes="220px" priority style={{ objectFit: 'cover', objectPosition: '50% 45%' }} />
                     </span>
                   </div>
@@ -413,21 +413,21 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
           <div style={{ borderLeft: '1px solid rgba(var(--ink-inverse-rgb), 0.09)', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
             <div style={{ padding: '12px 12px 14px', borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.09)', display: 'flex', flexDirection: 'column', gap: 8 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                <span style={{ fontSize: 8.5, letterSpacing: 1.2, textTransform: 'uppercase', color: 'rgba(226,236,245,0.34)', fontWeight: 600, marginRight: 'auto' }}>Structure</span>
-                <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.3)' }}>5 sections</span>
+                <span style={{ fontSize: 8.5, letterSpacing: 1.2, textTransform: 'uppercase', color: 'rgba(var(--ink-on-dark-rgb), 0.34)', fontWeight: 600, marginRight: 'auto' }}>Structure</span>
+                <span style={{ fontSize: 8.5, color: 'rgba(var(--ink-on-dark-rgb), 0.3)' }}>5 sections</span>
               </div>
               {layerGroups.map((lg) => (
                 <div key={lg.title} style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, padding: '3px 2px' }}>
-                    <span style={{ fontSize: 8.5, fontWeight: 600, color: 'rgba(226,236,245,0.5)', marginRight: 'auto' }}>{lg.title}</span>
-                    <span style={{ fontSize: 8, color: 'rgba(226,236,245,0.28)' }}>{lg.note}</span>
+                    <span style={{ fontSize: 8.5, fontWeight: 600, color: 'rgba(var(--ink-on-dark-rgb), 0.5)', marginRight: 'auto' }}>{lg.title}</span>
+                    <span style={{ fontSize: 8, color: 'rgba(var(--ink-on-dark-rgb), 0.28)' }}>{lg.note}</span>
                   </div>
                   {lg.rows.map((row) => (
                     <span key={row.label} style={{ display: 'flex', alignItems: 'center', gap: 7, marginLeft: 8, padding: '6px 8px', borderRadius: 7, background: row.bg, borderLeft: `2px solid ${row.rail}` }}>
-                      <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="rgba(226,236,245,0.22)" strokeWidth="2" strokeLinecap="round" style={{ flex: '0 0 auto' }}><path d="M9 6h.01M9 12h.01M9 18h.01M15 6h.01M15 12h.01M15 18h.01" /></svg>
+                      <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.22)" strokeWidth="2" strokeLinecap="round" style={{ flex: '0 0 auto' }}><path d="M9 6h.01M9 12h.01M9 18h.01M15 6h.01M15 12h.01M15 18h.01" /></svg>
                       <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke={row.iconInk} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d={row.icon} /></svg>
                       <span style={{ fontSize: 10, fontWeight: row.weight, color: row.ink, marginRight: 'auto', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{row.label}</span>
-                      {row.badge && <span style={{ fontSize: 8, fontWeight: 600, padding: '3px 6px', borderRadius: 999, color: 'rgba(226,236,245,0.55)', background: 'rgba(var(--ink-inverse-rgb), 0.08)', whiteSpace: 'nowrap', flex: '0 0 auto' }}>{row.badge}</span>}
+                      {row.badge && <span style={{ fontSize: 8, fontWeight: 600, padding: '3px 6px', borderRadius: 999, color: 'rgba(var(--ink-on-dark-rgb), 0.55)', background: 'rgba(var(--ink-inverse-rgb), 0.08)', whiteSpace: 'nowrap', flex: '0 0 auto' }}>{row.badge}</span>}
                       {row.custom && <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="var(--butter-deep)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m9 8-4 4 4 4M15 8l4 4-4 4" /></svg>}
                     </span>
                   ))}
@@ -442,55 +442,55 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
                 </span>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 0 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, color: '#F2F6FA' }}>Hero</span>
-                  <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.42)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Section 1 of 5 · custom code</span>
+                  <span style={{ fontSize: 8.5, color: 'rgba(var(--ink-on-dark-rgb), 0.42)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Section 1 of 5 · custom code</span>
                 </span>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <span style={{ fontSize: 8.5, letterSpacing: 1.2, textTransform: 'uppercase', color: 'rgba(226,236,245,0.34)', fontWeight: 600 }}>Layout</span>
-                <span style={{ fontSize: 10, color: 'rgba(226,236,245,0.6)' }}>Text alignment</span>
+                <span style={{ fontSize: 8.5, letterSpacing: 1.2, textTransform: 'uppercase', color: 'rgba(var(--ink-on-dark-rgb), 0.34)', fontWeight: 600 }}>Layout</span>
+                <span style={{ fontSize: 10, color: 'rgba(var(--ink-on-dark-rgb), 0.6)' }}>Text alignment</span>
                 <div style={{ display: 'flex', gap: 3, padding: 3, borderRadius: 8, background: 'rgba(0,17,32,0.42)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.09)' }}>
                   {ALIGN_OPTIONS.map((a) => (
                     <span key={a.label} style={{ flex: 1, textAlign: 'center', padding: '6px 3px', borderRadius: 6, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9.5, color: a.ink, background: a.bg }}>{a.label}</span>
                   ))}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span style={{ fontSize: 10, color: 'rgba(226,236,245,0.6)', marginRight: 'auto' }}>Padding</span>
+                  <span style={{ fontSize: 10, color: 'rgba(var(--ink-on-dark-rgb), 0.6)', marginRight: 'auto' }}>Padding</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: 2, padding: 2, borderRadius: 8, background: 'rgba(0,17,32,0.42)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.09)' }}>
                     <span style={{ width: 20, height: 20, borderRadius: 5, display: 'grid', placeItems: 'center' }}>
-                      <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.75)" strokeWidth="2.2" strokeLinecap="round"><path d="M5 12h14" /></svg>
+                      <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.75)" strokeWidth="2.2" strokeLinecap="round"><path d="M5 12h14" /></svg>
                     </span>
                     <span style={{ minWidth: 34, textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: '#E9EFF5' }}>62 px</span>
                     <span style={{ width: 20, height: 20, borderRadius: 5, display: 'grid', placeItems: 'center' }}>
-                      <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.75)" strokeWidth="2.2" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+                      <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.75)" strokeWidth="2.2" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
                     </span>
                   </span>
                 </div>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <span style={{ fontSize: 8.5, letterSpacing: 1.2, textTransform: 'uppercase', color: 'rgba(226,236,245,0.34)', fontWeight: 600 }}>Background</span>
+                <span style={{ fontSize: 8.5, letterSpacing: 1.2, textTransform: 'uppercase', color: 'rgba(var(--ink-on-dark-rgb), 0.34)', fontWeight: 600 }}>Background</span>
                 <div style={{ display: 'flex', gap: 7 }}>
                   {SWATCHES.map((s, i) => (
                     <span key={i} style={{ flex: 1, height: 26, borderRadius: 8, background: s.fill, boxShadow: `0 0 0 ${s.ring}` }} />
                   ))}
                 </div>
-                <span style={{ fontSize: 10, color: 'rgba(226,236,245,0.6)' }}>Background image</span>
+                <span style={{ fontSize: 10, color: 'rgba(var(--ink-on-dark-rgb), 0.6)' }}>Background image</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '8px 9px', borderRadius: 9, background: 'rgba(0,17,32,0.35)', border: '1px dashed rgba(var(--ink-inverse-rgb), 0.22)' }}>
                   <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 6, overflow: 'hidden', position: 'relative' }}>
                     <Image src={heroImg} alt="" fill sizes="26px" style={{ objectFit: 'cover' }} />
                   </span>
                   <span style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 0 }}>
                     <span style={{ fontSize: 9.5, fontWeight: 600, color: '#EDF3F8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bgFileName}</span>
-                    <span style={{ fontSize: 8, color: 'rgba(226,236,245,0.42)' }}>Click to replace</span>
+                    <span style={{ fontSize: 8, color: 'rgba(var(--ink-on-dark-rgb), 0.42)' }}>Click to replace</span>
                   </span>
                 </div>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 1, marginRight: 'auto', minWidth: 0 }}>
-                  <span style={{ fontSize: 10, color: 'rgba(233,239,245,0.78)' }}>Show kicker</span>
-                  <span style={{ fontSize: 8, color: 'rgba(226,236,245,0.4)' }}>Line above the heading</span>
+                  <span style={{ fontSize: 10, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.78)' }}>Show kicker</span>
+                  <span style={{ fontSize: 8, color: 'rgba(var(--ink-on-dark-rgb), 0.4)' }}>Line above the heading</span>
                 </span>
                 <span style={{ width: 34, height: 20, flex: '0 0 auto', borderRadius: 999, padding: 2, background: 'var(--moss-light)' }}>
                   <span style={{ display: 'block', width: 16, height: 16, borderRadius: '50%', background: 'var(--surface)', marginLeft: 14 }} />
@@ -501,8 +501,8 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 13px', borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.09)', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: 10, color: 'rgba(226,236,245,0.42)', marginRight: 'auto' }}>Hero selected</span>
-          <span style={{ fontSize: 10, color: 'rgba(226,236,245,0.3)' }}>Version 2.4 draft</span>
+          <span style={{ fontSize: 10, color: 'rgba(var(--ink-on-dark-rgb), 0.42)', marginRight: 'auto' }}>Hero selected</span>
+          <span style={{ fontSize: 10, color: 'rgba(var(--ink-on-dark-rgb), 0.3)' }}>Version 2.4 draft</span>
         </div>
       </div>
 
@@ -577,7 +577,7 @@ export default function EditorShowcase({ statusInk = 'rgba(226,236,245,0.6)' }: 
         <span className="showcase-hint" aria-hidden="true">Click to change the image</span>
         <span style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 10px', background: 'rgba(var(--ink-inverse-rgb), 0.06)' }}>
           <span style={{ fontSize: 9.5, fontWeight: 600, color: '#E9EFF5', marginRight: 'auto' }}>Media Library</span>
-          <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(226,236,245,0.6)" strokeWidth="2.2" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
+          <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.6)" strokeWidth="2.2" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </span>
         <span style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3, padding: 8 }}>
           {mediaThumbs.map((m, i) => (

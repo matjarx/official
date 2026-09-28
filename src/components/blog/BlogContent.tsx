@@ -111,7 +111,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(var(--ink-1-rgb), 0.35), rgba(var(--ink-1-rgb), 0))' }} />
                       </>
                     )}
-                    <span style={{ position: 'relative', fontSize: 10.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', padding: '6px 11px', borderRadius: 999, color: 'rgba(var(--ink-inverse-rgb), 0.94)', background: 'rgba(0,0,0,0.3)' }}>{p.category}</span>
+                    <span style={{ position: 'relative', fontSize: 10.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', padding: '6px 11px', borderRadius: 999, color: 'rgba(var(--ink-inverse-rgb), 0.94)', background: 'rgba(var(--shadow-rgb), 0.3)' }}>{p.category}</span>
                   </div>
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 11, flex: 1 }}>
                     <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, lineHeight: 1.28, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{p.title}</h3>

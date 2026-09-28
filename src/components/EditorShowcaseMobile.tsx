@@ -34,11 +34,11 @@ const TABS = [
   icon: t.icon,
   bg: t.on ? 'rgba(var(--butter-rgb), 0.14)' : 'rgba(var(--ink-inverse-rgb), 0.06)',
   line: t.on ? 'rgba(var(--butter-rgb), 0.34)' : 'rgba(var(--ink-inverse-rgb), 0.11)',
-  ink: t.on ? 'var(--butter)' : 'rgba(226,236,245,0.6)',
+  ink: t.on ? 'var(--butter)' : 'rgba(var(--ink-on-dark-rgb), 0.6)',
   weight: t.on ? 2.1 : 1.75,
 }))
 
-export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6)' }: { statusInk?: string }) {
+export default function EditorShowcaseMobile({ statusInk = 'rgba(var(--ink-on-dark-rgb), 0.6)' }: { statusInk?: string }) {
   const [mode, setMode] = useState<'product' | 'service'>('product')
   const [img, setImg] = useState(0)
   const isProduct = mode === 'product'
@@ -104,12 +104,12 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6" /></svg>
           </span>
           <span style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 0, marginRight: 'auto' }}>
-            <span style={{ fontSize: 7.5, letterSpacing: 1.1, textTransform: 'uppercase', color: 'rgba(226,236,245,0.42)' }}>Theme editor</span>
+            <span style={{ fontSize: 7.5, letterSpacing: 1.1, textTransform: 'uppercase', color: 'rgba(var(--ink-on-dark-rgb), 0.42)' }}>Theme editor</span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10.5, color: '#F7FAFD', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{siteName}</span>
               <span style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', gap: 3, padding: '2px 6px', borderRadius: 999, background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
-                <span style={{ fontSize: 7.5, fontWeight: 600, color: 'rgba(233,239,245,0.8)' }}>Home</span>
-                <svg viewBox="0 0 24 24" width="7" height="7" fill="none" stroke="rgba(226,236,245,0.55)" strokeWidth="2.6" strokeLinecap="round"><path d="m6 9 6 6 6-6" /></svg>
+                <span style={{ fontSize: 7.5, fontWeight: 600, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.8)' }}>Home</span>
+                <svg viewBox="0 0 24 24" width="7" height="7" fill="none" stroke="rgba(var(--ink-on-dark-rgb), 0.55)" strokeWidth="2.6" strokeLinecap="round"><path d="m6 9 6 6 6-6" /></svg>
               </span>
             </span>
           </span>
@@ -121,8 +121,8 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0 12px 8px' }}>
           <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--moss-light)' }} />
-          <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.42)', marginRight: 'auto' }}>Saved just now</span>
-          <span style={{ fontSize: 8.5, color: 'rgba(226,236,245,0.3)' }}>v2.4 draft</span>
+          <span style={{ fontSize: 8.5, color: 'rgba(var(--ink-on-dark-rgb), 0.42)', marginRight: 'auto' }}>Saved just now</span>
+          <span style={{ fontSize: 8.5, color: 'rgba(var(--ink-on-dark-rgb), 0.3)' }}>v2.4 draft</span>
         </div>
 
         <div style={{ padding: '0 6px' }}>
@@ -131,7 +131,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
-              <span style={{ margin: '0 auto', padding: '3px 10px', borderRadius: 999, fontSize: 8, color: 'rgba(226,236,245,0.6)', background: 'rgba(var(--ink-inverse-rgb), 0.07)' }}>{domain}</span>
+              <span style={{ margin: '0 auto', padding: '3px 10px', borderRadius: 999, fontSize: 8, color: 'rgba(var(--ink-on-dark-rgb), 0.6)', background: 'rgba(var(--ink-inverse-rgb), 0.07)' }}>{domain}</span>
             </div>
 
             <div style={{ position: 'relative', outline: '2px solid var(--butter)', outlineOffset: -2 }}>
@@ -149,7 +149,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
                 <span style={{ position: 'relative', zIndex: 2, fontSize: 7.5, letterSpacing: 2, textTransform: 'uppercase', color: kickerInk, fontWeight: 600 }}>{kicker}</span>
                 <span style={{ position: 'relative', zIndex: 2, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, lineHeight: 1.06, letterSpacing: '-0.8px', color: headInk }}>{headline}</span>
                 <span style={{ position: 'relative', zIndex: 2, maxWidth: '22em', fontSize: 9.5, lineHeight: 1.6, color: bodyInk }}>{blurb}</span>
-                <span style={{ position: 'relative', zIndex: 2, marginTop: 6, padding: '9px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: ctaInk, background: ctaBg, boxShadow: '0 6px 16px rgba(0,0,0,0.24)' }}>{navCta}</span>
+                <span style={{ position: 'relative', zIndex: 2, marginTop: 6, padding: '9px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: ctaInk, background: ctaBg, boxShadow: '0 6px 16px rgba(var(--shadow-rgb), 0.24)' }}>{navCta}</span>
               </div>
             </div>
 

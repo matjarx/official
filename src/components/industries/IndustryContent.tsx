@@ -105,11 +105,11 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
                     <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
                     <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
                     <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
-                    <span style={{ margin: '0 auto', padding: '4px 14px', borderRadius: 999, fontSize: 10, color: 'rgba(226,236,245,0.6)', background: 'rgba(var(--ink-inverse-rgb), 0.07)' }}>{d.sample.domain}</span>
+                    <span style={{ margin: '0 auto', padding: '4px 14px', borderRadius: 999, fontSize: 10, color: 'rgba(var(--ink-on-dark-rgb), 0.6)', background: 'rgba(var(--ink-inverse-rgb), 0.07)' }}>{d.sample.domain}</span>
                   </div>
                   <div style={{ position: 'relative', minHeight: 236, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '40px 26px', textAlign: 'center', background: d.tint }}>
                     <span style={{ fontSize: 9, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.72)', fontWeight: 600 }}>{d.sample.kicker}</span>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, lineHeight: 1.08, letterSpacing: '-1px', color: 'var(--ink-inverse)', textShadow: '0 2px 14px rgba(0,0,0,0.34)' }}>{d.sample.name}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, lineHeight: 1.08, letterSpacing: '-1px', color: 'var(--ink-inverse)', textShadow: '0 2px 14px rgba(var(--shadow-rgb), 0.34)' }}>{d.sample.name}</span>
                     <span style={{ maxWidth: '24em', fontSize: 11.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.82)' }}>{d.sample.blurb}</span>
                     <span style={{ marginTop: 8, padding: '10px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, color: 'var(--ink-on-butter)', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' }}>{d.sample.cta}</span>
                   </div>
@@ -127,7 +127,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
               <div className="glass-dark-panel" style={{ position: 'relative', zIndex: 1, padding: '32px 30px', borderRadius: 26, minHeight: 236, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, textAlign: 'center' }}>
                 <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="var(--butter)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: 'var(--ink-inverse)' }}>Built for {d.lower}</span>
-                <span style={{ maxWidth: '24em', fontSize: 13.5, lineHeight: 1.6, color: 'rgba(226,236,245,0.75)' }}>{d.subhead}</span>
+                <span style={{ maxWidth: '24em', fontSize: 13.5, lineHeight: 1.6, color: 'rgba(var(--ink-on-dark-rgb), 0.75)' }}>{d.subhead}</span>
               </div>
             )}
           </div>
@@ -169,7 +169,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
                   {d.results.map((r) => (
                     <div key={r.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3vw, 30px)', letterSpacing: '-0.9px', color: 'var(--ink-inverse)' }}>{r.value}</span>
-                      <span style={{ fontSize: 13, color: 'rgba(226,236,245,0.6)' }}>{r.label}</span>
+                      <span style={{ fontSize: 13, color: 'rgba(var(--ink-on-dark-rgb), 0.6)' }}>{r.label}</span>
                     </div>
                   ))}
                 </div>

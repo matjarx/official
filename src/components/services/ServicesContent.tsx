@@ -49,7 +49,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
             <Link href={routes.pricing} className="btn-primary" style={{ marginTop: 6 }}>{d.heroCta}</Link>
           </div>
           <div style={{ maxWidth: 1300, margin: '44px auto -70px', padding: '0 24px' }}>
-            <div style={{ borderRadius: '20px 20px 0 0', overflow: 'hidden', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', borderBottom: 'none', boxShadow: '0 -10px 60px rgba(0,0,0,0.35)', padding: 4, background: '#001526' }}>
+            <div style={{ borderRadius: '20px 20px 0 0', overflow: 'hidden', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', borderBottom: 'none', boxShadow: '0 -10px 60px rgba(var(--shadow-rgb), 0.35)', padding: 4, background: '#001526' }}>
               <div className="showcase-desktop-only"><EditorShowcase /></div>
               <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
             </div>

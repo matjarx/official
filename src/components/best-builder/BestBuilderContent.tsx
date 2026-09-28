@@ -242,13 +242,13 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Be honest with yourself</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-inverse)' }}>When a DIY builder genuinely is the right answer</h2>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.65, color: 'rgba(226,236,245,0.68)' }}>We&rsquo;d rather you picked correctly than picked us. If two or more of these are true, use Wix or Squarespace and keep your money.</p>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.65, color: 'rgba(var(--ink-on-dark-rgb), 0.68)' }}>We&rsquo;d rather you picked correctly than picked us. If two or more of these are true, use Wix or Squarespace and keep your money.</p>
             </div>
             <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {DIY_CASES.map((c) => (
                 <div key={c} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '15px 17px', borderRadius: 15, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--moss-light)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.5, color: 'rgba(233,239,245,0.86)' }}>{c}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.86)' }}>{c}</span>
                 </div>
               ))}
             </div>

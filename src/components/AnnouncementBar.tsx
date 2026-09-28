@@ -123,7 +123,7 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
         }}
       >
         {config.badge_text && (
-          <span style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 14px', borderRadius: 999, background: 'rgba(0,0,0,0.26)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.32)', backdropFilter: 'blur(10px)' }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 14px', borderRadius: 999, background: 'rgba(var(--shadow-rgb), 0.26)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.32)', backdropFilter: 'blur(10px)' }}>
             <span style={{ width: 6, height: 6, flex: '0 0 auto', borderRadius: '50%', background: 'var(--butter)' }} />
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: 0.2, color: 'inherit' }}>
               {config.badge_text}
@@ -136,7 +136,7 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
         )}
 
         {config.text && (
-          <span style={{ fontSize: 12.5, fontWeight: 600, color: 'inherit', opacity: 0.95, textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>
+          <span style={{ fontSize: 12.5, fontWeight: 600, color: 'inherit', opacity: 0.95, textShadow: '0 1px 4px rgba(var(--shadow-rgb), 0.3)' }}>
             {config.text}
           </span>
         )}

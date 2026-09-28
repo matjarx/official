@@ -56,6 +56,19 @@ html {
   --cream-rgb: 252,250,243;
   --cream-deep-rgb: 242,238,226;
   --olive-rgb: 105,109,52;
+
+  /* Ink on a DARK surface, and it does not flip.
+     A dark band on a light page keeps its light text when the whole site
+     goes dark -- the band was already dark. These are the same values
+     .dark-theme gives --ink-muted and --ink-2, which is the point: one
+     colour for "soft light text on dark", whichever mode the page is in.
+     --ink-inverse is the pure-white member of the same idea. */
+  --ink-on-dark-rgb: 226,236,245;
+  --ink-on-dark-strong-rgb: 233,239,245;
+
+  /* A shadow is black in both modes. Tokenised for consistency, not
+     because it will ever be re-pointed. */
+  --shadow-rgb: 0,0,0;
   --navy: #003366;
   --navy-gradient: linear-gradient(160deg, #0A4278, #002E5C);
   --navy-deepest: #04121F;
@@ -131,6 +144,40 @@ html {
   --ink-1-rgb: 247,250,253;     /* #F7FAFD, matches --ink-1 above */
   --cream-rgb: 0,28,51;         /* #001C33, matches --cream */
   --cream-deep-rgb: 0,38,63;    /* #00263F, matches --cream-deep */
+
+  /* ── The accent families ──────────────────────────────────────────
+     --olive is the one decision this file had already made for us. Its
+     own comment in :root says "Dark surfaces use --moss-light, not it",
+     so on a dark ground the olive IS the moss. That single rule settles
+     the two most-used tokens on the site, 308 uses between them, and
+     --moss-light needs no override because it was always the on-dark
+     green. */
+  --olive: #C6CB8A;
+  --olive-rgb: 198,203,138;     /* follows --olive, as every triplet must */
+  --olive-active: #D7DBA8;      /* lighter than the olive, as in light mode */
+
+  --mid-blue: #A8CDEC;          /* the dashboard's --info-text */
+  --terracotta: #E5A97F;        /* the warm accent takes its own light value */
+
+  /* A white card cannot stay white on a dark page, and a solid fill reads
+     as a hole rather than a lift. This is the dashboard's --card-fill
+     composited once: white at 9.5% over --cream's dark value. */
+  --surface: #183246;
+
+  /* ── Deliberately NOT redefined, and why ──────────────────────────
+     --butter, --butter-deep, --butter-light: the dashboard's approved
+       dark CTA gradient is linear-gradient(#F7F5C0, #E7E49B) -- these
+       exact values. A yellow CTA works on either ground.
+     --ink-on-butter, --ink-on-butter-alt: butter does not move, so the
+       ink sitting on it must not either.
+     --moss-light, --terracotta-light: already the light-on-dark members
+       of their families.
+     --navy, --navy-deepest, --navy-gradient: already dark grounds. On a
+       #001C33 page they still read as distinct bands, so overriding them
+       would flatten the very contrast they exist to provide.
+
+     Measured, not assumed. Worst pair is the olive on a card at 7.77:1;
+     everything else clears 8.5. AA wants 4.5. */
 
   /* --ink-inverse and --ink-inverse-rgb are deliberately NOT redefined.
      White text only ever sits on a dark surface, so it is correct in both

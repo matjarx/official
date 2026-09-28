@@ -232,10 +232,10 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '66px 24px 0' }}>
           <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 40px)', borderRadius: 26 }}>
             <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: 'var(--ink-inverse)' }}>{d.slaviStory.title}</h3>
-            <p style={{ margin: '0 0 14px', fontSize: 14.5, lineHeight: 1.65, color: 'rgba(226,236,245,0.82)' }}>&ldquo;{d.slaviStory.quote}&rdquo;</p>
+            <p style={{ margin: '0 0 14px', fontSize: 14.5, lineHeight: 1.65, color: 'rgba(var(--ink-on-dark-rgb), 0.82)' }}>&ldquo;{d.slaviStory.quote}&rdquo;</p>
             <span style={{ display: 'block', marginBottom: 12, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.slaviStory.name}</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {d.slaviStory.points.map((p, i) => <li key={i} style={{ fontSize: 13, color: 'rgba(226,236,245,0.7)' }}>• {p}</li>)}
+              {d.slaviStory.points.map((p, i) => <li key={i} style={{ fontSize: 13, color: 'rgba(var(--ink-on-dark-rgb), 0.7)' }}>• {p}</li>)}
             </ul>
           </div>
         </section>

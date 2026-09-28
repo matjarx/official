@@ -107,7 +107,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
               {NAV_ITEMS.map((item, i) => {
                 const isActive = active === item.key
                 const isOpen = open === i
-                const color = isActive ? (dark ? 'var(--butter)' : 'var(--olive)') : dark ? 'rgba(226,236,245,0.78)' : '#1C3B56'
+                const color = isActive ? (dark ? 'var(--butter)' : 'var(--olive)') : dark ? 'rgba(var(--ink-on-dark-rgb), 0.78)' : '#1C3B56'
                 return (
                   <div key={item.key} style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                     {/* The label is a real link — clicking "Pricing" (or any
@@ -165,7 +165,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                         {item.menu.map((m) => (
                           <Link key={m.label} href={m.href} className={dark ? 'menu-item-dark' : 'menu-item-light'} style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '11px 14px', borderRadius: 12 }}>
                             <span style={{ fontSize: 13.5, fontWeight: 600, color: dark ? '#F2F6FA' : 'var(--ink-1)' }}>{m.label}</span>
-                            {m.note && <span style={{ fontSize: 11.5, color: dark ? 'rgba(226,236,245,0.5)' : 'var(--ink-muted)' }}>{m.note}</span>}
+                            {m.note && <span style={{ fontSize: 11.5, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.5)' : 'var(--ink-muted)' }}>{m.note}</span>}
                           </Link>
                         ))}
                       </div>
@@ -250,7 +250,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
             {NAV_ITEMS.map((item, i) => {
               const isActive = active === item.key
               const isOpen = open === i
-              const color = isActive ? (dark ? 'var(--butter)' : 'var(--olive)') : dark ? 'rgba(226,236,245,0.78)' : '#1C3B56'
+              const color = isActive ? (dark ? 'var(--butter)' : 'var(--olive)') : dark ? 'rgba(var(--ink-on-dark-rgb), 0.78)' : '#1C3B56'
               return (
                 <div key={item.key} style={{ display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -276,7 +276,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                   {item.menu && isOpen && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 2, margin: '2px 0 8px 16px', paddingLeft: 16, borderLeft: '2px solid rgba(var(--moss-light-rgb), 0.7)' }}>
                       {item.menu.map((m) => (
-                        <Link key={m.label} href={m.href} onClick={() => setDrawer(false)} className={dark ? 'mobile-submenu-dark' : 'mobile-submenu-light'} style={{ display: 'block', padding: '12px 12px', borderRadius: 11, fontSize: 14.5, color: dark ? 'rgba(226,236,245,0.76)' : 'var(--ink-4-alt)' }}>
+                        <Link key={m.label} href={m.href} onClick={() => setDrawer(false)} className={dark ? 'mobile-submenu-dark' : 'mobile-submenu-light'} style={{ display: 'block', padding: '12px 12px', borderRadius: 11, fontSize: 14.5, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.76)' : 'var(--ink-4-alt)' }}>
                           {m.label}
                         </Link>
                       ))}

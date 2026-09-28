@@ -79,13 +79,13 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
                 {d.ourPoints.map((p) => (
                   <div key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 11 }}>
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--moss-light)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                    <span style={{ fontSize: 14, lineHeight: 1.55, color: 'rgba(233,239,245,0.9)' }}>{p}</span>
+                    <span style={{ fontSize: 14, lineHeight: 1.55, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.9)' }}>{p}</span>
                   </div>
                 ))}
               </div>
               <div style={{ marginTop: 'auto', paddingTop: 10, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', display: 'flex', flexDirection: 'column', gap: 3 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--butter)' }}>From Rs. 4,500 / mo</span>
-                <span style={{ fontSize: 12.5, color: 'rgba(226,236,245,0.62)' }}>plus a one-time setup fee, everything included</span>
+                <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-on-dark-rgb), 0.62)' }}>plus a one-time setup fee, everything included</span>
               </div>
             </div>
 

@@ -31,7 +31,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
           <div key={ex.name} className="mx-card" style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', background: ex.tint, border: '1px solid rgba(var(--ink-inverse-rgb), 0.85)', boxShadow: '0 18px 44px rgba(var(--ink-1-rgb), 0.1)' }}>
             <div style={{ position: 'relative' }}>
               <div style={{ position: 'relative', aspectRatio: '16 / 10', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '11px 16px', background: 'rgba(0,0,0,0.28)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '11px 16px', background: 'rgba(var(--shadow-rgb), 0.28)' }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 11, letterSpacing: '1px', color: 'rgba(var(--ink-inverse-rgb), 0.94)', whiteSpace: 'nowrap' }}>{ex.brand}</span>
                   <span style={{ display: 'flex', gap: 12, margin: '0 auto' }}>
                     {ex.nav.map((n) => (
@@ -41,7 +41,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
                   <span style={{ flex: '0 0 auto', padding: '5px 11px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 8, color: ex.ctaInk, background: ex.ctaBg, whiteSpace: 'nowrap' }}>{ex.cta}</span>
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 9, padding: '22px 26px 26px', minHeight: 0 }}>
-                  <span className="mx-hero-line" style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(20px, 2.4vw, 28px)', lineHeight: 1.04, letterSpacing: '-0.9px', color: 'var(--ink-inverse)', textShadow: '0 2px 14px rgba(0,0,0,0.4)' }}>{ex.heroLine}</span>
+                  <span className="mx-hero-line" style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(20px, 2.4vw, 28px)', lineHeight: 1.04, letterSpacing: '-0.9px', color: 'var(--ink-inverse)', textShadow: '0 2px 14px rgba(var(--shadow-rgb), 0.4)' }}>{ex.heroLine}</span>
                   <span style={{ maxWidth: '26em', fontSize: 11, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.8)' }}>{ex.heroBlurb}</span>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
             <span style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '9px 16px', borderRadius: 999, background: 'rgba(var(--ink-inverse-rgb), 0.09)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(18px)' }}>
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--moss-light)' }} />
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13, color: 'var(--ink-inverse)' }}>{modalItem.name}</span>
-              <span style={{ fontSize: 12, color: 'rgba(226,236,245,0.55)' }}>{modalItem.domain}</span>
+              <span style={{ fontSize: 12, color: 'rgba(var(--ink-on-dark-rgb), 0.55)' }}>{modalItem.domain}</span>
             </span>
             {modalItem.proofImage && (
               <div style={{ position: 'relative', width: 132, height: 86, flex: '0 0 auto', borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(var(--ink-inverse-rgb), 0.2)' }} title="Real Google listing for this client">
@@ -82,7 +82,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--ink-inverse)" strokeWidth="2.2" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
             </button>
           </div>
-          <div style={{ flex: 1, minHeight: 0, position: 'relative', borderRadius: 16, overflow: 'hidden', background: modalItem.tint, border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', boxShadow: '0 40px 90px rgba(0,0,0,0.5)' }}>
+          <div style={{ flex: 1, minHeight: 0, position: 'relative', borderRadius: 16, overflow: 'hidden', background: modalItem.tint, border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', boxShadow: '0 40px 90px rgba(var(--shadow-rgb), 0.5)' }}>
             <div style={{ position: 'absolute', inset: 0, zIndex: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, padding: 34, textAlign: 'center' }}>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-inverse)' }}>{modalItem.name}</span>
               <span style={{ maxWidth: '30em', fontSize: 14, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.78)' }}>If the live site doesn&rsquo;t appear, it blocks being embedded — open it in a new tab instead.</span>

@@ -305,16 +305,16 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--moss-light)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d={r.icon} /></svg>
                       </span>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
-                        <span style={{ fontSize: 11, letterSpacing: '1.3px', textTransform: 'uppercase', color: 'rgba(226,236,245,0.45)', fontWeight: 600 }}>{r.label}</span>
+                        <span style={{ fontSize: 11, letterSpacing: '1.3px', textTransform: 'uppercase', color: 'rgba(var(--ink-on-dark-rgb), 0.45)', fontWeight: 600 }}>{r.label}</span>
                         <span style={{ fontSize: 14.5, lineHeight: 1.5, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>{r.value}</span>
-                        {r.note && <span style={{ fontSize: 12.5, lineHeight: 1.5, color: 'rgba(226,236,245,0.55)' }}>{r.note}</span>}
+                        {r.note && <span style={{ fontSize: 12.5, lineHeight: 1.5, color: 'rgba(var(--ink-on-dark-rgb), 0.55)' }}>{r.note}</span>}
                       </div>
                     </div>
                   ))}
                 </div>
                 <div style={{ height: 168, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, var(--ink-2))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                   <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--moss-light)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /></svg>
-                  <span style={{ fontSize: 12.5, color: 'rgba(226,236,245,0.55)' }}>Zamzama, Clifton, Karachi</span>
+                  <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-on-dark-rgb), 0.55)' }}>Zamzama, Clifton, Karachi</span>
                 </div>
               </div>
 
