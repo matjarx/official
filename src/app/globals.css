@@ -75,6 +75,12 @@ html {
   --ink-on-butter-alt: #3D3A08;
   --terracotta: #B4874F;
   --terracotta-light: #E5A97F;
+  /* Third-party brand colours. These must NOT be redefined in any theme:
+     they are Trustpilot's green, WhatsApp's green, Google's blue and
+     Clutch's red, and a brand mark rendered in a colour we invented is
+     wrong in both modes -- and in several cases a trademark condition.
+     Their absence from .dark-theme is the implementation of that rule,
+     so it is written here rather than left to be inferred. */
   --trustpilot: #00B67A;
   --whatsapp: #25D366;
   --google-blue: #4285F4;
@@ -112,6 +118,25 @@ html {
   --ink-5: #A9BBC9;
   --ink-muted: rgba(226,236,245,0.6);
   --ink-faint: rgba(226,236,245,0.42);
+
+  /* A triplet MUST follow its parent token.
+     Without this, colour: var(--ink-1) goes light in dark mode while
+     rgba(var(--ink-1-rgb), 0.3) stays dark -- text and its own tint
+     disagreeing about which mode they are in. Only the three whose parent
+     already has a dark value are listed; --navy-rgb, --butter-rgb,
+     --moss-light-rgb and --olive-rgb are deliberately absent because
+     their parents have no dark value decided yet, and a triplet that
+     flips while its parent does not is the same bug pointing the other
+     way. */
+  --ink-1-rgb: 247,250,253;     /* #F7FAFD, matches --ink-1 above */
+  --cream-rgb: 0,28,51;         /* #001C33, matches --cream */
+  --cream-deep-rgb: 0,38,63;    /* #00263F, matches --cream-deep */
+
+  /* --ink-inverse and --ink-inverse-rgb are deliberately NOT redefined.
+     White text only ever sits on a dark surface, so it is correct in both
+     modes; a token that never re-points still earns its name by saying
+     the white is deliberate. */
+
   color-scheme: dark;
 }
 
