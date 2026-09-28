@@ -97,7 +97,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {d.points.map((p) => (
                   <div key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 11 }}>
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#B4874F" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--terracotta)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
                     <span style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink-5)' }}>{p}</span>
                   </div>
                 ))}
@@ -125,7 +125,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: 'var(--navy)', textAlign: 'center' }}>MatjarX</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', textTransform: 'uppercase', color: 'var(--ink-muted)', textAlign: 'center' }}>{d.name}</span>
                 {d.table.map(([label, us, them]) => {
-                  const themColor = them === 'No' || them === 'Not supported' ? '#B4874F' : '#8A6A4B'
+                  const themColor = them === 'No' || them === 'Not supported' ? 'var(--terracotta)' : '#8A6A4B'
                   return (
                     <div key={label} style={{ display: 'contents' }}>
                       <span style={{ fontSize: 13.5, lineHeight: 1.45, color: 'var(--ink-3)', padding: '11px 0', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{label}</span>

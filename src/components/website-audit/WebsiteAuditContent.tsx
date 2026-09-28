@@ -72,7 +72,7 @@ function IntakeForm() {
         <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Where should we send your report?</span>
         <div style={{ display: 'flex', gap: 8 }}>
           {(['whatsapp', 'email'] as const).map((c) => (
-            <button key={c} type="button" onClick={() => setPreferredChannel(c)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 16px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: preferredChannel === c ? '#FFFFFF' : '#3B5063', background: preferredChannel === c ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${preferredChannel === c ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>
+            <button key={c} type="button" onClick={() => setPreferredChannel(c)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 16px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: preferredChannel === c ? '#FFFFFF' : 'var(--ink-4-alt)', background: preferredChannel === c ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${preferredChannel === c ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>
               {c === 'whatsapp' ? 'WhatsApp' : 'Email'}
             </button>
           ))}
@@ -179,7 +179,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                     <button type="button" onClick={() => setOpenArea(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '20px 24px' }}>
                       <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'var(--navy)', color: 'var(--butter)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13 }}>{area.number}</span>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)', marginRight: 'auto' }}>{area.title}</span>
-                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#5A6E81" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--ink-muted)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                     </button>
                     {open && (
                       <div style={{ padding: '0 24px 26px', display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -325,7 +325,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                   {COMPARISON_TABLE.rows.map((row, ri) => (
                     <tr key={ri}>
                       {row.map((cell, ci) => (
-                        <td key={ci} style={{ padding: '13px 20px', fontSize: 13.5, color: ci === 2 ? '#04121F' : '#4B5D6E', fontWeight: ci === 2 ? 600 : ci === 0 ? 700 : 400, borderTop: '1px solid rgba(4,18,31,0.07)' }}>{cell}</td>
+                        <td key={ci} style={{ padding: '13px 20px', fontSize: 13.5, color: ci === 2 ? 'var(--ink-1)' : 'var(--ink-5)', fontWeight: ci === 2 ? 600 : ci === 0 ? 700 : 400, borderTop: '1px solid rgba(4,18,31,0.07)' }}>{cell}</td>
                       ))}
                     </tr>
                   ))}

@@ -44,8 +44,8 @@ export default function FaqSection({
   const [open, setOpen] = useState(0)
   if (faqs.length === 0) return null
 
-  const ink = dark ? '#FFFFFF' : '#04121F'
-  const body = dark ? 'rgba(255,255,255,0.72)' : '#435A70'
+  const ink = dark ? '#FFFFFF' : 'var(--ink-1)'
+  const body = dark ? 'rgba(255,255,255,0.72)' : 'var(--ink-4)'
 
   const jsonLd = {
     '@context': 'https://schema.org',

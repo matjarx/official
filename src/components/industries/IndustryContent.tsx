@@ -111,7 +111,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
                     <span style={{ fontSize: 9, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.72)', fontWeight: 600 }}>{d.sample.kicker}</span>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, lineHeight: 1.08, letterSpacing: '-1px', color: '#FFFFFF', textShadow: '0 2px 14px rgba(0,0,0,0.34)' }}>{d.sample.name}</span>
                     <span style={{ maxWidth: '24em', fontSize: 11.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.82)' }}>{d.sample.blurb}</span>
-                    <span style={{ marginTop: 8, padding: '10px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, color: '#14210b', background: 'linear-gradient(160deg, #F7F5C0, #E7E49B)' }}>{d.sample.cta}</span>
+                    <span style={{ marginTop: 8, padding: '10px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' }}>{d.sample.cta}</span>
                   </div>
                   <div style={{ padding: '16px 18px 20px', background: '#FFFCF5', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
                     {d.sample.tiles.map((t) => (

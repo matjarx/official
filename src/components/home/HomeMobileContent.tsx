@@ -55,7 +55,7 @@ export default function HomeMobileContent() {
         headerBg: 'rgba(0,20,35,0.74)', headerLine: 'rgba(255,255,255,0.12)',
         logo: '/brand/matjarx-logo-light.png',
         ink1: '#F5F8FB', ink3: 'rgba(226,236,245,0.7)', ink4: 'rgba(226,236,245,0.5)', ink5: 'rgba(226,236,245,0.4)',
-        accentInk: '#C6CB8A', iconInk: '#E9EFF5',
+        accentInk: 'var(--moss-light)', iconInk: '#E9EFF5',
         chipBg: 'rgba(255,255,255,0.08)', chipLine: 'rgba(255,255,255,0.16)',
         cardBg: 'linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.035))',
         cardLine: 'rgba(255,255,255,0.14)',
@@ -67,20 +67,20 @@ export default function HomeMobileContent() {
         planLight: { bg: 'linear-gradient(160deg, rgba(255,255,255,0.095), rgba(255,255,255,0.03))', border: 'rgba(255,255,255,0.13)', shadow: '0 16px 40px rgba(0,8,18,0.3), inset 0 1px 0 rgba(255,255,255,0.16)', ink: '#F5F8FB', muted: 'rgba(226,236,245,0.6)' },
       }
     : {
-        pageBg: 'linear-gradient(172deg, #FCFAF3 0%, #F4EFE2 100%)',
+        pageBg: 'linear-gradient(172deg, var(--cream) 0%, #F4EFE2 100%)',
         orb1: 'radial-gradient(circle, rgba(198,203,138,0.5) 0%, rgba(198,203,138,0) 68%)',
         orb2: 'radial-gradient(circle, rgba(120,170,215,0.4) 0%, rgba(120,170,215,0) 68%)',
         headerBg: 'rgba(252,250,243,0.78)', headerLine: 'rgba(4,18,31,0.1)',
         logo: '/brand/matjarx-logo-black.png',
-        ink1: '#04121F', ink3: '#435A70', ink4: '#5A6E81', ink5: '#90A2B1',
-        accentInk: '#696D34', iconInk: '#04121F',
+        ink1: 'var(--ink-1)', ink3: 'var(--ink-4)', ink4: 'var(--ink-muted)', ink5: 'var(--ink-faint)',
+        accentInk: 'var(--olive)', iconInk: 'var(--ink-1)',
         chipBg: 'rgba(255,255,255,0.7)', chipLine: 'rgba(255,255,255,0.95)',
         cardBg: 'rgba(255,255,255,0.7)', cardLine: 'rgba(255,255,255,0.95)',
         cardShadow: '0 12px 30px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)',
         voiceBg: '#FFFFFF', voiceLine: 'rgba(4,18,31,0.07)', offsetFill: '#A8AD6A',
-        voiceInk: '#04121F', voiceMeta: '#5A6E81', voiceBody: '#24384A',
+        voiceInk: 'var(--ink-1)', voiceMeta: 'var(--ink-muted)', voiceBody: 'var(--ink-3)',
         skinIcon: 'M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9ZM12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M18.5 5.5l-1.4 1.4M6.9 17.1 5.5 18.5',
-        planLight: { bg: 'rgba(255,255,255,0.66)', border: 'rgba(255,255,255,0.9)', shadow: '0 14px 34px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)', ink: '#04121F', muted: '#5A6E81' },
+        planLight: { bg: 'rgba(255,255,255,0.66)', border: 'rgba(255,255,255,0.9)', shadow: '0 14px 34px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)', ink: 'var(--navy-deepest)', muted: 'var(--ink-muted)' },
       }
 
   const planDark = { bg: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: 'rgba(255,255,255,0.18)', shadow: '0 20px 46px rgba(0,51,102,0.3), inset 0 1px 0 rgba(255,255,255,0.2)', ink: '#FFFFFF', muted: 'rgba(255,255,255,0.62)' }
@@ -95,7 +95,7 @@ export default function HomeMobileContent() {
         </div>
 
         {/* Promo bar */}
-        <div style={{ position: 'relative', zIndex: 3, flex: '0 0 auto', background: 'linear-gradient(90deg, #003366 0%, #2E6EA8 20%, #696D34 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)', padding: '14px 14px 9px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+        <div style={{ position: 'relative', zIndex: 3, flex: '0 0 auto', background: 'linear-gradient(90deg, var(--navy) 0%, var(--mid-blue) 20%, var(--olive) 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)', padding: '14px 14px 9px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '4px 11px', borderRadius: 999, background: 'rgba(0,0,0,0.26)', border: '1px solid rgba(255,255,255,0.32)' }}>
             <span style={{ width: 5, height: 5, flex: '0 0 auto', borderRadius: '50%', background: 'var(--butter)' }} />
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10.5, color: '#FFFFFF', whiteSpace: 'nowrap' }}>49% off on sign up</span>
@@ -208,7 +208,7 @@ export default function HomeMobileContent() {
           </div>
 
           {/* Mascot/urgency */}
-          <div style={{ borderRadius: 24, overflow: 'hidden', background: 'linear-gradient(150deg, #04121F, #0A3A63)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 22px 50px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.16)' }}>
+          <div style={{ borderRadius: 24, overflow: 'hidden', background: 'linear-gradient(150deg, var(--navy-deepest), #0A3A63)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 22px 50px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.16)' }}>
             <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 13 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.14, letterSpacing: '-0.8px', color: '#FFFFFF' }}>50 milliseconds. <span style={{ color: 'rgba(255,255,255,0.6)' }}>That&rsquo;s how long you have to make a first impression.</span></h2>
               <span style={{ fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.66)' }}>After that you get 3 to 8 seconds to convince a customer you&rsquo;re worth their money. If your website doesn&rsquo;t, they leave.</span>
@@ -232,7 +232,7 @@ export default function HomeMobileContent() {
                 {HOUR_STEPS.map((h) => {
                   const active = hours === h
                   return (
-                    <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, #F7F5C0, #E7E49B)' : 'rgba(255,255,255,0.07)', border: `1px solid ${active ? '#E7E49B' : 'rgba(255,255,255,0.16)'}` }}>{h}</button>
+                    <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(255,255,255,0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(255,255,255,0.16)'}` }}>{h}</button>
                   )
                 })}
               </div>
@@ -247,7 +247,7 @@ export default function HomeMobileContent() {
                 {RATE_STEPS.map((r) => {
                   const active = rate === r
                   return (
-                    <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, #F7F5C0, #E7E49B)' : 'rgba(255,255,255,0.07)', border: `1px solid ${active ? '#E7E49B' : 'rgba(255,255,255,0.16)'}` }}>{r / 1000}k</button>
+                    <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(255,255,255,0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(255,255,255,0.16)'}` }}>{r / 1000}k</button>
                   )
                 })}
               </div>
@@ -272,7 +272,7 @@ export default function HomeMobileContent() {
                 <span style={{ fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>You save</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, lineHeight: 1.05, letterSpacing: '-1.2px', color: 'var(--butter)' }}>{money(saved)}</span>
               </div>
-              <a href="/pricing" style={{ textAlign: 'center', padding: '15px 20px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#14210b', background: 'linear-gradient(160deg, #F7F5C0, #E7E49B)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.65)' }}>Sign up now</a>
+              <a href="/pricing" style={{ textAlign: 'center', padding: '15px 20px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.65)' }}>Sign up now</a>
             </div>
           </div>
 

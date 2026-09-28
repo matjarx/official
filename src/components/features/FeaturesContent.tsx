@@ -59,7 +59,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
             {TAB_KEYS.map((k) => {
               const on = tab === k
               return (
-                <button key={k} type="button" onClick={() => setTab(k)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? '#FFFFFF' : '#4B5D6E', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
+                <button key={k} type="button" onClick={() => setTab(k)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? '#FFFFFF' : 'var(--ink-5)', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
                   {FEATURE_GROUPS_ACTIVE[k].label}
                 </button>
               )

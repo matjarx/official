@@ -34,7 +34,7 @@ const TABS = [
   icon: t.icon,
   bg: t.on ? 'rgba(244,242,174,0.14)' : 'rgba(255,255,255,0.06)',
   line: t.on ? 'rgba(244,242,174,0.34)' : 'rgba(255,255,255,0.11)',
-  ink: t.on ? '#F4F2AE' : 'rgba(226,236,245,0.6)',
+  ink: t.on ? 'var(--butter)' : 'rgba(226,236,245,0.6)',
   weight: t.on ? 2.1 : 1.75,
 }))
 
@@ -65,7 +65,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
   const navLine = isProduct ? 'rgba(255,255,255,0.12)' : 'rgba(42,22,8,0.12)'
   const navInk = isProduct ? '#FFFFFF' : '#2A1608'
   const navCta = isProduct ? 'Order Now' : 'Book Now'
-  const navCtaBg = isProduct ? 'linear-gradient(160deg, #F7F5C0, #E7E49B)' : '#6B4A22'
+  const navCtaBg = isProduct ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : '#6B4A22'
   const navCtaInk = isProduct ? '#14210b' : '#FFFFFF'
 
   const heroImg = isProduct ? EE[img] : SCB[img]
@@ -74,12 +74,12 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
   const heroBase = isProduct ? '#180208' : '#FFFCF5'
 
   const kicker = isProduct ? 'New winter collection' : 'Baked fresh, every morning'
-  const kickerInk = isProduct ? '#F4F2AE' : '#A87A3A'
+  const kickerInk = isProduct ? 'var(--butter)' : '#A87A3A'
   const headline = isProduct ? 'Hand-stitched, made to be seen.' : 'Baked Fresh, Every Morning.'
   const headInk = isProduct ? '#FFFFFF' : '#2A1608'
   const blurb = isProduct ? 'Chikankari and ajrak work, delivered nationwide.' : 'Order online for pickup, or reserve your table.'
   const bodyInk = isProduct ? 'rgba(255,255,255,0.82)' : '#6B5340'
-  const ctaBg = isProduct ? 'linear-gradient(160deg, #F7F5C0, #E7E49B)' : 'linear-gradient(160deg, #7C5628, #5A3C18)'
+  const ctaBg = isProduct ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'linear-gradient(160deg, #7C5628, #5A3C18)'
   const ctaInk = isProduct ? '#14210b' : '#FFFFFF'
 
   const modeIconLabel = isProduct ? 'Book Now!' : 'Sell Products'
@@ -116,7 +116,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
           <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.13)' }}>
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" /><circle cx="12" cy="12" r="2.8" /></svg>
           </span>
-          <span style={{ flex: '0 0 auto', padding: '7px 12px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: '#14210b', background: 'linear-gradient(160deg, #F7F5C0, #E7E49B)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6)' }}>Publish</span>
+          <span style={{ flex: '0 0 auto', padding: '7px 12px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6)' }}>Publish</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0 12px 8px' }}>
@@ -134,7 +134,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
               <span style={{ margin: '0 auto', padding: '3px 10px', borderRadius: 999, fontSize: 8, color: 'rgba(226,236,245,0.6)', background: 'rgba(255,255,255,0.07)' }}>{domain}</span>
             </div>
 
-            <div style={{ position: 'relative', outline: '2px solid #F4F2AE', outlineOffset: -2 }}>
+            <div style={{ position: 'relative', outline: '2px solid var(--butter)', outlineOffset: -2 }}>
               <span style={{ position: 'absolute', top: 0, left: 0, zIndex: 8, padding: '2px 8px', borderRadius: '0 0 6px 0', background: 'var(--butter-deep)', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 7.5, letterSpacing: 0.5, textTransform: 'uppercase', color: '#14210b' }}>Hero</span>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '9px 12px', background: navBg, borderBottom: `1px solid ${navLine}` }}>
@@ -196,7 +196,7 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
       </div>
 
       <div style={{ marginTop: 11, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#F4F2AE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m7 4 11 8-11 8z" /></svg>
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--butter)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="m7 4 11 8-11 8z" /></svg>
         <span style={{ fontSize: 11, lineHeight: 1.5, textAlign: 'center', color: statusInk }}>{statusLine}</span>
       </div>
     </div>

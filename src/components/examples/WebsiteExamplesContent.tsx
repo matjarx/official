@@ -60,7 +60,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '40px 24px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <button type="button" onClick={() => scrollRail(-1)} title="Previous categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#04121F" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m14 6-6 6 6 6" /></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--ink-1)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m14 6-6 6 6 6" /></svg>
             </button>
 
             <div ref={railRef} className="mx-rail" style={{ flex: 1, minWidth: 0, overflowX: 'auto', overflowY: 'hidden' }}>
@@ -72,7 +72,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
                       key={c}
                       type="button"
                       onClick={() => { setFilter(c); setModalIndex(-1) }}
-                      style={{ all: 'unset', cursor: 'pointer', textAlign: 'center', padding: '13px 14px', borderRadius: 10, fontSize: 13.5, fontWeight: on ? 700 : 500, color: on ? '#FFFFFF' : '#3D3A08', background: on ? 'var(--olive-active)' : 'var(--butter)', border: `1px solid ${on ? 'var(--olive-active)' : 'rgba(61,58,8,0.14)'}`, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', transition: 'background 180ms ease' }}
+                      style={{ all: 'unset', cursor: 'pointer', textAlign: 'center', padding: '13px 14px', borderRadius: 10, fontSize: 13.5, fontWeight: on ? 700 : 500, color: on ? '#FFFFFF' : 'var(--ink-on-butter-alt)', background: on ? 'var(--olive-active)' : 'var(--butter)', border: `1px solid ${on ? 'var(--olive-active)' : 'rgba(61,58,8,0.14)'}`, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', transition: 'background 180ms ease' }}
                     >
                       {c}
                     </button>
@@ -82,7 +82,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
             </div>
 
             <button type="button" onClick={() => scrollRail(1)} title="More categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#04121F" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m10 6 6 6-6 6" /></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--ink-1)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m10 6 6 6-6 6" /></svg>
             </button>
           </div>
           <p style={{ margin: '20px 0 0', textAlign: 'center', fontSize: 13.5, color: 'var(--ink-muted)' }}>{resultLine}</p>

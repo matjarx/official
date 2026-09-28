@@ -41,7 +41,7 @@ function anchorId(s: string) {
 function ThemeCard({ theme }: { theme: Theme }) {
   const band = theme.primaryColor
     ? `linear-gradient(150deg, ${theme.primaryColor}, ${theme.secondaryColor || theme.primaryColor})`
-    : 'linear-gradient(150deg, #003366, #0A2647)'
+    : 'linear-gradient(150deg, var(--navy), #0A2647)'
 
   return (
     <li className="theme-card-wrap">

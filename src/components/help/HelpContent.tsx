@@ -70,7 +70,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 'clamp(14.5px, 1.7vw, 17px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>Search the guides below, or talk to a real person — whichever you prefer.</p>
 
           <div className="glass-chip" style={{ width: 'min(560px, 100%)', display: 'flex', alignItems: 'center', gap: 12, padding: '15px 18px', borderRadius: 16 }}>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#5A6E81" strokeWidth="1.9" strokeLinecap="round" style={{ flex: '0 0 auto' }}><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--ink-muted)" strokeWidth="1.9" strokeLinecap="round" style={{ flex: '0 0 auto' }}><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
             <input type="text" placeholder="Search help articles…" style={{ all: 'unset', flex: 1, minWidth: 0, fontFamily: 'var(--font-open-sans), sans-serif', fontSize: 14.5, color: 'var(--ink-2)' }} />
           </div>
         </section>
@@ -278,7 +278,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
                     {HELP_SUBJECTS.map((label) => {
                       const active = subject === label
                       return (
-                        <button key={label} type="button" onClick={() => setSubject(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : 'var(--cream)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{label}</button>
+                        <button key={label} type="button" onClick={() => setSubject(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--cream)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{label}</button>
                       )
                     })}
                   </div>

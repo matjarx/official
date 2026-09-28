@@ -93,7 +93,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
               {BLOG_CATEGORIES.map((c) => {
                 const active = cat === c
                 return (
-                  <button key={c} type="button" onClick={() => setCat(c)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 18px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{c}</button>
+                  <button key={c} type="button" onClick={() => setCat(c)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 18px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{c}</button>
                 )
               })}
             </div>

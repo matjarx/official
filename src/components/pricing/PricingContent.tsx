@@ -65,8 +65,8 @@ export const COMPARE_GROUPS: { title: string; rows: [string, Cell, Cell, Cell, C
 ]
 
 export const DEFAULT_TESTIMONIALS = [
-  { quote: "If you are looking for a website provider, then MatjarX is fantastic. The level of service is really really good, and I'm getting loads of leads as well.", name: 'Bella Goode', company: 'Bella Goode and Training Centre', initials: 'BG', tint: '#C6CB8A' },
-  { quote: 'What you get for the value that you pay is almost unheard of. You get all the support, all the tech help that you need, in a quick turnaround time.', name: 'Severen Henderson', company: 'Care Concern Connect NFP', initials: 'SH', tint: '#F4F2AE' },
+  { quote: "If you are looking for a website provider, then MatjarX is fantastic. The level of service is really really good, and I'm getting loads of leads as well.", name: 'Bella Goode', company: 'Bella Goode and Training Centre', initials: 'BG', tint: 'var(--moss-light)' },
+  { quote: 'What you get for the value that you pay is almost unheard of. You get all the support, all the tech help that you need, in a quick turnaround time.', name: 'Severen Henderson', company: 'Care Concern Connect NFP', initials: 'SH', tint: 'var(--butter)' },
   { quote: 'I started out knowing absolutely nothing about how to create a website. You guys made it so easy. With telling you just basic things about my company, you designed a beautiful website for me at an absolutely amazing price.', name: 'Marvin F.', company: 'Trustpilot 5-star review, US', initials: 'MF', tint: '#BFD4E6' },
   { quote: 'Amazing customer service and support. Quick response to an enquiry and always solving any issues. Recommended!', name: 'James W.', company: 'Trustpilot 5-star review, US', initials: 'JW', tint: '#E8C48D' },
   { quote: 'I was able to utilize the platform provided by MatjarX to jump start my new company and products. I appreciate the ease of use and my connectivity options offered as a free service.', name: 'Ronald G.', company: 'Trustpilot 5-star review, US', initials: 'RG', tint: '#E8B4C8' },
@@ -95,13 +95,13 @@ export const DEFAULT_FAQ_DATA = [
 
 const LIGHT_THEME = {
   bg: 'rgba(255,255,255,0.62)', border: 'rgba(255,255,255,0.85)', shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)', blur: 'blur(22px)',
-  ink: '#04121F', muted: '#5A6E81', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
-  tick: 'var(--olive)', ctaInk: '#FFFFFF', ctaBg: '#003366', ctaBorder: '#003366', savingInk: 'var(--olive)',
+  ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(4,18,31,0.09)',
+  tick: 'var(--olive)', ctaInk: '#FFFFFF', ctaBg: 'var(--navy)', ctaBorder: 'var(--navy)', savingInk: 'var(--olive)',
 }
 const DARK_THEME = {
   bg: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: 'rgba(255,255,255,0.16)', shadow: '0 30px 66px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)', blur: 'blur(26px)',
   ink: '#FFFFFF', muted: 'rgba(255,255,255,0.6)', body: 'rgba(255,255,255,0.82)', rule: 'rgba(255,255,255,0.16)',
-  tick: 'var(--moss-light)', ctaInk: '#16210B', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)', savingInk: 'var(--butter)',
+  tick: 'var(--moss-light)', ctaInk: 'var(--ink-on-butter)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)', savingInk: 'var(--butter)',
 }
 
 export const DEFAULT_PLAN_ROWS = [
@@ -199,7 +199,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
               {CYCLES.map((c) => {
                 const on = cycle === c.id
                 return (
-                  <button key={c.id} type="button" onClick={() => setCycle(c.id)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: on ? '#FFFFFF' : '#4B5D6E', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>{c.label}</button>
+                  <button key={c.id} type="button" onClick={() => setCycle(c.id)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: on ? '#FFFFFF' : 'var(--ink-5)', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>{c.label}</button>
                 )
               })}
             </div>
@@ -330,7 +330,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
                 <button type="button" onClick={() => setOpenGroup(open ? -1 : i)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'center', gap: 16, padding: '20px 24px' }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: 'var(--ink-1)', marginRight: 'auto', textAlign: 'left' }}>{g.title}</span>
                   <span className="glass-cream" style={{ width: 28, height: 28, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center' }}>
-                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#04121F" strokeWidth="2.4" strokeLinecap="round" style={{ transform: open ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="M12 5v14M5 12h14" /></svg>
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--ink-1)" strokeWidth="2.4" strokeLinecap="round" style={{ transform: open ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="M12 5v14M5 12h14" /></svg>
                   </span>
                 </button>
                 {open && (
@@ -387,7 +387,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
           </CardRail>
           <div className="glass-card" style={{ margin: '34px auto 0', maxWidth: 560, padding: '22px 26px', borderRadius: 18, display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap', justifyContent: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="#00B67A" style={{ flex: '0 0 auto' }}><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" /></svg>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--trustpilot)" style={{ flex: '0 0 auto' }}><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 15.5, color: 'var(--ink-1)' }}>Trustpilot</span>
             </span>
             <span style={{ width: 1, height: 26, background: 'rgba(4,18,31,0.12)' }} />

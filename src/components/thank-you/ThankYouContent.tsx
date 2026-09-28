@@ -35,7 +35,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
       <section style={{ background: 'var(--navy)', padding: '66px 24px 60px' }}>
         <div style={{ maxWidth: 780, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
           <span style={{ width: 72, height: 72, borderRadius: '50%', background: 'var(--moss-light)', display: 'grid', placeItems: 'center' }}>
-            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#16210B" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7" /></svg>
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--ink-on-butter)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7" /></svg>
           </span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 48px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>Thank you — we&rsquo;ve got it</h1>
           <p style={{ margin: 0, maxWidth: '30em', fontSize: 17.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.75)' }}>{subtitle}</p>

@@ -56,10 +56,10 @@ export function AuthorByline({ author, meta, dark = true }: { author: BlogAuthor
     <span style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
       <Avatar author={author} size={42} />
       <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
-        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? '#FFFFFF' : '#04121F' }}>
+        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? '#FFFFFF' : 'var(--ink-1)' }}>
           {author.name}
         </span>
-        <span style={{ fontSize: 13, color: dark ? 'rgba(255,255,255,0.6)' : '#5A6E81' }}>{meta}</span>
+        <span style={{ fontSize: 13, color: dark ? 'rgba(255,255,255,0.6)' : 'var(--ink-muted)' }}>{meta}</span>
       </span>
     </span>
   )

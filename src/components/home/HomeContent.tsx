@@ -133,8 +133,8 @@ export const DEFAULT_FAQ_DATA = [
 
 const LIGHT_PLAN_THEME = {
   bg: 'rgba(255,255,255,0.62)', border: 'rgba(255,255,255,0.85)', shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)', blur: 'blur(22px)',
-  ink: '#04121F', muted: '#5A6E81', body: '#3B5063', rule: 'rgba(4,18,31,0.09)',
-  tick: '#696D34', ctaInk: '#04121F', ctaBg: '#FCFAF3', ctaBorder: 'rgba(4,18,31,0.16)',
+  ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(4,18,31,0.09)',
+  tick: 'var(--olive)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--cream)', ctaBorder: 'rgba(4,18,31,0.16)',
 }
 // Platinum is the top tier and now the second highlighted card, so it
 // needs a treatment that reads as premium WITHOUT competing with
@@ -145,13 +145,13 @@ const PREMIUM_PLAN_THEME = {
   border: 'var(--butter-deep)',
   shadow: '0 18px 46px rgba(201,162,39,0.18), inset 0 1px 0 rgba(255,255,255,0.95)',
   blur: 'blur(22px)',
-  ink: '#04121F', muted: '#5A6E81', body: '#3B5063', rule: 'rgba(138,122,18,0.22)',
-  tick: '#8A7A12', ctaInk: '#3D3A08', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter-deep)',
+  ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(138,122,18,0.22)',
+  tick: '#8A7A12', ctaInk: 'var(--ink-on-butter-alt)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter-deep)',
 }
 const DARK_PLAN_THEME = {
   bg: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: 'rgba(255,255,255,0.16)', shadow: '0 30px 66px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)', blur: 'blur(26px)',
   ink: '#FFFFFF', muted: 'rgba(255,255,255,0.62)', body: 'rgba(255,255,255,0.8)', rule: 'rgba(255,255,255,0.16)',
-  tick: '#C6CB8A', ctaInk: '#04121F', ctaBg: '#F4F2AE', ctaBorder: '#F4F2AE',
+  tick: 'var(--moss-light)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)',
 }
 const PLAN_ROWS = [
   { name: 'Launch', pitch: 'We build and launch your website.', price: 'Rs. 4,500', setup: 'Rs. 22,500', cta: 'Choose Launch', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('launch'),
@@ -181,15 +181,15 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
   const FAQ_DATA = content.faqs
   const VOICES_ACTIVE = content.voices
 
-  const ink1 = dark ? '#FFFFFF' : '#04121F'
-  const ink4 = dark ? 'rgba(255,255,255,0.7)' : '#435A70'
-  const cream = dark ? undefined : '#FCFAF3'
+  const ink1 = dark ? '#FFFFFF' : 'var(--ink-1)'
+  const ink4 = dark ? 'rgba(255,255,255,0.7)' : 'var(--ink-4)'
+  const cream = dark ? undefined : 'var(--cream)'
   const bgGradient = dark
     ? 'linear-gradient(172deg, #001C33, #00263F, #001526)'
     : undefined
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: bgGradient ?? cream, color: dark ? '#E9EFF5' : '#0B2135', overflowX: 'clip' }}>
+    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: bgGradient ?? cream, color: dark ? '#E9EFF5' : 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs dark={dark} />
       <div className="page-content">
         <SiteHeader active="home" dark={dark} onToggleDark={() => setDark((v) => !v)} />
@@ -222,12 +222,12 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               ))}
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <svg viewBox="0 0 24 24" width="17" height="17" fill="#00B67A"><path d="m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" /></svg>
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="var(--trustpilot)"><path d="m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 15.5, color: ink1 }}>Trustpilot</span>
             </span>
           </div>
 
-          <p style={{ margin: 0, fontSize: 'clamp(13.5px, 1.6vw, 16px)', fontWeight: 600, color: dark ? '#F4F2AE' : '#8A7A12' }}>Become part of a thriving network of over 70,000 business owners.</p>
+          <p style={{ margin: 0, fontSize: 'clamp(13.5px, 1.6vw, 16px)', fontWeight: 600, color: dark ? 'var(--butter)' : '#8A7A12' }}>Become part of a thriving network of over 70,000 business owners.</p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 10 }}>
             {RATING_BADGES.map((b) => (
@@ -239,7 +239,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 14, letterSpacing: '-0.2px', color: ink1 }}>{b.name}</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span style={{ fontSize: 12, letterSpacing: '1.5px', color: b.mark }}>★★★★★</span>
-                    <span style={{ fontSize: 12, fontWeight: 600, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6E81' }}>{b.score}</span>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: dark ? 'rgba(226,236,245,0.6)' : 'var(--ink-muted)' }}>{b.score}</span>
                   </span>
                 </span>
               </div>
@@ -308,10 +308,10 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: ink1 }}>{v.name}</span>
-                      <span style={{ fontSize: 12, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6E81' }}>{v.trade}</span>
+                      <span style={{ fontSize: 12, color: dark ? 'rgba(226,236,245,0.5)' : 'var(--ink-muted)' }}>{v.trade}</span>
                     </span>
                   </div>
-                  <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.58, color: dark ? 'rgba(226,236,245,0.82)' : '#24384A' }}>&ldquo;{v.quote}&rdquo;</p>
+                  <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.58, color: dark ? 'rgba(226,236,245,0.82)' : 'var(--ink-3)' }}>&ldquo;{v.quote}&rdquo;</p>
                 </div>
               </div>
             ))}
@@ -324,28 +324,28 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(242,238,226,0.6)', border: dark ? undefined : '1px solid rgba(255,255,255,0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#7C6D54', fontWeight: 600 }}>Option one</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: ink1 }}>DIY builders</h3>
-              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>Hand you a toolbox and a blank page. Most people never finish.</p>
+              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : 'var(--ink-5)' }}>Hand you a toolbox and a blank page. Most people never finish.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
                 {DIY_POINTS.map((p) => (
-                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6E81' }}>
-                    <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? '#E5A97F' : '#8A5B3C', flex: '0 0 auto' }} />{p}
+                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : 'var(--ink-muted)' }}>
+                    <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? 'var(--terracotta-light)' : '#8A5B3C', flex: '0 0 auto' }} />{p}
                   </span>
                 ))}
               </div>
-              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? '#E5A97F' : '#8A5B3C' }}>Rs. 140,000 / yr + your weekends</span>
+              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>Rs. 140,000 / yr + your weekends</span>
             </div>
             <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(242,238,226,0.6)', border: dark ? undefined : '1px solid rgba(255,255,255,0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#7C6D54', fontWeight: 600 }}>Option two</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: ink1 }}>Web agencies</h3>
-              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>Good work, big invoices — and you still can&apos;t change a phone number yourself.</p>
+              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : 'var(--ink-5)' }}>Good work, big invoices — and you still can&apos;t change a phone number yourself.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
                 {AGENCY_POINTS.map((p) => (
-                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : '#5A6E81' }}>
-                    <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? '#E5A97F' : '#8A5B3C', flex: '0 0 auto' }} />{p}
+                  <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.6)' : 'var(--ink-muted)' }}>
+                    <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? 'var(--terracotta-light)' : '#8A5B3C', flex: '0 0 auto' }} />{p}
                   </span>
                 ))}
               </div>
-              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? '#E5A97F' : '#8A5B3C' }}>Rs. 420,000–840,000 + upkeep</span>
+              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>Rs. 420,000–840,000 + upkeep</span>
             </div>
             <div style={{ padding: '30px 28px', borderRadius: 22, background: 'var(--navy)', display: 'flex', flexDirection: 'column', gap: 12, boxShadow: '0 24px 50px rgba(0,51,102,0.28)' }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--butter)', fontWeight: 600 }}>Option three</span>
@@ -370,18 +370,18 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 {BUILT_WITH.map(([title, body]) => (
                   <div key={title} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.82)' : '#3B5063' }}><strong style={{ color: ink1 }}>{title}</strong> — {body}</span>
+                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.82)' : 'var(--ink-4-alt)' }}><strong style={{ color: ink1 }}>{title}</strong> — {body}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div style={{ padding: '30px 28px 32px', borderRadius: 24, background: dark ? 'rgba(255,255,255,0.03)' : '#F2EEE2', border: `1px solid ${dark ? 'rgba(255,255,255,0.08)' : 'rgba(4,18,31,0.06)'}`, display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: dark ? '#E5A97F' : '#8A5B3C' }}>Websites without MatjarX</h3>
+            <div style={{ padding: '30px 28px 32px', borderRadius: 24, background: dark ? 'rgba(255,255,255,0.03)' : 'var(--cream-deep)', border: `1px solid ${dark ? 'rgba(255,255,255,0.08)' : 'rgba(4,18,31,0.06)'}`, display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>Websites without MatjarX</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {BUILT_WITHOUT.map((it) => (
                   <div key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={dark ? '#E5A97F' : '#8A5B3C'} strokeWidth="2.4" strokeLinecap="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
-                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.62)' : '#5A6E81' }}>{it}</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={dark ? 'var(--terracotta-light)' : '#8A5B3C'} strokeWidth="2.4" strokeLinecap="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
+                    <span style={{ fontSize: 13.5, lineHeight: 1.5, color: dark ? 'rgba(226,236,245,0.62)' : 'var(--ink-muted)' }}>{it}</span>
                   </div>
                 ))}
               </div>
@@ -391,7 +391,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
         {/* Mascot / urgency panel */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '30px 24px 60px' }}>
-          <div style={{ position: 'relative', borderRadius: 30, overflow: 'hidden', background: 'linear-gradient(120deg, #04121F 0%, #00243D 46%, #0A3A63 100%)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 34px 76px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.16)' }}>
+          <div style={{ position: 'relative', borderRadius: 30, overflow: 'hidden', background: 'linear-gradient(120deg, var(--navy-deepest) 0%, #00243D 46%, #0A3A63 100%)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 34px 76px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.16)' }}>
             <div style={{ position: 'absolute', width: 620, height: 620, right: -160, bottom: -220, borderRadius: '50%', background: 'radial-gradient(circle, rgba(198,203,138,0.34) 0%, rgba(198,203,138,0) 68%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 'clamp(34px, 5vw, 62px)', minWidth: 0, order: 1 }}>
@@ -408,14 +408,14 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               </div>
               <div style={{ position: 'relative', minWidth: 0, minHeight: 320, alignSelf: 'stretch', order: 2 }}>
                 <Image src="/home/mascot.webp" alt="A shop owner at the counter, looking at her phone while a customer waits" title="You have about 50 milliseconds" fill sizes="(max-width: 380px) 100vw, 50vw" style={{ objectFit: 'cover', objectPosition: 'center 20%' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #04121F 0%, rgba(4,18,31,0) 14%)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, var(--navy-deepest) 0%, rgba(4,18,31,0) 14%)' }} />
               </div>
             </div>
           </div>
         </section>
 
         {/* Editor features + second showcase */}
-        <section style={{ background: dark ? '#00121F' : '#04121F', padding: '84px 24px' }}>
+        <section style={{ background: dark ? '#00121F' : 'var(--navy-deepest)', padding: '84px 24px' }}>
           <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 50, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 22, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>The editor</span>
@@ -459,7 +459,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <div key={s.n} className={dark ? 'glass-dark-inner' : 'glass-card'} style={{ padding: '30px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 14 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 44, lineHeight: 1, letterSpacing: '-2px', color: 'var(--moss-light)' }}>{s.n}</span>
                 <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, letterSpacing: '-0.4px', color: ink1 }}>{s.title}</h3>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : '#4B5D6E' }}>{s.body}</p>
+                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : 'var(--ink-5)' }}>{s.body}</p>
                 <span style={{ marginTop: 'auto', paddingTop: 12, fontSize: 13, fontWeight: 600, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>{s.time}</span>
               </div>
             ))}
@@ -481,14 +481,14 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 </span>
                 <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: ink1 }}>{w.title}</h3>
                 <p style={{ margin: 0, fontSize: 13.5, fontWeight: 600, lineHeight: 1.5, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>{w.pitch}</p>
-                <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.58, color: dark ? 'rgba(226,236,245,0.68)' : '#4B5D6E' }}>{w.body}</p>
+                <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.58, color: dark ? 'rgba(226,236,245,0.68)' : 'var(--ink-5)' }}>{w.body}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* Website examples */}
-        <section id="examples" style={{ background: dark ? 'rgba(255,255,255,0.03)' : '#F2EEE2', padding: '82px 0' }}>
+        <section id="examples" style={{ background: dark ? 'rgba(255,255,255,0.03)' : 'var(--cream-deep)', padding: '82px 0' }}>
           <div style={{ maxWidth: 1360, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginRight: 'auto', maxWidth: 560 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Real sites, real businesses</span>
@@ -548,7 +548,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               )
             })}
           </div>
-          <p style={{ margin: '26px auto 0', maxWidth: 640, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6E81' }}>Prices in PKR. Gulf clients are billed in AED at the equivalent rate — ask us for a quote.</p>
+          <p style={{ margin: '26px auto 0', maxWidth: 640, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.5)' : 'var(--ink-muted)' }}>Prices in PKR. Gulf clients are billed in AED at the equivalent rate — ask us for a quote.</p>
         </section>
 
         {/* Trust band */}

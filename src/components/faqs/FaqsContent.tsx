@@ -56,7 +56,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
           <div key={q.key} className="glass-card" style={{ borderRadius: 18, overflow: 'hidden' }}>
             <button type="button" onClick={() => setOpenKey(open ? '' : q.key)} style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '19px 22px' }}>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, lineHeight: 1.35, color: 'var(--ink-1)', marginRight: 'auto', textAlign: 'left' }}>{q.question}</span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#5A6E81" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ink-muted)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
             </button>
             {open && <p style={{ margin: 0, padding: '0 22px 21px', fontSize: 14.5, lineHeight: 1.68, color: 'var(--ink-4)' }}>{q.answer}</p>}
           </div>
@@ -92,7 +92,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
               {(['All', ...FAQ_GROUP_NAMES] as const).map((name) => {
                 const active = group === name
                 return (
-                  <button key={name} type="button" onClick={() => setGroup(name)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 20px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{name}</button>
+                  <button key={name} type="button" onClick={() => setGroup(name)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 20px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{name}</button>
                 )
               })}
             </div>

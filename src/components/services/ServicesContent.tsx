@@ -64,7 +64,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
             {SERVICE_TABS.map((t) => {
               const on = svc === t.id
               return (
-                <Link key={t.id} href={SERVICE_ROUTES[t.id]} style={{ padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? '#FFFFFF' : '#4B5D6E', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
+                <Link key={t.id} href={SERVICE_ROUTES[t.id]} style={{ padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? '#FFFFFF' : 'var(--ink-5)', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
                   {t.label}
                 </Link>
               )
@@ -126,7 +126,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
               {d.gridItems.map((g) => (
                 <div key={g.title} className="glass-card" style={{ padding: '26px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <span style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--butter)', display: 'grid', placeItems: 'center' }}>
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3D3A08" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={g.icon} /></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--ink-on-butter-alt)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={g.icon} /></svg>
                   </span>
                   <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{g.title}</h3>
                   <p style={{ margin: 0, fontSize: 14, lineHeight: 1.58, color: 'var(--ink-5)' }}>{g.body}</p>

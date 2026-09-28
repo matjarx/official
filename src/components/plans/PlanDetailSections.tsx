@@ -72,7 +72,7 @@ function CompareTableEl({ headers, rows }: { headers: string[]; rows: string[][]
         <tbody>
           {rows.map((row, i) => (
             <tr key={i} style={{ borderTop: '1px solid rgba(4,18,31,0.06)' }}>
-              {row.map((cell, j) => <td key={j} style={{ padding: '11px 16px', fontSize: 13.5, color: j === 0 ? '#04121F' : '#4B5D6E', fontWeight: j === 0 ? 600 : 400 }}>{cell}</td>)}
+              {row.map((cell, j) => <td key={j} style={{ padding: '11px 16px', fontSize: 13.5, color: j === 0 ? 'var(--ink-1)' : 'var(--ink-5)', fontWeight: j === 0 ? 600 : 400 }}>{cell}</td>)}
             </tr>
           ))}
         </tbody>

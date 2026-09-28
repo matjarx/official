@@ -19,7 +19,7 @@ import { HERO_STATS, COL_HEADS, MATRIX, PLATFORM_PROFILES, WIN_REASONS, CHOOSE_G
 import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { FaqList } from '@/components/FaqList'
 
-const TONE_COLOR = { us: 'var(--navy)', ok: '#3B5063', bad: '#B4874F' } as const
+const TONE_COLOR = { us: 'var(--navy)', ok: 'var(--ink-4-alt)', bad: 'var(--terracotta)' } as const
 
 export type BestBuilderContentShape = { heroStats: typeof HERO_STATS; profiles: typeof PLATFORM_PROFILES; faqs: typeof BEST_BUILDER_FAQS }
 const DEFAULT_CONTENT: BestBuilderContentShape = { heroStats: HERO_STATS, profiles: PLATFORM_PROFILES, faqs: BEST_BUILDER_FAQS }
@@ -80,7 +80,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
               <div style={{ display: 'grid', gridTemplateColumns: `minmax(0, 1.4fr) repeat(${COL_HEADS.length}, minmax(110px, 0.8fr))`, minWidth: 980 }}>
                 <span style={{ padding: '20px 22px', background: 'rgba(242,238,226,0.7)' }} />
                 {COL_HEADS.map((h, i) => (
-                  <span key={h} style={{ padding: '20px 12px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 13.5, letterSpacing: '-0.2px', color: i === 0 ? '#FFFFFF' : '#04121F', background: i === 0 ? 'var(--navy)' : 'rgba(242,238,226,0.7)' }}>{h}</span>
+                  <span key={h} style={{ padding: '20px 12px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 13.5, letterSpacing: '-0.2px', color: i === 0 ? '#FFFFFF' : 'var(--navy-deepest)', background: i === 0 ? 'var(--navy)' : 'rgba(242,238,226,0.7)' }}>{h}</span>
                 ))}
                 {MATRIX.map((row) => (
                   <Fragment key={row.label}>
@@ -117,7 +117,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{i + 1}. {p.name}</span>
                       <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>{p.tagline}</span>
                     </div>
-                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#5A6E81" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--ink-muted)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
                   </button>
                   {open && (
                     <div style={{ padding: '0 24px 26px', display: 'flex', flexDirection: 'column', gap: 18 }}>
@@ -141,7 +141,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                           <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: 'var(--terracotta)' }}>Key weaknesses</span>
                           {p.weaknesses.map((s) => (
                             <span key={s} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-3-alt)' }}>
-                              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#B4874F" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
+                              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--terracotta)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M6 6l12 12M18 6 6 18" /></svg>
                               {s}
                             </span>
                           ))}
@@ -222,10 +222,10 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: 18 }}>
             {CHOOSE_GUIDE.map((g) => (
               <div key={g.name} className="glass-card" style={{ padding: '24px 24px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12, ...(g.mine ? { background: 'var(--navy)', border: '1.5px solid var(--navy)' } : {}) }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: g.mine ? '#FFFFFF' : '#04121F' }}>Choose {g.name} if you&hellip;</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: g.mine ? '#FFFFFF' : 'var(--ink-1)' }}>Choose {g.name} if you&hellip;</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
                   {g.points.map((p) => (
-                    <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: g.mine ? 'rgba(255,255,255,0.82)' : '#4B5D6E' }}>
+                    <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: g.mine ? 'rgba(255,255,255,0.82)' : 'var(--ink-5)' }}>
                       <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke={g.mine ? 'var(--moss-light)' : 'var(--olive)'} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                       {p}
                     </span>

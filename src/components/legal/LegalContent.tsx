@@ -98,7 +98,7 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
                   {LEGAL_DOC_KEYS.map((key) => {
                     const active = doc === key
                     return (
-                      <Link key={key} href={routes.legal(key)} style={{ boxSizing: 'border-box', width: '100%', padding: '13px 16px', borderRadius: 13, fontSize: 14, fontWeight: active ? 700 : 500, textAlign: 'left', color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : 'transparent' }}>{LEGAL_DATA[key].label}</Link>
+                      <Link key={key} href={routes.legal(key)} style={{ boxSizing: 'border-box', width: '100%', padding: '13px 16px', borderRadius: 13, fontSize: 14, fontWeight: active ? 700 : 500, textAlign: 'left', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'transparent' }}>{LEGAL_DATA[key].label}</Link>
                     )
                   })}
                 </div>

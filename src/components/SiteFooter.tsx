@@ -81,7 +81,7 @@ export default function SiteFooter() {
             <a
               href={appSignup()}
               onClick={() => trackEvent('cta_click', { label: 'footer_get_started' })}
-              style={{ padding: '17px 32px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#FFFFFF', background: 'linear-gradient(160deg, #10293D, #04121F)', boxShadow: '0 12px 26px rgba(4,18,31,0.28), inset 0 1px 0 rgba(255,255,255,0.18)' }}
+              style={{ padding: '17px 32px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#FFFFFF', background: 'linear-gradient(160deg, #10293D, var(--navy-deepest))', boxShadow: '0 12px 26px rgba(4,18,31,0.28), inset 0 1px 0 rgba(255,255,255,0.18)' }}
               className="footer-cta-primary"
             >
               Get started
@@ -100,7 +100,7 @@ export default function SiteFooter() {
         </div>
       </section>
 
-      <footer style={{ background: 'linear-gradient(168deg, #04121F 0%, #001C33 100%)', padding: '62px 24px 34px' }}>
+      <footer style={{ background: 'linear-gradient(168deg, var(--navy-deepest) 0%, #001C33 100%)', padding: '62px 24px 34px' }}>
         <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(200px, 1.4fr) repeat(auto-fit, minmax(148px, 1fr))', gap: '40px 30px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
             <Image src="/brand/matjarx-logo-light.png" alt="MatjarX" width={148} height={40} style={{ width: 148, height: 'auto' }} />

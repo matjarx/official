@@ -55,7 +55,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
               {CAREERS_PERKS_ACTIVE.map((p) => (
                 <div key={p.title} className="glass-card" style={{ padding: '26px 26px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <span style={{ width: 42, height: 42, borderRadius: 12, background: 'var(--butter)', display: 'grid', placeItems: 'center' }}>
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3D3A08" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={p.icon} /></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--ink-on-butter-alt)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={p.icon} /></svg>
                   </span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{p.title}</span>
                   <span style={{ fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{p.body}</span>
@@ -75,7 +75,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                 {CAREERS_CATEGORIES.map((c) => {
                   const active = filter === c
                   return (
-                    <button key={c} type="button" onClick={() => { setFilter(c); setOpenIndex(-1) }} style={{ all: 'unset', cursor: 'pointer', padding: '10px 17px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{c}</button>
+                    <button key={c} type="button" onClick={() => { setFilter(c); setOpenIndex(-1) }} style={{ all: 'unset', cursor: 'pointer', padding: '10px 17px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{c}</button>
                   )
                 })}
               </div>
@@ -93,7 +93,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                       </div>
                       <span style={{ fontSize: 12, fontWeight: 600, padding: '7px 13px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{r.level}</span>
                       <span className="glass-chip" style={{ width: 30, height: 30, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center' }}>
-                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#04121F" strokeWidth="2.4" strokeLinecap="round" style={{ transform: open ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="M12 5v14M5 12h14" /></svg>
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--ink-1)" strokeWidth="2.4" strokeLinecap="round" style={{ transform: open ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="M12 5v14M5 12h14" /></svg>
                       </span>
                     </button>
                     {open && (

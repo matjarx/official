@@ -74,9 +74,9 @@ export function FaqList({
   itemKey?: (entry: FaqEntry, index: number) => React.Key
   bullets?: boolean
 }) {
-  const ink = dark ? '#FFFFFF' : '#04121F'
-  const body = dark ? 'rgba(255,255,255,0.7)' : '#435A70'
-  const chev = dark ? 'rgba(255,255,255,0.6)' : '#5A6E81'
+  const ink = dark ? '#FFFFFF' : 'var(--ink-1)'
+  const body = dark ? 'rgba(255,255,255,0.7)' : 'var(--ink-4)'
+  const chev = dark ? 'rgba(255,255,255,0.6)' : 'var(--ink-muted)'
 
   return (
     <>

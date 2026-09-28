@@ -84,7 +84,7 @@ export default function CardRail({
               className="industry-rail-arrow"
               style={{
                 borderColor: dark ? 'rgba(255,255,255,0.18)' : 'rgba(4,18,31,0.12)',
-                color: dark ? '#FFFFFF' : '#04121F',
+                color: dark ? '#FFFFFF' : 'var(--ink-1)',
                 background: dark ? 'rgba(255,255,255,0.06)' : '#FFFFFF',
               }}
             >

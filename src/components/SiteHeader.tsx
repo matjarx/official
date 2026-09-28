@@ -164,8 +164,8 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                       >
                         {item.menu.map((m) => (
                           <Link key={m.label} href={m.href} className={dark ? 'menu-item-dark' : 'menu-item-light'} style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '11px 14px', borderRadius: 12 }}>
-                            <span style={{ fontSize: 13.5, fontWeight: 600, color: dark ? '#F2F6FA' : '#04121F' }}>{m.label}</span>
-                            {m.note && <span style={{ fontSize: 11.5, color: dark ? 'rgba(226,236,245,0.5)' : '#5A6E81' }}>{m.note}</span>}
+                            <span style={{ fontSize: 13.5, fontWeight: 600, color: dark ? '#F2F6FA' : 'var(--ink-1)' }}>{m.label}</span>
+                            {m.note && <span style={{ fontSize: 11.5, color: dark ? 'rgba(226,236,245,0.5)' : 'var(--ink-muted)' }}>{m.note}</span>}
                           </Link>
                         ))}
                       </div>
@@ -197,7 +197,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                   boxShadow: dark ? 'inset 0 1px 0 rgba(255,255,255,0.16)' : 'inset 0 1px 0 rgba(255,255,255,0.9)',
                 }}
               >
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke={dark ? '#E9EFF5' : '#04121F'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke={dark ? '#E9EFF5' : 'var(--ink-1)'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d={dark
                     ? 'M12 3.5a8.5 8.5 0 1 0 8.5 8.5c0-.4 0-.8-.1-1.2A6 6 0 0 1 12 3.6Z'
                     : 'M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9ZM12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M18.5 5.5l-1.4 1.4M6.9 17.1 5.5 18.5'} />
@@ -226,7 +226,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                 boxShadow: dark ? 'inset 0 1px 0 rgba(255,255,255,0.16)' : 'inset 0 1px 0 rgba(255,255,255,0.9)',
               }}
             >
-              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke={dark ? '#E9EFF5' : '#04121F'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke={dark ? '#E9EFF5' : 'var(--ink-1)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d={drawer ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16'} />
               </svg>
             </button>
@@ -276,7 +276,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                   {item.menu && isOpen && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 2, margin: '2px 0 8px 16px', paddingLeft: 16, borderLeft: '2px solid rgba(198,203,138,0.7)' }}>
                       {item.menu.map((m) => (
-                        <Link key={m.label} href={m.href} onClick={() => setDrawer(false)} className={dark ? 'mobile-submenu-dark' : 'mobile-submenu-light'} style={{ display: 'block', padding: '12px 12px', borderRadius: 11, fontSize: 14.5, color: dark ? 'rgba(226,236,245,0.76)' : '#3B5063' }}>
+                        <Link key={m.label} href={m.href} onClick={() => setDrawer(false)} className={dark ? 'mobile-submenu-dark' : 'mobile-submenu-light'} style={{ display: 'block', padding: '12px 12px', borderRadius: 11, fontSize: 14.5, color: dark ? 'rgba(226,236,245,0.76)' : 'var(--ink-4-alt)' }}>
                           {m.label}
                         </Link>
                       ))}
@@ -295,7 +295,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                 fontFamily: 'var(--font-lato), Lato, sans-serif',
                 fontWeight: 700,
                 fontSize: 15,
-                color: dark ? '#F7FAFD' : '#04121F',
+                color: dark ? '#F7FAFD' : 'var(--ink-1)',
                 background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.66)',
                 border: dark ? '1.5px solid rgba(255,255,255,0.18)' : '1.5px solid rgba(255,255,255,0.9)',
                 backdropFilter: 'blur(20px)',

@@ -98,18 +98,18 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
               {PARTNER_TIERS_ACTIVE.map((t) => (
                 <div key={t.name} className={t.dark ? 'glass-dark-panel' : 'glass-card'} style={{ padding: '30px 28px 32px', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '-0.5px', color: t.dark ? '#FFFFFF' : '#04121F', marginRight: 'auto' }}>{t.name}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '-0.5px', color: t.dark ? '#FFFFFF' : 'var(--ink-1)', marginRight: 'auto' }}>{t.name}</span>
                     {t.tag && <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.8px', textTransform: 'uppercase', padding: '5px 10px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{t.tag}</span>}
                   </div>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: t.dark ? 'rgba(255,255,255,0.6)' : '#5A6E81' }}>{t.who}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: t.dark ? 'rgba(255,255,255,0.6)' : 'var(--ink-muted)' }}>{t.who}</span>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, paddingTop: 8 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 38, letterSpacing: '-1.4px', color: t.dark ? '#FFFFFF' : '#04121F' }}>{t.rate}</span>
-                    <span style={{ fontSize: 14, color: t.dark ? 'rgba(255,255,255,0.6)' : '#5A6E81' }}>recurring</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 38, letterSpacing: '-1.4px', color: t.dark ? '#FFFFFF' : 'var(--ink-1)' }}>{t.rate}</span>
+                    <span style={{ fontSize: 14, color: t.dark ? 'rgba(255,255,255,0.6)' : 'var(--ink-muted)' }}>recurring</span>
                   </div>
-                  <span style={{ fontSize: 13, color: t.dark ? 'rgba(255,255,255,0.6)' : '#5A6E81' }}>{t.bonus}</span>
+                  <span style={{ fontSize: 13, color: t.dark ? 'rgba(255,255,255,0.6)' : 'var(--ink-muted)' }}>{t.bonus}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 9, paddingTop: 14, marginTop: 4, borderTop: `1px solid ${t.dark ? 'rgba(255,255,255,0.16)' : 'rgba(4,18,31,0.09)'}` }}>
                     {t.features.map((f) => (
-                      <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: t.dark ? 'rgba(255,255,255,0.82)' : '#3B5063' }}>
+                      <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: t.dark ? 'rgba(255,255,255,0.82)' : 'var(--ink-4-alt)' }}>
                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke={t.dark ? 'var(--moss-light)' : 'var(--olive)'} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                         {f}
                       </span>
@@ -183,7 +183,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                     {PARTNER_CLIENT_STEPS.map((n) => {
                       const active = clients === n
                       return (
-                        <button key={n} type="button" onClick={() => setClients(n)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '10px 4px', borderRadius: 10, fontSize: 13, fontWeight: 700, fontFamily: 'var(--font-lato), Lato, sans-serif', color: active ? '#FFFFFF' : '#4B5D6E', background: active ? 'var(--navy)' : 'var(--cream-deep)' }}>{n}</button>
+                        <button key={n} type="button" onClick={() => setClients(n)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '10px 4px', borderRadius: 10, fontSize: 13, fontWeight: 700, fontFamily: 'var(--font-lato), Lato, sans-serif', color: active ? '#FFFFFF' : 'var(--ink-5)', background: active ? 'var(--navy)' : 'var(--cream-deep)' }}>{n}</button>
                       )
                     })}
                   </div>
@@ -194,7 +194,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                     {PARTNER_PLAN_PICKS.map((p) => {
                       const active = plan === p
                       return (
-                        <button key={p} type="button" onClick={() => setPlan(p)} style={{ all: 'unset', cursor: 'pointer', padding: '9px 15px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{p}</button>
+                        <button key={p} type="button" onClick={() => setPlan(p)} style={{ all: 'unset', cursor: 'pointer', padding: '9px 15px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{p}</button>
                       )
                     })}
                   </div>
@@ -241,7 +241,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                   {PARTNER_TYPES.map((label) => {
                     const active = ptype === label
                     return (
-                      <button key={label} type="button" onClick={() => setPtype(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : '#3B5063', background: active ? 'var(--navy)' : 'var(--cream)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{label}</button>
+                      <button key={label} type="button" onClick={() => setPtype(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--cream)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{label}</button>
                     )
                   })}
                 </div>

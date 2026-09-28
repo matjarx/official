@@ -44,7 +44,7 @@ function TableEl({ headers, rows }: { headers: string[]; rows: string[][] }) {
         <tbody>
           {rows.map((row, i) => (
             <tr key={i} style={{ borderTop: '1px solid rgba(4,18,31,0.06)' }}>
-              {row.map((cell, j) => <td key={j} style={{ padding: '11px 16px', fontSize: 13.5, color: j === 0 ? '#04121F' : '#4B5D6E', fontWeight: j === 0 ? 600 : 400 }}>{cell}</td>)}
+              {row.map((cell, j) => <td key={j} style={{ padding: '11px 16px', fontSize: 13.5, color: j === 0 ? 'var(--ink-1)' : 'var(--ink-5)', fontWeight: j === 0 ? 600 : 400 }}>{cell}</td>)}
             </tr>
           ))}
         </tbody>
@@ -139,7 +139,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16 }}>
             {d.differentiator.groups.map((g) => (
               <div key={g.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18, border: g.positive ? '1.5px solid var(--olive)' : undefined }}>
-                <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: g.positive ? 'var(--olive)' : '#04121F' }}>{g.title}</h3>
+                <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: g.positive ? 'var(--olive)' : 'var(--ink-1)' }}>{g.title}</h3>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{g.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             ))}
@@ -304,7 +304,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
             {d.closing.ctas.map((c, i) => {
               const label = typeof c === 'string' ? c : c.label
               const href = typeof c === 'string' ? null : c.href
-              const style = { padding: '13px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, textDecoration: 'none', display: 'inline-block', color: i === 0 ? '#16210B' : '#FFFFFF', background: i === 0 ? 'var(--butter)' : 'rgba(255,255,255,0.09)', border: i === 0 ? undefined : '1.5px solid rgba(255,255,255,0.2)' }
+              const style = { padding: '13px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, textDecoration: 'none', display: 'inline-block', color: i === 0 ? 'var(--ink-on-butter)' : '#FFFFFF', background: i === 0 ? 'var(--butter)' : 'rgba(255,255,255,0.09)', border: i === 0 ? undefined : '1.5px solid rgba(255,255,255,0.2)' }
               // A string with no destination still renders inert rather than
               // as a link to nowhere -- but every CTA in the data has one.
               return href ? (
