@@ -218,19 +218,19 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 16 }}>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Your name</span>
-                  <input required type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
+                  <input required type="text" name="name" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
                 </label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Company</span>
-                  <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Your agency or practice" className="input" style={{ width: '100%' }} />
+                  <input type="text" name="company" autoComplete="organization" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Your agency or practice" className="input" style={{ width: '100%' }} />
                 </label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Email</span>
-                  <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.pk" className="input" style={{ width: '100%' }} />
+                  <input required type="email" name="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.pk" className="input" style={{ width: '100%' }} />
                 </label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Phone / WhatsApp</span>
-                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
+                  <input type="tel" name="phone" autoComplete="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
                 </label>
               </div>
 

@@ -19,6 +19,7 @@ import { PLAN_TIER_ICONS } from '@/lib/partner-icons-data'
 import type { PlanContentShape } from '@/lib/marketing-content'
 import PlanDetailSections from './PlanDetailSections'
 import { FaqList } from '@/components/FaqList'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 
 const DEFAULT_CONTENT: Record<PlanKey, PlanContentShape> = (Object.keys(ALL_PLANS) as PlanKey[]).reduce((acc, key) => {
   acc[key] = { ...ALL_PLANS[key], ...PLAN_DATA[key], detail: undefined }
@@ -48,18 +49,11 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
       { '@type': 'ListItem', position: 3, name: p.name, item: pageUrl },
     ],
   }
-  const faqJsonLd = d.faqs.length
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: d.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
-      }
-    : null
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
+      <FaqSchema faqs={fromPairs(d.faqs)} />
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="pricing">

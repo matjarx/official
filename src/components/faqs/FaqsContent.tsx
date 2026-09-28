@@ -11,6 +11,7 @@ import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { FAQ_GROUPS, FAQ_GROUP_NAMES, type FaqGroupName } from '@/lib/faqs-data'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 
 type FlatQ = { key: string; question: string; answer: string }
 
@@ -39,13 +40,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
   // Full FAQ set for structured data, independent of the "All"/category
   // filter above — an agent or search crawler should see every question
   // regardless of which chip a visitor last clicked.
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: FAQ_GROUP_NAMES.flatMap((name) =>
-      FAQ_GROUPS_ACTIVE[name].map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } }))
-    ),
-  }
+  const allFaqPairs = FAQ_GROUP_NAMES.flatMap((name) => FAQ_GROUPS_ACTIVE[name])
 
   const renderCol = (col: FlatQ[]) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
@@ -66,7 +61,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <FaqSchema faqs={fromPairs(allFaqPairs)} />
       <SiteChrome active="resources">
 
       {/* Navy hero */}

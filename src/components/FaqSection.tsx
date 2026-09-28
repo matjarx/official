@@ -23,6 +23,7 @@
 
 import { useState } from 'react'
 import { FaqList } from '@/components/FaqList'
+import FaqSchema from '@/components/FaqSchema'
 
 /** Shared with FaqSchema, which is where `fromPairs` lives. */
 export type Faq = { question: string; answer: string }
@@ -47,19 +48,10 @@ export default function FaqSection({
   const ink = dark ? 'var(--ink-inverse)' : 'var(--ink-1)'
   const body = dark ? 'rgba(var(--ink-inverse-rgb), 0.72)' : 'var(--ink-4)'
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.question,
-      acceptedAnswer: { '@type': 'Answer', text: f.answer },
-    })),
-  }
 
   return (
     <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <FaqSchema faqs={faqs} />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 40, alignItems: 'start' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 4vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: ink }}>

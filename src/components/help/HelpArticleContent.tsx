@@ -16,6 +16,7 @@ import { routes } from '@/lib/routes'
 import { HELP_ARTICLES, type HelpSlug, type HelpBlock, type HelpArticle } from '@/lib/help-articles-data'
 import { HELP_CHANNELS } from '@/lib/help-data'
 import { FaqList } from '@/components/FaqList'
+import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 
 // Turns the source markdown's inline **bold** and [text](url) into real
 // <strong>/<a> nodes, so the generated data can stay plain strings.
@@ -78,17 +79,10 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
   const d = content ?? HELP_ARTICLES[slug]
   const [openFaq, setOpenFaq] = useState(0)
 
-  const faqJsonLd = d.faqs.length
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: d.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
-      }
-    : null
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
+      <FaqSchema faqs={fromPairs(d.faqs)} />
       <SiteChrome active="company">
 
       {/* Navy hero */}
