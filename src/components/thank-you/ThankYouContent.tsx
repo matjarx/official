@@ -37,11 +37,11 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
           <span style={{ width: 72, height: 72, borderRadius: '50%', background: 'var(--moss-light)', display: 'grid', placeItems: 'center' }}>
             <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--ink-on-butter)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7" /></svg>
           </span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 48px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>Thank you — we&rsquo;ve got it</h1>
-          <p style={{ margin: 0, maxWidth: '30em', fontSize: 17.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.75)' }}>{subtitle}</p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 20px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.16)' }}>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 48px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>Thank you — we&rsquo;ve got it</h1>
+          <p style={{ margin: 0, maxWidth: '30em', fontSize: 17.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.75)' }}>{subtitle}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 20px', borderRadius: 999, background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)' }}>
             <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: 'var(--ink-on-butter)' }}>JA</span>
-            <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>Junaid Ahmed will most likely be the one replying</span>
+            <span style={{ fontSize: 14, color: 'rgba(var(--ink-inverse-rgb), 0.85)' }}>Junaid Ahmed will most likely be the one replying</span>
           </div>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
                 <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" className="btn-navy" style={{ textAlign: 'center' }}>Message on WhatsApp</a>
-                <a className="btn-trace" href="tel:+923033720953" style={{ textAlign: 'center', padding: '15px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(31,42,8,0.2)' }}>Call +92 303 372 0953</a>
+                <a className="btn-trace" href="tel:+923033720953" style={{ textAlign: 'center', padding: '15px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#1F2A08', background: 'rgba(var(--ink-inverse-rgb), 0.62)', border: '1.5px solid rgba(31,42,8,0.2)' }}>Call +92 303 372 0953</a>
               </div>
             </div>
           </section>
@@ -83,7 +83,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
             <h2 style={{ margin: '0 0 24px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>While you wait</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 18 }}>
               {THANK_YOU_LINKS_ACTIVE.map((l) => (
-                <Link key={l.title} href={l.href} style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '24px 26px', borderRadius: 20, background: '#FFFFFF', border: '1.5px solid rgba(4,18,31,0.1)' }}>
+                <Link key={l.title} href={l.href} style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '24px 26px', borderRadius: 20, background: 'var(--surface)', border: '1.5px solid rgba(var(--ink-1-rgb), 0.1)' }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{l.title}</span>
                   <span style={{ fontSize: 13.5, lineHeight: 1.58, color: 'var(--ink-5)' }}>{l.body}</span>
                   <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{l.cta}</span>

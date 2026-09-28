@@ -30,9 +30,9 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
       <section style={{ background: 'var(--navy)', padding: '58px 24px 52px' }}>
         <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Compare your options</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 46px)', lineHeight: 1.14, letterSpacing: '-1.5px', color: '#FFFFFF' }}>{HERO_ACTIVE.h1}</h1>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 46px)', lineHeight: 1.14, letterSpacing: '-1.5px', color: 'var(--ink-inverse)' }}>{HERO_ACTIVE.h1}</h1>
           {HERO_ACTIVE.intro.map((p, i) => (
-            <p key={i} style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>{p}</p>
+            <p key={i} style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{p}</p>
           ))}
         </div>
       </section>
@@ -93,7 +93,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{CLOSING.eyebrow}</span>
               <Link href={routes.contact} className="btn-primary">{CLOSING.cta}</Link>
-              <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>{CLOSING.note}</p>
+              <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>{CLOSING.note}</p>
             </div>
           </section>
 

@@ -75,10 +75,10 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Help centre</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>
             Frequently asked <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>questions</span>
           </h1>
-          <p style={{ margin: 0, maxWidth: '32em', fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>Everything you need to use MatjarX like a pro. Still stuck? We&rsquo;re a phone call away.</p>
+          <p style={{ margin: 0, maxWidth: '32em', fontSize: 17, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Everything you need to use MatjarX like a pro. Still stuck? We&rsquo;re a phone call away.</p>
         </div>
       </section>
 
@@ -92,7 +92,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
               {(['All', ...FAQ_GROUP_NAMES] as const).map((name) => {
                 const active = group === name
                 return (
-                  <button key={name} type="button" onClick={() => setGroup(name)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 20px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{name}</button>
+                  <button key={name} type="button" onClick={() => setGroup(name)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 20px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, whiteSpace: 'nowrap', color: active ? 'var(--ink-inverse)' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--surface)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(var(--ink-1-rgb), 0.14)'}`, transition: 'background 160ms ease' }}>{name}</button>
                 )
               })}
             </div>
@@ -110,8 +110,8 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ padding: 'clamp(26px, 4vw, 40px) clamp(22px, 3.5vw, 42px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(23px, 3.6vw, 30px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Still have questions?</h2>
-                <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.65)' }}>Get started today — or just ask us anything before you commit to anything.</p>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(23px, 3.6vw, 30px)', lineHeight: 1.18, letterSpacing: '-1px', color: 'var(--ink-inverse)' }}>Still have questions?</h2>
+                <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>Get started today — or just ask us anything before you commit to anything.</p>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
                 <a href="tel:+923033720953" className="btn-primary" style={{ textAlign: 'center' }}>Call +92 303 372 0953</a>

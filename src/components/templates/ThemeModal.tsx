@@ -154,11 +154,11 @@ export default function ThemeModal({ themes }: { themes: Theme[] }) {
                 />
               ) : (
                 <div className="theme-modal-empty" style={{ background: open.primaryColor ? `linear-gradient(150deg, ${open.primaryColor}, ${open.secondaryColor || open.primaryColor})` : undefined }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: '#FFFFFF' }}>{open.name}</span>
-                  <p style={{ margin: 0, maxWidth: '30em', fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.82)' }}>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-inverse)' }}>{open.name}</span>
+                  <p style={{ margin: 0, maxWidth: '30em', fontSize: 14.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.82)' }}>
                     {open.description || 'This template is being finished. Ask us and we will show you where it has got to.'}
                   </p>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>No live demo for this one yet.</span>
+                  <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>No live demo for this one yet.</span>
                 </div>
               )}
             </div>

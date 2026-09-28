@@ -59,10 +59,10 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Get in touch</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>
             Talk to a real person, <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>today</span>
           </h1>
-          <p style={{ margin: 0, maxWidth: '32em', fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>No bots, no ticket queues. Ask us anything about plans, timelines or what your business needs.</p>
+          <p style={{ margin: 0, maxWidth: '32em', fontSize: 17, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>No bots, no ticket queues. Ask us anything about plans, timelines or what your business needs.</p>
         </div>
       </section>
 
@@ -106,7 +106,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                       </span>
                     ))}
                   </div>
-                  <span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--navy)', paddingTop: 4, borderTop: '1px solid rgba(4,18,31,0.07)', marginTop: 4 }}>Contact: {c.contact}</span>
+                  <span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--navy)', paddingTop: 4, borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)', marginTop: 4 }}>Contact: {c.contact}</span>
                 </div>
               ))}
             </div>
@@ -147,7 +147,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                       {CONTACT_TOPICS_ACTIVE.map((label) => {
                         const active = topic === label
                         return (
-                          <button key={label} type="button" onClick={() => setTopic(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{label}</button>
+                          <button key={label} type="button" onClick={() => setTopic(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? 'var(--ink-inverse)' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--surface)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(var(--ink-1-rgb), 0.14)'}`, transition: 'background 160ms ease' }}>{label}</button>
                         )
                       })}
                     </div>
@@ -160,26 +160,26 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
 
                   {status === 'error' && <p style={{ margin: 0, fontSize: 13, color: '#B4432F' }}>Something went wrong sending that — please try again or message us on WhatsApp instead.</p>}
 
-                  <button type="submit" disabled={status === 'submitting'} className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(0,51,102,0.24)' }}>{status === 'submitting' ? 'Sending…' : 'Send message'}</button>
+                  <button type="submit" disabled={status === 'submitting'} className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(var(--navy-rgb), 0.24)' }}>{status === 'submitting' ? 'Sending…' : 'Send message'}</button>
                   <span style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>. We never share your details.</span>
                 </form>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                 <div style={{ padding: '28px 30px', borderRadius: 24, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', gap: 18 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, color: '#FFFFFF' }}>Our office</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 19, color: 'var(--ink-inverse)' }}>Our office</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                     {CONTACT_OFFICE_ROWS_ACTIVE.map((o) => (
                       <div key={o.label} style={{ display: 'flex', gap: 13, alignItems: 'flex-start' }}>
                         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--moss-light)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d={o.icon} /></svg>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
-                          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.42)', fontWeight: 600 }}>{o.label}</span>
-                          <span style={{ fontSize: 14.5, lineHeight: 1.5, color: 'rgba(255,255,255,0.88)' }}>{o.value}</span>
+                          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.42)', fontWeight: 600 }}>{o.label}</span>
+                          <span style={{ fontSize: 14.5, lineHeight: 1.5, color: 'rgba(var(--ink-inverse-rgb), 0.88)' }}>{o.value}</span>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div style={{ height: 170, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, #0A2233)', display: 'grid', placeItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Map — Zamzama, Clifton, Karachi</span>
+                  <div style={{ height: 170, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, #0A2233)', display: 'grid', placeItems: 'center', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
+                    <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.5)' }}>Map — Zamzama, Clifton, Karachi</span>
                   </div>
                 </div>
 
@@ -228,7 +228,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
             <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Preferred communication channel, by topic</span>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
               {CONTACT_PREFERRED_CHANNEL.map((g) => (
-                <div key={g.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 9 }}>
+                <div key={g.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 9 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: 'var(--ink-1)' }}>{g.title}</span>
                   {g.items.map((it) => (
                     <span key={it} style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>{it}</span>
@@ -267,7 +267,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                 <thead>
                   <tr>
                     {CONTACT_SUMMARY_TABLE.headers.map((h) => (
-                      <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: 'var(--ink-1)', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+                      <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: 'var(--ink-1)', background: 'rgba(var(--cream-deep-rgb), 0.7)' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -275,7 +275,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                   {CONTACT_SUMMARY_TABLE.rows.map((row, ri) => (
                     <tr key={ri}>
                       {row.map((cell, ci) => (
-                        <td key={ci} style={{ padding: '14px 20px', fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-3-alt)', borderTop: '1px solid rgba(4,18,31,0.07)', fontWeight: ci === 0 ? 700 : 400 }}>{cell}</td>
+                        <td key={ci} style={{ padding: '14px 20px', fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-3-alt)', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)', fontWeight: ci === 0 ? 700 : 400 }}>{cell}</td>
                       ))}
                     </tr>
                   ))}

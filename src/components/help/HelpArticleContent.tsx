@@ -99,14 +99,14 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
           <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>
             <Link href={routes.help} style={{ color: 'var(--moss-light)' }}>Help centre</Link>
             <span style={{ opacity: 0.5 }}>/</span>
-            <span style={{ color: 'rgba(255,255,255,0.6)' }}>Guide</span>
+            <span style={{ color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>Guide</span>
           </span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 42px)', lineHeight: 1.1, letterSpacing: '-1.3px', color: '#FFFFFF' }}>{d.title}</h1>
-          {d.intro && <p style={{ margin: 0, maxWidth: '34em', fontSize: 16, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>{d.intro}</p>}
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 42px)', lineHeight: 1.1, letterSpacing: '-1.3px', color: 'var(--ink-inverse)' }}>{d.title}</h1>
+          {d.intro && <p style={{ margin: 0, maxWidth: '34em', fontSize: 16, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.intro}</p>}
           {d.metaLines && d.metaLines.length > 0 && (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginTop: 4 }}>
               {d.metaLines.map((m, i) => (
-                <span key={i} style={{ fontSize: 12.5, fontWeight: 600, color: '#FFFFFF', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: 999, padding: '7px 14px' }}>{m}</span>
+                <span key={i} style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-inverse)', background: 'rgba(var(--ink-inverse-rgb), 0.1)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', borderRadius: 999, padding: '7px 14px' }}>{m}</span>
               ))}
             </div>
           )}
@@ -120,7 +120,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
           {/* Hero image */}
           {d.heroImage && (
             <section style={{ maxWidth: 820, margin: '0 auto', padding: '36px 24px 0' }}>
-              <div style={{ position: 'relative', width: '100%', height: 260, borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 44px rgba(4,18,31,0.14)' }}>
+              <div style={{ position: 'relative', width: '100%', height: 260, borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 44px rgba(var(--ink-1-rgb), 0.14)' }}>
                 <Image src={d.heroImage.src} alt={d.heroImage.alt} title={d.title} fill sizes="(max-width: 860px) 100vw, 820px" style={{ objectFit: 'cover' }} />
               </div>
             </section>

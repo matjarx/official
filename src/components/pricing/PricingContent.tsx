@@ -94,13 +94,13 @@ export const DEFAULT_FAQ_DATA = [
 ]
 
 const LIGHT_THEME = {
-  bg: 'rgba(255,255,255,0.62)', border: 'rgba(255,255,255,0.85)', shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)', blur: 'blur(22px)',
-  ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(4,18,31,0.09)',
-  tick: 'var(--olive)', ctaInk: '#FFFFFF', ctaBg: 'var(--navy)', ctaBorder: 'var(--navy)', savingInk: 'var(--olive)',
+  bg: 'rgba(var(--ink-inverse-rgb), 0.62)', border: 'rgba(var(--ink-inverse-rgb), 0.85)', shadow: '0 16px 40px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)', blur: 'blur(22px)',
+  ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(var(--ink-1-rgb), 0.09)',
+  tick: 'var(--olive)', ctaInk: 'var(--ink-inverse)', ctaBg: 'var(--navy)', ctaBorder: 'var(--navy)', savingInk: 'var(--olive)',
 }
 const DARK_THEME = {
-  bg: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: 'rgba(255,255,255,0.16)', shadow: '0 30px 66px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)', blur: 'blur(26px)',
-  ink: '#FFFFFF', muted: 'rgba(255,255,255,0.6)', body: 'rgba(255,255,255,0.82)', rule: 'rgba(255,255,255,0.16)',
+  bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.16)', shadow: '0 30px 66px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', blur: 'blur(26px)',
+  ink: 'var(--ink-inverse)', muted: 'rgba(var(--ink-inverse-rgb), 0.6)', body: 'rgba(var(--ink-inverse-rgb), 0.82)', rule: 'rgba(var(--ink-inverse-rgb), 0.16)',
   tick: 'var(--moss-light)', ctaInk: 'var(--ink-on-butter)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)', savingInk: 'var(--butter)',
 }
 
@@ -168,12 +168,12 @@ export default function PricingContent({ content }: { content: PricingContentSha
       <section style={{ background: 'var(--navy)', padding: '66px 24px 58px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>MatjarX website pricing</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 6vw, 54px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: '#FFFFFF' }}>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 6vw, 54px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: 'var(--ink-inverse)' }}>
             Launch, manage and grow your <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>business online</span>
           </h1>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px 30px', paddingTop: 6 }}>
             {HERO_TICKS.map((t) => (
-              <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 9, fontSize: 14.5, color: 'rgba(255,255,255,0.82)' }}>
+              <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 9, fontSize: 14.5, color: 'rgba(var(--ink-inverse-rgb), 0.82)' }}>
                 <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--butter)' }} />
                 {t}
               </span>
@@ -195,11 +195,11 @@ export default function PricingContent({ content }: { content: PricingContentSha
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, flexWrap: 'wrap', marginBottom: 12 }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
             <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)', fontStyle: 'italic' }}>{saveNote}</span>
-            <div style={{ display: 'flex', gap: 5, padding: 5, borderRadius: 999, background: 'var(--cream-deep)', border: '1px solid rgba(4,18,31,0.08)' }}>
+            <div style={{ display: 'flex', gap: 5, padding: 5, borderRadius: 999, background: 'var(--cream-deep)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)' }}>
               {CYCLES.map((c) => {
                 const on = cycle === c.id
                 return (
-                  <button key={c.id} type="button" onClick={() => setCycle(c.id)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: on ? '#FFFFFF' : 'var(--ink-5)', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>{c.label}</button>
+                  <button key={c.id} type="button" onClick={() => setCycle(c.id)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: on ? 'var(--ink-inverse)' : 'var(--ink-5)', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>{c.label}</button>
                 )
               })}
             </div>
@@ -207,8 +207,8 @@ export default function PricingContent({ content }: { content: PricingContentSha
           <a href="tel:+923033720953" className="pricing-call-cta btn-trace" style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '12px 20px', borderRadius: 999, background: 'var(--navy-deepest)' }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z" /></svg>
             <span style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-              <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>Got questions? Call us</span>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF' }}>+92 303 372 0953</span>
+              <span style={{ fontSize: 11, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>Got questions? Call us</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-inverse)' }}>+92 303 372 0953</span>
             </span>
           </a>
         </div>
@@ -269,11 +269,11 @@ export default function PricingContent({ content }: { content: PricingContentSha
             dead navy to its right. The copy takes whatever it needs and
             the button is sized to its own content, hard right. See
             .cta-banner in globals.css for the single-column fallback. */}
-        <div className="cta-banner" style={{ marginTop: 22, padding: 'clamp(24px, 3vw, 32px)', borderRadius: 24, background: 'rgba(4,18,31,0.9)', border: '1px solid rgba(255,255,255,0.14)' }}>
+        <div className="cta-banner" style={{ marginTop: 22, padding: 'clamp(24px, 3vw, 32px)', borderRadius: 24, background: 'rgba(var(--ink-1-rgb), 0.9)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 0 }}>
             <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--butter)', fontWeight: 700 }}>Have unique needs?</span>
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: '#FFFFFF' }}>Build your own plan — talk to us about Custom</span>
-            <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.68)' }}>200 pages, CRM integration, a specific API, or something none of these four cover — tell us what you need and we&apos;ll scope it, price it and build it.</span>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--ink-inverse)' }}>Build your own plan — talk to us about Custom</span>
+            <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'rgba(var(--ink-inverse-rgb), 0.68)' }}>200 pages, CRM integration, a specific API, or something none of these four cover — tell us what you need and we&apos;ll scope it, price it and build it.</span>
           </div>
           <Link href={routes.plan('custom')} className="btn-primary">Talk to us about Custom</Link>
         </div>
@@ -344,9 +344,9 @@ export default function PricingContent({ content }: { content: PricingContentSha
                         const [label, a, b, c, d] = r
                         return (
                           <Fragment key={label}>
-                            <span style={{ fontSize: 13.5, lineHeight: 1.45, color: 'var(--ink-3)', padding: '9px 0', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{label}</span>
+                            <span style={{ fontSize: 13.5, lineHeight: 1.45, color: 'var(--ink-3)', padding: '9px 0', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)' }}>{label}</span>
                             {cellsFor(a, b, c, d).map((cell, ci) => (
-                              <span key={ci} style={{ display: 'grid', placeItems: 'center', padding: '9px 0', borderTop: '1px solid rgba(4,18,31,0.07)', fontSize: 12.5, fontWeight: 600, color: cell.color }}>{cell.mark}</span>
+                              <span key={ci} style={{ display: 'grid', placeItems: 'center', padding: '9px 0', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)', fontSize: 12.5, fontWeight: 600, color: cell.color }}>{cell.mark}</span>
                             ))}
                           </Fragment>
                         )
@@ -390,7 +390,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
               <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--trustpilot)" style={{ flex: '0 0 auto' }}><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 15.5, color: 'var(--ink-1)' }}>Trustpilot</span>
             </span>
-            <span style={{ width: 1, height: 26, background: 'rgba(4,18,31,0.12)' }} />
+            <span style={{ width: 1, height: 26, background: 'rgba(var(--ink-1-rgb), 0.12)' }} />
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'var(--ink-1)' }}>4.8 / 5</span>
             <span style={{ fontSize: 14, letterSpacing: '2px', color: 'var(--trustpilot)' }}>★★★★★</span>
             <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>Rated &lsquo;Excellent&rsquo; by our clients</span>

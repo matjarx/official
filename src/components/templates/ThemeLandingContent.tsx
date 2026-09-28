@@ -82,7 +82,7 @@ export default function ThemeLandingContent({ landing }: Props) {
                   fontWeight: 700,
                   letterSpacing: '1.6px',
                   textTransform: 'uppercase',
-                  color: '#FFFFFF',
+                  color: 'var(--ink-inverse)',
                   background: 'var(--theme-primary)',
                   marginBottom: 18,
                 }}
@@ -162,9 +162,9 @@ export default function ThemeLandingContent({ landing }: Props) {
                 style={{
                   padding: '26px 24px',
                   borderRadius: 18,
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(4,18,31,0.08)',
-                  boxShadow: '0 10px 30px rgba(4,18,31,0.05)',
+                  background: 'var(--surface)',
+                  border: '1px solid rgba(var(--ink-1-rgb), 0.08)',
+                  boxShadow: '0 10px 30px rgba(var(--ink-1-rgb), 0.05)',
                 }}
               >
                 <span
@@ -199,8 +199,8 @@ export default function ThemeLandingContent({ landing }: Props) {
                   fontSize: 14,
                   fontWeight: 600,
                   color: 'var(--ink-2)',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(4,18,31,0.1)',
+                  background: 'var(--surface)',
+                  border: '1px solid rgba(var(--ink-1-rgb), 0.1)',
                 }}
               >
                 {p}
@@ -283,12 +283,12 @@ export default function ThemeLandingContent({ landing }: Props) {
               fontFamily: 'var(--font-lato), Lato, sans-serif',
               fontWeight: 900,
               fontSize: 'clamp(24px, 3.6vw, 34px)',
-              color: '#FFFFFF',
+              color: 'var(--ink-inverse)',
             }}
           >
             Start with {landing.name}
           </h2>
-          <p style={{ margin: '0 auto 26px', maxWidth: '38em', fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.84)' }}>
+          <p style={{ margin: '0 auto 26px', maxWidth: '38em', fontSize: 16, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.84)' }}>
             Tell us about your business and we build this out with your products, your photos and your words. Online in
             seven days.
           </p>

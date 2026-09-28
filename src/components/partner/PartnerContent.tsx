@@ -80,10 +80,10 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
         <div style={{ maxWidth: 920, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Partner program</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>
             Refer a business. Earn on every plan, <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>every month</span>
           </h1>
-          <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>For agencies, freelancers, accountants and consultants whose clients keep asking for a website they can&rsquo;t build.</p>
+          <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>For agencies, freelancers, accountants and consultants whose clients keep asking for a website they can&rsquo;t build.</p>
           <a href="#apply" className="btn-primary" style={{ marginTop: 6 }}>Apply to partner</a>
         </div>
       </section>
@@ -98,18 +98,18 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
               {PARTNER_TIERS_ACTIVE.map((t) => (
                 <div key={t.name} className={t.dark ? 'glass-dark-panel' : 'glass-card'} style={{ padding: '30px 28px 32px', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '-0.5px', color: t.dark ? '#FFFFFF' : 'var(--ink-1)', marginRight: 'auto' }}>{t.name}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 21, letterSpacing: '-0.5px', color: t.dark ? 'var(--ink-inverse)' : 'var(--ink-1)', marginRight: 'auto' }}>{t.name}</span>
                     {t.tag && <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.8px', textTransform: 'uppercase', padding: '5px 10px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{t.tag}</span>}
                   </div>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: t.dark ? 'rgba(255,255,255,0.6)' : 'var(--ink-muted)' }}>{t.who}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: t.dark ? 'rgba(var(--ink-inverse-rgb), 0.6)' : 'var(--ink-muted)' }}>{t.who}</span>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, paddingTop: 8 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 38, letterSpacing: '-1.4px', color: t.dark ? '#FFFFFF' : 'var(--ink-1)' }}>{t.rate}</span>
-                    <span style={{ fontSize: 14, color: t.dark ? 'rgba(255,255,255,0.6)' : 'var(--ink-muted)' }}>recurring</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 38, letterSpacing: '-1.4px', color: t.dark ? 'var(--ink-inverse)' : 'var(--ink-1)' }}>{t.rate}</span>
+                    <span style={{ fontSize: 14, color: t.dark ? 'rgba(var(--ink-inverse-rgb), 0.6)' : 'var(--ink-muted)' }}>recurring</span>
                   </div>
-                  <span style={{ fontSize: 13, color: t.dark ? 'rgba(255,255,255,0.6)' : 'var(--ink-muted)' }}>{t.bonus}</span>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 9, paddingTop: 14, marginTop: 4, borderTop: `1px solid ${t.dark ? 'rgba(255,255,255,0.16)' : 'rgba(4,18,31,0.09)'}` }}>
+                  <span style={{ fontSize: 13, color: t.dark ? 'rgba(var(--ink-inverse-rgb), 0.6)' : 'var(--ink-muted)' }}>{t.bonus}</span>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 9, paddingTop: 14, marginTop: 4, borderTop: `1px solid ${t.dark ? 'rgba(var(--ink-inverse-rgb), 0.16)' : 'rgba(var(--ink-1-rgb), 0.09)'}` }}>
                     {t.features.map((f) => (
-                      <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: t.dark ? 'rgba(255,255,255,0.82)' : 'var(--ink-4-alt)' }}>
+                      <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: t.dark ? 'rgba(var(--ink-inverse-rgb), 0.82)' : 'var(--ink-4-alt)' }}>
                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke={t.dark ? 'var(--moss-light)' : 'var(--olive)'} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                         {f}
                       </span>
@@ -167,13 +167,13 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
 
           {/* Earnings calculator */}
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '68px 24px 0' }}>
-            <div style={{ padding: 'clamp(26px, 4vw, 40px) clamp(22px, 3.5vw, 42px)', borderRadius: 26, background: 'rgba(242,238,226,0.6)', border: '1px solid rgba(255,255,255,0.7)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'center' }}>
+            <div style={{ padding: 'clamp(26px, 4vw, 40px) clamp(22px, 3.5vw, 42px)', borderRadius: 26, background: 'rgba(var(--cream-deep-rgb), 0.6)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.8)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
                 <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What you could earn</span>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Ten Boost clients pays you {tenClients} a month, indefinitely</h2>
                 <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.65, color: 'var(--ink-4-alt)' }}>Commission is recurring, not one-time. As long as your referred client stays with us, you keep earning — and we handle every part of the delivery.</p>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0, padding: '28px 30px', borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0, padding: '28px 30px', borderRadius: 20, background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
                     <span style={{ fontSize: 12, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600, marginRight: 'auto' }}>Clients referred</span>
@@ -183,7 +183,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                     {PARTNER_CLIENT_STEPS.map((n) => {
                       const active = clients === n
                       return (
-                        <button key={n} type="button" onClick={() => setClients(n)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '10px 4px', borderRadius: 10, fontSize: 13, fontWeight: 700, fontFamily: 'var(--font-lato), Lato, sans-serif', color: active ? '#FFFFFF' : 'var(--ink-5)', background: active ? 'var(--navy)' : 'var(--cream-deep)' }}>{n}</button>
+                        <button key={n} type="button" onClick={() => setClients(n)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '10px 4px', borderRadius: 10, fontSize: 13, fontWeight: 700, fontFamily: 'var(--font-lato), Lato, sans-serif', color: active ? 'var(--ink-inverse)' : 'var(--ink-5)', background: active ? 'var(--navy)' : 'var(--cream-deep)' }}>{n}</button>
                       )
                     })}
                   </div>
@@ -194,12 +194,12 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                     {PARTNER_PLAN_PICKS.map((p) => {
                       const active = plan === p
                       return (
-                        <button key={p} type="button" onClick={() => setPlan(p)} style={{ all: 'unset', cursor: 'pointer', padding: '9px 15px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{p}</button>
+                        <button key={p} type="button" onClick={() => setPlan(p)} style={{ all: 'unset', cursor: 'pointer', padding: '9px 15px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: active ? 'var(--ink-inverse)' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--surface)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>{p}</button>
                       )
                     })}
                   </div>
                 </div>
-                <div style={{ paddingTop: 18, borderTop: '1px solid rgba(4,18,31,0.09)', display: 'flex', flexDirection: 'column', gap: 5 }}>
+                <div style={{ paddingTop: 18, borderTop: '1px solid rgba(var(--ink-1-rgb), 0.09)', display: 'flex', flexDirection: 'column', gap: 5 }}>
                   <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>Your recurring monthly commission</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-1.3px', color: 'var(--navy)' }}>{monthlyEarn}</span>
                   <span style={{ fontSize: 12.5, color: 'var(--olive)', fontWeight: 600 }}>{yearlyEarn} over a year</span>
@@ -241,13 +241,13 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                   {PARTNER_TYPES.map((label) => {
                     const active = ptype === label
                     return (
-                      <button key={label} type="button" onClick={() => setPtype(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--cream)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{label}</button>
+                      <button key={label} type="button" onClick={() => setPtype(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? 'var(--ink-inverse)' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--cream)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>{label}</button>
                     )
                   })}
                 </div>
               </div>
 
-              <button type="submit" disabled={status === 'submitting'} className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(0,51,102,0.24)' }}>{status === 'submitting' ? 'Sending…' : 'Submit application'}</button>
+              <button type="submit" disabled={status === 'submitting'} className="btn-navy" style={{ textAlign: 'center', boxShadow: '0 12px 28px rgba(var(--navy-rgb), 0.24)' }}>{status === 'submitting' ? 'Sending…' : 'Submit application'}</button>
               {status === 'error' && <p style={{ margin: 0, fontSize: 13, color: '#B4543C' }}>Something went wrong — please try again, or message us on WhatsApp.</p>}
               <span style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>By applying you agree to our <Link href={routes.legal('terms')} style={{ fontWeight: 600 }}>partner terms</Link> and <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
             </form>

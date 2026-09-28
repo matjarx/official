@@ -91,7 +91,7 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
   // default is the six-stop brand gradient, and a solid colour picked in
   // the admin is just a shorter string in the same field.
   const background = config.bg_color || BRAND_GRADIENT
-  const color = config.text_color || '#FFFFFF'
+  const color = config.text_color || 'var(--ink-inverse)'
   const dismissible = config.dismissible !== false
 
   return (
@@ -123,7 +123,7 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
         }}
       >
         {config.badge_text && (
-          <span style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 14px', borderRadius: 999, background: 'rgba(0,0,0,0.26)', border: '1px solid rgba(255,255,255,0.32)', backdropFilter: 'blur(10px)' }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 14px', borderRadius: 999, background: 'rgba(0,0,0,0.26)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.32)', backdropFilter: 'blur(10px)' }}>
             <span style={{ width: 6, height: 6, flex: '0 0 auto', borderRadius: '50%', background: 'var(--butter)' }} />
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: 0.2, color: 'inherit' }}>
               {config.badge_text}
@@ -132,7 +132,7 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
         )}
 
         {config.badge_text && config.text && (
-          <span aria-hidden="true" style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.36)' }} />
+          <span aria-hidden="true" style={{ width: 1, height: 16, background: 'rgba(var(--ink-inverse-rgb), 0.36)' }} />
         )}
 
         {config.text && (

@@ -72,7 +72,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
                       key={c}
                       type="button"
                       onClick={() => { setFilter(c); setModalIndex(-1) }}
-                      style={{ all: 'unset', cursor: 'pointer', textAlign: 'center', padding: '13px 14px', borderRadius: 10, fontSize: 13.5, fontWeight: on ? 700 : 500, color: on ? '#FFFFFF' : 'var(--ink-on-butter-alt)', background: on ? 'var(--olive-active)' : 'var(--butter)', border: `1px solid ${on ? 'var(--olive-active)' : 'rgba(61,58,8,0.14)'}`, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', transition: 'background 180ms ease' }}
+                      style={{ all: 'unset', cursor: 'pointer', textAlign: 'center', padding: '13px 14px', borderRadius: 10, fontSize: 13.5, fontWeight: on ? 700 : 500, color: on ? 'var(--ink-inverse)' : 'var(--ink-on-butter-alt)', background: on ? 'var(--olive-active)' : 'var(--butter)', border: `1px solid ${on ? 'var(--olive-active)' : 'rgba(61,58,8,0.14)'}`, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', transition: 'background 180ms ease' }}
                     >
                       {c}
                     </button>
@@ -93,7 +93,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
           {shown.length > 0 ? (
             <PortfolioShowcase items={shown} modalIndex={modalIndex} setModalIndex={setModalIndex} />
           ) : (
-            <div style={{ textAlign: 'center', padding: '60px 24px', borderRadius: 20, background: 'rgba(255,255,255,0.5)', border: '1px dashed rgba(4,18,31,0.16)' }}>
+            <div style={{ textAlign: 'center', padding: '60px 24px', borderRadius: 20, background: 'rgba(var(--ink-inverse-rgb), 0.5)', border: '1px dashed rgba(var(--ink-1-rgb), 0.16)' }}>
               <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: 'var(--ink-1)' }}>No examples in {filter} yet</p>
               <p style={{ margin: '8px 0 0', fontSize: 13.5, color: 'var(--ink-muted)' }}>We&rsquo;re adding real client sites to this category — check back soon, or browse another category above.</p>
             </div>

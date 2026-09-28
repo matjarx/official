@@ -52,16 +52,16 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
         <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
             <Link href={routes.blog} style={{ fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>← All posts</Link>
-            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>/</span>
-            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{post.category}</span>
+            <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.4)' }}>/</span>
+            <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>{post.category}</span>
           </div>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(29px, 5.2vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: '#FFFFFF' }}>{post.title}</h1>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(29px, 5.2vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: 'var(--ink-inverse)' }}>{post.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 13, flexWrap: 'wrap' }}>
             <AuthorByline author={author} meta={`${post.date} · ${post.readTime}`} />
             <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
               {SHARE_LINKS.map((s) => (
-                <a key={s.name} href={`#share-${s.name.toLowerCase()}`} title={`Share on ${s.name}`} style={{ width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.14)' }}>
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
+                <a key={s.name} href={`#share-${s.name.toLowerCase()}`} title={`Share on ${s.name}`} style={{ width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(var(--ink-inverse-rgb), 0.8)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
                 </a>
               ))}
             </div>
@@ -77,7 +77,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '46px 24px 0' }}>
             {post.coverImage ? (
               <figure style={{ margin: 0 }}>
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '1140 / 380', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(4,18,31,0.16)' }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '1140 / 380', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(var(--ink-1-rgb), 0.16)' }}>
                   <Image
                     src={post.coverImage.src}
                     alt={post.coverImage.alt}
@@ -93,8 +93,8 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                 )}
               </figure>
             ) : (
-              <div style={{ height: 380, borderRadius: 24, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'grid', placeItems: 'center', boxShadow: '0 22px 50px rgba(4,18,31,0.16)' }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '0.4px', color: 'rgba(255,255,255,0.85)' }}>Article cover image</span>
+              <div style={{ height: 380, borderRadius: 24, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'grid', placeItems: 'center', boxShadow: '0 22px 50px rgba(var(--ink-1-rgb), 0.16)' }}>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '0.4px', color: 'rgba(var(--ink-inverse-rgb), 0.85)' }}>Article cover image</span>
               </div>
             )}
           </section>
@@ -149,7 +149,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
             <h2 style={{ margin: '0 0 28px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, letterSpacing: '-1px', color: 'var(--ink-1)' }}>Keep reading</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
               {related.map((r) => (
-                <Link key={r.slug} href={routes.blogPost(r.slug)} className="keep-reading-card" style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.09)' }}>
+                <Link key={r.slug} href={routes.blogPost(r.slug)} className="keep-reading-card" style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.09)' }}>
                   {/* The cover, not the tint. Every one of these posts has
                       a real cover image; the card was rendering a flat
                       colour block over the top of it. `tint` stays as the

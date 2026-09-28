@@ -42,14 +42,14 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
         <section style={{ background: 'var(--navy)', padding: '62px 24px 0' }}>
           <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
             <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{d.kicker}</span>
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(31px, 5.8vw, 52px)', lineHeight: 1.08, letterSpacing: '-1.8px', color: '#FFFFFF' }}>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(31px, 5.8vw, 52px)', lineHeight: 1.08, letterSpacing: '-1.8px', color: 'var(--ink-inverse)' }}>
               {d.titleLead} <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>{d.titleMark}</span>
             </h1>
-            <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>{d.subtitle}</p>
+            <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.subtitle}</p>
             <Link href={routes.pricing} className="btn-primary" style={{ marginTop: 6 }}>{d.heroCta}</Link>
           </div>
           <div style={{ maxWidth: 1300, margin: '44px auto -70px', padding: '0 24px' }}>
-            <div style={{ borderRadius: '20px 20px 0 0', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.14)', borderBottom: 'none', boxShadow: '0 -10px 60px rgba(0,0,0,0.35)', padding: 4, background: '#001526' }}>
+            <div style={{ borderRadius: '20px 20px 0 0', overflow: 'hidden', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', borderBottom: 'none', boxShadow: '0 -10px 60px rgba(0,0,0,0.35)', padding: 4, background: '#001526' }}>
               <div className="showcase-desktop-only"><EditorShowcase /></div>
               <div className="showcase-mobile-only"><EditorShowcaseMobile /></div>
             </div>
@@ -60,11 +60,11 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
 
         {/* Tabs */}
         <section style={{ maxWidth: 1360, margin: '0 auto', padding: '26px 24px 0' }}>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', padding: 7, borderRadius: 999, background: 'var(--cream-deep)', border: '1px solid rgba(4,18,31,0.08)', width: 'fit-content', margin: '0 auto' }}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', padding: 7, borderRadius: 999, background: 'var(--cream-deep)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', width: 'fit-content', margin: '0 auto' }}>
             {SERVICE_TABS.map((t) => {
               const on = svc === t.id
               return (
-                <Link key={t.id} href={SERVICE_ROUTES[t.id]} style={{ padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? '#FFFFFF' : 'var(--ink-5)', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
+                <Link key={t.id} href={SERVICE_ROUTES[t.id]} style={{ padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? 'var(--ink-inverse)' : 'var(--ink-5)', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
                   {t.label}
                 </Link>
               )
@@ -91,12 +91,12 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
               instead of stacked in a column you have to remember. */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 292px), 1fr))', gap: 18, alignItems: 'stretch' }}>
             {d.blocks.map((b) => (
-              <div key={b.titleMark} style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', boxShadow: '0 10px 26px rgba(4,18,31,0.05)' }}>
+              <div key={b.titleMark} style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', boxShadow: '0 10px 26px rgba(var(--ink-1-rgb), 0.05)' }}>
                 <div style={{ position: 'relative', height: 132, flex: '0 0 auto', background: b.tint }}>
                   {b.image ? (
                     <Image src={b.image.src} alt={b.image.alt} title={b.mediaLabel} fill sizes="(max-width: 700px) 100vw, 360px" style={{ objectFit: 'cover' }} />
                   ) : (
-                    <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', padding: 18, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 16, letterSpacing: '0.3px', textAlign: 'center', color: 'rgba(255,255,255,0.92)' }}>{b.mediaLabel}</span>
+                    <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', padding: 18, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 16, letterSpacing: '0.3px', textAlign: 'center', color: 'rgba(var(--ink-inverse-rgb), 0.92)' }}>{b.mediaLabel}</span>
                   )}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '20px 22px 24px', minWidth: 0 }}>
@@ -141,17 +141,17 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
           <div style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
-              <p style={{ margin: 0, fontSize: 17, lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
+              <p style={{ margin: 0, fontSize: 17, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
-                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>{d.quoteCompany}</span>
+                <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.quoteCompany}</span>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
               {d.resultStats.map((r) => (
                 <div key={r.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: '#FFFFFF' }}>{r.value}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{r.label}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: 'var(--ink-inverse)' }}>{r.value}</span>
+                  <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>{r.label}</span>
                 </div>
               ))}
             </div>

@@ -13,8 +13,8 @@
 // in view regardless of scroll position.
 export default function AmbientOrbs({ dark = false }: { dark?: boolean }) {
   const colors = dark
-    ? ['rgba(112,117,56,0.55)', 'rgba(41,110,177,0.48)', 'rgba(198,203,138,0.30)']
-    : ['rgba(198,203,138,0.40)', 'rgba(120,170,215,0.32)', 'rgba(244,242,174,0.36)']
+    ? ['rgba(112,117,56,0.55)', 'rgba(41,110,177,0.48)', 'rgba(var(--moss-light-rgb), 0.30)']
+    : ['rgba(var(--moss-light-rgb), 0.40)', 'rgba(120,170,215,0.32)', 'rgba(var(--butter-rgb), 0.36)']
 
   return (
     <div className="orb-field">

@@ -145,7 +145,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
           <span style={{ display: 'block', marginBottom: 22, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Help for your plan</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
             {HELP_BY_PLAN.map((p) => (
-              <div key={p.plan} style={{ padding: '22px 24px 24px', borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div key={p.plan} style={{ padding: '22px 24px 24px', borderRadius: 20, background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{p.plan} plan members</span>
                 {p.items.map((it) => (
                   <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
@@ -214,7 +214,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
             {HELP_QUICK_LINKS.map((row, i) => {
               const slug = slugFor(row.goTo)
               return (
-                <Link key={row.topic} href={slug ? routes.helpArticle(slug) : routes.help} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, padding: '15px 22px', borderTop: i > 0 ? '1px solid rgba(4,18,31,0.07)' : undefined }}>
+                <Link key={row.topic} href={slug ? routes.helpArticle(slug) : routes.help} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14, padding: '15px 22px', borderTop: i > 0 ? '1px solid rgba(var(--ink-1-rgb), 0.07)' : undefined }}>
                   <span style={{ fontSize: 14.5, color: 'var(--ink-3)' }}>{row.topic}</span>
                   <span style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--olive)', whiteSpace: 'nowrap' }}>{row.goTo} →</span>
                 </Link>
@@ -247,7 +247,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         <section id="contact" style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 22, alignItems: 'start' }}>
 
-              <form onSubmit={handleSubmit} style={{ padding: '32px 32px 34px', borderRadius: 26, background: 'rgba(255,255,255,0.66)', border: '1px solid rgba(255,255,255,0.9)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 48px rgba(4,18,31,0.09), inset 0 1px 0 rgba(255,255,255,0.95)', display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
+              <form onSubmit={handleSubmit} style={{ padding: '32px 32px 34px', borderRadius: 26, background: 'rgba(var(--ink-inverse-rgb), 0.66)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.9)', backdropFilter: 'blur(22px)', boxShadow: '0 20px 48px rgba(var(--ink-1-rgb), 0.09), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)', display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.4vw, 30px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Send us a message</h2>
                   <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>Monday to Saturday, 11am to 8pm. We reply the same working day.</p>
@@ -278,7 +278,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
                     {HELP_SUBJECTS.map((label) => {
                       const active = subject === label
                       return (
-                        <button key={label} type="button" onClick={() => setSubject(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--cream)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}`, transition: 'background 160ms ease' }}>{label}</button>
+                        <button key={label} type="button" onClick={() => setSubject(label)} style={{ all: 'unset', cursor: 'pointer', padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? 'var(--ink-inverse)' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--cream)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(var(--ink-1-rgb), 0.14)'}`, transition: 'background 160ms ease' }}>{label}</button>
                       )
                     })}
                   </div>
@@ -297,28 +297,28 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
               <div className="glass-dark-panel" style={{ padding: '28px 30px 30px', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: '#FFFFFF' }}>Contact information</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: 'var(--ink-inverse)' }}>Contact information</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                   {HELP_CONTACT_ROWS.map((r) => (
                     <div key={r.label} style={{ display: 'flex', gap: 13, alignItems: 'flex-start' }}>
-                      <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: 10, background: 'rgba(198,203,138,0.16)', border: '1px solid rgba(198,203,138,0.3)', display: 'grid', placeItems: 'center' }}>
+                      <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: 10, background: 'rgba(var(--moss-light-rgb), 0.16)', border: '1px solid rgba(var(--moss-light-rgb), 0.3)', display: 'grid', placeItems: 'center' }}>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--moss-light)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d={r.icon} /></svg>
                       </span>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
                         <span style={{ fontSize: 11, letterSpacing: '1.3px', textTransform: 'uppercase', color: 'rgba(226,236,245,0.45)', fontWeight: 600 }}>{r.label}</span>
-                        <span style={{ fontSize: 14.5, lineHeight: 1.5, color: 'rgba(255,255,255,0.9)' }}>{r.value}</span>
+                        <span style={{ fontSize: 14.5, lineHeight: 1.5, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>{r.value}</span>
                         {r.note && <span style={{ fontSize: 12.5, lineHeight: 1.5, color: 'rgba(226,236,245,0.55)' }}>{r.note}</span>}
                       </div>
                     </div>
                   ))}
                 </div>
-                <div style={{ height: 168, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, #0A2233)', border: '1px solid rgba(255,255,255,0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <div style={{ height: 168, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, #0A2233)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                   <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--moss-light)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /></svg>
                   <span style={{ fontSize: 12.5, color: 'rgba(226,236,245,0.55)' }}>Zamzama, Clifton, Karachi</span>
                 </div>
               </div>
 
-              <div style={{ padding: '26px 28px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(244,242,174,0.9), rgba(198,203,138,0.9))', border: '1px solid rgba(255,255,255,0.7)', backdropFilter: 'blur(22px)', boxShadow: '0 22px 50px rgba(112,117,56,0.22), inset 0 1px 0 rgba(255,255,255,0.85)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ padding: '26px 28px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(var(--butter-rgb), 0.9), rgba(var(--moss-light-rgb), 0.9))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)', backdropFilter: 'blur(22px)', boxShadow: '0 22px 50px rgba(112,117,56,0.22), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.85)', display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: '#4A5518', fontWeight: 700 }}>Already a client?</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.18, letterSpacing: '-0.7px', color: '#1F2A08' }}>Message your concierge from the dashboard for a reply within four working hours.</span>
                 <a href={appLogin} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Open my dashboard</a>

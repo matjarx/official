@@ -29,10 +29,10 @@ function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos']
         <InstagramEmbed url={video.url} />
       ) : (
         <div style={{ height: 140, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          <span style={{ width: 42, height: 42, borderRadius: '50%', background: 'rgba(255,255,255,0.14)', display: 'grid', placeItems: 'center' }}>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="rgba(255,255,255,0.85)"><path d="M8 5v14l11-7z" /></svg>
+          <span style={{ width: 42, height: 42, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.14)', display: 'grid', placeItems: 'center' }}>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="rgba(var(--ink-inverse-rgb), 0.85)"><path d="M8 5v14l11-7z" /></svg>
           </span>
-          <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', color: 'rgba(255,255,255,0.7)' }}>Video coming soon</span>
+          <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', color: 'rgba(var(--ink-inverse-rgb), 0.7)' }}>Video coming soon</span>
         </div>
       )}
       <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 9 }}>
@@ -75,9 +75,9 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
       <section style={{ background: 'var(--navy)', padding: '58px 24px 52px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO_ACTIVE.eyebrow}</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: '#FFFFFF' }}>{HERO_ACTIVE.headline}</h1>
-          <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>{HERO_ACTIVE.subhead}</p>
-          <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)' }}>{INTRO}</p>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>{HERO_ACTIVE.headline}</h1>
+          <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{HERO_ACTIVE.subhead}</p>
+          <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{INTRO}</p>
         </div>
       </section>
 
@@ -103,7 +103,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
               {CATEGORIES_BY_PURPOSE.map((c) => (
-                <div key={c.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <div key={c.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: 'var(--ink-1)' }}>{c.title}</span>
                   {c.videos.map((v) => <span key={v} style={{ fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>{v}</span>)}
                 </div>
@@ -118,7 +118,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 18 }}>
               {CATEGORIES_BY_LENGTH.map((c) => (
-                <div key={c.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <div key={c.title} style={{ padding: '20px 22px 22px', borderRadius: 18, background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 15, color: 'var(--ink-1)' }}>{c.title}</span>
                   {c.videos.map((v) => <span key={v} style={{ fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>{v}</span>)}
                 </div>
@@ -164,12 +164,12 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Your 7-day website awaits</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Videos show what we do. But they don&apos;t compare to seeing your own website built in 7 days.</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: 'var(--ink-inverse)' }}>Videos show what we do. But they don&apos;t compare to seeing your own website built in 7 days.</h2>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>
                 <Link href={routes.pricing} className="btn-primary">View pricing</Link>
                 <a href={`https://wa.me/${CHANNELS.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="btn-ghost">Talk to our team</a>
               </div>
-              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Call {CHANNELS.whatsapp} · {CHANNELS.email}</span>
+              <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.5)' }}>Call {CHANNELS.whatsapp} · {CHANNELS.email}</span>
             </div>
           </section>
 

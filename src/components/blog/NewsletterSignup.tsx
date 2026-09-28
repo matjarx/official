@@ -72,9 +72,9 @@ export default function NewsletterSignup({
           Get monthly advice and exclusive deals
         </h2>
       ) : (
-        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: '#FFFFFF' }}>Get one email a month</span>
+        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: 'var(--ink-inverse)' }}>Get one email a month</span>
       )}
-      <p style={{ margin: 0, fontSize: light ? 14.5 : 13.5, lineHeight: 1.6, color: light ? '#3D4A16' : 'rgba(255,255,255,0.6)' }}>
+      <p style={{ margin: 0, fontSize: light ? 14.5 : 13.5, lineHeight: 1.6, color: light ? '#3D4A16' : 'rgba(var(--ink-inverse-rgb), 0.6)' }}>
         {light
           ? 'One email a month: what\u2019s working for businesses like yours, plus partner offers.'
           : 'Practical advice for growing a business online in Pakistan and the Gulf.'}
@@ -97,8 +97,8 @@ export default function NewsletterSignup({
             placeholder={light ? 'you@yourbusiness.pk' : 'you@yourbusiness.com'}
             style={
               light
-                ? { width: '100%', padding: '15px 17px', borderRadius: 13, fontFamily: 'inherit', fontSize: 14.5, color: '#1F2A08', background: 'rgba(255,255,255,0.75)', border: '1.5px solid rgba(31,42,8,0.18)', outline: 'none' }
-                : { padding: '12px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.18)', background: 'rgba(255,255,255,0.07)', color: '#FFFFFF', fontSize: 14, fontFamily: 'inherit' }
+                ? { width: '100%', padding: '15px 17px', borderRadius: 13, fontFamily: 'inherit', fontSize: 14.5, color: '#1F2A08', background: 'rgba(var(--ink-inverse-rgb), 0.75)', border: '1.5px solid rgba(31,42,8,0.18)', outline: 'none' }
+                : { padding: '12px 14px', borderRadius: 12, border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', background: 'rgba(var(--ink-inverse-rgb), 0.07)', color: 'var(--ink-inverse)', fontSize: 14, fontFamily: 'inherit' }
             }
           />
           <button

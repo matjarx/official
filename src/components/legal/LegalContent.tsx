@@ -46,12 +46,12 @@ function renderLegalBlock(block: LegalBlock, i: number) {
   }
   // table
   return (
-    <div key={i} className="table-scroll" style={{ borderRadius: 14, border: '1px solid rgba(4,18,31,0.1)', overflow: 'hidden' }}>
+    <div key={i} className="table-scroll" style={{ borderRadius: 14, border: '1px solid rgba(var(--ink-1-rgb), 0.1)', overflow: 'hidden' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 560 }}>
         <thead>
           <tr>
             {block.headers.map((h, hi) => (
-              <th key={hi} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: 'var(--ink-1)', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+              <th key={hi} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.3px', color: 'var(--ink-1)', background: 'rgba(var(--cream-deep-rgb), 0.7)' }}>{h}</th>
             ))}
           </tr>
         </thead>
@@ -59,7 +59,7 @@ function renderLegalBlock(block: LegalBlock, i: number) {
           {block.rows.map((row, ri) => (
             <tr key={ri}>
               {row.map((cell, ci) => (
-                <td key={ci} style={{ padding: '12px 16px', fontSize: 14, lineHeight: 1.5, color: 'var(--ink-3-alt)', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{cell}</td>
+                <td key={ci} style={{ padding: '12px 16px', fontSize: 14, lineHeight: 1.5, color: 'var(--ink-3-alt)', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)' }}>{cell}</td>
               ))}
             </tr>
           ))}
@@ -81,8 +81,8 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
       <section style={{ background: 'var(--navy)', padding: '54px 24px 46px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 14 }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Legal</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 44px)', lineHeight: 1.1, letterSpacing: '-1.5px', color: '#FFFFFF' }}>{d.title}</h1>
-          <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>Last updated {d.updated}</span>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 44px)', lineHeight: 1.1, letterSpacing: '-1.5px', color: 'var(--ink-inverse)' }}>{d.title}</h1>
+          <span style={{ fontSize: 14, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>Last updated {d.updated}</span>
         </div>
       </section>
 
@@ -98,11 +98,11 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
                   {LEGAL_DOC_KEYS.map((key) => {
                     const active = doc === key
                     return (
-                      <Link key={key} href={routes.legal(key)} style={{ boxSizing: 'border-box', width: '100%', padding: '13px 16px', borderRadius: 13, fontSize: 14, fontWeight: active ? 700 : 500, textAlign: 'left', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'transparent' }}>{LEGAL_DATA[key].label}</Link>
+                      <Link key={key} href={routes.legal(key)} style={{ boxSizing: 'border-box', width: '100%', padding: '13px 16px', borderRadius: 13, fontSize: 14, fontWeight: active ? 700 : 500, textAlign: 'left', color: active ? 'var(--ink-inverse)' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'transparent' }}>{LEGAL_DATA[key].label}</Link>
                     )
                   })}
                 </div>
-                <div style={{ padding: '22px 24px', borderRadius: 20, background: 'rgba(242,238,226,0.6)', border: '1px solid rgba(255,255,255,0.7)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8)', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <div style={{ padding: '22px 24px', borderRadius: 20, background: 'rgba(var(--cream-deep-rgb), 0.6)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.8)', display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-1)' }}>Questions about this?</span>
                   <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>Email us and a person will answer — not a form letter.</p>
                   <a href="mailto:office@matjarx.com" style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--olive)' }}>office@matjarx.com</a>

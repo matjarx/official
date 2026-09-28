@@ -73,16 +73,16 @@ export default function SitePopup({ config }: { config: PopupConfig }) {
       role="dialog"
       aria-modal="true"
       onClick={close}
-      style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(4,18,31,0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}
+      style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(var(--ink-1-rgb), 0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{ position: 'relative', width: '100%', maxWidth: 420, borderRadius: 24, background: '#fff', overflow: 'hidden', boxShadow: '0 30px 70px rgba(4,18,31,0.35)' }}
+        style={{ position: 'relative', width: '100%', maxWidth: 420, borderRadius: 24, background: 'var(--surface)', overflow: 'hidden', boxShadow: '0 30px 70px rgba(var(--ink-1-rgb), 0.35)' }}
       >
         <button
           onClick={close}
           aria-label="Close"
-          style={{ position: 'absolute', right: 14, top: 14, width: 30, height: 30, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(4,18,31,0.06)', border: 'none', cursor: 'pointer', zIndex: 1 }}
+          style={{ position: 'absolute', right: 14, top: 14, width: 30, height: 30, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-1-rgb), 0.06)', border: 'none', cursor: 'pointer', zIndex: 1 }}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-1)" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
         </button>
@@ -114,7 +114,7 @@ export default function SitePopup({ config }: { config: PopupConfig }) {
             <a className="btn-trace"
               href={config.cta_url}
               onClick={close}
-              style={{ display: 'inline-block', padding: '14px 28px', borderRadius: 999, fontWeight: 700, fontSize: 14.5, color: '#fff', background: 'linear-gradient(160deg, #10293D, var(--navy-deepest))' }}
+              style={{ display: 'inline-block', padding: '14px 28px', borderRadius: 999, fontWeight: 700, fontSize: 14.5, color: 'var(--ink-inverse)', background: 'linear-gradient(160deg, #10293D, var(--navy-deepest))' }}
             >
               {config.cta_text}
             </a>

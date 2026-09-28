@@ -132,25 +132,25 @@ export const DEFAULT_FAQ_DATA = [
 ]
 
 const LIGHT_PLAN_THEME = {
-  bg: 'rgba(255,255,255,0.62)', border: 'rgba(255,255,255,0.85)', shadow: '0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9)', blur: 'blur(22px)',
-  ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(4,18,31,0.09)',
-  tick: 'var(--olive)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--cream)', ctaBorder: 'rgba(4,18,31,0.16)',
+  bg: 'rgba(var(--ink-inverse-rgb), 0.62)', border: 'rgba(var(--ink-inverse-rgb), 0.85)', shadow: '0 16px 40px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)', blur: 'blur(22px)',
+  ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(var(--ink-1-rgb), 0.09)',
+  tick: 'var(--olive)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--cream)', ctaBorder: 'rgba(var(--ink-1-rgb), 0.16)',
 }
 // Platinum is the top tier and now the second highlighted card, so it
 // needs a treatment that reads as premium WITHOUT competing with
 // Growth's badge — two dark cards side by side just look like a bug.
 // Light, like Launch, but ringed and lifted in butter.
 const PREMIUM_PLAN_THEME = {
-  bg: 'linear-gradient(165deg, rgba(255,255,255,0.86), rgba(252,250,243,0.72))',
+  bg: 'linear-gradient(165deg, rgba(var(--ink-inverse-rgb), 0.86), rgba(var(--cream-rgb), 0.72))',
   border: 'var(--butter-deep)',
-  shadow: '0 18px 46px rgba(201,162,39,0.18), inset 0 1px 0 rgba(255,255,255,0.95)',
+  shadow: '0 18px 46px rgba(201,162,39,0.18), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
   blur: 'blur(22px)',
   ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(138,122,18,0.22)',
   tick: '#8A7A12', ctaInk: 'var(--ink-on-butter-alt)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter-deep)',
 }
 const DARK_PLAN_THEME = {
-  bg: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: 'rgba(255,255,255,0.16)', shadow: '0 30px 66px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)', blur: 'blur(26px)',
-  ink: '#FFFFFF', muted: 'rgba(255,255,255,0.62)', body: 'rgba(255,255,255,0.8)', rule: 'rgba(255,255,255,0.16)',
+  bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.16)', shadow: '0 30px 66px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', blur: 'blur(26px)',
+  ink: 'var(--ink-inverse)', muted: 'rgba(var(--ink-inverse-rgb), 0.62)', body: 'rgba(var(--ink-inverse-rgb), 0.8)', rule: 'rgba(var(--ink-inverse-rgb), 0.16)',
   tick: 'var(--moss-light)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)',
 }
 const PLAN_ROWS = [
@@ -181,8 +181,8 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
   const FAQ_DATA = content.faqs
   const VOICES_ACTIVE = content.voices
 
-  const ink1 = dark ? '#FFFFFF' : 'var(--ink-1)'
-  const ink4 = dark ? 'rgba(255,255,255,0.7)' : 'var(--ink-4)'
+  const ink1 = dark ? 'var(--ink-inverse)' : 'var(--ink-1)'
+  const ink4 = dark ? 'rgba(var(--ink-inverse-rgb), 0.7)' : 'var(--ink-4)'
   const cream = dark ? undefined : 'var(--cream)'
   const bgGradient = dark
     ? 'linear-gradient(172deg, #001C33, #00263F, #001526)'
@@ -209,7 +209,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 4 }}>
             <Link href={routes.pricing} className="btn-primary">Let&apos;s begin</Link>
-            <Link href={routes.websiteExamples} className="btn-secondary" style={dark ? { color: '#FFFFFF', background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.18)' } : undefined}>See the quality of our websites</Link>
+            <Link href={routes.websiteExamples} className="btn-secondary" style={dark ? { color: 'var(--ink-inverse)', background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.18)' } : undefined}>See the quality of our websites</Link>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'center', paddingTop: 12 }}>
@@ -217,7 +217,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             <span style={{ display: 'flex', gap: 2 }}>
               {[1, 2, 3, 4, 5].map((n) => (
                 <span key={n} style={{ width: 21, height: 21, display: 'grid', placeItems: 'center', background: 'var(--trustpilot)' }}>
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="#FFFFFF"><path d="m12 3.4 2.7 6.1 6.6.5-5 4.3 1.5 6.4L12 17.2l-5.8 3.5 1.5-6.4-5-4.3 6.6-.5z" /></svg>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="var(--ink-inverse)"><path d="m12 3.4 2.7 6.1 6.6.5-5 4.3 1.5 6.4L12 17.2l-5.8 3.5 1.5-6.4-5-4.3 6.6-.5z" /></svg>
                 </span>
               ))}
             </span>
@@ -257,8 +257,8 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               corner now, overlapping it, which both fixes the alignment
               and reclaims the 14px dead row above. */}
           <div style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', inset: '-16px -12px -20px -12px', borderRadius: 34, background: 'linear-gradient(150deg, rgba(0,51,102,0.92), rgba(112,117,56,0.86))', boxShadow: '0 44px 96px rgba(4,18,31,0.3)', zIndex: 0 }} />
-            <span style={{ position: 'absolute', top: -32, right: -12, zIndex: 3, display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 12px', borderRadius: 999, background: 'var(--navy-gradient)', border: '1.5px solid rgba(244,242,174,0.5)', boxShadow: '0 12px 28px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)' }}>
+            <div style={{ position: 'absolute', inset: '-16px -12px -20px -12px', borderRadius: 34, background: 'linear-gradient(150deg, rgba(var(--navy-rgb), 0.92), rgba(112,117,56,0.86))', boxShadow: '0 44px 96px rgba(var(--ink-1-rgb), 0.3)', zIndex: 0 }} />
+            <span style={{ position: 'absolute', top: -32, right: -12, zIndex: 3, display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 12px', borderRadius: 999, background: 'var(--navy-gradient)', border: '1.5px solid rgba(var(--butter-rgb), 0.5)', boxShadow: '0 12px 28px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
               <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: '0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>No long-term contract</span>
             </span>
@@ -270,7 +270,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Category marquee */}
-        <section style={{ borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.08)'}`, borderBottom: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.08)'}`, padding: '22px 0', overflow: 'hidden' }}>
+        <section style={{ borderTop: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.1)' : 'rgba(var(--ink-1-rgb), 0.08)'}`, borderBottom: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.1)' : 'rgba(var(--ink-1-rgb), 0.08)'}`, padding: '22px 0', overflow: 'hidden' }}>
           <div className="mx-marquee" style={{ display: 'flex', width: 'max-content', gap: 46, alignItems: 'center' }}>
             {CATEGORIES.map((c, i) => {
               const style = { fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'rgba(226,236,245,0.42)' : '#637686', whiteSpace: 'nowrap' as const }
@@ -301,9 +301,9 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             {VOICES_ACTIVE.map((v) => (
               <div key={v.name} style={{ position: 'relative', marginBottom: 8 }}>
                 <div style={{ position: 'absolute', inset: '8px -8px -8px 8px', borderRadius: 20, background: dark ? '#3A3F1E' : '#A8AD6A', zIndex: 0 }} />
-                <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? '#0B2138' : '#FFFFFF', border: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : 'rgba(4,18,31,0.06)'}`, boxShadow: '0 10px 26px rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
+                <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? '#0B2138' : 'var(--surface)', border: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.1)' : 'rgba(var(--ink-1-rgb), 0.06)'}`, boxShadow: '0 10px 26px rgba(var(--ink-1-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <span style={{ position: 'relative', width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid #FFFFFF', boxShadow: '0 3px 10px rgba(4,18,31,0.16)' }}>
+                    <span style={{ position: 'relative', width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid var(--ink-inverse)', boxShadow: '0 3px 10px rgba(var(--ink-1-rgb), 0.16)' }}>
                       <Image src={v.photo.src} alt={v.photo.alt} title={v.photo.alt} fill sizes="44px" style={{ objectFit: 'cover' }} />
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
@@ -321,7 +321,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         {/* Three options */}
         <section style={{ maxWidth: 1360, margin: '0 auto', padding: '72px 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20, alignItems: 'stretch' }}>
-            <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(242,238,226,0.6)', border: dark ? undefined : '1px solid rgba(255,255,255,0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(var(--cream-deep-rgb), 0.6)', border: dark ? undefined : '1px solid rgba(var(--ink-inverse-rgb), 0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#7C6D54', fontWeight: 600 }}>Option one</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: ink1 }}>DIY builders</h3>
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : 'var(--ink-5)' }}>Hand you a toolbox and a blank page. Most people never finish.</p>
@@ -334,7 +334,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               </div>
               <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>Rs. 140,000 / yr + your weekends</span>
             </div>
-            <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(242,238,226,0.6)', border: dark ? undefined : '1px solid rgba(255,255,255,0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(var(--cream-deep-rgb), 0.6)', border: dark ? undefined : '1px solid rgba(var(--ink-inverse-rgb), 0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(226,236,245,0.5)' : '#7C6D54', fontWeight: 600 }}>Option two</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: ink1 }}>Web agencies</h3>
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: dark ? 'rgba(226,236,245,0.7)' : 'var(--ink-5)' }}>Good work, big invoices — and you still can&apos;t change a phone number yourself.</p>
@@ -347,12 +347,12 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               </div>
               <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>Rs. 420,000–840,000 + upkeep</span>
             </div>
-            <div style={{ padding: '30px 28px', borderRadius: 22, background: 'var(--navy)', display: 'flex', flexDirection: 'column', gap: 12, boxShadow: '0 24px 50px rgba(0,51,102,0.28)' }}>
+            <div style={{ padding: '30px 28px', borderRadius: 22, background: 'var(--navy)', display: 'flex', flexDirection: 'column', gap: 12, boxShadow: '0 24px 50px rgba(var(--navy-rgb), 0.28)' }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--butter)', fontWeight: 600 }}>Option three</span>
-              <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: '#FFFFFF' }}>MatjarX</h3>
-              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.78)' }}>Agency quality, built for you in a week, with an editor simple enough to actually use.</p>
+              <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: 'var(--ink-inverse)' }}>MatjarX</h3>
+              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.78)' }}>Agency quality, built for you in a week, with an editor simple enough to actually use.</p>
               <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>Rs. 22,500 once, then Rs. 4,500 / mo</span>
-              <p style={{ margin: '4px 0 0', fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>The truly affordable, ready-to-use website solution designed for small business owners in Pakistan.</p>
+              <p style={{ margin: '4px 0 0', fontSize: 13.5, lineHeight: 1.55, color: 'rgba(var(--ink-inverse-rgb), 0.62)' }}>The truly affordable, ready-to-use website solution designed for small business owners in Pakistan.</p>
             </div>
           </div>
         </section>
@@ -375,7 +375,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                 ))}
               </div>
             </div>
-            <div style={{ padding: '30px 28px 32px', borderRadius: 24, background: dark ? 'rgba(255,255,255,0.03)' : 'var(--cream-deep)', border: `1px solid ${dark ? 'rgba(255,255,255,0.08)' : 'rgba(4,18,31,0.06)'}`, display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div style={{ padding: '30px 28px 32px', borderRadius: 24, background: dark ? 'rgba(var(--ink-inverse-rgb), 0.03)' : 'var(--cream-deep)', border: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.08)' : 'rgba(var(--ink-1-rgb), 0.06)'}`, display: 'flex', flexDirection: 'column', gap: 16 }}>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>Websites without MatjarX</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {BUILT_WITHOUT.map((it) => (
@@ -391,24 +391,24 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
 
         {/* Mascot / urgency panel */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '30px 24px 60px' }}>
-          <div style={{ position: 'relative', borderRadius: 30, overflow: 'hidden', background: 'linear-gradient(120deg, var(--navy-deepest) 0%, #00243D 46%, #0A3A63 100%)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 34px 76px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.16)' }}>
-            <div style={{ position: 'absolute', width: 620, height: 620, right: -160, bottom: -220, borderRadius: '50%', background: 'radial-gradient(circle, rgba(198,203,138,0.34) 0%, rgba(198,203,138,0) 68%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'relative', borderRadius: 30, overflow: 'hidden', background: 'linear-gradient(120deg, var(--navy-deepest) 0%, #00243D 46%, #0A3A63 100%)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', boxShadow: '0 34px 76px rgba(var(--ink-1-rgb), 0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}>
+            <div style={{ position: 'absolute', width: 620, height: 620, right: -160, bottom: -220, borderRadius: '50%', background: 'radial-gradient(circle, rgba(var(--moss-light-rgb), 0.34) 0%, rgba(var(--moss-light-rgb), 0) 68%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: 'clamp(34px, 5vw, 62px)', minWidth: 0, order: 1 }}>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 3.8vw, 40px)', lineHeight: 1.1, letterSpacing: '-1.3px', color: '#FFFFFF' }}>
-                  50 milliseconds. <span style={{ color: 'rgba(255,255,255,0.6)' }}>That&apos;s how much time you have to make a first impression.</span>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 3.8vw, 40px)', lineHeight: 1.1, letterSpacing: '-1.3px', color: 'var(--ink-inverse)' }}>
+                  50 milliseconds. <span style={{ color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>That&apos;s how much time you have to make a first impression.</span>
                 </h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  <span style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>After that you have another 3 to 8 seconds to</span>
-                  <span style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, fontWeight: 600, color: '#FFFFFF' }}>convince a customer you are worth their money.</span>
-                  <span style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>If your website doesn&apos;t do it in that window, they leave.</span>
-                  <span style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, color: 'rgba(255,255,255,0.62)' }}>Your competitor down the road will be delighted.</span>
+                  <span style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.62)' }}>After that you have another 3 to 8 seconds to</span>
+                  <span style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, fontWeight: 600, color: 'var(--ink-inverse)' }}>convince a customer you are worth their money.</span>
+                  <span style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.62)' }}>If your website doesn&apos;t do it in that window, they leave.</span>
+                  <span style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.62)' }}>Your competitor down the road will be delighted.</span>
                 </div>
                 <Link href={routes.pricing} className="btn-primary" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Not on my watch — I want results</Link>
               </div>
               <div style={{ position: 'relative', minWidth: 0, minHeight: 320, alignSelf: 'stretch', order: 2 }}>
                 <Image src="/home/mascot.webp" alt="A shop owner at the counter, looking at her phone while a customer waits" title="You have about 50 milliseconds" fill sizes="(max-width: 380px) 100vw, 50vw" style={{ objectFit: 'cover', objectPosition: 'center 20%' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, var(--navy-deepest) 0%, rgba(4,18,31,0) 14%)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, var(--navy-deepest) 0%, rgba(var(--ink-1-rgb), 0) 14%)' }} />
               </div>
             </div>
           </div>
@@ -419,19 +419,19 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 50, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 22, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>The editor</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 42px)', lineHeight: 1.12, letterSpacing: '-1.4px', color: '#FFFFFF' }}>Change a photo. Take a booking. Start selling.</h2>
-              <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.65, color: 'rgba(255,255,255,0.7)', maxWidth: '32em' }}>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 42px)', lineHeight: 1.12, letterSpacing: '-1.4px', color: 'var(--ink-inverse)' }}>Change a photo. Take a booking. Start selling.</h2>
+              <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.65, color: 'rgba(var(--ink-inverse-rgb), 0.7)', maxWidth: '32em' }}>
                 Every MatjarX site ships with our own editor. Swap images, edit text and switch on the functions your business needs — no code, no plugins, no developer on retainer.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, paddingTop: 6 }}>
                 {EDITOR_FEATURES.map((f) => (
-                  <div key={f.title} style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 20px', borderRadius: 16, background: 'rgba(255,255,255,0.055)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <span style={{ width: 36, height: 36, flex: '0 0 auto', borderRadius: 11, background: 'rgba(198,203,138,0.16)', display: 'grid', placeItems: 'center' }}>
+                  <div key={f.title} style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 20px', borderRadius: 16, background: 'rgba(var(--ink-inverse-rgb), 0.055)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
+                    <span style={{ width: 36, height: 36, flex: '0 0 auto', borderRadius: 11, background: 'rgba(var(--moss-light-rgb), 0.16)', display: 'grid', placeItems: 'center' }}>
                       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--moss-light)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
                     </span>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
-                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#FFFFFF' }}>{f.title}</span>
-                      <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.62)' }}>{f.body}</span>
+                      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-inverse)' }}>{f.title}</span>
+                      <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'rgba(var(--ink-inverse-rgb), 0.62)' }}>{f.body}</span>
                     </div>
                   </div>
                 ))}
@@ -476,7 +476,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
             {WHY_CHOOSE.map((w) => (
               <div key={w.title} className={dark ? 'glass-dark-inner' : 'glass-card'} style={{ padding: '26px 24px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <span style={{ width: 42, height: 42, borderRadius: 13, background: dark ? 'rgba(198,203,138,0.14)' : 'var(--navy)', display: 'grid', placeItems: 'center' }}>
+                <span style={{ width: 42, height: 42, borderRadius: 13, background: dark ? 'rgba(var(--moss-light-rgb), 0.14)' : 'var(--navy)', display: 'grid', placeItems: 'center' }}>
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke={dark ? 'var(--moss-light)' : 'var(--butter)'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={w.icon} /></svg>
                 </span>
                 <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: ink1 }}>{w.title}</h3>
@@ -488,13 +488,13 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
         </section>
 
         {/* Website examples */}
-        <section id="examples" style={{ background: dark ? 'rgba(255,255,255,0.03)' : 'var(--cream-deep)', padding: '82px 0' }}>
+        <section id="examples" style={{ background: dark ? 'rgba(var(--ink-inverse-rgb), 0.03)' : 'var(--cream-deep)', padding: '82px 0' }}>
           <div style={{ maxWidth: 1360, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginRight: 'auto', maxWidth: 560 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Real sites, real businesses</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>70,000 websites built and counting</h2>
             </div>
-            <Link className="btn-trace" href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(255,255,255,0.07)' : '#FFFFFF', border: `1.5px solid ${dark ? 'rgba(255,255,255,0.16)' : 'rgba(4,18,31,0.14)'}` }}>Browse all examples</Link>
+            <Link className="btn-trace" href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(var(--ink-inverse-rgb), 0.07)' : 'var(--ink-inverse)', border: `1.5px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.16)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>Browse all examples</Link>
           </div>
           {/* Was four client screenshots. They answered "can you prove
               it" and not "have you built one for a business like mine",
@@ -558,25 +558,25 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'var(--butter)' }}>4.8 / 5</span>
                 <span style={{ fontSize: 15, letterSpacing: '2px', color: 'var(--butter)' }}>★★★★★</span>
-                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>on Trustpilot</span>
+                <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>on Trustpilot</span>
               </div>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#FFFFFF' }}>The easy, stress-free way to grow your business online.</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-inverse)' }}>The easy, stress-free way to grow your business online.</h2>
               <div style={{ display: 'flex', gap: 34, flexWrap: 'wrap', paddingTop: 6 }}>
                 {PROOF_STATS.map((st) => (
                   <div key={st.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 27, letterSpacing: '-0.8px', color: '#FFFFFF' }}>{st.value}</span>
-                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{st.label}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 27, letterSpacing: '-0.8px', color: 'var(--ink-inverse)' }}>{st.value}</span>
+                    <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>{st.label}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               {REVIEWS.map((r) => (
-                <div key={r.name} style={{ padding: '24px 26px', borderRadius: 20, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                  <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{r.quote}&rdquo;</p>
+                <div key={r.name} style={{ padding: '24px 26px', borderRadius: 20, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;{r.quote}&rdquo;</p>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--butter)' }}>{r.name}</span>
-                    <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>{r.company}</span>
+                    <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{r.company}</span>
                   </div>
                 </div>
               ))}

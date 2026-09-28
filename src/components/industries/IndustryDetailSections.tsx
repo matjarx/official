@@ -165,8 +165,8 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
       {/* Closing */}
       <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
         <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
-          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
-          <p style={{ margin: 0, maxWidth: '30em', fontSize: 14.5, color: 'rgba(255,255,255,0.68)' }}>{d.closing.body}</p>
+          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: 'var(--ink-inverse)' }}>{d.closing.title}</h2>
+          <p style={{ margin: 0, maxWidth: '30em', fontSize: 14.5, color: 'rgba(var(--ink-inverse-rgb), 0.68)' }}>{d.closing.body}</p>
           <span style={{ padding: '13px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, color: 'var(--ink-on-butter)', background: 'var(--butter)' }}>{d.closing.cta}</span>
         </div>
       </section>

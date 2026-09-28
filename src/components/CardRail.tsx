@@ -83,9 +83,9 @@ export default function CardRail({
               aria-label={dir === -1 ? `Previous, ${label}` : `More, ${label}`}
               className="industry-rail-arrow"
               style={{
-                borderColor: dark ? 'rgba(255,255,255,0.18)' : 'rgba(4,18,31,0.12)',
-                color: dark ? '#FFFFFF' : 'var(--ink-1)',
-                background: dark ? 'rgba(255,255,255,0.06)' : '#FFFFFF',
+                borderColor: dark ? 'rgba(var(--ink-inverse-rgb), 0.18)' : 'rgba(var(--ink-1-rgb), 0.12)',
+                color: dark ? 'var(--ink-inverse)' : 'var(--ink-1)',
+                background: dark ? 'rgba(var(--ink-inverse-rgb), 0.06)' : 'var(--ink-inverse)',
               }}
             >
               <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">

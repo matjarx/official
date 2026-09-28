@@ -55,11 +55,11 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
 
         {/* Tabs */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
-          <div className="glass-nav-pill" style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', padding: 7, borderRadius: 999, width: 'fit-content', margin: '0 auto', boxShadow: '0 12px 30px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)' }}>
+          <div className="glass-nav-pill" style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', padding: 7, borderRadius: 999, width: 'fit-content', margin: '0 auto', boxShadow: '0 12px 30px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)' }}>
             {TAB_KEYS.map((k) => {
               const on = tab === k
               return (
-                <button key={k} type="button" onClick={() => setTab(k)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? '#FFFFFF' : 'var(--ink-5)', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
+                <button key={k} type="button" onClick={() => setTab(k)} style={{ all: 'unset', cursor: 'pointer', padding: '11px 22px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, whiteSpace: 'nowrap', color: on ? 'var(--ink-inverse)' : 'var(--ink-5)', background: on ? 'var(--navy)' : 'transparent', transition: 'background 180ms ease' }}>
                   {FEATURE_GROUPS_ACTIVE[k].label}
                 </button>
               )
@@ -97,7 +97,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
             <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20, flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginRight: 'auto', minWidth: 0 }}>
                 <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>The editor</span>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#FFFFFF' }}>Change a photo. Take a booking. Start selling.</h2>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-inverse)' }}>Change a photo. Take a booking. Start selling.</h2>
                 <p style={{ margin: 0, maxWidth: '34em', fontSize: 15, lineHeight: 1.65, color: 'rgba(226,236,245,0.68)' }}>Switch between a product business and a service business and watch the buttons, panels and layout change with it. That&apos;s the same editor your site ships with.</p>
               </div>
               <Link className="btn-trace" href={routes.pricing} style={{ padding: '15px 26px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-on-butter)', background: 'var(--butter)' }}>Get the editor</Link>

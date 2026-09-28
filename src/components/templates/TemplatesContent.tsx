@@ -79,8 +79,8 @@ export default function TemplatesContent({
       <section style={{ background: 'var(--navy)', padding: '58px 24px 56px' }}>
         <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>100+ designs, ready to launch</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: '#FFFFFF' }}>{HERO_ACTIVE.headline}</h1>
-          <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>{HERO_ACTIVE.subhead}</p>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>{HERO_ACTIVE.headline}</h1>
+          <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{HERO_ACTIVE.subhead}</p>
           <a href={appLogin} className="btn-primary" style={{ marginTop: 4 }}>{HERO_ACTIVE.cta}</a>
         </div>
       </section>
@@ -176,9 +176,9 @@ export default function TemplatesContent({
             <h2 style={{ margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }}>Popular templates</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
               {POPULAR.map((p) => (
-                <div key={p.name} style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(4,18,31,0.08)', boxShadow: '0 10px 26px rgba(4,18,31,0.08)' }}>
+                <div key={p.name} style={{ borderRadius: 20, overflow: 'hidden', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', boxShadow: '0 10px 26px rgba(var(--ink-1-rgb), 0.08)' }}>
                   <div style={{ height: 84, background: p.tint }} />
-                  <div style={{ padding: '18px 20px 20px', background: '#FFFFFF', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <div style={{ padding: '18px 20px 20px', background: 'var(--surface)', display: 'flex', flexDirection: 'column', gap: 6 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-1)' }}>{p.name}</span>
                     <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>{p.used}</span>
                     <span style={{ fontSize: 13, color: 'var(--ink-5)' }}>{p.features}</span>
@@ -237,8 +237,8 @@ export default function TemplatesContent({
           {/* Closing CTA */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '46px 24px 0' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Browse templates now</h2>
-              <p style={{ margin: 0, maxWidth: '30em', fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>All templates are available in your MatjarX dashboard.</p>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: 'var(--ink-inverse)' }}>Browse templates now</h2>
+              <p style={{ margin: 0, maxWidth: '30em', fontSize: 15, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>All templates are available in your MatjarX dashboard.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>
                 <a href={appLogin} className="btn-primary">Login &amp; Browse Templates</a>
                 <Link href={routes.pricing} className="btn-ghost">Choose Your Plan</Link>

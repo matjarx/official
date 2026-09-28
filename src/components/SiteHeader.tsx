@@ -78,10 +78,10 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
       <header
         ref={headerRef}
         style={{
-          background: dark ? 'rgba(0,20,35,0.74)' : 'rgba(252,250,243,0.72)',
+          background: dark ? 'rgba(0,20,35,0.74)' : 'rgba(var(--cream-rgb), 0.72)',
           backdropFilter: 'blur(26px)',
-          borderBottom: dark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(255,255,255,0.8)',
-          boxShadow: dark ? '0 10px 30px rgba(0,8,18,0.3), inset 0 1px 0 rgba(255,255,255,0.14)' : '0 10px 30px rgba(4,18,31,0.05), inset 0 1px 0 rgba(255,255,255,0.9)',
+          borderBottom: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.12)' : '1px solid rgba(var(--ink-inverse-rgb), 0.8)',
+          boxShadow: dark ? '0 10px 30px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.14)' : '0 10px 30px rgba(var(--ink-1-rgb), 0.05), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
         }}
       >
         <div style={{ maxWidth: 1360, margin: '0 auto', padding: '15px 20px', display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -98,10 +98,10 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
               margin: '0 auto',
               padding: '5px 5px 5px 9px',
               borderRadius: 999,
-              background: dark ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.5)',
-              border: dark ? '1px solid rgba(255,255,255,0.14)' : '1px solid rgba(255,255,255,0.85)',
+              background: dark ? 'rgba(var(--ink-inverse-rgb), 0.07)' : 'rgba(var(--ink-inverse-rgb), 0.5)',
+              border: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.14)' : '1px solid rgba(var(--ink-inverse-rgb), 0.85)',
               backdropFilter: 'blur(24px)',
-              boxShadow: dark ? '0 14px 34px rgba(0,8,18,0.32), inset 0 1px 0 rgba(255,255,255,0.16)' : '0 14px 34px rgba(4,18,31,0.09), inset 0 1px 0 rgba(255,255,255,0.95)',
+              boxShadow: dark ? '0 14px 34px rgba(0,8,18,0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' : '0 14px 34px rgba(var(--ink-1-rgb), 0.09), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
             }}
           >
               {NAV_ITEMS.map((item, i) => {
@@ -153,10 +153,10 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                           minWidth: 250,
                           padding: 10,
                           borderRadius: 18,
-                          background: dark ? 'rgba(4,24,42,0.94)' : 'rgba(255,255,255,0.86)',
-                          border: dark ? '1px solid rgba(255,255,255,0.14)' : '1px solid rgba(255,255,255,0.9)',
+                          background: dark ? 'rgba(4,24,42,0.94)' : 'rgba(var(--ink-inverse-rgb), 0.86)',
+                          border: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.14)' : '1px solid rgba(var(--ink-inverse-rgb), 0.9)',
                           backdropFilter: 'blur(28px)',
-                          boxShadow: dark ? '0 22px 50px rgba(0,8,18,0.5), inset 0 1px 0 rgba(255,255,255,0.14)' : '0 22px 50px rgba(4,18,31,0.16), inset 0 1px 0 rgba(255,255,255,0.9)',
+                          boxShadow: dark ? '0 22px 50px rgba(0,8,18,0.5), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.14)' : '0 22px 50px rgba(var(--ink-1-rgb), 0.16), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
                           display: 'flex',
                           flexDirection: 'column',
                           gap: 2,
@@ -176,7 +176,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
               <a
                 href={appLogin}
                 title="Log in"
-                style={{ width: 40, height: 40, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--navy-gradient)', boxShadow: '0 8px 18px rgba(0,51,102,0.28), inset 0 1px 0 rgba(255,255,255,0.22)' }}
+                style={{ width: 40, height: 40, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--navy-gradient)', boxShadow: '0 8px 18px rgba(var(--navy-rgb), 0.28), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22)' }}
               >
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM5 20a7 7 0 0 1 14 0" /></svg>
               </a>
@@ -191,10 +191,10 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                 style={{
                   all: 'unset', cursor: 'pointer', flex: '0 0 auto', width: 40, height: 40, borderRadius: 12,
                   display: 'grid', placeItems: 'center',
-                  background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.66)',
-                  border: dark ? '1.5px solid rgba(255,255,255,0.18)' : '1.5px solid rgba(255,255,255,0.9)',
+                  background: dark ? 'rgba(var(--ink-inverse-rgb), 0.08)' : 'rgba(var(--ink-inverse-rgb), 0.66)',
+                  border: dark ? '1.5px solid rgba(var(--ink-inverse-rgb), 0.18)' : '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)',
                   backdropFilter: 'blur(20px)',
-                  boxShadow: dark ? 'inset 0 1px 0 rgba(255,255,255,0.16)' : 'inset 0 1px 0 rgba(255,255,255,0.9)',
+                  boxShadow: dark ? 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' : 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
                 }}
               >
                 <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke={dark ? '#E9EFF5' : 'var(--ink-1)'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -220,10 +220,10 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                 height: 44,
                 borderRadius: 13,
                 placeItems: 'center',
-                background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.66)',
-                border: dark ? '1.5px solid rgba(255,255,255,0.18)' : '1.5px solid rgba(255,255,255,0.9)',
+                background: dark ? 'rgba(var(--ink-inverse-rgb), 0.08)' : 'rgba(var(--ink-inverse-rgb), 0.66)',
+                border: dark ? '1.5px solid rgba(var(--ink-inverse-rgb), 0.18)' : '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)',
                 backdropFilter: 'blur(20px)',
-                boxShadow: dark ? 'inset 0 1px 0 rgba(255,255,255,0.16)' : 'inset 0 1px 0 rgba(255,255,255,0.9)',
+                boxShadow: dark ? 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' : 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
               }}
             >
               <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke={dark ? '#E9EFF5' : 'var(--ink-1)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -236,8 +236,8 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
         {drawerOpen && (
           <div
             style={{
-              borderTop: dark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(4,18,31,0.09)',
-              background: dark ? 'rgba(0,20,35,0.92)' : 'rgba(252,250,243,0.86)',
+              borderTop: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.12)' : '1px solid rgba(var(--ink-1-rgb), 0.09)',
+              background: dark ? 'rgba(0,20,35,0.92)' : 'rgba(var(--cream-rgb), 0.86)',
               backdropFilter: 'blur(26px)',
               padding: '14px 20px 22px',
               maxHeight: '70vh',
@@ -274,7 +274,7 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                     )}
                   </div>
                   {item.menu && isOpen && (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 2, margin: '2px 0 8px 16px', paddingLeft: 16, borderLeft: '2px solid rgba(198,203,138,0.7)' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 2, margin: '2px 0 8px 16px', paddingLeft: 16, borderLeft: '2px solid rgba(var(--moss-light-rgb), 0.7)' }}>
                       {item.menu.map((m) => (
                         <Link key={m.label} href={m.href} onClick={() => setDrawer(false)} className={dark ? 'mobile-submenu-dark' : 'mobile-submenu-light'} style={{ display: 'block', padding: '12px 12px', borderRadius: 11, fontSize: 14.5, color: dark ? 'rgba(226,236,245,0.76)' : 'var(--ink-4-alt)' }}>
                           {m.label}
@@ -296,8 +296,8 @@ export default function SiteHeader({ active, dark = false, onToggleDark }: { act
                 fontWeight: 700,
                 fontSize: 15,
                 color: dark ? '#F7FAFD' : 'var(--ink-1)',
-                background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.66)',
-                border: dark ? '1.5px solid rgba(255,255,255,0.18)' : '1.5px solid rgba(255,255,255,0.9)',
+                background: dark ? 'rgba(var(--ink-inverse-rgb), 0.08)' : 'rgba(var(--ink-inverse-rgb), 0.66)',
+                border: dark ? '1.5px solid rgba(var(--ink-inverse-rgb), 0.18)' : '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)',
                 backdropFilter: 'blur(20px)',
               }}
             >

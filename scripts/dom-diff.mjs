@@ -156,7 +156,13 @@ async function compare(a, b) {
       // Resolution must apply to BOTH sides. The layout already used
       // var(--cream) before any of this, so resolving only the newer
       // capture reports every such style as a change.
-      if (RESOLVE) t = t.replace(/var\((--[a-z0-9-]+)\)/g, (all, n) => vars.get(n) ?? all)
+      if (RESOLVE) {
+        t = t.replace(/var\((--[a-z0-9-]+)\)/g, (all, n) => vars.get(n) ?? all)
+        // rgba(var(--ink-1-rgb), 0.09) resolves to rgba(4,18,31, 0.09):
+        // the same colour written with one more space than the literal it
+        // replaced. Whitespace inside a colour function is not content.
+        t = t.replace(/rgba?\([^)]*\)/g, (m) => m.replace(/\s+/g, ''))
+      }
       return t
     }
     const [x, y] = (await Promise.all([readFile(path.join(da, f), 'utf8'), readFile(path.join(db, f), 'utf8')])).map(late)

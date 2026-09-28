@@ -32,8 +32,8 @@ const TABS = [
 ].map((t) => ({
   label: t.label,
   icon: t.icon,
-  bg: t.on ? 'rgba(244,242,174,0.14)' : 'rgba(255,255,255,0.06)',
-  line: t.on ? 'rgba(244,242,174,0.34)' : 'rgba(255,255,255,0.11)',
+  bg: t.on ? 'rgba(var(--butter-rgb), 0.14)' : 'rgba(var(--ink-inverse-rgb), 0.06)',
+  line: t.on ? 'rgba(var(--butter-rgb), 0.34)' : 'rgba(var(--ink-inverse-rgb), 0.11)',
   ink: t.on ? 'var(--butter)' : 'rgba(226,236,245,0.6)',
   weight: t.on ? 2.1 : 1.75,
 }))
@@ -62,11 +62,11 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
   const domain = isProduct ? 'eleganceembroidery.pk' : 'sweetcrumbs.pk'
   const brandMark = isProduct ? 'ELEGANCE' : 'SWEET CRUMBS'
   const navBg = isProduct ? 'rgba(12,4,10,0.92)' : '#FFFCF5'
-  const navLine = isProduct ? 'rgba(255,255,255,0.12)' : 'rgba(42,22,8,0.12)'
-  const navInk = isProduct ? '#FFFFFF' : '#2A1608'
+  const navLine = isProduct ? 'rgba(var(--ink-inverse-rgb), 0.12)' : 'rgba(42,22,8,0.12)'
+  const navInk = isProduct ? 'var(--ink-inverse)' : '#2A1608'
   const navCta = isProduct ? 'Order Now' : 'Book Now'
   const navCtaBg = isProduct ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : '#6B4A22'
-  const navCtaInk = isProduct ? '#14210b' : '#FFFFFF'
+  const navCtaInk = isProduct ? '#14210b' : 'var(--ink-inverse)'
 
   const heroImg = isProduct ? EE[img] : SCB[img]
   const heroPos = isProduct ? EE_POS[img] : SCB_POS[img]
@@ -76,11 +76,11 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
   const kicker = isProduct ? 'New winter collection' : 'Baked fresh, every morning'
   const kickerInk = isProduct ? 'var(--butter)' : '#A87A3A'
   const headline = isProduct ? 'Hand-stitched, made to be seen.' : 'Baked Fresh, Every Morning.'
-  const headInk = isProduct ? '#FFFFFF' : '#2A1608'
+  const headInk = isProduct ? 'var(--ink-inverse)' : '#2A1608'
   const blurb = isProduct ? 'Chikankari and ajrak work, delivered nationwide.' : 'Order online for pickup, or reserve your table.'
-  const bodyInk = isProduct ? 'rgba(255,255,255,0.82)' : '#6B5340'
+  const bodyInk = isProduct ? 'rgba(var(--ink-inverse-rgb), 0.82)' : '#6B5340'
   const ctaBg = isProduct ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'linear-gradient(160deg, #7C5628, #5A3C18)'
-  const ctaInk = isProduct ? '#14210b' : '#FFFFFF'
+  const ctaInk = isProduct ? '#14210b' : 'var(--ink-inverse)'
 
   const modeIconLabel = isProduct ? 'Book Now!' : 'Sell Products'
   const modeIcon = isProduct
@@ -90,33 +90,33 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
   const mediaThumbs = thumbSrc.map((src, k) => ({
     src,
     opacity: k === img ? 1 : 0.6,
-    ring: k === img ? '2px solid #37B6F0' : '1px solid rgba(255,255,255,0.12)',
+    ring: k === img ? '2px solid #37B6F0' : '1px solid rgba(var(--ink-inverse-rgb), 0.12)',
   }))
 
   const statusLine = isProduct ? 'Store on — the buttons read Order Now' : 'Bookings on — the buttons read Book Now'
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif' }}>
-      <div style={{ width: '100%', borderRadius: 14, overflow: 'hidden', background: 'linear-gradient(168deg, #001C33 0%, #00263F 100%)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 20px 46px rgba(0,8,18,0.44)' }}>
+      <div style={{ width: '100%', borderRadius: 14, overflow: 'hidden', background: 'linear-gradient(168deg, #001C33 0%, #00263F 100%)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', boxShadow: '0 20px 46px rgba(0,8,18,0.44)' }}>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '9px 10px' }}>
-          <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.13)' }}>
+          <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.13)' }}>
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6" /></svg>
           </span>
           <span style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 0, marginRight: 'auto' }}>
             <span style={{ fontSize: 7.5, letterSpacing: 1.1, textTransform: 'uppercase', color: 'rgba(226,236,245,0.42)' }}>Theme editor</span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10.5, color: '#F7FAFD', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{siteName}</span>
-              <span style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', gap: 3, padding: '2px 6px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
+              <span style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', gap: 3, padding: '2px 6px', borderRadius: 999, background: 'rgba(var(--ink-inverse-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
                 <span style={{ fontSize: 7.5, fontWeight: 600, color: 'rgba(233,239,245,0.8)' }}>Home</span>
                 <svg viewBox="0 0 24 24" width="7" height="7" fill="none" stroke="rgba(226,236,245,0.55)" strokeWidth="2.6" strokeLinecap="round"><path d="m6 9 6 6 6-6" /></svg>
               </span>
             </span>
           </span>
-          <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.13)' }}>
+          <span style={{ width: 26, height: 26, flex: '0 0 auto', borderRadius: 8, display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.13)' }}>
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#E9EFF5" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" /><circle cx="12" cy="12" r="2.8" /></svg>
           </span>
-          <span style={{ flex: '0 0 auto', padding: '7px 12px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6)' }}>Publish</span>
+          <span style={{ flex: '0 0 auto', padding: '7px 12px', borderRadius: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.6)' }}>Publish</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0 12px 8px' }}>
@@ -128,10 +128,10 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
         <div style={{ padding: '0 6px' }}>
           <div style={{ borderRadius: 10, overflow: 'hidden', background: '#FFFCF5', boxShadow: '0 14px 32px rgba(0,8,18,0.38)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '6px 9px', background: '#0B1B27' }}>
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(255,255,255,0.16)' }} />
-              <span style={{ margin: '0 auto', padding: '3px 10px', borderRadius: 999, fontSize: 8, color: 'rgba(226,236,245,0.6)', background: 'rgba(255,255,255,0.07)' }}>{domain}</span>
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(var(--ink-inverse-rgb), 0.16)' }} />
+              <span style={{ margin: '0 auto', padding: '3px 10px', borderRadius: 999, fontSize: 8, color: 'rgba(226,236,245,0.6)', background: 'rgba(var(--ink-inverse-rgb), 0.07)' }}>{domain}</span>
             </div>
 
             <div style={{ position: 'relative', outline: '2px solid var(--butter)', outlineOffset: -2 }}>
@@ -166,8 +166,8 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, padding: '10px 6px 0' }}>
           <button type="button" onClick={toggleMode} title="Tap to switch the business type" className="showcase-overlay-2" style={{ all: 'unset', cursor: 'pointer', padding: 4, borderRadius: 8, border: '1.5px solid #37B6F0' }}>
             <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 7, minHeight: 76, padding: '12px 8px', borderRadius: 4, background: '#1C1C1C' }}>
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FFFFFF" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d={modeIcon} /></svg>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 0.8, textTransform: 'uppercase', color: '#FFFFFF', textAlign: 'center', whiteSpace: 'nowrap' }}>{modeIconLabel}</span>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--ink-inverse)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d={modeIcon} /></svg>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 0.8, textTransform: 'uppercase', color: 'var(--ink-inverse)', textAlign: 'center', whiteSpace: 'nowrap' }}>{modeIconLabel}</span>
             </span>
           </button>
 
@@ -180,12 +180,12 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(226,236,245,0.6
                   </span>
                 ))}
               </span>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 0.8, textTransform: 'uppercase', color: '#FFFFFF', textAlign: 'center', whiteSpace: 'nowrap' }}>Change Image</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 0.8, textTransform: 'uppercase', color: 'var(--ink-inverse)', textAlign: 'center', whiteSpace: 'nowrap' }}>Change Image</span>
             </span>
           </button>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 6px', marginTop: 8, borderTop: '1px solid rgba(255,255,255,0.09)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 6px', marginTop: 8, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.09)' }}>
           {TABS.map((t) => (
             <span key={t.label} style={{ flex: 1, minHeight: 44, borderRadius: 11, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 3, background: t.bg, border: `1px solid ${t.line}` }}>
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke={t.ink} strokeWidth={t.weight} strokeLinecap="round" strokeLinejoin="round"><path d={t.icon} /></svg>

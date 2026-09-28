@@ -32,6 +32,29 @@ html {
      failed on a rounding edge across eight elements. One unit of blue. */
   --ink-muted: #5A6E81;
   --ink-faint: #90A2B1;
+  /* White, split in two because the two uses diverge in dark mode.
+     --ink-inverse is text ON a dark surface. It is FIXED: white text only
+     ever sits on dark, so there is no mode in which it should become
+     anything else. A token that never re-points is still worth having --
+     it says "this white is deliberate" where a literal says nothing.
+     --surface is a white card or page background. This one DOES re-point
+     in dark mode; that is the whole reason they cannot share a name. */
+  --ink-inverse: #FFFFFF;
+  --surface: #FFFFFF;
+  /* Numeric triplets, for alpha. A hex cannot go inside rgba(), so
+     rgba(var(--ink-1), .09) is not a thing; the triplet is.
+     This is the convention the header of this file has documented since
+     the design handoff -- rgba(var(--x-rgb), 0.5) -- which had never
+     actually been implemented: not one --*-rgb token existed. Following
+     the written convention rather than inventing a second one, and it is
+     the most compatible form anyway, working anywhere CSS variables do. */
+  --ink-inverse-rgb: 255,255,255;
+  --ink-1-rgb: 4,18,31;
+  --navy-rgb: 0,51,102;
+  --moss-light-rgb: 198,203,138;
+  --butter-rgb: 244,242,174;
+  --cream-rgb: 252,250,243;
+  --cream-deep-rgb: 242,238,226;
   --navy: #003366;
   --navy-gradient: linear-gradient(160deg, #0A4278, #002E5C);
   --navy-deepest: #04121F;

@@ -52,38 +52,38 @@ export default function HomeMobileContent() {
         pageBg: 'linear-gradient(172deg, #001C33 0%, #00263F 55%, #001526 100%)',
         orb1: 'radial-gradient(circle, rgba(112,117,56,0.5) 0%, rgba(112,117,56,0) 68%)',
         orb2: 'radial-gradient(circle, rgba(41,110,177,0.44) 0%, rgba(41,110,177,0) 68%)',
-        headerBg: 'rgba(0,20,35,0.74)', headerLine: 'rgba(255,255,255,0.12)',
+        headerBg: 'rgba(0,20,35,0.74)', headerLine: 'rgba(var(--ink-inverse-rgb), 0.12)',
         logo: '/brand/matjarx-logo-light.png',
         ink1: '#F5F8FB', ink3: 'rgba(226,236,245,0.7)', ink4: 'rgba(226,236,245,0.5)', ink5: 'rgba(226,236,245,0.4)',
         accentInk: 'var(--moss-light)', iconInk: '#E9EFF5',
-        chipBg: 'rgba(255,255,255,0.08)', chipLine: 'rgba(255,255,255,0.16)',
-        cardBg: 'linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.035))',
-        cardLine: 'rgba(255,255,255,0.14)',
-        cardShadow: '0 14px 34px rgba(0,8,18,0.3), inset 0 1px 0 rgba(255,255,255,0.16)',
-        voiceBg: 'linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04))',
-        voiceLine: 'rgba(255,255,255,0.14)', offsetFill: 'rgba(168,173,106,0.55)',
+        chipBg: 'rgba(var(--ink-inverse-rgb), 0.08)', chipLine: 'rgba(var(--ink-inverse-rgb), 0.16)',
+        cardBg: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.1), rgba(var(--ink-inverse-rgb), 0.035))',
+        cardLine: 'rgba(var(--ink-inverse-rgb), 0.14)',
+        cardShadow: '0 14px 34px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)',
+        voiceBg: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.1), rgba(var(--ink-inverse-rgb), 0.04))',
+        voiceLine: 'rgba(var(--ink-inverse-rgb), 0.14)', offsetFill: 'rgba(168,173,106,0.55)',
         voiceInk: '#F5F8FB', voiceMeta: 'rgba(226,236,245,0.5)', voiceBody: 'rgba(233,239,245,0.86)',
         skinIcon: 'M12 3.5a8.5 8.5 0 1 0 8.5 8.5c0-.4 0-.8-.1-1.2A6 6 0 0 1 12 3.6Z',
-        planLight: { bg: 'linear-gradient(160deg, rgba(255,255,255,0.095), rgba(255,255,255,0.03))', border: 'rgba(255,255,255,0.13)', shadow: '0 16px 40px rgba(0,8,18,0.3), inset 0 1px 0 rgba(255,255,255,0.16)', ink: '#F5F8FB', muted: 'rgba(226,236,245,0.6)' },
+        planLight: { bg: 'linear-gradient(160deg, rgba(var(--ink-inverse-rgb), 0.095), rgba(var(--ink-inverse-rgb), 0.03))', border: 'rgba(var(--ink-inverse-rgb), 0.13)', shadow: '0 16px 40px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)', ink: '#F5F8FB', muted: 'rgba(226,236,245,0.6)' },
       }
     : {
         pageBg: 'linear-gradient(172deg, var(--cream) 0%, #F4EFE2 100%)',
-        orb1: 'radial-gradient(circle, rgba(198,203,138,0.5) 0%, rgba(198,203,138,0) 68%)',
+        orb1: 'radial-gradient(circle, rgba(var(--moss-light-rgb), 0.5) 0%, rgba(var(--moss-light-rgb), 0) 68%)',
         orb2: 'radial-gradient(circle, rgba(120,170,215,0.4) 0%, rgba(120,170,215,0) 68%)',
-        headerBg: 'rgba(252,250,243,0.78)', headerLine: 'rgba(4,18,31,0.1)',
+        headerBg: 'rgba(var(--cream-rgb), 0.78)', headerLine: 'rgba(var(--ink-1-rgb), 0.1)',
         logo: '/brand/matjarx-logo-black.png',
         ink1: 'var(--ink-1)', ink3: 'var(--ink-4)', ink4: 'var(--ink-muted)', ink5: 'var(--ink-faint)',
         accentInk: 'var(--olive)', iconInk: 'var(--ink-1)',
-        chipBg: 'rgba(255,255,255,0.7)', chipLine: 'rgba(255,255,255,0.95)',
-        cardBg: 'rgba(255,255,255,0.7)', cardLine: 'rgba(255,255,255,0.95)',
-        cardShadow: '0 12px 30px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)',
-        voiceBg: '#FFFFFF', voiceLine: 'rgba(4,18,31,0.07)', offsetFill: '#A8AD6A',
+        chipBg: 'rgba(var(--ink-inverse-rgb), 0.7)', chipLine: 'rgba(var(--ink-inverse-rgb), 0.95)',
+        cardBg: 'rgba(var(--ink-inverse-rgb), 0.7)', cardLine: 'rgba(var(--ink-inverse-rgb), 0.95)',
+        cardShadow: '0 12px 30px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
+        voiceBg: 'var(--surface)', voiceLine: 'rgba(var(--ink-1-rgb), 0.07)', offsetFill: '#A8AD6A',
         voiceInk: 'var(--ink-1)', voiceMeta: 'var(--ink-muted)', voiceBody: 'var(--ink-3)',
         skinIcon: 'M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9ZM12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M18.5 5.5l-1.4 1.4M6.9 17.1 5.5 18.5',
-        planLight: { bg: 'rgba(255,255,255,0.66)', border: 'rgba(255,255,255,0.9)', shadow: '0 14px 34px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.95)', ink: 'var(--navy-deepest)', muted: 'var(--ink-muted)' },
+        planLight: { bg: 'rgba(var(--ink-inverse-rgb), 0.66)', border: 'rgba(var(--ink-inverse-rgb), 0.9)', shadow: '0 14px 34px rgba(var(--ink-1-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)', ink: 'var(--navy-deepest)', muted: 'var(--ink-muted)' },
       }
 
-  const planDark = { bg: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: 'rgba(255,255,255,0.18)', shadow: '0 20px 46px rgba(0,51,102,0.3), inset 0 1px 0 rgba(255,255,255,0.2)', ink: '#FFFFFF', muted: 'rgba(255,255,255,0.62)' }
+  const planDark = { bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.18)', shadow: '0 20px 46px rgba(var(--navy-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', ink: 'var(--ink-inverse)', muted: 'rgba(var(--ink-inverse-rgb), 0.62)' }
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '24px 0', background: '#00121F' }}>
@@ -96,11 +96,11 @@ export default function HomeMobileContent() {
 
         {/* Promo bar */}
         <div style={{ position: 'relative', zIndex: 3, flex: '0 0 auto', background: 'linear-gradient(90deg, var(--navy) 0%, var(--mid-blue) 20%, var(--olive) 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)', padding: '14px 14px 9px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '4px 11px', borderRadius: 999, background: 'rgba(0,0,0,0.26)', border: '1px solid rgba(255,255,255,0.32)' }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '4px 11px', borderRadius: 999, background: 'rgba(0,0,0,0.26)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.32)' }}>
             <span style={{ width: 5, height: 5, flex: '0 0 auto', borderRadius: '50%', background: 'var(--butter)' }} />
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10.5, color: '#FFFFFF', whiteSpace: 'nowrap' }}>49% off on sign up</span>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10.5, color: 'var(--ink-inverse)', whiteSpace: 'nowrap' }}>49% off on sign up</span>
           </span>
-          <span style={{ fontSize: 10.5, fontWeight: 600, color: 'rgba(255,255,255,0.94)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>100,000 businesses in 2026</span>
+          <span style={{ fontSize: 10.5, fontWeight: 600, color: 'rgba(var(--ink-inverse-rgb), 0.94)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>100,000 businesses in 2026</span>
         </div>
 
         {/* Header */}
@@ -111,7 +111,7 @@ export default function HomeMobileContent() {
           <button type="button" onClick={() => setSkin(dark ? 'light' : 'dark')} title="Switch skin" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 38, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center', background: theme.chipBg, border: `1px solid ${theme.chipLine}` }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke={theme.iconInk} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={theme.skinIcon} /></svg>
           </button>
-          <a href={appLogin} title="Log in" style={{ width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'linear-gradient(160deg, #0A4278, #002E5C)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22)' }}>
+          <a href={appLogin} title="Log in" style={{ width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'linear-gradient(160deg, #0A4278, #002E5C)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22)' }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM5 20a7 7 0 0 1 14 0" /></svg>
           </a>
           <button type="button" onClick={() => setMenuOpen((v) => !v)} title="Menu" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 38, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center', background: theme.chipBg, border: `1px solid ${theme.chipLine}` }}>
@@ -145,7 +145,7 @@ export default function HomeMobileContent() {
               <span style={{ display: 'flex', gap: 2 }}>
                 {[1, 2, 3, 4, 5].map((n) => (
                   <span key={n} style={{ width: 17, height: 17, display: 'grid', placeItems: 'center', background: 'var(--trustpilot)' }}>
-                    <svg viewBox="0 0 24 24" width="12" height="12" fill="#FFFFFF"><path d="m12 3.4 2.7 6.1 6.6.5-5 4.3 1.5 6.4L12 17.2l-5.8 3.5 1.5-6.4-5-4.3 6.6-.5z" /></svg>
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="var(--ink-inverse)"><path d="m12 3.4 2.7 6.1 6.6.5-5 4.3 1.5 6.4L12 17.2l-5.8 3.5 1.5-6.4-5-4.3 6.6-.5z" /></svg>
                   </span>
                 ))}
               </span>
@@ -168,14 +168,14 @@ export default function HomeMobileContent() {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: 12 }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '9px 16px 9px 11px', borderRadius: 999, background: 'linear-gradient(160deg, #0A4278, #002E5C)', border: '1.5px solid rgba(244,242,174,0.5)', boxShadow: '0 10px 24px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '9px 16px 9px 11px', borderRadius: 999, background: 'linear-gradient(160deg, #0A4278, #002E5C)', border: '1.5px solid rgba(var(--butter-rgb), 0.5)', boxShadow: '0 10px 24px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)' }}>
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M12 3.5 4.5 6.5v5c0 4.4 3.1 7.6 7.5 9 4.4-1.4 7.5-4.6 7.5-9v-5ZM9 12l2.2 2.2L15.5 10" /></svg>
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 11.5, letterSpacing: '0.3px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>No long-term contract</span>
             </span>
           </div>
 
           <div style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', inset: '-10px -8px -12px -8px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(0,51,102,0.92), rgba(112,117,56,0.86))', zIndex: 0 }} />
+            <div style={{ position: 'absolute', inset: '-10px -8px -12px -8px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(var(--navy-rgb), 0.92), rgba(112,117,56,0.86))', zIndex: 0 }} />
             <div style={{ position: 'relative', zIndex: 1, padding: 3 }}>
               <EditorShowcaseMobile />
             </div>
@@ -193,7 +193,7 @@ export default function HomeMobileContent() {
                 <div style={{ position: 'absolute', inset: '7px -7px -7px 7px', borderRadius: 18, background: theme.offsetFill, zIndex: 0 }} />
                 <div style={{ position: 'relative', zIndex: 1, padding: '18px 19px 20px', borderRadius: 18, background: theme.voiceBg, border: `1px solid ${theme.voiceLine}`, backdropFilter: 'blur(20px)', boxShadow: theme.cardShadow, display: 'flex', flexDirection: 'column', gap: 11 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
-                    <span style={{ position: 'relative', width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid rgba(255,255,255,0.9)' }}>
+                    <span style={{ position: 'relative', width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid rgba(var(--ink-inverse-rgb), 0.9)' }}>
                       <Image src={v.photo.src} alt={v.photo.alt} title={v.photo.alt} fill sizes="38px" style={{ objectFit: 'cover' }} />
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
@@ -208,22 +208,22 @@ export default function HomeMobileContent() {
           </div>
 
           {/* Mascot/urgency */}
-          <div style={{ borderRadius: 24, overflow: 'hidden', background: 'linear-gradient(150deg, var(--navy-deepest), #0A3A63)', border: '1px solid rgba(255,255,255,0.14)', boxShadow: '0 22px 50px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.16)' }}>
+          <div style={{ borderRadius: 24, overflow: 'hidden', background: 'linear-gradient(150deg, var(--navy-deepest), #0A3A63)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', boxShadow: '0 22px 50px rgba(var(--ink-1-rgb), 0.34), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}>
             <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 13 }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.14, letterSpacing: '-0.8px', color: '#FFFFFF' }}>50 milliseconds. <span style={{ color: 'rgba(255,255,255,0.6)' }}>That&rsquo;s how long you have to make a first impression.</span></h2>
-              <span style={{ fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.66)' }}>After that you get 3 to 8 seconds to convince a customer you&rsquo;re worth their money. If your website doesn&rsquo;t, they leave.</span>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.14, letterSpacing: '-0.8px', color: 'var(--ink-inverse)' }}>50 milliseconds. <span style={{ color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>That&rsquo;s how long you have to make a first impression.</span></h2>
+              <span style={{ fontSize: 13, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.66)' }}>After that you get 3 to 8 seconds to convince a customer you&rsquo;re worth their money. If your website doesn&rsquo;t, they leave.</span>
               <a href="/pricing" className="btn-primary" style={{ textAlign: 'center' }}>Not on my watch</a>
             </div>
           </div>
 
           {/* Savings calculator */}
-          <div style={{ padding: '22px 20px 24px', borderRadius: 24, background: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: '1px solid rgba(255,255,255,0.16)', backdropFilter: 'blur(24px)', boxShadow: '0 22px 50px rgba(4,18,31,0.3), inset 0 1px 0 rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={{ padding: '22px 20px 24px', borderRadius: 24, background: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(24px)', boxShadow: '0 22px 50px rgba(var(--ink-1-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
               <span style={{ fontSize: 11, letterSpacing: '1.8px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Do it yourself?</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.16, letterSpacing: '-0.8px', color: '#FFFFFF' }}>Your time has a price. Work out what a DIY website costs you.</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, lineHeight: 1.16, letterSpacing: '-0.8px', color: 'var(--ink-inverse)' }}>Your time has a price. Work out what a DIY website costs you.</h2>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '15px 16px', borderRadius: 16, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '15px 16px', borderRadius: 16, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontSize: 12.5, color: 'rgba(233,239,245,0.82)', marginRight: 'auto' }}>Number of hours</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 16, color: 'var(--butter)', whiteSpace: 'nowrap' }}>{hours} hours</span>
@@ -232,13 +232,13 @@ export default function HomeMobileContent() {
                 {HOUR_STEPS.map((h) => {
                   const active = hours === h
                   return (
-                    <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(255,255,255,0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(255,255,255,0.16)'}` }}>{h}</button>
+                    <button key={h} type="button" onClick={() => setHours(h)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}` }}>{h}</button>
                   )
                 })}
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '15px 16px', borderRadius: 16, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '15px 16px', borderRadius: 16, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontSize: 12.5, color: 'rgba(233,239,245,0.82)', marginRight: 'auto' }}>Per hour cost</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 16, color: 'var(--butter)', whiteSpace: 'nowrap' }}>{money(rate)} / hr</span>
@@ -247,21 +247,21 @@ export default function HomeMobileContent() {
                 {RATE_STEPS.map((r) => {
                   const active = rate === r
                   return (
-                    <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(255,255,255,0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(255,255,255,0.16)'}` }}>{r / 1000}k</button>
+                    <button key={r} type="button" onClick={() => setRate(r)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 2px', borderRadius: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: active ? '#14210b' : 'rgba(233,239,245,0.75)', background: active ? 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))' : 'rgba(var(--ink-inverse-rgb), 0.07)', border: `1px solid ${active ? 'var(--butter-deep)' : 'rgba(var(--ink-inverse-rgb), 0.16)'}` }}>{r / 1000}k</button>
                   )
                 })}
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '18px 19px 20px', borderRadius: 18, background: 'rgba(255,255,255,0.09)', border: '1px solid rgba(255,255,255,0.18)' }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, paddingBottom: 11, borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '18px 19px 20px', borderRadius: 18, background: 'rgba(var(--ink-inverse-rgb), 0.09)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, paddingBottom: 11, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 2, marginRight: 'auto', minWidth: 0 }}>
                   <span style={{ fontSize: 12.5, color: 'rgba(233,239,245,0.84)' }}>Doing it yourself</span>
                   <span style={{ fontSize: 10.5, color: 'rgba(226,236,245,0.5)' }}>{hours} hours × {money(rate)}</span>
                 </span>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: '#FFFFFF', whiteSpace: 'nowrap' }}>{money(diy)}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: 'var(--ink-inverse)', whiteSpace: 'nowrap' }}>{money(diy)}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, paddingBottom: 11, borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, paddingBottom: 11, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 2, marginRight: 'auto', minWidth: 0 }}>
                   <span style={{ fontSize: 12.5, color: 'rgba(233,239,245,0.84)' }}>MatjarX, live in 7 days</span>
                   <span style={{ fontSize: 10.5, color: 'rgba(226,236,245,0.5)' }}>One-time Launch setup fee</span>
@@ -272,7 +272,7 @@ export default function HomeMobileContent() {
                 <span style={{ fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>You save</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, lineHeight: 1.05, letterSpacing: '-1.2px', color: 'var(--butter)' }}>{money(saved)}</span>
               </div>
-              <a href="/pricing" style={{ textAlign: 'center', padding: '15px 20px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.65)' }}>Sign up now</a>
+              <a href="/pricing" style={{ textAlign: 'center', padding: '15px 20px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#14210b', background: 'linear-gradient(160deg, var(--butter-light), var(--butter-deep))', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.65)' }}>Sign up now</a>
             </div>
           </div>
 
@@ -301,15 +301,15 @@ export default function HomeMobileContent() {
           </div>
 
           {/* CTA */}
-          <div style={{ padding: '26px 22px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(244,242,174,0.94), rgba(198,203,138,0.94))', border: '1px solid rgba(255,255,255,0.7)', boxShadow: '0 22px 50px rgba(112,117,56,0.24), inset 0 1px 0 rgba(255,255,255,0.85)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 13, textAlign: 'center' }}>
+          <div style={{ padding: '26px 22px 28px', borderRadius: 26, background: 'linear-gradient(150deg, rgba(var(--butter-rgb), 0.94), rgba(var(--moss-light-rgb), 0.94))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)', boxShadow: '0 22px 50px rgba(112,117,56,0.24), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.85)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 13, textAlign: 'center' }}>
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.12, letterSpacing: '-0.9px', color: '#1F2A08' }}>Professional website done for you. 7-day turnaround.</h2>
             {/* Same copy as the footer CTA, kept in step deliberately —
                 /home-mobile renders this instead of SiteFooter's card. */}
             <span style={{ fontSize: 13.5, lineHeight: 1.6, fontWeight: 600, color: '#3D4A16' }}>Completely zero-risk. Unmatched customer service.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>More than 70,000 businesses trust MatjarX. Your business deserves to join them.</span>
-            <a className="btn-trace" href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#FFFFFF', background: 'var(--navy-deepest)' }}>Get started</a>
-            <a className="btn-trace" href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(255,255,255,0.9)' }}>Talk to us on WhatsApp</a>
+            <a className="btn-trace" href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-inverse)', background: 'var(--navy-deepest)' }}>Get started</a>
+            <a className="btn-trace" href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(var(--ink-inverse-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)' }}>Talk to us on WhatsApp</a>
           </div>
 
           {/* Footer */}

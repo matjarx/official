@@ -78,15 +78,15 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
           <div className="glass-card" style={{ borderRadius: 26, overflow: 'hidden' }}>
             <div className="table-scroll">
               <div style={{ display: 'grid', gridTemplateColumns: `minmax(0, 1.4fr) repeat(${COL_HEADS.length}, minmax(110px, 0.8fr))`, minWidth: 980 }}>
-                <span style={{ padding: '20px 22px', background: 'rgba(242,238,226,0.7)' }} />
+                <span style={{ padding: '20px 22px', background: 'rgba(var(--cream-deep-rgb), 0.7)' }} />
                 {COL_HEADS.map((h, i) => (
-                  <span key={h} style={{ padding: '20px 12px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 13.5, letterSpacing: '-0.2px', color: i === 0 ? '#FFFFFF' : 'var(--navy-deepest)', background: i === 0 ? 'var(--navy)' : 'rgba(242,238,226,0.7)' }}>{h}</span>
+                  <span key={h} style={{ padding: '20px 12px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 13.5, letterSpacing: '-0.2px', color: i === 0 ? 'var(--ink-inverse)' : 'var(--navy-deepest)', background: i === 0 ? 'var(--navy)' : 'rgba(var(--cream-deep-rgb), 0.7)' }}>{h}</span>
                 ))}
                 {MATRIX.map((row) => (
                   <Fragment key={row.label}>
-                    <span style={{ padding: '15px 22px', fontSize: 14, lineHeight: 1.45, color: 'var(--ink-3)', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{row.label}</span>
+                    <span style={{ padding: '15px 22px', fontSize: 14, lineHeight: 1.45, color: 'var(--ink-3)', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)' }}>{row.label}</span>
                     {row.cells.map((cell, ci) => (
-                      <span key={ci} style={{ padding: '15px 10px', textAlign: 'center', fontSize: 12.5, fontWeight: 600, color: TONE_COLOR[cell.tone], background: cell.tone === 'us' ? 'rgba(0,51,102,0.06)' : 'transparent', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{cell.v}</span>
+                      <span key={ci} style={{ padding: '15px 10px', textAlign: 'center', fontSize: 12.5, fontWeight: 600, color: TONE_COLOR[cell.tone], background: cell.tone === 'us' ? 'rgba(var(--navy-rgb), 0.06)' : 'transparent', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)' }}>{cell.v}</span>
                     ))}
                   </Fragment>
                 ))}
@@ -148,7 +148,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                         </div>
                       </div>
 
-                      <div style={{ padding: '16px 18px', borderRadius: 16, background: 'rgba(4,18,31,0.04)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <div style={{ padding: '16px 18px', borderRadius: 16, background: 'rgba(var(--ink-1-rgb), 0.04)', display: 'flex', flexDirection: 'column', gap: 8 }}>
                         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Real Year 1 cost for a Pakistani business</span>
                         {p.costLines.map((l) => (
                           <span key={l} style={{ fontSize: 13.5, color: 'var(--ink-3-alt)' }}>{l}</span>
@@ -198,13 +198,13 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             {WIN_REASONS.map((w, i) => (
               <div key={w.title} className="glass-card" style={{ padding: '24px 26px 26px', borderRadius: 22, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 20, alignItems: 'start' }}>
                 <div style={{ display: 'flex', gap: 14, minWidth: 0 }}>
-                  <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'rgba(4,18,31,0.06)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: 'var(--ink-muted)' }}>{i + 1}</span>
+                  <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'rgba(var(--ink-1-rgb), 0.06)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: 'var(--ink-muted)' }}>{i + 1}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{w.title}</span>
                     <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>{w.problem}</span>
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: 10, padding: '14px 18px', borderRadius: 16, background: 'rgba(0,51,102,0.05)', minWidth: 0 }}>
+                <div style={{ display: 'flex', gap: 10, padding: '14px 18px', borderRadius: 16, background: 'rgba(var(--navy-rgb), 0.05)', minWidth: 0 }}>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--navy)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 2 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                   <span style={{ fontSize: 14, lineHeight: 1.55, color: '#1B2E3F', fontWeight: 500 }}>{w.solution}</span>
                 </div>
@@ -222,10 +222,10 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: 18 }}>
             {CHOOSE_GUIDE.map((g) => (
               <div key={g.name} className="glass-card" style={{ padding: '24px 24px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12, ...(g.mine ? { background: 'var(--navy)', border: '1.5px solid var(--navy)' } : {}) }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: g.mine ? '#FFFFFF' : 'var(--ink-1)' }}>Choose {g.name} if you&hellip;</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: g.mine ? 'var(--ink-inverse)' : 'var(--ink-1)' }}>Choose {g.name} if you&hellip;</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
                   {g.points.map((p) => (
-                    <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: g.mine ? 'rgba(255,255,255,0.82)' : 'var(--ink-5)' }}>
+                    <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: g.mine ? 'rgba(var(--ink-inverse-rgb), 0.82)' : 'var(--ink-5)' }}>
                       <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke={g.mine ? 'var(--moss-light)' : 'var(--olive)'} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                       {p}
                     </span>
@@ -238,15 +238,15 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
 
         {/* When DIY is right */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
-          <div style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, background: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', border: '1px solid rgba(255,255,255,0.16)', backdropFilter: 'blur(26px)', boxShadow: '0 34px 76px rgba(4,18,31,0.34), inset 0 1px 0 rgba(255,255,255,0.2)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
+          <div style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, background: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)', backdropFilter: 'blur(26px)', boxShadow: '0 34px 76px rgba(var(--ink-1-rgb), 0.34), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Be honest with yourself</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#FFFFFF' }}>When a DIY builder genuinely is the right answer</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-inverse)' }}>When a DIY builder genuinely is the right answer</h2>
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.65, color: 'rgba(226,236,245,0.68)' }}>We&rsquo;d rather you picked correctly than picked us. If two or more of these are true, use Wix or Squarespace and keep your money.</p>
             </div>
             <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {DIY_CASES.map((c) => (
-                <div key={c} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '15px 17px', borderRadius: 15, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)' }}>
+                <div key={c} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '15px 17px', borderRadius: 15, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--moss-light)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                   <span style={{ fontSize: 13.5, lineHeight: 1.5, color: 'rgba(233,239,245,0.86)' }}>{c}</span>
                 </div>

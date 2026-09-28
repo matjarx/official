@@ -49,10 +49,10 @@ export default function SiteFooter() {
           style={{
             padding: '58px 48px',
             borderRadius: 30,
-            background: 'linear-gradient(150deg, rgba(244,242,174,0.9), rgba(198,203,138,0.9))',
-            border: '1px solid rgba(255,255,255,0.7)',
+            background: 'linear-gradient(150deg, rgba(var(--butter-rgb), 0.9), rgba(var(--moss-light-rgb), 0.9))',
+            border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)',
             backdropFilter: 'blur(24px)',
-            boxShadow: '0 26px 60px rgba(112,117,56,0.24), inset 0 1px 0 rgba(255,255,255,0.85)',
+            boxShadow: '0 26px 60px rgba(112,117,56,0.24), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.85)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -81,7 +81,7 @@ export default function SiteFooter() {
             <a
               href={appSignup()}
               onClick={() => trackEvent('cta_click', { label: 'footer_get_started' })}
-              style={{ padding: '17px 32px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#FFFFFF', background: 'linear-gradient(160deg, #10293D, var(--navy-deepest))', boxShadow: '0 12px 26px rgba(4,18,31,0.28), inset 0 1px 0 rgba(255,255,255,0.18)' }}
+              style={{ padding: '17px 32px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-inverse)', background: 'linear-gradient(160deg, #10293D, var(--navy-deepest))', boxShadow: '0 12px 26px rgba(var(--ink-1-rgb), 0.28), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.18)' }}
               className="footer-cta-primary"
             >
               Get started
@@ -91,7 +91,7 @@ export default function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('cta_click', { label: 'footer_whatsapp' })}
-              style={{ padding: '17px 30px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(255,255,255,0.85)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.9)' }}
+              style={{ padding: '17px 30px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#1F2A08', background: 'rgba(var(--ink-inverse-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.85)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)' }}
               className="footer-cta-secondary"
             >
               Talk to us on WhatsApp
@@ -104,7 +104,7 @@ export default function SiteFooter() {
         <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(200px, 1.4fr) repeat(auto-fit, minmax(148px, 1fr))', gap: '40px 30px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
             <Image src="/brand/matjarx-logo-light.png" alt="MatjarX" width={148} height={40} style={{ width: 148, height: 'auto' }} />
-            <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)', maxWidth: '26em' }}>
+            <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)', maxWidth: '26em' }}>
               Done-for-you websites, SEO and growth marketing for small businesses across Pakistan and the Gulf.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 4 }}>
@@ -120,9 +120,9 @@ export default function SiteFooter() {
                   target={s.href.startsWith('http') ? '_blank' : undefined}
                   rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="footer-social"
-                  style={{ width: 34, height: 34, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)', backdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.16)' }}
+                  style={{ width: 34, height: 34, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}
                 >
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(255,255,255,0.72)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(var(--ink-inverse-rgb), 0.72)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
                 </a>
               ))}
             </div>
@@ -130,10 +130,10 @@ export default function SiteFooter() {
 
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title} style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
-              <span style={{ fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.62)', fontWeight: 600 }}>{col.title}</span>
+              <span style={{ fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.62)', fontWeight: 600 }}>{col.title}</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {col.links.map((l) => (
-                  <Link key={l.label} href={l.href} className="footer-link" style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.72)' }}>
+                  <Link key={l.label} href={l.href} className="footer-link" style={{ fontSize: 13.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>
                     {l.label}
                   </Link>
                 ))}
@@ -150,24 +150,24 @@ export default function SiteFooter() {
             rail at the foot of each city page linked a fixed set of six,
             so 56 were orphaned. That rail now rotates, and this row is the
             belt to its braces: one link from every page on the site. */}
-        <div style={{ maxWidth: 1360, margin: '40px auto 0', paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-          <span style={{ display: 'block', fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', fontWeight: 600, marginBottom: 10 }}>
+        <div style={{ maxWidth: 1360, margin: '40px auto 0', paddingTop: 20, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
+          <span style={{ display: 'block', fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.68)', fontWeight: 600, marginBottom: 10 }}>
             Website design across Pakistan
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px 10px' }}>
             {CITY_SLUGS.map((slug) => (
-              <Link key={slug} href={routes.location(slug)} className="footer-link footer-link-tap" style={{ fontSize: 12, color: 'rgba(255,255,255,0.62)', whiteSpace: 'nowrap' }}>
+              <Link key={slug} href={routes.location(slug)} className="footer-link footer-link-tap" style={{ fontSize: 12, color: 'rgba(var(--ink-inverse-rgb), 0.62)', whiteSpace: 'nowrap' }}>
                 {CITY_DATA[slug].name}
               </Link>
             ))}
           </div>
         </div>
 
-        <div style={{ maxWidth: 1360, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
-          <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.62)', marginRight: 'auto' }}>&copy; 2018&ndash;2026 MatjarX. All rights reserved.</span>
-          <Link href={routes.legal('terms')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>Terms &amp; conditions</Link>
-          <Link href={routes.legal('refund')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>Refund policy</Link>
-          <Link href={routes.legal('privacy')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.72)' }}>Privacy &amp; cookies</Link>
+        <div style={{ maxWidth: 1360, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
+          <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.62)', marginRight: 'auto' }}>&copy; 2018&ndash;2026 MatjarX. All rights reserved.</span>
+          <Link href={routes.legal('terms')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Terms &amp; conditions</Link>
+          <Link href={routes.legal('refund')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Refund policy</Link>
+          <Link href={routes.legal('privacy')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Privacy &amp; cookies</Link>
         </div>
       </footer>
     </div>

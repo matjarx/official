@@ -72,7 +72,7 @@ function IntakeForm() {
         <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Where should we send your report?</span>
         <div style={{ display: 'flex', gap: 8 }}>
           {(['whatsapp', 'email'] as const).map((c) => (
-            <button key={c} type="button" onClick={() => setPreferredChannel(c)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 16px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: preferredChannel === c ? '#FFFFFF' : 'var(--ink-4-alt)', background: preferredChannel === c ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${preferredChannel === c ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>
+            <button key={c} type="button" onClick={() => setPreferredChannel(c)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 16px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: preferredChannel === c ? 'var(--ink-inverse)' : 'var(--ink-4-alt)', background: preferredChannel === c ? 'var(--navy)' : 'var(--surface)', border: `1.5px solid ${preferredChannel === c ? 'var(--navy)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>
               {c === 'whatsapp' ? 'WhatsApp' : 'Email'}
             </button>
           ))}
@@ -108,11 +108,11 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
         <div style={{ maxWidth: 1260, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 40, alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO_ACTIVE.eyebrow}</span>
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: '#FFFFFF' }}>{HERO_ACTIVE.headline}</h1>
-            <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>{HERO_ACTIVE.subhead}</p>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: 'var(--ink-inverse)' }}>{HERO_ACTIVE.headline}</h1>
+            <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{HERO_ACTIVE.subhead}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingTop: 6 }}>
               {PROBLEMS.map((p) => (
-                <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>
+                <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 14, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>
                   <span style={{ color: '#C4715A', flex: '0 0 auto' }}>✕</span>{p}
                 </span>
               ))}
@@ -135,7 +135,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>A complete analysis of your online presence</h2>
               <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: 'var(--ink-3-alt)' }}>{AUDIT_INTRO}</p>
             </div>
-            <div style={{ position: 'relative', width: '100%', maxWidth: 560, height: 220, margin: '0 auto 28px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 44px rgba(4,18,31,0.14)' }}>
+            <div style={{ position: 'relative', width: '100%', maxWidth: 560, height: 220, margin: '0 auto 28px', borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 44px rgba(var(--ink-1-rgb), 0.14)' }}>
               <Image src="/website-audit/audit-report.webp" alt="A dashboard showing website traffic growth and Google ranking improvement" fill sizes="(max-width: 600px) 100vw, 560px" style={{ objectFit: 'cover' }} />
             </div>
             <p style={{ margin: '0 0 18px', fontSize: 16, lineHeight: 1.62, color: 'var(--ink-3-alt)', textAlign: 'center' }}>{WHAT_IS_AUDIT.intro}</p>
@@ -153,7 +153,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           {/* Why your website needs an audit */}
           <section style={{ maxWidth: 900, margin: '0 auto', padding: '66px 24px 0' }}>
             <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 18 }}>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 28px)', lineHeight: 1.2, color: '#FFFFFF' }}>{WHY_NEEDED.stat}</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 28px)', lineHeight: 1.2, color: 'var(--ink-inverse)' }}>{WHY_NEEDED.stat}</span>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 10 }}>
                 {WHY_NEEDED.problems.map((p) => (
                   <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'rgba(226,236,245,0.8)' }}>
@@ -199,7 +199,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                             ))}
                           </div>
                         </div>
-                        <div style={{ padding: '14px 18px', borderRadius: 16, background: 'rgba(0,51,102,0.05)', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                        <div style={{ padding: '14px 18px', borderRadius: 16, background: 'rgba(var(--navy-rgb), 0.05)', display: 'flex', flexDirection: 'column', gap: 6 }}>
                           <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: 'var(--ink-muted)' }}>What you&apos;ll learn</span>
                           {area.learn.map((l) => (
                             <span key={l} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: '#1B2E3F' }}>
@@ -249,14 +249,14 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 520 }}>
                 <thead><tr>
                   {['Phase', 'Duration', 'What Happens'].map((h) => (
-                    <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, color: 'var(--ink-1)', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+                    <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, color: 'var(--ink-1)', background: 'rgba(var(--cream-deep-rgb), 0.7)' }}>{h}</th>
                   ))}
                 </tr></thead>
                 <tbody>
                   {TIMELINE_ROWS.map((row, ri) => (
                     <tr key={ri}>
                       {row.map((cell, ci) => (
-                        <td key={ci} style={{ padding: '14px 20px', fontSize: 13.5, color: 'var(--ink-3-alt)', borderTop: '1px solid rgba(4,18,31,0.07)', fontWeight: ci === 0 ? 700 : 400 }}>{cell}</td>
+                        <td key={ci} style={{ padding: '14px 20px', fontSize: 13.5, color: 'var(--ink-3-alt)', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)', fontWeight: ci === 0 ? 700 : 400 }}>{cell}</td>
                       ))}
                     </tr>
                   ))}
@@ -275,7 +275,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 18 }}>
               {OUTCOMES.map((o) => (
-                <div key={o.title} style={{ padding: '22px 24px 24px', borderRadius: 20, background: '#FFFFFF', border: '1px solid rgba(4,18,31,0.08)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <div key={o.title} style={{ padding: '22px 24px 24px', borderRadius: 20, background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{o.title}</span>
                   {o.items.map((it) => (
                     <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
@@ -318,14 +318,14 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
                 <thead><tr>
                   {COMPARISON_TABLE.headers.map((h) => (
-                    <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, color: 'var(--ink-1)', background: 'rgba(242,238,226,0.7)' }}>{h}</th>
+                    <th key={h} style={{ textAlign: 'left', padding: '14px 20px', fontSize: 12.5, fontWeight: 700, color: 'var(--ink-1)', background: 'rgba(var(--cream-deep-rgb), 0.7)' }}>{h}</th>
                   ))}
                 </tr></thead>
                 <tbody>
                   {COMPARISON_TABLE.rows.map((row, ri) => (
                     <tr key={ri}>
                       {row.map((cell, ci) => (
-                        <td key={ci} style={{ padding: '13px 20px', fontSize: 13.5, color: ci === 2 ? 'var(--ink-1)' : 'var(--ink-5)', fontWeight: ci === 2 ? 600 : ci === 0 ? 700 : 400, borderTop: '1px solid rgba(4,18,31,0.07)' }}>{cell}</td>
+                        <td key={ci} style={{ padding: '13px 20px', fontSize: 13.5, color: ci === 2 ? 'var(--ink-1)' : 'var(--ink-5)', fontWeight: ci === 2 ? 600 : ci === 0 ? 700 : 400, borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)' }}>{cell}</td>
                       ))}
                     </tr>
                   ))}
@@ -337,8 +337,8 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           {/* Closing CTA */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Your website could be perfectly optimized. Or severely underperforming. You won&apos;t know until you look.</h2>
-              <p style={{ margin: 0, maxWidth: '38em', fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>70,000+ small businesses use MatjarX to improve their online visibility. Your website could be next.</p>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: 'var(--ink-inverse)' }}>Your website could be perfectly optimized. Or severely underperforming. You won&apos;t know until you look.</h2>
+              <p style={{ margin: 0, maxWidth: '38em', fontSize: 15, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>70,000+ small businesses use MatjarX to improve their online visibility. Your website could be next.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>
                 <a href={`https://wa.me/${CHANNELS.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="btn-primary">Request your free consultation</a>
                 <a href={`mailto:${CHANNELS.email}`} className="btn-ghost">Email us</a>

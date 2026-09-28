@@ -72,7 +72,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 22, alignItems: 'stretch' }}>
             <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.2vw, 34px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 18 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: '#FFFFFF' }}>MatjarX</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: 'var(--ink-inverse)' }}>MatjarX</span>
                 <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.4px', textTransform: 'uppercase', color: 'var(--navy)', background: 'var(--butter)', padding: '4px 10px', borderRadius: 999 }}>Done for you</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -83,7 +83,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
                   </div>
                 ))}
               </div>
-              <div style={{ marginTop: 'auto', paddingTop: 10, borderTop: '1px solid rgba(255,255,255,0.14)', display: 'flex', flexDirection: 'column', gap: 3 }}>
+              <div style={{ marginTop: 'auto', paddingTop: 10, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', display: 'flex', flexDirection: 'column', gap: 3 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--butter)' }}>From Rs. 4,500 / mo</span>
                 <span style={{ fontSize: 12.5, color: 'rgba(226,236,245,0.62)' }}>plus a one-time setup fee, everything included</span>
               </div>
@@ -103,7 +103,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
                 ))}
               </div>
               {d.price && (
-                <div style={{ marginTop: 'auto', paddingTop: 10, borderTop: '1px solid rgba(4,18,31,0.09)', display: 'flex', flexDirection: 'column', gap: 3 }}>
+                <div style={{ marginTop: 'auto', paddingTop: 10, borderTop: '1px solid rgba(var(--ink-1-rgb), 0.09)', display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--ink-1)' }}>{d.price}</span>
                   <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>{d.priceNote}</span>
                 </div>
@@ -128,9 +128,9 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
                   const themColor = them === 'No' || them === 'Not supported' ? 'var(--terracotta)' : '#8A6A4B'
                   return (
                     <div key={label} style={{ display: 'contents' }}>
-                      <span style={{ fontSize: 13.5, lineHeight: 1.45, color: 'var(--ink-3)', padding: '11px 0', borderTop: '1px solid rgba(4,18,31,0.07)' }}>{label}</span>
-                      <span style={{ textAlign: 'center', padding: '11px 0', borderTop: '1px solid rgba(4,18,31,0.07)', fontSize: 12.5, fontWeight: 600, color: 'var(--olive-active)' }}>{us}</span>
-                      <span style={{ textAlign: 'center', padding: '11px 0', borderTop: '1px solid rgba(4,18,31,0.07)', fontSize: 12.5, fontWeight: 600, color: themColor }}>{them}</span>
+                      <span style={{ fontSize: 13.5, lineHeight: 1.45, color: 'var(--ink-3)', padding: '11px 0', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)' }}>{label}</span>
+                      <span style={{ textAlign: 'center', padding: '11px 0', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)', fontSize: 12.5, fontWeight: 600, color: 'var(--olive-active)' }}>{us}</span>
+                      <span style={{ textAlign: 'center', padding: '11px 0', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)', fontSize: 12.5, fontWeight: 600, color: themColor }}>{them}</span>
                     </div>
                   )
                 })}
@@ -188,13 +188,13 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
 
         {/* Testimonial */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
-          <div style={{ padding: 'clamp(26px, 3.6vw, 42px)', borderRadius: 26, background: 'linear-gradient(160deg, rgba(4,18,31,0.97), rgba(0,28,51,0.97))', border: '1px solid rgba(255,255,255,0.14)', backdropFilter: 'blur(24px)', boxShadow: '0 30px 66px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.18)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 40px)', alignItems: 'center' }}>
+          <div style={{ padding: 'clamp(26px, 3.6vw, 42px)', borderRadius: 26, background: 'linear-gradient(160deg, rgba(var(--ink-1-rgb), 0.97), rgba(0,28,51,0.97))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(24px)', boxShadow: '0 30px 66px rgba(var(--ink-1-rgb), 0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.18)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 40px)', alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
-              <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;I really tried to build a website myself, but it didn&rsquo;t look good and I had no idea how to make it show up on Google. MatjarX just did the whole thing.&rdquo;</p>
+              <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;I really tried to build a website myself, but it didn&rsquo;t look good and I had no idea how to make it show up on Google. MatjarX just did the whole thing.&rdquo;</p>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>Ahmed Khan</span>
-                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>Al-Falah Traders, Lahore</span>
+                <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Al-Falah Traders, Lahore</span>
               </div>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>

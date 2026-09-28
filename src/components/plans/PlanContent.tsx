@@ -110,7 +110,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
                     <span style={{ fontSize: 14, color: 'var(--ink-muted)' }}>/ mo</span>
                   </div>
                 </div>
-                <span style={{ width: 1, height: 44, background: 'rgba(4,18,31,0.14)' }} />
+                <span style={{ width: 1, height: 44, background: 'rgba(var(--ink-1-rgb), 0.14)' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>One-time setup</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 28px)', letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{p.setup}</span>
@@ -189,7 +189,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
           <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Compared with {d.compareWith}</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: '#FFFFFF' }}>{d.compareTitle}</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-inverse)' }}>{d.compareTitle}</h2>
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.62, color: 'rgba(226,236,245,0.68)' }}>{d.compareBody}</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, paddingTop: 4 }}>
                 <Link className="btn-trace" href={routes.pricing} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-on-butter)', background: 'var(--butter)' }}>Compare all plans</Link>

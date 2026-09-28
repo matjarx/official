@@ -96,7 +96,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
 
           <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div className="glass-dark-panel" style={{ padding: '26px 28px 28px', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 18 }}>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.5px', color: '#FFFFFF' }}>{d.name} at a glance</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.5px', color: 'var(--ink-inverse)' }}>{d.name} at a glance</span>
               {d.stats ? (
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
                   {d.stats.map((s) => (
@@ -109,7 +109,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
               ) : (
                 <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(226,236,245,0.8)' }}>{d.intro[1] ?? d.intro[0]}</p>
               )}
-              <div style={{ height: 150, borderRadius: 16, background: d.tint ?? 'linear-gradient(150deg, var(--navy), var(--olive))', border: '1px solid rgba(255,255,255,0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '0 20px', textAlign: 'center' }}>
+              <div style={{ height: 150, borderRadius: 16, background: d.tint ?? 'linear-gradient(150deg, var(--navy), var(--olive))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '0 20px', textAlign: 'center' }}>
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--moss-light)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" /></svg>
                 <span style={{ fontSize: 12.5, color: 'rgba(226,236,245,0.6)' }}>{d.areasLine ?? `Serving ${d.name} and the surrounding area`}</span>
               </div>
@@ -146,7 +146,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
             {d.industries.some((i) => i.body) ? (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
                 {d.industries.map((i) => (
-                  <div key={i.title} style={{ padding: '18px 20px', borderRadius: 16, background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(255,255,255,0.9)', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <div key={i.title} style={{ padding: '18px 20px', borderRadius: 16, background: 'rgba(var(--ink-inverse-rgb), 0.72)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.9)', display: 'flex', flexDirection: 'column', gap: 6 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{i.title}</span>
                     {i.body && <span style={{ fontSize: 13, lineHeight: 1.55, color: 'var(--ink-5)' }}>{i.body}</span>}
                   </div>
@@ -155,7 +155,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
             ) : (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9 }}>
                 {d.industries.map((i) => (
-                  <span key={i.title} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--ink-4-alt)', background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(255,255,255,0.9)', whiteSpace: 'nowrap' }}>{i.title}</span>
+                  <span key={i.title} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--ink-4-alt)', background: 'rgba(var(--ink-inverse-rgb), 0.72)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.9)', whiteSpace: 'nowrap' }}>{i.title}</span>
                 ))}
               </div>
             )}
@@ -224,7 +224,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9 }}>
                 {d.areas.map((a) => (
-                  <span key={a} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--ink-4-alt)', background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(255,255,255,0.9)', whiteSpace: 'nowrap' }}>{a}</span>
+                  <span key={a} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--ink-4-alt)', background: 'rgba(var(--ink-inverse-rgb), 0.72)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.9)', whiteSpace: 'nowrap' }}>{a}</span>
                 ))}
               </div>
               {d.areasNote && <p style={{ margin: 0, fontSize: 14, lineHeight: 1.62, color: 'var(--ink-5)' }}>{d.areasNote}</p>}
@@ -235,19 +235,19 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         {/* Quote panel — only for cities with a real testimonial */}
         {d.quote && (
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
-            <div style={{ padding: 'clamp(26px, 3.6vw, 42px)', borderRadius: 26, background: 'linear-gradient(160deg, rgba(4,18,31,0.97), rgba(0,28,51,0.97))', border: '1px solid rgba(255,255,255,0.14)', backdropFilter: 'blur(24px)', boxShadow: '0 30px 66px rgba(4,18,31,0.32), inset 0 1px 0 rgba(255,255,255,0.18)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 40px)', alignItems: 'center' }}>
+            <div style={{ padding: 'clamp(26px, 3.6vw, 42px)', borderRadius: 26, background: 'linear-gradient(160deg, rgba(var(--ink-1-rgb), 0.97), rgba(0,28,51,0.97))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(24px)', boxShadow: '0 30px 66px rgba(var(--ink-1-rgb), 0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.18)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 40px)', alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
                 <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
-                <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(255,255,255,0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
+                <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>{d.quoteCompany}</span>
+                  <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.quoteCompany}</span>
                 </div>
               </div>
               {d.wins && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 11, minWidth: 0 }}>
                   {d.wins.map((w) => (
-                    <div key={w} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '15px 17px', borderRadius: 15, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)' }}>
+                    <div key={w} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '15px 17px', borderRadius: 15, background: 'rgba(var(--ink-inverse-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)' }}>
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--moss-light)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="M12 19V5M12 5l-5 5M12 5l5 5" /></svg>
                       <span style={{ fontSize: 13.5, lineHeight: 1.5, color: 'rgba(233,239,245,0.86)' }}>{w}</span>
                     </div>

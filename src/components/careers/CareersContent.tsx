@@ -38,10 +38,10 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
       <section style={{ background: 'var(--navy)', padding: '60px 24px 52px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Careers at MatjarX</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: '#FFFFFF' }}>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>
             Build things that put real businesses <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>on the map</span>
           </h1>
-          <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.62, color: 'rgba(255,255,255,0.72)' }}>Every site we ship belongs to someone who runs a shop, a clinic or a factory. The work lands somewhere you can point at.</p>
+          <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Every site we ship belongs to someone who runs a shop, a clinic or a factory. The work lands somewhere you can point at.</p>
         </div>
       </section>
 
@@ -75,7 +75,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                 {CAREERS_CATEGORIES.map((c) => {
                   const active = filter === c
                   return (
-                    <button key={c} type="button" onClick={() => { setFilter(c); setOpenIndex(-1) }} style={{ all: 'unset', cursor: 'pointer', padding: '10px 17px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? '#FFFFFF' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : '#FFFFFF', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(4,18,31,0.14)'}` }}>{c}</button>
+                    <button key={c} type="button" onClick={() => { setFilter(c); setOpenIndex(-1) }} style={{ all: 'unset', cursor: 'pointer', padding: '10px 17px', borderRadius: 999, fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', color: active ? 'var(--ink-inverse)' : 'var(--ink-4-alt)', background: active ? 'var(--navy)' : 'var(--surface)', border: `1.5px solid ${active ? 'var(--navy)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>{c}</button>
                   )
                 })}
               </div>
@@ -133,8 +133,8 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
             {/* Same banner shape, same fix. See .cta-banner. */}
             <div className="cta-banner" style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
-                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(23px, 3.6vw, 30px)', lineHeight: 1.18, letterSpacing: '-1px', color: '#FFFFFF' }}>Nothing fits, but you&rsquo;d be good here?</h2>
-                <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.62, color: 'rgba(255,255,255,0.65)' }}>Send us your work and tell us what you&rsquo;d want to do. We&rsquo;ve hired several people who wrote in before a role existed.</p>
+                <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(23px, 3.6vw, 30px)', lineHeight: 1.18, letterSpacing: '-1px', color: 'var(--ink-inverse)' }}>Nothing fits, but you&rsquo;d be good here?</h2>
+                <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>Send us your work and tell us what you&rsquo;d want to do. We&rsquo;ve hired several people who wrote in before a role existed.</p>
               </div>
               <a href="mailto:careers@matjarx.com" className="btn-primary">careers@matjarx.com</a>
             </div>

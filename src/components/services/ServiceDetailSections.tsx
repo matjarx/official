@@ -40,10 +40,10 @@ function TableEl({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
     <div className="glass-card table-scroll" style={{ borderRadius: 18, overflowY: 'hidden' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
-        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: 'var(--ink-muted)', borderBottom: '1px solid rgba(4,18,31,0.08)' }}>{h}</th>)}</tr></thead>
+        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: 'var(--ink-muted)', borderBottom: '1px solid rgba(var(--ink-1-rgb), 0.08)' }}>{h}</th>)}</tr></thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} style={{ borderTop: '1px solid rgba(4,18,31,0.06)' }}>
+            <tr key={i} style={{ borderTop: '1px solid rgba(var(--ink-1-rgb), 0.06)' }}>
               {row.map((cell, j) => <td key={j} style={{ padding: '11px 16px', fontSize: 13.5, color: j === 0 ? 'var(--ink-1)' : 'var(--ink-5)', fontWeight: j === 0 ? 600 : 400 }}>{cell}</td>)}
             </tr>
           ))}
@@ -231,7 +231,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       {d.slaviStory && (
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '66px 24px 0' }}>
           <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 40px)', borderRadius: 26 }}>
-            <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: '#FFFFFF' }}>{d.slaviStory.title}</h3>
+            <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: 'var(--ink-inverse)' }}>{d.slaviStory.title}</h3>
             <p style={{ margin: '0 0 14px', fontSize: 14.5, lineHeight: 1.65, color: 'rgba(226,236,245,0.82)' }}>&ldquo;{d.slaviStory.quote}&rdquo;</p>
             <span style={{ display: 'block', marginBottom: 12, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.slaviStory.name}</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -298,13 +298,13 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       {/* Closing + bottom line */}
       <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
         <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
-          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: '#FFFFFF' }}>{d.closing.title}</h2>
-          {d.closing.body && <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(255,255,255,0.68)' }}>{d.closing.body}</p>}
+          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: 'var(--ink-inverse)' }}>{d.closing.title}</h2>
+          {d.closing.body && <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(var(--ink-inverse-rgb), 0.68)' }}>{d.closing.body}</p>}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', paddingTop: 6 }}>
             {d.closing.ctas.map((c, i) => {
               const label = typeof c === 'string' ? c : c.label
               const href = typeof c === 'string' ? null : c.href
-              const style = { padding: '13px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, textDecoration: 'none', display: 'inline-block', color: i === 0 ? 'var(--ink-on-butter)' : '#FFFFFF', background: i === 0 ? 'var(--butter)' : 'rgba(255,255,255,0.09)', border: i === 0 ? undefined : '1.5px solid rgba(255,255,255,0.2)' }
+              const style = { padding: '13px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, textDecoration: 'none', display: 'inline-block', color: i === 0 ? 'var(--ink-on-butter)' : 'var(--ink-inverse)', background: i === 0 ? 'var(--butter)' : 'rgba(var(--ink-inverse-rgb), 0.09)', border: i === 0 ? undefined : '1.5px solid rgba(var(--ink-inverse-rgb), 0.2)' }
               // A string with no destination still renders inert rather than
               // as a link to nowhere -- but every CTA in the data has one.
               return href ? (
