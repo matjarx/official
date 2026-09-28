@@ -222,7 +222,7 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
               </button>
             )}
 
-            <a href={appSignup()} onClick={() => trackEvent('cta_click', { label: 'header_get_started' })} className="btn-navy btn-trace" style={{ flex: '0 0 auto' }}>Get started</a>
+            <a href={appSignup()} onClick={() => trackEvent('cta_click', { label: 'header_get_started' })} className="btn-navy btn-pulse" style={{ flex: '0 0 auto' }}>Get started</a>
 
             <button
               type="button"

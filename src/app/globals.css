@@ -517,6 +517,78 @@ p {
   background: #00274E;
 }
 
+/* ── .btn-pulse — the header's Get started ─────────────────────────────
+   The breathing pulse from the 26 Sep handoff: a glow that breathes on a
+   3.4s loop with a ring pinging out of the border, both replaced on hover
+   by one hard glow ring.
+
+   Rebuilt in brand colours. The supplied snippet used oklch(0.7 0.19 35)
+   against a dark backdrop; on a cream page that reads as somebody else's
+   brand. This is butter, the colour every other CTA on the site already
+   uses.
+
+   ONE box-shadow list does both the breath and the ping, rather than a
+   pseudo-element ring, because .btn-navy's ::before and ::after are both
+   already spoken for by the border trace above. It also sidesteps the
+   trap that cost time on the first attempt: a ring animated with
+   transform: rotate() sweeps the whole box and only looks like a ring on
+   a square -- on a pill it swings off. Nothing here rotates; the ring is
+   a shadow spread, which follows border-radius for free.
+
+   The last two shadows in each stop are the glow and the ping. Keeping
+   the list the same length at every stop is what lets the browser
+   interpolate it at all. */
+@keyframes btn-pulse-breathe {
+  0% {
+    box-shadow:
+      0 10px 24px rgba(var(--navy-rgb), 0.26),
+      inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
+      0 0 10px 0 rgba(var(--butter-rgb), 0.22),
+      0 0 0 0 rgba(var(--butter-rgb), 0.42);
+  }
+  55% {
+    box-shadow:
+      0 10px 24px rgba(var(--navy-rgb), 0.32),
+      inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
+      0 0 20px 2px rgba(var(--butter-rgb), 0.46),
+      0 0 0 11px rgba(var(--butter-rgb), 0);
+  }
+  100% {
+    box-shadow:
+      0 10px 24px rgba(var(--navy-rgb), 0.26),
+      inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
+      0 0 10px 0 rgba(var(--butter-rgb), 0.22),
+      0 0 0 0 rgba(var(--butter-rgb), 0);
+  }
+}
+
+.btn-pulse {
+  animation: btn-pulse-breathe 3.4s ease-in-out infinite;
+}
+
+/* Hover and keyboard focus both stop the loop. An element that keeps
+   breathing while you are pointing at it reads as not having noticed. */
+.btn-pulse:hover,
+.btn-pulse:focus-visible {
+  animation: none;
+  box-shadow:
+    0 10px 24px rgba(var(--navy-rgb), 0.3),
+    inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
+    0 0 0 3px rgba(var(--butter-rgb), 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The glow stays, at the breath's midpoint, so the button is still the
+     emphasised one. Only the movement goes. */
+  .btn-pulse {
+    animation: none;
+    box-shadow:
+      0 10px 24px rgba(var(--navy-rgb), 0.28),
+      inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
+      0 0 16px 1px rgba(var(--butter-rgb), 0.32);
+  }
+}
+
 /* ── .btn-ghost — the outline CTA that sits on a dark band ──────────────
    This existed six times as inline style, one copy per page: /plans,
    /about, /faqs, /videos, /templates and /website-audit. Every copy had
