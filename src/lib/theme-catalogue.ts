@@ -125,6 +125,7 @@ export async function getThemes(): Promise<Theme[]> {
       // by one per signup, and the moment a client renames their theme
       // their name appears on matjarx.com.
       .is('cloned_from_theme_id', null)
+      // Ordered again below -- see rankOf. This one only has to be stable.
       .order('coming_soon', { ascending: true })
       .order('id', { ascending: true })
     if (error || !data) return []
@@ -169,9 +170,38 @@ export async function getThemes(): Promise<Theme[]> {
           slug: themeSlug(r.name as string),
         }
       })
+      .sort((a, b) => rankOf(a) - rankOf(b))
   } catch {
     return []
   }
+}
+
+/**
+ * Where a theme sits on /templates.
+ *
+ * It used to be `coming_soon, then id` — which is creation order, so the
+ * page led with whatever happened to be built first and buried the ones
+ * we have actually invested in. Three rules instead, in this order:
+ *
+ *  1. Anything a visitor can have today comes before anything they
+ *     cannot. Leading with a "Coming Soon" card is asking someone to want
+ *     something we will not sell them.
+ *  2. Then the editorial order of THEME_LANDINGS. A theme with its own
+ *     landing page is one we have written copy for, shot, and are trying
+ *     to rank — that list is already a deliberate running order, and this
+ *     makes /templates agree with it instead of contradicting it.
+ *  3. Then everything else, alphabetically, so the tail is at least
+ *     predictable rather than arbitrary.
+ */
+function rankOf(theme: Theme): number {
+  const live = theme.comingSoon ? 1_000_000 : 0
+  const landing = THEME_LANDINGS.findIndex((l) => l.themeKey === structureKeyOf(theme))
+  return live + (landing >= 0 ? landing : 1_000 + theme.name.charCodeAt(0))
+}
+
+/** The theme's structure_key, recovered from the demo URL it was built from. */
+function structureKeyOf(theme: Theme): string | null {
+  return theme.demoUrl ? theme.demoUrl.split('/themes/')[1] || null : null
 }
 
 export type IndustryGroup = { industry: string; themes: Theme[] }
