@@ -45,9 +45,44 @@ export default function LocationContent({ locationKey, content }: { locationKey:
     ],
   }
 
+  // What this page is actually offering, and where.
+  //
+  // These 63 pages rank for "website design <city>" and had no signal tying
+  // the service to the city -- only FAQPage, BreadcrumbList and the sitewide
+  // Organization, none of which say "we do this, there".
+  //
+  // Service with areaServed, NOT LocalBusiness. A LocalBusiness asserts
+  // premises you can visit, and MatjarX has offices in four cities, not 63.
+  // Emitting one per city, each with an address that does not exist, across
+  // 63 near-identical pages is the doorway-page pattern Google acts on --
+  // and doing it on the site that sells SEO is not a risk worth taking.
+  // Service + areaServed says the true thing instead: we serve this city.
+  //
+  // provider points at the LocalBusiness @id from the root layout, so this
+  // reads as the same business rather than 63 unrelated providers.
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `Website Design ${d.name}`,
+    serviceType: 'Website design and development',
+    url: pageUrl,
+    provider: {
+      '@type': 'Organization',
+      '@id': 'https://matjarx.com/#localbusiness',
+      name: 'MatjarX',
+      url: 'https://matjarx.com/',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: d.name,
+      containedInPlace: { '@type': 'Country', name: 'Pakistan' },
+    },
+  }
+
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <FaqSchema faqs={fromPairs(d.faqs)} />
       <AmbientOrbs />
       <div className="page-content">

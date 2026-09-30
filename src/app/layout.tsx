@@ -50,6 +50,8 @@ const openSans = Open_Sans({
   display: 'swap',
 })
 
+import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
+
 const SITE_URL = 'https://matjarx.com'
 
 // Duplicated from SiteFooter, FaqSection, ContactContent and the two home
@@ -196,11 +198,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       addressRegion: 'Sindh',
       addressCountry: 'PK',
     },
+    // Every city with a page behind it, generated from the same list those
+    // pages are generated from -- so a city added to CITY_DATA appears here
+    // without anyone remembering to update a second list. Each of those
+    // pages also declares the service for its own city; this is the
+    // sitewide claim, and the country closes it off for the rest.
     areaServed: [
-      { '@type': 'City', name: 'Karachi' },
-      { '@type': 'City', name: 'Lahore' },
-      { '@type': 'City', name: 'Sialkot' },
-      { '@type': 'City', name: 'Islamabad' },
+      ...CITY_SLUGS.map((slug) => ({ '@type': 'City', name: CITY_DATA[slug].name })),
       { '@type': 'Country', name: 'Pakistan' },
     ],
     openingHoursSpecification: [{
