@@ -93,9 +93,17 @@ export async function generateMetadata(): Promise<Metadata> {
       template: '%s | MatjarX',
     },
     description,
-    alternates: {
-      canonical: '/',
-    },
+    // No canonical here -- see the note in src/app/page.tsx.
+    //
+    // The homepage must declare `https://matjarx.com/`, and Next strips the
+    // root's trailing slash from anything the metadata API produces while
+    // trailingSlash is false, including an absolute URL that already ends in
+    // one. So the homepage renders its own <link> instead, and this fallback
+    // is removed rather than left to emit a second, conflicting canonical.
+    //
+    // Nothing else depended on it: 151 of the 153 routes set their own, and
+    // the two that do not (home-dark, home-mobile) are noindex,nofollow and
+    // absent from the sitemap.
     openGraph: {
       type: 'website',
       siteName: 'MatjarX',
@@ -172,13 +180,29 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     description,
     telephone: BUSINESS_PHONE,
     email: contactEmail,
+    // Karachi is the address; the other three cities are areaServed.
+    //
+    // A LocalBusiness node describes ONE location -- that is what lets Google
+    // attach a map pin, hours and directions to it. Four addresses on one node
+    // gives it nothing to pin, and the alternative (a separate branch node per
+    // city) is only worth emitting with a real street address behind each one,
+    // which is not published for any of them yet. areaServed is the honest way
+    // to say the business operates in all four without inventing four offices.
+    //
+    // Give me street addresses per city and these become proper branch nodes.
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Lahore',
-      addressRegion: 'Punjab',
+      addressLocality: 'Karachi',
+      addressRegion: 'Sindh',
       addressCountry: 'PK',
     },
-    areaServed: 'PK',
+    areaServed: [
+      { '@type': 'City', name: 'Karachi' },
+      { '@type': 'City', name: 'Lahore' },
+      { '@type': 'City', name: 'Sialkot' },
+      { '@type': 'City', name: 'Islamabad' },
+      { '@type': 'Country', name: 'Pakistan' },
+    ],
     openingHoursSpecification: [{
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
