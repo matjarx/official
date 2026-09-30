@@ -6,6 +6,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import CurrencyConverter from '@/components/CurrencyConverter'
 import { FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
 import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
 import { routes, appSignup } from '@/lib/routes'
@@ -110,6 +111,12 @@ export default function SiteFooter() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 4 }}>
               <a href="tel:+923033720953" onClick={() => trackEvent('cta_click', { label: 'footer_phone' })} style={{ fontSize: 13.5, color: 'var(--butter)' }}>+92 303 372 0953</a>
               <a href="mailto:office@matjarx.com" style={{ fontSize: 13.5, color: 'var(--butter)' }}>office@matjarx.com</a>
+            </div>
+            {/* Placed in the brand column rather than given a column of its
+                own: it belongs with "who we are and what we cost", and the
+                link columns are a navigation list this is not part of. */}
+            <div style={{ paddingTop: 4 }}>
+              <CurrencyConverter />
             </div>
             <div style={{ display: 'flex', gap: 8, paddingTop: 8 }}>
               {socials.map((s) => (
