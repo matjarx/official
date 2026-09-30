@@ -1,4 +1,3 @@
-import type { MetadataRoute } from 'next'
 import { routes } from '@/lib/routes'
 import { getBlogPosts, getBlogAuthors } from '@/lib/marketing-content'
 import { CATEGORY_SLUGS } from '@/lib/blog-categories'
@@ -21,9 +20,27 @@ const SITE_URL = 'https://matjarx.com'
 // revalidate previously existed here), so a post created only through
 // the admin would never actually appear in the sitemap until the next
 // redeploy.
-export const revalidate = 60
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+// Split into child sitemaps rather than one file of ~600 URLs.
+//
+// Search Console reports index coverage PER SUBMITTED SITEMAP. As one file,
+// "40 URLs not indexed" says nothing about WHICH forty; with the 63 city
+// pages, 28 posts and every comparison in separate children, the same report
+// names the group that is struggling. On a site whose whole pitch is getting
+// found on Google, not being able to answer that about our own pages was the
+// wrong way round.
+//
+// Next builds the index at /sitemap.xml automatically from generateSitemaps
+// and serves each child at /sitemap/<id>.xml -- the same shape the client
+// storefronts now use, so both sides of the platform look alike in Search
+// Console.
+export const MARKETING_SITEMAP_SECTIONS = ['pages', 'locations', 'comparisons', 'help', 'blog', 'legal'] as const
+export type MarketingSitemapSection = (typeof MARKETING_SITEMAP_SECTIONS)[number]
+
+export type SitemapUrl = { url: string; lastModified?: Date; changeFrequency?: string; priority?: number }
+type MetadataRouteSitemap = SitemapUrl[]
+
+export async function urlsForSection(id: string): Promise<MetadataRouteSitemap> {
   const now = new Date()
 
   const staticRoutes = [
@@ -49,37 +66,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: routes.partner, changeFrequency: 'monthly', priority: 0.4 },
     { url: routes.thankYou, changeFrequency: 'yearly', priority: 0.1 },
   ] as const
-  const staticRoutesFinal: MetadataRoute.Sitemap = staticRoutes.map((r) => ({ ...r, url: `${SITE_URL}${r.url}`, lastModified: now }))
+  const staticRoutesFinal: MetadataRouteSitemap = staticRoutes.map((r) => ({ ...r, url: `${SITE_URL}${r.url}`, lastModified: now }))
 
-  const planRoutes: MetadataRoute.Sitemap = (Object.keys(PLAN_DATA) as (keyof typeof PLAN_DATA)[]).map((slug) => ({
+  const planRoutes: MetadataRouteSitemap = (Object.keys(PLAN_DATA) as (keyof typeof PLAN_DATA)[]).map((slug) => ({
     url: `${SITE_URL}${routes.plan(slug)}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.9,
   }))
 
-  const industryRoutes: MetadataRoute.Sitemap = Object.values(INDUSTRY_SLUGS).map((slug) => ({
+  const industryRoutes: MetadataRouteSitemap = Object.values(INDUSTRY_SLUGS).map((slug) => ({
     url: `${SITE_URL}${routes.industry(slug)}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
 
-  const cityRoutes: MetadataRoute.Sitemap = CITY_SLUGS.map((slug) => ({
+  const cityRoutes: MetadataRouteSitemap = CITY_SLUGS.map((slug) => ({
     url: `${SITE_URL}${routes.location(slug)}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
 
-  const compareRoutes: MetadataRoute.Sitemap = Object.keys(RIVAL_DATA).map((rival) => ({
+  const compareRoutes: MetadataRouteSitemap = Object.keys(RIVAL_DATA).map((rival) => ({
     url: `${SITE_URL}${routes.compare(rival)}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
 
-  const helpRoutes: MetadataRoute.Sitemap = HELP_SLUGS.map((slug) => ({
+  const helpRoutes: MetadataRouteSitemap = HELP_SLUGS.map((slug) => ({
     url: `${SITE_URL}${routes.helpArticle(slug)}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
@@ -87,7 +104,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   const blogPosts = await getBlogPosts()
-  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+  const blogRoutes: MetadataRouteSitemap = blogPosts.map((post) => ({
     url: `${SITE_URL}${routes.blogPost(post.slug)}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
@@ -100,14 +117,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // category in the browser without ever changing the address, so the six
   // groupings could not be submitted, linked or ranked. Authors come from the
   // table rather than a constant, so adding one in the admin puts it here.
-  const categoryRoutes: MetadataRoute.Sitemap = CATEGORY_SLUGS.map(({ slug }) => ({
+  const categoryRoutes: MetadataRouteSitemap = CATEGORY_SLUGS.map(({ slug }) => ({
     url: `${SITE_URL}${routes.blogCategory(slug)}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.6,
   }))
 
-  const authorRoutes: MetadataRoute.Sitemap = (await getBlogAuthors())
+  const authorRoutes: MetadataRouteSitemap = (await getBlogAuthors())
     .filter((a) => a.slug)
     .map((a) => ({
       url: `${SITE_URL}${routes.blogAuthor(a.slug as string)}`,
@@ -116,23 +133,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     }))
 
-  const legalRoutes: MetadataRoute.Sitemap = LEGAL_DOC_KEYS.map((doc) => ({
+  const legalRoutes: MetadataRouteSitemap = LEGAL_DOC_KEYS.map((doc) => ({
     url: `${SITE_URL}${routes.legal(doc)}`,
     lastModified: now,
     changeFrequency: 'yearly' as const,
     priority: 0.2,
   }))
 
-  return [
-    ...staticRoutesFinal,
-    ...planRoutes,
-    ...industryRoutes,
-    ...cityRoutes,
-    ...compareRoutes,
-    ...helpRoutes,
-    ...blogRoutes,
-    ...categoryRoutes,
-    ...authorRoutes,
-    ...legalRoutes,
-  ]
+  // Grouped by what a page IS, so a struggling group is identifiable: the
+  // marketing pages proper, the 63 city pages, the competitor comparisons,
+  // the help centre, everything blog, and the legal documents.
+  switch (id) {
+    case 'locations':
+      return cityRoutes
+    case 'comparisons':
+      return compareRoutes
+    case 'help':
+      return helpRoutes
+    case 'blog':
+      return [...blogRoutes, ...categoryRoutes, ...authorRoutes]
+    case 'legal':
+      return legalRoutes
+    case 'pages':
+    default:
+      return [...staticRoutesFinal, ...planRoutes, ...industryRoutes]
+  }
 }
