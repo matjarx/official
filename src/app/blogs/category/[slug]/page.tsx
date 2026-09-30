@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import BlogArchive from '@/components/blog/BlogArchive'
-import { getBlogPosts, pageTitle, pageDescription, toCard } from '@/lib/marketing-content'
+import { getBlogPosts, getSeoOverride, pageTitle, pageDescription, toCard } from '@/lib/marketing-content'
 import { BLOG_CATEGORIES, type BlogCategory } from '@/lib/blog-data'
 import { slugifyCategory, categoryForSlug, CATEGORY_INTROS } from '@/lib/blog-categories'
 
@@ -24,10 +24,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const category = categoryForSlug(slug)
   if (!category) return { title: pageTitle('Category not found') }
+
+  // Overridable from the admin like every other page, so these can be tuned
+  // without a deploy -- they are meant to rank, and the written intro is a
+  // starting point rather than the last word on it.
+  const seo = await getSeoOverride(`blogs/category/${slug}`)
+  const title = seo?.title || `${category} articles`
+  const description = seo?.description || CATEGORY_INTROS[category]
+  const url = `/blogs/category/${slug}`
+
   return {
-    alternates: { canonical: `/blogs/category/${slug}` },
-    title: pageTitle(`${category} articles`),
-    description: pageDescription(CATEGORY_INTROS[category]),
+    alternates: { canonical: url },
+    title: pageTitle(title),
+    description: pageDescription(description),
+    // Without these the page inherits the sitewide defaults, so sharing a
+    // category link previewed as the homepage -- same title, same URL.
+    openGraph: { type: 'website', title, description, url },
+    twitter: { title, description },
   }
 }
 
