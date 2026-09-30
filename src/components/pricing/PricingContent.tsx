@@ -337,7 +337,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       {/* Compare plans */}
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '76px 24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, textAlign: 'center', marginBottom: 34 }}>
-          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Compare our <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3 }}>plans</span></h2>
+          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>Compare our <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>plans</span></h2>
           <p style={{ margin: 0, fontSize: 15.5, color: 'var(--ink-4)' }}>The best investment you&apos;ll make all year.</p>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -382,7 +382,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       <section style={{ background: 'var(--cream-deep)', padding: '78px 24px' }}>
         <div style={{ maxWidth: 1260, margin: '0 auto' }}>
           <h2 style={{ margin: '0 0 40px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>
-            Join 70,000+ business owners <span style={{ background: 'var(--moss-light)', padding: '0 9px', borderRadius: 3 }}>who love MatjarX</span>
+            Join 70,000+ business owners <span style={{ background: 'var(--moss-light)', padding: '0 9px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>who love MatjarX</span>
           </h2>
           {/* Seven reviews in an auto-fit grid came out as three, three and
               a lone one, and the odd card at the end reads as a mistake.
@@ -420,7 +420,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: '78px 24px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 4vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Frequently asked <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 4vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Frequently asked <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>questions</span></h2>
             <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Everything you need to use MatjarX like a pro.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 6 }}>
               <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--ink-1)' }}>Still have questions?</span>

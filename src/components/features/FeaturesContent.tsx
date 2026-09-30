@@ -177,7 +177,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Feature <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Feature <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>questions</span></h2>
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Need something not listed here? Ask us — if it&apos;s reasonable, we usually build it.</p>
               <Link href={routes.help} className="btn-secondary" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Talk to us</Link>
             </div>

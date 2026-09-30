@@ -271,7 +271,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Common <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3 }}>questions</span></h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Common <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>questions</span></h2>
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Still deciding? Call +92 303 372 0953 and we&rsquo;ll tell you honestly which option fits.</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>

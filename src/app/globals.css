@@ -236,6 +236,20 @@ a {
   text-decoration: none;
 }
 
+/* A link that sets no colour of its own is --navy, and --navy has no dark
+ * value -- deliberately, per the note in .dark-theme about triplets. That
+ * leaves every inline link dark navy on a dark page: "ask for a quote" on
+ * /pricing measured 1.37 against a required 4.5, and it is the same for
+ * every plain link on the site.
+ *
+ * Only links that inherit are affected. Anything setting its own colour --
+ * every button, every footer link -- already wins over this rule and is
+ * untouched. --mid-blue is the value .dark-theme already defines for exactly
+ * this job, borrowed from the dashboard's --info-text. */
+.dark-theme a {
+  color: var(--mid-blue);
+}
+
 ::selection {
   background: var(--butter);
 }

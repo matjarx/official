@@ -100,7 +100,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '20px 22px 24px', minWidth: 0 }}>
                   <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{b.stat}</span>
                   <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, lineHeight: 1.2, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>
-                    {b.titleLead} <span style={{ background: 'var(--butter)', padding: '0 7px', borderRadius: 3 }}>{b.titleMark}</span>
+                    {b.titleLead} <span style={{ background: 'var(--butter)', padding: '0 7px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>{b.titleMark}</span>
                   </h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingTop: 2 }}>
                     {b.points.map((p) => (

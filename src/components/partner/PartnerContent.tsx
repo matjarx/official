@@ -121,7 +121,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
 
           {/* How it works */}
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '68px 24px 0' }}>
-            <h2 style={{ margin: '0 0 34px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>How it <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3 }}>works</span></h2>
+            <h2 style={{ margin: '0 0 34px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4.2vw, 36px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>How it <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>works</span></h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 20 }}>
               {PARTNER_STEPS_ACTIVE.map((s) => (
                 <div key={s.n} className="glass-card" style={{ padding: '28px 26px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 12 }}>

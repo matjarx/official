@@ -101,7 +101,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         {/* Pillars */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <h2 style={{ margin: '0 0 34px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(25px, 4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>
-            What makes MatjarX <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3 }}>websites great</span>
+            What makes MatjarX <span style={{ background: 'var(--butter)', padding: '0 9px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>websites great</span>
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: 20 }}>
             {EXAMPLE_PILLARS_ACTIVE.map((p) => (
