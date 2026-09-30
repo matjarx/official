@@ -92,7 +92,14 @@ export default function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('cta_click', { label: 'footer_whatsapp' })}
-              style={{ padding: '17px 30px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#1F2A08', background: 'rgba(var(--surface-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.85)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)' }}
+              style={{ padding: '17px 30px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: '#1F2A08', background: 'rgba(255,255,255,0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.85)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)' }}
+              /* Background pinned white, not rgba(var(--surface-rgb), …):
+                 --surface-rgb is 255,255,255 in light but 24,50,70 in dark,
+                 while this button's text is pinned #1F2A08. The whole CTA
+                 card is light in both themes -- its heading is pinned dark
+                 olive too -- so the token turned this button dark under dark
+                 text and it disappeared on every one of the 184 pages the
+                 card appears on. */
               className="footer-cta-secondary"
             >
               Talk to us on WhatsApp

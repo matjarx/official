@@ -107,12 +107,17 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
               alignItems: 'center',
               gap: 3,
               margin: '0 auto',
-              padding: '5px 5px 5px 9px',
+              // Symmetric, and it was not: '5px 5px 5px 9px' put 9px on the
+              // left against 5px on the right, so the first item's hover pill
+              // sat 4px further in than the last one's and the highlight read
+              // as misaligned with the row it belongs to.
+              padding: '5px',
               borderRadius: 999,
-              background: dark ? 'rgba(var(--ink-inverse-rgb), 0.07)' : 'rgba(var(--ink-inverse-rgb), 0.5)',
-              border: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.14)' : '1px solid rgba(var(--ink-inverse-rgb), 0.85)',
-              backdropFilter: 'blur(24px)',
-              boxShadow: dark ? '0 14px 34px rgba(0,8,18,0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' : '0 14px 34px rgba(var(--scrim-rgb), 0.09), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
+              // No background, border, blur or shadow on the nav itself.
+              // The hover and active states are the affordance; a second
+              // container behind them was a surface competing with the pills
+              // it held, and on a dark ground it read as a misplaced layer
+              // rather than a frame.
             }}
           >
               {NAV_ITEMS.map((item, i) => {
