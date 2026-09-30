@@ -53,6 +53,18 @@ html {
   --navy-rgb: 0,51,102;
   --moss-light-rgb: 198,203,138;
   --butter-rgb: 244,242,174;
+
+  /* The colour the Get started button breathes.
+   *
+   * It was --butter-rgb in both themes, and butter is #F4F2AE against a
+   * --cream page of #FCFAF3. The animation ran, the shadow rendered, and
+   * nothing was visible: a pale yellow glow on near-white paper. It only
+   * ever looked like it worked because the home page hero was dark.
+   *
+   * Olive is the brand's other accent and reads clearly on cream, so the
+   * glow stays a colour rather than becoming a grey shadow. Dark mode keeps
+   * butter, which is what it was designed against. */
+  --pulse-glow-rgb: 105,109,52;
   --cream-rgb: 252,250,243;
   --cream-deep-rgb: 242,238,226;
   --olive-rgb: 105,109,52;
@@ -168,6 +180,7 @@ html {
      green. */
   --olive: #C6CB8A;
   --olive-rgb: 198,203,138;     /* follows --olive, as every triplet must */
+  --pulse-glow-rgb: 244,242,174; /* butter: the glow this was designed against */
   --olive-active: #D7DBA8;      /* lighter than the olive, as in light mode */
 
   --mid-blue: #A8CDEC;          /* the dashboard's --info-text */
@@ -600,22 +613,22 @@ p {
     box-shadow:
       0 10px 24px rgba(var(--navy-rgb), 0.26),
       inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
-      0 0 10px 0 rgba(var(--butter-rgb), 0.22),
-      0 0 0 0 rgba(var(--butter-rgb), 0.42);
+      0 0 10px 0 rgba(var(--pulse-glow-rgb), 0.22),
+      0 0 0 0 rgba(var(--pulse-glow-rgb), 0.42);
   }
   55% {
     box-shadow:
       0 10px 24px rgba(var(--navy-rgb), 0.32),
       inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
-      0 0 20px 2px rgba(var(--butter-rgb), 0.46),
-      0 0 0 11px rgba(var(--butter-rgb), 0);
+      0 0 20px 2px rgba(var(--pulse-glow-rgb), 0.46),
+      0 0 0 11px rgba(var(--pulse-glow-rgb), 0);
   }
   100% {
     box-shadow:
       0 10px 24px rgba(var(--navy-rgb), 0.26),
       inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
-      0 0 10px 0 rgba(var(--butter-rgb), 0.22),
-      0 0 0 0 rgba(var(--butter-rgb), 0);
+      0 0 10px 0 rgba(var(--pulse-glow-rgb), 0.22),
+      0 0 0 0 rgba(var(--pulse-glow-rgb), 0);
   }
 }
 
@@ -631,7 +644,7 @@ p {
   box-shadow:
     0 10px 24px rgba(var(--navy-rgb), 0.3),
     inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
-    0 0 0 3px rgba(var(--butter-rgb), 0.55);
+    0 0 0 3px rgba(var(--pulse-glow-rgb), 0.55);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -642,7 +655,7 @@ p {
     box-shadow:
       0 10px 24px rgba(var(--navy-rgb), 0.28),
       inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22),
-      0 0 16px 1px rgba(var(--butter-rgb), 0.32);
+      0 0 16px 1px rgba(var(--pulse-glow-rgb), 0.32);
   }
 }
 
