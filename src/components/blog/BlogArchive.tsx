@@ -19,7 +19,7 @@ import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import type { BlogCard } from '@/lib/marketing-content'
-import { type BlogAuthor, authorInitials } from '@/lib/blog-data'
+import { type BlogAuthor, authorInitials, avatarSrc } from '@/lib/blog-data'
 
 function AuthorHeader({ author, postCount }: { author: BlogAuthor; postCount: number }) {
   const socials = Object.entries(author.socials || {}).filter(([, url]) => url)
@@ -27,7 +27,7 @@ function AuthorHeader({ author, postCount }: { author: BlogAuthor; postCount: nu
     <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start', flexWrap: 'wrap' }}>
       {author.avatarUrl ? (
         <Image
-          src={author.avatarUrl}
+          src={avatarSrc(author.avatarUrl)}
           alt={author.name}
           width={96}
           height={96}

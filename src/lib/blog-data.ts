@@ -61,6 +61,29 @@ export type BlogAuthor = {
 
 export const AUTHOR: BlogAuthor = { name: 'The MatjarX Team', initials: 'MX', role: 'Written by the MatjarX team' }
 
+/**
+ * An avatar URL that next/image will actually accept.
+ *
+ * Author photos arrive in two shapes: uploaded through the admin, which puts
+ * them in Supabase storage (already allowed in next.config's remotePatterns),
+ * or pointed at a file the marketing site already serves -- Ijlal's is
+ * https://matjarx.com/about/ijlal-mustafa.webp, the same photo /about-us
+ * uses, deliberately not re-uploaded.
+ *
+ * next/image rejects that second shape outright: matjarx.com is not in
+ * remotePatterns and adding it would mean the site optimising images by
+ * fetching them from itself over the network. Stripping our own origin turns
+ * it into a same-origin path, which needs no configuration and is served
+ * directly. Anything else is left exactly as it is.
+ *
+ * Without this the author page threw
+ *   Invalid src prop ... hostname "matjarx.com" is not configured
+ * and returned a 500.
+ */
+export function avatarSrc(url: string): string {
+  return url.replace(/^https?:\/\/(www\.)?matjarx\.com/i, '') || url
+}
+
 /** "Wajeeh Hassan" -> "WH". Two letters, uppercase, no punctuation. */
 export function authorInitials(a: BlogAuthor): string {
   if (a.initials) return a.initials

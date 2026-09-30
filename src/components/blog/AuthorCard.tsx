@@ -11,14 +11,14 @@
 // a byline rather than an empty space.
 
 import Image from 'next/image'
-import { authorInitials, type BlogAuthor } from '@/lib/blog-data'
+import { authorInitials, type BlogAuthor, avatarSrc } from '@/lib/blog-data'
 
 function Avatar({ author, size }: { author: BlogAuthor; size: number }) {
   if (author.avatarUrl) {
     return (
       <span style={{ position: 'relative', width: size, height: size, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden' }}>
         <Image
-          src={author.avatarUrl}
+          src={avatarSrc(author.avatarUrl)}
           alt={author.name}
           title={author.role ? `${author.name} — ${author.role}` : author.name}
           fill
