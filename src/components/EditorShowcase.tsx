@@ -1,4 +1,8 @@
 'use client'
+// Note: this mock-up depicts the MatjarX editor, which is a light UI. Its
+// surfaces are pinned (#FFFCF5 and friends) and its ink must be pinned to
+// match -- var(--ink-1) flips to near-white in dark mode and put white text
+// on the pinned cream panel, so "Change Image" vanished on a dark site.
 
 // Editor Showcase — from Editor Showcase.dc.html. An interactive mockup of
 // the full MatjarX theme editor shell (top bar, section library, canvas,
@@ -587,8 +591,8 @@ export default function EditorShowcase({ statusInk = 'rgba(var(--ink-on-dark-rgb
           ))}
         </span>
         <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, margin: '0 8px 9px', padding: 8, borderRadius: 7, background: '#FFFCF5' }}>
-          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="var(--ink-1)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6.5h16v11H4zM8.5 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM4 15l4-3.5 3.5 3 2-2L20 16" /></svg>
-          <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 0.4, color: 'var(--ink-1)' }}>Change Image</span>
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#04121F" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6.5h16v11H4zM8.5 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM4 15l4-3.5 3.5 3 2-2L20 16" /></svg>
+          <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 9, letterSpacing: 0.4, color: '#04121F' }}>Change Image</span>
         </span>
       </button>
       </div>

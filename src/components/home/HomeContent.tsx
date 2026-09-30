@@ -8,7 +8,7 @@
 // Dark theme layer: pass `dark` to render Home Dark (same structure/copy,
 // swapped tokens + Site Header Dark) rather than building a second page.
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
@@ -23,6 +23,7 @@ import { routes, appSignup } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
 import type { HomeContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
+import { useTheme } from '@/components/ThemeProvider'
 
 // Code-split rather than statically imported: both sit well below the
 // fold (savings calculator, website-examples grid + its full-screen
@@ -134,7 +135,16 @@ export const DEFAULT_FAQ_DATA = [
 const LIGHT_PLAN_THEME = {
   bg: 'rgba(var(--surface-rgb), 0.62)', border: 'rgba(var(--ink-inverse-rgb), 0.85)', shadow: '0 16px 40px rgba(var(--scrim-rgb), 0.07), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)', blur: 'blur(22px)',
   ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(var(--ink-1-rgb), 0.09)',
-  tick: 'var(--olive)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--cream)', ctaBorder: 'rgba(var(--ink-1-rgb), 0.16)',
+  // ctaInk follows the theme rather than being pinned dark.
+  //
+  // It was var(--navy-deepest), a fixed #04121F, sitting on ctaBg:
+  // var(--cream) -- and --cream flips to #001C33 in dark mode while
+  // --navy-deepest does not. Dark navy text on dark navy: the "Choose
+  // Launch" and "Choose Boost" buttons measured 1.09 against a required 4.5.
+  //
+  // --ink-1 IS #04121F in light mode, so this is byte-identical there, and
+  // it flips with the surface it sits on.
+  tick: 'var(--olive)', ctaInk: 'var(--ink-1)', ctaBg: 'var(--cream)', ctaBorder: 'rgba(var(--ink-1-rgb), 0.16)',
 }
 // Platinum is the top tier and now the second highlighted card, so it
 // needs a treatment that reads as premium WITHOUT competing with
@@ -175,8 +185,27 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
   // page" — a live switch in the header delivers that better than a
   // separate /home-dark URL ever could. /home-dark still works (renders
   // with dark as the starting state) and now also gets a working toggle.
-  const [dark, setDark] = useState(initialDark)
+  // The shared theme, not a second copy of it.
+  //
+  // This was `useState(initialDark)`, and the header's toggle flipped it --
+  // which moved AmbientOrbs, IndustryRail and the header's own inline styles
+  // while never touching ThemeProvider. So on the home page the button
+  // changed some of the page and left <html class="dark-theme"> and the
+  // stored preference exactly as they were: every token-driven surface,
+  // which is most of the site, stayed in the other mode.
+  //
+  // It also let the two disagree outright. Arriving with a stored dark
+  // preference, the provider set the class while this state was still false,
+  // so the button read "Switch to dark" on an already-dark page.
+  const theme = useTheme()
+  const dark = theme.dark
   const [openFaq, setOpenFaq] = useState(0)
+
+  // /home-dark asks for dark as a starting state rather than a preference.
+  // Told to the provider once, so there is still only one source of truth.
+  useEffect(() => {
+    if (initialDark) theme.setDark(true)
+  }, [initialDark, theme])
 
   const FAQ_DATA = content.faqs
   const VOICES_ACTIVE = content.voices
@@ -192,7 +221,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: bgGradient ?? cream, color: dark ? '#E9EFF5' : 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs dark={dark} />
       <div className="page-content">
-        <SiteHeader active="home" dark={dark} onToggleDark={() => setDark((v) => !v)} />
+        <SiteHeader active="home" dark={dark} onToggleDark={theme.toggle} />
 
         <main>
         {/* Hero */}
@@ -301,14 +330,14 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             {VOICES_ACTIVE.map((v) => (
               <div key={v.name} style={{ position: 'relative', marginBottom: 8 }}>
                 <div style={{ position: 'absolute', inset: '8px -8px -8px 8px', borderRadius: 20, background: dark ? '#3A3F1E' : '#A8AD6A', zIndex: 0 }} />
-                <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? 'var(--ink-2)' : 'var(--surface)', border: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.1)' : 'rgba(var(--ink-1-rgb), 0.06)'}`, boxShadow: '0 10px 26px rgba(var(--scrim-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
+                <div style={{ position: 'relative', zIndex: 1, padding: '22px 24px 24px', borderRadius: 20, background: dark ? 'var(--cream-deep)' : 'var(--surface)', border: `1px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.1)' : 'rgba(var(--ink-1-rgb), 0.06)'}`, boxShadow: '0 10px 26px rgba(var(--scrim-rgb), 0.08)', display: 'flex', flexDirection: 'column', gap: 13 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <span style={{ position: 'relative', width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', overflow: 'hidden', background: v.tint, border: '2px solid var(--ink-inverse)', boxShadow: '0 3px 10px rgba(var(--scrim-rgb), 0.16)' }}>
                       <Image src={v.photo.src} alt={v.photo.alt} title={v.photo.alt} fill sizes="44px" style={{ objectFit: 'cover' }} />
                     </span>
                     <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                       <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: ink1 }}>{v.name}</span>
-                      <span style={{ fontSize: 12, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.5)' : 'var(--ink-muted)' }}>{v.trade}</span>
+                      <span style={{ fontSize: 12, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.64)' : 'var(--ink-muted)' }}>{v.trade}</span>
                     </span>
                   </div>
                   <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.58, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.82)' : 'var(--ink-3)' }}>&ldquo;{v.quote}&rdquo;</p>
@@ -548,7 +577,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               )
             })}
           </div>
-          <p style={{ margin: '26px auto 0', maxWidth: 640, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.5)' : 'var(--ink-muted)' }}>Prices in PKR. Gulf clients are billed in AED at the equivalent rate — ask us for a quote.</p>
+          <p style={{ margin: '26px auto 0', maxWidth: 640, textAlign: 'center', fontSize: 13.5, lineHeight: 1.6, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.64)' : 'var(--ink-muted)' }}>Prices in PKR. Gulf clients are billed in AED at the equivalent rate — ask us for a quote.</p>
         </section>
 
         {/* Trust band */}

@@ -34,7 +34,13 @@ export default function CurrencyConverter() {
           borderRadius: 9,
           fontSize: 13,
           fontFamily: 'inherit',
-          color: 'var(--ink-1, #10212F)',
+          // Both pinned, deliberately. The footer is a dark gradient in BOTH
+          // themes, so this control sits on dark either way and its white
+          // background is not theme-dependent. Using var(--ink-1) for the
+          // text was: it flips to #F7FAFD in dark mode, which put white text
+          // on this white background and made the selector unreadable exactly
+          // where someone goes looking for it.
+          color: '#10212F',
           background: 'rgba(255,255,255,0.92)',
           border: '1px solid rgba(255,255,255,0.28)',
           maxWidth: 200,
