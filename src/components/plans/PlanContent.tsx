@@ -20,6 +20,7 @@ import type { PlanContentShape } from '@/lib/marketing-content'
 import PlanDetailSections from './PlanDetailSections'
 import { FaqList } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 const DEFAULT_CONTENT: Record<PlanKey, PlanContentShape> = (Object.keys(ALL_PLANS) as PlanKey[]).reduce((acc, key) => {
   acc[key] = { ...ALL_PLANS[key], ...PLAN_DATA[key], detail: undefined }
@@ -28,6 +29,9 @@ const DEFAULT_CONTENT: Record<PlanKey, PlanContentShape> = (Object.keys(ALL_PLAN
 
 export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey] }: { planKey: PlanKey; content?: PlanContentShape }) {
   const [openFaq, setOpenFaq] = useState(0)
+  // The footer's selector drives these pages too -- a reader who switched to
+  // AED on /pricing should not land on /launch-plan and be back in rupees.
+  const { display, isBase } = useCurrency()
 
   const monthlyNum = Number(content.price.replace(/[^0-9]/g, '')) || 0
   const yearlySaving = monthlyNum * 12 - monthlyNum * 12 * CYCLE_FACTOR.yearly
@@ -99,15 +103,19 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Monthly</span>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 5 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 4vw, 40px)', letterSpacing: '-1.4px', color: 'var(--ink-1)' }}>{p.price}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 4vw, 40px)', letterSpacing: '-1.4px', color: 'var(--ink-1)' }}>{display(p.price)}</span>
                     <span style={{ fontSize: 14, color: 'var(--ink-muted)' }}>/ mo</span>
                   </div>
                 </div>
                 <span style={{ width: 1, height: 44, background: 'rgba(var(--scrim-rgb), 0.14)' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>One-time setup</span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 28px)', letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{p.setup}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 28px)', letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{display(p.setup)}</span>
                 </div>
+                {/* Explains the mixed units: the worked examples and
+                    comparison tables lower down are written copy quoting PKR,
+                    not price tags this can convert. */}
+                {!isBase && <span style={{ fontSize: 11.5, color: 'var(--ink-muted)' }}>Approximate — billed in PKR</span>}
               </div>
             )}
 
@@ -224,7 +232,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{o.name}</span>
                 <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-5)' }}>{o.pitch}</span>
                 <span style={{ display: 'flex', alignItems: 'baseline', gap: 5, paddingTop: 4 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.6px', color: 'var(--ink-1)' }}>{o.price}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.6px', color: 'var(--ink-1)' }}>{display(o.price)}</span>
                   {o.name !== 'Custom' && <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>/ mo</span>}
                 </span>
                 <span style={{ marginTop: 4, fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>See the {o.name} plan →</span>

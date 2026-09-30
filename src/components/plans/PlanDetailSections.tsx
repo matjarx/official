@@ -18,6 +18,7 @@ import {
   type StandardPlanDetail, type Block, type PlanFaq, type BestForGroup,
 } from '@/lib/plan-detail-data'
 import { FaqList, bullet } from '@/components/FaqList'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 const STANDARD: Partial<Record<PlanKey, StandardPlanDetail>> = { launch: LAUNCH, boost: BOOST, growth: GROWTH, platinum: PLATINUM }
 
@@ -82,6 +83,9 @@ function CompareTableEl({ headers, rows }: { headers: string[]; rows: string[][]
 }
 
 function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKey }) {
+  // Same currency as the hero above it. A page showing "AED 360/mo" at the
+  // top and "PKR 22,500" in its own breakdown reads as a mistake.
+  const { display } = useCurrency()
   const [openFaq, setOpenFaq] = useState(-1)
   return (
     <>
@@ -132,12 +136,12 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18, marginBottom: 22 }}>
           <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
             <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' }}>One-time setup</span>
-            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{d.pricing.setupFee}</span>
+            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{display(d.pricing.setupFee)}</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.setupItems.map((it, i) => bullet(it, i))}</ul>
           </div>
           <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
             <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' }}>Monthly fee</span>
-            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{d.pricing.monthlyFee}</span>
+            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{display(d.pricing.monthlyFee)}</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.monthlyItems.map((it, i) => bullet(it, i))}</ul>
           </div>
         </div>

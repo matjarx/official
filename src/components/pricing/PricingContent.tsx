@@ -15,6 +15,8 @@ import CardRail from '@/components/CardRail'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import { amount } from '@/lib/money'
+import { useCurrency } from '@/components/CurrencyProvider'
+import { parsePkr } from '@/lib/currency'
 import type { PricingContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 
@@ -147,12 +149,17 @@ export default function PricingContent({ content }: { content: PricingContentSha
   const COMPARE_GROUPS = content.compareGroups
   const TIER_ICONS = content.tierIcons
 
+  // The footer's selector drives this page too. Picking AED there used to
+  // change three lines in the footer and leave every price on the pricing
+  // page in rupees, which is the one page where it mattered.
+  const { isBase, price: inLocal } = useCurrency()
+
   const factor = CYCLE_FACTOR[cycle]
   const fmt = (n: number) => Math.round((n * factor) / 50) * 50
   const savingFor = (base: number) => {
     if (cycle === 'monthly') return ''
     const saved = (base - fmt(base)) * 12
-    return `Save Rs. ${amount(saved)} a year`
+    return isBase ? `Save Rs. ${amount(saved)} a year` : `Save ${inLocal(saved)} a year`
   }
   const saveNote = cycle === 'monthly' ? '2 months free on yearly billing' : cycle === 'yearly' ? '2 months free applied' : 'Best value — 25% off every month'
 
@@ -227,11 +234,26 @@ export default function PricingContent({ content }: { content: PricingContentSha
                 </div>
                 <span style={{ fontSize: 13.5, lineHeight: 1.5, color: t.muted }}>{p.pitch}</span>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 5, paddingTop: 8 }}>
-                  <span style={{ fontSize: 15, fontWeight: 600, color: t.muted }}>Rs.</span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-1.3px', color: t.ink }}>{amount(price)}</span>
+                  {/* In the base currency the symbol is its own muted span, a
+                      deliberate typographic detail. A converted price arrives
+                      already formatted with its own symbol, so splitting it
+                      back apart to keep that detail would mean parsing our own
+                      output. */}
+                  {isBase && <span style={{ fontSize: 15, fontWeight: 600, color: t.muted }}>Rs.</span>}
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-1.3px', color: t.ink }}>
+                    {isBase ? amount(price) : inLocal(price)}
+                  </span>
                   <span style={{ fontSize: 14, color: t.muted }}>/mo</span>
                 </div>
-                <span style={{ fontSize: 12.5, color: t.muted }}>+ Rs. {p.setup} one-time setup</span>
+                <span style={{ fontSize: 12.5, color: t.muted }}>
+                  + {isBase ? `Rs. ${p.setup}` : inLocal(parsePkr(p.setup) ?? 0)} one-time setup
+                </span>
+                {/* Said on the card rather than once at the foot of the page,
+                    because the card is what gets screenshotted and sent to a
+                    colleague. It also explains why the comparison tables and
+                    worked examples further down stay in rupees: those are
+                    written copy about PKR billing, not a price tag. */}
+                {!isBase && <span style={{ fontSize: 11.5, color: t.muted, opacity: 0.85 }}>Approximate — billed in PKR</span>}
                 {saving && <span style={{ fontSize: 12.5, fontWeight: 600, color: t.savingInk }}>{saving}</span>}
                 <a href={p.href} onClick={() => trackEvent('cta_click', { label: `pricing_choose_${p.name.toLowerCase()}` })} style={{ display: 'block', paddingTop: 8 }}>
                   <span style={{ display: 'block', textAlign: 'center', padding: '14px 18px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: t.ctaInk, background: t.ctaBg, border: `1.5px solid ${t.ctaBorder}` }}>{p.cta}</span>

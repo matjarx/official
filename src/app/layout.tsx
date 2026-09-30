@@ -17,6 +17,7 @@ import {
 } from '@/lib/marketing-content'
 import AnnouncementBar from '@/components/AnnouncementBar'
 import ThemeProvider from '@/components/ThemeProvider'
+import CurrencyProvider from '@/components/CurrencyProvider'
 import SitePopup from '@/components/SitePopup'
 import './globals.css'
 
@@ -234,6 +235,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {/* Only what actually reads the theme sits inside the provider.
             The analytics scripts below do not, and wrapping them would put
             a client boundary around markup that has no reason to be one. */}
+        {/* Wraps ThemeProvider's children rather than sitting beside it:
+            the footer selector and every price on the page are both inside,
+            so one choice reaches all of them. */}
+        <CurrencyProvider>
         <ThemeProvider>
           {isWidgetActive(announcementConfig) && <AnnouncementBar config={announcementConfig} />}
           {children}
@@ -244,6 +249,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             two in agreement; the admin now warns about it on the way in. */}
           {isWidgetActive(popupConfig) && !!popupConfig.heading && <SitePopup config={popupConfig} />}
         </ThemeProvider>
+        </CurrencyProvider>
         <GoogleAnalytics gaId={gaId} />
         {/* Meta Pixel — base code + PageView, per Meta's own snippet. */}
         <Script id="meta-pixel" strategy="afterInteractive">
