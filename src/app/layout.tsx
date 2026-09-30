@@ -51,6 +51,12 @@ const openSans = Open_Sans({
 })
 
 const SITE_URL = 'https://matjarx.com'
+
+// Duplicated from SiteFooter, FaqSection, ContactContent and the two home
+// variants, which each hardcode the same number. Worth centralising, but
+// not in a change about structured data -- what matters here is that the
+// number Google is told is the number the page actually dials.
+const BUSINESS_PHONE = '+923033720953'
 const DEFAULT_TITLE = 'MatjarX — Done-for-you websites, live in 7 days'
 const DEFAULT_DESCRIPTION = 'MatjarX builds complete small business websites in 7 days for Rs. 22,500 — done-for-you design, SEO and growth marketing for businesses across Pakistan and the Gulf.'
 const DEFAULT_SOCIALS: Record<string, string> = {
@@ -140,12 +146,58 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     }],
   }
 
+  // MatjarX's own local identity.
+  //
+  // The site published Organization but never LocalBusiness -- so the one
+  // business here with a real office, a published phone number and stated
+  // opening hours was the only one not telling Google any of it. Organization
+  // says who a company is; LocalBusiness is what makes it eligible to appear
+  // for "near me" and city-qualified searches, which is most of the intent
+  // behind "website builder in Lahore".
+  //
+  // Only what the site already states publicly: the phone number and hours
+  // from the contact page, the cities from about-us and careers. No street
+  // address is published anywhere, so none is claimed -- addressLocality and
+  // addressCountry alone are valid, and an invented street would be worse
+  // than an incomplete one. Adding the real street address later is what
+  // unlocks the full local rich result.
+  const localBusinessJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#localbusiness`,
+    name: 'MatjarX',
+    url: SITE_URL,
+    image: `${SITE_URL}/icon.png`,
+    logo: `${SITE_URL}/icon.png`,
+    description,
+    telephone: BUSINESS_PHONE,
+    email: contactEmail,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Lahore',
+      addressRegion: 'Punjab',
+      addressCountry: 'PK',
+    },
+    areaServed: 'PK',
+    openingHoursSpecification: [{
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '11:00',
+      closes: '20:00',
+    }],
+    sameAs: Object.values(socials),
+  }
+
   return (
     <html lang="en" className={`${lato.variable} ${openSans.variable}`}>
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
         <Suspense fallback={null}>
           <PageviewTracker />

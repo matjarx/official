@@ -48,7 +48,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: routes.partner, changeFrequency: 'monthly', priority: 0.4 },
     { url: routes.thankYou, changeFrequency: 'yearly', priority: 0.1 },
   ] as const
-  const staticRoutesFinal: MetadataRoute.Sitemap = staticRoutes.map((r) => ({ ...r, url: `${SITE_URL}${r.url}`, lastModified: now }))
+  // The trailing slash is stripped so the homepage is submitted under the
+  // same URL it declares as canonical.
+  //
+  // routes.home is '/', which made its sitemap entry `https://matjarx.com/`
+  // while the canonical rendered on that page is `https://matjarx.com` --
+  // Next normalises the root away when trailingSlash is false, and no
+  // metadata setting can put it back (an absolute canonical ending in '/'
+  // is stripped too). Google resolves the two to the same URL, so this was
+  // never costing traffic, but a sitemap that disagrees with the page it
+  // points at is exactly the discrepancy Search Console surfaces, and the
+  // sitemap is the side that can actually be changed.
+  const staticRoutesFinal: MetadataRoute.Sitemap = staticRoutes.map((r) => ({
+    ...r,
+    url: `${SITE_URL}${r.url}`.replace(/\/$/, ''),
+    lastModified: now,
+  }))
 
   const planRoutes: MetadataRoute.Sitemap = (Object.keys(PLAN_DATA) as (keyof typeof PLAN_DATA)[]).map((slug) => ({
     url: `${SITE_URL}${routes.plan(slug)}`,
