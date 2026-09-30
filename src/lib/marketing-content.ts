@@ -370,6 +370,8 @@ type BlogPostRow = {
   cover_image: { src: string; alt: string; title?: string; caption?: string; description?: string; width: number; height: number } | null
   /** Added later; a row written before the migration has it as null. */
   author?: BlogAuthor | null
+  /** Points at marketing_blog_authors.slug. */
+  author_slug?: string | null
 }
 
 function rowToBlogPost(row: BlogPostRow): BlogPost {
@@ -385,7 +387,69 @@ function rowToBlogPost(row: BlogPostRow): BlogPost {
     relatedSlugs: row.related_slugs || [],
     coverImage: row.cover_image || undefined,
     author: row.author || undefined,
+    authorSlug: row.author_slug || undefined,
   }
+}
+
+type AuthorRow = {
+  slug: string
+  name: string
+  role: string | null
+  bio: string | null
+  avatar_url: string | null
+  url: string | null
+  socials: Record<string, string> | null
+}
+
+/**
+ * Everyone who writes the blog.
+ *
+ * Its own table rather than a field on the post, so editing a person updates
+ * every post they wrote and an author page has a stable identity to be built
+ * around. Returns [] when the table is not there yet -- the same tolerance
+ * the column fallback above exists for, since the marketing site and the
+ * migration deploy independently of each other.
+ */
+export async function getBlogAuthors(): Promise<BlogAuthor[]> {
+  try {
+    const { data, error } = await supabase
+      .from('marketing_blog_authors')
+      .select('slug, name, role, bio, avatar_url, url, socials')
+      .order('name')
+    if (error || !data) return []
+    return (data as AuthorRow[]).map((a) => ({
+      slug: a.slug,
+      name: a.name,
+      role: a.role || undefined,
+      bio: a.bio || undefined,
+      avatarUrl: a.avatar_url || undefined,
+      url: a.url || undefined,
+      socials: (a.socials as Record<string, string>) || undefined,
+    }))
+  } catch {
+    return []
+  }
+}
+
+/** One author, or null when the slug matches nobody. */
+export async function getBlogAuthor(slug: string): Promise<BlogAuthor | null> {
+  const all = await getBlogAuthors()
+  return all.find((a) => a.slug === slug) || null
+}
+
+/**
+ * Attach the author row each post points at.
+ *
+ * The post's own `author` blob still wins when there is no author_slug, so
+ * anything written before the table existed keeps the byline it was given.
+ */
+export function withAuthors(posts: BlogPost[], authors: BlogAuthor[]): BlogPost[] {
+  if (authors.length === 0) return posts
+  const bySlug = new Map(authors.map((a) => [a.slug, a]))
+  return posts.map((p) => {
+    const resolved = p.authorSlug ? bySlug.get(p.authorSlug) : undefined
+    return resolved ? { ...p, author: resolved } : p
+  })
 }
 
 // The columns a post is built from, and the same list minus `author`.
@@ -396,8 +460,13 @@ function rowToBlogPost(row: BlogPostRow): BlogPost {
 // landed before the migration would quietly serve 28 stale posts and
 // look like it was working. Retrying without the column keeps the two
 // independent of each other in either order.
-const BLOG_COLUMNS = 'slug, title, category, excerpt, date, read_time, tint, body, related_slugs, cover_image, author'
-const BLOG_COLUMNS_LEGACY = BLOG_COLUMNS.replace(', author', '')
+const BLOG_COLUMNS_BASE = 'slug, title, category, excerpt, date, read_time, tint, body, related_slugs, cover_image'
+const BLOG_COLUMNS = `${BLOG_COLUMNS_BASE}, author, author_slug`
+// Spelled out rather than derived by stripping: String.replace takes only the
+// first match, so removing ', author' from a list containing both would have
+// left ', author_slug' behind and failed for the exact reason the fallback
+// exists.
+const BLOG_COLUMNS_LEGACY = BLOG_COLUMNS_BASE
 
 /** True when PostgREST rejected the query because `author` is not there yet. */
 function isMissingAuthorColumn(error: { message?: string; code?: string } | null): boolean {

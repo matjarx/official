@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { routes } from '@/lib/routes'
-import { getBlogPosts } from '@/lib/marketing-content'
+import { getBlogPosts, getBlogAuthors } from '@/lib/marketing-content'
+import { CATEGORY_SLUGS } from '@/lib/blog-categories'
 import { RIVAL_DATA } from '@/lib/comparison-data'
 import { INDUSTRY_SLUGS } from '@/lib/industry-data'
 import { CITY_SLUGS } from '@/lib/location-data'
@@ -93,6 +94,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
+  // The six category archives and one page per author.
+  //
+  // Both were invisible before they existed as URLs -- /blogs filtered by
+  // category in the browser without ever changing the address, so the six
+  // groupings could not be submitted, linked or ranked. Authors come from the
+  // table rather than a constant, so adding one in the admin puts it here.
+  const categoryRoutes: MetadataRoute.Sitemap = CATEGORY_SLUGS.map(({ slug }) => ({
+    url: `${SITE_URL}${routes.blogCategory(slug)}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.6,
+  }))
+
+  const authorRoutes: MetadataRoute.Sitemap = (await getBlogAuthors())
+    .filter((a) => a.slug)
+    .map((a) => ({
+      url: `${SITE_URL}${routes.blogAuthor(a.slug as string)}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    }))
+
   const legalRoutes: MetadataRoute.Sitemap = LEGAL_DOC_KEYS.map((doc) => ({
     url: `${SITE_URL}${routes.legal(doc)}`,
     lastModified: now,
@@ -108,6 +131,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...compareRoutes,
     ...helpRoutes,
     ...blogRoutes,
+    ...categoryRoutes,
+    ...authorRoutes,
     ...legalRoutes,
   ]
 }

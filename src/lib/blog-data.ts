@@ -24,6 +24,10 @@ export type BlogPost = {
   coverImage?: { src: string; alt: string; title?: string; caption?: string; description?: string; width: number; height: number }
   /** Per-post byline. Falls back to AUTHOR when unset. */
   author?: BlogAuthor
+  /** Which author row this post points at, kept separately from the resolved
+   *  `author` so /blogs/author/<slug> can filter without string-matching
+   *  names -- two people can share a display name, a slug is unique. */
+  authorSlug?: string
 }
 
 /**
@@ -39,6 +43,10 @@ export type BlogPost = {
  */
 export type BlogAuthor = {
   name: string
+  /** Present on authors that came from the marketing_blog_authors table, and
+   *  absent on the hardcoded team fallback -- which is what makes the team
+   *  byline correctly unlinked, since it has no page to link to. */
+  slug?: string
   role?: string
   initials?: string
   /** Photo. The avatar falls back to initials on a moss disc without one. */
@@ -47,6 +55,8 @@ export type BlogAuthor = {
   bio?: string
   /** Somewhere that establishes the person: LinkedIn, a profile page. */
   url?: string
+  /** { linkedin, x, instagram, ... } -- whichever the admin filled in. */
+  socials?: Record<string, string>
 }
 
 export const AUTHOR: BlogAuthor = { name: 'The MatjarX Team', initials: 'MX', role: 'Written by the MatjarX team' }

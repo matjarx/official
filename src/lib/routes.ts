@@ -32,6 +32,8 @@ export const routes = {
   helpArticle: (slug: string) => `/help/${slug}`,
   blog: '/blogs',
   blogPost: (slug: string) => `/blogs/${slug}`,
+  blogCategory: (slug: string) => `/blogs/category/${slug}`,
+  blogAuthor: (slug: string) => `/blogs/author/${slug}`,
   about: '/about-us',
   contact: '/contact',
   faqs: '/faqs',
