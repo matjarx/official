@@ -494,7 +494,12 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     let { data, error } = await query(BLOG_COLUMNS)
     if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
     if (error || !data || data.length === 0) return BLOG_POSTS
-    return (data as unknown as BlogPostRow[]).map(rowToBlogPost)
+    // Resolved here rather than at the call sites, because every consumer
+    // needs it and only one of them would have remembered: the post page
+    // builds its BlogPosting author from post.author, so a post with an
+    // author picked but no legacy blob would have published the house
+    // byline while the admin showed a named writer.
+    return withAuthors((data as unknown as BlogPostRow[]).map(rowToBlogPost), await getBlogAuthors())
   } catch {
     return BLOG_POSTS
   }
@@ -528,7 +533,10 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     let { data, error } = await query(BLOG_COLUMNS)
     if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
     if (error || !data) return BLOG_POSTS.find((p) => p.slug === slug) || null
-    return rowToBlogPost(data as unknown as BlogPostRow)
+    // Same resolution as getBlogPosts -- this is the page that publishes the
+    // BlogPosting author, so it is the one that must not miss it.
+    const [post] = withAuthors([rowToBlogPost(data as unknown as BlogPostRow)], await getBlogAuthors())
+    return post
   } catch {
     return BLOG_POSTS.find((p) => p.slug === slug) || null
   }
