@@ -275,7 +275,12 @@ a {
  * every button, every footer link -- already wins over this rule and is
  * untouched. --mid-blue is the value .dark-theme already defines for exactly
  * this job, borrowed from the dashboard's --info-text. */
-.dark-theme a {
+/* :not([class]) matters. Without it this rule is specificity (0,1,1) and
+ * .btn-primary is (0,1,0), so it won -- and every anchor-based button on the
+ * site took --mid-blue. "LET'S BEGIN" rendered light blue on its butter
+ * gradient, which is worse than the problem being fixed. Buttons all carry a
+ * class and set their own colour; the prose links this is for do not. */
+.dark-theme a:not([class]) {
   color: var(--mid-blue);
 }
 
