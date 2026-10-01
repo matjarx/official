@@ -8,31 +8,10 @@
 // the original design handoff).
 
 import { useState } from 'react'
-import type { Block } from '@/lib/plan-detail-data'
 import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data'
 import type { IndustryKey } from '@/lib/industry-data'
 import { FaqList, bullet } from '@/components/FaqList'
-
-const H2: React.CSSProperties = { margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }
-function BlockList({ blocks }: { blocks: Block[] }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      {blocks.map((b, i) => (
-        <div key={i}>
-          {b.h && <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{b.h}</h3>}
-          {b.p && <p style={{ margin: '0 0 8px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{b.p}</p>}
-          {b.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{b.items.map((it, j) => bullet(it, j))}</ul>}
-          {b.sub && b.sub.map((s, k) => (
-            <div key={k} style={{ marginTop: 6 }}>
-              <span style={{ display: 'block', marginBottom: 6, fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{s.h}</span>
-              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, j) => bullet(it, j))}</ul>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  )
-}
+import { H2, BlockList } from '@/components/DetailPrimitives'
 
 export default function IndustryDetailSections({ industryKey, detail }: { industryKey: IndustryKey; detail?: IndustryDetail | null }) {
   const [openFaq, setOpenFaq] = useState(-1)

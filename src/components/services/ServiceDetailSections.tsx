@@ -10,48 +10,10 @@ import { useState } from 'react'
 import FaqSchema from '@/components/FaqSchema'
 import type { ServiceKey } from '@/lib/services-data'
 import { DFY, SEO, CONCIERGE, GROWTH, type ServiceDetail, type Testimonial } from '@/lib/service-detail-data'
-import type { Block } from '@/lib/plan-detail-data'
 import { FaqList, bullet } from '@/components/FaqList'
+import { H2, BlockList, CompareTable } from '@/components/DetailPrimitives'
 
 const DETAIL: Record<ServiceKey, ServiceDetail> = { dfy: DFY, seo: SEO, concierge: CONCIERGE, growth: GROWTH }
-
-const H2: React.CSSProperties = { margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }
-function BlockList({ blocks }: { blocks: Block[] }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      {blocks.map((b, i) => (
-        <div key={i}>
-          {b.h && <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{b.h}</h3>}
-          {b.p && <p style={{ margin: '0 0 8px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{b.p}</p>}
-          {b.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{b.items.map((it, j) => bullet(it, j))}</ul>}
-          {b.sub && b.sub.map((s, k) => (
-            <div key={k} style={{ marginTop: 6 }}>
-              <span style={{ display: 'block', marginBottom: 6, fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{s.h}</span>
-              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, j) => bullet(it, j))}</ul>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function TableEl({ headers, rows }: { headers: string[]; rows: string[][] }) {
-  return (
-    <div className="glass-card table-scroll" style={{ borderRadius: 18, overflowY: 'hidden' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
-        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: 'var(--ink-muted)', borderBottom: '1px solid rgba(var(--ink-1-rgb), 0.08)' }}>{h}</th>)}</tr></thead>
-        <tbody>
-          {rows.map((row, i) => (
-            <tr key={i} style={{ borderTop: '1px solid rgba(var(--ink-1-rgb), 0.06)' }}>
-              {row.map((cell, j) => <td key={j} style={{ padding: '11px 16px', fontSize: 13.5, color: j === 0 ? 'var(--ink-1)' : 'var(--ink-5)', fontWeight: j === 0 ? 600 : 400 }}>{cell}</td>)}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
-}
 
 function TestimonialGrid({ items }: { items: Testimonial[] }) {
   return (
@@ -115,7 +77,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       {d.timeline && (
         <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.timeline.title}</h2>
-          <TableEl headers={['When', 'What Happens']} rows={d.timeline.rows} />
+          <CompareTable headers={['When', 'What Happens']} rows={d.timeline.rows} />
         </section>
       )}
 
@@ -166,7 +128,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       {d.numbers && (
         <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.numbers.title}</h2>
-          <TableEl headers={['Metric', 'Value']} rows={d.numbers.rows} />
+          <CompareTable headers={['Metric', 'Value']} rows={d.numbers.rows} />
           {d.numbers.footnote && <p style={{ margin: '16px 0 0', fontSize: 13, lineHeight: 1.6, color: 'var(--ink-5)' }}>{d.numbers.footnote}</p>}
         </section>
       )}
@@ -175,7 +137,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       {d.planTable && (
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.planTable.title}</h2>
-          <TableEl headers={d.planTable.table.headers} rows={d.planTable.table.rows} />
+          <CompareTable headers={d.planTable.table.headers} rows={d.planTable.table.rows} />
           {d.planTable.note && <p style={{ margin: '16px 0 0', fontSize: 13, color: 'var(--ink-5)' }}>{d.planTable.note}</p>}
         </section>
       )}

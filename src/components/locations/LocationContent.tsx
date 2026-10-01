@@ -10,6 +10,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
+import TestimonialColumn from '@/components/TestimonialColumn'
 import CrossLinkRail from '@/components/CrossLinkRail'
 import { crossLinksForCity } from '@/lib/cross-links'
 import { routes } from '@/lib/routes'
@@ -263,14 +264,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         {d.quote && (
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div style={{ padding: 'clamp(26px, 3.6vw, 42px)', borderRadius: 26, background: 'linear-gradient(160deg, rgba(var(--scrim-rgb), 0.97), rgba(0,28,51,0.97))', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(24px)', boxShadow: '0 30px 66px rgba(var(--scrim-rgb), 0.32), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.18)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 40px)', alignItems: 'center' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-                <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
-                <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.quoteCompany}</span>
-                </div>
-              </div>
+              <TestimonialColumn quote={d.quote} name={d.quoteName} company={d.quoteCompany} />
               {d.wins && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 11, minWidth: 0 }}>
                   {d.wins.map((w) => (

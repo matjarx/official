@@ -16,6 +16,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import { SHOWCASE_THUMBS, SHOWCASE_STRIP } from '@/lib/showcase-images'
 
 // Reference width the whole mockup (card + the 3 overlay callouts) was laid
 // out at. The overlay positions below are percentages of this width, per
@@ -181,12 +182,8 @@ export default function EditorShowcase({ statusInk = 'var(--ink-muted)' }: { sta
     setImg((v) => (v + 1) % 3)
   }
 
-  const thumbSrc = isProduct
-    ? ['/showcase/ee-hanger.webp', '/showcase/ee-paisley.webp', '/showcase/ee-purple.webp', '/showcase/ee-chikankari.webp', '/showcase/ee-necklines.webp', '/showcase/ee-blockprint.webp']
-    : ['/showcase/scb-hero.webp', '/showcase/scb-shelf.webp', '/showcase/scb-croissants.webp', '/showcase/scb-cookies.webp', '/showcase/scb-baguettes.webp', '/showcase/scb-muffins.webp']
-  const stripSrc = isProduct
-    ? ['/showcase/ee-chikankari.webp', '/showcase/ee-necklines.webp', '/showcase/ee-blockprint.webp', '/showcase/ee-quilt.webp']
-    : ['/showcase/scb-croissants.webp', '/showcase/scb-cookies.webp', '/showcase/scb-muffins.webp', '/showcase/scb-patties.webp']
+  const thumbSrc = isProduct ? SHOWCASE_THUMBS.product : SHOWCASE_THUMBS.bakery
+  const stripSrc = isProduct ? SHOWCASE_STRIP.product : SHOWCASE_STRIP.bakery
 
   const domain = isProduct ? 'eleganceembroidery.pk' : 'sweetcrumbs.pk'
   const siteName = isProduct ? 'Elegance Embroidery' : 'Sweet Crumbs Bakery'

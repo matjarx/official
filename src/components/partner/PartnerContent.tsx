@@ -22,6 +22,7 @@ import {
   PARTNER_PLAN_RATES, PARTNER_COMMISSION_PCT, type PlanKey,
 } from '@/lib/partner-data'
 import { money } from '@/lib/money'
+import { useCurrency } from '@/components/CurrencyProvider'
 import { PARTNER_CATEGORY_ICONS, PARTNER_TOOL_LOGOS } from '@/lib/partner-icons-data'
 
 export type PartnerContentShape = { tiers: typeof PARTNER_TIERS; steps: typeof PARTNER_STEPS; toolLogos: typeof PARTNER_TOOL_LOGOS; categoryIcons: typeof PARTNER_CATEGORY_ICONS }
@@ -42,15 +43,20 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
   const [phone, setPhone] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
 
+  // The earnings figures follow the footer's currency like every other price
+  // on the site. money() stays as the rupee formatter and the base-currency
+  // fallback, exactly as SavingsCalculator uses it.
+  const { price } = useCurrency()
   const { monthlyEarn, yearlyEarn, tenClients } = useMemo(() => {
+    const fmt = (n: number) => price(n) ?? money(n)
     const per = PARTNER_PLAN_RATES[plan] * PARTNER_COMMISSION_PCT
     const monthly = per * clients
     return {
-      monthlyEarn: money(monthly),
-      yearlyEarn: money(monthly * 12),
-      tenClients: money(PARTNER_PLAN_RATES.Boost * PARTNER_COMMISSION_PCT * 10),
+      monthlyEarn: fmt(monthly),
+      yearlyEarn: fmt(monthly * 12),
+      tenClients: fmt(PARTNER_PLAN_RATES.Boost * PARTNER_COMMISSION_PCT * 10),
     }
-  }, [clients, plan])
+  }, [clients, plan, price])
 
   // Same marketing_leads table Contact/Help write to — no dedicated
   // columns for the calculator inputs, so they're folded into `message`

@@ -8,6 +8,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { SHOWCASE_THUMBS, SHOWCASE_STRIP, STRIP_COUNT_MOBILE } from '@/lib/showcase-images'
 
 const EE = ['/showcase/ee-hanger.webp', '/showcase/ee-paisley.webp', '/showcase/ee-purple.webp']
 const EE_POS = ['50% 38%', '50% 45%', '50% 40%']
@@ -51,12 +52,8 @@ export default function EditorShowcaseMobile({ statusInk = 'rgba(var(--ink-on-da
     setImg((v) => (v + 1) % 3)
   }
 
-  const thumbSrc = isProduct
-    ? ['/showcase/ee-hanger.webp', '/showcase/ee-paisley.webp', '/showcase/ee-purple.webp', '/showcase/ee-chikankari.webp', '/showcase/ee-necklines.webp', '/showcase/ee-blockprint.webp']
-    : ['/showcase/scb-hero.webp', '/showcase/scb-shelf.webp', '/showcase/scb-croissants.webp', '/showcase/scb-cookies.webp', '/showcase/scb-baguettes.webp', '/showcase/scb-muffins.webp']
-  const stripSrc = isProduct
-    ? ['/showcase/ee-chikankari.webp', '/showcase/ee-necklines.webp', '/showcase/ee-blockprint.webp']
-    : ['/showcase/scb-croissants.webp', '/showcase/scb-cookies.webp', '/showcase/scb-muffins.webp']
+  const thumbSrc = isProduct ? SHOWCASE_THUMBS.product : SHOWCASE_THUMBS.bakery
+  const stripSrc = (isProduct ? SHOWCASE_STRIP.product : SHOWCASE_STRIP.bakery).slice(0, STRIP_COUNT_MOBILE)
 
   const siteName = isProduct ? 'Elegance Embroidery' : 'Sweet Crumbs Bakery'
   const domain = isProduct ? 'eleganceembroidery.pk' : 'sweetcrumbs.pk'

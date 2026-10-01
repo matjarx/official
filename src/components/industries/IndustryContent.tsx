@@ -9,6 +9,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
+import TestimonialColumn from '@/components/TestimonialColumn'
 import CrossLinkRail from '@/components/CrossLinkRail'
 import { crossLinksForIndustry } from '@/lib/cross-links'
 import { routes } from '@/lib/routes'
@@ -148,14 +149,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
         {d.quote && (
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
             <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 44px)', borderRadius: 30, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(26px, 4vw, 42px)', alignItems: 'center' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-                <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
-                <p style={{ margin: 0, fontSize: 'clamp(15px, 1.8vw, 17px)', lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
-                  <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.quoteCompany}</span>
-                </div>
-              </div>
+              <TestimonialColumn quote={d.quote} name={d.quoteName} company={d.quoteCompany} />
               {d.results && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
                   {d.results.map((r) => (

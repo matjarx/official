@@ -15,34 +15,16 @@ import { routes, appSignup } from '@/lib/routes'
 import type { PlanKey } from '@/lib/plan-data'
 import {
   LAUNCH, BOOST, GROWTH, PLATINUM, CUSTOM,
-  type StandardPlanDetail, type Block, type PlanFaq, type BestForGroup,
+  type StandardPlanDetail, type PlanFaq, type BestForGroup,
 } from '@/lib/plan-detail-data'
 import { FaqList, bullet } from '@/components/FaqList'
+import { H2, BlockList, CompareTable } from '@/components/DetailPrimitives'
 import { useCurrency } from '@/components/CurrencyProvider'
 
-const STANDARD: Partial<Record<PlanKey, StandardPlanDetail>> = { launch: LAUNCH, boost: BOOST, growth: GROWTH, platinum: PLATINUM }
-
-const H2: React.CSSProperties = { margin: '0 0 26px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', letterSpacing: '-1px', color: 'var(--ink-1)' }
+/** Only the plans pages use this one, so it stays here. */
 const EYEBROW: React.CSSProperties = { display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }
-function BlockList({ blocks }: { blocks: Block[] }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-      {blocks.map((b, i) => (
-        <div key={i}>
-          {b.h && <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{b.h}</h3>}
-          {b.p && <p style={{ margin: '0 0 8px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{b.p}</p>}
-          {b.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{b.items.map((it, j) => bullet(it, j))}</ul>}
-          {b.sub && b.sub.map((s, k) => (
-            <div key={k} style={{ marginTop: b.h || b.p ? 10 : 0 }}>
-              <span style={{ display: 'block', marginBottom: 6, fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{s.h}</span>
-              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, j) => bullet(it, j))}</ul>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  )
-}
+
+const STANDARD: Partial<Record<PlanKey, StandardPlanDetail>> = { launch: LAUNCH, boost: BOOST, growth: GROWTH, platinum: PLATINUM }
 
 function GroupGrid({ groups }: { groups: BestForGroup[] }) {
   return (
@@ -65,23 +47,6 @@ function FaqAccordion({ faqs, openIdx, setOpenIdx }: { faqs: PlanFaq[]; openIdx:
   )
 }
 
-function CompareTableEl({ headers, rows }: { headers: string[]; rows: string[][] }) {
-  return (
-    <div className="glass-card table-scroll" style={{ borderRadius: 18, overflowY: 'hidden' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
-        <thead><tr>{headers.map((h) => <th key={h} style={{ textAlign: 'left', padding: '12px 16px', fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: 'var(--ink-muted)', borderBottom: '1px solid rgba(var(--ink-1-rgb), 0.08)' }}>{h}</th>)}</tr></thead>
-        <tbody>
-          {rows.map((row, i) => (
-            <tr key={i} style={{ borderTop: '1px solid rgba(var(--ink-1-rgb), 0.06)' }}>
-              {row.map((cell, j) => <td key={j} style={{ padding: '11px 16px', fontSize: 13.5, color: j === 0 ? 'var(--ink-1)' : 'var(--ink-5)', fontWeight: j === 0 ? 600 : 400 }}>{cell}</td>)}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
-}
-
 function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKey }) {
   // Same currency as the hero above it. A page showing "AED 360/mo" at the
   // top and "PKR 22,500" in its own breakdown reads as a mistake.
@@ -98,7 +63,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
           {d.whatYouGet.sections.map((s) => (
             <div key={s.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
               <h3 style={{ margin: '0 0 14px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{s.title}</h3>
-              <BlockList blocks={s.blocks} />
+              <BlockList blocks={s.blocks} gap={14} tightSub />
             </div>
           ))}
         </div>
@@ -111,7 +76,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 18 }}>
             {s.blocks.map((b, i) => (
               <div key={i} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-                <BlockList blocks={[b]} />
+                <BlockList blocks={[b]} gap={14} tightSub />
               </div>
             ))}
           </div>
@@ -121,7 +86,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       {/* At a glance */}
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.glance.title}</h2>
-        <CompareTableEl headers={['Feature', planKey.charAt(0).toUpperCase() + planKey.slice(1)]} rows={d.glance.rows} />
+        <CompareTable headers={['Feature', planKey.charAt(0).toUpperCase() + planKey.slice(1)]} rows={d.glance.rows} />
       </section>
 
       {/* Best for */}
@@ -169,7 +134,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         )}
 
         <span style={{ display: 'block', marginBottom: 12, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)' }}>Annual savings</span>
-        <CompareTableEl headers={d.pricing.savings.headers} rows={d.pricing.savings.rows} />
+        <CompareTable headers={d.pricing.savings.headers} rows={d.pricing.savings.rows} />
 
         {d.pricing.roi && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginTop: 22 }}>
@@ -229,7 +194,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       {/* Compare table + upgrade guides */}
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.compareTitle}</h2>
-        {d.compareTable && <div style={{ marginBottom: 22 }}><CompareTableEl headers={d.compareTable.headers} rows={d.compareTable.rows} /></div>}
+        {d.compareTable && <div style={{ marginBottom: 22 }}><CompareTable headers={d.compareTable.headers} rows={d.compareTable.rows} /></div>}
         {d.upgradeGroups && <GroupGrid groups={d.upgradeGroups} />}
       </section>
 
@@ -364,7 +329,7 @@ function CustomDetail() {
 
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.timeline.title}</h2>
-        <CompareTableEl headers={['Project size', 'Timeline']} rows={d.timeline.rows} />
+        <CompareTable headers={['Project size', 'Timeline']} rows={d.timeline.rows} />
         <p style={{ margin: '16px 0 0', fontSize: 13, color: 'var(--ink-5)' }}>Factors affecting timeline: {d.timeline.factors.join(', ')}.</p>
       </section>
 
