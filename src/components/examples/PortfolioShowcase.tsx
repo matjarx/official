@@ -42,7 +42,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 9, padding: '22px 26px 26px', minHeight: 0 }}>
                   <span className="mx-hero-line" style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(20px, 2.4vw, 28px)', lineHeight: 1.04, letterSpacing: '-0.9px', color: 'var(--ink-inverse)', textShadow: '0 2px 14px rgba(var(--shadow-rgb), 0.4)' }}>{ex.heroLine}</span>
-                  <span style={{ maxWidth: '26em', fontSize: 11, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.8)' }}>{ex.heroBlurb}</span>
+                  <span style={{ maxWidth: '26em', fontSize: 11, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.92)' }}>{ex.heroBlurb}</span>
                 </div>
               </div>
 
@@ -52,7 +52,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px 18px', background: 'rgba(var(--surface-rgb), 0.72)', backdropFilter: 'blur(20px)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px 18px', background: 'rgba(var(--surface-rgb), 0.94)', backdropFilter: 'blur(20px)' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, letterSpacing: '-0.2px', color: 'var(--ink-1)' }}>{ex.name}</span>
                 <span style={{ fontSize: 12, color: 'var(--ink-muted)' }}>{ex.category} · {ex.domain}</span>

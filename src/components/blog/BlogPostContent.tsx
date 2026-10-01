@@ -91,7 +91,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                 )}
               </figure>
             ) : (
-              <div style={{ height: 380, borderRadius: 24, background: 'linear-gradient(150deg, var(--navy), var(--olive))', display: 'grid', placeItems: 'center', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
+              <div style={{ height: 380, borderRadius: 24, background: 'linear-gradient(150deg, var(--navy), var(--olive-ground))', display: 'grid', placeItems: 'center', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '0.4px', color: 'rgba(var(--ink-inverse-rgb), 0.85)' }}>Article cover image</span>
               </div>
             )}
@@ -167,7 +167,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 9 }}>
                     <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--olive)' }}>{r.category}</span>
                     <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, lineHeight: 1.3, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{r.title}</h3>
-                    <span style={{ fontSize: 12, color: 'var(--ink-faint)' }}>{r.readTime}</span>
+                    <span style={{ fontSize: 12, color: 'var(--ink-muted)' }}>{r.readTime}</span>
                   </div>
                 </Link>
               ))}

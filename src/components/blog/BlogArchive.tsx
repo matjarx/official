@@ -58,7 +58,7 @@ function AuthorHeader({ author, postCount }: { author: BlogAuthor; postCount: nu
         {author.bio && (
           <p style={{ margin: '12px 0 0', fontSize: 15, lineHeight: 1.62, color: 'var(--ink-5)', maxWidth: 560 }}>{author.bio}</p>
         )}
-        <p style={{ margin: '12px 0 0', fontSize: 13, color: 'var(--ink-faint)' }}>
+        <p style={{ margin: '12px 0 0', fontSize: 13, color: 'var(--ink-muted)' }}>
           {postCount} {postCount === 1 ? 'article' : 'articles'}
         </p>
         {(socials.length > 0 || author.url) && (
@@ -101,7 +101,7 @@ export default function BlogArchive({
         <SiteChrome active="resources">
           <section style={{ maxWidth: 1120, margin: '0 auto', padding: '56px 20px 0' }}>
             <p style={{ margin: '0 0 18px', fontSize: 13 }}>
-              <Link href={routes.blog} style={{ color: 'var(--ink-faint)' }}>← All articles</Link>
+              <Link href={routes.blog} style={{ color: 'var(--ink-muted)' }}>← All articles</Link>
             </p>
 
             {author ? (
@@ -140,7 +140,7 @@ export default function BlogArchive({
                     <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 11, flex: 1 }}>
                       <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, lineHeight: 1.28, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{p.title}</h2>
                       <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.58, color: 'var(--ink-5)' }}>{p.excerpt}</p>
-                      <span style={{ marginTop: 'auto', paddingTop: 12, fontSize: 12, color: 'var(--ink-faint)' }}>{p.date} · {p.readTime}</span>
+                      <span style={{ marginTop: 'auto', paddingTop: 12, fontSize: 12, color: 'var(--ink-muted)' }}>{p.date} · {p.readTime}</span>
                     </div>
                   </Link>
                 ))}

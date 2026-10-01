@@ -72,14 +72,14 @@ export default function SavingsCalculator() {
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, paddingBottom: 13, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
               <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>Doing it yourself</span>
-              <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)' }}>{hours} hours × {fmt(rate)} / hour</span>
+              <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.75)' }}>{hours} hours × {fmt(rate)} / hour</span>
             </div>
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--ink-inverse)', whiteSpace: 'nowrap' }}>{fmt(diyTotal)}</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, paddingBottom: 13, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
               <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>MatjarX, live in 7 days</span>
-              <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)' }}>One-time Launch setup fee</span>
+              <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.75)' }}>One-time Launch setup fee</span>
             </div>
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--moss-light)', whiteSpace: 'nowrap' }}>{fmt(MATJARX_FEE)}</span>
           </div>
@@ -87,14 +87,14 @@ export default function SavingsCalculator() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 2 }}>
             <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>You save</span>
             <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(34px, 5vw, 46px)', lineHeight: 1.05, letterSpacing: '-1.6px', color: 'var(--butter)' }}>{fmt(saving > 0 ? saving : 0)}</span>
-            <span style={{ fontSize: 13, lineHeight: 1.55, color: 'rgba(var(--ink-on-dark-rgb), 0.6)' }}>
+            <span style={{ fontSize: 13, lineHeight: 1.55, color: 'rgba(var(--ink-on-dark-rgb), 0.8)' }}>
               {saving > 0 ? `And you don't spend a single one of those ${hours} hours.` : 'Even at this rate, your time is better spent running the business.'}
             </span>
           </div>
 
           <Link href={routes.pricing} className="btn-primary" style={{ marginTop: 6, display: 'block', textAlign: 'center' }}>Sign up now</Link>
         </div>
-        <span style={{ fontSize: 12, lineHeight: 1.55, textAlign: 'center', color: 'rgba(var(--ink-on-dark-rgb), 0.45)' }}>{fmt(MATJARX_FEE)} is the one-time Launch setup fee. Hosting, domain and business email are included.</span>
+        <span style={{ fontSize: 12, lineHeight: 1.55, textAlign: 'center', color: 'rgba(var(--ink-on-dark-rgb), 0.72)' }}>{fmt(MATJARX_FEE)} is the one-time Launch setup fee. Hosting, domain and business email are included.</span>
       </div>
     </div>
   )

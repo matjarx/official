@@ -50,25 +50,25 @@ function IntakeForm() {
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14, width: '100%' }}>
       <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Website URL</span>
+        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600 }}>Website URL</span>
         <input required type="text" name="website" autoComplete="url" value={websiteUrl} onChange={(e) => setWebsiteUrl(e.target.value)} placeholder="https://yourbusiness.pk" className="input" style={{ width: '100%' }} />
       </label>
       <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Your name</span>
+        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600 }}>Your name</span>
         <input required type="text" name="name" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ahmed Khan" className="input" style={{ width: '100%' }} />
       </label>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 14 }}>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Email</span>
+          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600 }}>Email</span>
           <input type="email" name="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@yourbusiness.pk" className="input" style={{ width: '100%' }} />
         </label>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>WhatsApp / phone</span>
+          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600 }}>WhatsApp / phone</span>
           <input type="tel" name="phone" autoComplete="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="0300 441 2887" className="input" style={{ width: '100%' }} />
         </label>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-muted)', fontWeight: 600 }}>Where should we send your report?</span>
+        <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'var(--ink-3)', fontWeight: 600 }}>Where should we send your report?</span>
         <div style={{ display: 'flex', gap: 8 }}>
           {(['whatsapp', 'email'] as const).map((c) => (
             <button key={c} type="button" onClick={() => setPreferredChannel(c)} style={{ all: 'unset', cursor: 'pointer', flex: 1, textAlign: 'center', padding: '11px 16px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: preferredChannel === c ? 'var(--ink-inverse)' : 'var(--ink-4-alt)', background: preferredChannel === c ? 'var(--navy)' : 'var(--surface)', border: `1.5px solid ${preferredChannel === c ? 'var(--navy)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>
@@ -81,7 +81,7 @@ function IntakeForm() {
         {status === 'submitting' ? 'Sending…' : 'Get Your Website Audit'}
       </button>
       {status === 'error' && <p style={{ margin: 0, fontSize: 13, color: '#B4543C' }}>Something went wrong — please try again, or message us on WhatsApp at {CHANNELS.whatsapp}.</p>}
-      <span style={{ fontSize: 12, lineHeight: 1.5, color: 'var(--ink-muted)' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
+      <span style={{ fontSize: 12, lineHeight: 1.5, color: 'var(--ink-3)' }}>By sending this you agree to our <Link href={routes.legal('privacy')} style={{ fontWeight: 600 }}>privacy policy</Link>.</span>
     </form>
   )
 }

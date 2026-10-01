@@ -116,7 +116,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
                   <div style={{ padding: '20px 22px 22px', display: 'flex', flexDirection: 'column', gap: 11, flex: 1 }}>
                     <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, lineHeight: 1.28, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{p.title}</h3>
                     <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.58, color: 'var(--ink-5)' }}>{p.excerpt}</p>
-                    <span style={{ marginTop: 'auto', paddingTop: 12, fontSize: 12, color: 'var(--ink-faint)' }}>{p.date} · {p.readTime}</span>
+                    <span style={{ marginTop: 'auto', paddingTop: 12, fontSize: 12, color: 'var(--ink-muted)' }}>{p.date} · {p.readTime}</span>
                   </div>
                 </Link>
               ))}

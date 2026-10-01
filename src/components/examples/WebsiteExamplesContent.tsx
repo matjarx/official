@@ -70,7 +70,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
                       key={c}
                       type="button"
                       onClick={() => { setFilter(c); setModalIndex(-1) }}
-                      style={{ all: 'unset', cursor: 'pointer', textAlign: 'center', padding: '13px 14px', borderRadius: 10, fontSize: 13.5, fontWeight: on ? 700 : 500, color: on ? 'var(--ink-inverse)' : 'var(--ink-on-butter-alt)', background: on ? 'var(--olive-active)' : 'var(--butter)', border: `1px solid ${on ? 'var(--olive-active)' : 'rgba(61,58,8,0.14)'}`, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', transition: 'background 180ms ease' }}
+                      style={{ all: 'unset', cursor: 'pointer', textAlign: 'center', padding: '13px 14px', borderRadius: 10, fontSize: 13.5, fontWeight: on ? 700 : 500, color: on ? 'var(--ink-inverse)' : 'var(--ink-on-butter-alt)', background: on ? 'var(--olive-ground)' : 'var(--butter)', border: `1px solid ${on ? 'var(--olive-ground)' : 'rgba(61,58,8,0.14)'}`, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', transition: 'background 180ms ease' }}
                     >
                       {c}
                     </button>

@@ -255,14 +255,14 @@ export default function HomeMobileContent() {
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, paddingBottom: 11, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 2, marginRight: 'auto', minWidth: 0 }}>
                   <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>Doing it yourself</span>
-                  <span style={{ fontSize: 10.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)' }}>{hours} hours × {money(rate)}</span>
+                  <span style={{ fontSize: 10.5, color: 'rgba(var(--ink-on-dark-rgb), 0.75)' }}>{hours} hours × {money(rate)}</span>
                 </span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: 'var(--ink-inverse)', whiteSpace: 'nowrap' }}>{money(diy)}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, paddingBottom: 11, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 2, marginRight: 'auto', minWidth: 0 }}>
                   <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>MatjarX, live in 7 days</span>
-                  <span style={{ fontSize: 10.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)' }}>One-time Launch setup fee</span>
+                  <span style={{ fontSize: 10.5, color: 'rgba(var(--ink-on-dark-rgb), 0.75)' }}>One-time Launch setup fee</span>
                 </span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, letterSpacing: '-0.4px', color: 'var(--moss-light)', whiteSpace: 'nowrap' }}>{money(SETUP_FEE)}</span>
               </div>

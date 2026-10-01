@@ -67,7 +67,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: 18 }}>
               {CONTACT_SUPPORT_CATEGORIES.map((c, i) => (
                 <div key={c.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  <span style={{ fontSize: 11.5, fontWeight: 700, color: '#A08A5E' }}>{i + 1}.</span>
+                  <span style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--terracotta-ink)' }}>{i + 1}.</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{c.title}</span>
                   <span style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>{c.body}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 2 }}>
@@ -117,8 +117,8 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                       </div>
                     ))}
                   </div>
-                  <div style={{ height: 170, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, var(--ink-2))', display: 'grid', placeItems: 'center', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
-                    <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.5)' }}>Map — Zamzama, Clifton, Karachi</span>
+                  <div style={{ height: 170, borderRadius: 16, background: 'linear-gradient(150deg, #1B4B6E, var(--navy-deepest))', display: 'grid', placeItems: 'center', border: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
+                    <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.78)' }}>Map — Zamzama, Clifton, Karachi</span>
                   </div>
                 </div>
 

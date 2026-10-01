@@ -130,6 +130,13 @@ html {
   --olive: #696D34;
   --moss-light: #C6CB8A;
   --olive-active: #8A8F4A;
+  /* The olive that is a GROUND, not a mark. --olive and --olive-active both
+     go light in dark mode, which is right for a bullet or a rule sitting on
+     a dark page and wrong for a surface carrying white text: the chip and
+     the video thumbnail both turned into white-on-pale at 1.4:1. This one
+     is deliberately absent from .dark-theme -- a ground that holds
+     --ink-inverse has to stay dark in both modes. White on it is 5.47. */
+  --olive-ground: #696D34;
   --ink-on-butter: #16210B;
   --ink-on-butter-alt: #3D3A08;
   --terracotta: #B4874F;
@@ -1012,20 +1019,20 @@ textarea.input {
   align-items: baseline;
   padding: 7px 0 7px 13px;
   margin-left: 1px;
-  border-left: 2px solid rgba(4, 18, 31, 0.1);
+  border-left: 2px solid rgba(var(--ink-1-rgb), 0.1);
   font-size: 14px;
   line-height: 1.45;
-  color: #3B5063;
+  color: var(--ink-4-alt);
   text-decoration: none;
   cursor: pointer;
   transition: color 140ms ease, border-color 140ms ease;
 }
 .toc-link:hover {
-  color: #04121F;
+  color: var(--ink-1);
   border-left-color: var(--olive);
 }
 .toc-link.is-active {
-  color: #04121F;
+  color: var(--ink-1);
   font-weight: 700;
   border-left-color: var(--olive);
   border-left-width: 3px;
@@ -1037,7 +1044,7 @@ textarea.input {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.4px;
-  color: #9AA9B5;
+  color: var(--ink-muted);
 }
 .toc-link:hover .toc-num,
 .toc-link.is-active .toc-num { color: var(--olive); }

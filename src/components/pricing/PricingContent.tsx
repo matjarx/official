@@ -406,7 +406,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
                 <span style={{ fontSize: 15, letterSpacing: '2.5px', color: '#C6A20E' }}>★★★★★</span>
                 <p style={{ margin: 0, fontSize: 16, lineHeight: 1.62, color: 'var(--ink-3)' }}>&ldquo;{t.quote}&rdquo;</p>
                 <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ width: 42, height: 42, flex: '0 0 auto', borderRadius: '50%', background: t.tint, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{t.initials}</span>
+                  <span style={{ width: 42, height: 42, flex: '0 0 auto', borderRadius: '50%', background: t.tint, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-on-butter)' }}>{t.initials}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{t.name}</span>
                     <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>{t.company}</span>
