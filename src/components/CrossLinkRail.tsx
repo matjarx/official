@@ -25,7 +25,7 @@ const KIND_TINT: Record<CrossLink['kind'], string> = {
   // dark-on-dark, "LOCATION" at 1.47.
   service: 'var(--accent-ink)',
   industry: 'var(--olive)',
-  city: 'var(--terracotta)',
+  city: 'var(--terracotta-ink)',
   blog: 'var(--mid-blue)',
   plan: '#C9A227',
   page: 'var(--ink-muted)',

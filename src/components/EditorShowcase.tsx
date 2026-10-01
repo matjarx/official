@@ -134,7 +134,10 @@ function layerRow(label: string, icon: string, on: boolean, badge = '', custom =
   }
 }
 
-export default function EditorShowcase({ statusInk = 'rgba(var(--ink-on-dark-rgb), 0.6)' }: { statusInk?: string }) {
+// statusInk defaults to a token that FLIPS. The caption sits under the
+// mock-up on the page itself, not inside the dark editor chrome, so an
+// on-dark ink left it at 1.08 against the cream page in light mode.
+export default function EditorShowcase({ statusInk = 'var(--ink-muted)' }: { statusInk?: string }) {
   const [mode, setMode] = useState<'product' | 'service'>('product')
   const [img, setImg] = useState(0)
   const isProduct = mode === 'product'

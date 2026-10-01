@@ -60,7 +60,7 @@ function TestimonialGrid({ items }: { items: Testimonial[] }) {
         <div key={t.name} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
           <span style={{ display: 'block', marginBottom: 8, fontSize: 13, letterSpacing: 2, color: 'var(--butter-deep)' }}>★★★★★</span>
           <p style={{ margin: '0 0 10px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-4-alt)' }}>&ldquo;{t.quote}&rdquo;</p>
-          <span style={{ fontSize: 12.5, fontWeight: 600, color: '#8A9AA6' }}>{t.name}</span>
+          <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-5)' }}>{t.name}</span>
         </div>
       ))}
     </div>
@@ -167,7 +167,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.numbers.title}</h2>
           <TableEl headers={['Metric', 'Value']} rows={d.numbers.rows} />
-          {d.numbers.footnote && <p style={{ margin: '16px 0 0', fontSize: 13, lineHeight: 1.6, color: '#8A9AA6' }}>{d.numbers.footnote}</p>}
+          {d.numbers.footnote && <p style={{ margin: '16px 0 0', fontSize: 13, lineHeight: 1.6, color: 'var(--ink-5)' }}>{d.numbers.footnote}</p>}
         </section>
       )}
 
@@ -176,7 +176,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.planTable.title}</h2>
           <TableEl headers={d.planTable.table.headers} rows={d.planTable.table.rows} />
-          {d.planTable.note && <p style={{ margin: '16px 0 0', fontSize: 13, color: '#8A9AA6' }}>{d.planTable.note}</p>}
+          {d.planTable.note && <p style={{ margin: '16px 0 0', fontSize: 13, color: 'var(--ink-5)' }}>{d.planTable.note}</p>}
         </section>
       )}
 
@@ -192,11 +192,11 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
                   <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{m.focus}</span>
                 </div>
                 <div>
-                  <span style={{ display: 'block', marginBottom: 6, fontSize: 11.5, letterSpacing: 1, textTransform: 'uppercase', color: '#8A9AA6', fontWeight: 600 }}>What We Do</span>
+                  <span style={{ display: 'block', marginBottom: 6, fontSize: 11.5, letterSpacing: 1, textTransform: 'uppercase', color: 'var(--ink-5)', fontWeight: 600 }}>What We Do</span>
                   <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 4 }}>{m.weDo.map((it, i) => bullet(it, i))}</ul>
                 </div>
                 <div>
-                  <span style={{ display: 'block', marginBottom: 6, fontSize: 11.5, letterSpacing: 1, textTransform: 'uppercase', color: '#8A9AA6', fontWeight: 600 }}>Your Action</span>
+                  <span style={{ display: 'block', marginBottom: 6, fontSize: 11.5, letterSpacing: 1, textTransform: 'uppercase', color: 'var(--ink-5)', fontWeight: 600 }}>Your Action</span>
                   <ul style={{ margin: '0 0 8px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 4 }}>{m.yourAction.map((it, i) => bullet(it, i))}</ul>
                   <span style={{ fontSize: 12.5, color: 'var(--ink-5)' }}><strong>Outcome:</strong> {m.outcome}</span>
                 </div>

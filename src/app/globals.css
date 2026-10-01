@@ -31,7 +31,11 @@ html {
   /* 5A6F82 measured 4.49:1 on the #F2EEE2 band -- AA wants 4.5, so it
      failed on a rounding edge across eight elements. One unit of blue. */
   --ink-muted: #5A6E81;
-  --ink-faint: #90A2B1;
+  /* Darkened from #90A2B1, which was 2.52 against the cream page -- it is
+     used for post dates and read times, so "1 Sep 2026 · 10 min read" failed
+     on every blog card. #647585 clears 4.5 and still reads as the faintest
+     ink in the scale. */
+  --ink-faint: #647585;
   /* White, split in two because the two uses diverge in dark mode.
      --ink-inverse is text ON a dark surface. It is FIXED: white text only
      ever sits on dark, so there is no mode in which it should become
@@ -77,6 +81,10 @@ html {
   --glass-card-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9);
   /* Accent ink for a link or a highlighted value sitting on that surface. */
   --accent-ink: var(--navy);
+  /* A terracotta dark enough to be TEXT. --terracotta (#B4874F) is a fill
+     colour and only reaches 3.22 on white, so a label drawn in it failed on
+     every light card. */
+  --terracotta-ink: #9A6A33;
   --cream-rgb: 252,250,243;
   --cream-deep-rgb: 242,238,226;
   --olive-rgb: 105,109,52;
@@ -197,6 +205,7 @@ html {
   --glass-card-line: rgba(255,255,255,0.14);
   --glass-card-shadow: 0 16px 40px rgba(0,12,22,0.34), inset 0 1px 0 rgba(255,255,255,0.08);
   --accent-ink: var(--mid-blue);
+  --terracotta-ink: var(--terracotta); /* #E5A97F already reads on dark */
   --olive-active: #D7DBA8;      /* lighter than the olive, as in light mode */
 
   --mid-blue: #A8CDEC;          /* the dashboard's --info-text */

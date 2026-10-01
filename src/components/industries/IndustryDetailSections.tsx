@@ -116,7 +116,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
               <div key={t.name} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
                 <span style={{ display: 'block', marginBottom: 8, fontSize: 13, letterSpacing: 2, color: 'var(--butter-deep)' }}>★★★★★</span>
                 <p style={{ margin: '0 0 10px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-4-alt)' }}>&ldquo;{t.quote}&rdquo;</p>
-                <span style={{ fontSize: 12.5, fontWeight: 600, color: '#8A9AA6' }}>{t.name}</span>
+                <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-5)' }}>{t.name}</span>
               </div>
             ))}
           </div>

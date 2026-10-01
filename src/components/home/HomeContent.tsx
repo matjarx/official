@@ -157,7 +157,7 @@ const PREMIUM_PLAN_THEME = {
   shadow: '0 18px 46px rgba(201,162,39,0.18), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.95)',
   blur: 'blur(22px)',
   ink: 'var(--ink-1)', muted: 'var(--ink-muted)', body: 'var(--ink-4-alt)', rule: 'rgba(138,122,18,0.22)',
-  tick: '#8A7A12', ctaInk: 'var(--ink-on-butter-alt)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter-deep)',
+  tick: '#776810', ctaInk: 'var(--ink-on-butter-alt)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter-deep)',
 }
 const DARK_PLAN_THEME = {
   bg: 'linear-gradient(160deg, rgba(var(--navy-rgb), 0.96), rgba(0,28,51,0.96))', border: 'rgba(var(--ink-inverse-rgb), 0.16)', shadow: '0 30px 66px rgba(var(--scrim-rgb), 0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.2)', blur: 'blur(26px)',
@@ -259,7 +259,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             </span>
           </div>
 
-          <p style={{ margin: 0, fontSize: 'clamp(13.5px, 1.6vw, 16px)', fontWeight: 600, color: dark ? 'var(--butter)' : '#8A7A12' }}>Become part of a thriving network of over 70,000 business owners.</p>
+          <p style={{ margin: 0, fontSize: 'clamp(13.5px, 1.6vw, 16px)', fontWeight: 600, color: dark ? 'var(--butter)' : '#776810' }}>Become part of a thriving network of over 70,000 business owners.</p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 10 }}>
             {RATING_BADGES.map((b) => (

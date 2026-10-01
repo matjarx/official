@@ -147,7 +147,7 @@ export default function TemplatesContent({
                 <div key={s.n} className="glass-card" style={{ padding: '26px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, lineHeight: 1, color: 'var(--moss-light)' }}>{s.n}</span>
                   <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: 'var(--ink-1)' }}>{s.title}</h3>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: '#8A9AA6' }}>{s.lead}</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink-5)' }}>{s.lead}</span>
                   <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>
                     {s.items.map((it) => (
                       <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>

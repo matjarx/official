@@ -218,7 +218,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{p.name}</span>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, color: 'var(--ink-1)' }}>{p.price}</span>
                 {p.items.length > 0 && <ul style={{ margin: '4px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{p.items.map((it, i) => bullet(it, i))}</ul>}
-                {p.setup && <span style={{ marginTop: 'auto', paddingTop: 8, fontSize: 12.5, color: '#8A9AA6' }}>Setup: {p.setup}</span>}
+                {p.setup && <span style={{ marginTop: 'auto', paddingTop: 8, fontSize: 12.5, color: 'var(--ink-5)' }}>Setup: {p.setup}</span>}
               </div>
             ))}
           </div>

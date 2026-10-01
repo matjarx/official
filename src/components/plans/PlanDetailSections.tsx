@@ -252,7 +252,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
         <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{d.bottomLine.title}</h3>
         {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{p}</p>)}
-        <p style={{ margin: '10px 0 0', fontSize: 12.5, color: '#8A9AA6' }}>100% refund within 24 hours if we haven&apos;t substantially started work.</p>
+        <p style={{ margin: '10px 0 0', fontSize: 12.5, color: 'var(--ink-5)' }}>100% refund within 24 hours if we haven&apos;t substantially started work.</p>
       </section>
 
       {/* Compare all plans */}
@@ -290,7 +290,7 @@ function CustomDetail() {
           {d.examples.items.map((ex) => (
             <div key={ex.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
               <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, color: 'var(--ink-1)' }}>{ex.title}</h3>
-              <p style={{ margin: '0 0 10px', fontSize: 12.5, color: '#8A9AA6' }}>{ex.business}</p>
+              <p style={{ margin: '0 0 10px', fontSize: 12.5, color: 'var(--ink-5)' }}>{ex.business}</p>
               <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ex.needs.map((it, i) => bullet(it, i))}</ul>
               <p style={{ margin: '0 0 4px', fontSize: 13, color: 'var(--ink-5)' }}><strong>Solution:</strong> {ex.solution}</p>
               <p style={{ margin: 0, fontSize: 13, color: 'var(--ink-5)' }}><strong>Timeline:</strong> {ex.timeline} · <strong>Price:</strong> {ex.price}</p>
@@ -307,7 +307,7 @@ function CustomDetail() {
               <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{ph.title}</h3>
               {ph.body && <p style={{ margin: '0 0 8px', fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{ph.body}</p>}
               <ul style={{ margin: '0 0 8px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
-              {ph.deliverable && <p style={{ margin: 0, fontSize: 12, color: '#8A9AA6' }}>Deliverable: {ph.deliverable}</p>}
+              {ph.deliverable && <p style={{ margin: 0, fontSize: 12, color: 'var(--ink-5)' }}>Deliverable: {ph.deliverable}</p>}
             </div>
           ))}
         </div>
@@ -365,7 +365,7 @@ function CustomDetail() {
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.timeline.title}</h2>
         <CompareTableEl headers={['Project size', 'Timeline']} rows={d.timeline.rows} />
-        <p style={{ margin: '16px 0 0', fontSize: 13, color: '#8A9AA6' }}>Factors affecting timeline: {d.timeline.factors.join(', ')}.</p>
+        <p style={{ margin: '16px 0 0', fontSize: 13, color: 'var(--ink-5)' }}>Factors affecting timeline: {d.timeline.factors.join(', ')}.</p>
       </section>
 
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
@@ -405,7 +405,7 @@ function CustomDetail() {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 10 }}>
           {d.showcase.items.map((it) => <span key={it} style={{ padding: '8px 14px', borderRadius: 999, fontSize: 13, background: 'rgba(var(--scrim-rgb), 0.06)', color: 'var(--ink-1)' }}>{it}</span>)}
         </div>
-        <p style={{ margin: 0, fontSize: 13, color: '#8A9AA6' }}>{d.showcase.note}</p>
+        <p style={{ margin: 0, fontSize: 13, color: 'var(--ink-5)' }}>{d.showcase.note}</p>
       </section>
 
       <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
@@ -423,7 +423,7 @@ function CustomDetail() {
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
         <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{d.bottomLine.title}</h3>
         {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{p}</p>)}
-        <p style={{ margin: '10px 0 0', fontSize: 12.5, color: '#8A9AA6' }}>{d.guarantee}</p>
+        <p style={{ margin: '10px 0 0', fontSize: 12.5, color: 'var(--ink-5)' }}>{d.guarantee}</p>
       </section>
 
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '46px 24px 0', display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
