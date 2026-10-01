@@ -114,7 +114,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         {d.pricing.blogNote && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
             <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>What does each blog post cost?</h3>
-            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>Included in plan: {d.pricing.blogNote.included} · Additional blog posts: {d.pricing.blogNote.extra}</p>
+            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>Included in plan: {d.pricing.blogNote.included} · Additional blog posts: {inText(d.pricing.blogNote.extra)}</p>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.blogNote.whyMatters.map((it, i) => bullet(it, i))}</ul>
           </div>
         )}
@@ -150,7 +150,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
               {d.pricing.notIncluded.map((it, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: 'var(--ink-5)' }}>
-                  <span style={{ color: '#B0473F', flex: '0 0 auto' }}>✕</span>{it}
+                  <span style={{ color: '#B0473F', flex: '0 0 auto' }}>✕</span>{inText(it)}
                 </li>
               ))}
             </ul>
@@ -216,7 +216,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
 
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
         <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{d.bottomLine.title}</h3>
-        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{p}</p>)}
+        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{inText(p)}</p>)}
         <p style={{ margin: '10px 0 0', fontSize: 12.5, color: 'var(--ink-5)' }}>100% refund within 24 hours if we haven&apos;t substantially started work.</p>
       </section>
 
@@ -231,6 +231,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
 }
 
 function CustomDetail() {
+  const { inText } = useCurrency()
   const [openFaq, setOpenFaq] = useState(-1)
   const d = CUSTOM
   return (
@@ -387,7 +388,7 @@ function CustomDetail() {
 
       <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
         <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{d.bottomLine.title}</h3>
-        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{p}</p>)}
+        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{inText(p)}</p>)}
         <p style={{ margin: '10px 0 0', fontSize: 12.5, color: 'var(--ink-5)' }}>{d.guarantee}</p>
       </section>
 

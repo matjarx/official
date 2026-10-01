@@ -53,7 +53,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
           </h1>
 
           <p style={{ margin: 0, maxWidth: '36em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.62, color: 'var(--ink-4)' }}>
-            Wix, Squarespace and GoDaddy all hand you a blank page. MatjarX hands you a finished website in seven days, from Rs. 22,500 — built by our team, with local payments, hosting and a real person on WhatsApp.
+            {inText('Wix, Squarespace and GoDaddy all hand you a blank page. MatjarX hands you a finished website in seven days, from Rs. 22,500 \u2014 built by our team, with local payments, hosting and a real person on WhatsApp.')}
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 4 }}>
@@ -204,12 +204,12 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                   <span style={{ flex: '0 0 auto', width: 30, height: 30, borderRadius: '50%', background: 'rgba(var(--scrim-rgb), 0.06)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 13, color: 'var(--ink-muted)' }}>{i + 1}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{w.title}</span>
-                    <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>{w.problem}</span>
+                    <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>{inText(w.problem)}</span>
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: 10, padding: '14px 18px', borderRadius: 16, background: 'rgba(var(--navy-rgb), 0.05)', minWidth: 0 }}>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--navy)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 2 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                  <span style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink-3)', fontWeight: 500 }}>{w.solution}</span>
+                  <span style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink-3)', fontWeight: 500 }}>{inText(w.solution)}</span>
                 </div>
               </div>
             ))}

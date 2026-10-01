@@ -133,7 +133,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.numbers.title}</h2>
           <CompareTable headers={['Metric', 'Value']} rows={d.numbers.rows} />
-          {d.numbers.footnote && <p style={{ margin: '16px 0 0', fontSize: 13, lineHeight: 1.6, color: 'var(--ink-5)' }}>{d.numbers.footnote}</p>}
+          {d.numbers.footnote && <p style={{ margin: '16px 0 0', fontSize: 13, lineHeight: 1.6, color: 'var(--ink-5)' }}>{inText(d.numbers.footnote)}</p>}
         </section>
       )}
 
@@ -142,7 +142,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.planTable.title}</h2>
           <CompareTable headers={d.planTable.table.headers} rows={d.planTable.table.rows} />
-          {d.planTable.note && <p style={{ margin: '16px 0 0', fontSize: 13, color: 'var(--ink-5)' }}>{d.planTable.note}</p>}
+          {d.planTable.note && <p style={{ margin: '16px 0 0', fontSize: 13, color: 'var(--ink-5)' }}>{inText(d.planTable.note)}</p>}
         </section>
       )}
 
@@ -198,7 +198,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '66px 24px 0' }}>
           <div className="glass-dark-panel" style={{ padding: 'clamp(26px, 3.6vw, 40px)', borderRadius: 26 }}>
             <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 19, color: 'var(--ink-inverse)' }}>{d.slaviStory.title}</h3>
-            <p style={{ margin: '0 0 14px', fontSize: 14.5, lineHeight: 1.65, color: 'rgba(var(--ink-on-dark-rgb), 0.82)' }}>&ldquo;{d.slaviStory.quote}&rdquo;</p>
+            <p style={{ margin: '0 0 14px', fontSize: 14.5, lineHeight: 1.65, color: 'rgba(var(--ink-on-dark-rgb), 0.82)' }}>&ldquo;{inText(d.slaviStory.quote)}&rdquo;</p>
             <span style={{ display: 'block', marginBottom: 12, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.slaviStory.name}</span>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
               {d.slaviStory.points.map((p, i) => <li key={i} style={{ fontSize: 13, color: 'rgba(var(--ink-on-dark-rgb), 0.7)' }}>• {p}</li>)}
@@ -214,18 +214,18 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
             {d.pricing.setup && (
               <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-                <span style={{ display: 'block', marginBottom: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, color: 'var(--ink-1)' }}>{d.pricing.setup.amount}</span>
+                <span style={{ display: 'block', marginBottom: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, color: 'var(--ink-1)' }}>{inText(d.pricing.setup.amount)}</span>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.setup.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             )}
             {d.pricing.monthly && (
               <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-                <span style={{ display: 'block', marginBottom: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, color: 'var(--ink-1)' }}>{d.pricing.monthly.amount}</span>
+                <span style={{ display: 'block', marginBottom: 10, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 18, color: 'var(--ink-1)' }}>{inText(d.pricing.monthly.amount)}</span>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.monthly.items.map((it, i) => bullet(it, i))}</ul>
               </div>
             )}
           </div>
-          {d.pricing.note && <p style={{ margin: '18px 0 0', fontSize: 13.5, fontWeight: 600, color: 'var(--olive)' }}>{d.pricing.note}</p>}
+          {d.pricing.note && <p style={{ margin: '18px 0 0', fontSize: 13.5, fontWeight: 600, color: 'var(--olive)' }}>{inText(d.pricing.note)}</p>}
         </section>
       )}
 

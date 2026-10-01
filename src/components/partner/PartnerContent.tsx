@@ -46,7 +46,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
   // The earnings figures follow the footer's currency like every other price
   // on the site. money() stays as the rupee formatter and the base-currency
   // fallback, exactly as SavingsCalculator uses it.
-  const { price } = useCurrency()
+  const { price, inText } = useCurrency()
   const { monthlyEarn, yearlyEarn, tenClients } = useMemo(() => {
     const fmt = (n: number) => price(n) ?? money(n)
     const per = PARTNER_PLAN_RATES[plan] * PARTNER_COMMISSION_PCT
@@ -111,12 +111,12 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                     <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 38, letterSpacing: '-1.4px', color: t.dark ? 'var(--ink-inverse)' : 'var(--ink-1)' }}>{t.rate}</span>
                     <span style={{ fontSize: 14, color: t.dark ? 'rgba(var(--ink-inverse-rgb), 0.6)' : 'var(--ink-muted)' }}>recurring</span>
                   </div>
-                  <span style={{ fontSize: 13, color: t.dark ? 'rgba(var(--ink-inverse-rgb), 0.6)' : 'var(--ink-muted)' }}>{t.bonus}</span>
+                  <span style={{ fontSize: 13, color: t.dark ? 'rgba(var(--ink-inverse-rgb), 0.6)' : 'var(--ink-muted)' }}>{inText(t.bonus)}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 9, paddingTop: 14, marginTop: 4, borderTop: `1px solid ${t.dark ? 'rgba(var(--ink-inverse-rgb), 0.16)' : 'rgba(var(--ink-1-rgb), 0.09)'}` }}>
                     {t.features.map((f) => (
                       <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.5, color: t.dark ? 'rgba(var(--ink-inverse-rgb), 0.82)' : 'var(--ink-4-alt)' }}>
                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke={t.dark ? 'var(--moss-light)' : 'var(--olive)'} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                        {f}
+                        {inText(f)}
                       </span>
                     ))}
                   </div>

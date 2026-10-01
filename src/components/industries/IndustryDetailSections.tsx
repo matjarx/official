@@ -12,8 +12,10 @@ import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data
 import type { IndustryKey } from '@/lib/industry-data'
 import { FaqList, bullet } from '@/components/FaqList'
 import { H2, BlockList } from '@/components/DetailPrimitives'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 export default function IndustryDetailSections({ industryKey, detail }: { industryKey: IndustryKey; detail?: IndustryDetail | null }) {
+  const { inText } = useCurrency()
   const [openFaq, setOpenFaq] = useState(-1)
   const d = detail ?? INDUSTRY_DETAIL[industryKey]
   if (!d) return null
@@ -111,7 +113,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{t.name}</span>
               <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{t.audience}</span>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{t.items.map((it, i) => bullet(it, i))}</ul>
-              {t.price && <span style={{ marginTop: 'auto', paddingTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{t.price}</span>}
+              {t.price && <span style={{ marginTop: 'auto', paddingTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{inText(t.price)}</span>}
             </div>
           ))}
         </div>

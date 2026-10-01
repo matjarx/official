@@ -31,7 +31,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
   const [openFaq, setOpenFaq] = useState(0)
   // The footer's selector drives these pages too -- a reader who switched to
   // AED on /pricing should not land on /launch-plan and be back in rupees.
-  const { display, isBase } = useCurrency()
+  const { display, isBase, price } = useCurrency()
 
   const monthlyNum = Number(content.price.replace(/[^0-9]/g, '')) || 0
   const yearlySaving = monthlyNum * 12 - monthlyNum * 12 * CYCLE_FACTOR.yearly
@@ -121,7 +121,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
 
             {planKey !== 'custom' && monthlyNum > 0 && (
               <p style={{ margin: 0, fontSize: 12.5, color: 'var(--olive)' }}>
-                Pay yearly and save {money(yearlySaving)}, or two years upfront and save {money(twoYearSaving)} — <Link href={routes.pricing} style={{ fontWeight: 600 }}>see the full breakdown</Link>
+                Pay yearly and save {price(yearlySaving) ?? money(yearlySaving)}, or two years upfront and save {price(twoYearSaving) ?? money(twoYearSaving)} — <Link href={routes.pricing} style={{ fontWeight: 600 }}>see the full breakdown</Link>
               </p>
             )}
 

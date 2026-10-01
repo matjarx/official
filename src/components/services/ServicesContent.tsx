@@ -129,7 +129,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--ink-on-butter-alt)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={g.icon} /></svg>
                   </span>
                   <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{g.title}</h3>
-                  <p style={{ margin: 0, fontSize: 14, lineHeight: 1.58, color: 'var(--ink-5)' }}>{g.body}</p>
+                  <p style={{ margin: 0, fontSize: 14, lineHeight: 1.58, color: 'var(--ink-5)' }}>{inText(g.body)}</p>
                 </div>
               ))}
             </div>
@@ -141,7 +141,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
           <div style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
-              <p style={{ margin: 0, fontSize: 17, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;{d.quote}&rdquo;</p>
+              <p style={{ margin: 0, fontSize: 17, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;{inText(d.quote)}&rdquo;</p>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, paddingTop: 4 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{d.quoteName}</span>
                 <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.quoteCompany}</span>

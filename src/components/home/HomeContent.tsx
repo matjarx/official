@@ -232,7 +232,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           <p style={{ margin: 0, fontSize: 'clamp(14px, 1.6vw, 17px)', color: ink4 }}>Having trouble launching the right website for your business?</p>
 
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 5.6vw, 60px)', lineHeight: 1.08, letterSpacing: '-2px', color: ink1 }}>
-            We&apos;ll build complete <span className="marker">small business websites</span> in 7 days for Rs. 22,500
+            We&apos;ll build complete <span className="marker">small business websites</span> in 7 days for {inText('Rs. 22,500')}
           </h1>
 
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: ink4 }}>
@@ -360,7 +360,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
                 {DIY_POINTS.map((p) => (
                   <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.6)' : 'var(--ink-muted)' }}>
-                    <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? 'var(--terracotta-light)' : '#8A5B3C', flex: '0 0 auto' }} />{p}
+                    <span style={{ marginTop: 6, width: 7, height: 7, borderRadius: '50%', background: dark ? 'var(--terracotta-light)' : '#8A5B3C', flex: '0 0 auto' }} />{inText(p)}
                   </span>
                 ))}
               </div>
@@ -373,7 +373,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7, paddingTop: 2 }}>
                 {AGENCY_POINTS.map((p) => (
                   <span key={p} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.6)' : 'var(--ink-muted)' }}>
-                    <span style={{ marginTop: 6, width: 4, height: 4, borderRadius: '50%', background: dark ? 'var(--terracotta-light)' : '#8A5B3C', flex: '0 0 auto' }} />{p}
+                    <span style={{ marginTop: 6, width: 7, height: 7, borderRadius: '50%', background: dark ? 'var(--terracotta-light)' : '#8A5B3C', flex: '0 0 auto' }} />{inText(p)}
                   </span>
                 ))}
               </div>

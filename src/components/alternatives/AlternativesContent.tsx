@@ -12,11 +12,13 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { HERO, GROUPS, WHY_COMPARE, CANT_FIND, CLOSING } from '@/lib/alternatives-data'
 import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 export type AlternativesContentShape = { hero: typeof HERO; groups: typeof GROUPS; whyCompare: typeof WHY_COMPARE }
 const DEFAULT_CONTENT: AlternativesContentShape = { hero: HERO, groups: GROUPS, whyCompare: WHY_COMPARE }
 
 export default function AlternativesContent({ content = DEFAULT_CONTENT }: { content?: AlternativesContentShape }) {
+  const { inText } = useCurrency()
   const HERO_ACTIVE = content.hero
   const GROUPS_ACTIVE = content.groups
   const WHY_COMPARE_ACTIVE = content.whyCompare
@@ -82,7 +84,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
             <p style={{ margin: '0 0 16px', fontSize: 15, color: 'var(--ink-5)' }}>{CANT_FIND.body}</p>
             <p style={{ margin: 0, fontSize: 15 }}>
               <Link href={routes.contact} style={{ fontWeight: 700, color: 'var(--olive)' }}>{CANT_FIND.cta}</Link>
-              <span style={{ color: 'var(--ink-5)' }}> {CANT_FIND.note}</span>
+              <span style={{ color: 'var(--ink-5)' }}> {inText(CANT_FIND.note)}</span>
             </p>
           </section>
 
@@ -91,7 +93,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
               <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{CLOSING.eyebrow}</span>
               <Link href={routes.contact} className="btn-primary">{CLOSING.cta}</Link>
-              <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>{CLOSING.note}</p>
+              <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>{inText(CLOSING.note)}</p>
             </div>
           </section>
 
