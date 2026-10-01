@@ -204,7 +204,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                 </div>
                 <div style={{ display: 'flex', gap: 10, padding: '14px 18px', borderRadius: 16, background: 'rgba(var(--navy-rgb), 0.05)', minWidth: 0 }}>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--navy)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 2 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
-                  <span style={{ fontSize: 14, lineHeight: 1.55, color: '#1B2E3F', fontWeight: 500 }}>{w.solution}</span>
+                  <span style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink-3)', fontWeight: 500 }}>{w.solution}</span>
                 </div>
               </div>
             ))}

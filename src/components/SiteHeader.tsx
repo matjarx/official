@@ -110,14 +110,17 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
               // Symmetric, and it was not: '5px 5px 5px 9px' put 9px on the
               // left against 5px on the right, so the first item's hover pill
               // sat 4px further in than the last one's and the highlight read
-              // as misaligned with the row it belongs to.
+              // as misaligned with the row it belongs to. That asymmetry was
+              // the misalignment; the glass itself was never the problem.
               padding: '5px',
               borderRadius: 999,
-              // No background, border, blur or shadow on the nav itself.
-              // The hover and active states are the affordance; a second
-              // container behind them was a surface competing with the pills
-              // it held, and on a dark ground it read as a misplaced layer
-              // rather than a frame.
+              // The glass is back, lighter than it was. It had been removed
+              // entirely, which took the pill out from under the nav and left
+              // the links floating on the page.
+              background: dark ? 'rgba(var(--ink-inverse-rgb), 0.05)' : 'rgba(var(--ink-inverse-rgb), 0.42)',
+              border: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.10)' : '1px solid rgba(var(--ink-inverse-rgb), 0.7)',
+              backdropFilter: 'blur(24px)',
+              boxShadow: dark ? '0 10px 26px rgba(0,8,18,0.22), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.10)' : '0 10px 26px rgba(var(--scrim-rgb), 0.06), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.8)',
             }}
           >
               {NAV_ITEMS.map((item, i) => {

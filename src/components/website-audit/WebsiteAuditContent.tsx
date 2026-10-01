@@ -145,7 +145,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                 </span>
               ))}
             </div>
-            <p style={{ margin: '18px 0 0', fontSize: 14.5, fontWeight: 600, color: 'var(--navy)', textAlign: 'center' }}>Result: {WHAT_IS_AUDIT.result}</p>
+            <p style={{ margin: '18px 0 0', fontSize: 14.5, fontWeight: 600, color: 'var(--accent-ink)', textAlign: 'center' }}>Result: {WHAT_IS_AUDIT.result}</p>
           </section>
 
           {/* Why your website needs an audit */}
@@ -200,7 +200,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                         <div style={{ padding: '14px 18px', borderRadius: 16, background: 'rgba(var(--navy-rgb), 0.05)', display: 'flex', flexDirection: 'column', gap: 6 }}>
                           <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: 'var(--ink-muted)' }}>What you&apos;ll learn</span>
                           {area.learn.map((l) => (
-                            <span key={l} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: '#1B2E3F' }}>
+                            <span key={l} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-3)' }}>
                               <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="var(--navy)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
                               {l}
                             </span>
