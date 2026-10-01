@@ -352,7 +352,7 @@ export default function EditorShowcase({ statusInk = 'rgba(var(--ink-on-dark-rgb
                     below now straddles the top-right corner of the selected
                     section, the way a real editor attaches it, and that
                     corner has to be clear for it. */}
-                <span style={{ fontSize: 8.5, color: 'rgba(var(--ink-on-dark-rgb), 0.38)', flex: '0 0 auto', marginLeft: 4 }}>Desktop 1440</span>
+                <span style={{ fontSize: 8.5, color: 'rgba(var(--ink-on-dark-rgb), 0.62)', flex: '0 0 auto', marginLeft: 4 }}>Desktop 1440</span>
                 <span style={{ margin: '0 auto', padding: '3px 12px', borderRadius: 999, fontSize: 9.5, color: 'rgba(var(--ink-on-dark-rgb), 0.6)', background: 'rgba(var(--surface-rgb), 0.07)' }}>{domain}</span>
                 <span style={{ width: 74, flex: '0 0 auto' }} aria-hidden="true" />
               </div>

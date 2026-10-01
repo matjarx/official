@@ -65,6 +65,18 @@ html {
    * glow stays a colour rather than becoming a grey shadow. Dark mode keeps
    * butter, which is what it was designed against. */
   --pulse-glow-rgb: 105,109,52;
+
+  /* The glass card surface, as tokens rather than only a class.
+   *
+   * .glass-card is the class form, but the same recipe is also written
+   * inline and carried in data files (help-data's channel cards), and those
+   * copies cannot inherit a .dark-theme override. A token both can read
+   * fixes every copy at once. */
+  --glass-card-bg: rgba(255,255,255,0.62);
+  --glass-card-line: rgba(255,255,255,0.85);
+  --glass-card-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9);
+  /* Accent ink for a link or a highlighted value sitting on that surface. */
+  --accent-ink: var(--navy);
   --cream-rgb: 252,250,243;
   --cream-deep-rgb: 242,238,226;
   --olive-rgb: 105,109,52;
@@ -181,6 +193,10 @@ html {
   --olive: #C6CB8A;
   --olive-rgb: 198,203,138;     /* follows --olive, as every triplet must */
   --pulse-glow-rgb: 244,242,174; /* butter: the glow this was designed against */
+  --glass-card-bg: rgba(255,255,255,0.07);
+  --glass-card-line: rgba(255,255,255,0.14);
+  --glass-card-shadow: 0 16px 40px rgba(0,12,22,0.34), inset 0 1px 0 rgba(255,255,255,0.08);
+  --accent-ink: var(--mid-blue);
   --olive-active: #D7DBA8;      /* lighter than the olive, as in light mode */
 
   --mid-blue: #A8CDEC;          /* the dashboard's --info-text */
@@ -315,10 +331,10 @@ p {
 
 /* Glass recipes */
 .glass-card {
-  background: rgba(255,255,255,0.62);
-  border: 1px solid rgba(255,255,255,0.85);
+  background: var(--glass-card-bg);
+  border: 1px solid var(--glass-card-line);
   backdrop-filter: blur(22px);
-  box-shadow: 0 16px 40px rgba(4,18,31,0.07), inset 0 1px 0 rgba(255,255,255,0.9);
+  box-shadow: var(--glass-card-shadow);
 }
 .glass-chip {
   background: rgba(255,255,255,0.66);
@@ -376,11 +392,7 @@ p {
  * button. .btn-secondary was not -- it pairs a white pill with
  * colour: var(--ink-1), which is exactly the same trap.
  */
-.dark-theme .glass-card {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.14);
-  box-shadow: 0 16px 40px rgba(0,12,22,0.34), inset 0 1px 0 rgba(255,255,255,0.08);
-}
+/* .glass-card needs no dark override: it reads --glass-card-* above. */
 .dark-theme .glass-chip {
   background: rgba(255,255,255,0.09);
   border: 1px solid rgba(255,255,255,0.16);
@@ -1140,7 +1152,12 @@ textarea.input {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.theme-card-cta { margin-top: auto; padding-top: 8px; font-size: 12.5px; font-weight: 700; color: var(--olive); }
+/* Pinned, like everything else on this card. .theme-card is background:
+   #fff in both themes -- it frames a template screenshot, so it stays white
+   -- and its name and description are pinned dark to match. The CTA alone
+   used var(--olive), which flips to #C6CB8A in dark mode: light green on
+   white, 1.71, on every one of the 147 template cards. */
+.theme-card-cta { margin-top: auto; padding-top: 8px; font-size: 12.5px; font-weight: 700; color: #696D34; }
 
 .theme-modal-scrim {
   position: fixed;
