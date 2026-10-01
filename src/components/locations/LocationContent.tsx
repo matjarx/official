@@ -167,7 +167,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
           <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What we build</span>
+              <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What we build</span>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>Websites for {d.name}&rsquo;s industries</h2>
             </div>
             {d.industries.some((i) => i.body) ? (
@@ -246,7 +246,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 24px 0' }}>
             <div className="glass-cream" style={{ padding: 'clamp(26px, 3.4vw, 40px)', borderRadius: 26, display: 'flex', flexDirection: 'column', gap: 20 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>Areas we serve</span>
+                <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Areas we serve</span>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.16, letterSpacing: '-1px', color: 'var(--ink-1)' }}>Businesses across {d.name} and around it</h2>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9 }}>

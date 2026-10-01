@@ -20,9 +20,12 @@ const KIND_LABEL: Record<CrossLink['kind'], string> = {
 }
 
 const KIND_TINT: Record<CrossLink['kind'], string> = {
-  service: 'var(--navy)',
+  // Every tint here is a small eyebrow label, so each must flip with the
+  // theme. --navy and the pinned red did not: on a dark card they rendered
+  // dark-on-dark, "LOCATION" at 1.47.
+  service: 'var(--accent-ink)',
   industry: 'var(--olive)',
-  city: '#8E1B22',
+  city: 'var(--terracotta)',
   blog: 'var(--mid-blue)',
   plan: '#C9A227',
   page: 'var(--ink-muted)',

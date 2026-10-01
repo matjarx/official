@@ -78,7 +78,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                       </span>
                     ))}
                   </div>
-                  <span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--navy)', paddingTop: 4, borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)', marginTop: 4 }}>Contact: {c.contact}</span>
+                  <span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--accent-ink)', paddingTop: 4, borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)', marginTop: 4 }}>Contact: {c.contact}</span>
                 </div>
               ))}
             </div>
@@ -111,7 +111,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                       <div key={o.label} style={{ display: 'flex', gap: 13, alignItems: 'flex-start' }}>
                         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--moss-light)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d={o.icon} /></svg>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
-                          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.42)', fontWeight: 600 }}>{o.label}</span>
+                          <span style={{ fontSize: 11.5, letterSpacing: '1.2px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.58)', fontWeight: 600 }}>{o.label}</span>
                           <span style={{ fontSize: 14.5, lineHeight: 1.5, color: 'rgba(var(--ink-inverse-rgb), 0.88)' }}>{o.value}</span>
                         </div>
                       </div>

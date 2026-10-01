@@ -168,7 +168,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '68px 24px 0' }}>
             <div style={{ padding: 'clamp(26px, 4vw, 40px) clamp(22px, 3.5vw, 42px)', borderRadius: 26, background: 'rgba(var(--cream-deep-rgb), 0.6)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.7)', backdropFilter: 'blur(20px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.8)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
-                <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What you could earn</span>
+                <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you could earn</span>
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.16, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Ten Boost clients pays you {tenClients} a month, indefinitely</h2>
                 <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.65, color: 'var(--ink-4-alt)' }}>Commission is recurring, not one-time. As long as your referred client stays with us, you keep earning — and we handle every part of the delivery.</p>
               </div>
@@ -200,7 +200,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
                 </div>
                 <div style={{ paddingTop: 18, borderTop: '1px solid rgba(var(--ink-1-rgb), 0.09)', display: 'flex', flexDirection: 'column', gap: 5 }}>
                   <span style={{ fontSize: 12.5, color: 'var(--ink-muted)' }}>Your recurring monthly commission</span>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-1.3px', color: 'var(--navy)' }}>{monthlyEarn}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-1.3px', color: 'var(--accent-ink)' }}>{monthlyEarn}</span>
                   <span style={{ fontSize: 12.5, color: 'var(--olive)', fontWeight: 600 }}>{yearlyEarn} over a year</span>
                 </div>
               </div>

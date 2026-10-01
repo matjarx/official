@@ -91,7 +91,7 @@ export default function ArticleToc({ items }: { items: TocItem[] }) {
 
   return (
     <nav className="glass-card" aria-label="In this article" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-      <span style={{ display: 'block', fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600, marginBottom: 14 }}>
+      <span style={{ display: 'block', fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600, marginBottom: 14 }}>
         In this article
       </span>
       <ol style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column' }}>

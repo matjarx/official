@@ -398,6 +398,15 @@ p {
  * colour: var(--ink-1), which is exactly the same trap.
  */
 /* .glass-card needs no dark override: it reads --glass-card-* above. */
+/* .glass-cream is the warm sibling of .glass-card, used on the comparison,
+ * location and pricing pages. It was the one glass recipe still without a
+ * dark value, so those cards stayed cream under light text -- "Whether you
+ * run a boutique in Karachi" measured 1.46 on the major-city pages. */
+.dark-theme .glass-cream {
+  background: var(--glass-card-bg);
+  border: 1px solid var(--glass-card-line);
+}
+
 .dark-theme .glass-chip {
   background: rgba(255,255,255,0.09);
   border: 1px solid rgba(255,255,255,0.16);

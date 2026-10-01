@@ -99,7 +99,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                         <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.68, color: 'var(--ink-3-alt)' }}>{r.summary}</p>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 24 }}>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 11, minWidth: 0 }}>
-                            <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What you&rsquo;ll do</span>
+                            <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What you&rsquo;ll do</span>
                             {r.duties.map((d) => (
                               <span key={d} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.58, color: 'var(--ink-4-alt)' }}>
                                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
@@ -108,7 +108,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
                             ))}
                           </div>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 11, minWidth: 0 }}>
-                            <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: '#7C6D54', fontWeight: 600 }}>What we&rsquo;re looking for</span>
+                            <span style={{ fontSize: 11.5, letterSpacing: '1.3px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>What we&rsquo;re looking for</span>
                             {r.needs.map((n) => (
                               <span key={n} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.58, color: 'var(--ink-4-alt)' }}>
                                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--olive)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3 }}><path d="m5 12.5 4.5 4.5L19 7" /></svg>
