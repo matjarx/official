@@ -15,6 +15,7 @@ import { BLOG_INDEX_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import NewsletterSignup from './NewsletterSignup'
 import PostCard from './PostCard'
+import { AuthorName } from './AuthorCard'
 import { routes } from '@/lib/routes'
 import { BLOG_CATEGORIES, FEATURED_SLUG, AUTHOR, type BlogCategory, type BlogPost } from '@/lib/blog-data'
 
@@ -79,7 +80,7 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
                   <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-5)' }}>{featuredPost.excerpt}</p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 4 }}>
                     <span style={{ width: 34, height: 34, borderRadius: '50%', background: 'var(--moss-light)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: 'var(--ink-on-butter)' }}>{AUTHOR.initials}</span>
-                    <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>{(featuredPost.author ?? AUTHOR).name} · {featuredPost.date} · {featuredPost.readTime}</span>
+                    <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}><AuthorName author={featuredPost.author ?? AUTHOR} /> · {featuredPost.date} · {featuredPost.readTime}</span>
                   </div>
                 </div>
               </Link>

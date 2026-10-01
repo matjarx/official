@@ -11,7 +11,25 @@
 // a byline rather than an empty space.
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { authorInitials, type BlogAuthor, avatarSrc } from '@/lib/blog-data'
+import { routes } from '@/lib/routes'
+
+/** The author's name, linked to their archive when they have one.
+ *
+ *  `slug` is only set on authors that came from the table, so the hardcoded
+ *  team fallback stays unlinked -- it has no page to point at. That is the
+ *  rule BlogAuthor's own type already states, applied in one place so the
+ *  hero byline, the end-of-article card and the index cards cannot drift
+ *  apart on it. */
+export function AuthorName({ author, className }: { author: BlogAuthor; className?: string }) {
+  if (!author.slug) return <>{author.name}</>
+  return (
+    <Link href={routes.blogAuthor(author.slug)} className={className ?? 'author-name-link'} rel="author">
+      {author.name}
+    </Link>
+  )
+}
 
 function Avatar({ author, size }: { author: BlogAuthor; size: number }) {
   if (author.avatarUrl) {
@@ -57,7 +75,7 @@ export function AuthorByline({ author, meta, dark = true }: { author: BlogAuthor
       <Avatar author={author} size={42} />
       <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
         <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'var(--ink-inverse)' : 'var(--ink-1)' }}>
-          {author.name}
+          <AuthorName author={author} />
         </span>
         <span style={{ fontSize: 13, color: dark ? 'rgba(var(--ink-inverse-rgb), 0.6)' : 'var(--ink-muted)' }}>{meta}</span>
       </span>
@@ -67,7 +85,12 @@ export function AuthorByline({ author, meta, dark = true }: { author: BlogAuthor
 
 /** The full card under the article body. */
 export default function AuthorCard({ author }: { author: BlogAuthor }) {
-  const name = author.url ? (
+  // The archive wins over `url` when both exist: it is this site's own page
+  // for the person, carrying every post they wrote, where `url` leaves for
+  // somewhere else entirely.
+  const name = author.slug ? (
+    <AuthorName author={author} />
+  ) : author.url ? (
     <a href={author.url} target="_blank" rel="noopener noreferrer author" className="author-name-link">
       {author.name}
     </a>
