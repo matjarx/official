@@ -85,7 +85,7 @@ function CompareTableEl({ headers, rows }: { headers: string[]; rows: string[][]
 function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKey }) {
   // Same currency as the hero above it. A page showing "AED 360/mo" at the
   // top and "PKR 22,500" in its own breakdown reads as a mistake.
-  const { display } = useCurrency()
+  const { display, inText } = useCurrency()
   const [openFaq, setOpenFaq] = useState(-1)
   return (
     <>
@@ -156,15 +156,15 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
 
         {d.pricing.perMonthValue && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
-            <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{d.pricing.perMonthValue.intro}</h3>
+            <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{inText(d.pricing.perMonthValue.intro)}</h3>
             <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
               {d.pricing.perMonthValue.items.map((it, i) => (
                 <li key={i} style={{ display: 'flex', justifyContent: 'space-between', gap: 10, fontSize: 13.5, color: 'var(--ink-5)' }}>
-                  <span>{it.label}</span>{it.value && <span style={{ fontWeight: 600, color: 'var(--olive)', whiteSpace: 'nowrap' }}>{it.value}</span>}
+                  <span>{it.label}</span>{it.value && <span style={{ fontWeight: 600, color: 'var(--olive)', whiteSpace: 'nowrap' }}>{inText(it.value)}</span>}
                 </li>
               ))}
             </ul>
-            <span style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{d.pricing.perMonthValue.total}</span>
+            <span style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{inText(d.pricing.perMonthValue.total)}</span>
           </div>
         )}
 
@@ -174,8 +174,8 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         {d.pricing.roi && (
           <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginTop: 22 }}>
             <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>ROI calculation</h3>
-            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>{d.pricing.roi.intro}</p>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.roi.lines.map((it, i) => bullet(it, i))}</ul>
+            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>{inText(d.pricing.roi.intro)}</p>
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.roi.lines.map((it, i) => bullet(inText(it), i))}</ul>
           </div>
         )}
 
@@ -239,7 +239,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
           <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{d.closing.eyebrow}</span>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: 'var(--ink-inverse)' }}>{d.closing.title}</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {d.closing.priceLines.map((l) => <span key={l} style={{ fontSize: 14, color: 'rgba(var(--ink-inverse-rgb), 0.7)' }}>{l}</span>)}
+            {d.closing.priceLines.map((l) => <span key={l} style={{ fontSize: 14, color: 'rgba(var(--ink-inverse-rgb), 0.7)' }}>{inText(l)}</span>)}
           </div>
           <a href={appSignup(planKey === 'custom' ? undefined : (planKey as 'launch' | 'boost' | 'growth' | 'platinum'))} className="btn-primary">{d.closing.cta}</a>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', paddingTop: 10 }}>

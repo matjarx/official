@@ -24,6 +24,7 @@ import { RATING_BADGES, VOICES } from '@/lib/home-data'
 import type { HomeContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { useTheme } from '@/components/ThemeProvider'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 // Code-split rather than statically imported: both sit well below the
 // fold (savings calculator, website-examples grid + its full-screen
@@ -198,6 +199,8 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
   // preference, the provider set the class while this state was still false,
   // so the button read "Switch to dark" on an already-dark page.
   const theme = useTheme()
+  // Prices on this page follow the footer's selector like every other page.
+  const { display, inText } = useCurrency()
   const dark = theme.dark
   const [openFaq, setOpenFaq] = useState(0)
 
@@ -361,7 +364,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   </span>
                 ))}
               </div>
-              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>Rs. 140,000 / yr + your weekends</span>
+              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>{inText('Rs. 140,000')} / yr + your weekends</span>
             </div>
             <div className={dark ? 'glass-dark-inner' : undefined} style={{ padding: '30px 28px', borderRadius: 22, background: dark ? undefined : 'rgba(var(--cream-deep-rgb), 0.6)', border: dark ? undefined : '1px solid rgba(var(--ink-inverse-rgb), 0.7)', backdropFilter: dark ? undefined : 'blur(20px)', display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.5)' : '#7C6D54', fontWeight: 600 }}>Option two</span>
@@ -374,13 +377,13 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   </span>
                 ))}
               </div>
-              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>Rs. 420,000–840,000 + upkeep</span>
+              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: dark ? 'var(--terracotta-light)' : '#8A5B3C' }}>{inText('Rs. 420,000')}–{inText('Rs. 840,000')} + upkeep</span>
             </div>
             <div style={{ padding: '30px 28px', borderRadius: 22, background: 'var(--navy)', display: 'flex', flexDirection: 'column', gap: 12, boxShadow: '0 24px 50px rgba(var(--navy-rgb), 0.28)' }}>
               <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--butter)', fontWeight: 600 }}>Option three</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.6px', color: 'var(--ink-inverse)' }}>MatjarX</h3>
               <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.78)' }}>Agency quality, built for you in a week, with an editor simple enough to actually use.</p>
-              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>Rs. 22,500 once, then Rs. 4,500 / mo</span>
+              <span style={{ marginTop: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--butter)' }}>{inText('Rs. 22,500')} once, then {inText('Rs. 4,500')} / mo</span>
               <p style={{ margin: '4px 0 0', fontSize: 13.5, lineHeight: 1.55, color: 'rgba(var(--ink-inverse-rgb), 0.62)' }}>The truly affordable, ready-to-use website solution designed for small business owners in Pakistan.</p>
             </div>
           </div>
@@ -558,10 +561,10 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   </div>
                   <span style={{ fontSize: 13.5, lineHeight: 1.5, color: t.muted }}>{p.pitch}</span>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, paddingTop: 6 }}>
-                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-1px', color: t.ink }}>{p.price}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-1px', color: t.ink }}>{display(p.price)}</span>
                     <span style={{ fontSize: 13, color: t.muted }}>/ mo</span>
                   </div>
-                  <span style={{ fontSize: 12.5, color: t.muted }}>+ {p.setup} setup</span>
+                  <span style={{ fontSize: 12.5, color: t.muted }}>+ {display(p.setup)} setup</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 9, paddingTop: 12, marginTop: 4, borderTop: `1px solid ${t.rule}` }}>
                     {p.features.map((f) => (
                       <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.45, color: t.body }}>

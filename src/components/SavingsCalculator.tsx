@@ -8,6 +8,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { routes } from '@/lib/routes'
 import { money } from '@/lib/money'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 const HOUR_STEPS = [10, 15, 25, 40, 60]
 const RATE_STEPS = [2500, 5000, 7500, 10000]
@@ -17,6 +18,12 @@ const MATJARX_FEE = 22500
 export default function SavingsCalculator() {
   const [hours, setHours] = useState(15)
   const [rate, setRate] = useState(5000)
+
+  // Every figure in this calculator is a real number, so it converts
+  // cleanly -- unlike the prose elsewhere that merely mentions a price.
+  // money() stays as the rupee formatter and the fallback.
+  const { price } = useCurrency()
+  const fmt = (n: number) => price(n) ?? money(n)
 
   const diyTotal = hours * rate
   const saving = diyTotal - MATJARX_FEE
@@ -46,7 +53,7 @@ export default function SavingsCalculator() {
           <div className="glass-dark-inner" style={{ display: 'flex', flexDirection: 'column', gap: 11, padding: '18px 20px', borderRadius: 18 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.82)', marginRight: 'auto' }}>Per hour cost</span>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>{money(rate)} / hour</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 19, letterSpacing: '-0.4px', color: 'var(--butter)', whiteSpace: 'nowrap' }}>{fmt(rate)} / hour</span>
             </div>
             <div style={{ display: 'flex', gap: 6 }}>
               {RATE_STEPS.map((r) => {
@@ -65,21 +72,21 @@ export default function SavingsCalculator() {
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, paddingBottom: 13, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
               <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>Doing it yourself</span>
-              <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)' }}>{hours} hours × {money(rate)} / hour</span>
+              <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)' }}>{hours} hours × {fmt(rate)} / hour</span>
             </div>
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--ink-inverse)', whiteSpace: 'nowrap' }}>{money(diyTotal)}</span>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--ink-inverse)', whiteSpace: 'nowrap' }}>{fmt(diyTotal)}</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, paddingBottom: 13, borderBottom: '1px solid rgba(var(--ink-inverse-rgb), 0.12)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginRight: 'auto', minWidth: 0 }}>
               <span style={{ fontSize: 13.5, color: 'rgba(var(--ink-on-dark-strong-rgb), 0.84)' }}>MatjarX, live in 7 days</span>
               <span style={{ fontSize: 11.5, color: 'rgba(var(--ink-on-dark-rgb), 0.5)' }}>One-time Launch setup fee</span>
             </div>
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--moss-light)', whiteSpace: 'nowrap' }}>{money(MATJARX_FEE)}</span>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.6px', color: 'var(--moss-light)', whiteSpace: 'nowrap' }}>{fmt(MATJARX_FEE)}</span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 2 }}>
             <span style={{ fontSize: 12, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>You save</span>
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(34px, 5vw, 46px)', lineHeight: 1.05, letterSpacing: '-1.6px', color: 'var(--butter)' }}>{money(saving > 0 ? saving : 0)}</span>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(34px, 5vw, 46px)', lineHeight: 1.05, letterSpacing: '-1.6px', color: 'var(--butter)' }}>{fmt(saving > 0 ? saving : 0)}</span>
             <span style={{ fontSize: 13, lineHeight: 1.55, color: 'rgba(var(--ink-on-dark-rgb), 0.6)' }}>
               {saving > 0 ? `And you don't spend a single one of those ${hours} hours.` : 'Even at this rate, your time is better spent running the business.'}
             </span>
@@ -87,7 +94,7 @@ export default function SavingsCalculator() {
 
           <Link href={routes.pricing} className="btn-primary" style={{ marginTop: 6, display: 'block', textAlign: 'center' }}>Sign up now</Link>
         </div>
-        <span style={{ fontSize: 12, lineHeight: 1.55, textAlign: 'center', color: 'rgba(var(--ink-on-dark-rgb), 0.45)' }}>Rs. 22,500 is the one-time Launch setup fee. Hosting, domain and business email are included.</span>
+        <span style={{ fontSize: 12, lineHeight: 1.55, textAlign: 'center', color: 'rgba(var(--ink-on-dark-rgb), 0.45)' }}>{fmt(MATJARX_FEE)} is the one-time Launch setup fee. Hosting, domain and business email are included.</span>
       </div>
     </div>
   )

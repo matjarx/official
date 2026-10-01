@@ -36,6 +36,7 @@
 // now. That is the part of this change that is not cosmetic.
 
 import type React from 'react'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 export type FaqEntry = {
   q: string
@@ -74,6 +75,11 @@ export function FaqList({
   itemKey?: (entry: FaqEntry, index: number) => React.Key
   bullets?: boolean
 }) {
+  // One accordion for the whole site, so converting here reaches every FAQ
+  // rather than each page's own copy. inText rewrites only the money inside a
+  // sentence: "included in the Rs. 140,000" becomes "included in the AED
+  // 1,860", and the rest of the answer is untouched.
+  const { inText } = useCurrency()
   const ink = dark ? 'var(--ink-inverse)' : 'var(--ink-1)'
   const body = dark ? 'rgba(var(--ink-inverse-rgb), 0.7)' : 'var(--ink-4)'
   const chev = dark ? 'rgba(var(--ink-inverse-rgb), 0.6)' : 'var(--ink-muted)'
@@ -90,17 +96,17 @@ export function FaqList({
               aria-expanded={open}
               style={{ all: 'unset', cursor: 'pointer', boxSizing: 'border-box', width: '100%', display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 22px' }}
             >
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, lineHeight: 1.35, color: ink, marginRight: 'auto', textAlign: 'left' }}>{f.q}</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, lineHeight: 1.35, color: ink, marginRight: 'auto', textAlign: 'left' }}>{inText(f.q)}</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={chev} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
             </button>
             {open && (
               bullets ? (
                 <div style={{ padding: '0 22px 20px' }}>
-                  <p style={{ margin: f.items ? '0 0 8px' : 0, fontSize: 14.5, lineHeight: 1.68, color: body }}>{f.a}</p>
+                  <p style={{ margin: f.items ? '0 0 8px' : 0, fontSize: 14.5, lineHeight: 1.68, color: body }}>{inText(f.a)}</p>
                   {f.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{f.items.map((it, j) => bullet(it, j))}</ul>}
                 </div>
               ) : (
-                <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: body }}>{f.a}</p>
+                <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: body }}>{inText(f.a)}</p>
               )
             )}
           </div>

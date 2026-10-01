@@ -16,6 +16,7 @@ import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import { amount } from '@/lib/money'
 import { useCurrency } from '@/components/CurrencyProvider'
+import { ALL_PLANS } from '@/lib/plan-data'
 import { parsePkr } from '@/lib/currency'
 import type { PricingContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
@@ -153,6 +154,14 @@ export default function PricingContent({ content }: { content: PricingContentSha
   // change three lines in the footer and leave every price on the pricing
   // page in rupees, which is the one page where it mattered.
   const { isBase, price: inLocal } = useCurrency()
+
+  // The worked example under the billing toggle, from Boost's real price.
+  const boostBase = parsePkr(ALL_PLANS.boost.price) ?? 0
+  const asMoney = (n: number) => inLocal(n) ?? `Rs. ${amount(n)}`
+  const boostMonthly = asMoney(boostBase)
+  const boostYearly = asMoney(boostBase * 12)
+  const boostYearlySaving = asMoney(boostBase * 2)
+  const boostTwoYearSaving = asMoney(boostBase * 6)
 
   const factor = CYCLE_FACTOR[cycle]
   const fmt = (n: number) => Math.round((n * factor) / 50) * 50
@@ -326,9 +335,12 @@ export default function PricingContent({ content }: { content: PricingContentSha
             <span style={{ fontSize: 14, color: 'var(--ink-4-alt)' }}><strong>Two-year plan:</strong> get 6 months free (25% savings)</span>
           </div>
           <div style={{ padding: '16px 18px', borderRadius: 14, background: 'var(--cream-deep)', display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <span style={{ fontSize: 13.5, color: 'var(--ink-4)' }}>Example: Boost at Rs. 15,600/month = Rs. 187,200/year full price</span>
-            <span style={{ fontSize: 13.5, color: 'var(--ink-4)' }}>Yearly commitment: save Rs. 31,200 (2 months free)</span>
-            <span style={{ fontSize: 13.5, color: 'var(--ink-4)' }}>Two-year commitment: save Rs. 93,600 (6 months free)</span>
+            {/* Derived from Boost's own price rather than written out, so
+                these follow the currency selector and cannot drift from the
+                card above them if a price ever changes. */}
+            <span style={{ fontSize: 13.5, color: 'var(--ink-4)' }}>Example: Boost at {boostMonthly}/month = {boostYearly}/year full price</span>
+            <span style={{ fontSize: 13.5, color: 'var(--ink-4)' }}>Yearly commitment: save {boostYearlySaving} (2 months free)</span>
+            <span style={{ fontSize: 13.5, color: 'var(--ink-4)' }}>Two-year commitment: save {boostTwoYearSaving} (6 months free)</span>
           </div>
           <p style={{ margin: '16px 0 0', fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-muted)' }}>Commit longer, invest less. All plans include the same quality, features and support.</p>
         </div>

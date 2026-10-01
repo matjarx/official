@@ -55,6 +55,10 @@ type CurrencyContextValue = {
    *  number in it -- "Let's talk" and "Custom quote" must keep reading as
    *  words rather than becoming a figure nobody quoted. */
   display: (original: string) => string
+  /** Rewrites every rupee amount INSIDE a sentence, leaving the words alone:
+   *  "PKR 35,000 value" becomes "AED 465 value", not just "AED 465". Needed
+   *  wherever a price is embedded in copy rather than standing on its own. */
+  inText: (original: string) => string
 }
 
 const CurrencyContext = createContext<CurrencyContextValue>({
@@ -63,6 +67,7 @@ const CurrencyContext = createContext<CurrencyContextValue>({
   isBase: true,
   price: () => null,
   display: (original: string) => original,
+  inText: (original: string) => original,
 })
 
 export function useCurrency() {
@@ -112,6 +117,16 @@ export default function CurrencyProvider({ children }: { children: React.ReactNo
         if (isBase) return original
         const pkr = parsePkr(original)
         return pkr === null ? original : formatCurrency(convert(pkr, rate), currency)
+      },
+      inText: (original: string) => {
+        if (isBase) return original
+        // Only a number carrying a rupee marker is touched. A bare number in
+        // the same sentence -- "10 blog posts", "5+ specialists" -- is not a
+        // price and must survive untouched.
+        return original.replace(/(?:Rs\.?|PKR)\s?([\d,]+(?:\.\d+)?)/g, (whole, digits) => {
+          const n = Number(String(digits).replace(/,/g, ''))
+          return Number.isFinite(n) && n > 0 ? formatCurrency(convert(n, rate), currency) : whole
+        })
       },
     }
   }, [currency, rates, setCurrency])
