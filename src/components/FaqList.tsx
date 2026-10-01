@@ -63,7 +63,7 @@ function Bullet({ text }: { text: string }) {
   const { inText } = useCurrency()
   return (
     <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-5)' }}>
-      <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{inText(text)}
+      <span style={{ marginTop: 6, width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{inText(text)}
     </li>
   )
 }

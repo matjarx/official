@@ -34,7 +34,7 @@ function IconCardGrid({ items, cols = 4 }: { items: IconCard[]; cols?: number })
           <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
             {c.body.map((b) => (
               <li key={b} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>
-                <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />
+                <span style={{ marginTop: 6, width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />
                 {b}
               </li>
             ))}
@@ -151,7 +151,7 @@ export default function TemplatesContent({
                   <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>
                     {s.items.map((it) => (
                       <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>
-                        <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />
+                        <span style={{ marginTop: 6, width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />
                         {it}
                       </li>
                     ))}
@@ -198,7 +198,7 @@ export default function TemplatesContent({
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 12 }}>
                 {TEMPLATE_UPDATES.items.map((it) => (
                   <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: 'var(--ink-5)' }}>
-                    <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{it}
+                    <span style={{ marginTop: 6, width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{it}
                   </li>
                 ))}
               </ul>
@@ -210,7 +210,7 @@ export default function TemplatesContent({
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 12 }}>
                 {MIGRATION.items.map((it) => (
                   <li key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: 'var(--ink-5)' }}>
-                    <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{it}
+                    <span style={{ marginTop: 6, width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{it}
                   </li>
                 ))}
               </ul>

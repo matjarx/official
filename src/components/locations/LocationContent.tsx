@@ -16,20 +16,19 @@ import { crossLinksForCity } from '@/lib/cross-links'
 import { routes } from '@/lib/routes'
 import { CITY_DATA, otherCitiesFor, type CityKey } from '@/lib/location-data'
 import { CITY_DETAIL, type CityProcessStep, type CityPlanTier, type CityCompareGroup } from '@/lib/location-detail-data'
-import { FaqList } from '@/components/FaqList'
+import { FaqList, bullet } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
-
-const bullet = (text: string, key?: React.Key) => (
-  <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-5)' }}>
-    <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{text}
-  </li>
-)
+import { useCurrency } from '@/components/CurrencyProvider'
 
 export type LocationContentShape = (typeof CITY_DATA)[CityKey] & {
   detail: { process: CityProcessStep[]; plans: CityPlanTier[]; whyOver: CityCompareGroup[] }
 }
 
 export default function LocationContent({ locationKey, content }: { locationKey: CityKey; content?: LocationContentShape }) {
+  // Every city page quotes the plans, so they follow the footer's currency
+  // like every other price. The list items go through the shared bullet,
+  // which converts on its own.
+  const { inText } = useCurrency()
   const [openFaq, setOpenFaq] = useState(0)
   const d = content ?? { ...CITY_DATA[locationKey], detail: CITY_DETAIL[locationKey] }
   const detail = d.detail
@@ -201,7 +200,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
               <div key={s.title} className="glass-card" style={{ padding: '26px 24px 28px', borderRadius: 22, display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, lineHeight: 1, color: 'var(--moss-light)' }}>{i + 1}</span>
                 <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: 'var(--ink-1)' }}>{s.title}</h3>
-                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{s.body}</p>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{inText(s.body)}</p>
               </div>
             ))}
           </div>
@@ -217,9 +216,9 @@ export default function LocationContent({ locationKey, content }: { locationKey:
             {detail.plans.map((p) => (
               <div key={p.name} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{p.name}</span>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, color: 'var(--ink-1)' }}>{p.price}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, color: 'var(--ink-1)' }}>{inText(p.price)}</span>
                 {p.items.length > 0 && <ul style={{ margin: '4px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{p.items.map((it, i) => bullet(it, i))}</ul>}
-                {p.setup && <span style={{ marginTop: 'auto', paddingTop: 8, fontSize: 12.5, color: 'var(--ink-5)' }}>Setup: {p.setup}</span>}
+                {p.setup && <span style={{ marginTop: 'auto', paddingTop: 8, fontSize: 12.5, color: 'var(--ink-5)' }}>Setup: {inText(p.setup)}</span>}
               </div>
             ))}
           </div>
@@ -255,7 +254,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
                   <span key={a} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--ink-4-alt)', background: 'rgba(var(--surface-rgb), 0.72)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.9)', whiteSpace: 'nowrap' }}>{a}</span>
                 ))}
               </div>
-              {d.areasNote && <p style={{ margin: 0, fontSize: 14, lineHeight: 1.62, color: 'var(--ink-5)' }}>{d.areasNote}</p>}
+              {d.areasNote && <p style={{ margin: 0, fontSize: 14, lineHeight: 1.62, color: 'var(--ink-5)' }}>{inText(d.areasNote)}</p>}
             </div>
           </section>
         )}

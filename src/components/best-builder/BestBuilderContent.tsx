@@ -17,6 +17,7 @@ import { routes } from '@/lib/routes'
 import { HERO_STATS, COL_HEADS, MATRIX, PLATFORM_PROFILES, WIN_REASONS, CHOOSE_GUIDE, REASONS, DIY_CASES, VS_LINKS, BEST_BUILDER_FAQS } from '@/lib/best-builder-data'
 import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { FaqList } from '@/components/FaqList'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 const TONE_COLOR = { us: 'var(--navy)', ok: 'var(--ink-4-alt)', bad: 'var(--terracotta)' } as const
 
@@ -24,6 +25,10 @@ export type BestBuilderContentShape = { heroStats: typeof HERO_STATS; profiles: 
 const DEFAULT_CONTENT: BestBuilderContentShape = { heroStats: HERO_STATS, profiles: PLATFORM_PROFILES, faqs: BEST_BUILDER_FAQS }
 
 export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { content?: BestBuilderContentShape }) {
+  // This page is a price comparison end to end -- the matrix cells, each
+  // platform's pricing line, the cost breakdowns and the totals are all
+  // money, and every one of them stayed in rupees when the footer said AED.
+  const { inText } = useCurrency()
   const HERO_STATS_ACTIVE = content.heroStats
   const PLATFORM_PROFILES_ACTIVE = content.profiles
   const BEST_BUILDER_FAQS_ACTIVE = content.faqs
@@ -59,7 +64,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center', paddingTop: 18 }}>
             {HERO_STATS_ACTIVE.map((s) => (
               <div key={s.label} className="glass-chip" style={{ minWidth: 140, display: 'flex', flexDirection: 'column', gap: 4, padding: '16px 22px', borderRadius: 18 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.8px', color: 'var(--ink-1)' }}>{s.value}</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.8px', color: 'var(--ink-1)' }}>{inText(s.value)}</span>
                 <span style={{ fontSize: 12, color: 'var(--ink-muted)' }}>{s.label}</span>
               </div>
             ))}
@@ -84,7 +89,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                   <Fragment key={row.label}>
                     <span style={{ padding: '15px 22px', fontSize: 14, lineHeight: 1.45, color: 'var(--ink-3)', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)' }}>{row.label}</span>
                     {row.cells.map((cell, ci) => (
-                      <span key={ci} style={{ padding: '15px 10px', textAlign: 'center', fontSize: 12.5, fontWeight: 600, color: TONE_COLOR[cell.tone], background: cell.tone === 'us' ? 'rgba(var(--navy-rgb), 0.06)' : 'transparent', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)' }}>{cell.v}</span>
+                      <span key={ci} style={{ padding: '15px 10px', textAlign: 'center', fontSize: 12.5, fontWeight: 600, color: TONE_COLOR[cell.tone], background: cell.tone === 'us' ? 'rgba(var(--navy-rgb), 0.06)' : 'transparent', borderTop: '1px solid rgba(var(--ink-1-rgb), 0.07)' }}>{inText(cell.v)}</span>
                     ))}
                   </Fragment>
                 ))}
@@ -119,9 +124,9 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                   </button>
                   {open && (
                     <div style={{ padding: '0 24px 26px', display: 'flex', flexDirection: 'column', gap: 18 }}>
-                      <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.62, color: 'var(--ink-3-alt)' }}><strong>What it is:</strong> {p.what}</p>
+                      <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.62, color: 'var(--ink-3-alt)' }}><strong>What it is:</strong> {inText(p.what)}</p>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 28px' }}>
-                        <span style={{ fontSize: 13.5, color: 'var(--ink-3-alt)' }}><strong>Pricing:</strong> {p.pricing}</span>
+                        <span style={{ fontSize: 13.5, color: 'var(--ink-3-alt)' }}><strong>Pricing:</strong> {inText(p.pricing)}</span>
                         <span style={{ fontSize: 13.5, color: 'var(--ink-3-alt)' }}><strong>Best for:</strong> {p.bestFor}</span>
                       </div>
 
@@ -149,16 +154,16 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                       <div style={{ padding: '16px 18px', borderRadius: 16, background: 'rgba(var(--scrim-rgb), 0.04)', display: 'flex', flexDirection: 'column', gap: 8 }}>
                         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Real Year 1 cost for a Pakistani business</span>
                         {p.costLines.map((l) => (
-                          <span key={l} style={{ fontSize: 13.5, color: 'var(--ink-3-alt)' }}>{l}</span>
+                          <span key={l} style={{ fontSize: 13.5, color: 'var(--ink-3-alt)' }}>{inText(l)}</span>
                         ))}
-                        <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--ink-1)', paddingTop: p.costLines.length ? 4 : 0 }}>Total: {p.costTotal}</span>
+                        <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--ink-1)', paddingTop: p.costLines.length ? 4 : 0 }}>Total: {inText(p.costTotal)}</span>
                       </div>
 
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: 'var(--olive)' }}>Who should choose {p.name}</span>
                         {p.chooseIf.map((s) => (
                           <span key={s} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.5, color: 'var(--ink-3-alt)' }}>
-                            <span style={{ width: 5, height: 5, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
+                            <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                             {s}
                           </span>
                         ))}
@@ -180,7 +185,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={r.icon} /></svg>
                 </span>
                 <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18.5, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{r.title}</h3>
-                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{r.body}</p>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{inText(r.body)}</p>
               </div>
             ))}
           </div>

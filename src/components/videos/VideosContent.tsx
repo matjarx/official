@@ -44,7 +44,7 @@ function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos']
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 4 }}>
             {video.items.map((it) => (
               <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>
-                <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
+                <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                 {it}
               </span>
             ))}

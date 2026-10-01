@@ -12,16 +12,18 @@ import type { ServiceKey } from '@/lib/services-data'
 import { DFY, SEO, CONCIERGE, GROWTH, type ServiceDetail, type Testimonial } from '@/lib/service-detail-data'
 import { FaqList, bullet } from '@/components/FaqList'
 import { H2, BlockList, CompareTable } from '@/components/DetailPrimitives'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 const DETAIL: Record<ServiceKey, ServiceDetail> = { dfy: DFY, seo: SEO, concierge: CONCIERGE, growth: GROWTH }
 
 function TestimonialGrid({ items }: { items: Testimonial[] }) {
+  const { inText } = useCurrency()
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
       {items.map((t) => (
         <div key={t.name} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
           <span style={{ display: 'block', marginBottom: 8, fontSize: 13, letterSpacing: 2, color: 'var(--butter-deep)' }}>★★★★★</span>
-          <p style={{ margin: '0 0 10px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-4-alt)' }}>&ldquo;{t.quote}&rdquo;</p>
+          <p style={{ margin: '0 0 10px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-4-alt)' }}>&ldquo;{inText(t.quote)}&rdquo;</p>
           <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-5)' }}>{t.name}</span>
         </div>
       ))}
@@ -30,6 +32,8 @@ function TestimonialGrid({ items }: { items: Testimonial[] }) {
 }
 
 export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
+  // The service pages quote setup fees and monthly figures throughout.
+  const { inText } = useCurrency()
   const d = DETAIL[svc]
   const [openFaq, setOpenFaq] = useState(-1)
 
@@ -51,7 +55,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
             <div key={s.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
               <span style={{ display: 'block', marginBottom: 8, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--moss-light)' }}>{i + 1}</span>
               <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{s.title}</h3>
-              <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{s.body}</p>
+              <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>{inText(s.body)}</p>
             </div>
           ))}
         </div>
@@ -232,7 +236,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           {d.whyChoose.items.map((it) => (
             <div key={it.h} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
               <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{it.h}</h3>
-              {it.body && <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>{it.body}</p>}
+              {it.body && <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>{inText(it.body)}</p>}
               {it.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{it.items.map((x, i) => bullet(x, i))}</ul>}
             </div>
           ))}
@@ -261,10 +265,10 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
         <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
           <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: 'var(--ink-inverse)' }}>{d.closing.title}</h2>
-          {d.closing.body && <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(var(--ink-inverse-rgb), 0.68)' }}>{d.closing.body}</p>}
+          {d.closing.body && <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(var(--ink-inverse-rgb), 0.68)' }}>{inText(d.closing.body)}</p>}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', paddingTop: 6 }}>
             {d.closing.ctas.map((c, i) => {
-              const label = typeof c === 'string' ? c : c.label
+              const label = inText(typeof c === 'string' ? c : c.label)
               const href = typeof c === 'string' ? null : c.href
               const style = { padding: '13px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 13.5, textDecoration: 'none', display: 'inline-block', color: i === 0 ? 'var(--ink-on-butter)' : 'var(--ink-inverse)', background: i === 0 ? 'var(--butter)' : 'rgba(var(--ink-inverse-rgb), 0.09)', border: i === 0 ? undefined : '1.5px solid rgba(var(--ink-inverse-rgb), 0.2)' }
               // A string with no destination still renders inert rather than

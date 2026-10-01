@@ -122,7 +122,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{p.plan} plan members</span>
                 {p.items.map((it) => (
                   <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
-                    <span style={{ width: 5, height: 5, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
+                    <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                     {it}
                   </span>
                 ))}

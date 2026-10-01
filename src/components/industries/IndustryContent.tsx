@@ -18,10 +18,12 @@ import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data
 import IndustryDetailSections from './IndustryDetailSections'
 import { FaqList } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 export type IndustryContentShape = (typeof INDUSTRY_DATA)[IndustryKey] & { detail?: IndustryDetail | null }
 
 export default function IndustryContent({ industryKey, content }: { industryKey: IndustryKey; content?: IndustryContentShape }) {
+  const { inText } = useCurrency()
   const [openFaq, setOpenFaq] = useState(0)
   const d = content ?? { ...INDUSTRY_DATA[industryKey], detail: INDUSTRY_DETAIL[industryKey] }
   const others = otherIndustriesFor(industryKey)
@@ -139,7 +141,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
                 </span>
                 <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '-0.35px', color: 'var(--ink-1)' }}>{f.title}</h3>
-                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{f.body}</p>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink-5)' }}>{inText(f.body)}</p>
               </div>
             ))}
           </div>

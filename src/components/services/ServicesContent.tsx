@@ -22,11 +22,13 @@ import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes, SERVICE_ROUTES } from '@/lib/routes'
 import { SERVICE_TABS, SERVICE_DATA, type ServiceKey, type ServiceDataEntry } from '@/lib/services-data'
 import ServiceDetailSections from './ServiceDetailSections'
+import { useCurrency } from '@/components/CurrencyProvider'
 
 export type ServicesContentShape = ServiceDataEntry
 const DEFAULT_CONTENT: Record<ServiceKey, ServicesContentShape> = SERVICE_DATA
 
 export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[serviceKey] }: { serviceKey: ServiceKey; content?: ServicesContentShape }) {
+  const { inText } = useCurrency()
   const svc = serviceKey
   const d = content
 
@@ -148,7 +150,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
               {d.resultStats.map((r) => (
                 <div key={r.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: 'var(--ink-inverse)' }}>{r.value}</span>
+                  <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.9px', color: 'var(--ink-inverse)' }}>{inText(r.value)}</span>
                   <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>{r.label}</span>
                 </div>
               ))}

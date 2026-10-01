@@ -189,7 +189,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                                 {a.heading && <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{a.heading}</span>}
                                 {a.items.map((it) => (
                                   <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
-                                    <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
+                                    <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                                     {it}
                                   </span>
                                 ))}
@@ -229,7 +229,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 4 }}>
                     {s.items.map((it) => (
                       <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-5)' }}>
-                        <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
+                        <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                         {it}
                       </span>
                     ))}
@@ -277,7 +277,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16, color: 'var(--ink-1)' }}>{o.title}</span>
                   {o.items.map((it) => (
                     <span key={it} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 13, lineHeight: 1.5, color: 'var(--ink-5)' }}>
-                      <span style={{ width: 4, height: 4, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
+                      <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 6, borderRadius: '50%', background: 'var(--olive)' }} />
                       {it}
                     </span>
                   ))}
