@@ -49,11 +49,24 @@ export type FaqEntry = {
 /** The list bullet the three detail sections -- industry, service, plan --
  *  had each declared identically, and use well beyond their FAQ (7, 12 and
  *  18 call sites). One copy, here, because the accordion needs it too. */
-export const bullet = (text: string, key?: React.Key) => (
-  <li key={key ?? text} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-5)' }}>
-    <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{text}
-  </li>
-)
+export const bullet = (text: string, key?: React.Key) => <Bullet key={key ?? text} text={text} />
+
+/** The bullet's body, as a component so it can read the currency.
+ *
+ *  `bullet` stays a function returning JSX because ~37 call sites invoke it
+ *  that way inside .map(). A hook cannot live in a plain function, which is
+ *  why every bulleted price on the site stayed in rupees while the headline
+ *  prices beside them converted -- the FAQ's own question and answer go
+ *  through inText, and its bullet list did not. Delegating to a component
+ *  fixes all of them without touching a single call site. */
+function Bullet({ text }: { text: string }) {
+  const { inText } = useCurrency()
+  return (
+    <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-5)' }}>
+      <span style={{ marginTop: 7, width: 4, height: 4, borderRadius: '50%', background: 'var(--olive)', flex: '0 0 auto' }} />{inText(text)}
+    </li>
+  )
+}
 
 export function FaqList({
   items,
