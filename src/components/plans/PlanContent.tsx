@@ -21,6 +21,7 @@ import PlanDetailSections from './PlanDetailSections'
 import { FaqList } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { useCurrency } from '@/components/CurrencyProvider'
+import { BUSINESS_PHONE_DISPLAY, WHATSAPP_HREF } from '@/lib/contact-details'
 
 const DEFAULT_CONTENT: Record<PlanKey, PlanContentShape> = (Object.keys(ALL_PLANS) as PlanKey[]).reduce((acc, key) => {
   acc[key] = { ...ALL_PLANS[key], ...PLAN_DATA[key], detail: undefined }
@@ -131,7 +132,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
               ) : (
                 <a href={appSignup(planKey)} onClick={() => trackEvent('cta_click', { label: `plan_${planKey}_cta` })} className="btn-primary">{d.ctaLabel}</a>
               )}
-              <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" className="btn-secondary">Ask a question</a>
+              <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="btn-secondary">Ask a question</a>
             </div>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 26px', paddingTop: 6 }}>
@@ -213,7 +214,7 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>{p.name} <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>questions</span></h2>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Anything else, call us on +92 303 372 0953 — a real person answers.</p>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Anything else, call us on {BUSINESS_PHONE_DISPLAY} — a real person answers.</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
               <FaqList items={d.faqs.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} />

@@ -1,3 +1,4 @@
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 // Data for the 3 Legal pages — from files/matjarx_terms_conditions.md,
 // matjarx_refund_policy.md and matjarx_privacy_policy.md, generated from
 // each document's own numbered-section/list/table structure. These
@@ -146,7 +147,7 @@ export const LEGAL_DATA: Record<LegalDoc, LegalDocData> = {
       { heading: "Summary", blocks: [
         { type: 'p', text: "**By using MatjarX services, you agree to:**" },
         { type: 'ul', items: ["Pay as outlined in the pricing section", "Follow the cancellation and refund policies", "Take responsibility for content and credentials", "Understand that SEO results cannot be guaranteed", "Accept our limitation of liability", "Resolve disputes under Pakistani law"] },
-        { type: 'p', text: "**Questions about these Terms?** Contact us at office@MatjarX.com or WhatsApp +92 303 372 0953" },
+        { type: 'p', text: `**Questions about these Terms?** Contact us at office@MatjarX.com or WhatsApp ${BUSINESS_PHONE_DISPLAY}` },
       ] },
     ],
   },
@@ -311,7 +312,7 @@ export const LEGAL_DATA: Record<LegalDoc, LegalDocData> = {
       { heading: "13. Contact Information", blocks: [
         { type: "h3", text: "For Refund-Related Inquiries" },
         { type: 'p', text: "**MatjarX** B6, 4th Street, Zamzama, Clifton Karachi, Sindh, Pakistan" },
-        { type: 'ul', items: ["**Email:** office@MatjarX.com", "**Phone / WhatsApp:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11:00 AM – 8:00 PM PKT"] },
+        { type: 'ul', items: ["**Email:** office@MatjarX.com", `**Phone / WhatsApp:** ${BUSINESS_PHONE_DISPLAY}`, "**Hours:** Monday-Saturday, 11:00 AM – 8:00 PM PKT"] },
         { type: "h3", text: "Response Times" },
         { type: 'ul', items: ["**Email inquiries:** 24 business hours", "**WhatsApp inquiries:** 2-4 hours (business hours)", "**Phone:** Available during business hours"] },
       ] },
@@ -326,7 +327,7 @@ export const LEGAL_DATA: Record<LegalDoc, LegalDocData> = {
       { heading: "Important Reminders", blocks: [
         { type: 'ul', items: ["✅ **Read Before Purchasing:** Understand these terms before making any payment", "✅ **Keep Records:** Save all invoices and communication for reference", "✅ **Get Approval:** Ensure any work is approved before considering it final", "✅ **Request Early:** Submit refund requests within specified timeframes", "✅ **Provide Details:** Include all necessary information in refund requests", "✅ **Follow Process:** Use official channels and procedures for requests"] },
         { type: 'p', text: "**Questions about this policy?**" },
-        { type: 'p', text: "Contact MatjarX at office@MatjarX.com or +92 303 372 0953" },
+        { type: 'p', text: `Contact MatjarX at office@MatjarX.com or ${BUSINESS_PHONE_DISPLAY}` },
         { type: 'ul', items: ["**Last Updated:** January 1st, 2026"] },
       ] },
     ],

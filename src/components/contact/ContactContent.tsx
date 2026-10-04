@@ -12,6 +12,7 @@ import { CONTACT_CHANNELS, CONTACT_TOPICS, CONTACT_OFFICE_ROWS, CONTACT_FAQS, CO
 import { trackEvent } from '@/lib/analytics'
 import { FaqList } from '@/components/FaqList'
 import LeadForm from '@/components/LeadForm'
+import { WHATSAPP_HREF } from '@/lib/contact-details'
 
 export type ContactContentShape = { channels: typeof CONTACT_CHANNELS; topics: typeof CONTACT_TOPICS; officeRows: typeof CONTACT_OFFICE_ROWS; faqs: typeof CONTACT_FAQS }
 const DEFAULT_CONTENT: ContactContentShape = { channels: CONTACT_CHANNELS, topics: CONTACT_TOPICS, officeRows: CONTACT_OFFICE_ROWS, faqs: CONTACT_FAQS }
@@ -125,7 +126,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                 <div style={{ padding: '28px 30px', borderRadius: 24, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <span style={{ fontSize: 11.5, letterSpacing: '1.6px', textTransform: 'uppercase', color: '#4A5518', fontWeight: 700 }}>Prefer to skip the form?</span>
                   <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.18, letterSpacing: '-0.7px', color: '#1F2A08' }}>Message us on WhatsApp and get a reply the same day.</span>
-                  <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('cta_click', { label: 'contact_whatsapp' })} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Open WhatsApp</a>
+                  <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('cta_click', { label: 'contact_whatsapp' })} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 6 }}>Open WhatsApp</a>
                 </div>
               </div>
             </div>

@@ -1,3 +1,4 @@
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 // Data for the Videos page — from the "MatjarX Videos Page - Complete
 // Content" the user pasted directly in chat, used in full. No actual
 // video files or YouTube links were supplied, so "Watch Now" is
@@ -171,4 +172,4 @@ export const RESOURCES_BY_AUDIENCE = [
   ] },
 ]
 
-export const CHANNELS = { whatsapp: '+92 303 372 0953', email: 'office@matjarx.com' }
+export const CHANNELS = { whatsapp: `${BUSINESS_PHONE_DISPLAY}`, email: 'office@matjarx.com' }

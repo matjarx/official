@@ -17,6 +17,7 @@ import { RATING_BADGES, VOICES } from '@/lib/home-data'
 import { ALL_PLANS, type PlanKey } from '@/lib/plan-data'
 import { appLogin, appSignup } from '@/lib/routes'
 import { money } from '@/lib/money'
+import { BUSINESS_PHONE_DISPLAY, TEL_HREF, WHATSAPP_HREF } from '@/lib/contact-details'
 
 const NAV_ITEMS = [
   { label: 'Services', href: '/done-for-you-website' },
@@ -307,7 +308,7 @@ export default function HomeMobileContent() {
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>More than 70,000 businesses trust MatjarX. Your business deserves to join them.</span>
             <a className="btn-trace" href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-inverse)', background: 'var(--navy-deepest)' }}>Get started</a>
-            <a className="btn-trace" href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(var(--surface-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)' }}>Talk to us on WhatsApp</a>
+            <a className="btn-trace" href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(var(--surface-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)' }}>Talk to us on WhatsApp</a>
           </div>
 
           {/* Footer */}
@@ -315,7 +316,7 @@ export default function HomeMobileContent() {
             <Image src="/brand/matjarx-logo-light.png" alt="MatjarX" width={124} height={36} style={{ width: 124, height: 'auto' }} />
             <span style={{ fontSize: 12, lineHeight: 1.6, color: theme.ink4 }}>Done-for-you websites, SEO and growth marketing for small businesses across Pakistan and the Gulf.</span>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-              <a href="tel:+923033720953" style={{ fontSize: 12.5, color: 'var(--butter-deep)' }}>+92 303 372 0953</a>
+              <a href={TEL_HREF} style={{ fontSize: 12.5, color: 'var(--butter-deep)' }}>{BUSINESS_PHONE_DISPLAY}</a>
               <a href="mailto:office@matjarx.com" style={{ fontSize: 12.5, color: 'var(--butter-deep)' }}>office@matjarx.com</a>
             </div>
             <span style={{ fontSize: 11, color: theme.ink5, paddingTop: 6, borderTop: `1px solid ${theme.headerLine}` }}>© 2018–2026 MatjarX. All rights reserved.</span>

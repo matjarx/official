@@ -52,6 +52,7 @@ const openSans = Open_Sans({
 })
 
 import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
+import { BUSINESS_PHONE_E164 } from '@/lib/contact-details'
 
 const SITE_URL = 'https://matjarx.com'
 
@@ -59,7 +60,7 @@ const SITE_URL = 'https://matjarx.com'
 // variants, which each hardcode the same number. Worth centralising, but
 // not in a change about structured data -- what matters here is that the
 // number Google is told is the number the page actually dials.
-const BUSINESS_PHONE = '+923033720953'
+const BUSINESS_PHONE = BUSINESS_PHONE_E164
 const DEFAULT_TITLE = 'MatjarX — Done-for-you websites, live in 7 days'
 const DEFAULT_DESCRIPTION = 'MatjarX builds complete small business websites in 7 days for Rs. 22,500 — done-for-you design, SEO and growth marketing for businesses across Pakistan and the Gulf.'
 const DEFAULT_SOCIALS: Record<string, string> = {

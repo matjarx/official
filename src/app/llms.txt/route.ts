@@ -23,6 +23,7 @@ import { getBlogPosts, getBlogAuthors } from '@/lib/marketing-content'
 import { CATEGORY_SLUGS } from '@/lib/blog-categories'
 import { CITY_SLUGS, CITY_DATA } from '@/lib/location-data'
 import { RIVAL_DATA } from '@/lib/comparison-data'
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 
 const SITE_URL = 'https://matjarx.com'
 
@@ -43,7 +44,7 @@ export async function GET() {
 
 MatjarX is not a DIY website builder. A customer picks a plan, shares a brief, and MatjarX's own team designs, builds, and launches the site, then keeps managing it (SEO, edits, support) for the life of the plan.
 
-Head office is in Karachi, with teams in Lahore, Sialkot and Islamabad. Support runs Monday to Saturday, 11am–8pm PKT, on WhatsApp and phone (+92 303 372 0953) and by email (office@matjarx.com).`)
+Head office is in Karachi, with teams in Lahore, Sialkot and Islamabad. Support runs Monday to Saturday, 11am–8pm PKT, on WhatsApp and phone (${BUSINESS_PHONE_DISPLAY}) and by email (office@matjarx.com).`)
 
   parts.push(`## Core pages
 

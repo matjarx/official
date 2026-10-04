@@ -4,6 +4,7 @@
 // from each city's own content file (files/matjarx_website_design_*.md).
 
 import { routes } from './routes'
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 
 export type CityKey = "abbottabad" | "attock" | "bahawalnagar" | "bahawalpur" | "burewala" | "charsadda" | "chichawatni" | "chiniot" | "dadu" | "daska" | "dera-ghazi-khan" | "dera-ismail-khan" | "faisalabad" | "gojra" | "gujranwala" | "gujrat" | "hafizabad" | "haripur" | "hyderabad" | "islamabad" | "jacobabad" | "jhang" | "jhelum" | "kamoke" | "kandhkot" | "karachi" | "khairpur" | "khanewal" | "khanpur" | "khuzdar" | "kohat" | "kot-adu" | "lahore" | "larkana" | "mandi-bahauddin" | "mansehra" | "mardan" | "mianwali" | "mirpur-khas" | "multan" | "muridke" | "murree" | "muzaffargarh" | "nawabshah" | "nowshera" | "okara" | "pakpattan" | "peshawar" | "quetta" | "rahim-yar-khan" | "rawalpindi" | "sadiqabad" | "sahiwal" | "sargodha" | "sheikhupura" | "shikarpur" | "sialkot" | "sukkur" | "swabi" | "tando-allahyar" | "vehari" | "wah-cantonment" | "zhob"
 
@@ -225,7 +226,7 @@ export const CITY_DATA: Record<CityKey, {
     quoteName: "Saeed Ahmed",
     quoteCompany: "Caterer, Islamabad",
     wins: ["Enquiries doubled in the first quarter after launch", "Ranking for \"catering Islamabad\" inside ten weeks", "Bookings taken online instead of over the phone"],
-    officeLine: "Islamabad and Rawalpindi clients work with us over WhatsApp and video call — call +92 303 372 0953, Monday to Saturday, 11am to 8pm.",
+    officeLine: `Islamabad and Rawalpindi clients work with us over WhatsApp and video call — call ${BUSINESS_PHONE_DISPLAY}, Monday to Saturday, 11am to 8pm.`,
   },
   "jacobabad": {
     name: "Jacobabad",
@@ -377,7 +378,7 @@ export const CITY_DATA: Record<CityKey, {
     quoteName: "Al-Falah Traders",
     quoteCompany: "Lahore",
     wins: ["4,812 monthly visitors, up 18% on the previous month", "96 enquiries a month, 34 of which became orders", "Ranking in three Lahore areas within two months"],
-    officeLine: "Lahore clients work with us over WhatsApp and video call — call +92 303 372 0953, Monday to Saturday, 11am to 8pm.",
+    officeLine: `Lahore clients work with us over WhatsApp and video call — call ${BUSINESS_PHONE_DISPLAY}, Monday to Saturday, 11am to 8pm.`,
   },
   "larkana": {
     name: "Larkana",

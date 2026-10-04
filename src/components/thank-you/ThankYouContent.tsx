@@ -6,6 +6,7 @@ import Link from 'next/link'
 import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { THANK_YOU_STEPS, THANK_YOU_LINKS } from '@/lib/thank-you-data'
+import { BUSINESS_PHONE_DISPLAY, TEL_HREF, WHATSAPP_HREF } from '@/lib/contact-details'
 
 export type ThankYouContentShape = { steps: typeof THANK_YOU_STEPS; links: typeof THANK_YOU_LINKS }
 const DEFAULT_CONTENT: ThankYouContentShape = { steps: THANK_YOU_STEPS, links: THANK_YOU_LINKS }
@@ -70,8 +71,8 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
                 <span style={{ fontSize: 15, lineHeight: 1.6, color: '#3D4A16' }}>WhatsApp is the fastest way to reach a real person on our team.</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-                <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" className="btn-navy" style={{ textAlign: 'center' }}>Message on WhatsApp</a>
-                <a className="btn-trace" href="tel:+923033720953" style={{ textAlign: 'center', padding: '15px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#1F2A08', background: 'rgba(var(--ink-inverse-rgb), 0.62)', border: '1.5px solid rgba(31,42,8,0.2)' }}>Call +92 303 372 0953</a>
+                <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="btn-navy" style={{ textAlign: 'center' }}>Message on WhatsApp</a>
+                <a className="btn-trace" href={TEL_HREF} style={{ textAlign: 'center', padding: '15px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: '#1F2A08', background: 'rgba(var(--ink-inverse-rgb), 0.62)', border: '1.5px solid rgba(31,42,8,0.2)' }}>Call {BUSINESS_PHONE_DISPLAY}</a>
               </div>
             </div>
           </section>

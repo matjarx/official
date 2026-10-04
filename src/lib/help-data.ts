@@ -1,3 +1,4 @@
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 // Data for the Help page — from Marketing - Help.dc.html
 
 export const HELP_TOPICS = [
@@ -100,12 +101,12 @@ export type Channel = {
 }
 
 export const HELP_CHANNELS: Channel[] = [
-  { title: 'WhatsApp', value: '+92 303 372 0953', note: 'The fastest way to reach a real person. Same working day, usually within the hour.',
+  { title: 'WhatsApp', value: `${BUSINESS_PHONE_DISPLAY}`, note: 'The fastest way to reach a real person. Same working day, usually within the hour.',
     icon: 'M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z',
     bg: 'linear-gradient(160deg, rgba(0,51,102,0.96), rgba(0,28,51,0.96))', line: 'rgba(255,255,255,0.18)',
     shadow: '0 22px 50px rgba(4,18,31,0.28), inset 0 1px 0 rgba(255,255,255,0.2)',
     iconBg: 'rgba(37,211,102,0.18)', iconInk: '#25D366', ink: '#FFFFFF', valueInk: 'var(--butter)', muted: 'rgba(226,236,245,0.6)' },
-  { title: 'Call us', value: '+92 303 372 0953', note: 'Monday to Saturday, 11am to 8pm Pakistan time.',
+  { title: 'Call us', value: `${BUSINESS_PHONE_DISPLAY}`, note: 'Monday to Saturday, 11am to 8pm Pakistan time.',
     icon: 'M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z',
     bg: 'var(--glass-card-bg)', line: 'var(--glass-card-line)',
     shadow: 'var(--glass-card-shadow)',

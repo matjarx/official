@@ -20,6 +20,7 @@ import { ALL_PLANS } from '@/lib/plan-data'
 import { parsePkr } from '@/lib/currency'
 import type { PricingContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
+import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 
 export const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
 
@@ -216,11 +217,11 @@ export default function PricingContent({ content }: { content: PricingContentSha
               })}
             </div>
           </div>
-          <a href="tel:+923033720953" className="pricing-call-cta btn-trace" style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '12px 20px', borderRadius: 999, background: 'var(--navy-deepest)' }}>
+          <a href={TEL_HREF} className="pricing-call-cta btn-trace" style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '12px 20px', borderRadius: 999, background: 'var(--navy-deepest)' }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto' }}><path d="M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z" /></svg>
             <span style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
               <span style={{ fontSize: 11, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>Got questions? Call us</span>
-              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-inverse)' }}>+92 303 372 0953</span>
+              <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-inverse)' }}>{BUSINESS_PHONE_DISPLAY}</span>
             </span>
           </a>
         </div>
@@ -436,7 +437,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
             <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Everything you need to use MatjarX like a pro.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 6 }}>
               <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--ink-1)' }}>Still have questions?</span>
-              <a href="tel:+923033720953" style={{ fontSize: 14, fontWeight: 600, color: 'var(--olive)' }}>Call us: +92 303 372 0953</a>
+              <a href={TEL_HREF} style={{ fontSize: 14, fontWeight: 600, color: 'var(--olive)' }}>Call us: {BUSINESS_PHONE_DISPLAY}</a>
               <a href="mailto:office@matjarx.com" style={{ fontSize: 14, fontWeight: 600, color: 'var(--olive)' }}>office@matjarx.com</a>
             </div>
           </div>

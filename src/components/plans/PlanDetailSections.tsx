@@ -20,6 +20,7 @@ import {
 import { FaqList, bullet } from '@/components/FaqList'
 import { H2, BlockList, CompareTable } from '@/components/DetailPrimitives'
 import { useCurrency } from '@/components/CurrencyProvider'
+import { BUSINESS_PHONE_DISPLAY, WHATSAPP_HREF } from '@/lib/contact-details'
 
 /** Only the plans pages use this one, so it stays here. */
 const EYEBROW: React.CSSProperties = { display: 'block', marginBottom: 8, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }
@@ -210,7 +211,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', paddingTop: 10 }}>
             {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
           </div>
-          <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp +92 303 372 0953</a>
+          <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp {BUSINESS_PHONE_DISPLAY}</a>
         </div>
       </section>
 
@@ -382,7 +383,7 @@ function CustomDetail() {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', paddingTop: 10 }}>
             {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
           </div>
-          <a href="https://wa.me/923033720953" target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp +92 303 372 0953</a>
+          <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp {BUSINESS_PHONE_DISPLAY}</a>
         </div>
       </section>
 

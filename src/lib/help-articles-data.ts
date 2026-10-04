@@ -1,3 +1,4 @@
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 // Data for the 7 Help article pages — from files/matjarx_help_*.md.
 // Each category is one long-form guide (not a list of separate articles);
 // generated from the source markdown's own section/list/FAQ structure.
@@ -106,7 +107,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
       ] },
       { heading: "Need Help?", blocks: [
         { type: 'p', text: "**Contact us anytime:**" },
-        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'ul', items: [`**WhatsApp:** ${BUSINESS_PHONE_DISPLAY}`, "**Email:** office@matjarx.com", `**Phone:** ${BUSINESS_PHONE_DISPLAY}`, "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
         { type: 'p', text: "[Contact Support →](#)" },
       ] },
     ],
@@ -274,7 +275,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
         { type: 'ul', items: ["**Help button** in editor (top right)", "**Video tutorials** for common tasks", "**Tooltips** hover over elements"] },
         { type: "h3", text: "Support" },
         { type: 'p', text: "**For editing help:**" },
-        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953"] },
+        { type: 'ul', items: [`**WhatsApp:** ${BUSINESS_PHONE_DISPLAY}`, "**Email:** office@matjarx.com", `**Phone:** ${BUSINESS_PHONE_DISPLAY}`] },
         { type: 'p', text: "**We can help with:**" },
         { type: 'ul', items: ["Complex edits", "Design changes", "Content updates", "Troubleshooting"] },
       ] },
@@ -424,7 +425,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
       ] },
       { heading: "Support", blocks: [
         { type: 'p', text: "**Domain or email questions?**" },
-        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'ul', items: [`**WhatsApp:** ${BUSINESS_PHONE_DISPLAY}`, "**Email:** office@matjarx.com", `**Phone:** ${BUSINESS_PHONE_DISPLAY}`, "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
         { type: 'p', text: "[Contact Support →](#)" },
       ] },
     ],
@@ -559,7 +560,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
       ] },
       { heading: "Support", blocks: [
         { type: 'p', text: "**Questions about billing?**" },
-        { type: 'ul', items: ["**Email:** office@matjarx.com", "**WhatsApp:** +92 303 372 0953", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'ul', items: ["**Email:** office@matjarx.com", `**WhatsApp:** ${BUSINESS_PHONE_DISPLAY}`, `**Phone:** ${BUSINESS_PHONE_DISPLAY}`, "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
         { type: 'p', text: "[Contact Support →](#)" },
       ] },
     ],
@@ -750,7 +751,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
       ] },
       { heading: "Support", blocks: [
         { type: 'p', text: "**E-commerce or payment questions?**" },
-        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'ul', items: [`**WhatsApp:** ${BUSINESS_PHONE_DISPLAY}`, "**Email:** office@matjarx.com", `**Phone:** ${BUSINESS_PHONE_DISPLAY}`, "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
         { type: 'p', text: "[Contact Support →](#)" },
       ] },
     ],
@@ -923,7 +924,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
       ] },
       { heading: "Support", blocks: [
         { type: 'p', text: "**SEO and marketing questions?**" },
-        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'ul', items: [`**WhatsApp:** ${BUSINESS_PHONE_DISPLAY}`, "**Email:** office@matjarx.com", `**Phone:** ${BUSINESS_PHONE_DISPLAY}`, "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
         { type: 'p', text: "[Contact Support →](#)" },
       ] },
     ],
@@ -1096,12 +1097,12 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
         { type: 'ul', items: ["Check internet connection", "Refresh page", "Try different browser", "Contact support"] },
         { type: "h3", text: "Getting Help" },
         { type: 'p', text: "**Account or security questions?**" },
-        { type: 'ul', items: ["**Email:** office@matjarx.com (most secure)", "**WhatsApp:** +92 303 372 0953", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'ul', items: ["**Email:** office@matjarx.com (most secure)", `**WhatsApp:** ${BUSINESS_PHONE_DISPLAY}`, `**Phone:** ${BUSINESS_PHONE_DISPLAY}`, "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
         { type: 'p', text: "**Important:** Don't share password even with support. Ask for help instead." },
       ] },
       { heading: "Support", blocks: [
         { type: 'p', text: "**Need immediate help?**" },
-        { type: 'ul', items: ["**WhatsApp:** +92 303 372 0953 (fastest)", "**Email:** office@matjarx.com", "**Phone:** +92 303 372 0953", "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
+        { type: 'ul', items: [`**WhatsApp:** ${BUSINESS_PHONE_DISPLAY} (fastest)`, "**Email:** office@matjarx.com", `**Phone:** ${BUSINESS_PHONE_DISPLAY}`, "**Hours:** Monday-Saturday, 11 AM - 8 PM PKT"] },
         { type: 'p', text: "[Contact Support →](#)" },
       ] },
     ],

@@ -1,3 +1,4 @@
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 // Data for the About page — from Marketing - About.dc.html
 
 export const ABOUT_STATS = [
@@ -27,7 +28,7 @@ export const ABOUT_FAQS: [string, string][] = [
   ["Do you have team members you'd recommend talking to?", 'Absolutely. Sales — want to learn about our service? Contact Junaid. Marketing — want marketing strategy advice? Chat with Ijlal. Operations — want to discuss partnership? Talk to Wajeeh. Everyone on our team talks to customers; we believe it keeps us honest and improves our service.'],
   ['Is MatjarX hiring?', "Yes — we're always looking for talented people who share our values. See our careers page for open roles."],
   ['How can I partner with MatjarX?', "We'd love to. If you work with small businesses or entrepreneurs, we offer partner commissions starting at Rs. 30,000+ per referral and work closely with partners on marketing strategy — see our partner page for details."],
-  ['How can I get in touch?', 'Phone or WhatsApp: +92 303 372 0953 (Monday to Saturday, 11am to 8pm PKT). Email: office@matjarx.com.'],
+  ['How can I get in touch?', `Phone or WhatsApp: ${BUSINESS_PHONE_DISPLAY} (Monday to Saturday, 11am to 8pm PKT). Email: office@matjarx.com.`],
 ]
 
 // Real headshots pulled from matjarx.com's WordPress media library — same

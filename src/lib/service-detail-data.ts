@@ -10,6 +10,7 @@
 
 import type { Section, ProcessPhase, PlanFaq, CompareTable } from './plan-detail-data'
 import { routes, appSignup } from './routes'
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 
 export type ServiceCta = { label: string; href: string }
 
@@ -131,7 +132,7 @@ export const DFY: ServiceDetail = {
     { q: 'What platform are the done-for-you websites built on?', a: 'MatjarX’s own platform, built specifically for small businesses. You retain ownership — if you ever leave MatjarX, you own all the content and we can export it for you.' },
     { q: 'Can I transfer an existing website to MatjarX?', a: 'Not directly, but we build you a new, improved website using content from your old site — importing text, images and product info, redesigning for better conversions and SEO. 42% of our customers come to us with existing websites from other platforms.' },
     { q: 'Is this a money-back guarantee really risk-free?', a: 'Yes — a 30-day money-back guarantee. If you’re not happy for any reason within 30 days, contact us for a full refund, no questions asked.' },
-    { q: 'Can I speak with someone before deciding?', a: 'Yes — Live Chat Mon-Fri 9am-8pm, WhatsApp, Phone +92 303 372 0953, Email office@matjarx.com. No obligation, just an honest conversation.' },
+    { q: 'Can I speak with someone before deciding?', a: `Yes — Live Chat Mon-Fri 9am-8pm, WhatsApp, Phone ${BUSINESS_PHONE_DISPLAY}, Email office@matjarx.com. No obligation, just an honest conversation.` },
     { q: 'How much does this really cost?', a: 'One-time setup Rs. 22,500 (complete design, copywriting, setup, launch), monthly Rs. 4,500 (hosting, domain, email, support, platform, 0% fees). Annual cost: Rs. 76,500/year — one sale often covers the entire year.' },
   ] },
   closing: { title: 'Get Started Today', body: 'Ready to see your business online in 7 days?', ctas: [{ label: 'Get started', href: appSignup('launch') }, { label: 'See pricing', href: routes.pricing }] },
@@ -259,7 +260,7 @@ export const CONCIERGE: ServiceDetail = {
     { h: '✨ Agency-Level Support, Without Agency Cost', items: ['Experienced designers and developers on your team', 'Rapid response times (24-48 hours typical)', 'No 50% project markup, no long-term contracts', 'No dependency on one person, no surprise charges'] },
     { h: '🎯 Focus on Your Business, Not Your Website', items: ['Stop worrying about updates, technical issues, security, backups', 'Start focusing on growing your business, serving customers, marketing and sales'] },
   ] },
-  access: { title: 'Speak With Us in Real Time', channels: ['Live Chat — Instant messaging Mon-Fri 9am-8pm (24/7 for Platinum)', 'Email — detailed requests with screenshots and descriptions', 'Phone — +92 303 372 0953', 'WhatsApp — message us directly for quick updates', 'Business Hub — submit requests through your dashboard with history tracking', 'Growth Members get a point of contact who understands your business. Platinum Members get a dedicated Concierge Manager who proactively suggests improvements.'] },
+  access: { title: 'Speak With Us in Real Time', channels: ['Live Chat — Instant messaging Mon-Fri 9am-8pm (24/7 for Platinum)', 'Email — detailed requests with screenshots and descriptions', `Phone — ${BUSINESS_PHONE_DISPLAY}`, 'WhatsApp — message us directly for quick updates', 'Business Hub — submit requests through your dashboard with history tracking', 'Growth Members get a point of contact who understands your business. Platinum Members get a dedicated Concierge Manager who proactively suggests improvements.'] },
   faqs: { title: 'Everything You Need to Know About Website Management', items: [
     { q: 'What counts as an edit? Are there limits?', a: 'Unlimited edits — literally anything on your website (text, images, design, features, integrations). No limits, no tiers, just unlimited website management.' },
     { q: 'How long does it take to make changes?', a: 'Typical turnaround: 2-5 business days depending on complexity. Simple text edits: 24 hours. Image updates: 1-2 days. New page creation: 3-5 days. Complex integrations: 5-10 days. Growth and Platinum members are prioritized.' },

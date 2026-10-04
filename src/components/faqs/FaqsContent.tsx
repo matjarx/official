@@ -12,6 +12,7 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { FAQ_GROUPS, FAQ_GROUP_NAMES, type FaqGroupName } from '@/lib/faqs-data'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
+import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 
 type FlatQ = { key: string; question: string; answer: string }
 
@@ -107,7 +108,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
                 <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>Get started today — or just ask us anything before you commit to anything.</p>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
-                <a href="tel:+923033720953" className="btn-primary" style={{ textAlign: 'center' }}>Call +92 303 372 0953</a>
+                <a href={TEL_HREF} className="btn-primary" style={{ textAlign: 'center' }}>Call {BUSINESS_PHONE_DISPLAY}</a>
                 <Link href={routes.contact} className="btn-ghost">Send us a message</Link>
               </div>
             </div>

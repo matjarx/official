@@ -1,3 +1,4 @@
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 // Full-fidelity content for the 5 plan pages, from files/matjarx_{launch,
 // boost,growth,platinum,custom}_plan_page.md — verbatim. plan-data.ts (the
 // original PLAN_DATA) stays as-is and still drives the compact hero/feature-
@@ -644,7 +645,7 @@ export const CUSTOM = {
     { q: 'What happens after launch?', a: 'You own it. After launch: you own the code and platform, you can migrate elsewhere if desired, ongoing support available (monthly fee), updates and maintenance available, can keep us as partner or manage yourself.' },
   ] as PlanFaq[],
   gettingStarted: { title: 'How to Get Your Custom Solution', steps: [
-    { title: 'Step 1: Schedule Discovery Call', items: ['WhatsApp: +92 303 372 0953', 'Email: office@matjarx.com', 'What to prepare: business overview, current system details, key requirements, budget range (if known), timeline needs'] },
+    { title: 'Step 1: Schedule Discovery Call', items: [`WhatsApp: ${BUSINESS_PHONE_DISPLAY}`, 'Email: office@matjarx.com', 'What to prepare: business overview, current system details, key requirements, budget range (if known), timeline needs'] },
     { title: 'Step 2: Initial Consultation (1 hour)', items: ['Discuss your business and goals', 'Understand requirements', 'Explore technical needs', 'Discuss timeline and budget', 'Next steps'] },
     { title: 'Step 3: Detailed Discovery (1-2 weeks)', items: ['In-depth analysis', 'Requirements documentation', 'Solution design', 'Custom proposal creation'] },
     { title: 'Step 4: Proposal Review', items: ['Review detailed proposal', 'Discuss pricing and timeline', 'Answer all questions', 'Negotiate if needed', 'Finalize contract'] },

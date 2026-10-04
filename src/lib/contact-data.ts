@@ -1,3 +1,4 @@
+import { BUSINESS_PHONE_DISPLAY, TEL_HREF, WHATSAPP_HREF } from '@/lib/contact-details'
 // Data for the Contact page — from Marketing - Contact.dc.html
 
 export type ContactChannel = {
@@ -6,11 +7,11 @@ export type ContactChannel = {
 }
 
 export const CONTACT_CHANNELS: ContactChannel[] = [
-  { title: 'Call us', value: '+92 303 372 0953', note: 'Monday to Saturday, 11am to 8pm PKT.', href: 'tel:+923033720953',
+  { title: 'Call us', value: BUSINESS_PHONE_DISPLAY, note: 'Monday to Saturday, 11am to 8pm PKT.', href: TEL_HREF,
     icon: 'M6.5 4h3l1.5 3.6-2 1.4a10 10 0 0 0 5.5 5.5l1.4-2L19.5 14v3a1.6 1.6 0 0 1-1.8 1.6A14 14 0 0 1 5 6.3 1.6 1.6 0 0 1 6.5 4Z',
     bg: '#FFFFFF', border: 'rgba(4,18,31,0.1)', shadow: '0 10px 28px rgba(4,18,31,0.05)',
     iconBg: 'var(--butter)', iconInk: '#3D3A08', ink: '#04121F', valueInk: 'var(--navy)', muted: '#5A6E81' },
-  { title: 'WhatsApp', value: 'Chat with us now', note: 'The fastest way to reach a real person — usually within 2-4 hours.', href: 'https://wa.me/923033720953',
+  { title: 'WhatsApp', value: 'Chat with us now', note: 'The fastest way to reach a real person — usually within 2-4 hours.', href: WHATSAPP_HREF,
     icon: 'M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z',
     bg: 'var(--navy)', border: 'var(--navy)', shadow: '0 20px 44px rgba(0,51,102,0.26)',
     iconBg: 'rgba(198,203,138,0.2)', iconInk: 'var(--moss-light)', ink: '#FFFFFF', valueInk: 'var(--butter)', muted: 'rgba(255,255,255,0.6)' },
@@ -42,8 +43,8 @@ export const CONTACT_SUPPORT_CATEGORIES = [
 export const CONTACT_SUMMARY_TABLE = {
   headers: ['Channel', 'Details', 'Best for', 'Response time'],
   rows: [
-    ['WhatsApp', '+92 303 372 0953', 'Quick questions, sales', '2-4 hours'],
-    ['Phone', '+92 303 372 0953', 'Urgent issues, complex discussions', 'As available'],
+    ['WhatsApp', BUSINESS_PHONE_DISPLAY, 'Quick questions, sales', '2-4 hours'],
+    ['Phone', BUSINESS_PHONE_DISPLAY, 'Urgent issues, complex discussions', 'As available'],
     ['Email', 'office@matjarx.com', 'Documentation, billing, formal requests', '24 hours'],
     ['Live Chat', 'On matjarx.com', 'Quick clarifications, browsing', 'During business hours'],
     ['Mailing Address', 'B6, 4th Street, Zamzama, Clifton, Karachi', 'Official correspondence', 'Variable'],
@@ -76,10 +77,10 @@ export const CONTACT_FAQS: [string, string][] = [
   ["What's the fastest way to reach you?", 'WhatsApp is typically fastest for general inquiries. We usually respond within 2-4 hours during business hours. Live chat on our website is also quick during business hours.'],
   ["What's your response time?", 'Average response time is 24 business hours. WhatsApp and phone are usually faster, within 2-4 hours. Email may take up to 24 hours.'],
   ['Do you offer 24/7 support?', "Not for general support. We're available Monday to Saturday, 11am to 8pm PKT. VIP and Platinum clients get priority emergency support for critical website issues outside these hours."],
-  ['How do I report a website emergency?', 'Call us immediately at +92 303 372 0953 or send a WhatsApp message. Website downtime, hacking, or critical functionality errors get priority attention, especially for paid plan members.'],
+  ['How do I report a website emergency?', `Call us immediately at ${BUSINESS_PHONE_DISPLAY} or send a WhatsApp message. Website downtime, hacking, or critical functionality errors get priority attention, especially for paid plan members.`],
   ["I need help but it's Sunday. What do I do?", "For non-emergencies, send an email or WhatsApp message — we'll respond the next business day. For true emergencies affecting your business, such as the website being down or hacked, call us."],
   ['Do you offer video call support?', 'Yes, for Growth and Platinum members. Monthly strategy calls are included in these plans — contact your account manager to schedule.'],
-  ['Can I schedule a consultation call?', 'Yes. Email office@matjarx.com or WhatsApp +92 303 372 0953 to schedule. Consultations are available for prospective customers and upgrade discussions.'],
+  ['Can I schedule a consultation call?', `Yes. Email office@matjarx.com or WhatsApp ${BUSINESS_PHONE_DISPLAY} to schedule. Consultations are available for prospective customers and upgrade discussions.`],
   ['What languages do you support?', 'English and Urdu. Our team is bilingual, so you can communicate in either language.'],
   ['How do I track my support ticket?', "For email inquiries, you'll receive a response directly. For WhatsApp, our team keeps track of the conversation. For complex issues, we may provide a reference number."],
   ['What if I have a complaint?', "We'd like to hear it. Send details to office@matjarx.com with \"Complaint\" in the subject line. Our leadership team reviews complaints and responds within 2-3 business days."],

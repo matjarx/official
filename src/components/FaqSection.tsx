@@ -24,6 +24,7 @@
 import { useState } from 'react'
 import { FaqList } from '@/components/FaqList'
 import FaqSchema from '@/components/FaqSchema'
+import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 
 /** Shared with FaqSchema, which is where `fromPairs` lives. */
 export type Faq = { question: string; answer: string }
@@ -61,7 +62,7 @@ export default function FaqSection({
           <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: body }}>{intro}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 6 }}>
             <span style={{ fontSize: 14, fontWeight: 600, color: ink }}>Still have questions?</span>
-            <a href="tel:+923033720953" style={{ fontSize: 14, fontWeight: 600, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>Call us: +92 303 372 0953</a>
+            <a href={TEL_HREF} style={{ fontSize: 14, fontWeight: 600, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>Call us: {BUSINESS_PHONE_DISPLAY}</a>
             <a href="mailto:office@matjarx.com" style={{ fontSize: 14, fontWeight: 600, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>office@matjarx.com</a>
           </div>
         </div>

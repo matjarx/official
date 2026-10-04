@@ -1,3 +1,4 @@
+import { WHATSAPP_HREF } from '@/lib/contact-details'
 // Header nav structure — shared by SiteHeader (light) and SiteHeaderDark so
 // the menu is defined once. Mirrors the `defs` array in the Site Header
 // design files exactly (labels, notes, grouping); hrefs point at real
@@ -109,7 +110,7 @@ export const FOOTER_COLUMNS = [
 ]
 
 export const FOOTER_SOCIALS = [
-  { name: 'WhatsApp', href: 'https://wa.me/923033720953', icon: 'M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z' },
+  { name: 'WhatsApp', href: WHATSAPP_HREF, icon: 'M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 21l4.6-1.2A8.7 8.7 0 1 0 12 3.2Z' },
   { name: 'Facebook', href: 'https://www.facebook.com/matjarxpakistan/', icon: 'M14 8.5h2.5V5.2H14c-2 0-3.4 1.5-3.4 3.5v1.6H8.5v3.3h2.1V21h3.4v-7.4h2.4l.5-3.3h-2.9V8.9c0-.3.2-.4.5-.4Z' },
   { name: 'Instagram', href: 'https://www.instagram.com/matjarxpakistan/', icon: 'M8 3.5h8a4.5 4.5 0 0 1 4.5 4.5v8A4.5 4.5 0 0 1 16 20.5H8A4.5 4.5 0 0 1 3.5 16V8A4.5 4.5 0 0 1 8 3.5Zm4 5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm4.6-1.1h.01' },
   { name: 'X', href: 'https://x.com/matjar_X', icon: 'M5 5l14 14M19 5 5 19' },

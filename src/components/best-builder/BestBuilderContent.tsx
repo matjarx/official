@@ -18,6 +18,7 @@ import { HERO_STATS, COL_HEADS, MATRIX, PLATFORM_PROFILES, WIN_REASONS, CHOOSE_G
 import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { FaqList } from '@/components/FaqList'
 import { useCurrency } from '@/components/CurrencyProvider'
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 
 const TONE_COLOR = { us: 'var(--navy)', ok: 'var(--ink-4-alt)', bad: 'var(--terracotta)' } as const
 
@@ -277,7 +278,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.14, letterSpacing: '-1.1px', color: 'var(--ink-1)' }}>Common <span style={{ background: 'var(--butter)', padding: '0 8px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>questions</span></h2>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Still deciding? Call +92 303 372 0953 and we&rsquo;ll tell you honestly which option fits.</p>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-4)' }}>Still deciding? Call {BUSINESS_PHONE_DISPLAY} and we&rsquo;ll tell you honestly which option fits.</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
               <FaqList items={BEST_BUILDER_FAQS_ACTIVE.map(([q, a]) => ({ q, a }))} openIdx={openFaq} onToggle={setOpenFaq} />

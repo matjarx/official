@@ -12,6 +12,7 @@ import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import type { SiteSettings } from '@/lib/marketing-content'
+import { BUSINESS_PHONE_DISPLAY, TEL_HREF, WHATSAPP_HREF } from '@/lib/contact-details'
 
 export default function SiteFooter() {
   // FOOTER_SOCIALS' own hrefs render immediately (real, live values, not
@@ -88,7 +89,7 @@ export default function SiteFooter() {
               Get started
             </a>
             <a
-              href="https://wa.me/923033720953"
+              href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('cta_click', { label: 'footer_whatsapp' })}
@@ -116,7 +117,7 @@ export default function SiteFooter() {
               Done-for-you websites, SEO and growth marketing for small businesses across Pakistan and the Gulf.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 4 }}>
-              <a href="tel:+923033720953" onClick={() => trackEvent('cta_click', { label: 'footer_phone' })} style={{ fontSize: 13.5, color: 'var(--butter)' }}>+92 303 372 0953</a>
+              <a href={TEL_HREF} onClick={() => trackEvent('cta_click', { label: 'footer_phone' })} style={{ fontSize: 13.5, color: 'var(--butter)' }}>{BUSINESS_PHONE_DISPLAY}</a>
               <a href="mailto:office@matjarx.com" style={{ fontSize: 13.5, color: 'var(--butter)' }}>office@matjarx.com</a>
             </div>
             {/* Placed in the brand column rather than given a column of its

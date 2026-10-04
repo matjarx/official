@@ -21,6 +21,7 @@ import {
   TEMPLATE_PREVIEWS, type IconCard,
 } from '@/lib/templates-data'
 import { FaqList } from '@/components/FaqList'
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 
 function IconCardGrid({ items, cols = 4 }: { items: IconCard[]; cols?: number }) {
   return (
@@ -229,7 +230,7 @@ export default function TemplatesContent({
           {/* Support */}
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0', textAlign: 'center' }}>
             <h2 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>Questions about templates?</h2>
-            <p style={{ margin: 0, fontSize: 14.5, color: 'var(--ink-5)' }}>WhatsApp / phone +92 303 372 0953 · office@matjarx.com · Monday–Saturday, 11 AM–8 PM PKT</p>
+            <p style={{ margin: 0, fontSize: 14.5, color: 'var(--ink-5)' }}>WhatsApp / phone {BUSINESS_PHONE_DISPLAY} · office@matjarx.com · Monday–Saturday, 11 AM–8 PM PKT</p>
           </section>
 
           {/* Closing CTA */}

@@ -1,3 +1,4 @@
+import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 // Data for the Website Audit page — from
 // files/matjarx_website_audit_page.md, used in full: this is an
 // explicitly human-produced, 3-5 business day manual review service (not
@@ -213,6 +214,6 @@ export const AUDIT_FAQS: [string, string][] = [
 ]
 
 export const CHANNELS = {
-  whatsapp: '+92 303 372 0953',
+  whatsapp: `${BUSINESS_PHONE_DISPLAY}`,
   email: 'office@matjarx.com',
 }

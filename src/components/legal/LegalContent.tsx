@@ -11,6 +11,7 @@ import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc, type LegalBlock, type LegalDocData } from '@/lib/legal-data'
+import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 
 function renderInline(text: string): ReactNode {
   const parts = text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean)
@@ -121,7 +122,7 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
                   <span style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-5)' }}>B6, 4th Street, Zamzama, Clifton, Karachi, Sindh, Pakistan</span>
                   <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', paddingTop: 4 }}>
                     <a href="mailto:office@matjarx.com" style={{ fontSize: 14, fontWeight: 600 }}>office@matjarx.com</a>
-                    <a href="tel:+923033720953" style={{ fontSize: 14, fontWeight: 600 }}>+92 303 372 0953</a>
+                    <a href={TEL_HREF} style={{ fontSize: 14, fontWeight: 600 }}>{BUSINESS_PHONE_DISPLAY}</a>
                   </div>
                 </div>
               </article>
