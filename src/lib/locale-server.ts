@@ -2,6 +2,13 @@
 //
 // Separate from lib/locale.ts because that one is imported by client
 // components too, and next/headers cannot be.
+//
+// NOTHING CALLS THIS YET, and that is deliberate. The root layout used to,
+// and a headers() call in the ROOT layout opts the whole app into dynamic
+// rendering -- it took the site from 154 prerendered pages to 5. This is the
+// reader for the header src/proxy.ts sets, for server code that is NOT the
+// root layout and can afford to render on demand. Use it there; do not put
+// it back in app/layout.tsx.
 
 import { headers } from 'next/headers'
 import { DEFAULT_LOCALE, LOCALE_HEADER, isLocale, type Locale } from '@/lib/locale'

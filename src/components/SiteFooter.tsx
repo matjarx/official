@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import CurrencyConverter from '@/components/CurrencyConverter'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
 import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
 import { routes, appSignup } from '@/lib/routes'
@@ -180,6 +181,7 @@ export default function SiteFooter() {
 
         <div style={{ maxWidth: 1360, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
           <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.62)', marginRight: 'auto' }}>&copy; 2018&ndash;2026 MatjarX. All rights reserved.</span>
+          <LanguageSwitcher />
           <Link href={routes.legal('terms')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Terms &amp; conditions</Link>
           <Link href={routes.legal('refund')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Refund policy</Link>
           <Link href={routes.legal('privacy')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Privacy &amp; cookies</Link>

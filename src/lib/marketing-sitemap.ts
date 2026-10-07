@@ -8,6 +8,7 @@ import { PLAN_DATA } from '@/lib/plan-data'
 import { HELP_SLUGS } from '@/lib/help-articles-data'
 import { LEGAL_DOC_KEYS } from '@/lib/legal-data'
 import { THEME_LANDINGS } from '@/lib/theme-landing-data'
+import { LOCALES, DEFAULT_LOCALE, isLocale, localeHref, translatedLocales, hreflangFor, type Locale } from '@/lib/locale'
 
 // Built from the same data exports that drive each route's own
 // generateStaticParams (or static folder list), so this can never list a
@@ -181,4 +182,64 @@ export async function urlsForSection(id: string): Promise<MetadataRouteSitemap> 
     default:
       return [...staticRoutesFinal, ...planRoutes, ...industryRoutes]
   }
+}
+
+
+// ── Locales ────────────────────────────────────────────────────────────
+//
+// Each section exists once per locale: /sitemap/pages.xml is English (the
+// URL already submitted to Search Console, unchanged), /sitemap/ar-pages.xml
+// is Arabic, and so on. Search Console reports coverage per submitted file,
+// so keeping the languages apart is what makes "Arabic is not being indexed"
+// a question the report can answer.
+//
+// A URL appears in a locale's sitemap ONLY if translatedLocales() says that
+// page is genuinely translated. Today that is English alone, so the Arabic
+// and Urdu children come out empty, the index omits them, and the English
+// files are byte-for-byte what they were. Nothing is submitted that would
+// have to be withdrawn later: an /ar URL rendering English is noindex, and
+// listing it would be asking Google to index a duplicate of the pages that
+// carry every ranking the site has.
+
+export type SitemapChild = { id: string; locale: Locale; section: MarketingSitemapSection }
+
+/** Every locale x section pair, English first. Empty ones are filtered by
+ *  the caller, which has to count the URLs anyway. */
+export function sitemapChildren(): SitemapChild[] {
+  const out: SitemapChild[] = []
+  for (const locale of LOCALES) {
+    for (const section of MARKETING_SITEMAP_SECTIONS) {
+      out.push({ id: locale === DEFAULT_LOCALE ? section : `${locale}-${section}`, locale, section })
+    }
+  }
+  return out
+}
+
+/** `pages`, `ar-pages`, `ar-pages.xml` -> a child, or null if it is neither. */
+export function parseSitemapChild(raw: string): SitemapChild | null {
+  const id = raw.replace(/\.xml$/, '')
+  // English first: no section name starts with a two-letter prefix, but
+  // checking the plain name first means one never could be mistaken for one.
+  if ((MARKETING_SITEMAP_SECTIONS as readonly string[]).includes(id)) {
+    return { id, locale: DEFAULT_LOCALE, section: id as MarketingSitemapSection }
+  }
+  const m = /^([a-z]{2})-(.+)$/.exec(id)
+  if (m && isLocale(m[1]) && m[1] !== DEFAULT_LOCALE && (MARKETING_SITEMAP_SECTIONS as readonly string[]).includes(m[2])) {
+    return { id, locale: m[1], section: m[2] as MarketingSitemapSection }
+  }
+  return null
+}
+
+export type SitemapEntry = SitemapUrl & { alternates?: Record<string, string> }
+
+/** The URLs for one locale's copy of one section, each carrying its
+ *  reciprocal hreflang set. */
+export async function urlsForChild(child: SitemapChild): Promise<SitemapEntry[]> {
+  const base = await urlsForSection(child.section)
+  return base.flatMap((u) => {
+    const path = u.url.startsWith(SITE_URL) ? u.url.slice(SITE_URL.length) || '/' : u.url
+    if (!translatedLocales(path).includes(child.locale)) return []
+    const alternates = hreflangFor(path, SITE_URL)
+    return [{ ...u, url: `${SITE_URL}${localeHref(path, child.locale)}`, ...(alternates ? { alternates } : {}) }]
+  })
 }

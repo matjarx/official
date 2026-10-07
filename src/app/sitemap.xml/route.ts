@@ -13,9 +13,15 @@
 // same report names the group that is struggling. On the site that sells
 // getting found on Google, not being able to answer that about our own pages
 // was the wrong way round.
+//
+// The same argument splits the languages: Arabic lives in its own children
+// (/sitemap/ar-pages.xml) rather than mixed into the English ones. A child
+// with no URLs is omitted entirely -- an empty urlset reads to Search Console
+// as a section that lost all its pages, and until a locale is translated it
+// genuinely has none.
 
 import { NextResponse } from 'next/server'
-import { MARKETING_SITEMAP_SECTIONS, urlsForSection } from '@/lib/marketing-sitemap'
+import { sitemapChildren, urlsForChild } from '@/lib/marketing-sitemap'
 
 const SITE_URL = 'https://matjarx.com'
 
@@ -23,8 +29,8 @@ export const revalidate = 60
 
 export async function GET() {
   const sections = await Promise.all(
-    MARKETING_SITEMAP_SECTIONS.map(async (section) => {
-      const urls = await urlsForSection(section)
+    sitemapChildren().map(async (child) => {
+      const urls = await urlsForChild(child)
       // The newest entry in a section becomes that child's lastmod, so a
       // crawler can skip a section nothing has changed in.
       const newest = urls
@@ -32,7 +38,7 @@ export async function GET() {
         .filter(Boolean)
         .sort((a, b) => (a as Date).getTime() - (b as Date).getTime())
         .pop()
-      return { section, count: urls.length, lastmod: newest as Date | undefined }
+      return { id: child.id, count: urls.length, lastmod: newest as Date | undefined }
     })
   )
 
@@ -41,7 +47,7 @@ export async function GET() {
     .map((s) =>
       [
         '  <sitemap>',
-        `    <loc>${SITE_URL}/sitemap/${s.section}.xml</loc>`,
+        `    <loc>${SITE_URL}/sitemap/${s.id}.xml</loc>`,
         s.lastmod ? `    <lastmod>${s.lastmod.toISOString().split('T')[0]}</lastmod>` : null,
         '  </sitemap>',
       ]

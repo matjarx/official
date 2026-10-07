@@ -36,7 +36,7 @@ export function dirFor(locale: Locale): 'ltr' | 'rtl' {
   return RTL.has(locale) ? 'rtl' : 'ltr'
 }
 
-/** The header middleware sets, and every server component reads. */
+/** The header the proxy sets, and every server component reads. */
 export const LOCALE_HEADER = 'x-matjarx-locale'
 
 /** What a person sees in the switcher, in their own language. */
@@ -81,4 +81,24 @@ export function localeHref(path: string, locale: Locale): string {
  */
 export function translatedLocales(_path: string): Locale[] {
   return ['en']
+}
+
+/**
+ * The hreflang set for one path, as Next's `alternates.languages`.
+ *
+ * Returns undefined when only one locale is translated. A single
+ * self-referential hreflang says nothing, and an entry pointing at an
+ * English page while claiming to be Arabic is worse than no entry at all:
+ * Google trusts it and shows the wrong page to the wrong person.
+ *
+ * x-default goes to English, which is the page to serve someone whose
+ * language we do not publish.
+ */
+export function hreflangFor(path: string, base: string): Record<string, string> | undefined {
+  const locales = translatedLocales(path)
+  if (locales.length < 2) return undefined
+  const out: Record<string, string> = {}
+  for (const l of locales) out[l] = `${base}${localeHref(path, l)}`
+  out['x-default'] = `${base}${localeHref(path, DEFAULT_LOCALE)}`
+  return out
 }

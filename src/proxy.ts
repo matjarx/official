@@ -27,7 +27,7 @@
 
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { LOCALE_HEADER, isLocale, DEFAULT_LOCALE } from '@/lib/locale'
+import { LOCALE_HEADER, isLocale, DEFAULT_LOCALE, translatedLocales } from '@/lib/locale'
 
 /**
  * WordPress custom post types, taxonomies and plugin routes. Every one of
@@ -117,10 +117,31 @@ export function proxy(request: NextRequest) {
   if (maybe && isLocale(maybe) && maybe !== DEFAULT_LOCALE) {
     const url = request.nextUrl.clone()
     url.pathname = seg?.[2] || '/'
+    // LOCALE_HEADER goes on the REQUEST for any server code that needs to
+    // know, and on the RESPONSE so the locale a URL resolved to is visible
+    // from outside -- which is how the routing gets tested at all, given the
+    // rendered page itself is identical English either way today.
     const headers = new Headers(request.headers)
     headers.set(LOCALE_HEADER, maybe)
     const res = NextResponse.rewrite(url, { request: { headers } })
     res.headers.set(LOCALE_HEADER, maybe)
+    // Untranslated locales must not be indexed.
+    //
+    // /ar/<path> renders ENGLISH until that page's Arabic strings exist. That
+    // is useful for building and fatal for SEO: indexing it would publish a
+    // duplicate of all 208 English pages, twice over, competing with the
+    // originals that carry every ranking the site has.
+    //
+    // Sent as a header rather than a <meta name="robots"> tag because the tag
+    // would have to be computed in the root layout, and reading the request
+    // there makes all 154 prerendered pages render on demand instead. Google
+    // treats X-Robots-Tag and the meta tag identically, and the header also
+    // covers responses that have no <head> to put a tag in.
+    //
+    // `follow` so the English pages these link to still get crawled.
+    if (!translatedLocales(url.pathname).includes(maybe)) {
+      res.headers.set('X-Robots-Tag', 'noindex, follow')
+    }
     return res
   }
 
