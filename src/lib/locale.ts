@@ -77,9 +77,13 @@ export function localeHref(path: string, locale: Locale): string {
  * page claiming to be Arabic is worse than no tag, because Google trusts it
  * and shows the wrong page to the wrong person.
  *
- * Wired to the translation catalogue as sections are delivered.
+ * Wired to the translation catalogue as sections are delivered -- which is
+ * why the parameter is here and unused: every caller already passes the path
+ * it is asking about, so turning this on is a change to THIS function alone,
+ * not to the dozen call sites.
  */
-export function translatedLocales(_path: string): Locale[] {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function translatedLocales(path: string): Locale[] {
   return ['en']
 }
 

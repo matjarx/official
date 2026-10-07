@@ -25,17 +25,27 @@
 // Each link goes to the equivalent URL, not the locale's homepage: someone
 // reading /pricing who switches language wants the Arabic pricing page.
 
-import { useEffect, useState } from 'react'
-import { LOCALE_LABEL, localeHref, splitLocale, translatedLocales, type Locale } from '@/lib/locale'
+import { useSyncExternalStore } from 'react'
+import { LOCALE_LABEL, localeHref, splitLocale, translatedLocales } from '@/lib/locale'
 
 export default function LanguageSwitcher({ style }: { style?: React.CSSProperties }) {
-  const [here, setHere] = useState<{ locale: Locale; path: string } | null>(null)
+  // useSyncExternalStore, not useState + useEffect: this reads a value only
+  // the browser has (the real URL), and React's own way to do that without a
+  // hydration mismatch is a store with a separate server snapshot.
+  //
+  // The subscribe function never fires because the value cannot change while
+  // the page lives -- switching language is a full page load, by design (see
+  // the <a> below). The server snapshot is null, so nothing is rendered
+  // until hydration, which is also what we want: the switcher occupies no
+  // space and there is no layout shift when it appears.
+  const pathname = useSyncExternalStore(
+    () => () => {},
+    () => window.location.pathname,
+    () => null
+  )
 
-  useEffect(() => {
-    setHere(splitLocale(window.location.pathname))
-  }, [])
-
-  if (!here) return null
+  if (!pathname) return null
+  const here = splitLocale(pathname)
   const locales = translatedLocales(here.path)
   if (locales.length < 2) return null
 
