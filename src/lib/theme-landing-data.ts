@@ -69,6 +69,99 @@ export type ThemeLanding = {
 const COMMON_CITIES = ['lahore', 'karachi', 'islamabad', 'faisalabad', 'rawalpindi', 'multan', 'peshawar', 'gujranwala']
 
 export const THEME_LANDINGS: ThemeLanding[] = [
+  // ── Added 2026-10-08 ──────────────────────────────────────────────────
+  //
+  // Four themes had a finished design, a published demo and no landing
+  // page, so the gallery showed them and no URL could rank for them.
+  //
+  // Colours are the theme's own, checked against the hexes its sections
+  // actually use rather than taken on trust from `themes.primary_color` --
+  // the four that still hold the admin default would have painted these
+  // pages a blue that appears nowhere in the design. These four do match.
+  //
+  // The page lists are the theme's REAL pages, read from its own rows, not
+  // an idealised set: Sportwear ships five, and saying eight would be a
+  // promise the template does not keep.
+  {
+    slug: 'interior-matjar',
+    themeKey: 'interior-matjar',
+    name: 'Interior Matjar',
+    tagline: 'A project-led site for interior fit-out, wrapping and renovation firms.',
+    metaTitle: 'Interior Design & Fit-Out Website Template | Interior Matjar',
+    metaDesc:
+      'A ready-made website for interior fit-out and renovation companies: a project gallery that sells the work, service pages per discipline and a quote form on every one.',
+    highlights: [
+      { title: 'The work does the selling', body: 'A projects grid built for before-and-after pairs, because that is the one thing a prospect wants to see.' },
+      { title: 'A page per service', body: 'Each discipline gets its own URL rather than a bullet on one long page, so each can rank for what it actually is.' },
+      { title: 'A quote form that follows', body: 'Every service page ends in the same short form. No hunting for a contact page.' },
+    ],
+    pages: ['Home', 'Services', 'Projects', 'Get a quote', 'About', 'Blog', 'Contact'],
+    primary: '#171513',
+    accent: '#c9ad82',
+    industryHref: '/website-for-construction-companies',
+    industryLabel: 'construction and fit-out firms',
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'real-estate-matjar',
+    themeKey: 'real-estate-matjar',
+    name: 'Real Estate Matjar',
+    tagline: 'A listings-first site for estate agents and property developers.',
+    metaTitle: 'Real Estate Website Design & Template | Real Estate Matjar',
+    metaDesc:
+      'A ready-made estate agency website with a property listings grid, enquiry forms on every listing and an About page that builds the trust a sale needs.',
+    highlights: [
+      { title: 'Properties, not products', body: 'A listings layout that leads with location, size and price — the three things a buyer filters on.' },
+      { title: 'An enquiry on every listing', body: 'The form sits with the property, so an interested buyer never has to go and find it.' },
+      { title: 'Built to be believed', body: 'An About page with the licence, the team and the track record, because a property enquiry is a high-trust one.' },
+    ],
+    pages: ['Home', 'Properties', 'Get a quote', 'About us', 'Blog', 'Contact'],
+    primary: '#1f2a27',
+    accent: '#c8a96a',
+    industryHref: '/website-for-real-estate',
+    industryLabel: 'estate agents',
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'scottish-clothing-matjar',
+    themeKey: 'scotish-clothing-matjar',
+    name: 'Scottish Clothing Matjar',
+    tagline: 'A made-to-measure storefront for kilts, tartan and formal highland wear.',
+    metaTitle: 'Kilt & Highland Wear Website Template | Scottish Clothing Matjar',
+    metaDesc:
+      'A ready-made storefront for made-to-measure clothing: a measuring guide, shipping and returns answered up front, and customer reviews where a buyer looks for them.',
+    highlights: [
+      { title: 'A measuring guide that reduces returns', body: 'Its own page, written to be followed with a tape measure in hand — the single biggest cost in made-to-measure.' },
+      { title: 'Shipping answered before it is asked', body: 'Delivery times and returns have their own URL, because an international buyer checks before adding to a basket.' },
+      { title: 'Reviews where the doubt is', body: 'A dedicated reviews page, which is what a first-time buyer of an expensive garment goes looking for.' },
+    ],
+    pages: ['Home', 'Measuring guide', 'Shipping and delivery', 'Customer reviews', 'FAQs', 'About', 'Blog', 'Contact'],
+    primary: '#1f2a33',
+    accent: '#9e1b2a',
+    industryHref: '/website-for-boutiques',
+    industryLabel: 'boutiques and clothing brands',
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'sportwear-matjar',
+    themeKey: 'sportwear-matjar',
+    name: 'Sportwear Matjar',
+    tagline: 'A dark, product-led storefront for sportswear and technical apparel.',
+    metaTitle: 'Sportswear Website Design & Template | Sportwear Matjar',
+    metaDesc:
+      'A ready-made sportswear website: a dark product-led design that makes kit photography carry the page, with enquiry routing built for wholesale and custom orders.',
+    highlights: [
+      { title: 'Dark, so the product is not', body: 'A near-black palette with a brass accent — kit photography reads brighter against it than on white.' },
+      { title: 'Built for bulk enquiries', body: 'The contact route assumes a team order or a wholesale question, not a single checkout.' },
+      { title: 'Five pages, and that is the point', body: 'A short site that loads fast and says one thing, rather than ten pages nobody reads.' },
+    ],
+    pages: ['Home', 'About', 'Blog', 'Contact'],
+    primary: '#16181b',
+    accent: '#d4b27a',
+    industryHref: '/website-for-online-stores-ecommerce',
+    industryLabel: 'online stores',
+    cities: COMMON_CITIES,
+  },
   {
     slug: 'salon-matjar',
     themeKey: 'salon',

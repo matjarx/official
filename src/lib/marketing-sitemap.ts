@@ -7,6 +7,7 @@ import { CITY_SLUGS } from '@/lib/location-data'
 import { PLAN_DATA } from '@/lib/plan-data'
 import { HELP_SLUGS } from '@/lib/help-articles-data'
 import { LEGAL_DOC_KEYS } from '@/lib/legal-data'
+import { THEME_LANDINGS } from '@/lib/theme-landing-data'
 
 // Built from the same data exports that drive each route's own
 // generateStaticParams (or static folder list), so this can never list a
@@ -34,7 +35,7 @@ const SITE_URL = 'https://matjarx.com'
 // and serves each child at /sitemap/<id>.xml -- the same shape the client
 // storefronts now use, so both sides of the platform look alike in Search
 // Console.
-export const MARKETING_SITEMAP_SECTIONS = ['pages', 'locations', 'comparisons', 'help', 'blog', 'legal'] as const
+export const MARKETING_SITEMAP_SECTIONS = ['pages', 'templates', 'locations', 'comparisons', 'help', 'blog', 'legal'] as const
 export type MarketingSitemapSection = (typeof MARKETING_SITEMAP_SECTIONS)[number]
 
 export type SitemapUrl = { url: string; lastModified?: Date; changeFrequency?: string; priority?: number }
@@ -55,7 +56,6 @@ export async function urlsForSection(id: string): Promise<MetadataRouteSitemap> 
     { url: routes.websiteAudit, changeFrequency: 'monthly', priority: 0.7 },
     { url: routes.videos, changeFrequency: 'monthly', priority: 0.6 },
     { url: routes.alternatives, changeFrequency: 'monthly', priority: 0.8 },
-    { url: routes.templates, changeFrequency: 'monthly', priority: 0.7 },
     { url: routes.bestBuilder, changeFrequency: 'monthly', priority: 0.8 },
     { url: routes.help, changeFrequency: 'monthly', priority: 0.6 },
     { url: routes.blog, changeFrequency: 'weekly', priority: 0.7 },
@@ -133,6 +133,27 @@ export async function urlsForSection(id: string): Promise<MetadataRouteSitemap> 
       priority: 0.5,
     }))
 
+  // The template gallery and one page per theme.
+  //
+  // Ten theme landing pages have been live since they were built and were
+  // in no sitemap at all -- only /templates itself appeared, inside
+  // `pages`, so Google was told the gallery existed and never told what was
+  // in it. They are their own section for the same reason the others are:
+  // coverage is reported per submitted sitemap, and "templates are not
+  // indexed" is a different problem from "the marketing pages are not".
+  //
+  // Driven by THEME_LANDINGS, so adding a landing adds its URL here with no
+  // second list to remember.
+  const templateRoutes: MetadataRouteSitemap = [
+    { url: `${SITE_URL}${routes.templates}`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.8 },
+    ...THEME_LANDINGS.map((t) => ({
+      url: `${SITE_URL}${routes.templates}/${t.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ]
+
   const legalRoutes: MetadataRouteSitemap = LEGAL_DOC_KEYS.map((doc) => ({
     url: `${SITE_URL}${routes.legal(doc)}`,
     lastModified: now,
@@ -152,6 +173,8 @@ export async function urlsForSection(id: string): Promise<MetadataRouteSitemap> 
       return helpRoutes
     case 'blog':
       return [...blogRoutes, ...categoryRoutes, ...authorRoutes]
+    case 'templates':
+      return templateRoutes
     case 'legal':
       return legalRoutes
     case 'pages':
