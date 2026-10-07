@@ -27,6 +27,7 @@
 
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { LOCALE_HEADER, isLocale, DEFAULT_LOCALE } from '@/lib/locale'
 
 /**
  * WordPress custom post types, taxonomies and plugin routes. Every one of
@@ -88,7 +89,44 @@ export function proxy(request: NextRequest) {
     })
   }
 
-  return NextResponse.next()
+  // ── Locale routing ────────────────────────────────────────────────────
+  //
+  // /ar/pricing and /ur/pricing REWRITE to /pricing with the locale carried
+  // in a header. English has no prefix and is not touched, so it keeps every
+  // URL it already ranks for -- which is the reason for not prefixing it.
+  //
+  // A rewrite, never a redirect: the address bar keeps /ar/pricing, which is
+  // the URL Google indexes and the one hreflang points at. A redirect would
+  // make the Arabic URL a signpost to an English page.
+  //
+  // This runs AFTER the 410 check, which matches on the FIRST path segment
+  // -- so /tag/x is 410 and /ar/tag/x is not: its first segment is `ar`, it
+  // falls through to the rewrite, and the rewritten /tag/x then 404s.
+  //
+  // Left that way deliberately. Those WordPress URLs only ever existed
+  // without a locale prefix, so /ar/tag/x has never been linked or indexed
+  // by anyone and has no authority to preserve. Teaching the 410 list about
+  // prefixes would add a branch for traffic that does not exist.
+  //
+  // It also means 105 route directories stay exactly where they are. The
+  // alternative -- moving every one of them under app/[locale]/ -- would be
+  // a vast refactor to change nothing for the language carrying all the
+  // current traffic.
+  const seg = /^\/([a-z]{2})(\/.*)?$/.exec(request.nextUrl.pathname)
+  const maybe = seg?.[1]
+  if (maybe && isLocale(maybe) && maybe !== DEFAULT_LOCALE) {
+    const url = request.nextUrl.clone()
+    url.pathname = seg?.[2] || '/'
+    const headers = new Headers(request.headers)
+    headers.set(LOCALE_HEADER, maybe)
+    const res = NextResponse.rewrite(url, { request: { headers } })
+    res.headers.set(LOCALE_HEADER, maybe)
+    return res
+  }
+
+  const res = NextResponse.next()
+  res.headers.set(LOCALE_HEADER, DEFAULT_LOCALE)
+  return res
 }
 
 export const config = {

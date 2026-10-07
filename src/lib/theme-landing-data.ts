@@ -69,6 +69,60 @@ export type ThemeLanding = {
 const COMMON_CITIES = ['lahore', 'karachi', 'islamabad', 'faisalabad', 'rawalpindi', 'multan', 'peshawar', 'gujranwala']
 
 export const THEME_LANDINGS: ThemeLanding[] = [
+  // ── Added 2026-10-08, second batch ────────────────────────────────────
+  //
+  // Fightwear and Tea were built (5 pages and 20/42 sections each, and
+  // both /themes/<key> previews return 200) but are still flagged
+  // coming_soon with no demo site. getThemes() filters coming_soon out, so
+  // until that flag is cleared these two pages fall back to the Launch
+  // plan in their CTA -- which is the exact bug minPlanFor exists to
+  // prevent. The flag is a data fix, not a code one.
+  //
+  // Tea's colours are a worked example of why `primary` is not read from
+  // themes.primary_color: that column holds #a6d86b, a bright green that
+  // scores 1.66 against white text and would make the closing band
+  // unreadable. The near-black is `primary`; the green is `accent`, which
+  // is where a bright colour belongs.
+  {
+    slug: 'fightwear-matjar',
+    themeKey: 'fightwear-matjar',
+    name: 'Fightwear Matjar',
+    tagline: 'A hard-edged storefront for fight gear, gyms and combat sports brands.',
+    metaTitle: 'Fightwear & Combat Sports Website Template | Fightwear Matjar',
+    metaDesc:
+      'A ready-made website for fight gear brands and combat sports gyms: a dark, heavy design built around product photography, with a quote route for team and club orders.',
+    highlights: [
+      { title: 'Dark, because the kit is', body: 'Near-black with an oxblood and brass palette. Gloves, pads and rashguards photograph against it rather than disappearing into white.' },
+      { title: 'Built for club orders', body: 'The quote route assumes a gym kitting out thirty people, not one person buying one pair of gloves.' },
+      { title: 'Five pages, fast', body: 'A short site that loads on a phone in a gym car park, which is where this gets read.' },
+    ],
+    pages: ['Home', 'Get a quote', 'Contact', 'Blog'],
+    primary: '#0e0f13',
+    accent: '#c9a24a',
+    industryHref: '/website-for-gyms-and-fitness',
+    industryLabel: 'gyms and fitness businesses',
+    cities: COMMON_CITIES,
+  },
+  {
+    slug: 'tea-matjar',
+    themeKey: 'tea-matjar',
+    name: 'Tea Matjar',
+    tagline: 'A warm, produce-led storefront for tea growers, blenders and cafés.',
+    metaTitle: 'Tea & Beverage Website Design Template | Tea Matjar',
+    metaDesc:
+      'A ready-made website for tea brands and blenders: a design built around origin, leaf and process, with an About page that carries the story a premium tea sells on.',
+    highlights: [
+      { title: 'Origin is the product', body: 'Layouts that give estate, altitude and harvest the room they need — the details a premium tea buyer reads before the price.' },
+      { title: 'Green against near-black', body: 'A fresh-leaf green on a dark ground, so packaging and loose-leaf photography carry real colour.' },
+      { title: 'The story has its own page', body: 'A proper About page, because a tea brand is bought on where it comes from as much as what it costs.' },
+    ],
+    pages: ['Home', 'About', 'Contact', 'Blog'],
+    primary: '#070a08',
+    accent: '#a6d86b',
+    industryHref: '/website-for-restaurants',
+    industryLabel: 'cafés and food businesses',
+    cities: COMMON_CITIES,
+  },
   // ── Added 2026-10-08 ──────────────────────────────────────────────────
   //
   // Four themes had a finished design, a published demo and no landing

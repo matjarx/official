@@ -53,6 +53,8 @@ const openSans = Open_Sans({
 
 import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
 import { BUSINESS_PHONE_E164 } from '@/lib/contact-details'
+import { currentLocale } from '@/lib/locale-server'
+import { dirFor, DEFAULT_LOCALE } from '@/lib/locale'
 
 const SITE_URL = 'https://matjarx.com'
 
@@ -79,9 +81,20 @@ const DEFAULT_SOCIALS: Record<string, string> = {
 // change how any individual page's own metadata resolves.
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getMergedContent<SiteSettings>(SITE_SETTINGS_SLUG)
+  // An untranslated locale renders ENGLISH under an /ar or /ur URL. That is
+  // exactly what we want while building and exactly what must never be
+  // indexed: it would publish a duplicate of all 208 English pages twice
+  // over, competing with the originals that carry the rankings.
+  //
+  // So every non-English URL is noindex until its catalogue exists, and
+  // translatedLocales() is the single place that changes when one does. A
+  // page is opted IN to indexing by being translated, never by default.
+  const locale = await currentLocale()
+  const untranslated = locale !== DEFAULT_LOCALE
   const title = settings.default_title || DEFAULT_TITLE
   const description = settings.default_description || DEFAULT_DESCRIPTION
   return {
+    ...(untranslated ? { robots: { index: false, follow: true } } : {}),
     metadataBase: new URL(SITE_URL),
     title: {
       default: title,
@@ -128,6 +141,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Set from the locale the proxy resolved, not hardcoded. `dir` matters as
+  // much as `lang`: Arabic and Urdu are right-to-left, and a page that
+  // declares the language without the direction renders the text correctly
+  // and the layout backwards.
+  const locale = await currentLocale()
+  const dir = dirFor(locale)
   const [settings, announcementConfig, popupConfig] = await Promise.all([
     getMergedContent<SiteSettings>(SITE_SETTINGS_SLUG),
     getMergedContent<AnnouncementBarConfig>(ANNOUNCEMENT_BAR_SLUG),
@@ -219,7 +238,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   }
 
   return (
-    <html lang="en" className={`${lato.variable} ${openSans.variable}`}>
+    <html lang={locale} dir={dir} className={`${lato.variable} ${openSans.variable}`}>
       <body>
         <script
           type="application/ld+json"
