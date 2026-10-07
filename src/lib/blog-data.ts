@@ -7,10 +7,22 @@
 export type BlogCategory = 'Getting started' | 'Client stories' | 'Payments' | 'E-commerce' | 'SEO' | 'Marketing'
 
 export type BodyBlock =
+  /** A section heading. Renders as <h2>.
+   *
+   *  Deliberately not renamed to 'h2' when h3 was added: the key is stored
+   *  in 1,249 blocks across 29 published posts, and renaming it would
+   *  invalidate all of them for no reader-visible gain. */
   | { t: 'h'; text: string }
+  /** A sub-heading under an 'h'. Renders as <h3>. */
+  | { t: 'h3'; text: string }
   | { t: 'p'; text: string }
   | { t: 'q'; text: string }
+  /** Bulleted. */
   | { t: 'l'; items: string[] }
+  /** Numbered. Same shape as 'l'; the renderer counts. */
+  | { t: 'ol'; items: string[] }
+  /** An image inside the body, distinct from the post's cover. */
+  | { t: 'img'; src: string; alt: string; caption?: string }
 
 export type BlogPost = {
   slug: string; title: string; category: BlogCategory; excerpt: string

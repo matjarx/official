@@ -15,6 +15,7 @@ import AuthorCard, { AuthorByline } from './AuthorCard'
 import NewsletterSignup from './NewsletterSignup'
 import { routes } from '@/lib/routes'
 import { AUTHOR, SHARE_LINKS, type BlogPost } from '@/lib/blog-data'
+import { richText, plainText } from '@/lib/rich-text'
 
 // allPosts comes from the same getBlogPosts() call the page already made
 // for the listing — resolving relatedSlugs against the live table rather
@@ -102,23 +103,50 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
 
             <article style={{ minWidth: 0, maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 24 }}>
               {post.body.map((b, i) => {
-                if (b.t === 'h') return <h2 key={i} id={headingId(b.text, i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{b.text}</h2>
-                if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{b.text}</p>
+                if (b.t === 'h') return <h2 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{richText(b.text)}</h2>
+                if (b.t === 'h3') return <h3 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '10px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.25, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{richText(b.text)}</h3>
+                if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{richText(b.text)}</p>
                 if (b.t === 'q') return (
                   <blockquote key={i} style={{ margin: '8px 0', padding: '24px 28px', borderRadius: 18, background: 'var(--cream-deep)', borderLeft: '4px solid var(--moss-light)' }}>
-                    <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{b.text}</p>
+                    <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{richText(b.text)}</p>
                   </blockquote>
                 )
-                return (
+                if (b.t === 'img') return (
+                  <figure key={i} style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={b.src} alt={b.alt} loading="lazy" style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
+                    {b.caption && (
+                      <figcaption style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-3-alt)' }}>{richText(b.caption)}</figcaption>
+                    )}
+                  </figure>
+                )
+                if (b.t === 'ol') return (
+                  <ol key={i} style={{ margin: 0, paddingLeft: 26, display: 'flex', flexDirection: 'column', gap: 13 }}>
+                    {b.items.map((li, k) => (
+                      <li key={k} style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>{richText(li)}</li>
+                    ))}
+                  </ol>
+                )
+                if (b.t === 'l') return (
                   <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
-                    {b.items.map((li) => (
-                      <span key={li} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
+                    {b.items.map((li, k) => (
+                      <span key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
                         <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
-                        {li}
+                        {richText(li)}
                       </span>
                     ))}
                   </div>
                 )
+                // An unknown block renders NOTHING.
+                //
+                // This branch used to be the list renderer, reached by
+                // falling through -- so any block type this deploy did not
+                // know about hit `b.items.map` on an object with no items
+                // and threw, taking the whole post page down with it. The
+                // platform and this site deploy separately, so the editor
+                // WILL emit a type this renderer has not learned yet; that
+                // has to cost a missing paragraph, not a white screen.
+                return null
               })}
 
               <div style={{ marginTop: 20, padding: '30px 32px', borderRadius: 22, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -136,7 +164,13 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                 Putting overflow higher up is what broke sticky in the
                 first place. */}
             <aside style={{ minWidth: 0, maxWidth: 340, display: 'flex', flexDirection: 'column', gap: 18, position: 'sticky', top: 100, maxHeight: 'calc(100vh - 120px)', overflowY: 'auto' }}>
-              <ArticleToc items={toc.map((t) => ({ id: headingId(t.text, t.index), text: t.text }))} />
+              {/* plainText on BOTH sides. The heading's own id is built
+                  from the link-stripped text, so building the contents
+                  anchor from the raw text would point every entry whose
+                  heading contains a link at an element that does not
+                  exist -- a contents list that silently stops working on
+                  exactly the headings someone bothered to link from. */}
+              <ArticleToc items={toc.map((t) => ({ id: headingId(plainText(t.text), t.index), text: plainText(t.text) }))} />
 
               <NewsletterSignup postSlug={post.slug} />
             </aside>
