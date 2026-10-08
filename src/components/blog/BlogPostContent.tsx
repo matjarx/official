@@ -99,82 +99,162 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
           </section>
 
           {/* Body + sidebar */}
-          <section style={{ maxWidth: 1300, margin: '0 auto', padding: '52px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 46, alignItems: 'start' }}>
+          {/* Which frame the body goes in.
+              `layout` names a LAYOUT, not a template row: on a client site a
+              template is sections in the database, here it is a React
+              component, so there is nothing to look up. An unknown name --
+              or none, which is all 29 posts today -- renders the standard
+              one, so adding this changed nothing until a post opts in. */}
+          {post.layout === 'wide' ? (
+            <>
+            {/* WIDE — no sidebar.
+                Same body, same blocks, same heading ids: only the frame
+                differs. For a post where a 340px rail of table-of-contents
+                and newsletter box beside a 680px column is noise rather
+                than navigation -- a short piece, or one carrying wide
+                imagery that the narrow measure crops the life out of. */}
+            <section style={{ maxWidth: 820, margin: '0 auto', padding: '52px 24px 0', display: 'flex', flexDirection: 'column', gap: 24 }}>
+              {toc.length > 2 && (
+                <ArticleToc items={toc.map((t) => ({ id: headingId(plainText(t.text), t.index), text: plainText(t.text) }))} />
+              )}
+                <article style={{ minWidth: 0, maxWidth: '100%', display: 'flex', flexDirection: 'column', gap: 24 }}>
+                  {post.body.map((b, i) => {
+                    if (b.t === 'h') return <h2 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{richText(b.text)}</h2>
+                    if (b.t === 'h3') return <h3 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '10px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.25, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{richText(b.text)}</h3>
+                    if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{richText(b.text)}</p>
+                    if (b.t === 'q') return (
+                      <blockquote key={i} style={{ margin: '8px 0', padding: '24px 28px', borderRadius: 18, background: 'var(--cream-deep)', borderLeft: '4px solid var(--moss-light)' }}>
+                        <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{richText(b.text)}</p>
+                      </blockquote>
+                    )
+                    if (b.t === 'img') return (
+                      <figure key={i} style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={b.src} alt={b.alt} loading="lazy" style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
+                        {b.caption && (
+                          <figcaption style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-3-alt)' }}>{richText(b.caption)}</figcaption>
+                        )}
+                      </figure>
+                    )
+                    if (b.t === 'ol') return (
+                      <ol key={i} style={{ margin: 0, paddingLeft: 26, display: 'flex', flexDirection: 'column', gap: 13 }}>
+                        {b.items.map((li, k) => (
+                          <li key={k} style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>{richText(li)}</li>
+                        ))}
+                      </ol>
+                    )
+                    if (b.t === 'l') return (
+                      <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
+                        {b.items.map((li, k) => (
+                          <span key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
+                            <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
+                            {richText(li)}
+                          </span>
+                        ))}
+                      </div>
+                    )
+                    // An unknown block renders NOTHING.
+                    //
+                    // This branch used to be the list renderer, reached by
+                    // falling through -- so any block type this deploy did not
+                    // know about hit `b.items.map` on an object with no items
+                    // and threw, taking the whole post page down with it. The
+                    // platform and this site deploy separately, so the editor
+                    // WILL emit a type this renderer has not learned yet; that
+                    // has to cost a missing paragraph, not a white screen.
+                    return null
+                  })}
 
-            <article style={{ minWidth: 0, maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 24 }}>
-              {post.body.map((b, i) => {
-                if (b.t === 'h') return <h2 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{richText(b.text)}</h2>
-                if (b.t === 'h3') return <h3 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '10px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.25, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{richText(b.text)}</h3>
-                if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{richText(b.text)}</p>
-                if (b.t === 'q') return (
-                  <blockquote key={i} style={{ margin: '8px 0', padding: '24px 28px', borderRadius: 18, background: 'var(--cream-deep)', borderLeft: '4px solid var(--moss-light)' }}>
-                    <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{richText(b.text)}</p>
-                  </blockquote>
-                )
-                if (b.t === 'img') return (
-                  <figure key={i} style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={b.src} alt={b.alt} loading="lazy" style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
-                    {b.caption && (
-                      <figcaption style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-3-alt)' }}>{richText(b.caption)}</figcaption>
-                    )}
-                  </figure>
-                )
-                if (b.t === 'ol') return (
-                  <ol key={i} style={{ margin: 0, paddingLeft: 26, display: 'flex', flexDirection: 'column', gap: 13 }}>
-                    {b.items.map((li, k) => (
-                      <li key={k} style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>{richText(li)}</li>
-                    ))}
-                  </ol>
-                )
-                if (b.t === 'l') return (
-                  <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
-                    {b.items.map((li, k) => (
-                      <span key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
-                        <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
-                        {richText(li)}
-                      </span>
-                    ))}
+                  <div style={{ marginTop: 20, padding: '30px 32px', borderRadius: 22, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 14 }}>
+                    <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 25, lineHeight: 1.16, letterSpacing: '-0.7px', color: '#1F2A08' }}>Want this handled for you?</h3>
+                    <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: '#3D4A16' }}>We build the whole website — design, copy, images, Google listing — and launch it in seven days from Rs. 22,500.</p>
+                    <Link href={routes.pricing} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 4 }}>See plans</Link>
                   </div>
-                )
-                // An unknown block renders NOTHING.
-                //
-                // This branch used to be the list renderer, reached by
-                // falling through -- so any block type this deploy did not
-                // know about hit `b.items.map` on an object with no items
-                // and threw, taking the whole post page down with it. The
-                // platform and this site deploy separately, so the editor
-                // WILL emit a type this renderer has not learned yet; that
-                // has to cost a missing paragraph, not a white screen.
-                return null
-              })}
 
-              <div style={{ marginTop: 20, padding: '30px 32px', borderRadius: 22, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 25, lineHeight: 1.16, letterSpacing: '-0.7px', color: '#1F2A08' }}>Want this handled for you?</h3>
-                <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: '#3D4A16' }}>We build the whole website — design, copy, images, Google listing — and launch it in seven days from Rs. 22,500.</p>
-                <Link href={routes.pricing} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 4 }}>See plans</Link>
-              </div>
-
+                  <AuthorCard author={author} />
+                </article>
               <AuthorCard author={author} />
-            </article>
-
-            {/* maxHeight + overflow on the ASIDE, not on an ancestor: the rail
-                has to stay usable on a post with fifteen headings, and a
-                scroll container here only affects the rail's own contents.
-                Putting overflow higher up is what broke sticky in the
-                first place. */}
-            <aside style={{ minWidth: 0, maxWidth: 340, display: 'flex', flexDirection: 'column', gap: 18, position: 'sticky', top: 100, maxHeight: 'calc(100vh - 120px)', overflowY: 'auto' }}>
-              {/* plainText on BOTH sides. The heading's own id is built
-                  from the link-stripped text, so building the contents
-                  anchor from the raw text would point every entry whose
-                  heading contains a link at an element that does not
-                  exist -- a contents list that silently stops working on
-                  exactly the headings someone bothered to link from. */}
-              <ArticleToc items={toc.map((t) => ({ id: headingId(plainText(t.text), t.index), text: plainText(t.text) }))} />
-
               <NewsletterSignup postSlug={post.slug} />
-            </aside>
-          </section>
+            </section>
+            </>
+          ) : (
+            <section style={{ maxWidth: 1300, margin: '0 auto', padding: '52px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 46, alignItems: 'start' }}>
+
+              <article style={{ minWidth: 0, maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 24 }}>
+                {post.body.map((b, i) => {
+                  if (b.t === 'h') return <h2 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{richText(b.text)}</h2>
+                  if (b.t === 'h3') return <h3 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '10px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.25, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{richText(b.text)}</h3>
+                  if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{richText(b.text)}</p>
+                  if (b.t === 'q') return (
+                    <blockquote key={i} style={{ margin: '8px 0', padding: '24px 28px', borderRadius: 18, background: 'var(--cream-deep)', borderLeft: '4px solid var(--moss-light)' }}>
+                      <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{richText(b.text)}</p>
+                    </blockquote>
+                  )
+                  if (b.t === 'img') return (
+                    <figure key={i} style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={b.src} alt={b.alt} loading="lazy" style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
+                      {b.caption && (
+                        <figcaption style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-3-alt)' }}>{richText(b.caption)}</figcaption>
+                      )}
+                    </figure>
+                  )
+                  if (b.t === 'ol') return (
+                    <ol key={i} style={{ margin: 0, paddingLeft: 26, display: 'flex', flexDirection: 'column', gap: 13 }}>
+                      {b.items.map((li, k) => (
+                        <li key={k} style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>{richText(li)}</li>
+                      ))}
+                    </ol>
+                  )
+                  if (b.t === 'l') return (
+                    <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
+                      {b.items.map((li, k) => (
+                        <span key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
+                          <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
+                          {richText(li)}
+                        </span>
+                      ))}
+                    </div>
+                  )
+                  // An unknown block renders NOTHING.
+                  //
+                  // This branch used to be the list renderer, reached by
+                  // falling through -- so any block type this deploy did not
+                  // know about hit `b.items.map` on an object with no items
+                  // and threw, taking the whole post page down with it. The
+                  // platform and this site deploy separately, so the editor
+                  // WILL emit a type this renderer has not learned yet; that
+                  // has to cost a missing paragraph, not a white screen.
+                  return null
+                })}
+
+                <div style={{ marginTop: 20, padding: '30px 32px', borderRadius: 22, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 14 }}>
+                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 25, lineHeight: 1.16, letterSpacing: '-0.7px', color: '#1F2A08' }}>Want this handled for you?</h3>
+                  <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: '#3D4A16' }}>We build the whole website — design, copy, images, Google listing — and launch it in seven days from Rs. 22,500.</p>
+                  <Link href={routes.pricing} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 4 }}>See plans</Link>
+                </div>
+
+                <AuthorCard author={author} />
+              </article>
+
+              {/* maxHeight + overflow on the ASIDE, not on an ancestor: the rail
+                  has to stay usable on a post with fifteen headings, and a
+                  scroll container here only affects the rail's own contents.
+                  Putting overflow higher up is what broke sticky in the
+                  first place. */}
+              <aside style={{ minWidth: 0, maxWidth: 340, display: 'flex', flexDirection: 'column', gap: 18, position: 'sticky', top: 100, maxHeight: 'calc(100vh - 120px)', overflowY: 'auto' }}>
+                {/* plainText on BOTH sides. The heading's own id is built
+                    from the link-stripped text, so building the contents
+                    anchor from the raw text would point every entry whose
+                    heading contains a link at an element that does not
+                    exist -- a contents list that silently stops working on
+                    exactly the headings someone bothered to link from. */}
+                <ArticleToc items={toc.map((t) => ({ id: headingId(plainText(t.text), t.index), text: plainText(t.text) }))} />
+
+                <NewsletterSignup postSlug={post.slug} />
+              </aside>
+            </section>
+          )}
 
           {/* Keep reading */}
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '74px 24px 20px' }}>

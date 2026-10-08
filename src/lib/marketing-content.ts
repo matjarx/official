@@ -361,6 +361,7 @@ type BlogPostRow = {
   date: string
   read_time: string
   tint: string
+  layout: string | null
   body: unknown
   related_slugs: string[]
   // title/caption/description are real, populated columns inside this
@@ -383,6 +384,7 @@ function rowToBlogPost(row: BlogPostRow): BlogPost {
     date: row.date,
     readTime: row.read_time,
     tint: row.tint,
+    layout: row.layout ?? undefined,
     body: row.body as BlogPost['body'],
     relatedSlugs: row.related_slugs || [],
     coverImage: row.cover_image || undefined,
@@ -461,7 +463,12 @@ export function withAuthors(posts: BlogPost[], authors: BlogAuthor[]): BlogPost[
 // look like it was working. Retrying without the column keeps the two
 // independent of each other in either order.
 const BLOG_COLUMNS_BASE = 'slug, title, category, excerpt, date, read_time, tint, body, related_slugs, cover_image'
-const BLOG_COLUMNS = `${BLOG_COLUMNS_BASE}, author, author_slug`
+const BLOG_COLUMNS = `${BLOG_COLUMNS_BASE}, author, author_slug, layout`
+// Without `layout`, for an environment where that column has not been added
+// yet. Naming a column PostgREST does not know fails the ENTIRE select and
+// returns zero rows -- which on this site means silently falling back to the
+// hardcoded post array, looking exactly like a database with no posts in it.
+const BLOG_COLUMNS_NO_LAYOUT = `${BLOG_COLUMNS_BASE}, author, author_slug`
 // Spelled out rather than derived by stripping: String.replace takes only the
 // first match, so removing ', author' from a list containing both would have
 // left ', author_slug' behind and failed for the exact reason the fallback
@@ -472,6 +479,14 @@ const BLOG_COLUMNS_LEGACY = BLOG_COLUMNS_BASE
 function isMissingAuthorColumn(error: { message?: string; code?: string } | null): boolean {
   if (!error) return false
   return error.code === '42703' || /author/i.test(error.message || '')
+}
+
+/** True when it rejected because `layout` is not there yet. Checked BEFORE
+ *  the author fallback, so a missing `layout` does not get mistaken for a
+ *  missing `author` and drop the byline as well. */
+function isMissingLayoutColumn(error: { message?: string; code?: string } | null): boolean {
+  if (!error) return false
+  return error.code === '42703' && /layout/i.test(error.message || '')
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -492,6 +507,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         .order('created_at', { ascending: false })
 
     let { data, error } = await query(BLOG_COLUMNS)
+    if (isMissingLayoutColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_NO_LAYOUT))
     if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
     if (error || !data || data.length === 0) return BLOG_POSTS
     // Resolved here rather than at the call sites, because every consumer
@@ -531,6 +547,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
         .maybeSingle()
 
     let { data, error } = await query(BLOG_COLUMNS)
+    if (isMissingLayoutColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_NO_LAYOUT))
     if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
     if (error || !data) return BLOG_POSTS.find((p) => p.slug === slug) || null
     // Same resolution as getBlogPosts -- this is the page that publishes the

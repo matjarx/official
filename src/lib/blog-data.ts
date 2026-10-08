@@ -40,6 +40,10 @@ export type BlogPost = {
    *  `author` so /blogs/author/<slug> can filter without string-matching
    *  names -- two people can share a display name, a slug is unique. */
   authorSlug?: string
+  /** Which article layout renders this post. Undefined, or a name the
+   *  renderer does not know, means the standard one -- which is what all 29
+   *  posts use today, and why adding this changed nothing. */
+  layout?: string
 }
 
 /**
