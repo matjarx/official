@@ -171,9 +171,13 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                     <Link href={routes.pricing} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 4 }}>See plans</Link>
                   </div>
 
+                  {/* The article body already ends with the author card --
+                      this layout does not add a second one. It did, and the
+                      post rendered the byline twice. */}
                   <AuthorCard author={author} />
                 </article>
-              <AuthorCard author={author} />
+              {/* The sidebar's newsletter box has nowhere to live without a
+                  sidebar, so it goes under the article instead. */}
               <NewsletterSignup postSlug={post.slug} />
             </section>
             </>
