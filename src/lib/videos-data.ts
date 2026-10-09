@@ -21,11 +21,20 @@ export type Video = {
   body: string
   items?: string[]
   extra?: string // a one-line "Perfect for:" / "Topics:" / "Tone:" note, for videos without a full bullet list
-  // An instagram.com/reel/.../ or /p/.../ URL — once set, the card shows
-  // the real embedded video instead of the "Video coming soon"
-  // placeholder. Editable per-video from the admin's Marketing Content
-  // editor (this is already part of the 'videos' content shape merged
-  // from Supabase), no code change needed to fill one in.
+  // A YouTube or Instagram URL — once set, the card shows the real video
+  // instead of the "Video coming soon" placeholder.
+  //
+  // YouTube: any shape a person is likely to paste — watch?v=, youtu.be/,
+  // /shorts/, /embed/, /live/, or the bare 11-character id. The card shows
+  // YouTube's own thumbnail and loads the player only when clicked, because
+  // twenty-one players on one page would cost more than the rest of the
+  // site (see YouTubeEmbed).
+  //
+  // Instagram: a /reel/ or /p/ URL, embedded via Meta's embed.js.
+  //
+  // Editable per-video from the admin's Marketing Content editor — this is
+  // already part of the 'videos' content shape merged from Supabase, so
+  // filling one in needs no code change or deploy.
   url?: string
 }
 
@@ -37,22 +46,22 @@ export const VIDEO_SECTIONS: VideoSection[] = [
     videos: [
       { number: 1, title: 'Full Product Demo — From Our Founder, Wajeeh Hassan', length: '~15 minutes',
         body: 'Our CEO and founder Wajeeh Hassan walks you through the complete MatjarX platform — from website builder to editor to marketing tools. See exactly what you get when you sign up.',
-        items: ['Complete platform walkthrough', 'Website editor in action', 'Booking system setup', 'E-commerce integration', 'Marketing dashboard', 'Customer support features'] },
+        items: ['Complete platform walkthrough', 'Website editor in action', 'Booking system setup', 'E-commerce integration', 'Marketing dashboard', 'Customer support features'], url: '' },
       { number: 2, title: "MatjarX's Boost Plan in 4 Minutes", length: '~4 minutes',
         body: "Quick overview of our Boost plan — what's included, what it costs, and why it's perfect for small business owners who want a professional website without the DIY hassle.",
-        extra: 'Perfect for: Business owners considering their first website or upgrading from DIY' },
+        extra: 'Perfect for: Business owners considering their first website or upgrading from DIY', url: '' },
       { number: 3, title: "MatjarX's Growth Plan in 2 Minutes", length: '~2 minutes',
         body: 'See how our Growth plan includes everything in Boost plus dedicated marketing support, monthly strategy calls, and advanced SEO optimization.',
-        extra: 'Perfect for: Growing businesses ready to scale online' },
+        extra: 'Perfect for: Growing businesses ready to scale online', url: '' },
       { number: 4, title: 'How We Make Your Website Unique', length: '~6 minutes',
         body: "MatjarX websites don't look like templates. In this video, our design team explains how we create custom, industry-specific websites that match your brand and convert visitors.",
-        items: ['Custom design process', 'Industry-specific layouts', 'Brand identity development', 'Conversion optimization', 'Mobile responsiveness'] },
+        items: ['Custom design process', 'Industry-specific layouts', 'Brand identity development', 'Conversion optimization', 'Mobile responsiveness'], url: '' },
       { number: 5, title: 'How We Deliver Your Website', length: '~8 minutes',
         body: 'Ever wonder what happens during your 7-day build? Watch our team explain the entire process — from initial questionnaire to final launch call.',
-        items: ['Discovery phase (what we learn about you)', 'Design and development process', 'Content creation workflow', 'Quality assurance checks', 'Launch preparation', 'Training on your new website'] },
+        items: ['Discovery phase (what we learn about you)', 'Design and development process', 'Content creation workflow', 'Quality assurance checks', 'Launch preparation', 'Training on your new website'], url: '' },
       { number: 6, title: 'How You Can Edit Your Website', length: '~7 minutes',
         body: 'Our website editor is designed for non-technical users. This video shows you exactly how to make updates, add content, and manage your site — no coding required.',
-        items: ['Text and image editing', 'Adding new pages', 'Updating products/services', 'Managing appointments and bookings', 'Blog post creation', 'Mobile editing', 'Video tutorials built-in'] },
+        items: ['Text and image editing', 'Adding new pages', 'Updating products/services', 'Managing appointments and bookings', 'Blog post creation', 'Mobile editing', 'Video tutorials built-in'], url: '' },
     ],
   },
   {
@@ -60,15 +69,15 @@ export const VIDEO_SECTIONS: VideoSection[] = [
     videos: [
       { number: 7, title: 'Why Choose MatjarX?', length: '~5 minutes',
         body: 'In this short video, we explain the core reasons small businesses choose MatjarX over DIY builders, expensive agencies, or freelancers.',
-        items: ['Speed (7 days vs. 60+ days)', 'Affordability (all-in-one pricing vs. hidden fees)', 'Professional quality', 'Ongoing support', 'Guaranteed completion'] },
+        items: ['Speed (7 days vs. 60+ days)', 'Affordability (all-in-one pricing vs. hidden fees)', 'Professional quality', 'Ongoing support', 'Guaranteed completion'], url: '' },
       { number: 8, title: 'Get More, For Less', length: '~4 minutes',
         body: "A direct comparison: what you get with MatjarX vs. what you'd get (or struggle with) using DIY website builders or expensive agencies.",
-        items: ['Cost breakdown', 'Time investment', 'Quality of results', 'Support availability', 'Ongoing management'] },
+        items: ['Cost breakdown', 'Time investment', 'Quality of results', 'Support availability', 'Ongoing management'], url: '' },
       { number: 9, title: 'Avoid the Hard Labor', length: '~3 minutes',
         body: 'Stop wasting hours on DIY website building. See how MatjarX saves you 60+ hours and eliminates the frustration of doing it yourself.',
-        items: ['Time saved breakdown', 'Eliminated frustrations', 'Professional peace of mind', 'Focus on your business'] },
+        items: ['Time saved breakdown', 'Eliminated frustrations', 'Professional peace of mind', 'Focus on your business'], url: '' },
       { number: 10, title: 'Our Websites Are F**king Great', length: '~2 minutes',
-        body: 'Short, direct, and to the point — our websites are professionally designed, SEO-optimized, mobile-responsive, and actually convert visitors into customers.' },
+        body: 'Short, direct, and to the point — our websites are professionally designed, SEO-optimized, mobile-responsive, and actually convert visitors into customers.', url: '' },
     ],
   },
   {
@@ -76,7 +85,7 @@ export const VIDEO_SECTIONS: VideoSection[] = [
     videos: [
       { number: 11, title: 'Hey Pakistan, Heard About MatjarX?', length: '~3 minutes',
         body: "Specifically designed for Pakistani business owners, this video explains MatjarX in context — how we've helped 70,000+ Pakistani businesses get online.",
-        items: ['Local success stories', 'Pakistan-specific features (JazzCash, Easypaisa, etc.)', 'Urdu/English navigation', 'Local customer support', 'Pakistan business challenges solved'] },
+        items: ['Local success stories', 'Pakistan-specific features (JazzCash, Easypaisa, etc.)', 'Urdu/English navigation', 'Local customer support', 'Pakistan business challenges solved'], url: '' },
     ],
   },
   {
@@ -84,13 +93,13 @@ export const VIDEO_SECTIONS: VideoSection[] = [
     videos: [
       { number: 12, title: 'DIY Website Myths… Debunked', length: '~7 minutes',
         body: "Common myths about DIY website builders — and the reality. Learn why DIY isn't as easy or cheap as it seems.",
-        items: ['"Building a website is easy"', '"DIY website builders save money"', '"You don\'t need a designer"', '"SEO is automatic"', '"Anyone can do it"'] },
+        items: ['"Building a website is easy"', '"DIY website builders save money"', '"You don\'t need a designer"', '"SEO is automatic"', '"Anyone can do it"'], url: '' },
       { number: 13, title: '4 Problems with Website Builders', length: '~5 minutes',
         body: 'Specific, honest discussion of the real problems with popular DIY website builders — and how MatjarX solves them.',
-        items: ['Hidden fees and add-ons', 'Poor SEO defaults', 'Limited support', 'Template limitations', 'Time investment underestimated'] },
+        items: ['Hidden fees and add-ons', 'Poor SEO defaults', 'Limited support', 'Template limitations', 'Time investment underestimated'], url: '' },
       { number: 14, title: 'MatjarX vs Do It Yourself Websites', length: '~6 minutes',
         body: "Head-to-head comparison: MatjarX's done-for-you approach vs. the DIY path. Honest discussion of pros, cons, time, and cost.",
-        items: ['Setup time', 'Quality of results', 'Ongoing management', 'Cost comparison', 'Support availability', 'Success rate'] },
+        items: ['Setup time', 'Quality of results', 'Ongoing management', 'Cost comparison', 'Support availability', 'Success rate'], url: '' },
     ],
   },
   {
@@ -98,16 +107,16 @@ export const VIDEO_SECTIONS: VideoSection[] = [
     videos: [
       { number: 15, title: "It's Hard to Get Online", length: '~4 minutes',
         body: 'Why is getting a professional website so difficult? This video explores "the website problem" and why so many small businesses struggle.',
-        items: ['DIY complexity', 'Agency expense', 'Freelancer uncertainty', 'Missing support', 'Time commitment'] },
+        items: ['DIY complexity', 'Agency expense', 'Freelancer uncertainty', 'Missing support', 'Time commitment'], url: '' },
       { number: 16, title: '7 Features of a Good Website', length: '~8 minutes',
         body: "What separates a good website from a mediocre one? Learn the 7 essential features every small business website needs.",
-        items: ['Professional design', 'Mobile responsiveness', 'Fast loading speed', 'Clear navigation', 'Strong call-to-action', 'Trust signals (testimonials, security badges)', 'SEO optimization'] },
+        items: ['Professional design', 'Mobile responsiveness', 'Fast loading speed', 'Clear navigation', 'Strong call-to-action', 'Trust signals (testimonials, security badges)', 'SEO optimization'], url: '' },
       { number: 17, title: "Do's & Don'ts of a Great Website", length: '~6 minutes',
         body: "Practical tips for website design and user experience. Discover what works and what doesn't when building a website that converts.",
-        items: ["Do: Simple, clear messaging", "Do: Professional images", "Do: Mobile-first design", "Do: Fast loading", "Do: Easy navigation", "Do: Trust badges", "Don't: Auto-playing music/video", "Don't: Cluttered layouts", "Don't: Outdated design", "Don't: Broken links", "Don't: Slow loading", "Don't: Too many ads"] },
+        items: ["Do: Simple, clear messaging", "Do: Professional images", "Do: Mobile-first design", "Do: Fast loading", "Do: Easy navigation", "Do: Trust badges", "Don't: Auto-playing music/video", "Don't: Cluttered layouts", "Don't: Outdated design", "Don't: Broken links", "Don't: Slow loading", "Don't: Too many ads"], url: '' },
       { number: 18, title: 'Your Website Needs Great Content', length: '~7 minutes',
         body: "Websites without great content don't convert. Learn why content matters and how MatjarX ensures every page has professional, conversion-focused copy.",
-        items: ['Copywriting fundamentals', 'SEO-optimized content', 'Calls-to-action', 'Testimonials and social proof', 'FAQ sections', 'Blog strategy'] },
+        items: ['Copywriting fundamentals', 'SEO-optimized content', 'Calls-to-action', 'Testimonials and social proof', 'FAQ sections', 'Blog strategy'], url: '' },
     ],
   },
   {
@@ -115,10 +124,10 @@ export const VIDEO_SECTIONS: VideoSection[] = [
     videos: [
       { number: 19, title: 'Dream Job at a DIY Website Builder', length: '~2 minutes',
         body: "Humorous take on what it's like working at a DIY website builder — watching customers struggle with your product.",
-        extra: 'Tone: Light, funny, relatable' },
+        extra: 'Tone: Light, funny, relatable', url: '' },
       { number: 20, title: 'Considering Other Alternatives? (Christmas In July)', length: '~4 minutes',
         body: "Comparison video: why MatjarX stands out when you're considering other solutions. Honest look at DIY, agencies, and freelancers.",
-        items: ['DIY website builders', 'Expensive agencies', 'Freelance developers', 'Template platforms'] },
+        items: ['DIY website builders', 'Expensive agencies', 'Freelance developers', 'Template platforms'], url: '' },
     ],
   },
   {
@@ -126,7 +135,7 @@ export const VIDEO_SECTIONS: VideoSection[] = [
     videos: [
       { number: 21, title: 'Rs. 100,000 to Spend on a Website?', length: '~5 minutes',
         body: "If you have PKR 100,000 to spend on a website, here's how to spend it wisely — and why MatjarX is the best value in that budget.",
-        items: ['Budget breakdown', 'What PKR 100,000 gets you', 'Comparison to other solutions', 'ROI expectations'] },
+        items: ['Budget breakdown', 'What PKR 100,000 gets you', 'Comparison to other solutions', 'ROI expectations'], url: '' },
     ],
   },
 ]

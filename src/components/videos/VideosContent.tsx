@@ -14,6 +14,7 @@ import SiteChrome from '@/components/SiteChrome'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import InstagramEmbed from './InstagramEmbed'
+import YouTubeEmbed, { isYouTube } from './YouTubeEmbed'
 import { routes } from '@/lib/routes'
 import {
   HERO, INTRO, VIDEO_SECTIONS, CATEGORIES_BY_PURPOSE, CATEGORIES_BY_LENGTH,
@@ -24,7 +25,13 @@ import { FaqList } from '@/components/FaqList'
 function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos'][number] }) {
   return (
     <div className="glass-card" style={{ borderRadius: 22, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-      {video.url ? (
+      {/* YouTube first, because it is the one with a cover image and a
+          click-to-play, and Instagram's embed.js replaces the whole block
+          itself. Anything that is neither falls through to the honest
+          placeholder rather than rendering a dead player. */}
+      {isYouTube(video.url) ? (
+        <YouTubeEmbed url={video.url!} title={video.title} />
+      ) : video.url ? (
         <InstagramEmbed url={video.url} />
       ) : (
         <div style={{ height: 140, background: 'linear-gradient(150deg, var(--navy), var(--olive-ground))', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
