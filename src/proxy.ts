@@ -57,6 +57,9 @@ const GONE_PREFIXES = [
   'wp-json',
 ]
 
+/** src/app/untranslated-home: reachable only through the /ar and /ur rewrite. */
+const UNTRANSLATED_HOME = 'untranslated-home'
+
 /** Single dead pages rather than whole trees. */
 const GONE_EXACT = new Set([
   '/my-account',
@@ -123,6 +126,11 @@ export function proxy(request: NextRequest) {
   // alternative -- moving every one of them under app/[locale]/ -- would be
   // a vast refactor to change nothing for the language carrying all the
   // current traffic.
+  // The internal route behind /ar and /ur (below) is not a URL of its own.
+  if (first === UNTRANSLATED_HOME) {
+    return new NextResponse(null, { status: 404 })
+  }
+
   const seg = /^\/([a-z]{2})(\/.*)?$/.exec(request.nextUrl.pathname)
   const maybe = seg?.[1]
   if (maybe && isLocale(maybe) && maybe !== DEFAULT_LOCALE) {
@@ -134,6 +142,12 @@ export function proxy(request: NextRequest) {
     // rendered page itself is identical English either way today.
     const headers = new Headers(request.headers)
     headers.set(LOCALE_HEADER, maybe)
+    // The bare /ar and /ur homepages also need the robots META tag, which
+    // only a page's own metadata can render -- so untranslated, they go to
+    // a prerendered noindex copy of the homepage rather than to `/`.
+    if (url.pathname === '/' && !translatedLocales('/').includes(maybe)) {
+      url.pathname = `/${UNTRANSLATED_HOME}/${maybe}`
+    }
     const res = NextResponse.rewrite(url, { request: { headers } })
     res.headers.set(LOCALE_HEADER, maybe)
     // Untranslated locales must not be indexed.
@@ -150,7 +164,7 @@ export function proxy(request: NextRequest) {
     // covers responses that have no <head> to put a tag in.
     //
     // `follow` so the English pages these link to still get crawled.
-    if (!translatedLocales(url.pathname).includes(maybe)) {
+    if (!translatedLocales(seg?.[2] || '/').includes(maybe)) {
       res.headers.set('X-Robots-Tag', 'noindex, follow')
     }
     return res

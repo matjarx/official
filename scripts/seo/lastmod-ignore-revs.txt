@@ -1,0 +1,2 @@
+# Commits that touched page files without changing their content.
+# Skipped by scripts/seo/gen-lastmod.mjs (same idea as .git-blame-ignore-revs).
