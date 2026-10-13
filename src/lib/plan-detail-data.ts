@@ -209,7 +209,7 @@ export const BOOST: StandardPlanDetail = {
     ] },
   ],
   glance: { title: 'Boost Plan at a Glance', rows: [
-    ['Pages', '30 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['SEO Optimization', '✅ Complete'], ['Blog Posts/Month', '✅ 1 post/month'],
+    ['Pages', '20–30 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['SEO Optimization', '✅ Complete'], ['Blog Posts/Month', '✅ 1 post/month'],
     ['Keyword Research', '✅ Yes'], ['Domain Included', '✅ Yes (1 year)'], ['Email Accounts', '✅ 10 accounts'], ['SSL Certificate', '✅ Yes'], ['Google Analytics', '✅ Yes with reports'],
     ['Contact Forms', '✅ Advanced forms'], ['Monthly Maintenance', '✅ Yes'], ['VIP Phone Support', '✅ Yes (1 call/mo)'], ['Social Media Integration', '✅ Yes'], ['Review Management', '✅ Yes'],
     ['Monthly Reports', '✅ Yes'], ['SEO Services', '✅ Included'], ['Marketing Team', '❌ Not included'], ['Ecommerce', '❌ Not included'],
@@ -242,7 +242,7 @@ export const BOOST: StandardPlanDetail = {
     { title: 'Week 5-6: Launch', items: ['Final approval', 'Deploy to live servers', 'Google Search Console setup', 'Initial promotion'] },
   ], closing: 'Your website is live. Organic traffic begins.' },
   faqs: [
-    { q: 'How many pages do I actually get?', a: '30 professional pages including:', items: ['Homepage (1 page)', 'Core pages (5-7 pages: About, Services, Contact, FAQ, Team, etc.)', 'Service/Product pages (5-8 pages)', 'Blog hub and initial blog posts (3-5 pages)', 'Location/city pages (if applicable, 5-10 pages)', 'Additional custom pages (remaining space)', 'More pages needed? Upgrade to Growth (50 pages).'] },
+    { q: 'How many pages do I actually get?', a: '20–30 professional pages, including:', items: ['Homepage (1 page)', 'Core pages (5-7 pages: About, Services, Contact, FAQ, Team, etc.)', 'Service/Product pages (5-8 pages)', 'Blog hub and initial blog posts (3-5 pages)', 'Location/city pages (if applicable, 5-10 pages)', 'Additional custom pages (remaining space)', 'More pages needed? Upgrade to Growth (50 pages).'] },
     { q: 'Can I add pages after launch?', a: "Yes. Add pages anytime through the editor or request our team's help. First 30 days include unlimited edits; after that, major structural changes may require additional fees." },
     { q: 'What if I want more blog posts?', a: 'Included: 1 blog post/month. Additional posts: PKR 3,500 per post. Many clients add 1-2 extra blog posts/month as they see results.' },
     { q: 'Do I own the blog content?', a: 'Yes, 100%. You own all content created for your website, including blog posts. You can:', items: ['Republish elsewhere', 'Modify as needed', 'Remove content', 'Export everything'] },
@@ -261,12 +261,12 @@ export const BOOST: StandardPlanDetail = {
   ],
   compareTitle: 'Should You Upgrade to Boost?',
   compareTable: { headers: ['Need', 'Launch', 'Boost'], rows: [
-    ['Pages', '5-10', '30'], ['Blog posts', 'None', '1/month'], ['SEO optimization', 'Basic', 'Complete'], ['Phone support', 'No', '1 call/mo'], ['Monthly reports', 'No', 'Yes'], ['Email accounts', '5', '10'], ['Price/month', '4,500', '15,600'],
+    ['Pages', 'Up to 10', '20–30'], ['Blog posts', 'None', '1/month'], ['SEO optimization', 'Basic', 'Complete'], ['Phone support', 'No', '1 call/mo'], ['Monthly reports', 'No', 'Yes'], ['Email accounts', '5', '10'], ['Price/month', '4,500', '15,600'],
   ] },
   upgradeIntro: 'Upgrade to Boost if you:',
   upgradeGroups: [{ title: 'Upgrade to Boost if you:', items: ['Need more than 10 pages', 'Want blog content for rankings', 'Want dedicated SEO optimization', 'Want professional phone support', 'Want monthly performance reports', 'Serious about online growth'] }],
   allPlans: [
-    { name: 'Launch', desc: '5-10 pages, affordable start' }, { name: 'Boost', desc: '30 pages with SEO and blog' }, { name: 'Growth', desc: '50 pages with marketing team' },
+    { name: 'Launch', desc: 'Up to 10 pages, affordable start' }, { name: 'Boost', desc: '20–30 pages with SEO and blog' }, { name: 'Growth', desc: 'Up to 50 pages with marketing team' },
     { name: 'Platinum', desc: 'Unlimited pages with ecommerce' }, { name: 'Custom', desc: 'Enterprise solutions' },
   ],
   closing: { eyebrow: 'Ready to Boost?', title: 'Start Growing Your Online Visibility', priceLines: ['Setup: PKR 22,500 (one-time)', 'Monthly: PKR 15,600', '1 blog post included each month'], cta: 'Start Your Boost Plan',
@@ -339,7 +339,7 @@ export const GROWTH: StandardPlanDetail = {
     ] },
   ],
   glance: { title: 'Growth Plan at a Glance', rows: [
-    ['Pages', '50 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['SEO Optimization', '✅ Complete'], ['Blog Posts/Month', '✅ 3 posts/month'],
+    ['Pages', 'Up to 50 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['SEO Optimization', '✅ Complete'], ['Blog Posts/Month', '✅ 3 posts/month'],
     ['Keyword Research', '✅ Yes'], ['Dedicated Marketing Expert', '✅ Yes'], ['Monthly Strategy Calls', '✅ Yes (1-on-1)'], ['Domain Included', '✅ Yes (1 year)'], ['Email Accounts', '✅ 15 accounts'],
     ['SSL Certificate', '✅ Yes'], ['Google Analytics', '✅ Advanced setup'], ['Monthly Reports', '✅ Detailed'], ['Email Marketing Setup', '✅ Yes'], ['Social Media Strategy', '✅ Yes'],
     ['Phone Support', '✅ Unlimited'], ['Reputation Management', '✅ Yes'], ['SEO Services', '✅ Advanced'], ['Marketing Strategy', '✅ 5-month plan'], ['Ecommerce', '❌ Not included'],
@@ -399,7 +399,7 @@ export const GROWTH: StandardPlanDetail = {
   ] },
   upgradeGroups: [{ title: 'Upgrade to Growth if you:', items: ['Want aggressive growth (2-3x+ in 6 months)', 'Need expert marketing guidance', 'Want monthly strategy calls', 'Need content beyond 1 blog/month', 'Want to outrank competitors', 'Serious about scaling business'] }],
   allPlans: [
-    { name: 'Launch', desc: 'Start online affordably' }, { name: 'Boost', desc: '30 pages with blog and SEO' }, { name: 'Growth', desc: '50 pages with marketing expert' },
+    { name: 'Launch', desc: 'Start online affordably' }, { name: 'Boost', desc: '20–30 pages with blog and SEO' }, { name: 'Growth', desc: 'Up to 50 pages with marketing expert' },
     { name: 'Platinum', desc: 'Unlimited pages with ecommerce' }, { name: 'Custom', desc: 'Enterprise solutions' },
   ],
   closing: { eyebrow: 'Ready to Scale?', title: 'Get Your Dedicated Growth Expert', priceLines: ['Setup: PKR 22,500 (one-time)', 'Monthly: PKR 27,000', 'Dedicated marketing expert included'], cta: 'Start Growing Now',
@@ -533,7 +533,7 @@ export const PLATINUM: StandardPlanDetail = {
   ],
   compareTitle: 'Compare All Plans',
   allPlans: [
-    { name: 'Launch', desc: '5-10 pages for starters' }, { name: 'Boost', desc: '30 pages with SEO' }, { name: 'Growth', desc: '50 pages with marketing expert' },
+    { name: 'Launch', desc: 'Up to 10 pages for starters' }, { name: 'Boost', desc: '20–30 pages with SEO' }, { name: 'Growth', desc: 'Up to 50 pages with marketing expert' },
     { name: 'Platinum', desc: 'Unlimited e-commerce' }, { name: 'Custom', desc: 'Enterprise solutions' },
   ],
   closing: { eyebrow: 'Ready to Launch Your E-Commerce Store?', title: 'Build Your Online Business Today', priceLines: ['Setup: PKR 140,000 (one-time)', 'Monthly: PKR 55,000', 'Everything included'], cta: 'Start Your E-Commerce Store',
@@ -653,7 +653,7 @@ export const CUSTOM = {
   ] },
   showcase: { title: 'Featured Custom Projects', items: ['E-commerce marketplace (PKR 3.5M)', 'SaaS platform (PKR 4.2M)', 'Real estate platform (PKR 2.8M)', 'Education platform (PKR 3.1M)', 'B2B wholesale platform (PKR 2.5M)'], note: 'Video walkthroughs and client testimonials available.' },
   allPlans: [
-    { name: 'Launch', desc: '5-10 pages for starters' }, { name: 'Boost', desc: '30 pages with SEO' }, { name: 'Growth', desc: '50 pages with marketing expert' },
+    { name: 'Launch', desc: 'Up to 10 pages for starters' }, { name: 'Boost', desc: '20–30 pages with SEO' }, { name: 'Growth', desc: 'Up to 50 pages with marketing expert' },
     { name: 'Platinum', desc: 'Unlimited e-commerce' }, { name: 'Custom', desc: 'Exactly what you need' },
   ],
   closing: { title: "Let's Create Your Custom Solution", body: "Not sure if you need custom? Let's talk. During a brief discovery call, we'll understand your needs and recommend the right solution (could be standard plan or custom). No pressure. Just honest advice.", cta: 'Schedule Your Discovery Call',
