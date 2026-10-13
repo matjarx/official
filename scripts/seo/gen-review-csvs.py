@@ -87,7 +87,7 @@ PLAN = [
      f'{T}: "20–30 pages"; {P}: advanced SEO, Google Maps listing, review collection', 'Page limit added (confirmed 13 Oct).'),
     ('/plans/boost', '—', None,
      f'{P} /plans/boost: "Unlimited done-for-you edits"; {T}: "unlimited edits (first 30 days)"',
-     'CONFLICT (not resolved): plan page promises unlimited edits with no time limit; Terms limit unlimited edits to the first 30 days. The Boost detail FAQ agrees with the Terms.'),
+     'Ruled 13 Oct: follow the Terms ("unlimited edits for the first 30 days") until confirmed otherwise. Plan page copy updated in matjarx/official#5. Not in metadata.'),
     ('/plans/boost', '—', None,
      f'{P} /plans/boost detail: "30 pages" / "30 professional pages"; {T}: "20–30 pages"',
      'Page limit confirmed 13 Oct as 20–30 (per Terms). The Boost detail copy still says "30 pages"; not in metadata. Listed for the content pass.'),
@@ -100,20 +100,24 @@ PLAN = [
      f'{P} headline', ''),
     ('/plans/growth', '—', None,
      f'{P}: "2,000 words of fresh content written monthly"; {T} and Growth detail: "3 blog posts/month"',
-     'CONFLICT (not resolved): monthly content volume. Left out of the metadata.'),
+     'ON HOLD (13 Oct): awaiting confirmation of "3 blog posts a month" vs "2,000 words". Left out of the metadata.'),
     ('/plans/growth', '—', None,
      f'{P} feature: "Paid ads set up and managed"; {T}: Growth includes no ads',
-     'CONFLICT (not resolved): paid ads on Growth. Left out of the metadata.'),
-    ('/plans/platinum', 'title', 'Platinum Plan: Custom Store, Social Media & Ads | MatjarX',
-     f'{P} headline: "A Custom Store, Built To Scale"; {T}: "social media management"; Platinum detail: Facebook/Google ads', ''),
+     'Ruled 13 Oct: Growth includes "ads advice", not ad management. Plan page copy updated in matjarx/official#5. Not in metadata.'),
+    ('/plans/platinum', 'title', 'Platinum Plan: Custom Store & Social Media | MatjarX',
+     f'{P} headline: "A Custom Store, Built To Scale"; {T}: "social media management"',
+     'Ads left out: the Terms list no ad management for Platinum (the Platinum detail page does).'),
     ('/plans/platinum', 'description',
-     'Platinum plan: a custom store with unlimited pages, plus social media management, 10 blogs a month and ads managed. Rs. 55,000/month + Rs. 140,000 setup.',
+     'Platinum plan: a custom store with unlimited pages, social media management, 10 blogs and 20 social designs a month. Rs. 55,000/month + Rs. 140,000 setup.',
      f'{P} subhead; {T}: "e-commerce management, advanced SEO, social media management, 10 blogs/month"', ''),
     ('/plans/platinum', 'h1', 'Platinum plan: a custom store, built to scale',
      f'{P} headline', ''),
     ('/plans/platinum', '—', None,
      f'{P} card and hero: no social media management listed; {T} and Platinum detail: social media management, 20 post designs/month',
-     'CONFLICT (not resolved): the plan page hero and feature list omit social media management, which the Terms include. Metadata follows the Terms here.'),
+     'Ruled 13 Oct: social media management added to the plan page hero and feature list (matjarx/official#5).'),
+    ('/plans/platinum', '—', None,
+     f'Platinum detail sections: Facebook/Google ads management; {T}: no ads listed for Platinum',
+     'CONFLICT (not resolved): ads on Platinum. Left out of the metadata; the detail sections still describe ad management.'),
     ('/plans/custom', 'title', 'Custom Plan: Built for Your Business | MatjarX',
      f'{P} headline: "Your Vision. Our Custom Solution."; {T}: "Custom projects are priced individually"', 'Sheet said "Dedicated Website & Marketing Team".'),
     ('/plans/custom', 'description',
@@ -122,7 +126,8 @@ PLAN = [
     ('/plans/custom', 'h1', 'Custom plan with a dedicated project team',
      f'{P} feature: "A dedicated project team, not a general queue"', ''),
     ('/growth-marketing-service', 'description', None,
-     f'{T}: Platinum includes "social media management"', 'No change: consistent with the Terms. Body link to /plans/platinum will use the anchor "Platinum plan" (group 5).'),
+     f'{T}: Platinum includes "social media management"; no plan lists ad management',
+     'No change to the sheet value, but note: it names Facebook and TikTok ads and Platinum together, while the Terms list no ad management in any plan. Body link to /plans/platinum will use the anchor "Platinum plan" (group 5).'),
 ]
 plan = []
 for url, field, proposed, source, conflict in PLAN:
@@ -138,11 +143,24 @@ for url, field, proposed, source, conflict in PLAN:
     plan.append({'url': url, 'field': field, 'current': current, 'proposed': new, 'chars': len(new),
                  'limit': limit, 'source': source, 'conflict': conflict})
 
-# ── Claim wording (approved) ────────────────────────────────────────────
-claim_text = ('MatjarX builds and runs websites for Pakistani businesses: 7+ years of experience and 70,000+ '
-              'websites built, first under our US brand and now in Pakistan.')
-claim = [{'url': '/about-us', 'field': 'description', 'current': rows['/about-us'][FIELDS['description'][0]],
-          'proposed': claim_text, 'chars': len(claim_text), 'limit': 160, 'status': 'approved 13 Oct'}]
+# ── Claim wording ────────────────────────────────────────────────────────
+# The approved claim is one exact sentence (corrected 13 Oct). It is used
+# whole or not at all: where it doesn't fit a field's limit it's left out,
+# never shortened or reworded.
+CLAIM = ('Our team has 7+ years of experience and has built 70,000+ websites, '
+         'first under our US brand and now in Pakistan.')
+claim = []
+for url, r in rows.items():
+    for field, (col, limit) in FIELDS.items():
+        v = r[col]
+        if '70,000' not in v or CLAIM in v:
+            continue
+        lead = re.split(r'(?<=[.:])\s+(?=[^.:]*70,000)', v)[0].rstrip(':. ') + '.'
+        with_claim = f'{lead} {CLAIM}'
+        proposed, status = ((with_claim, 'claim in exact wording') if len(with_claim) <= limit
+                            else (lead, f'claim left out: with it the field is {len(with_claim)}/{limit}'))
+        claim.append({'url': url, 'field': field, 'current': v, 'proposed': proposed,
+                      'chars': len(proposed), 'limit': limit, 'status': status})
 
 os.makedirs(os.path.join(OUT, 'review'), exist_ok=True)
 
