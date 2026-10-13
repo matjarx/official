@@ -83,7 +83,7 @@ export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
       { title: 'SEO audit report', body: "A plain-English report on what moved, what's ranking and what we're fixing next.", icon: 'M4 18V9M9.5 18V5M15 18v-6M20.5 18v-9' },
       { title: 'Keyword tracking', body: 'We track the searches that actually bring you customers, not vanity terms.', icon: 'M11 4.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM16 16l4.5 4.5' },
       { title: 'Technical fixes', body: 'Page speed, structured data, sitemaps and broken links — handled without asking you.', icon: 'M14.5 6.5a3.5 3.5 0 0 0 4.7 4.7L21 13l-8 8-2-2 8-8-1.8-1.8Z' },
-      { title: 'Content written for you', body: '2,000 words a month on Growth and above, optimised for the terms you want to win.', icon: 'M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4' },
+      { title: 'Content written for you', body: '3 blog posts a month on Growth and above, optimised for the terms you want to win.', icon: 'M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4' },
       { title: 'Competitor insight', body: "Who's outranking you locally, and exactly what we're doing about it.", icon: 'M4 20V6M4 6l7 4 9-5v9l-9 5-7-4Z' },
     ],
     quote: 'Ranks #1 on Google Search and Google Maps for Chinese restaurant catering. Rs. 150,000 in website sales and 4,400 customers served.',
@@ -155,7 +155,7 @@ export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
     gridTitle: 'What your growth team delivers',
     gridItems: [
       { title: 'Dedicated marketing partner', body: 'A named expert focused on your business, on a 1-on-1 call every month.', icon: 'M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM4.5 20a7.5 7.5 0 0 1 15 0' },
-      { title: 'SEO to rank higher', body: '2,000 words of keyword-optimised content a month, plus a monthly audit.', icon: 'M11 4.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM16 16l4.5 4.5' },
+      { title: 'SEO to rank higher', body: '3 keyword-optimised blog posts a month, plus a monthly audit.', icon: 'M11 4.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM16 16l4.5 4.5' },
       { title: 'Facebook, Instagram & Google Shopping', body: 'Your products showcased across the web and synced to your store.', icon: 'M4 6h16v12H4zM4 10h16M9 14h6' },
       { title: 'Reputation management', body: 'Get 10 five-star reviews in a month and control how you appear online.', icon: 'M12 4l2.4 5.2 5.6.5-4.3 3.7 1.3 5.6L12 16l-5 3 1.3-5.6L4 9.7l5.6-.5Z' },
       { title: 'Competitor insight', body: 'See how you rank against the businesses taking your customers.', icon: 'M4 20V6M4 6l7 4 9-5v9l-9 5-7-4Z' },

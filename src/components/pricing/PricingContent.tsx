@@ -62,9 +62,9 @@ export const COMPARE_GROUPS: { title: string; rows: [string, Cell, Cell, Cell, C
   { title: 'Growth marketing service', rows: [
     ['Marketing plan for your business', 0, 0, 1, 1],
     ['1-on-1 monthly marketing session', 0, 0, 1, 1],
-    ['2,000 words of content monthly', 0, 0, 1, 1],
+    ['3 blog posts a month', 0, 0, 1, 1],
     ['Ads advice', 0, 0, 1, 1],
-    ['Paid ads setup and management', 0, 0, 0, 1],
+    ['1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 0, 0, 0, 1],
     ['Reputation management', 0, 0, 1, 1],
   ] },
 ]
@@ -94,8 +94,8 @@ export const DEFAULT_FAQ_DATA = [
   { question: 'Can I switch plans?', answer: 'Yes, any time. Upgrading applies immediately and we only charge the difference. Downgrading takes effect at your next billing date.' },
   { question: 'How do I cancel?', answer: "Message your concierge or email office@matjarx.com with 30 days' written notice. There's no long-term contract — your site stays active through the notice period and isn't renewed after it, with no exit fee." },
   { question: 'Is the setup fee charged every year?', answer: 'No. The setup fee is one-time and covers the full build — design, copy, images, SEO and launch. After that you only pay the monthly plan fee.' },
-  // Was "a 30-day full refund guarantee", which /legal/terms (section 5)
-  // does not offer. This is the Terms' policy, worded as approved 13 Oct.
+  // Replaced a 30-day refund promise that /legal/terms (section 5) does
+  // not make. This is the Terms' policy, worded as approved 13 Oct.
   { question: 'Can I get a refund?', answer: "The setup fee is refundable within 24 hours of payment if work hasn't started. Monthly fees aren't refundable once a billing cycle starts. You can cancel any time with 30 days' written notice.", link: { href: '/legal/refund', label: 'Read our Refund Policy.' } },
   { question: 'Are there any hidden fees or extra charges?', answer: 'No hidden fees. Your quoted price includes website design and content, setup and launch, domain, email addresses and support. Payment gateways (JazzCash, EasyPaisa, SadaPay, PayFast, credit cards) charge their own transaction fees, but MatjarX takes 0% commission on your sales.' },
   { question: 'What if my business needs are between two plans?', answer: "That's what the Custom plan is for — more pages than standard, more content, extra features or integrations, or a specific growth strategy tailored to your business. Talk to us and we'll scope out a plan that fits." },
@@ -121,11 +121,11 @@ export const DEFAULT_PLAN_ROWS = [
     why: 'Why Boost works: if your launch website is getting you started but you need more content, better search rankings, and advanced features to attract customers — Boost adds dedicated marketing content and SEO power to compete in your local market.',
     bestFor: 'Best for: restaurants wanting online menus, real estate agents expanding listings, service businesses building credibility, shops selling more products.' },
   { name: 'Growth', base: 27000, setup: '22,500', pitch: 'We grow your business online.', cta: 'Choose Growth', theme: DARK_THEME, tag: 'Most popular', inherits: 'Everything in Boost, plus:', href: appSignup('growth'),
-    features: ['Dedicated VIP growth team', 'A marketing plan built for your business', '1-on-1 monthly marketing sessions', 'Advice on email, social, ads, SEO and reputation', '2,000 words of fresh content written monthly'],
+    features: ['Dedicated VIP growth team', 'A marketing plan built for your business', '1-on-1 monthly marketing sessions', 'Advice on email, social, ads, SEO and reputation', '3 blog posts written for you every month'],
     why: "Why Growth wins: you're not just getting a website — you're getting a part-time marketing team. A dedicated expert works with you monthly, creating a personalised growth strategy and content plan that turns your website from a digital brochure into a lead-generating machine.",
     bestFor: 'Best for: law firms building reputation, clinics acquiring patients, consultants attracting clients, agencies managing growth — any business serious about generating consistent leads.' },
   { name: 'Platinum', base: 55000, setup: '140,000', pitch: 'We scale your e-commerce business.', cta: 'Talk to us', theme: LIGHT_THEME, tag: '', inherits: 'Everything in Growth, plus:', href: appSignup('platinum'),
-    features: ['Custom design built in our own tool', 'Full webstore built for you', 'Unlimited products and unlimited edits', 'Sell subscriptions and digital products', 'Manage multi-seat bookings', 'Enhanced marketing integrations'],
+    features: ['Custom design built in our own tool', 'Full webstore built for you', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 'Unlimited products and unlimited edits', 'Sell subscriptions and digital products', 'Manage multi-seat bookings', 'Enhanced marketing integrations'],
     why: "Why Platinum scales: it isn't just for e-commerce — it's for any business serious about owned-channel marketing and growth. You get a complete team of designers, content creators, SEO experts and social media strategists working together to grow your business.",
     bestFor: 'Best for: online stores, subscription businesses, agencies, courses, digital products, multi-location businesses, franchises — anyone serious about digital dominance.' },
 ]

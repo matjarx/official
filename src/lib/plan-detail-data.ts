@@ -95,7 +95,7 @@ export const LAUNCH: StandardPlanDetail = {
   ] },
   pricing: {
     setupFee: 'PKR 22,500', setupItems: ['Website design and setup', 'Domain registration', 'Email account setup', 'Content entry', 'Testing and launch'],
-    monthlyFee: 'PKR 4,500', monthlyItems: ['Hosting and servers', 'Maintenance and updates', 'Security and backups', 'Support and assistance', 'Unlimited edits (within reason)'],
+    monthlyFee: 'PKR 4,500', monthlyItems: ['Hosting and servers', 'Maintenance and updates', 'Security and backups', 'Support and assistance'],
     savings: { headers: ['Payment Plan', 'Setup', 'Monthly', 'Annual Total', 'You Save'], rows: [
       ['Monthly', '22,500', '4,500', '76,500'], ['Annual (Pay Yearly)', '22,500', '54,000', '76,500'], ['Two-Year (Pay Upfront)', '22,500', '108,000', '130,500'],
     ] },
@@ -114,7 +114,7 @@ export const LAUNCH: StandardPlanDetail = {
   ], closing: 'Your website is live and ready to serve customers.' },
   faqs: [
     { q: 'How many pages are included?', a: 'Up to 10 professional pages. This typically includes:', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Blog page (optional)', 'FAQ page (optional)', '1-3 additional pages based on your needs'] },
-    { q: 'Can I add pages later?', a: 'Yes. Add pages anytime through the website editor, or request help from our team. First 30 days include unlimited edits; after that, major changes may have additional fees.' },
+    { q: 'Can I add pages later?', a: 'Yes. You add and edit pages yourself with the theme editor, and we show you how on your launch training call. If you want our team to make changes for you, that comes with Boost and above.' },
     { q: 'What about the domain cost after the first year?', a: 'First year included. Year 2+ requires annual renewal (typically PKR 1,500-3,500 depending on domain). Paid through your MatjarX account.' },
     { q: 'Can I upgrade to a higher plan?', a: 'Yes, anytime. If you upgrade to Boost or Growth:', items: ['New setup fee applies for new plan', 'Old plan cancels', 'Previous work transfers'] },
     { q: 'Is hosting really included?', a: '100% included. No separate hosting fees. Everything is included:', items: ['Server costs', 'Domain costs', 'Email hosting', 'SSL certificate', 'Backups and security'] },
@@ -122,7 +122,7 @@ export const LAUNCH: StandardPlanDetail = {
     { q: 'Do you offer phone support?', a: 'Not on Launch Plan. Email and WhatsApp support included. Upgrade to Boost or Growth for VIP phone support.' },
     { q: 'Can I get blog posts with Launch?', a: 'No blog posts included. Launch is basic web presence. If you need blog posts, upgrade to Boost (1 blog/month) or Growth (3 blogs/month).' },
     { q: 'What if I cancel?', a: 'Cancel anytime. Provide 30 days written notice via email. Refund policy applies; setup fees are non-refundable once work starts.' },
-    { q: 'Can I get a money-back guarantee?', a: "Yes. If you're unsatisfied within 24 hours and we haven't substantially started work, full refund available." },
+    { q: 'Can I get a refund?', a: "The setup fee is refundable within 24 hours of payment if work hasn't started. Monthly fees aren't refundable once a billing cycle starts. You can cancel any time with 30 days' written notice." },
     { q: 'How is my data secure?', a: 'Industry-standard security:', items: ['SSL/HTTPS encryption', 'Daily backups', 'Malware scanning', 'Security patches', 'DDoS protection', 'Access controls'] },
     { q: "What happens if there's an emergency?", a: 'Emergency support available. Critical issues (downtime, hacking, data loss) get priority. Response within a few hours for critical issues.' },
     { q: 'Can I migrate to a different host later?', a: 'Yes, you own your website. After full payment, you can:', items: ['Export your website', 'Download your content', 'Migrate to another host', 'Export your email', 'Take complete ownership'] },
@@ -140,7 +140,7 @@ export const LAUNCH: StandardPlanDetail = {
     { title: 'Stay on Launch if:', items: ['You have fewer than 10 pages', "You don't need blog content", "You don't need SEO services", 'You want the lowest price', "You're just getting started"] },
     { title: 'Upgrade to Boost if:', items: ['You need 20-30 pages', 'You want monthly blog content', 'You want SEO optimization', 'You want VIP phone support', "You're established and growing"] },
     { title: 'Upgrade to Growth if:', items: ['You need 31–50 pages', 'You want aggressive growth', 'You want dedicated marketing team', 'You want 3 blogs/month', 'You want monthly strategy calls'] },
-    { title: 'Choose Platinum if:', items: ["You're selling products online", 'You need ecommerce features', 'You want unlimited pages/products', 'You want complete management', 'You need ad campaign management'] },
+    { title: 'Choose Platinum if:', items: ["You're selling products online", 'You need ecommerce features', 'You want unlimited pages/products', 'You want complete management', 'You want 1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'] },
   ],
   allPlans: [
     { name: 'Launch', desc: 'Get started affordably' }, { name: 'Boost', desc: 'More pages and services' }, { name: 'Growth', desc: 'Full marketing support' },
@@ -391,7 +391,7 @@ export const GROWTH: StandardPlanDetail = {
     { q: 'Is there a contract or commitment?', a: "No long-term contract required. Cancel with 30 days notice anytime. We're confident you'll see results and want to stay." },
     { q: 'What if my business pivots or changes direction?', a: 'Easy to adapt. During monthly calls, we can adjust strategy for new direction, shift content focus, replan your roadmap, update keyword targeting.' },
     { q: 'Can I downgrade to Boost?', a: 'Yes, anytime. Downgrade option available. New pricing applies on renewal date.' },
-    { q: 'What if I want to upgrade to Platinum?', a: 'Yes, possible. Upgrade to Platinum for unlimited pages, ecommerce features, 10 blog posts/month, full team support, ad campaign management.' },
+    { q: 'What if I want to upgrade to Platinum?', a: 'Yes, possible. Upgrade to Platinum for unlimited pages, ecommerce features, 10 blog posts/month, full team support and 1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform).' },
   ],
   compareTitle: 'Should You Upgrade to Growth?',
   compareTable: { headers: ['Need', 'Boost', 'Growth'], rows: [
@@ -411,7 +411,7 @@ export const PLATINUM: StandardPlanDetail = {
   quickOverview: {
     title: 'For Serious Online Sellers',
     intro: 'The Platinum Plan is your complete e-commerce solution. No limitations. No compromises. Full support.',
-    ticks: ['Unlimited pages and products', 'Advanced e-commerce features', '10 blog posts per month', '20 social media designs', 'Full team management', 'Ad campaign management', '30-45 day build timeline'],
+    ticks: ['Unlimited pages and products', 'Advanced e-commerce features', '10 blog posts per month', '20 social media designs', 'Full team management', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', '30-45 day build timeline'],
     setupFee: 'PKR 140,000', monthlyFee: 'PKR 55,000', totalFirstMonth: 'PKR 195,000',
   },
   whatYouGet: {
@@ -439,7 +439,7 @@ export const PLATINUM: StandardPlanDetail = {
       { title: 'Marketing & Growth Services', blocks: [
         { sub: [{ h: 'Email Marketing', items: ['Email marketing setup', 'Segmentation strategy', 'Automated email sequences', 'Welcome series', 'Abandoned cart recovery', 'Post-purchase follow-up', 'Promotional campaigns'] }] },
         { sub: [{ h: 'Reputation Management', items: ['Review collection strategy', 'Review monitoring', 'Response templates', 'Google Business Profile optimization', 'Rating aggregation'] }] },
-        { sub: [{ h: 'Ad Campaign Management', items: ['Google Shopping campaigns', 'Google Search campaigns', 'Facebook/Instagram ad campaigns', 'Retargeting campaign setup', 'Ad copywriting and optimization', 'A/B testing and optimization', 'Monthly campaign management'] }] },
+        { sub: [{ h: '1 Ad Campaign, Managed for You', items: ['1 campaign set up and managed by us', 'Ad spend under Rs. 50,000 a month, paid by you to the platform', 'Ad copywriting and optimization', 'Monthly campaign management', 'More campaigns or a bigger budget: custom ads plan, quoted separately'] }] },
       ] },
       { title: 'Advanced Analytics & Reporting', blocks: [
         { sub: [{ h: 'E-Commerce Analytics', items: ['Sales and revenue tracking', 'Conversion rate analysis', 'Average order value tracking', 'Customer lifetime value', 'Product performance analysis', 'Traffic source attribution', 'Marketing ROI tracking'] }] },
@@ -468,14 +468,14 @@ export const PLATINUM: StandardPlanDetail = {
       { h: 'Your Dedicated Account Manager', items: ['Primary contact for all needs', 'Monthly strategic reviews', 'Performance monitoring', 'Quarterly goal planning'] },
       { h: 'E-Commerce Specialists', items: ['Product page optimization', 'Inventory management', 'Order fulfillment guidance', 'Customer service setup'] },
       { h: 'SEO & Content Team', items: ['Blog writing (10 posts/month)', 'Keyword research', 'Product page optimization', 'Link building strategy'] },
-      { h: 'Marketing Specialists', items: ['Email marketing campaigns', 'Social media content (20 designs/month)', 'Ad campaign management', 'Campaign optimization'] },
+      { h: 'Marketing Specialists', items: ['Email marketing campaigns', 'Social media content (20 designs/month)', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 'Campaign optimization'] },
       { h: 'Technical Support', items: ['Website maintenance', 'Security monitoring', 'Performance optimization', 'Technical issue resolution'] },
       { h: 'Total Team', p: '5+ specialists dedicated to your success' },
     ] },
   ],
   glance: { title: 'Platinum Plan at a Glance', rows: [
     ['Pages', 'Unlimited'], ['Products', 'Unlimited'], ['Professional Design', '✅ Custom Design'], ['Mobile Responsive', '✅ Yes'], ['Shopping Cart', '✅ Full e-commerce'],
-    ['Payment Processing', '✅ Multiple gateways'], ['Blog Posts/Month', '✅ 10 posts/month'], ['Social Media Designs', '✅ 20 designs/month'], ['Email Marketing', '✅ Full setup'], ['Ad Campaign Management', '✅ Yes'],
+    ['Payment Processing', '✅ Multiple gateways'], ['Blog Posts/Month', '✅ 10 posts/month'], ['Social Media Designs', '✅ 20 designs/month'], ['Email Marketing', '✅ Full setup'], ['Ad Campaign Management', '✅ 1 campaign (ad spend under Rs. 50,000, paid by you)'],
     ['Domain Included', '✅ Yes (1 year)'], ['Email Accounts', '✅ 25 accounts'], ['SSL Certificate', '✅ Yes'], ['Advanced Analytics', '✅ E-commerce focused'], ['Monthly Reports', '✅ Comprehensive'],
     ['Phone Support', '✅ Unlimited'], ['Account Manager', '✅ Dedicated'], ['SEO Services', '✅ E-commerce SEO'], ['Inventory Management', '✅ Yes'], ['Order Management', '✅ Yes'], ['Security & Compliance', '✅ PCI-DSS compliant'],
   ] },
@@ -489,10 +489,10 @@ export const PLATINUM: StandardPlanDetail = {
   ] },
   pricing: {
     setupFee: 'PKR 140,000', setupItems: ['Custom e-commerce design', 'Domain and email setup', 'Payment gateway integration', 'Email marketing setup', 'Analytics and tracking setup', 'Initial product import', 'SEO configuration', '30-45 day build and launch'],
-    monthlyFee: 'PKR 55,000', monthlyItems: ['Hosting and servers', '10 monthly blog posts', '20 monthly social designs', 'Ad campaign management', 'Email marketing management', 'E-commerce maintenance', 'Inventory management support', 'Full team access', 'Account manager', 'Phone and email support'],
+    monthlyFee: 'PKR 55,000', monthlyItems: ['Hosting and servers', '10 monthly blog posts', '20 monthly social designs', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 'Email marketing management', 'E-commerce maintenance', 'Inventory management support', 'Full team access', 'Account manager', 'Phone and email support'],
     perMonthValue: { intro: 'For PKR 55,000/month you receive:', items: [
       { label: 'Full team support (5+ specialists)', value: '' }, { label: '10 blog posts', value: 'PKR 35,000 value' }, { label: '20 social designs', value: 'PKR 10,000 value' },
-      { label: 'Ad campaign management', value: 'PKR 15,000 value' }, { label: 'Email marketing setup', value: 'PKR 5,000 value' }, { label: 'Account manager support', value: 'PKR 10,000 value' }, { label: 'Hosting and maintenance', value: 'PKR 5,000 value' }, { label: 'Plus much more', value: '' },
+      { label: '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', value: 'PKR 15,000 value' }, { label: 'Email marketing setup', value: 'PKR 5,000 value' }, { label: 'Account manager support', value: 'PKR 10,000 value' }, { label: 'Hosting and maintenance', value: 'PKR 5,000 value' }, { label: 'Plus much more', value: '' },
     ], total: 'Total value: ~PKR 100,000+/month for PKR 55,000' },
     savings: { headers: ['Payment Plan', 'Setup', 'Monthly', 'Annual Total', 'You Save'], rows: [
       ['Monthly', '140,000', '55,000', '800,000'], ['Annual (Pay Yearly)', '140,000', '660,000', '800,000'], ['Two-Year (Pay Upfront)', '140,000', '1,320,000', '1,460,000'],
@@ -517,7 +517,7 @@ export const PLATINUM: StandardPlanDetail = {
     { q: 'Can I integrate shipping management?', a: 'Yes. Integration options include:', items: ['Courier APIs', 'Manual shipping tracking', 'Automated shipping labels', 'Real-time tracking', 'Customer notifications'] },
     { q: 'What payment gateways do you support?', a: 'Multiple integrations: credit card processing, bank transfers, PayPal or Stripe, local Pakistani options, and more available (contact for details).' },
     { q: 'Do you offer inventory management?', a: 'Complete inventory system:', items: ['Real-time stock tracking', 'Low-stock alerts', 'Automatic reorder points', 'Multiple warehouse support', 'Inventory forecasting'] },
-    { q: 'How many ads can you manage?', a: 'Unlimited campaigns. Includes:', items: ['Google Shopping ads', 'Google Search ads', 'Facebook ads', 'Instagram ads', 'Retargeting campaigns', 'All actively managed and optimized'] },
+    { q: 'Are ads included?', a: 'We set up and manage 1 ad campaign for you, with an ad spend of up to Rs. 50,000 a month. You pay the ad spend directly to the platform (for example Meta or TikTok). Need more campaigns or a bigger budget? We quote a custom ads plan.' },
     { q: "What's the average ad spend recommendation?", a: 'Depends on your business. Typical ranges: Google Shopping PKR 10K-50K/month, Facebook/Instagram PKR 5K-30K/month, Search ads PKR 5K-20K/month. We’ll discuss your budget and ROI expectations.' },
     { q: 'Can I sell digital products?', a: 'Absolutely. We support:', items: ['Digital downloads', 'Online courses', 'Software/templates', 'eBooks and guides', 'Membership access', 'Recurring subscriptions'] },
     { q: 'Do you handle customer support?', a: 'We set it up. You handle it. Includes helpdesk setup, FAQ pages, support email templates, customer communication guides. Optional: we can train your team or provide support guidance.' },
@@ -525,7 +525,7 @@ export const PLATINUM: StandardPlanDetail = {
     { q: 'Can I do dropshipping?', a: 'Yes. Suitable for connecting to supplier APIs, automated order forwarding, inventory syncing, dropship supplier integration, affiliate product selling. Contact for specific setup needs.' },
     { q: 'Is there a setup deadline?', a: "No deadline. Get the infrastructure ready whenever you're prepared to launch." },
     { q: 'Can I upgrade or downgrade?', a: 'Yes, anytime. Downgrade to Growth or Boost anytime. Upgrade available if needed.' },
-    { q: "What if I'm not happy with results?", a: "100% refund guarantee if unsatisfied within 24 hours and we haven't substantially started work. After that: we focus on optimization until you see results. Our average client does." },
+    { q: "What if I'm not happy with results?", a: "The setup fee is refundable within 24 hours of payment if work hasn't started. After that: we focus on optimization until you see results. Our average client does." },
     { q: 'How quickly will I make money?', a: 'Typically: first 30 days initial sales and testing, month 2-3 optimization and growth, month 3-6 significant revenue increase, month 6+ scaling and expansion. Depends on your traffic sources, conversion rate, product quality, marketing execution.' },
     { q: 'Can I integrate with my POS system?', a: 'Yes, possibly. Integration options include inventory sync, sales sync, multi-channel selling, unified reporting. Contact for your specific system.' },
     { q: 'Do you provide training?', a: 'Yes. Training included on dashboard and analytics, product management, order management, email marketing, basic optimization. Video tutorials and documentation included.' },

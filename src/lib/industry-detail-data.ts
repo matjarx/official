@@ -74,7 +74,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { name: 'Launch Plan', audience: 'Basic online presence', items: ['5-10 pages', 'Menu display', 'Location and hours', 'Contact form'] },
       { name: 'Boost Plan', audience: 'Growing restaurant', items: ['30 pages', 'Menu with photos', 'Reservations system', 'Blog for specials and updates', 'VIP phone support'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Established restaurant', items: ['50 pages', 'Full menu management', 'Reservation system', 'Dedicated marketing expert', 'Monthly strategy calls', 'Blog posts and social media'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Multi-location or chain', items: ['Unlimited pages', 'Online ordering integration', 'Reservation system', 'Multiple location management', 'Ad campaign management', 'Full team support'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Multi-location or chain', items: ['Unlimited pages', 'Online ordering integration', 'Reservation system', 'Multiple location management', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 'Full team support'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Restaurant Online in 7 Days', steps: ['Choose your plan', 'Answer our restaurant questionnaire', 'Schedule launch call with our team', 'We build your website with menu setup', 'Review and approve', 'Launch!', 'Start getting customers'] },
     faqs: [
@@ -121,7 +121,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     plans: { title: 'Choose Your Level', tiers: [
       { name: 'Boost Plan', audience: 'Solo agent', items: ['30 property listings', 'Agent profile', 'Search functionality', 'Blog for market updates', 'VIP phone support'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Growing team', items: ['50 properties', 'Multiple agent profiles', 'Lead management', 'Dedicated marketing expert', 'Monthly strategy calls'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Brokerage or large team', items: ['Unlimited listings', 'Multiple agents', 'CRM integration', 'Lead distribution', 'Ad campaign management'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Brokerage or large team', items: ['Unlimited listings', 'Multiple agents', 'CRM integration', 'Lead distribution', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Real Estate Website in 7-14 Days', steps: ['Choose your plan', 'Provide property inventory', 'Setup agent profiles', 'Configure listing options', 'Property photos and details', 'Review and test', 'Launch!'] },
     faqs: [
@@ -169,7 +169,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     plans: { title: 'Choose Your Level', tiers: [
       { name: 'Boost Plan', audience: 'Solo practitioner', items: ['Doctor profile', 'Service descriptions', 'Online appointment booking', 'Patient resources', 'VIP phone support'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Growing practice', items: ['Multiple doctor profiles', 'Advanced appointment system', 'Patient portal', 'Email reminders', 'Dedicated marketing expert', 'Monthly strategy calls'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Multi-specialty clinic', items: ['Unlimited doctors', 'Advanced scheduling', 'Patient portal + messaging', 'Insurance integration', 'Lab results integration', 'Ad campaign management'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Multi-specialty clinic', items: ['Unlimited doctors', 'Advanced scheduling', 'Patient portal + messaging', 'Insurance integration', 'Lab results integration', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Healthcare Website in 7-14 Days', steps: ['Choose your plan', 'Provide doctor credentials and bios', 'List services and specialties', 'Configure appointment system', 'Add patient resources and FAQs', 'Review and test', 'Launch!'] },
     extras: [
@@ -221,7 +221,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     plans: { title: 'Choose Your Level', tiers: [
       { name: 'Boost Plan', audience: 'Solo stylist or small salon', items: ['Service menu', 'Before/after gallery', 'Online booking', 'Stylist profile', 'VIP phone support'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Growing salon', items: ['Multiple stylist profiles', 'Advanced booking system', 'Email reminders', 'Review management', 'Dedicated marketing expert'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Large salon or multi-location', items: ['Unlimited stylists', 'Advanced scheduling', 'Waitlist management', 'Loyalty program', 'Ad campaigns', 'Gift card sales'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Large salon or multi-location', items: ['Unlimited stylists', 'Advanced scheduling', 'Waitlist management', 'Loyalty program', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 'Gift card sales'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Salon Website in 7 Days', steps: ['Choose your plan', 'Provide stylist photos and bios', 'List services and pricing', 'Upload before/after photos', 'Setup appointment system', 'Add promotions', 'Launch!'] },
     extras: [
@@ -271,7 +271,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     plans: { title: 'Choose Your Level', tiers: [
       { name: 'Boost Plan', audience: 'Solo trainer or small gym', items: ['Trainer profiles', 'Class schedule', 'Membership info', 'Member testimonials'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Growing gym', items: ['Multiple trainer profiles', 'Online class booking', 'Transformation gallery', 'Email reminders', 'Dedicated marketing expert'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Large gym or multi-location', items: ['Unlimited trainer profiles', 'Advanced booking system', 'Challenge management', 'Member referral program', 'Loyalty program', 'Ad campaigns'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Large gym or multi-location', items: ['Unlimited trainer profiles', 'Advanced booking system', 'Challenge management', 'Member referral program', 'Loyalty program', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Gym Website in 7 Days', steps: ['Choose your plan', 'Provide trainer profiles and certifications', 'List all classes and schedules', 'Upload member transformation photos', 'Create membership pricing', 'Add facility photos', 'Launch!'] },
     extras: [
@@ -321,7 +321,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     plans: { title: 'Choose Your Level', tiers: [
       { name: 'Boost Plan', audience: 'Solo or small team', items: ['Project portfolio (30 projects)', 'Team credentials', 'Contact/quote form', 'Testimonials'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Growing company', items: ['Project portfolio (50+ projects)', 'Case studies with timelines/budgets', 'Team profiles', 'Quote request system', 'Dedicated marketing expert'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Large firm or multi-specialty', items: ['Unlimited project portfolio', 'Advanced case studies', 'Multi-team management', 'Quote automation', 'Lead scoring', 'Ad campaigns'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Large firm or multi-specialty', items: ['Unlimited project portfolio', 'Advanced case studies', 'Multi-team management', 'Quote automation', 'Lead scoring', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Construction Website in 7-14 Days', steps: ['Choose your plan', 'Gather project photos (before/during/after)', 'Provide team credentials and licenses', 'List services and specialties', 'Write project descriptions/case studies', 'Add client testimonials', 'Launch!'] },
     faqs: [
@@ -366,7 +366,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     plans: { title: 'Choose Your Level', tiers: [
       { name: 'Boost Plan', audience: 'Solo attorney', items: ['Attorney profile', 'Practice areas', 'Testimonials', 'Contact form'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Growing firm', items: ['Multiple attorney profiles', 'Case results (with permission)', 'Legal resources/blog', 'Client portal', 'Email consultations', 'Dedicated marketing expert'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Established firm', items: ['Unlimited attorney profiles', 'Advanced case results showcase', 'Matter management integration', 'Client portal', 'Lead scoring by case type', 'Ad campaigns'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Established firm', items: ['Unlimited attorney profiles', 'Advanced case results showcase', 'Matter management integration', 'Client portal', 'Lead scoring by case type', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Law Firm Website in 7-14 Days', steps: ['Choose plan', 'Provide attorney credentials and bios', 'List practice areas', 'Gather (anonymized) case results', 'Add client testimonials/reviews', 'Write practice area descriptions', 'Launch!'] },
     extras: [
@@ -417,7 +417,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     plans: { title: 'Choose Your Level', tiers: [
       { name: 'Boost Plan', audience: 'Starting seller', items: ['Product catalog (30 products)', 'Shopping cart', 'Basic payment', 'Email marketing'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Growing store', items: ['Product catalog (50+ products)', 'Advanced payment options', 'Email campaigns', 'Analytics dashboard', 'Dedicated marketing expert'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Established store', items: ['Unlimited products', 'Advanced payment integration', 'Shipping integration', 'Inventory management', 'Email automation', 'Ad campaign management'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Established store', items: ['Unlimited products', 'Advanced payment integration', 'Shipping integration', 'Inventory management', 'Email automation', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Online Store in 7 Days', steps: ['Choose plan', 'Gather product information and photos', 'Setup payment method', 'Add products to catalog', 'Configure shipping', 'Set pricing and promotions', 'Launch!'] },
     faqs: [
@@ -463,7 +463,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     plans: { title: 'Choose Your Level', tiers: [
       { name: 'Boost Plan', audience: 'Solo planner', items: ['Event portfolio (30 events)', 'Service packages', 'Testimonials', 'Inquiry form'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Growing business', items: ['Event portfolio (50+ events)', 'Advanced packages', 'Vendor network', 'Consultation booking', 'Email follow-up', 'Dedicated marketing expert'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Established firm', items: ['Unlimited event portfolio', 'Custom package management', 'Full vendor network', 'Lead tracking', 'Event booking system', 'Ad campaigns'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Established firm', items: ['Unlimited event portfolio', 'Custom package management', 'Full vendor network', 'Lead tracking', 'Event booking system', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Event Planner Website in 7 Days', steps: ['Choose plan', 'Gather past event photos', 'Organize by event type/style', 'Write service descriptions', 'Create package pricing', 'Gather client testimonials', 'Launch!'] },
     faqs: [
@@ -509,7 +509,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     plans: { title: 'Choose Your Level', tiers: [
       { name: 'Boost Plan', audience: 'Solo shop or small team', items: ['Service menu + pricing', 'Online appointment booking', 'Testimonials', 'Email support'], price: 'PKR 15,600/month' },
       { name: 'Growth Plan', audience: 'Growing business', items: ['Multiple technician profiles', 'Advanced pricing options', 'Customer testimonials', 'Maintenance tips blog', 'Email reminders', 'Dedicated marketing expert'], price: 'PKR 27,000/month' },
-      { name: 'Platinum Plan', audience: 'Large shop or multi-bay', items: ['Unlimited services', 'Advanced scheduling', 'Technician assignment', 'Review management', 'Lead tracking', 'Ad campaigns'], price: 'PKR 55,000/month' },
+      { name: 'Platinum Plan', audience: 'Large shop or multi-bay', items: ['Unlimited services', 'Advanced scheduling', 'Technician assignment', 'Review management', 'Lead tracking', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'], price: 'PKR 55,000/month' },
     ] },
     gettingStarted: { title: 'Your Auto Repair Website in 7 Days', steps: ['Choose plan', 'List all services offered', 'Research and set pricing', 'Gather technician info and certifications', 'Add customer testimonials', 'Write service descriptions', 'Launch!'] },
     faqs: [

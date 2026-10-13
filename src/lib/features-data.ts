@@ -46,8 +46,8 @@ export const FEATURE_GROUPS: Record<FeatureGroupKey, { label: string; title: str
       { title: 'Advanced on-page SEO', plan: 'Boost +', body: 'Titles, descriptions, structured data, internal linking and page speed handled every month rather than set once and forgotten.', icon: 'M11 4.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM16 16l4.5 4.5', ...TAG_BOOST },
       { title: 'Google Maps listing', plan: 'Boost +', body: 'Created and verified so "near me" searches find you, with Business messages routed to somewhere you\'ll actually read them.', icon: 'M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11ZM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z', ...TAG_BOOST },
       { title: 'Review collection', plan: 'Boost +', body: 'One-click review invitations after each sale or visit, with your best reviews surfaced automatically on the site.', icon: 'M12 4l2.4 5.2 5.6.5-4.3 3.7 1.3 5.6L12 16l-5 3 1.3-5.6L4 9.7l5.6-.5Z', ...TAG_BOOST },
-      { title: 'Content written monthly', plan: 'Growth +', body: '2,000 words a month written for the searches that bring you customers, published and internally linked for you.', icon: 'M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4', ...TAG_GROWTH },
-      { title: 'Paid ads managed', plan: 'Growth +', body: 'Google, Meta and TikTok campaigns set up and managed by your growth team. Spend goes on your own card, so you keep control.', icon: 'M4 18V9M9.5 18V5M15 18v-6M20.5 18v-9', ...TAG_GROWTH },
+      { title: 'Content written monthly', plan: 'Growth +', body: '3 blog posts a month written for the searches that bring you customers, published and internally linked for you.', icon: 'M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4', ...TAG_GROWTH },
+      { title: '1 ad campaign managed', plan: 'Platinum', body: 'We set up and manage 1 ad campaign for you, with ad spend under Rs. 50,000 a month that you pay directly to the platform. More campaigns or a bigger budget: a custom ads plan, quoted separately.', icon: 'M4 18V9M9.5 18V5M15 18v-6M20.5 18v-9', ...TAG_PLATINUM },
     ],
   },
   operations: {

@@ -131,7 +131,7 @@ export const DFY: ServiceDetail = {
     { q: 'Are MatjarX websites secure?', a: '100% secure. In 8+ years serving 70,000+ customers: zero security breaches, zero cyber attacks, data stored on secured AWS servers, SSL certificate on every website, automatic updates and patches, daily backups.' },
     { q: 'What platform are the done-for-you websites built on?', a: 'MatjarX’s own platform, built specifically for small businesses. You retain ownership — if you ever leave MatjarX, you own all the content and we can export it for you.' },
     { q: 'Can I transfer an existing website to MatjarX?', a: 'Not directly, but we build you a new, improved website using content from your old site — importing text, images and product info, redesigning for better conversions and SEO. 42% of our customers come to us with existing websites from other platforms.' },
-    { q: 'Is this a money-back guarantee really risk-free?', a: 'Yes — a 30-day money-back guarantee. If you’re not happy for any reason within 30 days, contact us for a full refund, no questions asked.' },
+    { q: 'Can I get a refund?', a: "The setup fee is refundable within 24 hours of payment if work hasn't started. Monthly fees aren't refundable once a billing cycle starts. You can cancel any time with 30 days' written notice." },
     { q: 'Can I speak with someone before deciding?', a: `Yes — Live Chat Mon-Fri 9am-8pm, WhatsApp, Phone ${BUSINESS_PHONE_DISPLAY}, Email office@matjarx.com. No obligation, just an honest conversation.` },
     { q: 'How much does this really cost?', a: 'One-time setup Rs. 22,500 (complete design, copywriting, setup, launch), monthly Rs. 4,500 (hosting, domain, email, support, platform, 0% fees). Annual cost: Rs. 76,500/year — one sale often covers the entire year.' },
   ] },
@@ -286,7 +286,7 @@ export const GROWTH: ServiceDetail = {
     { title: 'SEO: Rank Higher on Google', blocks: [
       { p: '70% of clicks go to the top 3 results. If you’re not ranking, you’re invisible.' },
       { sub: [{ h: 'Ongoing Advice to Rank Higher on Google', items: ['Keyword research and strategy', 'Technical SEO optimization', 'Local SEO (if applicable)', 'Competitive analysis', 'Ranking progress monitoring'] }] },
-      { sub: [{ h: '2,000 Words of Content Created By Us Every Month', items: ['Blog posts optimized for keywords', 'Service/product page content', 'FAQ and guide content', 'All SEO-optimized for ranking'] }] },
+      { sub: [{ h: '3 Blog Posts Written for You Every Month', items: ['Blog posts optimized for keywords', 'Service/product page content', 'FAQ and guide content', 'All SEO-optimized for ranking'] }] },
       { sub: [{ h: 'Monthly SEO Audit Report', items: ['Current ranking for target keywords', 'Traffic analysis and sources', 'Competitor benchmarking', 'Opportunities identified', 'Specific action items for next month'] }] },
       { p: 'Timeline: most businesses see ranking improvements in 1-3 months, with significant gains by month 6.' },
     ] },
@@ -308,6 +308,7 @@ export const GROWTH: ServiceDetail = {
       { sub: [{ h: 'Understand The Costs, Benefits, and Risks', items: ['Budget requirements for your industry', 'Expected ROI and realistic expectations', 'Common mistakes and how to avoid them', 'Ad platform comparisons (Facebook, Google, LinkedIn, TikTok)'] }] },
       { sub: [{ h: 'Align Campaigns With Your Business Goals', items: ['Lead generation ads', 'Sales/e-commerce ads', 'Brand awareness campaigns', 'Retargeting campaigns', 'Lookalike audience targeting'] }] },
       { p: 'Example results: well-executed paid advertising campaigns typically see ROI of 200-400% within 30-90 days (highly variable by industry and competition).' },
+      { p: 'On Growth, your team advises you on ads. Ad campaign management comes with the Platinum plan (1 campaign included; more on a custom plan).' },
     ] },
     { title: 'E-Commerce & Multi-Channel Sales', blocks: [
       { sub: [{ h: 'Facebook, Instagram & Google Shopping Setup', items: ['Sync your product catalog with Facebook, Instagram, and Google', 'Automatic product feed management', 'Multiple platform listings from one inventory', 'Real-time inventory updates'] }] },
@@ -355,6 +356,6 @@ export const GROWTH: ServiceDetail = {
     { q: 'How much time will I need to invest?', a: 'Minimum: 1 hour per month (your growth call). Recommended: 2-3 hours per month for execution and feedback. Your manager handles most execution, but your input improves results significantly.' },
     { q: 'What’s the difference between Growth marketing and Concierge Service?', a: 'Concierge Service is website management (updates, edits, features, maintenance). Growth Marketing is business growth strategy (customers, leads, revenue, branding). The Growth Plan includes both.' },
   ] },
-  closing: { title: 'Get Hands-On Marketing Support Every Month That Makes Your Business Grow', body: 'Stop doing marketing alone. Get expert help. Growth Plan: Rs. 27,000/month — professional website, dedicated marketing manager, unlimited edits (Concierge), SEO + email + social + ads + reputation, 2,000 words of content monthly, everything included.', ctas: [{ label: 'Start with Growth — unlock your potential', href: routes.plan('growth') }, { label: 'Talk to our team', href: routes.contact }] },
+  closing: { title: 'Get Hands-On Marketing Support Every Month That Makes Your Business Grow', body: 'Stop doing marketing alone. Get expert help. Growth Plan: Rs. 27,000/month — professional website, dedicated marketing manager, unlimited edits (Concierge), SEO + email + social + ads advice + reputation, 3 blog posts a month, everything included.', ctas: [{ label: 'Start with Growth — unlock your potential', href: routes.plan('growth') }, { label: 'Talk to our team', href: routes.contact }] },
   bottomLine: { title: 'VIP Marketing Service', body: ['Marketing is hard. We’re here to help.', 'You focus on your business. We focus on growing it.'] },
 }

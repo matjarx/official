@@ -96,10 +96,10 @@ export const PLAN_DATA: Record<PlanKey, {
     ],
     compareWith: 'Growth',
     compareTitle: 'Boost manages your presence. Growth actively grows it.',
-    compareBody: "Boost keeps your site current and ranking. If you want a marketing partner — a named team, a monthly plan, fresh content and paid ads managed for you — that's Growth.",
+    compareBody: "Boost keeps your site current and ranking. If you want a marketing partner — a named team, a monthly plan, 3 blog posts a month and ads advice — that's Growth.",
     deltas: [
       { label: 'Boost: our team handles your site — Growth: a dedicated growth team', icon: ICONS.plus, ink: 'var(--moss-light)' },
-      { label: 'Boost: advanced SEO — Growth: 2,000 words of fresh content monthly', icon: ICONS.plus, ink: 'var(--moss-light)' },
+      { label: 'Boost: advanced SEO — Growth: 3 blog posts a month', icon: ICONS.plus, ink: 'var(--moss-light)' },
       { label: 'Boost: no marketing sessions — Growth: 1-on-1 every month', icon: ICONS.plus, ink: 'var(--moss-light)' },
       { label: 'Boost: no ads advice — Growth: ads advice from your growth team', icon: ICONS.plus, ink: 'var(--moss-light)' },
     ],
@@ -114,11 +114,11 @@ export const PLAN_DATA: Record<PlanKey, {
   growth: {
     tag: 'Most popular', tagBg: 'var(--butter)', tagLine: 'var(--butter-deep)', tagInk: '#3D3A08', tagDot: 'var(--olive)',
     headline: 'A Marketing Team, Not Just A Website',
-    subhead: 'Everything in Boost, plus a dedicated growth team, a marketing plan built for your business, monthly 1-on-1 sessions and 2,000 words of fresh content every month.',
+    subhead: 'Everything in Boost, plus a dedicated growth team, a marketing plan built for your business, monthly 1-on-1 sessions and 3 blog posts every month.',
     ctaLabel: 'Choose Growth',
     heroTicks: ['Dedicated growth team', 'Monthly 1-on-1 session', 'Content written for you'],
     inherits: 'Everything in Boost, plus:',
-    features: ['Dedicated VIP growth team', 'A marketing plan built for your business', '1-on-1 monthly marketing sessions', '2,000 words of fresh content written monthly', 'Advice on email, social, ads, SEO and reputation', 'Ads advice from your growth team', 'Monthly SEO audit report', 'Competitor insight for your city and category', 'Reputation management', 'Advanced e-commerce features'],
+    features: ['Dedicated VIP growth team', 'A marketing plan built for your business', '1-on-1 monthly marketing sessions', '3 blog posts written for you every month', 'Advice on email, social, ads, SEO and reputation', 'Ads advice from your growth team', 'Monthly SEO audit report', 'Competitor insight for your city and category', 'Reputation management', 'Advanced e-commerce features'],
     forTitle: 'Growth is right if the website is working and you want more',
     audiences: [
       { title: 'You have demand and want more', body: "Enquiries are coming in and you want to increase them deliberately — with a plan, a budget and someone accountable for the result.", icon: ICONS.chart },
@@ -149,7 +149,7 @@ export const PLAN_DATA: Record<PlanKey, {
     ctaLabel: 'Talk to us about Platinum',
     heroTicks: ['Fully custom design', 'Unlimited products', 'Unlimited edits'],
     inherits: 'Everything in Growth, plus:',
-    features: ['Custom design built in our own tool', 'Full webstore built for you', 'Social media management', 'Unlimited products and unlimited edits', 'Sell subscriptions and digital products', 'Manage multi-seat bookings', 'Unlimited business email addresses', 'Enhanced marketing integrations', 'Direct line to our build team', 'Quarterly business review', 'Priority build and support queue'],
+    features: ['Custom design built in our own tool', 'Full webstore built for you', 'Social media management', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 'Unlimited products and unlimited edits', 'Sell subscriptions and digital products', 'Manage multi-seat bookings', 'Unlimited business email addresses', 'Enhanced marketing integrations', 'Direct line to our build team', 'Quarterly business review', 'Priority build and support queue'],
     forTitle: "Platinum is right if a theme can't carry your business",
     audiences: [
       { title: 'You run real e-commerce', body: 'Hundreds of products, variants, bundles and stock to keep straight. You need a store designed around your catalogue, not fitted to a template.', icon: ICONS.shop },
