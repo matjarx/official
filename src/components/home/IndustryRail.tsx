@@ -33,7 +33,6 @@ const ORDER: IndustryKey[] = [
   'online-stores-ecommerce',
   'auto-repair-shops',
   'wedding-and-event-planners',
-  'clinics',
   'b2b-clothing-manufacturer',
   'b2b-leather-goods-manufacturer',
 ]

@@ -38,7 +38,6 @@ import { LOCALE_HEADER, isLocale, DEFAULT_LOCALE, translatedLocales } from '@/li
  * future `/tagline` does not.
  */
 const GONE_PREFIXES = [
-  'faq-items',
   'faq_category',
   'portfolio',
   'portfolio__trashed',
@@ -67,7 +66,6 @@ const GONE_EXACT = new Set([
   '/testing-form',
   '/404-2',
   '/matjar-x-home-copy',
-  '/web-development-karachi',
 ])
 
 export function proxy(request: NextRequest) {
@@ -87,6 +85,19 @@ export function proxy(request: NextRequest) {
         'X-Robots-Tag': 'noindex',
       },
     })
+  }
+
+  // ── Trailing slash ────────────────────────────────────────────────────
+  //
+  // next.config.js sets skipTrailingSlashRedirect so its redirects can
+  // match /pricing-table/ directly and send it to /pricing in ONE hop,
+  // instead of Next stripping the slash first and redirecting again. That
+  // turns Next's own slash strip off for every other URL too, so it is
+  // done here, after the 410 check (which already ignores the slash).
+  if (request.nextUrl.pathname !== '/' && request.nextUrl.pathname.endsWith('/')) {
+    // A fresh URL, not request.nextUrl.clone(): NextURL re-applies the
+    // trailing slash it was parsed with, and the clone redirects to itself.
+    return NextResponse.redirect(new URL(path + request.nextUrl.search, request.url), 308)
   }
 
   // ── Locale routing ────────────────────────────────────────────────────
