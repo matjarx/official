@@ -159,7 +159,8 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         )}
       </section>
 
-      {/* Real examples */}
+      {/* Real examples -- only when the plan has real, named clients to show */}
+      {d.examples && d.examples.items.length > 0 && (
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.examples.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
@@ -171,6 +172,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
           ))}
         </div>
       </section>
+      )}
 
       {/* Process */}
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>

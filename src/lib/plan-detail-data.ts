@@ -35,7 +35,8 @@ export type StandardPlanDetail = {
     notIncluded: string[]
     roi?: { intro: string; lines: string[] }
   }
-  examples: { title: string; items: RealExample[] }
+  /** Omitted when there are no real, named client examples to show. */
+  examples?: { title: string; items: RealExample[] }
   process: { title: string; phases: ProcessPhase[]; closing: string }
   faqs: PlanFaq[]
   compareTitle: string
@@ -500,11 +501,7 @@ export const PLATINUM: StandardPlanDetail = {
     notIncluded: [],
     roi: { intro: 'Investment: PKR 55,000/month · Average client increase: 3-5x sales in 6 months', lines: ['Starting sales: PKR 500K/month', 'After 6 months: PKR 1.5M-2.5M/month', 'Sales increase: PKR 1M-2M/month', 'Platinum investment: PKR 330K (6 months)', 'ROI: 3-6x in first 6 months'] },
   },
-  examples: { title: 'Platinum Plan Success Stories', items: [
-    { title: 'Fashion E-Commerce', lines: ['Baseline: 150 products, PKR 400K/month sales', 'Website: unlimited products, custom design, blog, social', 'Content: 10 blogs, 20 social designs/month', 'Ads: Google Shopping, Facebook ads', 'Result after 6 months: 500+ products online, PKR 1.8M/month sales (+350%), 40% repeat customer rate', 'Cost: PKR 330,000 · Revenue gain: PKR 8.4M · ROI: 25.4x'] },
-    { title: 'Digital Products (Online Courses)', lines: ['Baseline: 8 courses, 120 students, PKR 250K/month', 'Website: unlimited pages, course platform, blog', 'Content: 10 educational blogs/month', 'Ads: Facebook and Google ads', 'Result after 6 months: 35 courses available, 620 active students (+416%), PKR 1.6M/month revenue', 'Cost: PKR 330,000 · Revenue gain: PKR 8.1M · ROI: 24.5x'] },
-    { title: 'Multi-Location Retail', lines: ['Baseline: 3 stores, 200 products, PKR 800K/month sales', 'Website: unified online store, inventory sync', 'Content: 10 blogs, 20 social/month', 'Ads: location-based Google/Facebook campaigns', 'Result after 6 months: unified online + offline, PKR 3.2M/month sales, 20% online of total revenue', 'Cost: PKR 330,000 · Revenue gain: PKR 14.4M · ROI: 43.6x'] },
-  ] },
+  // Example case studies removed 13 Oct: none were real, named clients.
   process: { title: 'Your E-Commerce Store Launch Timeline', phases: [
     { title: 'Phase 1: Strategy & Design (Days 1-7)', items: ['Business and product analysis', 'Market and competitive research', 'E-commerce strategy', 'Custom design mockups', 'Feature planning'] },
     { title: 'Phase 2: Development (Days 8-25)', items: ['Website development', 'Shopping cart setup', 'Payment integration', 'Email marketing setup', 'Analytics configuration'] },
@@ -518,7 +515,7 @@ export const PLATINUM: StandardPlanDetail = {
     { q: 'What payment gateways do you support?', a: 'Multiple integrations: credit card processing, bank transfers, PayPal or Stripe, local Pakistani options, and more available (contact for details).' },
     { q: 'Do you offer inventory management?', a: 'Complete inventory system:', items: ['Real-time stock tracking', 'Low-stock alerts', 'Automatic reorder points', 'Multiple warehouse support', 'Inventory forecasting'] },
     { q: 'Are ads included?', a: 'We set up and manage 1 ad campaign for you, with an ad spend of up to Rs. 50,000 a month. You pay the ad spend directly to the platform (for example Meta or TikTok). Need more campaigns or a bigger budget? We quote a custom ads plan.' },
-    { q: "What's the average ad spend recommendation?", a: 'Depends on your business. Typical ranges: Google Shopping PKR 10K-50K/month, Facebook/Instagram PKR 5K-30K/month, Search ads PKR 5K-20K/month. We’ll discuss your budget and ROI expectations.' },
+    { q: "What's the average ad spend recommendation?", a: "Platinum includes 1 ad campaign managed, with ad spend under Rs. 50,000 a month paid by you directly to the platform. We'll recommend the right budget for your goal. For more campaigns or a bigger budget, we quote a custom ads plan." },
     { q: 'Can I sell digital products?', a: 'Absolutely. We support:', items: ['Digital downloads', 'Online courses', 'Software/templates', 'eBooks and guides', 'Membership access', 'Recurring subscriptions'] },
     { q: 'Do you handle customer support?', a: 'We set it up. You handle it. Includes helpdesk setup, FAQ pages, support email templates, customer communication guides. Optional: we can train your team or provide support guidance.' },
     { q: 'What about email marketing?', a: 'Full setup included. Includes:', items: ['Email service integration', 'Welcome series setup', 'Abandoned cart recovery', 'Post-purchase sequences', 'Newsletter management', 'Segmentation strategies'] },

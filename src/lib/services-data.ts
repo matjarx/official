@@ -38,7 +38,7 @@ export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
         points: ['Designed by someone who has built for your category before', 'Copy written for Pakistani and Gulf customers', 'Structured to load fast and rank on Google', 'Mobile-first — most of your visitors arrive on a phone'],
         tint: 'linear-gradient(150deg, #696D34, #C6CB8A)', mediaLabel: 'Design & build', image: { src: '/services/design-build.webp', alt: 'A website design editor with font and color controls', width: 1190, height: 980 } },
       { stat: 'Step 3 · 30 minutes', titleLead: 'We launch it', titleMark: 'together',
-        points: ['A live call to walk through every page', 'Final changes made while you watch', "We show you the editor so you're never stuck", '30 days of unlimited edits after launch'],
+        points: ['A live call to walk through every page', 'Final changes made while you watch', "We show you the editor so you're never stuck", 'Editor training so you can update your site yourself'],
         tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', mediaLabel: 'Launch & training call', image: { src: '/services/launch-training-call.webp', alt: 'A live video call walking through a finished website', width: 1190, height: 980 } },
     ],
     gridTitle: "What's included in every website",

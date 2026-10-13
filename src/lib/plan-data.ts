@@ -138,7 +138,7 @@ export const PLAN_DATA: Record<PlanKey, {
     faqs: [
       ['Who is my growth partner?', 'A named marketing specialist assigned to your account, who knows your business and joins your monthly call. Not a rotating support queue.'],
       ['What happens in the monthly session?', "Thirty to sixty minutes reviewing what happened last month, what we're doing next, and one skill you want to learn — email, social, ads or SEO."],
-      ['Is ad spend included?', 'No. We set up and manage the campaigns; the spend goes directly to Google, Meta or TikTok on your own card, so you keep full control of the budget.'],
+      ['Is ad management included?', 'Growth includes ads advice from your growth team. Ad management comes with Platinum: 1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform). More campaigns are quoted as a custom ads plan.'],
       ['Can I see the monthly reporting first?', "Yes. Ask us and we'll show you a real anonymised report before you commit."],
     ],
   },

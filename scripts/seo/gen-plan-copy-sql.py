@@ -31,6 +31,9 @@ ADS_FAQ = {'q': 'Are ads included?', 'a': (
     'We set up and manage 1 ad campaign for you, with an ad spend of up to Rs. 50,000 a month. '
     'You pay the ad spend directly to the platform (for example Meta or TikTok). '
     'Need more campaigns or a bigger budget? We quote a custom ads plan.')}
+AD_SPEND_ANSWER = ("Platinum includes 1 ad campaign managed, with ad spend under Rs. 50,000 a month paid by you directly "
+                   "to the platform. We'll recommend the right budget for your goal. For more campaigns or a bigger budget, "
+                   "we quote a custom ads plan.")
 ADS_SECTION = 'Online Advertising: Paid Ads Done Right'
 ADS_SECTION_NOTE = {'p': 'On Growth, your team advises you on ads. Ad campaign management comes with the Platinum plan '
                          '(1 campaign included; more on a custom plan).'}
@@ -56,6 +59,12 @@ EXACT = {
     'Ad campaigns': AD_MANAGEMENT,
     'Ad Campaign Management': '1 Ad Campaign, Managed for You',
     'You need ad campaign management': 'You want ' + AD_MANAGEMENT,
+    # Review of 13 Oct: /done-for-you-website promises no edits beyond Boost's.
+    '30 days of unlimited edits after launch': 'Editor training so you can update your site yourself',
+    '30 days of unlimited edits': 'Easy-to-use editor',
+    'Rs. 22,500 one-time (saves Rs. 137,500 vs. typical agency pricing)': 'Rs. 22,500 one-time',
+    '1-week turnaround': 'Live in 7 business days',
+    'Unlimited edits (Boost+ plans)': 'Edits by our team (Boost: first 30 days)',
     'Yes — a 30-day money-back guarantee. If you’re not happy for any reason within 30 days, contact us for a full refund, no questions asked.': REFUND_ANSWER,
     # Boost edits follow /legal/terms: unlimited for the first 30 days.
     'Unlimited done-for-you edits': 'Unlimited done-for-you edits (first 30 days)',
@@ -85,6 +94,12 @@ SUBSTRING = {
     '2,000 words of content monthly, everything included.': '3 blog posts a month, everything included.',
     'SEO + email + social + ads + reputation,': 'SEO + email + social + ads advice + reputation,',
     'full team support, ad campaign management.': f'full team support and {AD_MANAGEMENT}.',
+    'Boost+ plans include unlimited edits done by our team if you prefer.':
+        'Prefer our team to make changes? Boost includes unlimited edits by our team for the first 30 days.',
+    'dedicated marketing manager, unlimited edits (Concierge), SEO + email': 'dedicated marketing manager, SEO + email',
+    'Growth Marketing is business growth strategy (customers, leads, revenue, branding). The Growth Plan includes both.':
+        'Growth Marketing is business growth strategy (customers, leads, revenue, branding). The Growth Plan includes '
+        'growth marketing, plus edits by our team for the first 30 days.',
     "100% refund guarantee if unsatisfied within 24 hours and we haven't substantially started work. After that:":
         "The setup fee is refundable within 24 hours of payment if work hasn't started. After that:",
     'Boost is the better value — it adds unlimited done-for-you edits and advanced SEO.':
@@ -97,6 +112,9 @@ SUBSTRING = {
 }
 # Lists.
 LIST_EXACT = {
+    ('Is ad spend included?', 'No. We set up and manage the campaigns; the spend goes directly to Google, Meta or TikTok on your own card, so you keep full control of the budget.'):
+        ['Is ad management included?', 'Growth includes ads advice from your growth team. Ad management comes with Platinum: '
+         + AD_MANAGEMENT + '. More campaigns are quoted as a custom ads plan.'],
     ('Pages', '5-10', '30'): ['Pages', 'Up to 10', '20–30'],
     ('Ad Campaign Management', '✅ Yes'): ['Ad Campaign Management', '✅ 1 campaign (ad spend under Rs. 50,000, paid by you)'],
     ('Google Shopping campaigns', 'Google Search campaigns', 'Facebook/Instagram ad campaigns', 'Retargeting campaign setup',
@@ -135,6 +153,13 @@ def walk(v, slug, path=''):
                 at = out.index(feature) + 1
         return out
     if isinstance(v, dict):
+        if v.get('q') == "What's the average ad spend recommendation?" and not v.get('a', '').startswith('Platinum includes'):
+            hits.setdefault(slug, []).append(f'{path}: average ad spend FAQ answer')
+            return {**v, 'a': AD_SPEND_ANSWER}
+        if slug == 'plans/platinum' and path == '.detail' and 'examples' in v:
+            # Review of 13 Oct: the example case studies were not real, named clients.
+            hits.setdefault(slug, []).append(f'{path}.examples: removed')
+            v = {k: x for k, x in v.items() if k != 'examples'}
         if v.get('q') == 'How many ads can you manage?':
             hits.setdefault(slug, []).append(f'{path}: FAQ -> "Are ads included?"')
             return dict(ADS_FAQ)
