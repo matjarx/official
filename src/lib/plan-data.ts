@@ -74,7 +74,7 @@ export const PLAN_DATA: Record<PlanKey, {
     ],
     otherHref: routes.plan('boost'), otherLabel: 'See the Boost plan',
     faqs: [
-      ['How many pages do I get?', "A complete multi-page site — typically home, about, services or products, and contact. If your business needs more, we'll say so before you pay rather than after."],
+      ['How many pages do I get?', "Up to 10 pages — typically home, about, services or products, and contact. If your business needs more, we'll say so before you pay rather than after."],
       ['Can I add a shop later?', 'Yes. Launch includes basic store functionality, and you can move up to Boost or Growth at any time — we only charge the difference.'],
       ['Who writes the words?', 'We do. You fill in a short questionnaire about your business and our copywriters produce the site copy. You approve it before launch.'],
       ['What if I already have a domain?', 'We connect it for you and handle the DNS. Your domain stays registered in your name either way.'],

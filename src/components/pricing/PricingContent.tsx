@@ -87,6 +87,7 @@ export const DEFAULT_HOW_TO_CHOOSE = [
 
 export const DEFAULT_FAQ_DATA = [
   { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional website, domain, email and hosting. Boost is our most popular — it adds unlimited edits done by us, advanced SEO and selling on Google, Facebook and Instagram. Growth adds a dedicated team and monthly marketing sessions. Platinum is a fully custom build for serious e-commerce.' },
+  { question: 'How many pages do I get on each plan?', answer: 'Launch: up to 10 pages. Boost: 20–30 pages. Growth: up to 50 pages. Platinum: unlimited pages. If you need more than your plan includes, we’ll tell you before you pay.' },
   { question: 'How do I get started?', answer: 'Pick a plan and check out. You fill in a short questionnaire about your business, we build the whole site in seven days, then we launch it with you on a live call.' },
   { question: 'How does this all work?', answer: "Our team designs, writes and builds your site — you don't touch a builder. Once live, you can edit anything yourself in our editor, or send changes to your concierge and we do them for you." },
   { question: 'Can I switch plans?', answer: 'Yes, any time. Upgrading applies immediately and we only charge the difference. Downgrading takes effect at your next billing date.' },

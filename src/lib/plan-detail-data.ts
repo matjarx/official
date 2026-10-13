@@ -59,7 +59,7 @@ export const LAUNCH: StandardPlanDetail = {
     intro: '',
     sections: [
       { title: 'Website Foundation', blocks: [
-        { sub: [{ h: '5-10 Professional Pages', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Additional 1-5 custom pages'] }] },
+        { sub: [{ h: 'Up to 10 Professional Pages', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Additional 1-5 custom pages'] }] },
         { sub: [{ h: 'Professional Design', items: ['Mobile-responsive theme', 'Brand-aligned colors and layout', 'Professional typography', 'Fast-loading pages'] }] },
       ] },
       { title: 'Domain & Email', blocks: [
@@ -82,7 +82,7 @@ export const LAUNCH: StandardPlanDetail = {
     ],
   },
   glance: { title: 'Launch Plan at a Glance', rows: [
-    ['Pages', '5-10 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['Domain Included', '✅ Yes (1 year)'],
+    ['Pages', 'Up to 10 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['Domain Included', '✅ Yes (1 year)'],
     ['Email Accounts', '✅ 5 included'], ['SSL Certificate', '✅ Yes'], ['SEO Optimization', '✅ Basic'], ['Google Analytics', '✅ Yes'],
     ['Contact Forms', '✅ Yes'], ['Monthly Backups', '✅ Yes'], ['Monthly Maintenance', '✅ Yes'], ['Support', '✅ Email/WhatsApp'],
     ['VIP Phone Support', '❌ Not included'], ['Blog Posts', '❌ Not included'], ['SEO Services', '❌ Not included'], ['Marketing Services', '❌ Not included'],
@@ -113,7 +113,7 @@ export const LAUNCH: StandardPlanDetail = {
     { title: 'Phase 4: Going Live (Day 7)', items: ['Deploy to live servers', 'Submit to Google Search Console', 'Create initial sitemaps', 'Start monitoring'] },
   ], closing: 'Your website is live and ready to serve customers.' },
   faqs: [
-    { q: 'How many pages are included?', a: '5-10 professional pages. This typically includes:', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Blog page (optional)', 'FAQ page (optional)', '1-3 additional pages based on your needs'] },
+    { q: 'How many pages are included?', a: 'Up to 10 professional pages. This typically includes:', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Blog page (optional)', 'FAQ page (optional)', '1-3 additional pages based on your needs'] },
     { q: 'Can I add pages later?', a: 'Yes. Add pages anytime through the website editor, or request help from our team. First 30 days include unlimited edits; after that, major changes may have additional fees.' },
     { q: 'What about the domain cost after the first year?', a: 'First year included. Year 2+ requires annual renewal (typically PKR 1,500-3,500 depending on domain). Paid through your MatjarX account.' },
     { q: 'Can I upgrade to a higher plan?', a: 'Yes, anytime. If you upgrade to Boost or Growth:', items: ['New setup fee applies for new plan', 'Old plan cancels', 'Previous work transfers'] },
