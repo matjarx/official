@@ -73,6 +73,43 @@ for url, r in rows.items():
         seven.append({'url': url, 'field': field, 'current': v, 'proposed': proposed,
                       'chars': len(proposed), 'limit': limit, 'rule': how})
 
+# ── Launch-price pages (review of 13 Oct) ─────────────────────────────
+# Pages that quote Launch's Rs. 4,500 must not promise Boost features (local
+# SEO, Google Maps, reviews, edits). These descriptions replace the sheet's,
+# templated as given; city and industry names come from the sheet's own text.
+CITY_TEMPLATE = ('Website design and development in {city}, live in 7 business days from Rs. 4,500/month. '
+                 'Add local SEO and Google Maps with the Boost plan.')
+INDUSTRY_TEMPLATE = ('{industry} website design in Pakistan, live in 7 business days with WhatsApp leads and an '
+                     'easy editor. From Rs. 4,500/month + setup.')
+LAUNCH_PRICE_INDUSTRIES = ['restaurants', 'boutiques', 'clinics-and-healthcare', 'real-estate', 'salons-and-spas',
+                           'gyms-and-fitness', 'construction-companies', 'law-firms', 'wedding-and-event-planners',
+                           'auto-repair-shops']
+HOME_DESCRIPTION = ('Website design and development company in Pakistan. Your business website live in 7 business '
+                    'days from Rs. 4,500/month, plus SEO and marketing plans to grow.')
+D_COL = FIELDS['description'][0]
+launch_price = {}
+for url, r in rows.items():
+    if r['Page type'] == 'City':
+        m = re.search(r'in (.+?), live in 7 days', r[D_COL])
+        city = m.group(1) if m else url.removeprefix('/website-design-').replace('-', ' ').title()
+        launch_price[url] = CITY_TEMPLATE.format(city=city)
+for slug in LAUNCH_PRICE_INDUSTRIES:
+    url = f'/website-for-{slug}'
+    industry = re.match(r'(.+?) website design', rows[url][D_COL]).group(1)
+    launch_price[url] = INDUSTRY_TEMPLATE.format(industry=industry)
+launch_price['/'] = HOME_DESCRIPTION
+seen = set()
+for row in seven:
+    if row['field'] == 'description' and row['url'] in launch_price:
+        row.update(proposed=launch_price[row['url']], chars=len(launch_price[row['url']]), rule='launch-price page (13 Oct)')
+        seen.add(row['url'])
+for url, text in launch_price.items():
+    if url not in seen:
+        seven.append({'url': url, 'field': 'description', 'current': rows[url][D_COL], 'proposed': text,
+                      'chars': len(text), 'limit': 160, 'rule': 'launch-price page (13 Oct)'})
+for row in seven:
+    assert int(row['chars']) <= int(row['limit']), (row['url'], row['field'], row['chars'])
+
 # ── Plan wording (live plan pages + /legal/terms are the source) ────────
 P = 'plan page'
 T = '/legal/terms §3'
@@ -116,9 +153,11 @@ PLAN = [
     ('/plans/custom', 'h1', 'Custom plan with a dedicated project team',
      f'{P} feature: "A dedicated project team, not a general queue"', ''),
     ('/growth-marketing-service', 'description',
-     'Digital marketing agency in Pakistan: social media, ads and SEO by one team. Platinum Rs. 55,000/month (1 campaign included; more on a custom plan).',
-     'Ruling 13 Oct: where ads are mentioned with Platinum, add "(1 campaign included; more on a custom plan)"',
-     'DRAFT for approval: the sheet value plus the required phrase is 197/160, so "for small businesses", "posting", "Facebook and TikTok" and "run" were cut.'),
+     'Digital marketing agency in Pakistan for small businesses: social media, SEO and ads by one team. Platinum Rs. 55,000/month includes 1 ad campaign.',
+     'Review of 13 Oct', 'Set 13 Oct.'),
+    ('/concierge-service', 'description',
+     'Website maintenance services with a dedicated concierge team: small edits, updates, security, speed and SEO care, handled over chat or WhatsApp.',
+     'Review of 13 Oct: remove "unlimited" from "unlimited small edits"', 'Set 13 Oct.'),
 ]
 plan = []
 for url, field, proposed, source, conflict in PLAN:
