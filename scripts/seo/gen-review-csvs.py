@@ -76,48 +76,38 @@ for url, r in rows.items():
 # ── Plan wording (live plan pages + /legal/terms are the source) ────────
 P = 'plan page'
 T = '/legal/terms §3'
+# Final rulings, 13 Oct. Exact values given by the reviewer are marked "set 13 Oct".
+AD_LINE = '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'
 PLAN = [
-    # url, field, proposed (None = keep sheet value), source, conflict
+    # url, field, proposed (None = keep sheet value), source, note
     ('/plans/launch', 'description',
-     'Launch plan: a themed business website of up to 10 pages, written, hosted and managed for you. Rs. 4,500/month plus Rs. 22,500 setup.',
-     f'{T}: "5–10 pages, basic website, hosting, domain"; page limit confirmed 13 Oct: "up to 10 pages"',
-     'Sheet said "under 50 pages".'),
+     'Launch plan: a themed website of up to 10 pages, written and hosted for you, with an easy editor and launch training. Rs. 4,500/month + Rs. 22,500 setup.',
+     f'{T}: "5–10 pages"; ruling 13 Oct: no edits by our team, clients edit with the theme editor after a launch training call',
+     'Set 13 Oct.'),
+    ('/plans/launch', '—', None, 'Ruling 13 Oct',
+     'RESOLVED: Launch includes no edits by our team. "Unlimited edits (within reason)" and every Launch edit promise removed (matjarx/official#5).'),
     ('/plans/boost', 'description',
      'Boost plan: a 20–30 page website plus local SEO and managed business profiles on Google and Maps, so nearby customers find you. Rs. 15,600/month + setup.',
      f'{T}: "20–30 pages"; {P}: advanced SEO, Google Maps listing, review collection', 'Page limit added (confirmed 13 Oct).'),
-    ('/plans/boost', '—', None,
-     f'{P} /plans/boost: "Unlimited done-for-you edits"; {T}: "unlimited edits (first 30 days)"',
-     'Ruled 13 Oct: follow the Terms ("unlimited edits for the first 30 days") until confirmed otherwise. Plan page copy updated in matjarx/official#5. Not in metadata.'),
-    ('/plans/boost', '—', None,
-     f'{P} /plans/boost detail: "30 pages" / "30 professional pages"; {T}: "20–30 pages"',
-     'Page limit confirmed 13 Oct as 20–30 (per Terms). The Boost detail copy still says "30 pages"; not in metadata. Listed for the content pass.'),
-    ('/plans/growth', 'title', 'Growth Plan: A Marketing Team, Rs. 27,000/month | MatjarX',
-     f'{P} headline: "A Marketing Team, Not Just A Website"', 'Sheet said "Full SEO, GEO & AEO", which the plan page does not describe.'),
+    ('/plans/boost', '—', None, f'{T}: "unlimited edits (first 30 days)"',
+     'RESOLVED: Boost edits are unlimited for the first 30 days, per the Terms (matjarx/official#5).'),
+    ('/plans/growth', 'title', 'Growth Plan: SEO + Marketing Team, Rs. 27,000/mo | MatjarX', 'Ruling 13 Oct', 'Set 13 Oct.'),
     ('/plans/growth', 'description',
-     'Growth plan: a website of up to 50 pages, a dedicated growth team, a marketing plan and monthly 1-on-1 sessions. Rs. 27,000/month + Rs. 22,500 setup.',
-     f'{P} subhead; {T}: "dedicated marketing manager, 1-on-1 monthly growth meetings"', ''),
-    ('/plans/growth', 'h1', 'Growth plan: a marketing team, not just a website',
-     f'{P} headline', ''),
-    ('/plans/growth', '—', None,
-     f'{P}: "2,000 words of fresh content written monthly"; {T} and Growth detail: "3 blog posts/month"',
-     'ON HOLD (13 Oct): awaiting confirmation of "3 blog posts a month" vs "2,000 words". Left out of the metadata.'),
-    ('/plans/growth', '—', None,
-     f'{P} feature: "Paid ads set up and managed"; {T}: Growth includes no ads',
-     'Ruled 13 Oct: Growth includes "ads advice", not ad management. Plan page copy updated in matjarx/official#5. Not in metadata.'),
-    ('/plans/platinum', 'title', 'Platinum Plan: Custom Store & Social Media | MatjarX',
-     f'{P} headline: "A Custom Store, Built To Scale"; {T}: "social media management"',
-     'Ads left out: the Terms list no ad management for Platinum (the Platinum detail page does).'),
+     'Growth plan: a website of up to 50 pages, a dedicated growth team, a marketing plan, 3 blog posts a month and 1-on-1 sessions. Rs. 27,000/month + setup.',
+     'Ruling 13 Oct', 'Set 13 Oct.'),
+    ('/plans/growth', 'h1', 'Growth plan: a marketing team, not just a website', f'{P} headline', ''),
+    ('/plans/growth', '—', None, f'{T}: "3 blog posts/month"',
+     'RESOLVED: Growth is "3 blog posts a month"; every "2,000 words" replaced (matjarx/official#5).'),
+    ('/plans/growth', '—', None, 'Ruling 13 Oct',
+     'RESOLVED: Growth includes "ads advice", not ad management; ad management is described only on Platinum.'),
+    ('/plans/platinum', 'title', 'Platinum Plan: Custom Store, Social Media & Ads | MatjarX', 'Ruling 13 Oct', 'Set 13 Oct.'),
     ('/plans/platinum', 'description',
-     'Platinum plan: a custom store with unlimited pages, social media management, 10 blogs and 20 social designs a month. Rs. 55,000/month + Rs. 140,000 setup.',
-     f'{P} subhead; {T}: "e-commerce management, advanced SEO, social media management, 10 blogs/month"', ''),
-    ('/plans/platinum', 'h1', 'Platinum plan: a custom store, built to scale',
-     f'{P} headline', ''),
-    ('/plans/platinum', '—', None,
-     f'{P} card and hero: no social media management listed; {T} and Platinum detail: social media management, 20 post designs/month',
-     'Ruled 13 Oct: social media management added to the plan page hero and feature list (matjarx/official#5).'),
-    ('/plans/platinum', '—', None,
-     f'Platinum detail sections: Facebook/Google ads management; {T}: no ads listed for Platinum',
-     'CONFLICT (not resolved): ads on Platinum. Left out of the metadata; the detail sections still describe ad management.'),
+     'Platinum plan: a custom store, social media management, 10 blogs a month and 1 ad campaign managed (ad spend under Rs. 50,000). Rs. 55,000/month + setup.',
+     'Ruling 13 Oct', 'Set 13 Oct.'),
+    ('/plans/platinum', 'h1', 'Platinum plan: a custom store, social media and ads', 'Ruling 13 Oct', 'Set 13 Oct.'),
+    ('/plans/platinum', '—', None, 'Ruling 13 Oct',
+     f'RESOLVED: Platinum includes social media management and "{AD_LINE}". More campaigns or a bigger budget = custom ads plan. '
+     'Plan page, /pricing, features, help and industry pages updated (matjarx/official#5). /legal/terms to be updated by the business.'),
     ('/plans/custom', 'title', 'Custom Plan: Built for Your Business | MatjarX',
      f'{P} headline: "Your Vision. Our Custom Solution."; {T}: "Custom projects are priced individually"', 'Sheet said "Dedicated Website & Marketing Team".'),
     ('/plans/custom', 'description',
@@ -125,9 +115,10 @@ PLAN = [
      f'{P} subhead and features', 'Sheet said "custom setup and monthly pricing with a dedicated concierge team".'),
     ('/plans/custom', 'h1', 'Custom plan with a dedicated project team',
      f'{P} feature: "A dedicated project team, not a general queue"', ''),
-    ('/growth-marketing-service', 'description', None,
-     f'{T}: Platinum includes "social media management"; no plan lists ad management',
-     'No change to the sheet value, but note: it names Facebook and TikTok ads and Platinum together, while the Terms list no ad management in any plan. Body link to /plans/platinum will use the anchor "Platinum plan" (group 5).'),
+    ('/growth-marketing-service', 'description',
+     'Digital marketing agency in Pakistan: social media, ads and SEO by one team. Platinum Rs. 55,000/month (1 campaign included; more on a custom plan).',
+     'Ruling 13 Oct: where ads are mentioned with Platinum, add "(1 campaign included; more on a custom plan)"',
+     'DRAFT for approval: the sheet value plus the required phrase is 197/160, so "for small businesses", "posting", "Facebook and TikTok" and "run" were cut.'),
 ]
 plan = []
 for url, field, proposed, source, conflict in PLAN:
@@ -150,15 +141,22 @@ for url, field, proposed, source, conflict in PLAN:
 CLAIM = ('Our team has 7+ years of experience and has built 70,000+ websites, '
          'first under our US brand and now in Pakistan.')
 claim = []
+# /about-us: exact description set 13 Oct (the claim sentence doesn't fit 160).
+ABOUT = ('MatjarX builds, hosts and runs websites for Pakistani businesses, then helps them get found on Google, '
+         'Maps and AI search. Meet the team behind it.')
 for url, r in rows.items():
     for field, (col, limit) in FIELDS.items():
         v = r[col]
         if '70,000' not in v or CLAIM in v:
             continue
-        lead = re.split(r'(?<=[.:])\s+(?=[^.:]*70,000)', v)[0].rstrip(':. ') + '.'
-        with_claim = f'{lead} {CLAIM}'
-        proposed, status = ((with_claim, 'claim in exact wording') if len(with_claim) <= limit
-                            else (lead, f'claim left out: with it the field is {len(with_claim)}/{limit}'))
+        if (url, field) == ('/about-us', 'description'):
+            proposed, status = ABOUT, 'set 13 Oct (claim left out: the sentence does not fit 160)'
+        else:
+            lead = re.split(r'(?<=[.:])\s+(?=[^.:]*70,000)', v)[0].rstrip(':. ') + '.'
+            with_claim = f'{lead} {CLAIM}'
+            proposed, status = ((with_claim, 'claim in exact wording') if len(with_claim) <= limit
+                                else (lead, f'claim left out: with it the field is {len(with_claim)}/{limit}'))
+        assert len(proposed) <= limit, (url, field, len(proposed))
         claim.append({'url': url, 'field': field, 'current': v, 'proposed': proposed,
                       'chars': len(proposed), 'limit': limit, 'status': status})
 
