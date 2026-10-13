@@ -48,8 +48,10 @@ TINTS = {
     'Getting started': 'linear-gradient(150deg, var(--navy), #2E6EA8)',
     'SEO': 'linear-gradient(150deg, #C0392B, #5B140D)',
 }
-# The one wording the claim may take (spec ground rules).
-CLAIM = '7+ years of experience and 70,000+ websites built, first under our US brand and now in Pakistan'
+# The one wording the claim may take (corrected 13 Oct). Used as a whole
+# sentence; where it doesn't fit, it's left out rather than reworded.
+CLAIM = ('Our team has 7+ years of experience and has built 70,000+ websites, '
+         'first under our US brand and now in Pakistan.')
 
 raw = open(SRC, encoding='utf-8').read()
 m = re.match(r'^---\n(.*?)\n---\n(.*)$', raw, re.S)
@@ -128,18 +130,12 @@ while i < len(lines):
     i += 1
 flush_para()
 
-# Claim wording: anything that states the 70,000 claim must use it verbatim.
+# Claim wording: any block stating the 70,000 claim must use the exact
+# sentence. Flagged, never rewritten -- the wording is not ours to choose.
 for b in blocks:
-    for key in ('text',):
-        t = b.get(key, '')
+    for t in [b.get('text', '')] + b.get('items', []):
         if '70,000' in t and CLAIM not in t:
-            fixed = re.sub(r'Our team has 7\+ years of experience and has built 70,000\+ websites, first under our US brand and now in Pakistan',
-                           f'Our team brings {CLAIM}', t)
-            if CLAIM in fixed:
-                notes.append(f'Claim reworded to the exact approved wording:\n    was: {t}\n    now: {fixed}')
-                b[key] = fixed
-            else:
-                notes.append(f'CLAIM NOT IN APPROVED WORDING, left as is: {t}')
+            notes.append(f'CLAIM NOT IN THE APPROVED WORDING (left as written, fix the source): {t}')
 
 # Inline images: the frontmatter describes them but ships no files.
 for img in front.get('images', []):
