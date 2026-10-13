@@ -133,13 +133,13 @@ export const LAUNCH: StandardPlanDetail = {
   compareTitle: 'Launch vs. Other Plans',
   compareTable: { headers: ['Need', 'Launch', 'Boost', 'Growth', 'Platinum'], rows: [
     ['Just starting out', '✅ Perfect', '—', '—', '—'], ['Simple web presence', '✅ Yes', '✅ Yes', '✅ Yes', '✅ Yes'], ['Under 10 pages', '✅ Yes', '—', '—', '—'],
-    ['20-30 pages', '❌ No', '✅ Yes', '✅ Yes', '✅ Yes'], ['50+ pages', '❌ No', '❌ No', '✅ Yes', '✅ Yes'], ['Blog content', '❌ No', '✅ 1/mo', '✅ 3/mo', '✅ 10/mo'],
+    ['20-30 pages', '❌ No', '✅ Yes', '✅ Yes', '✅ Yes'], ['31–50 pages', '❌ No', '❌ No', '✅ Yes', '✅ Yes'], ['Blog content', '❌ No', '✅ 1/mo', '✅ 3/mo', '✅ 10/mo'],
     ['SEO services', '❌ No', '✅ Yes', '✅ Yes', '✅ Yes'], ['Marketing team', '❌ No', '❌ No', '✅ Yes', '✅ Yes'], ['Phone support', '❌ No', '✅ VIP', '✅ VIP', '✅ VIP'], ['Ecommerce', '❌ No', '❌ No', '❌ No', '✅ Yes'],
   ] },
   upgradeGroups: [
     { title: 'Stay on Launch if:', items: ['You have fewer than 10 pages', "You don't need blog content", "You don't need SEO services", 'You want the lowest price', "You're just getting started"] },
     { title: 'Upgrade to Boost if:', items: ['You need 20-30 pages', 'You want monthly blog content', 'You want SEO optimization', 'You want VIP phone support', "You're established and growing"] },
-    { title: 'Upgrade to Growth if:', items: ['You need 50+ pages', 'You want aggressive growth', 'You want dedicated marketing team', 'You want 3 blogs/month', 'You want monthly strategy calls'] },
+    { title: 'Upgrade to Growth if:', items: ['You need 31–50 pages', 'You want aggressive growth', 'You want dedicated marketing team', 'You want 3 blogs/month', 'You want monthly strategy calls'] },
     { title: 'Choose Platinum if:', items: ["You're selling products online", 'You need ecommerce features', 'You want unlimited pages/products', 'You want complete management', 'You need ad campaign management'] },
   ],
   allPlans: [
