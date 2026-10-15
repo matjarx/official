@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ComparisonContent, { type ComparisonContentShape } from '@/components/comparisons/ComparisonContent'
+import { robotsFor } from '@/lib/seo-indexing'
 import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
 import { RIVAL_DATA } from '@/lib/comparison-data'
 
@@ -9,6 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('comparisons/cise-pos')
   return {
     alternates: { canonical: '/alternatives/matjarx-vs-cise-pos' },
+    ...robotsFor('/alternatives/matjarx-vs-cise-pos'),
     title: pageTitle(seo?.title || `MatjarX vs ${rival.name}`),
     description: pageDescription(seo?.description || rival.intro[0]),
   }
