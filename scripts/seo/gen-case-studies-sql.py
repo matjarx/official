@@ -6,8 +6,8 @@ the same removals as the code change are applied here:
 
   services/dfy      detail.caseStudies ("How Done-For-You Websites Drive Results")
   services/growth   detail.caseStudies, detail.slaviStory, the Slavi quote,
-                    and the three named result stats
-  website-examples  the result chip on six example cards
+                    and two named result stats (Zulfay Hair's stays)
+  website-examples  the result chip on five example cards (Zulfay Hair's stays)
 
   python3 -I scripts/seo/gen-case-studies-sql.py /seo-data/supabase-export/marketing_content.json /seo-data/migrations
 
@@ -26,10 +26,12 @@ rows = {r['slug']: r['data'] for r in json.load(open(SRC, encoding='utf-8'))}
 DFY_CASES = 'How Done-For-You Websites Drive Results'
 GROWTH_CASES = 'Real Results: Growth Members Achieving Massive Success'
 SLAVI = 'Slavi’s Story: 2500% ROI in 6 Months'
-STAT_LABELS = ['messages for Zulfay Hair', 'orders in the first quarter', 'return for Perun Roofing']
+# All three are checked against the export; only the last two are removed.
+# Zulfay Hair's 1,520 messages is a real, documented result (kept 15 Oct).
+EXPORTED_STATS = ['messages for Zulfay Hair', 'orders in the first quarter', 'return for Perun Roofing']
+STAT_LABELS = ['orders in the first quarter', 'return for Perun Roofing']
 EXAMPLE_RESULTS = {  # card name -> result chip removed
     'Bin Adam Textile': '#1 on Google',
-    'Zulfay Hair': '1,520 messages',
     'Eebeel Home': '2,000+ leads',
     'Askari Estates': '3× more enquiries',
     'IronCore Fitness': '200+ sign-ups online',
@@ -50,7 +52,7 @@ assert dfy['detail']['caseStudies']['title'] == DFY_CASES
 assert growth['detail']['caseStudies']['title'] == GROWTH_CASES
 assert growth['detail']['slaviStory']['title'] == SLAVI
 assert growth['quoteName'] == 'Slavi'
-assert [x['label'] for x in growth['resultStats']] == STAT_LABELS
+assert [x['label'] for x in growth['resultStats']] == EXPORTED_STATS
 found = {e['name']: e.get('result') for e in examples['examples'] if e['name'] in EXAMPLE_RESULTS}
 assert found == EXAMPLE_RESULTS, found
 
@@ -100,7 +102,7 @@ UPDATE marketing_content SET data = jsonb_set(data, '{{detail,slaviStory}}', {li
 UPDATE marketing_content SET data = data || jsonb_build_object('quote', {s(growth['quote'])}, 'quoteName', {s(growth['quoteName'])}, 'quoteCompany', {s(growth['quoteCompany'])})
  WHERE slug = 'services/growth' AND NOT (data ? 'quote');
 UPDATE marketing_content SET data = jsonb_set(data, '{{resultStats}}', {lit(growth['resultStats'])})
- WHERE slug = 'services/growth' AND data->'resultStats' = '[]'::jsonb;
+ WHERE slug = 'services/growth' AND jsonb_array_length(data->'resultStats') < 3;
 UPDATE marketing_content
    SET data = jsonb_set(data, '{{examples}}', (
          SELECT jsonb_agg(CASE {restore_results} ELSE e END ORDER BY i)

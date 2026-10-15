@@ -30,7 +30,7 @@ export const EXAMPLES: ExampleSite[] = [
   { name: 'Zulfay Hair', brand: 'ZULFAY', domain: 'zulfayhair.com', category: 'Salons', cat: 'Salons',
     nav: ['Stylists', 'Price list', 'Gallery'], cta: 'Book Now', ctaBg: '#E8B4C8', ctaInk: '#2A0F1A',
     heroLine: 'Your chair is ready.', heroBlurb: 'Multi-seat booking across three branches, synced to every stylist\'s calendar.',
-    tint: 'linear-gradient(150deg, #A0522D, #3E1B0C)',
+    result: '1,520 messages', tint: 'linear-gradient(150deg, #A0522D, #3E1B0C)',
     proofImage: { src: '/services/zulfay-map-listing.webp', alt: 'Zulfay Hair Google search listing featuring the Zulfay logo, 4.8-star rating, salon information, and website button.', width: 1552, height: 1013 } },
   { name: 'CapActix Offshore', brand: 'CAPACTIX', domain: 'capactix.com', category: 'Accounting', cat: 'Accounting',
     nav: ['Services', 'Pricing', 'Blog'], cta: 'Request Call', ctaBg: '#C4262E', ctaInk: '#FFFFFF',

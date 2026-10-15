@@ -160,7 +160,9 @@ export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
       { title: 'Competitor insight', body: 'See how you rank against the businesses taking your customers.', icon: 'M4 20V6M4 6l7 4 9-5v9l-9 5-7-4Z' },
       { title: 'Monthly reporting', body: 'What we did, what it produced, and what happens next month.', icon: 'M4 18V9M9.5 18V5M15 18v-6M20.5 18v-9' },
     ],
+    // Zulfay Hair's result is real and documented (kept 15 Oct).
     resultStats: [
+      { value: '1,520', label: 'messages for Zulfay Hair' },
     ],
   },
 }
