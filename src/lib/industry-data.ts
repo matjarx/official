@@ -108,6 +108,8 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
       { title: 'Wholesale and retail pricing', body: 'Two price tiers if you sell both ways, with a bulk enquiry form for shop buyers.', icon: ICONS.form },
       { title: 'Reviews that build trust', body: 'Verified customer reviews per product, collected automatically after delivery.', icon: ICONS.star },
     ],
+    quote: 'Having the sizes and the colours right on the page stopped most of the WhatsApp back-and-forth.',
+    quoteName: 'Elegance Embroidery', quoteCompany: 'Zainab Market, Karachi',
     faqs: [
       ['How many products can I list?', 'Up to 100 comfortably on Growth, and unlimited on Platinum. We load the first batch for you from your photos and price list.'],
       ['Does it work with cash on delivery?', 'Yes, and we set up order confirmation to cut down on refused deliveries — the single biggest cost in Pakistani online retail.'],
@@ -131,6 +133,8 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
       { title: 'Patient reviews', body: 'Collected after visits and shown on the homepage — the strongest trust signal a clinic has.', icon: ICONS.star },
       { title: 'Privacy handled properly', body: "Consent notices, a privacy policy written for patient data, and forms that don't email sensitive details in plain text.", icon: ICONS.shield },
     ],
+    quote: "The level of service is really good, and I'm getting loads of leads now. Patients book online instead of calling during clinic hours.",
+    quoteName: 'Shahzad Ilyas', quoteCompany: 'Sacred Tantra & Wellness',
     faqs: [
       ['Can patients book appointments online?', 'Yes — by doctor, day and time slot, with confirmation to both sides. Multi-seat and multi-location booking is available on Platinum.'],
       ['Is patient data handled safely?', "Forms are submitted over SSL and delivered to your chosen inbox; we don't store patient details on our platform. We'll also write you a privacy policy covering it."],
@@ -171,7 +175,7 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
     headline: "Real Members. Real Transformations. Real Results.",
     tint: "linear-gradient(150deg, #1B7A3D, #08361B)",
     features: [{ title: "Member Transformations", body: "Real before/afters inspire prospects. Motivation is contagious.", icon: ICONS.form }, { title: "Trainer Expertise", body: "Trainer credentials, certifications, specializations build confidence.", icon: ICONS.doc }, { title: "Class Schedule", body: "Transparent schedule (and schedule changes) reduce confusion.", icon: ICONS.book }, { title: "Member Testimonials", body: "Real members talking about results, community, motivation.", icon: ICONS.pin }, { title: "Membership Options", body: "Clear pricing with no surprises. Easy to choose right plan.", icon: ICONS.star }, { title: "Gym Community", body: "Photos of members, events, challenges. Sense of belonging.", icon: ICONS.gallery }],
-    faqs: [["Can members book classes online?", "Yes! Class booking with email reminder reduces no-shows 40%."], ["How do I get member before/afters?", "Request permission from members achieving results. Offer incentive if needed."], ["Can I showcase multiple trainers?", "Yes! Each trainer gets their own profile with their transformation stories."], ["Will this increase class attendance?", "Yes! Transparent schedule + online booking + community = higher attendance."], ["Can I run challenges?", "Yes! Create monthly challenges with leaderboards and prizes."]],
+    faqs: [["Can members book classes online?", "Yes! Class booking comes with email reminders. Reminders help reduce no-shows."], ["How do I get member before/afters?", "Request permission from members achieving results. Offer incentive if needed."], ["Can I showcase multiple trainers?", "Yes! Each trainer gets their own profile with their transformation stories."], ["Will this increase class attendance?", "Yes! Transparent schedule + online booking + community = higher attendance."], ["Can I run challenges?", "Yes! Create monthly challenges with leaderboards and prizes."]],
     metaTitle: "Gym Website - Class Schedules, Trainer Profiles & Membership", metaDesc: "Professional fitness gym website with class schedules, trainer profiles, and member transformations. Inspire new members to join and commit.",
   },
   "construction-companies": {

@@ -90,7 +90,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
         </div>
       </section>
 
-      {/* Testimonials, when an industry has documented ones (none since Oct 2026) */}
+      {/* Testimonials from confirmed clients, without result figures */}
       {d.testimonials && (
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.testimonials.title}</h2>
