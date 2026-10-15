@@ -51,7 +51,7 @@ Head office is in Karachi, with teams in Lahore, Sialkot and Islamabad. Support 
 ${line('Pricing', routes.pricing, "All plans (Launch, Boost, Growth, Platinum, Custom) with pricing, setup fees, and what's included in each.")}
 ${line('Done-For-You Website', routes.service('dfy'), 'The core service — design, build and launch of the site itself.')}
 ${line('SEO', routes.service('seo'), 'Ongoing local, national and global search optimisation.')}
-${line('Concierge Service', routes.service('concierge'), "Unlimited website edits done by MatjarX's own team after launch.")}
+${line('Concierge Service', routes.service('concierge'), "Edits done by our team, as agreed in your plan.")}
 ${line('Growth Marketing', routes.service('growth'), '1-on-1 marketing support — social, ads, SEO and reputation management.')}
 ${line('Features', routes.features, 'Full feature list across website, commerce, growth and operations tooling.')}
 ${line('Website Examples', routes.websiteExamples, 'Real, live client sites built by MatjarX, browsable by category.')}

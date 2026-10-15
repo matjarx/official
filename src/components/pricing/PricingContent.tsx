@@ -55,7 +55,7 @@ export const COMPARE_GROUPS: { title: string; rows: [string, Cell, Cell, Cell, C
   ] },
   { title: 'Concierge service', rows: [
     ['Live chat support', 1, 1, 1, 1],
-    ['Unlimited done-for-you edits', 0, 'First 30 days', 1, 1],
+    ['Unlimited done-for-you edits', 0, 'First 30 days', 'First 30 days', 1],
     ['VIP phone support', 0, 1, 1, 1],
     ['Named concierge, replies in 4 hours', 0, 0, 1, 1],
   ] },

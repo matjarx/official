@@ -37,7 +37,15 @@ AD_SPEND_ANSWER = ("Platinum includes 1 ad campaign managed, with ad spend under
 ADS_SECTION = 'Online Advertising: Paid Ads Done Right'
 ADS_SECTION_NOTE = {'p': 'On Growth, your team advises you on ads. Ad campaign management comes with the Platinum plan '
                          '(1 campaign included; more on a custom plan).'}
+# Decisions of 13 Oct (round 2). 1: concierge edits are as agreed in the plan,
+# not unlimited. 2: Growth edits by our team for the first 30 days.
+# 3: no unnamed example case studies on the plan pages. 4: no promised
+# results, rankings or timeframes; where a sentence is needed, REPORT.
+REPORT = 'We report your results every month.'
+CONCIERGE = 'Edits done by our team, as agreed in your plan'
+DETAIL_DROP = {'plans/boost', 'plans/growth', 'plans/platinum', 'plans/custom'}  # detail.examples
 SLUGS = {'plans/boost', 'plans/growth', 'plans/platinum', 'plans/custom', 'services/dfy', 'services/growth', 'careers',
+         'services/concierge', 'faqs',
          'industries/restaurants', 'industries/real-estate', 'industries/clinics-and-healthcare',
          'industries/online-stores-ecommerce', 'industries/boutiques', 'industries/salons-and-spas',
          'industries/gyms-and-fitness', 'industries/construction-companies', 'industries/law-firms',
@@ -85,6 +93,17 @@ EXACT = {
     '50 pages with marketing expert': 'Up to 50 pages with marketing expert',
     '5-10 pages for starters': 'Up to 10 pages for starters',
     '30 pages with SEO': '20–30 pages with SEO',
+    # Decision 4: promised results and timeframes.
+    'Typical timeline: Month 1 baseline establishment, Month 2-3 initial ranking improvements, Month 3-4 traffic increase (20-40%), Month 4-6 significant growth (100-200%+), Month 6+ continuing momentum.': REPORT,
+    'Typically: first 30 days initial sales and testing, month 2-3 optimization and growth, month 3-6 significant revenue increase, month 6+ scaling and expansion. Depends on your traffic sources, conversion rate, product quality, marketing execution.': REPORT,
+    'Month 1: foundation and strategy. Month 2-3: early results (reviews, email subscribers, early SEO). Month 3-6: significant growth (SEO rankings, email revenue, followers). Month 6+: compounding returns.': REPORT,
+    'Want aggressive growth (2-3x+ in 6 months)': 'Want aggressive growth',
+    # Decision 1: concierge.
+    'Unlimited website edits, done by our team, at a do-it-yourself price.': CONCIERGE + '.',
+    'Unlimited edits, at your request': CONCIERGE,
+    'Unlimited edit requests': CONCIERGE,
+    'Unlimited edits — literally anything on your website (text, images, design, features, integrations). No limits, no tiers, just unlimited website management.':
+        CONCIERGE + ': anything on your website (text, images, design, features, integrations).',
 }
 # Replacements inside a longer string.
 SUBSTRING = {
@@ -109,6 +128,17 @@ SUBSTRING = {
     "There's no monthly cap and no per-change fee.":
         "For the first 30 days there's no cap and no per-change fee. After that, major structural changes may carry additional fees.",
     'digital goods and multi-seat bookings.': 'digital goods and multi-seat bookings, plus social media management.',
+    # Decision 4 (after the refund rewrite above, which runs first).
+    "The setup fee is refundable within 24 hours of payment if work hasn't started. After that: we focus on optimization until you see results. Our average client does.":
+        "The setup fee is refundable within 24 hours of payment if work hasn't started. " + REPORT,
+    ' Typical results: 2-3 months to see ranking improvements, 6+ months for major growth.': ' ' + REPORT,
+    'Results vary, but typical: 150-300% traffic increase in 6-12 months with consistent blog content and SEO. Factors: starting point, competition level, blog consistency, backlink building, your market size.':
+        'Results vary. Factors: starting point, competition level, blog consistency, backlink building, your market size. ' + REPORT,
+    " We're confident you'll see results and want to stay.": '',
+    # Decision 1 / 2.
+    ' — that’s what unlimited means.': '.',
+    'Yes. Boost and above include unlimited done-for-you edits — just request a change and our team handles it.':
+        'Yes. Boost and Growth include edits by our team for the first 30 days, and Platinum includes unlimited edits — just request a change and our team handles it.',
 }
 # Lists.
 LIST_EXACT = {
@@ -121,7 +151,8 @@ LIST_EXACT = {
      'Ad copywriting and optimization', 'A/B testing and optimization', 'Monthly campaign management'):
         ['1 campaign set up and managed by us', 'Ad spend under Rs. 50,000 a month, paid by you to the platform',
          'Ad copywriting and optimization', 'Monthly campaign management',
-         'More campaigns or a bigger budget: custom ads plan, quoted separately'],
+        'More campaigns or a bigger budget: custom ads plan, quoted separately'],
+    ('25-100% increase in website traffic within 6 months', '2-5x increase in leads and bookings', '$1-10 return for every $1 spent on marketing'): [REPORT],
 }
 PLATINUM_FEATURE_ANCHOR, PLATINUM_FEATURE = 'Full webstore built for you', 'Social media management'
 
@@ -142,7 +173,15 @@ def walk(v, slug, path=''):
         if all(isinstance(x, str) for x in v) and tuple(v) in LIST_EXACT:
             hits.setdefault(slug, []).append(f'{path}: {v} -> {LIST_EXACT[tuple(v)]}')
             return list(LIST_EXACT[tuple(v)])
-        out = [walk(x, slug, f'{path}[{i}]') for i, x in enumerate(v)]
+        kept = []
+        for i, x in enumerate(v):
+            # Decision 4: "Example results" paragraphs and "Year 1 Results"; decision 1: the unlimited-edits stat.
+            if isinstance(x, dict) and (str(x.get('p', '')).startswith('Example results:') or x.get('h') == 'Year 1 Results'
+                                        or x.get('label') == 'edits on Boost and above'):
+                hits.setdefault(slug, []).append(f'{path}[{i}]: removed {json.dumps(x, ensure_ascii=False)[:90]}')
+                continue
+            kept.append(walk(x, slug, f'{path}[{i}]'))
+        out = kept
         if slug == 'plans/platinum' and path == '.features' and PLATINUM_FEATURE_ANCHOR in out:
             # Social media management, then ad management, right after the webstore.
             at = out.index(PLATINUM_FEATURE_ANCHOR) + 1
@@ -156,10 +195,13 @@ def walk(v, slug, path=''):
         if v.get('q') == "What's the average ad spend recommendation?" and not v.get('a', '').startswith('Platinum includes'):
             hits.setdefault(slug, []).append(f'{path}: average ad spend FAQ answer')
             return {**v, 'a': AD_SPEND_ANSWER}
-        if slug == 'plans/platinum' and path == '.detail' and 'examples' in v:
-            # Review of 13 Oct: the example case studies were not real, named clients.
+        if slug in DETAIL_DROP and path == '.detail' and 'examples' in v:
+            # The example case studies were not real, named clients (decision 3).
             hits.setdefault(slug, []).append(f'{path}.examples: removed')
             v = {k: x for k, x in v.items() if k != 'examples'}
+        if slug == 'plans/platinum' and path == '.detail.pricing' and 'roi' in v:
+            hits.setdefault(slug, []).append(f'{path}.roi: removed ("Average client increase: 3-5x sales")')
+            v = {k: x for k, x in v.items() if k != 'roi'}
         if v.get('q') == 'How many ads can you manage?':
             hits.setdefault(slug, []).append(f'{path}: FAQ -> "Are ads included?"')
             return dict(ADS_FAQ)
@@ -214,6 +256,8 @@ open(os.path.join(OUT, 'plan-copy.sql'), 'w', encoding='utf-8').write(wrap(
     '-- service and careers pages, matching the code change in the same PR: Boost\n'
     '-- edits for the first 30 days; Growth 3 blog posts a month and ads advice;\n'
     '-- Platinum social media and ad management; page limits; no refund guarantee.\n'
+    '-- Round 2: concierge edits as agreed in the plan; Growth edits for the first\n'
+    '-- 30 days; no unnamed example case studies; no promised results or timeframes.\n'
     '-- All or nothing.', updates))
 open(os.path.join(OUT, 'plan-copy-rollback.sql'), 'w', encoding='utf-8').write(wrap(
     '-- Restores the rows plan-copy.sql changes. All or nothing.', rollbacks))
