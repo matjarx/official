@@ -107,6 +107,39 @@ for url, text in launch_price.items():
     if url not in seen:
         seven.append({'url': url, 'field': 'description', 'current': rows[url][D_COL], 'proposed': text,
                       'chars': len(text), 'limit': 160, 'rule': 'launch-price page (13 Oct)'})
+
+# ── Industry pages: sentence case, ecommerce description (13 Oct) ──────
+# Descriptions and H1s in sentence case ("Auto repair shop website design",
+# not "Auto Repair Shop website design"). Titles keep their title case.
+ECOMMERCE_DESCRIPTION = ('Ecommerce website for Pakistani online stores: products, COD, JazzCash and EasyPaisa, '
+                         'courier booking and WhatsApp orders, all in one dashboard.')
+
+
+def sentence_case(text):
+    m = re.match(r'(.+?)( website design\b.*)$', text, re.S)
+    if not m:
+        return text
+    lead = m.group(1)
+    return lead[0] + lead[1:].lower() + m.group(2)
+
+
+by_key = {(row['url'], row['field']): row for row in seven}
+for url, r in rows.items():
+    if r['Page type'] != 'Industry':
+        continue
+    for field in ('description', 'h1'):
+        col, limit = FIELDS[field]
+        row = by_key.get((url, field))
+        value = row['proposed'] if row else r[col]
+        new = ECOMMERCE_DESCRIPTION if (url, field) == ('/website-for-online-stores-ecommerce', 'description') else sentence_case(value)
+        if new == value:
+            continue
+        rule = 'set 13 Oct' if new == ECOMMERCE_DESCRIPTION else 'sentence case (13 Oct)'
+        if row:
+            row.update(proposed=new, chars=len(new), rule=f"{row['rule']}; {rule}")
+        else:
+            seven.append({'url': url, 'field': field, 'current': r[col], 'proposed': new,
+                          'chars': len(new), 'limit': limit, 'rule': rule})
 for row in seven:
     assert int(row['chars']) <= int(row['limit']), (row['url'], row['field'], row['chars'])
 
