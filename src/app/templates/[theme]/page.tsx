@@ -16,7 +16,7 @@ import { notFound } from 'next/navigation'
 import ThemeLandingContent from '@/components/templates/ThemeLandingContent'
 import { getThemes } from '@/lib/theme-catalogue'
 import { THEME_LANDINGS, themeLandingFor } from '@/lib/theme-landing-data'
-import { pageTitle, pageDescription } from '@/lib/marketing-content'
+import { pageSeo, sheetSeo } from '@/lib/marketing-content'
 
 type Props = { params: Promise<{ theme: string }> }
 
@@ -31,12 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const landing = themeLandingFor(theme)
   if (!landing) return { title: 'Template not found', robots: { index: false, follow: true } }
 
+  // The spec sheet's values when it has a row for this template (SEO group 3).
+  const sheet = sheetSeo(`/templates/${landing.slug}`)
   return {
     // The brand name is the <h1>; the <title> carries what people type.
-    title: pageTitle(landing.metaTitle),
-    description: pageDescription(landing.metaDesc),
+    ...pageSeo(`/templates/${landing.slug}`, sheet?.title || landing.metaTitle, sheet?.description || landing.metaDesc),
     alternates: { canonical: `/templates/${landing.slug}` },
-    openGraph: { title: landing.metaTitle, description: landing.metaDesc, url: `/templates/${landing.slug}` },
   }
 }
 
@@ -51,5 +51,5 @@ export default async function ThemeLandingPage({ params }: Props) {
   const themes = await getThemes()
   const match = themes.find((t) => t.demoUrl?.endsWith(`/themes/${landing.themeKey}`))
 
-  return <ThemeLandingContent landing={landing} minPlan={match?.minPlan ?? 'launch'} />
+  return <ThemeLandingContent landing={landing} minPlan={match?.minPlan ?? 'launch'} h1={sheetSeo(`/templates/${landing.slug}`)?.h1} />
 }

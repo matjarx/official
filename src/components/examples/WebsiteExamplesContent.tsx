@@ -14,6 +14,7 @@ import { EXAMPLES_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import PortfolioShowcase from './PortfolioShowcase'
 import { EXAMPLES, EXAMPLE_CATEGORIES, EXAMPLE_PILLARS } from '@/lib/examples-data'
+import { seoH1 } from '@/lib/seo-h1'
 
 export type WebsiteExamplesContentShape = { examples: typeof EXAMPLES; categories: typeof EXAMPLE_CATEGORIES; pillars: typeof EXAMPLE_PILLARS }
 const DEFAULT_CONTENT: WebsiteExamplesContentShape = { examples: EXAMPLES, categories: EXAMPLE_CATEGORIES, pillars: EXAMPLE_PILLARS }
@@ -47,7 +48,9 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
-            <span className="marker">70,000+ Websites</span> Built Globally
+            {seoH1(content) ?? (
+              <><span className="marker">70,000+ Websites</span> Built Globally</>
+            )}
           </h1>
           <p style={{ margin: 0, maxWidth: '40em', fontSize: 'clamp(14.5px, 1.7vw, 17px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>
             New or established, local or e-commerce, we serve businesses of all kinds. Serving over 100s of business categories.

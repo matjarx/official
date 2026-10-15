@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import BlogPostContent from '@/components/blog/BlogPostContent'
 import { BLOG_POSTS, AUTHOR } from '@/lib/blog-data'
 import { routes } from '@/lib/routes'
-import { getBlogPost, getBlogPosts, getSeoOverride, toCard, pageTitle } from '@/lib/marketing-content'
+import { getBlogPost, getBlogPosts, getSeoOverride, toCard, pageSeo } from '@/lib/marketing-content'
 import { faqFromBody } from '@/lib/blog-faq'
 
 // Re-checks marketing_blog_posts at most once a minute rather than only at
@@ -23,37 +23,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const [post, seo] = await Promise.all([getBlogPost(slug), getSeoOverride(`blog/${slug}`)])
   if (!post) return {}
-  // A post's `title` is its H1. When the search title should differ -- a
-  // shorter or differently phrased <title> -- it lives in the same __seo
-  // override every other page uses (marketing_content, slug `blog/<slug>`),
-  // and is used exactly as written: whoever set it chose the whole string.
-  if (seo?.title || seo?.description) {
-    const title = seo.title || post.title
-    const description = seo.description || post.excerpt
-    return {
-      title: seo.title ? { absolute: seo.title } : pageTitle(post.title),
-      description,
-      alternates: { canonical: routes.blogPost(post.slug) },
-      openGraph: { type: 'article', title, description, publishedTime: post.date },
-      twitter: { title, description },
-    }
-  }
+  // A post's `title` is its H1. Its <title> and meta description come from
+  // the __seo override for `blog/<slug>` -- the spec sheet's values (SEO
+  // group 3), or an admin edit on top -- falling back to the H1 and excerpt.
+  const meta = pageSeo(routes.blogPost(post.slug), seo?.title || post.title, seo?.description || post.excerpt)
   return {
-    // Through pageTitle, not raw: the root layout's template appends
-    // " | MatjarX", and a 59-character post title plus that is 69 — past
-    // the ~60 Google will show, after which it writes its own title from
-    // the page instead. pageTitle drops the suffix when the sum is over
-    // budget.
-    title: pageTitle(post.title),
-    description: post.excerpt,
+    ...meta,
     alternates: { canonical: routes.blogPost(post.slug) },
-    openGraph: { type: 'article', title: post.title, description: post.excerpt, publishedTime: post.date },
+    openGraph: { ...meta.openGraph, type: 'article', publishedTime: post.date },
   }
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const [post, allPosts] = await Promise.all([getBlogPost(slug), getBlogPosts()])
+  const [post, allPosts, seo] = await Promise.all([getBlogPost(slug), getBlogPosts(), getSeoOverride(`blog/${slug}`)])
   if (!post) notFound()
 
   const articleJsonLd = {
@@ -119,7 +102,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       )}
       {/* allPosts only resolves relatedSlugs to a title and a cover.
           Bodies stripped, or every post ships all 28 articles. */}
-      <BlogPostContent post={post} allPosts={allPosts.map(toCard)} />
+      <BlogPostContent post={post} allPosts={allPosts.map(toCard)} h1={seo?.h1} />
     </>
   )
 }

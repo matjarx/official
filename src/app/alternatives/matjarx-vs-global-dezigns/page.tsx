@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import ComparisonContent, { type ComparisonContentShape } from '@/components/comparisons/ComparisonContent'
 import { robotsFor } from '@/lib/seo-indexing'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 import { RIVAL_DATA } from '@/lib/comparison-data'
 
 const rival = RIVAL_DATA['global-dezigns']
@@ -11,8 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/alternatives/matjarx-vs-global-dezigns' },
     ...robotsFor('/alternatives/matjarx-vs-global-dezigns'),
-    title: pageTitle(seo?.title || `MatjarX vs ${rival.name}`),
-    description: pageDescription(seo?.description || rival.intro[0]),
+    ...pageSeo('/alternatives/matjarx-vs-global-dezigns', seo?.title || `MatjarX vs ${rival.name}`, seo?.description || rival.intro[0]),
   }
 }
 

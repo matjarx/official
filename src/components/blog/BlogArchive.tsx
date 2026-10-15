@@ -22,7 +22,7 @@ import { routes } from '@/lib/routes'
 import type { BlogCard } from '@/lib/marketing-content'
 import { type BlogAuthor, authorInitials, avatarSrc } from '@/lib/blog-data'
 
-function AuthorHeader({ author, postCount }: { author: BlogAuthor; postCount: number }) {
+function AuthorHeader({ author, postCount, h1 }: { author: BlogAuthor; postCount: number; h1?: string }) {
   const socials = Object.entries(author.socials || {}).filter(([, url]) => url)
   return (
     <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start', flexWrap: 'wrap' }}>
@@ -54,7 +54,7 @@ function AuthorHeader({ author, postCount }: { author: BlogAuthor; postCount: nu
           </p>
         )}
         <h1 style={{ margin: '6px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 34, lineHeight: 1.16, letterSpacing: '-0.8px', color: 'var(--ink-1)' }}>
-          {author.name}
+          {h1 || author.name}
         </h1>
         {author.bio && (
           <p style={{ margin: '12px 0 0', fontSize: 15, lineHeight: 1.62, color: 'var(--ink-5)', maxWidth: 560 }}>{author.bio}</p>
@@ -86,11 +86,14 @@ function AuthorHeader({ author, postCount }: { author: BlogAuthor; postCount: nu
 
 export default function BlogArchive({
   heading,
+  h1,
   intro,
   author,
   posts,
 }: {
   heading: string
+  /** The spec sheet's or an admin's H1, in place of `heading` / the author's name. */
+  h1?: string
   intro?: string
   author?: BlogAuthor
   posts: BlogCard[]
@@ -106,11 +109,11 @@ export default function BlogArchive({
             </p>
 
             {author ? (
-              <AuthorHeader author={author} postCount={posts.length} />
+              <AuthorHeader author={author} postCount={posts.length} h1={h1} />
             ) : (
               <>
                 <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 38, lineHeight: 1.14, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>
-                  {heading}
+                  {h1 || heading}
                 </h1>
                 {intro && <p style={{ margin: '14px 0 0', fontSize: 15.5, lineHeight: 1.62, color: 'var(--ink-5)', maxWidth: 620 }}>{intro}</p>}
                 <p style={{ margin: '12px 0 0', fontSize: 13, color: 'var(--ink-faint)' }}>

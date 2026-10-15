@@ -22,6 +22,7 @@ import { FaqList } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY, WHATSAPP_HREF } from '@/lib/contact-details'
+import { seoH1 } from '@/lib/seo-h1'
 
 const DEFAULT_CONTENT: Record<PlanKey, PlanContentShape> = (Object.keys(ALL_PLANS) as PlanKey[]).reduce((acc, key) => {
   acc[key] = { ...ALL_PLANS[key], ...PLAN_DATA[key], detail: undefined }
@@ -83,12 +84,14 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
             </span>
 
             <h1 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 14, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5vw, 52px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
-              {PLAN_TIER_ICONS[p.name as keyof typeof PLAN_TIER_ICONS] && (
+              {seoH1(content) ?? (
+                <>{PLAN_TIER_ICONS[p.name as keyof typeof PLAN_TIER_ICONS] && (
                 <span style={{ position: 'relative', width: 40, height: 40, flex: '0 0 auto' }}>
                   <Image src={PLAN_TIER_ICONS[p.name as keyof typeof PLAN_TIER_ICONS]} alt="" fill sizes="40px" style={{ objectFit: 'contain' }} />
                 </span>
               )}
-              <span>{p.name} Plan — <span className="marker">{d.headline}</span></span>
+              <span>{p.name} Plan — <span className="marker">{d.headline}</span></span></>
+              )}
             </h1>
 
             <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>{d.subhead}</p>

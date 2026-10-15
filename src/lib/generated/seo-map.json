@@ -1,0 +1,860 @@
+{
+ "/": {
+  "slug": "home",
+  "title": "Website Development Company in Pakistan | MatjarX",
+  "description": "Website design and development company in Pakistan. Your business website live in 7 business days from Rs. 4,500/month, plus SEO and marketing plans to grow.",
+  "h1": "Website development company in Pakistan"
+ },
+ "/about-us": {
+  "slug": "about",
+  "title": "About MatjarX: Done-for-You Websites in Pakistan",
+  "description": "MatjarX builds, hosts and runs websites for Pakistani businesses, then helps them get found on Google, Maps and AI search. Meet the team behind it.",
+  "h1": "We think every business deserves to be findable"
+ },
+ "/alternatives": {
+  "slug": "alternatives",
+  "title": "Website Builder & Agency Comparisons for Pakistan | MatjarX",
+  "description": "Compare MatjarX with Shopify, Wix, WordPress, local builders and agencies: real PKR pricing, local payments, support and what you actually get.",
+  "h1": "Compare website builders and agencies, honestly"
+ },
+ "/alternatives/matjarx-vs-blink": {
+  "slug": "comparisons/blink",
+  "title": "Blink Alternative in Pakistan: MatjarX vs Blink",
+  "description": "MatjarX vs Blink for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs Blink: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-daraz-store": {
+  "slug": "comparisons/daraz-store",
+  "title": "Daraz Alternative in Pakistan: MatjarX vs Daraz",
+  "description": "MatjarX vs Daraz for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs Daraz: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-dominant-marketers": {
+  "slug": "comparisons/dominant-marketers",
+  "title": "MatjarX vs Dominant Marketers: Services & Pricing Compared",
+  "description": "MatjarX vs Dominant Marketers: services, pricing, delivery time, support and ownership compared, so you can pick the right website partner in Pakistan.",
+  "h1": "MatjarX vs Dominant Marketers: services and pricing compared"
+ },
+ "/alternatives/matjarx-vs-dukanpk": {
+  "slug": "comparisons/dukanpk",
+  "title": "DukanPK Alternative in Pakistan: MatjarX vs DukanPK",
+  "description": "MatjarX vs DukanPK for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs DukanPK: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-global-dezigns": {
+  "slug": "comparisons/global-dezigns",
+  "title": "MatjarX vs Global Dezigns: Services & Pricing Compared",
+  "description": "MatjarX vs Global Dezigns: services, pricing, delivery time, support and ownership compared, so you can pick the right website partner in Pakistan.",
+  "h1": "MatjarX vs Global Dezigns: services and pricing compared"
+ },
+ "/alternatives/matjarx-vs-godaddy": {
+  "slug": "comparisons/godaddy",
+  "title": "GoDaddy Alternative in Pakistan: MatjarX vs GoDaddy",
+  "description": "MatjarX vs GoDaddy for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs GoDaddy: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-magento": {
+  "slug": "comparisons/magento",
+  "title": "Magento Alternative in Pakistan: MatjarX vs Magento",
+  "description": "MatjarX vs Magento for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs Magento: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-navicosoft": {
+  "slug": "comparisons/navicosoft",
+  "title": "MatjarX vs Navicosoft: Services & Pricing Compared",
+  "description": "MatjarX vs Navicosoft: services, pricing, delivery time, support and ownership compared, so you can pick the right website partner in Pakistan.",
+  "h1": "MatjarX vs Navicosoft: services and pricing compared"
+ },
+ "/alternatives/matjarx-vs-ordrz": {
+  "slug": "comparisons/ordrz",
+  "title": "Ordrz Alternative in Pakistan: MatjarX vs Ordrz",
+  "description": "MatjarX vs Ordrz for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs Ordrz: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-shopify": {
+  "slug": "comparisons/shopify",
+  "title": "Shopify Alternative in Pakistan: MatjarX vs Shopify",
+  "description": "Is Shopify available in Pakistan? MatjarX vs Shopify on PKR pricing, local payments, COD, support and setup, and who should choose which.",
+  "h1": "MatjarX vs Shopify: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-squarespace": {
+  "slug": "comparisons/squarespace",
+  "title": "Squarespace Alternative in Pakistan: MatjarX vs Squarespace",
+  "description": "MatjarX vs Squarespace for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs Squarespace: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-webx": {
+  "slug": "comparisons/webx",
+  "title": "WebX Alternative in Pakistan: MatjarX vs WebX",
+  "description": "MatjarX vs WebX for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs WebX: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-wix": {
+  "slug": "comparisons/wix",
+  "title": "Wix Alternative in Pakistan: MatjarX vs Wix",
+  "description": "MatjarX vs Wix for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs Wix: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-woocommerce": {
+  "slug": "comparisons/woocommerce",
+  "title": "WooCommerce Alternative in Pakistan: MatjarX vs WooCommerce",
+  "description": "MatjarX vs WooCommerce for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs WooCommerce: an honest comparison for Pakistan"
+ },
+ "/alternatives/matjarx-vs-wordpress": {
+  "slug": "comparisons/wordpress",
+  "title": "WordPress Alternative in Pakistan: MatjarX vs WordPress",
+  "description": "MatjarX vs WordPress for Pakistani businesses: PKR pricing, JazzCash and EasyPaisa, local support and who should choose which. An honest comparison.",
+  "h1": "MatjarX vs WordPress: an honest comparison for Pakistan"
+ },
+ "/become-a-partner": {
+  "slug": "partner",
+  "title": "Partner Program: White-Label Websites & SEO | MatjarX",
+  "description": "Agencies and freelancers: resell MatjarX websites and SEO under your brand, or refer clients and earn. Our team builds and runs it, you keep the client.",
+  "h1": "Partner with MatjarX: white-label websites and SEO"
+ },
+ "/best-website-builder-pakistan": {
+  "slug": "best-builder",
+  "title": "Website Builder in Pakistan: Best Options for 2026 | MatjarX",
+  "description": "Which website builder works best in Pakistan? Shopify, Wix, WordPress and local options compared on PKR price, JazzCash and EasyPaisa, and support.",
+  "h1": "Website builder in Pakistan: which one should you choose in 2026?"
+ },
+ "/blogs": {
+  "slug": "blogs",
+  "title": "Business Growth Blog for Pakistani SMEs | MatjarX",
+  "description": "Practical guides for Pakistani small businesses on websites, SEO, digital marketing and selling online, written by the team that builds them.",
+  "h1": "Guides to grow your business online in Pakistan"
+ },
+ "/blogs/author/ijlal-mustafa": {
+  "slug": "blogs/author/ijlal-mustafa",
+  "title": "Ijlal Mustafa, Author at MatjarX",
+  "description": "Articles by Ijlal Mustafa on websites, SEO and digital marketing for Pakistani small businesses.",
+  "h1": "Ijlal Mustafa"
+ },
+ "/blogs/b2b-website-myths-broken": {
+  "slug": "blog/b2b-website-myths-broken",
+  "title": "B2B Website Design for Manufacturers & Exporters",
+  "description": "B2B website design for Pakistani manufacturers and exporters: what buyers check, catalogue and RFQ pages, certifications and how to win export leads.",
+  "h1": "B2B website design for manufacturers and exporters"
+ },
+ "/blogs/business-content-ideas-no-dancing": {
+  "slug": "blog/business-content-ideas-no-dancing",
+  "title": "TikTok Content Ideas for Business (No Dancing)",
+  "description": "TikTok and Reels content ideas for businesses that don't want to dance: behind the scenes, tips, before/after and customer stories that sell.",
+  "h1": "TikTok content ideas for business, no dancing needed"
+ },
+ "/blogs/category/client-stories": {
+  "slug": "blogs/category/client-stories",
+  "title": "Client Stories: Websites That Grew Businesses",
+  "description": "Real stories from Pakistani businesses that went online with MatjarX: what they built, what changed and what you can learn from them.",
+  "h1": "Client stories from businesses like yours"
+ },
+ "/blogs/category/e-commerce": {
+  "slug": "blogs/category/e-commerce",
+  "title": "Ecommerce Guides for Online Stores in Pakistan",
+  "description": "Ecommerce guides for Pakistani online stores: platforms, payments, COD, couriers, sales events and growing orders from your own website.",
+  "h1": "Ecommerce guides for online stores in Pakistan"
+ },
+ "/blogs/category/getting-started": {
+  "slug": "blogs/category/getting-started",
+  "title": "Getting Started Online: Guides for Small Businesses",
+  "description": "Start here if your business isn't online yet: websites, domains, hosting, costs and the first steps to get found and get customers in Pakistan.",
+  "h1": "Getting your business online: start here"
+ },
+ "/blogs/category/marketing": {
+  "slug": "blogs/category/marketing",
+  "title": "Digital Marketing Guides for Small Businesses",
+  "description": "Digital marketing guides for Pakistani small businesses: social media, ads, content ideas, WhatsApp and budgets that bring real customers.",
+  "h1": "Digital marketing guides for small businesses"
+ },
+ "/blogs/category/payments": {
+  "slug": "blogs/category/payments",
+  "title": "Online Payment Methods in Pakistan: Guides",
+  "description": "Guides to online payment methods in Pakistan for businesses: gateways, wallets, merchant accounts and taking payments on your website.",
+  "h1": "Online payment methods in Pakistan"
+ },
+ "/blogs/category/seo": {
+  "slug": "blogs/category/seo",
+  "title": "SEO Guides for Small Businesses in Pakistan",
+  "description": "SEO guides for Pakistani small businesses: local SEO, Google Maps, reviews, on-page SEO and AI search, explained in plain words.",
+  "h1": "SEO guides for small businesses"
+ },
+ "/blogs/cod-optimization-reduce-rto": {
+  "slug": "blog/cod-optimization-reduce-rto",
+  "title": "RTO in Ecommerce: How to Cut COD Returns in Pakistan",
+  "description": "What RTO means in ecommerce and how Pakistani stores cut COD returns: order confirmation, WhatsApp checks, courier choice and prepaid offers.",
+  "h1": "RTO in ecommerce: how to cut COD returns in Pakistan"
+ },
+ "/blogs/definitive-master-guide-to-generative-engine-optimization": {
+  "slug": "blog/definitive-master-guide-to-generative-engine-optimization",
+  "title": "Generative Engine Optimization (GEO): The Complete Guide",
+  "description": "Generative engine optimization explained: how ChatGPT, Gemini and Google AI choose sources, GEO vs SEO, and how small businesses get cited.",
+  "h1": "Generative engine optimization (GEO): the complete guide"
+ },
+ "/blogs/domain-and-hosting-explained": {
+  "slug": "blog/domain-and-hosting-explained",
+  "title": "Web Hosting in Pakistan: Prices & How to Choose (2026)",
+  "description": "Web hosting in Pakistan compared: shared, VPS and managed hosting, PKR prices, local vs international servers, and what a small business really needs.",
+  "h1": "Web hosting in Pakistan: what to buy and what it costs"
+ },
+ "/blogs/elegance-embroidery-mukesh-kumar-lucky-draw-winner": {
+  "slug": "blog/elegance-embroidery-mukesh-kumar-lucky-draw-winner",
+  "title": "Elegance Embroidery: How a Small Business Went Online",
+  "description": "How Elegance Embroidery took its embroidery business online with MatjarX: the website, the launch and what other small businesses can learn.",
+  "h1": "Elegance Embroidery: taking an embroidery business online"
+ },
+ "/blogs/facebook-page-setup-guide": {
+  "slug": "blog/facebook-page-setup-guide",
+  "title": "How to Create a Facebook Business Page (2026)",
+  "description": "How to create a Facebook business page that looks professional: setup, name, categories, photos, buttons and linking it to your website.",
+  "h1": "How to create a Facebook business page in 2026"
+ },
+ "/blogs/google-changed-my-business-information-what-should-i-do": {
+  "slug": "blog/google-changed-my-business-information-what-should-i-do",
+  "title": "Google Changed My Business Information: What to Do",
+  "description": "Google changed your business hours, phone or address? Why it happens, how to reject wrong edits and how to stop it happening again.",
+  "h1": "Google changed my business information: what should I do?"
+ },
+ "/blogs/hiring-a-geo-expert-agencies-and-consulting-services": {
+  "slug": "blog/hiring-a-geo-expert-agencies-and-consulting-services",
+  "title": "Hiring a GEO Agency: What to Ask and What to Pay",
+  "description": "Hiring a GEO agency or consultant: what generative engine optimization services include, questions to ask, pricing and red flags to avoid.",
+  "h1": "Hiring a GEO agency: what to ask and what to pay"
+ },
+ "/blogs/local-seo-for-small-business-guide": {
+  "slug": "blog/local-seo-for-small-business-guide",
+  "title": "Local SEO for Small Business in Pakistan: 2026 Guide",
+  "description": "Local SEO for small businesses in Pakistan: Google Business Profile, Maps ranking, reviews, citations and local pages, explained step by step.",
+  "h1": "Local SEO for small businesses in Pakistan: the 2026 guide"
+ },
+ "/blogs/mastering-ai-search-best-generative-ai-geo-training-courses": {
+  "slug": "blog/mastering-ai-search-best-generative-ai-geo-training-courses",
+  "title": "Best GEO & AI SEO Courses to Learn AI Search",
+  "description": "The best generative engine optimization and AI SEO courses, compared on depth, price and who they suit, from beginners to marketing teams.",
+  "h1": "Best GEO and AI SEO courses to learn AI search"
+ },
+ "/blogs/matjarx-complete-guide-small-business": {
+  "slug": "blog/matjarx-complete-guide-small-business",
+  "title": "How MatjarX Works: From Sign-Up to Live Website",
+  "description": "How MatjarX works, step by step: choose a plan, share your details, approve your design, go live, then track leads and rankings in one dashboard.",
+  "h1": "How MatjarX works, from sign-up to a live website"
+ },
+ "/blogs/mobile-first-design-tips-ux": {
+  "slug": "blog/mobile-first-design-tips-ux",
+  "title": "Mobile-First Website Design: Tips That Win Customers",
+  "description": "Most Pakistani customers find you on a phone. Mobile-first website design tips for speed, layout, buttons and WhatsApp that keep them on your site.",
+  "h1": "Mobile-first website design tips that win customers"
+ },
+ "/blogs/professional-website-build-trust": {
+  "slug": "blog/professional-website-build-trust",
+  "title": "Website Trust Signals That Turn Visitors Into Buyers",
+  "description": "The website trust signals Pakistani customers look for before they call or order: reviews, real photos, clear prices, contact details and more.",
+  "h1": "Website trust signals that turn visitors into buyers"
+ },
+ "/blogs/rastah-case-study-lessons-small-business": {
+  "slug": "blog/rastah-case-study-lessons-small-business",
+  "title": "RASTAH Brand Story: Lessons for Small Businesses",
+  "description": "What small businesses can learn from the RASTAH brand story: positioning, storytelling, product and online presence lessons you can apply today.",
+  "h1": "The RASTAH brand story: lessons for small businesses"
+ },
+ "/blogs/set-up-tiktok-ads": {
+  "slug": "blog/set-up-tiktok-ads",
+  "title": "TikTok Ads in Pakistan: Budget, Setup & Results",
+  "description": "TikTok ads in Pakistan: minimum budget in PKR, how to set up your first campaign, targeting that works and when TikTok beats Facebook.",
+  "h1": "TikTok ads in Pakistan: budget, setup and results"
+ },
+ "/blogs/setup-easypaisa-business-website": {
+  "slug": "blog/setup-easypaisa-business-website",
+  "title": "EasyPaisa Merchant Account: Requirements & Setup",
+  "description": "EasyPaisa merchant and business account explained: requirements, documents, fees, setup steps and how to accept EasyPaisa payments online.",
+  "h1": "EasyPaisa merchant account: requirements and setup"
+ },
+ "/blogs/setup-jazzcash-jazz-business-website": {
+  "slug": "blog/setup-jazzcash-jazz-business-website",
+  "title": "JazzCash Merchant Account: Requirements & Setup",
+  "description": "JazzCash merchant account explained: requirements, documents, fees, approval time and how to accept JazzCash payments on your website.",
+  "h1": "JazzCash merchant account: requirements and setup"
+ },
+ "/blogs/setup-payfast-payment-gateway": {
+  "slug": "blog/setup-payfast-payment-gateway",
+  "title": "PayFast Pakistan: Fees, Requirements & Integration",
+  "description": "PayFast in Pakistan explained: who can apply, fees, documents, approval and how to connect the PayFast payment gateway to your online store.",
+  "h1": "PayFast Pakistan: fees, requirements and integration"
+ },
+ "/blogs/setup-sadapay-sadabiz-website": {
+  "slug": "blog/setup-sadapay-sadabiz-website",
+  "title": "SadaPay Business Account (SadaBiz): Sign Up Guide",
+  "description": "How to open a SadaPay business account (SadaBiz): who can apply, documents, fees, sign-up steps and how to accept SadaBiz payments on your website.",
+  "h1": "SadaPay business account (SadaBiz): how to sign up"
+ },
+ "/blogs/tiktok-growth-limit-switch-business-account": {
+  "slug": "blog/tiktok-growth-limit-switch-business-account",
+  "title": "TikTok Business Account: Benefits and How to Switch",
+  "description": "TikTok business account explained: benefits, limits, how to switch from a personal account and whether switching affects your reach.",
+  "h1": "TikTok business account: benefits and how to switch"
+ },
+ "/blogs/top-5-website-mistakes-killing-conversions": {
+  "slug": "blog/top-5-website-mistakes-killing-conversions",
+  "title": "5 Website Mistakes Killing Your Conversion Rate",
+  "description": "Five common website mistakes that stop visitors from calling or buying, and how to fix each one to lift your website conversion rate.",
+  "h1": "5 website mistakes killing your conversion rate"
+ },
+ "/blogs/top-geo-and-content-automation-tools-search-strategy": {
+  "slug": "blog/top-geo-and-content-automation-tools-search-strategy",
+  "title": "Best AI SEO & GEO Tools for Small Businesses",
+  "description": "The AI SEO and GEO tools worth using: tracking AI visibility, content and schema, compared on price and usefulness for small businesses.",
+  "h1": "Best AI SEO and GEO tools for small businesses"
+ },
+ "/blogs/trends-in-digital-marketing-for-pakistani-businesses": {
+  "slug": "blog/trends-in-digital-marketing-for-pakistani-businesses",
+  "title": "Pakistan Social Media Statistics 2026 (With Sources)",
+  "description": "Pakistan social media and internet statistics for 2026, with sources: users by platform, mobile use and what the numbers mean for businesses.",
+  "h1": "Pakistan social media statistics 2026"
+ },
+ "/blogs/whatsapp-automation-setup": {
+  "slug": "blog/whatsapp-automation-setup",
+  "title": "WhatsApp Business API & Automation in Pakistan",
+  "description": "WhatsApp Business API and automation for Pakistani businesses: auto-replies, chatbots, catalogue, order updates and what it costs to set up.",
+  "h1": "WhatsApp Business API and automation in Pakistan"
+ },
+ "/blogs/why-website-is-important-for-business": {
+  "slug": "blog/why-website-is-important-for-business",
+  "title": "Why Your Business Needs a Website in 2026",
+  "description": "Why your business needs a website even with a Facebook page: trust, Google search, WhatsApp leads and sales, explained for Pakistani small businesses.",
+  "h1": "Why your business needs a website in 2026"
+ },
+ "/careers": {
+  "slug": "careers",
+  "title": "Careers at MatjarX",
+  "description": "Join MatjarX and help Pakistani businesses get online. See open roles in web design, SEO, content, social media and client success.",
+  "h1": "Work at MatjarX"
+ },
+ "/complete-website-audit-for-organic-visibility": {
+  "slug": "website-audit",
+  "title": "Free Website SEO Check & Audit Report | MatjarX",
+  "description": "Check your website's SEO for free across 10 areas, from Google ranking and speed to Maps and AI search, and get a clear report on what to fix first.",
+  "h1": "Check your website's SEO for free and see what's holding it back"
+ },
+ "/concierge-service": {
+  "slug": "services/concierge",
+  "title": "Website Maintenance Services in Pakistan | MatjarX",
+  "description": "Website maintenance services with a dedicated concierge team: small edits, updates, security, speed and SEO care, handled over chat or WhatsApp.",
+  "h1": "Website maintenance services with your own concierge team"
+ },
+ "/contact": {
+  "slug": "contact",
+  "title": "Contact MatjarX: WhatsApp, Phone & Office",
+  "description": "Talk to MatjarX on WhatsApp, phone or email about your website, SEO or marketing. Our team replies within one business day, usually much sooner.",
+  "h1": "Talk to the MatjarX team"
+ },
+ "/done-for-you-website": {
+  "slug": "services/dfy",
+  "title": "Website Development Services | MatjarX",
+  "description": "Done-for-you website development services: we design, write, host and launch your business website. You approve, we build. From Rs. 4,500/month.",
+  "h1": "Done-for-you website development services, live in 7 business days"
+ },
+ "/faqs": {
+  "slug": "faqs",
+  "title": "MatjarX FAQs: Plans, Websites, SEO & Support",
+  "description": "Answers to common questions about MatjarX: plans and pricing, what's included, how the 7-business-day build works, ownership, contracts, SEO and support.",
+  "h1": "Frequently asked questions about MatjarX"
+ },
+ "/features": {
+  "slug": "features",
+  "title": "Website Features: Store, Leads, SEO & WhatsApp | MatjarX",
+  "description": "Every MatjarX website includes an online store, leads inbox, WhatsApp leads, page editor, blog, Google position tracking and reports in one dashboard.",
+  "h1": "Everything your website needs, already built in"
+ },
+ "/growth-marketing-service": {
+  "slug": "services/growth",
+  "title": "Digital Marketing Agency in Pakistan: Social & Ads | MatjarX",
+  "description": "Digital marketing agency in Pakistan for small businesses: social media, SEO and ads by one team. Platinum Rs. 55,000/month includes 1 ad campaign.",
+  "h1": "Digital marketing agency in Pakistan for social media, ads and SEO"
+ },
+ "/help": {
+  "slug": "help",
+  "title": "MatjarX Help Centre | MatjarX",
+  "description": "Step-by-step help for MatjarX clients: getting started, editing your website, domains and email, billing, online store, payments and SEO settings.",
+  "h1": "MatjarX help centre"
+ },
+ "/help/account-and-security": {
+  "slug": "help/account-and-security",
+  "title": "Account and Security | MatjarX Help",
+  "description": "MatjarX help: account and security. Step-by-step guides for clients, with screenshots, plus how to reach your concierge team on chat or WhatsApp.",
+  "h1": "Account and Security"
+ },
+ "/help/billing-and-plans": {
+  "slug": "help/billing-and-plans",
+  "title": "Billing and Plans | MatjarX Help",
+  "description": "MatjarX help: billing and plans. Step-by-step guides for clients, with screenshots, plus how to reach your concierge team on chat or WhatsApp.",
+  "h1": "Billing and Plans"
+ },
+ "/help/domains-and-email": {
+  "slug": "help/domains-and-email",
+  "title": "Domains and Email | MatjarX Help",
+  "description": "MatjarX help: domains and email. Step-by-step guides for clients, with screenshots, plus how to reach your concierge team on chat or WhatsApp.",
+  "h1": "Domains and Email"
+ },
+ "/help/ecommerce-and-payments": {
+  "slug": "help/ecommerce-and-payments",
+  "title": "Ecommerce and Payments | MatjarX Help",
+  "description": "MatjarX help: ecommerce and payments. Step-by-step guides for clients, with screenshots, plus how to reach your concierge team on chat or WhatsApp.",
+  "h1": "Ecommerce and Payments"
+ },
+ "/help/getting-started": {
+  "slug": "help/getting-started",
+  "title": "Getting Started | MatjarX Help",
+  "description": "MatjarX help: getting started. Step-by-step guides for clients, with screenshots, plus how to reach your concierge team on chat or WhatsApp.",
+  "h1": "Getting Started"
+ },
+ "/help/seo-and-marketing": {
+  "slug": "help/seo-and-marketing",
+  "title": "Seo and Marketing | MatjarX Help",
+  "description": "MatjarX help: seo and marketing. Step-by-step guides for clients, with screenshots, plus how to reach your concierge team on chat or WhatsApp.",
+  "h1": "Seo and Marketing"
+ },
+ "/help/website-editor": {
+  "slug": "help/website-editor",
+  "title": "Website Editor | MatjarX Help",
+  "description": "MatjarX help: website editor. Step-by-step guides for clients, with screenshots, plus how to reach your concierge team on chat or WhatsApp.",
+  "h1": "Website Editor"
+ },
+ "/legal/privacy": {
+  "slug": "legal/privacy",
+  "title": "Privacy Policy | MatjarX",
+  "description": "Read the MatjarX privacy policy for websites, SEO and marketing plans, including billing, cancellations and how we handle your data.",
+  "h1": "Privacy Policy"
+ },
+ "/legal/refund": {
+  "slug": "legal/refund",
+  "title": "Refund Policy | MatjarX",
+  "description": "Read the MatjarX refund policy for websites, SEO and marketing plans, including billing, cancellations and how we handle your data.",
+  "h1": "Refund Policy"
+ },
+ "/legal/terms": {
+  "slug": "legal/terms",
+  "title": "Terms and Conditions | MatjarX",
+  "description": "Read the MatjarX terms and conditions for websites, SEO and marketing plans, including billing, cancellations and how we handle your data.",
+  "h1": "Terms and Conditions"
+ },
+ "/local-national-and-global-seo": {
+  "slug": "services/seo",
+  "title": "SEO Services in Pakistan: Google, Maps & AI Search | MatjarX",
+  "description": "SEO services in Pakistan for small businesses: local SEO, Google Maps, business profiles, reviews and AI search, with monthly ranking reports. From Rs. 15,600.",
+  "h1": "SEO services in Pakistan that get you found on Google, Maps and AI"
+ },
+ "/plans/boost": {
+  "slug": "plans/boost",
+  "title": "Boost Plan: Website + Local SEO, Rs. 15,600/month | MatjarX",
+  "description": "Boost plan: a 20–30 page website plus local SEO and managed business profiles on Google and Maps, so nearby customers find you. Rs. 15,600/month + setup.",
+  "h1": "Boost plan: your website plus local SEO and Google Maps"
+ },
+ "/plans/custom": {
+  "slug": "plans/custom",
+  "title": "Custom Plan: Built for Your Business | MatjarX",
+  "description": "Custom plan for larger businesses: a discovery call, a proposal with real pricing, and a dedicated project team for integrations, migration and custom features.",
+  "h1": "Custom plan with a dedicated project team"
+ },
+ "/plans/growth": {
+  "slug": "plans/growth",
+  "title": "Growth Plan: SEO + Marketing Team, Rs. 27,000/mo | MatjarX",
+  "description": "Growth plan: a website of up to 50 pages, a dedicated growth team, a marketing plan, 3 blog posts a month and 1-on-1 sessions. Rs. 27,000/month + setup.",
+  "h1": "Growth plan: a marketing team, not just a website"
+ },
+ "/plans/launch": {
+  "slug": "plans/launch",
+  "title": "Launch Plan: Website + Hosting, Rs. 4,500/month | MatjarX",
+  "description": "Launch plan: a themed website of up to 10 pages, written and hosted for you, with an easy editor and launch training. Rs. 4,500/month + Rs. 22,500 setup.",
+  "h1": "Launch plan: a professional website, live in 7 business days"
+ },
+ "/plans/platinum": {
+  "slug": "plans/platinum",
+  "title": "Platinum Plan: Custom Store, Social Media & Ads | MatjarX",
+  "description": "Platinum plan: a custom store, social media management, 10 blogs a month and 1 ad campaign managed (ad spend under Rs. 50,000). Rs. 55,000/month + setup.",
+  "h1": "Platinum plan: a custom store, social media and ads"
+ },
+ "/pricing": {
+  "slug": "pricing",
+  "title": "Website Price in Pakistan 2026: Plans & Packages | MatjarX",
+  "description": "Website price in Pakistan, made clear: Launch Rs. 4,500, Boost Rs. 15,600, Growth Rs. 27,000, Platinum Rs. 55,000 a month, plus setup. Compare every plan.",
+  "h1": "Website price in Pakistan: clear monthly plans, no surprises"
+ },
+ "/templates": {
+  "slug": "templates",
+  "title": "Website Templates for Pakistani Businesses | MatjarX",
+  "description": "Website templates built for Pakistani businesses: online stores, restaurants, salons, real estate and services. Pick one and we set it up in 7 business days.",
+  "h1": "Website templates for shops, services and every trade"
+ },
+ "/templates/bakery-matjar": {
+  "slug": null,
+  "title": "Bakery Website Template: Bakery Matjar | MatjarX",
+  "description": "Bakery Matjar is a ready-made bakery website template for Pakistani businesses: every page designed, store and WhatsApp built in, live in 7 business days.",
+  "h1": "Bakery Matjar: a ready-made bakery website template"
+ },
+ "/templates/classic-matjar": {
+  "slug": null,
+  "title": "Retail Store Website Template: Classic Matjar | MatjarX",
+  "description": "Classic Matjar is a ready-made retail store website template for Pakistani businesses: every page designed, store and WhatsApp built in.",
+  "h1": "Classic Matjar: a ready-made retail store website template"
+ },
+ "/templates/coffee-matjar": {
+  "slug": null,
+  "title": "Coffee Shop Website Template: Coffee Matjar | MatjarX",
+  "description": "Coffee Matjar is a ready-made coffee shop website template for Pakistani businesses: every page designed, store and WhatsApp built in, live in 7 business days.",
+  "h1": "Coffee Matjar: a ready-made coffee shop website template"
+ },
+ "/templates/fightwear-matjar": {
+  "slug": null,
+  "title": "Fightwear & Boxing Store Website Template | MatjarX",
+  "description": "Fightwear Matjar: a ready-made fightwear & boxing store website template for Pakistan with every page designed and WhatsApp built in. Live in 7 business days.",
+  "h1": "Fightwear Matjar: fightwear & boxing store website template"
+ },
+ "/templates/flower-matjar": {
+  "slug": null,
+  "title": "Flower Shop Website Template: Flower Matjar | MatjarX",
+  "description": "Flower Matjar is a ready-made flower shop website template for Pakistani businesses: every page designed, store and WhatsApp built in, live in 7 business days.",
+  "h1": "Flower Matjar: a ready-made flower shop website template"
+ },
+ "/templates/interior-matjar": {
+  "slug": null,
+  "title": "Interior Design Website Template: Interior Matjar | MatjarX",
+  "description": "Interior Matjar is a ready-made interior design website template for Pakistani businesses: every page designed, store and WhatsApp built in.",
+  "h1": "Interior Matjar: a ready-made interior design website template"
+ },
+ "/templates/leather-matjar": {
+  "slug": null,
+  "title": "Leather Goods Store Website Template | MatjarX",
+  "description": "Leather Matjar is a ready-made leather goods store website template for Pakistani businesses: every page designed, store and WhatsApp built in.",
+  "h1": "Leather Matjar: a ready-made leather goods store website template"
+ },
+ "/templates/minimalist-matjar": {
+  "slug": null,
+  "title": "Minimalist Store Website Template | MatjarX",
+  "description": "Minimalist Matjar is a ready-made minimalist store website template for Pakistani businesses: every page designed, store and WhatsApp built in.",
+  "h1": "Minimalist Matjar: a ready-made minimalist store website template"
+ },
+ "/templates/minimalist-service-matjar": {
+  "slug": null,
+  "title": "Service Business Website Template | MatjarX",
+  "description": "Minimalist Service Matjar: a ready-made service business website template for Pakistan with every page designed and WhatsApp built in. Live in 7 business days.",
+  "h1": "Minimalist Service Matjar: service business website template"
+ },
+ "/templates/pet-store-matjar": {
+  "slug": null,
+  "title": "Pet Store Website Template: Pet Store Matjar | MatjarX",
+  "description": "Pet Store Matjar is a ready-made pet store website template for Pakistani businesses: every page designed, store and WhatsApp built in, live in 7 business days.",
+  "h1": "Pet Store Matjar: a ready-made pet store website template"
+ },
+ "/templates/real-estate-matjar": {
+  "slug": null,
+  "title": "Real Estate Website Template: Real Estate Matjar | MatjarX",
+  "description": "Real Estate Matjar is a ready-made real estate website template for Pakistani businesses: every page designed, store and WhatsApp built in.",
+  "h1": "Real Estate Matjar: a ready-made real estate website template"
+ },
+ "/templates/salon-matjar": {
+  "slug": null,
+  "title": "Salon Website Template: Salon Matjar | MatjarX",
+  "description": "Salon Matjar is a ready-made salon website template for Pakistani businesses: every page designed, store and WhatsApp built in, live in 7 business days.",
+  "h1": "Salon Matjar: a ready-made salon website template"
+ },
+ "/templates/scottish-clothing-matjar": {
+  "slug": null,
+  "title": "Kilt & Highland Wear Shop Website Template | MatjarX",
+  "description": "Scottish Clothing Matjar: a ready-made kilt & highland wear shop website template for Pakistan with every page designed and WhatsApp built in.",
+  "h1": "Scottish Clothing Matjar: kilt & highland wear shop website template"
+ },
+ "/templates/sports-shoes-matjar": {
+  "slug": null,
+  "title": "Shoe Store Website Template: Sports Shoes Matjar | MatjarX",
+  "description": "Sports Shoes Matjar is a ready-made shoe store website template for Pakistani businesses: every page designed, store and WhatsApp built in.",
+  "h1": "Sports Shoes Matjar: a ready-made shoe store website template"
+ },
+ "/templates/sportwear-matjar": {
+  "slug": null,
+  "title": "Sportswear Store Website Template | MatjarX",
+  "description": "Sportwear Matjar is a ready-made sportswear store website template for Pakistani businesses: every page designed, store and WhatsApp built in.",
+  "h1": "Sportwear Matjar: a ready-made sportswear store website template"
+ },
+ "/templates/tea-matjar": {
+  "slug": null,
+  "title": "Tea Shop Website Template: Tea Matjar | MatjarX",
+  "description": "Tea Matjar is a ready-made tea shop website template for Pakistani businesses: every page designed, store and WhatsApp built in, live in 7 business days.",
+  "h1": "Tea Matjar: a ready-made tea shop website template"
+ },
+ "/videos": {
+  "slug": "videos",
+  "title": "Website Videos in Urdu: Build, Rank & Sell | MatjarX",
+  "description": "Short Urdu and English videos on getting your business online: website basics, Google ranking, online stores and social media, from the MatjarX team.",
+  "h1": "Videos on getting your business online, in Urdu and English"
+ },
+ "/website-design-abbottabad": {
+  "slug": "cities/abbottabad",
+  "title": "Web Developer in Abbottabad: Business Websites | MatjarX",
+  "description": "Website design and development in Abbottabad, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Web developer in Abbottabad for business websites"
+ },
+ "/website-design-bahawalpur": {
+  "slug": "cities/bahawalpur",
+  "title": "Software House in Bahawalpur for Business Websites | MatjarX",
+  "description": "Website design and development in Bahawalpur, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Bahawalpur for business websites"
+ },
+ "/website-design-burewala": {
+  "slug": "cities/burewala",
+  "title": "Software House in Burewala for Business Websites | MatjarX",
+  "description": "Website design and development in Burewala, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Burewala for business websites"
+ },
+ "/website-design-chiniot": {
+  "slug": "cities/chiniot",
+  "title": "Website Design in Chiniot: Live in 7 Business Days | MatjarX",
+  "description": "Website design and development in Chiniot, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Website design in Chiniot, launched in 7 business days"
+ },
+ "/website-design-dera-ghazi-khan": {
+  "slug": "cities/dera-ghazi-khan",
+  "title": "Website Design in Dera Ghazi Khan | MatjarX",
+  "description": "Website design and development in Dera Ghazi Khan, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Website design in Dera Ghazi Khan, launched in 7 business days"
+ },
+ "/website-design-faisalabad": {
+  "slug": "cities/faisalabad",
+  "title": "Software House in Faisalabad for Business Websites | MatjarX",
+  "description": "Website design and development in Faisalabad, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Faisalabad for business websites"
+ },
+ "/website-design-gujranwala": {
+  "slug": "cities/gujranwala",
+  "title": "Software House in Gujranwala for Business Websites | MatjarX",
+  "description": "Website design and development in Gujranwala, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Gujranwala for business websites"
+ },
+ "/website-design-gujrat": {
+  "slug": "cities/gujrat",
+  "title": "Software House in Gujrat for Business Websites | MatjarX",
+  "description": "Website design and development in Gujrat, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Gujrat for business websites"
+ },
+ "/website-design-hyderabad": {
+  "slug": "cities/hyderabad",
+  "title": "Website Design in Hyderabad | MatjarX",
+  "description": "Website design and development in Hyderabad, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Website design in Hyderabad, launched in 7 business days"
+ },
+ "/website-design-islamabad": {
+  "slug": "cities/islamabad",
+  "title": "Website Development Company in Islamabad | MatjarX",
+  "description": "Website design and development in Islamabad, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Website development company in Islamabad"
+ },
+ "/website-design-jacobabad": {
+  "slug": "cities/jacobabad",
+  "title": "Website Design in Jacobabad | MatjarX",
+  "description": "Website design and development in Jacobabad, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Website design in Jacobabad, launched in 7 business days"
+ },
+ "/website-design-jhang": {
+  "slug": "cities/jhang",
+  "title": "Software House in Jhang for Business Websites | MatjarX",
+  "description": "Website design and development in Jhang, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Jhang for business websites, live in 7 business days"
+ },
+ "/website-design-kamoke": {
+  "slug": "cities/kamoke",
+  "title": "Website Design in Kamoke: Live in 7 Business Days | MatjarX",
+  "description": "Website design and development in Kamoke, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Website design in Kamoke, launched in 7 business days"
+ },
+ "/website-design-karachi": {
+  "slug": "cities/karachi",
+  "title": "Website Development Company in Karachi | MatjarX",
+  "description": "Website design and development in Karachi, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Website development company in Karachi: sites live in 7 business days"
+ },
+ "/website-design-lahore": {
+  "slug": "cities/lahore",
+  "title": "Web Development Company in Lahore | MatjarX",
+  "description": "Website design and development in Lahore, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Web development company in Lahore: sites live in 7 business days"
+ },
+ "/website-design-larkana": {
+  "slug": "cities/larkana",
+  "title": "Website Design in Larkana: Live in 7 Business Days | MatjarX",
+  "description": "Website design and development in Larkana, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Website design in Larkana, launched in 7 business days"
+ },
+ "/website-design-mardan": {
+  "slug": "cities/mardan",
+  "title": "Software House in Mardan for Business Websites | MatjarX",
+  "description": "Website design and development in Mardan, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Mardan for business websites"
+ },
+ "/website-design-multan": {
+  "slug": "cities/multan",
+  "title": "Software House in Multan for Business Websites | MatjarX",
+  "description": "Website design and development in Multan, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Multan for business websites"
+ },
+ "/website-design-nawabshah": {
+  "slug": "cities/nawabshah",
+  "title": "Website Design in Nawabshah | MatjarX",
+  "description": "Website design and development in Nawabshah, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Website design in Nawabshah, launched in 7 business days"
+ },
+ "/website-design-okara": {
+  "slug": "cities/okara",
+  "title": "Software House in Okara for Business Websites | MatjarX",
+  "description": "Website design and development in Okara, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Okara for business websites, live in 7 business days"
+ },
+ "/website-design-peshawar": {
+  "slug": "cities/peshawar",
+  "title": "Software House in Peshawar for Business Websites | MatjarX",
+  "description": "Website design and development in Peshawar, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Peshawar for business websites"
+ },
+ "/website-design-quetta": {
+  "slug": "cities/quetta",
+  "title": "Software House in Quetta for Business Websites | MatjarX",
+  "description": "Website design and development in Quetta, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Quetta for business websites"
+ },
+ "/website-design-rahim-yar-khan": {
+  "slug": "cities/rahim-yar-khan",
+  "title": "Software House in Rahim Yar Khan | MatjarX",
+  "description": "Website design and development in Rahim Yar Khan, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Rahim Yar Khan for business websites"
+ },
+ "/website-design-rawalpindi": {
+  "slug": "cities/rawalpindi",
+  "title": "Software House in Rawalpindi for Business Websites | MatjarX",
+  "description": "Website design and development in Rawalpindi, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Rawalpindi for business websites"
+ },
+ "/website-design-sadiqabad": {
+  "slug": "cities/sadiqabad",
+  "title": "Software House in Sadiqabad for Business Websites | MatjarX",
+  "description": "Website design and development in Sadiqabad, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Sadiqabad for business websites"
+ },
+ "/website-design-sahiwal": {
+  "slug": "cities/sahiwal",
+  "title": "Software House in Sahiwal for Business Websites | MatjarX",
+  "description": "Website design and development in Sahiwal, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Sahiwal for business websites"
+ },
+ "/website-design-sargodha": {
+  "slug": "cities/sargodha",
+  "title": "Software House in Sargodha for Business Websites | MatjarX",
+  "description": "Website design and development in Sargodha, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Sargodha for business websites"
+ },
+ "/website-design-sheikhupura": {
+  "slug": "cities/sheikhupura",
+  "title": "Software House in Sheikhupura: Websites | MatjarX",
+  "description": "Website design and development in Sheikhupura, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Sheikhupura for business websites"
+ },
+ "/website-design-sialkot": {
+  "slug": "cities/sialkot",
+  "title": "Software House in Sialkot for Business Websites | MatjarX",
+  "description": "Website design and development in Sialkot, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Sialkot for business websites"
+ },
+ "/website-design-sukkur": {
+  "slug": "cities/sukkur",
+  "title": "Software House in Sukkur for Business Websites | MatjarX",
+  "description": "Website design and development in Sukkur, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Sukkur for business websites"
+ },
+ "/website-design-wah-cantonment": {
+  "slug": "cities/wah-cantonment",
+  "title": "Software House in Wah Cantonment | MatjarX",
+  "description": "Website design and development in Wah Cantonment, live in 7 business days from Rs. 4,500/month. Add local SEO and Google Maps with the Boost plan.",
+  "h1": "Software house in Wah Cantonment for business websites"
+ },
+ "/website-examples": {
+  "slug": "website-examples",
+  "title": "Website Design Samples by Industry | MatjarX",
+  "description": "Browse website design samples by industry: restaurants, clinics, shops, real estate and more. See what your site could look like before you start.",
+  "h1": "Website design samples from real businesses, by industry"
+ },
+ "/website-for-auto-repair-shops": {
+  "slug": "industries/auto-repair-shops",
+  "title": "Auto Repair Shop Website Design in Pakistan | MatjarX",
+  "description": "Auto repair shop website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Auto repair shop website design in Pakistan, live in 7 business days"
+ },
+ "/website-for-b2b-clothing-manufacturer": {
+  "slug": "industries/b2b-clothing-manufacturer",
+  "title": "Website for Clothing Manufacturers & Exporters | MatjarX",
+  "description": "Websites for clothing manufacturers and exporters in Pakistan: catalogue, RFQ forms, certifications and export-ready pages that win buyer enquiries.",
+  "h1": "Websites for clothing manufacturers that win export buyers"
+ },
+ "/website-for-b2b-leather-goods-manufacturer": {
+  "slug": "industries/b2b-leather-goods-manufacturer",
+  "title": "Website for Leather Manufacturers & Exporters | MatjarX",
+  "description": "Websites for leather goods manufacturers and exporters in Pakistan: catalogue, RFQ forms, certifications and export-ready pages that win buyer enquiries.",
+  "h1": "Websites for leather manufacturers that win export buyers"
+ },
+ "/website-for-boutiques": {
+  "slug": "industries/boutiques",
+  "title": "Boutique Website Design in Pakistan | MatjarX",
+  "description": "Boutique website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Boutique website design in Pakistan, live in 7 business days"
+ },
+ "/website-for-clinics-and-healthcare": {
+  "slug": "industries/clinics-and-healthcare",
+  "title": "Clinic Website Design in Pakistan | MatjarX",
+  "description": "Clinic website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Clinic website design in Pakistan, live in 7 business days"
+ },
+ "/website-for-construction-companies": {
+  "slug": "industries/construction-companies",
+  "title": "Construction Company Website Design in Pakistan | MatjarX",
+  "description": "Construction company website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Construction company website design in Pakistan"
+ },
+ "/website-for-gyms-and-fitness": {
+  "slug": "industries/gyms-and-fitness",
+  "title": "Gym Website Design in Pakistan | MatjarX",
+  "description": "Gym website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Gym website design in Pakistan, live in 7 business days"
+ },
+ "/website-for-law-firms": {
+  "slug": "industries/law-firms",
+  "title": "Law Firm Website Design in Pakistan | MatjarX",
+  "description": "Law firm website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Law firm website design in Pakistan, live in 7 business days"
+ },
+ "/website-for-online-stores-ecommerce": {
+  "slug": "industries/online-stores-ecommerce",
+  "title": "Ecommerce Website in Pakistan with COD & Payments | MatjarX",
+  "description": "Ecommerce website for Pakistani online stores: products, COD, JazzCash and EasyPaisa, courier booking and WhatsApp orders, all in one dashboard.",
+  "h1": "Ecommerce website for Pakistan: COD, payments and couriers built in"
+ },
+ "/website-for-real-estate": {
+  "slug": "industries/real-estate",
+  "title": "Real Estate Website Design in Pakistan | MatjarX",
+  "description": "Real estate website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Real estate website design in Pakistan, live in 7 business days"
+ },
+ "/website-for-restaurants": {
+  "slug": "industries/restaurants",
+  "title": "Restaurant Website Design in Pakistan | MatjarX",
+  "description": "Restaurant website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Restaurant website design in Pakistan, live in 7 business days"
+ },
+ "/website-for-salons-and-spas": {
+  "slug": "industries/salons-and-spas",
+  "title": "Salon Website Design in Pakistan | MatjarX",
+  "description": "Salon website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Salon website design in Pakistan, live in 7 business days"
+ },
+ "/website-for-wedding-and-event-planners": {
+  "slug": "industries/wedding-and-event-planners",
+  "title": "Wedding Planner Website Design in Pakistan | MatjarX",
+  "description": "Wedding planner website design in Pakistan, live in 7 business days with WhatsApp leads and an easy editor. From Rs. 4,500/month + setup.",
+  "h1": "Wedding planner website design in Pakistan, live in 7 business days"
+ }
+}
