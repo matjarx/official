@@ -8,8 +8,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import CurrencyConverter from '@/components/CurrencyConverter'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
-import { FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
-import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
+import { FOOTER_CITIES, FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
 import { routes, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import type { SiteSettings } from '@/lib/marketing-content'
@@ -158,22 +157,18 @@ export default function SiteFooter() {
           ))}
         </div>
 
-        {/* Every city we have a page for, on every page of the site.
-            Deliberately small and quiet: this is a link row, not a nav.
-
-            Each of the 63 city pages is written for "website design in
-            <city>" and none of them had a reliable inbound link -- the
-            rail at the foot of each city page linked a fixed set of six,
-            so 56 were orphaned. That rail now rotates, and this row is the
-            belt to its braces: one link from every page on the site. */}
+        {/* The 11 main cities only (spec group 5). This row used to list
+            all 63 city pages on every page, half of them noindexed. Each
+            city page is still linked from its region's pages and the
+            sitemap. TODO: link /locations here once it exists. */}
         <div style={{ maxWidth: 1360, margin: '40px auto 0', paddingTop: 20, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
           <span style={{ display: 'block', fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.68)', fontWeight: 600, marginBottom: 10 }}>
             Website design across Pakistan
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px 10px' }}>
-            {CITY_SLUGS.map((slug) => (
-              <Link key={slug} href={routes.location(slug)} className="footer-link footer-link-tap" style={{ fontSize: 12, color: 'rgba(var(--ink-inverse-rgb), 0.62)', whiteSpace: 'nowrap' }}>
-                {CITY_DATA[slug].name}
+            {FOOTER_CITIES.map((c) => (
+              <Link key={c.href} href={c.href} className="footer-link footer-link-tap" style={{ fontSize: 12, color: 'rgba(var(--ink-inverse-rgb), 0.62)', whiteSpace: 'nowrap' }}>
+                {c.label}
               </Link>
             ))}
           </div>

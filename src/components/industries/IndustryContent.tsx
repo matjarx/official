@@ -20,6 +20,7 @@ import { FaqList } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
+import BodyLinks from '@/components/BodyLinks'
 
 export type IndustryContentShape = (typeof INDUSTRY_DATA)[IndustryKey] & { detail?: IndustryDetail | null }
 
@@ -46,7 +47,7 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
       <FaqSchema faqs={fromPairs(d.faqs)} />
       <AmbientOrbs />
       <div className="page-content">
-        <SiteChrome active="services">
+        <SiteChrome active="industries">
 
         {/* Breadcrumb */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
@@ -166,6 +167,8 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
             </div>
           </section>
         )}
+
+        <BodyLinks path={routes.industry(INDUSTRY_SLUGS[industryKey])} />
 
         {/* FAQs */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>

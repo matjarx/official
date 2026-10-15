@@ -23,6 +23,7 @@ import { routes, SERVICE_ROUTES } from '@/lib/routes'
 import { SERVICE_TABS, SERVICE_DATA, type ServiceKey, type ServiceDataEntry } from '@/lib/services-data'
 import ServiceDetailSections from './ServiceDetailSections'
 import { useCurrency } from '@/components/CurrencyProvider'
+import BodyLinks from '@/components/BodyLinks'
 
 export type ServicesContentShape = ServiceDataEntry
 const DEFAULT_CONTENT: Record<ServiceKey, ServicesContentShape> = SERVICE_DATA
@@ -135,6 +136,8 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
             </div>
           </div>
         </section>
+
+        <BodyLinks path={SERVICE_ROUTES[serviceKey]} />
 
         {/* Testimonial */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '74px 24px' }}>

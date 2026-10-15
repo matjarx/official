@@ -25,6 +25,7 @@ import type { HomeContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { useTheme } from '@/components/ThemeProvider'
 import { useCurrency } from '@/components/CurrencyProvider'
+import BodyLinks from '@/components/BodyLinks'
 
 // Code-split rather than statically imported: both sit well below the
 // fold (savings calculator, website-examples grid + its full-screen
@@ -615,6 +616,8 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             </div>
           </div>
         </section>
+
+        <BodyLinks path="/" />
 
         {/* FAQs */}
         <section style={{ maxWidth: 860, margin: '0 auto', padding: '82px 24px' }}>

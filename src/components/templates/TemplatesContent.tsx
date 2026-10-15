@@ -22,6 +22,7 @@ import {
 } from '@/lib/templates-data'
 import { FaqList } from '@/components/FaqList'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
+import BodyLinks from '@/components/BodyLinks'
 
 function IconCardGrid({ items, cols = 4 }: { items: IconCard[]; cols?: number }) {
   return (
@@ -72,7 +73,7 @@ export default function TemplatesContent({
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <SiteChrome active="resources">
+      <SiteChrome active="templates">
 
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 56px' }}>
@@ -218,6 +219,8 @@ export default function TemplatesContent({
               <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--olive)' }}>{MIGRATION.note}</span>
             </div>
           </section>
+
+          <BodyLinks path="/templates" style={{ padding: '56px 0 0' }} />
 
           {/* FAQ */}
           <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>

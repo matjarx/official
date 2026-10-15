@@ -22,6 +22,7 @@ import {
   TIMELINE_ROWS, TIMELINE_TOTAL, RUSH_NOTE, OUTCOMES, BENEFITS, COMPARISON_TABLE, AUDIT_FAQS, CHANNELS,
 } from '@/lib/website-audit-data'
 import { FaqList } from '@/components/FaqList'
+import BodyLinks from '@/components/BodyLinks'
 
 function IntakeForm() {
   const [name, setName] = useState('')
@@ -301,6 +302,8 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
               ))}
             </div>
           </section>
+
+          <BodyLinks path="/complete-website-audit-for-organic-visibility" style={{ padding: '56px 0 0' }} />
 
           {/* FAQ + comparison table */}
           <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>

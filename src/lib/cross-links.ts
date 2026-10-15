@@ -36,7 +36,7 @@
 
 import { routes } from './routes'
 import { CITY_DATA, CITY_SLUGS, type CityKey } from './location-data'
-import { INDUSTRY_DATA, type IndustryKey } from './industry-data'
+import type { IndustryKey } from './industry-data'
 import { BLOG_POSTS } from './blog-data'
 
 export type CrossLink = {
@@ -167,21 +167,6 @@ function serviceLinks(topics: Topic[], max: number): CrossLink[] {
   return keys.slice(0, max).map((k) => ({ label: SERVICE_TOPICS[k].label, href: routes.service(k), kind: 'service' as const, note: SERVICE_TOPICS[k].note }))
 }
 
-function industryLinks(topics: Topic[], offset: number, max: number): CrossLink[] {
-  const scored = (Object.keys(INDUSTRY_TOPICS) as IndustryKey[])
-    .map((k) => ({ k, score: overlap(topics, INDUSTRY_TOPICS[k] || []) }))
-    .filter((s) => s.score > 0)
-    .sort((a, b) => b.score - a.score || a.k.localeCompare(b.k))
-  // Rotate within the matching set, so two posts on the same topic do not
-  // both send everyone to the same industry page.
-  return window_(scored, offset, max).map(({ k }) => ({
-    label: INDUSTRY_DATA[k].name,
-    href: routes.industry(k),
-    kind: 'industry' as const,
-    note: `A website built for ${INDUSTRY_DATA[k].name.toLowerCase()}.`,
-  }))
-}
-
 const POST_SLUGS = BLOG_POSTS.map((p) => p.slug)
 
 function blogLinks(topics: Topic[], offset: number, max: number): CrossLink[] {
@@ -204,47 +189,10 @@ function cityLinks(offset: number, max: number): CrossLink[] {
   }))
 }
 
-/**
- * What a blog post should send a reader to next, outside the blog.
- *
- * Blog posts were the worst offenders in the crawl: 140 links, every one
- * of them to another blog post, plus 28 to /pricing. A reader who has
- * just finished "How to set up JazzCash on your website" is as ready to
- * buy as they will ever be, and the page offered them another article.
- */
-export function crossLinksForPost(slug: string): CrossLink[] {
-  const topics = POST_TOPICS[slug]
-  if (!topics) return []
-  const i = POST_SLUGS.indexOf(slug)
-  const offset = i < 0 ? 0 : i
-  return [...serviceLinks(topics, 2), ...industryLinks(topics, offset, 2), ...cityLinks(offset * 3, 2)]
-}
-
-/**
- * What a city page should send a reader to next.
- *
- * These are the pages Search Console has parked in "Discovered — currently
- * not indexed", and until now they linked only to other cities, home and
- * /pricing. Nothing about what a business in that city would actually buy.
- */
-export function crossLinksForCity(key: CityKey): CrossLink[] {
-  const i = CITY_SLUGS.indexOf(key)
-  const offset = i < 0 ? 0 : i
-  const allIndustries = Object.keys(INDUSTRY_TOPICS) as IndustryKey[]
-  const industries = window_(allIndustries, offset, 3).map((k) => ({
-    label: `${INDUSTRY_DATA[k].name} in ${CITY_DATA[key].name}`,
-    href: routes.industry(k),
-    kind: 'industry' as const,
-    note: 'Built, launched and looked after by us.',
-  }))
-  const posts = window_(POST_SLUGS, offset * 2, 2).map((s) => {
-    const post = BLOG_POSTS.find((p) => p.slug === s)!
-    return { label: post.title, href: routes.blogPost(s), kind: 'blog' as const, note: post.category }
-  })
-  // Six, so the grid is two clean rows of three rather than a stray
-  // card on its own line.
-  return [...industries, ...posts, ...serviceLinks(['local', 'seo'], 1)]
-}
+// Blog posts and city pages no longer use a rail from this file: they
+// show three posts from the same content pillar and that pillar's CTA
+// (src/lib/pillars.ts, spec group 5). The rotation below picked cities
+// and industries with no relation to the page.
 
 /**
  * What an industry page should send a reader to next.
