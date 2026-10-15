@@ -85,13 +85,10 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
       { title: 'Online ordering', body: 'Cash on delivery, JazzCash and Easypaisa built in, with 0% commission from us — unlike the delivery apps.', icon: ICONS.cart },
       { title: 'WhatsApp enquiries', body: 'A tappable button so a customer asking about a large booking reaches you in one move, not three.', icon: ICONS.whatsapp },
     ],
-    quote: 'Bookings went up three times over in the first two months. The menu I can change myself in a minute, which matters when prices move.',
-    quoteName: 'Celestial Delicacies', quoteCompany: 'Karachi',
-    results: [{ value: '3×', label: 'increase in table bookings' }, { value: '142', label: 'Google profile views a week' }, { value: '7 days', label: 'from brief to live site' }],
     faqs: [
       ['Can customers order food directly from the site?', 'Yes. You can take orders with cash on delivery, JazzCash, Easypaisa or PayFast, and we charge no commission on any of it.'],
       ['How do bookings reach me?', 'By email and WhatsApp the moment they come in, and they appear in your dashboard under Leads so nothing gets lost during service.'],
-      ['Can I change the menu myself?', "Yes, in seconds, from your phone. Or send it to your concierge and we'll do it — unlimited on Boost and above."],
+      ['Can I change the menu myself?', "Yes, in seconds, from your phone. Or send it to us: Boost and Growth include edits by our team for the first 30 days, and Platinum includes unlimited edits."],
       ['Do you photograph the food?', "Not directly, but we'll tell you what shots you need and can recommend a food photographer in your city."],
     ],
   },
@@ -111,9 +108,8 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
       { title: 'Wholesale and retail pricing', body: 'Two price tiers if you sell both ways, with a bulk enquiry form for shop buyers.', icon: ICONS.form },
       { title: 'Reviews that build trust', body: 'Verified customer reviews per product, collected automatically after delivery.', icon: ICONS.star },
     ],
-    quote: 'Third repeat order from the same buyers. Having the sizes and the colours right on the page stopped most of the WhatsApp back-and-forth.',
+    quote: 'Having the sizes and the colours right on the page stopped most of the WhatsApp back-and-forth.',
     quoteName: 'Elegance Embroidery', quoteCompany: 'Zainab Market, Karachi',
-    results: [{ value: '400+', label: 'products listed' }, { value: '0%', label: 'commission on sales' }, { value: '6 days', label: 'to launch' }],
     faqs: [
       ['How many products can I list?', 'Up to 100 comfortably on Growth, and unlimited on Platinum. We load the first batch for you from your photos and price list.'],
       ['Does it work with cash on delivery?', 'Yes, and we set up order confirmation to cut down on refused deliveries — the single biggest cost in Pakistani online retail.'],
@@ -139,7 +135,6 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
     ],
     quote: "The level of service is really good, and I'm getting loads of leads now. Patients book online instead of calling during clinic hours.",
     quoteName: 'Shahzad Ilyas', quoteCompany: 'Sacred Tantra & Wellness',
-    results: [{ value: '21', label: 'calls a week from Google' }, { value: '3', label: 'areas ranking locally' }, { value: '7 days', label: 'from brief to live site' }],
     faqs: [
       ['Can patients book appointments online?', 'Yes — by doctor, day and time slot, with confirmation to both sides. Multi-seat and multi-location booking is available on Platinum.'],
       ['Is patient data handled safely?', "Forms are submitted over SSL and delivered to your chosen inbox; we don't store patient details on our platform. We'll also write you a privacy policy covering it."],
@@ -180,7 +175,7 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
     headline: "Real Members. Real Transformations. Real Results.",
     tint: "linear-gradient(150deg, #1B7A3D, #08361B)",
     features: [{ title: "Member Transformations", body: "Real before/afters inspire prospects. Motivation is contagious.", icon: ICONS.form }, { title: "Trainer Expertise", body: "Trainer credentials, certifications, specializations build confidence.", icon: ICONS.doc }, { title: "Class Schedule", body: "Transparent schedule (and schedule changes) reduce confusion.", icon: ICONS.book }, { title: "Member Testimonials", body: "Real members talking about results, community, motivation.", icon: ICONS.pin }, { title: "Membership Options", body: "Clear pricing with no surprises. Easy to choose right plan.", icon: ICONS.star }, { title: "Gym Community", body: "Photos of members, events, challenges. Sense of belonging.", icon: ICONS.gallery }],
-    faqs: [["Can members book classes online?", "Yes! Class booking with email reminder reduces no-shows 40%."], ["How do I get member before/afters?", "Request permission from members achieving results. Offer incentive if needed."], ["Can I showcase multiple trainers?", "Yes! Each trainer gets their own profile with their transformation stories."], ["Will this increase class attendance?", "Yes! Transparent schedule + online booking + community = higher attendance."], ["Can I run challenges?", "Yes! Create monthly challenges with leaderboards and prizes."]],
+    faqs: [["Can members book classes online?", "Yes! Class booking comes with email reminders. Reminders help reduce no-shows."], ["How do I get member before/afters?", "Request permission from members achieving results. Offer incentive if needed."], ["Can I showcase multiple trainers?", "Yes! Each trainer gets their own profile with their transformation stories."], ["Will this increase class attendance?", "Yes! Transparent schedule + online booking + community = higher attendance."], ["Can I run challenges?", "Yes! Create monthly challenges with leaderboards and prizes."]],
     metaTitle: "Gym Website - Class Schedules, Trainer Profiles & Membership", metaDesc: "Professional fitness gym website with class schedules, trainer profiles, and member transformations. Inspire new members to join and commit.",
   },
   "construction-companies": {
