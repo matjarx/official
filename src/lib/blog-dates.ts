@@ -27,3 +27,18 @@ export function postLastModified(published: string | null | undefined, updatedAt
   if (!pub) return upd
   return upd > pub ? upd : pub
 }
+
+const MONTHS: Record<string, string> = {
+  jan: '01', feb: '02', mar: '03', apr: '04', may: '05', jun: '06', jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12',
+}
+
+/**
+ * The publish date as an ISO 8601 date ("2026-10-14") for schema.org. `date`
+ * is a display string ("14 Oct 2026"); it is read as written, with no
+ * timezone, so the day can't shift. Undefined if it doesn't parse.
+ */
+export function isoPublishDate(published: string | null | undefined): string | undefined {
+  const m = /^(\d{1,2}) ([A-Za-z]{3})[a-z]* (\d{4})$/.exec((published || '').trim())
+  const month = m && MONTHS[m[2].toLowerCase()]
+  return m && month ? `${m[3]}-${month}-${m[1].padStart(2, '0')}` : undefined
+}
