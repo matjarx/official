@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation'
 import BlogPostContent from '@/components/blog/BlogPostContent'
 import { BLOG_POSTS, AUTHOR } from '@/lib/blog-data'
 import { routes } from '@/lib/routes'
-import { getBlogPost, getBlogPosts, toCard, pageTitle } from '@/lib/marketing-content'
+import { getBlogPost, getBlogPosts, getSeoOverride, toCard, pageTitle } from '@/lib/marketing-content'
+import { faqFromBody } from '@/lib/blog-faq'
 
 // Re-checks marketing_blog_posts at most once a minute rather than only at
 // build time — otherwise a new/edited post would need a full redeploy to
@@ -20,8 +21,23 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const post = await getBlogPost(slug)
+  const [post, seo] = await Promise.all([getBlogPost(slug), getSeoOverride(`blog/${slug}`)])
   if (!post) return {}
+  // A post's `title` is its H1. When the search title should differ -- a
+  // shorter or differently phrased <title> -- it lives in the same __seo
+  // override every other page uses (marketing_content, slug `blog/<slug>`),
+  // and is used exactly as written: whoever set it chose the whole string.
+  if (seo?.title || seo?.description) {
+    const title = seo.title || post.title
+    const description = seo.description || post.excerpt
+    return {
+      title: seo.title ? { absolute: seo.title } : pageTitle(post.title),
+      description,
+      alternates: { canonical: routes.blogPost(post.slug) },
+      openGraph: { type: 'article', title, description, publishedTime: post.date },
+      twitter: { title, description },
+    }
+  }
   return {
     // Through pageTitle, not raw: the root layout's template appends
     // " | MatjarX", and a 59-character post title plus that is 69 — past
@@ -78,12 +94,29 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://matjarx.com${routes.blogPost(post.slug)}` },
   }
 
+  // FAQPage from the post's own "Frequently asked questions" section --
+  // see lib/blog-faq.ts. Omitted entirely when a post has none.
+  const faq = faqFromBody(post.body)
+  const faqJsonLd = faq.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+      }
+    : null
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       {/* allPosts only resolves relatedSlugs to a title and a cover.
           Bodies stripped, or every post ships all 28 articles. */}
       <BlogPostContent post={post} allPosts={allPosts.map(toCard)} />

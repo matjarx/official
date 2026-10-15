@@ -23,6 +23,10 @@ export type BodyBlock =
   | { t: 'ol'; items: string[] }
   /** An image inside the body, distinct from the post's cover. */
   | { t: 'img'; src: string; alt: string; caption?: string }
+  /** A data table. `head` is the header row; each row has one string per
+   *  column. Cells take the same inline syntax as a paragraph (links, bold).
+   *  A deploy that predates this type renders nothing for it, never a crash. */
+  | { t: 'table'; head: string[]; rows: string[][]; caption?: string }
 
 export type BlogPost = {
   slug: string; title: string; category: BlogCategory; excerpt: string

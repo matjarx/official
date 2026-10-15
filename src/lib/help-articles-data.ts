@@ -454,7 +454,7 @@ export const HELP_ARTICLES: Record<HelpSlug, HelpArticle> = {
         { type: "h4", text: "Growth Plan (PKR 27,000/month)" },
         { type: 'ul', items: ["50 pages", "3 blog posts per month", "Dedicated marketing expert", "Monthly strategy calls", "Unlimited phone support", "Setup fee: PKR 22,500"] },
         { type: "h4", text: "Platinum Plan (PKR 55,000/month)" },
-        { type: 'ul', items: ["Unlimited pages and products", "10 blog posts per month", "20 social designs per month", "Ad campaign management", "Full team support", "Setup fee: PKR 140,000"] },
+        { type: 'ul', items: ["Unlimited pages and products", "10 blog posts per month", "20 social designs per month", "1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)", "Full team support", "Setup fee: PKR 140,000"] },
       ] },
       { heading: "Billing Cycle", blocks: [
         { type: "h3", text: "When You're Charged" },

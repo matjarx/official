@@ -99,7 +99,7 @@ const BUILT_WITH = [
   ['VIP support', 'Whenever you need it'],
   ['Domain and business email included', 'Professional presence from day one'],
   ['Easy-to-use editor', 'Make future updates yourself'],
-  ['30-day money-back guarantee', 'Risk-free satisfaction guarantee'],
+  ['No long-term contract', "Cancel with 30 days' written notice"],
   ['Pakistani payment support', 'JazzCash, EasyPaisa, SadaPay, PayFast'],
 ]
 const BUILT_WITHOUT = [
@@ -126,10 +126,10 @@ const WHY_CHOOSE = [
 
 export const DEFAULT_FAQ_DATA = [
   { question: 'How does it actually work?', answer: 'Pick a plan and check out. You fill in a short questionnaire about your business, our team builds the whole site in seven days, then we launch it with you on a live call and show you how to edit it yourself.' },
-  { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional site, domain, email and hosting. Boost adds unlimited edits done by us, advanced SEO and selling on Google, Facebook and Instagram. Growth is the one most businesses settle on — it adds a dedicated team, monthly 1-on-1 marketing sessions and fresh content written for you every month. Platinum is a fully custom build for serious e-commerce.' },
-  { question: 'Can I edit the website myself afterwards?', answer: "Yes. Every site comes with our own editor — change photos, text, prices and products from any device, no technical skill needed. If you'd rather not, send the change to your concierge and we'll do it." },
+  { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional site, domain, email and hosting. Boost adds unlimited edits done by us for the first 30 days, advanced SEO and selling on Google, Facebook and Instagram. Growth is the one most businesses settle on — it adds a dedicated team, monthly 1-on-1 marketing sessions and 3 blog posts written for you every month. Platinum is a fully custom build for serious e-commerce.' },
+  { question: 'Can I edit the website myself afterwards?', answer: "Yes. Every site comes with our own editor — change photos, text, prices and products from any device, no technical skill needed. On Boost and above, you can send changes to your concierge and we'll make them." },
   { question: 'Are hosting, domain and email included?', answer: 'Yes, in every plan: a custom domain (or connect one you already own), matching business email, fast secure hosting and an SSL certificate. There are no separate charges for these.' },
-  { question: "What if I don't like the website?", answer: "You get 30 days of unlimited edits after launch so we can get it right — tell your concierge what's wrong and we'll change it. The setup fee itself isn't refundable once work has started, but there's no long-term contract: cancel your plan at any time with 30 days' notice." },
+  { question: "What if I don't like the website?", answer: "You review and approve the design before it goes live, and we make adjustments then. After launch you can edit it yourself, and on Boost and above our team makes changes for you. The setup fee itself isn't refundable once work has started, but there's no long-term contract: cancel your plan at any time with 30 days' notice." },
   { question: 'Do you work with businesses outside Pakistan?', answer: 'Yes — we serve clients across the Gulf as well. Pricing is quoted in AED for UAE, Saudi and Qatar businesses, and your concierge works your time zone.' },
 ]
 
@@ -168,9 +168,9 @@ const PLAN_ROWS = [
   { name: 'Launch', pitch: 'We build and launch your website.', price: 'Rs. 4,500', setup: 'Rs. 22,500', cta: 'Choose Launch', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('launch'),
     features: ['Multi-page site, written for you', 'Domain + 1 business email', 'Google Business Profile set up', 'Live chat support'] },
   { name: 'Boost', pitch: 'We manage your online presence.', price: 'Rs. 15,600', setup: 'Rs. 22,500', cta: 'Choose Boost', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('boost'),
-    features: ['Everything in Launch', '4 business emails', 'Unlimited edits, done by us', 'Advanced SEO + custom logo', 'Sell on Google, Facebook, Instagram'] },
+    features: ['Everything in Launch', '4 business emails', 'Unlimited edits for 30 days, done by us', 'Advanced SEO + custom logo', 'Sell on Google, Facebook, Instagram'] },
   { name: 'Growth', pitch: 'We grow your business online.', price: 'Rs. 27,000', setup: 'Rs. 22,500', cta: 'Choose Growth', theme: DARK_PLAN_THEME, tag: 'Most popular', href: appSignup('growth'),
-    features: ['Everything in Boost', 'Dedicated growth team', 'Monthly 1-on-1 marketing session', '2,000 words of fresh content monthly'] },
+    features: ['Everything in Boost', 'Dedicated growth team', 'Monthly 1-on-1 marketing session', '3 blog posts a month'] },
   { name: 'Platinum', pitch: 'We scale your e-commerce business.', price: 'Rs. 55,000', setup: 'Rs. 140,000', cta: 'Talk to us', theme: PREMIUM_PLAN_THEME, tag: '', href: appSignup('platinum'),
     features: ['Everything in Growth', 'Custom design in our own tool', 'Full webstore, unlimited products', 'Subscriptions & digital products', 'Multi-seat bookings'] },
 ]

@@ -15,7 +15,7 @@ import { routes, appSignup } from '@/lib/routes'
 import type { PlanKey } from '@/lib/plan-data'
 import {
   LAUNCH, BOOST, GROWTH, PLATINUM, CUSTOM,
-  type StandardPlanDetail, type PlanFaq, type BestForGroup,
+  type StandardPlanDetail, type PlanFaq, type BestForGroup, type ExampleSolution,
 } from '@/lib/plan-detail-data'
 import { FaqList, bullet } from '@/components/FaqList'
 import { H2, BlockList, CompareTable } from '@/components/DetailPrimitives'
@@ -159,7 +159,8 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
         )}
       </section>
 
-      {/* Real examples */}
+      {/* Real examples -- only when the plan has real, named clients to show */}
+      {d.examples && d.examples.items.length > 0 && (
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.examples.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
@@ -171,6 +172,7 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
           ))}
         </div>
       </section>
+      )}
 
       {/* Process */}
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
@@ -235,6 +237,8 @@ function CustomDetail() {
   const { inText } = useCurrency()
   const [openFaq, setOpenFaq] = useState(-1)
   const d = CUSTOM
+  // Example builds removed 13 Oct (no real, named clients); kept optional.
+  const examples = (d as { examples?: { title: string; items: ExampleSolution[] } }).examples
   return (
     <>
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: '76px 24px 0' }}>
@@ -251,10 +255,12 @@ function CustomDetail() {
         <GroupGrid groups={d.whoNeeds.groups} />
       </section>
 
+      {/* Example builds -- only when there are real, named ones to show */}
+      {examples && examples.items.length > 0 && (
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.examples.title}</h2>
+        <h2 style={H2}>{examples.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
-          {d.examples.items.map((ex) => (
+          {examples.items.map((ex) => (
             <div key={ex.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
               <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, color: 'var(--ink-1)' }}>{ex.title}</h3>
               <p style={{ margin: '0 0 10px', fontSize: 12.5, color: 'var(--ink-5)' }}>{ex.business}</p>
@@ -265,6 +271,7 @@ function CustomDetail() {
           ))}
         </div>
       </section>
+      )}
 
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.discovery.title}</h2>
