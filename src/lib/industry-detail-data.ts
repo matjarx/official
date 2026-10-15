@@ -61,11 +61,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Social Media Integration', blocks: [{ items: ['Menu updates to Facebook', 'Instagram food photos', 'Special announcements', 'Customer engagement', 'Review sharing'] }] },
       { title: 'Email Marketing', blocks: [{ items: ['Loyalty programs', 'Specials notifications', 'New dish announcements', 'Event invitations', 'Birthday offers'] }] },
     ] },
-    testimonials: { title: 'What Restaurant Owners Say', items: [
-      { quote: 'Our reservations tripled in the first month. People find us on Google and book online immediately. It’s changed our business.', name: 'Malik, Restaurant Owner, Islamabad' },
-      { quote: 'The menu photos make our food look irresistible. Customers tell us they came because of how good the pictures looked online.', name: 'Fatima, Cafe Owner, Karachi' },
-      { quote: 'Managing reservations through the website is so much easier. No more missed bookings, no confusion about party sizes.', name: 'Ahmed, Dining Manager, Lahore' },
-    ] },
     plans: { title: 'Which Plan Fits Your Restaurant?', tiers: [
       { name: 'Launch Plan', audience: 'Basic online presence', items: ['5-10 pages', 'Menu display', 'Location and hours', 'Contact form'] },
       { name: 'Boost Plan', audience: 'Growing restaurant', items: ['30 pages', 'Menu with photos', 'Reservations system', 'Blog for specials and updates', 'VIP phone support'], price: 'PKR 15,600/month' },
