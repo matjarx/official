@@ -27,6 +27,10 @@
     "website templates"
    ],
    [
+    "/locations",
+    "website design in your city"
+   ],
+   [
     "/website-design-karachi",
     "Karachi"
    ],
@@ -251,6 +255,10 @@
     "website price"
    ],
    [
+    "/locations",
+    "other cities"
+   ],
+   [
     "/website-design-lahore",
     "website design in Lahore"
    ],
@@ -275,6 +283,10 @@
    [
     "/pricing",
     "website price"
+   ],
+   [
+    "/locations",
+    "other cities"
    ],
    [
     "/website-design-lahore",
@@ -303,6 +315,10 @@
     "website price"
    ],
    [
+    "/locations",
+    "other cities"
+   ],
+   [
     "/website-design-karachi",
     "website design in Karachi"
    ],
@@ -327,6 +343,10 @@
    [
     "/pricing",
     "website price"
+   ],
+   [
+    "/locations",
+    "other cities"
    ],
    [
     "/website-design-rawalpindi",
@@ -355,6 +375,10 @@
     "website price"
    ],
    [
+    "/locations",
+    "other cities"
+   ],
+   [
     "/website-design-hyderabad",
     "website design in Hyderabad"
    ],
@@ -379,6 +403,10 @@
    [
     "/pricing",
     "website price"
+   ],
+   [
+    "/locations",
+    "other cities"
    ],
    [
     "/website-design-gujranwala",
@@ -411,6 +439,10 @@
     "website price"
    ],
    [
+    "/locations",
+    "other cities"
+   ],
+   [
     "/website-design-bahawalpur",
     "website design in Bahawalpur"
    ],
@@ -435,6 +467,10 @@
    [
     "/pricing",
     "website price"
+   ],
+   [
+    "/locations",
+    "other cities"
    ],
    [
     "/website-design-mardan",
@@ -463,6 +499,10 @@
     "website price"
    ],
    [
+    "/locations",
+    "other cities"
+   ],
+   [
     "/website-design-karachi",
     "website design in Karachi"
    ],
@@ -489,6 +529,10 @@
     "website price"
    ],
    [
+    "/locations",
+    "other cities"
+   ],
+   [
     "/website-design-islamabad",
     "website design in Islamabad"
    ],
@@ -513,6 +557,10 @@
    [
     "/pricing",
     "website price"
+   ],
+   [
+    "/locations",
+    "other cities"
    ],
    [
     "/website-design-gujranwala",
@@ -1331,12 +1379,6 @@
  "skipped": [
   {
    "page": "/",
-   "href": "/locations",
-   "anchor": "website design in your city",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/",
    "href": "/blogs/website-development-in-pakistan-guide",
    "anchor": "website development guide",
    "why": "target returns 404"
@@ -1456,30 +1498,6 @@
    "why": "target returns 404"
   },
   {
-   "page": "/website-design-faisalabad",
-   "href": "/locations",
-   "anchor": "other cities",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-gujranwala",
-   "href": "/locations",
-   "anchor": "other cities",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-hyderabad",
-   "href": "/locations",
-   "anchor": "other cities",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-islamabad",
-   "href": "/locations",
-   "anchor": "other cities",
-   "why": "target returns 404"
-  },
-  {
    "page": "/website-design-islamabad",
    "href": "/seo-company-islamabad",
    "anchor": "SEO company in Islamabad",
@@ -1489,12 +1507,6 @@
    "page": "/website-design-islamabad",
    "href": "/digital-marketing-agency-islamabad",
    "anchor": "digital marketing agency in Islamabad",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-karachi",
-   "href": "/locations",
-   "anchor": "other cities",
    "why": "target returns 404"
   },
   {
@@ -1511,12 +1523,6 @@
   },
   {
    "page": "/website-design-lahore",
-   "href": "/locations",
-   "anchor": "other cities",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-lahore",
    "href": "/seo-company-lahore",
    "anchor": "SEO company in Lahore",
    "why": "target returns 404"
@@ -1525,36 +1531,6 @@
    "page": "/website-design-lahore",
    "href": "/digital-marketing-agency-lahore",
    "anchor": "digital marketing agency in Lahore",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-multan",
-   "href": "/locations",
-   "anchor": "other cities",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-peshawar",
-   "href": "/locations",
-   "anchor": "other cities",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-quetta",
-   "href": "/locations",
-   "anchor": "other cities",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-rawalpindi",
-   "href": "/locations",
-   "anchor": "other cities",
-   "why": "target returns 404"
-  },
-  {
-   "page": "/website-design-sialkot",
-   "href": "/locations",
-   "anchor": "other cities",
    "why": "target returns 404"
   },
   {

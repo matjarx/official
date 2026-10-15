@@ -91,6 +91,7 @@ export async function urlsForSection(id: string): Promise<MetadataRouteSitemap> 
     { url: routes.videos, slug: 'videos', changeFrequency: 'monthly', priority: 0.6 },
     { url: routes.alternatives, slug: 'alternatives', changeFrequency: 'monthly', priority: 0.8 },
     { url: routes.bestBuilder, slug: 'best-builder', changeFrequency: 'monthly', priority: 0.8 },
+    { url: routes.locations, slug: 'locations', changeFrequency: 'monthly', priority: 0.8 },
     { url: routes.help, slug: 'help', changeFrequency: 'monthly', priority: 0.6 },
     { url: routes.about, slug: 'about', changeFrequency: 'yearly', priority: 0.4 },
     { url: routes.contact, slug: 'contact', changeFrequency: 'yearly', priority: 0.5 },

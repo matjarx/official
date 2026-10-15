@@ -57,7 +57,13 @@ if status_file:
         known[path] = int(code)
 
 
+# Pages this branch adds: 200 once it ships, so links to them are kept.
+SHIPPED_HERE = {'/locations'}
+
+
 def status(path):
+    if path in SHIPPED_HERE:
+        return 200
     return known[path] if path in known else live_status(path)
 
 

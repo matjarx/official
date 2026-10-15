@@ -157,10 +157,9 @@ export default function SiteFooter() {
           ))}
         </div>
 
-        {/* The 11 main cities only (spec group 5). This row used to list
-            all 63 city pages on every page, half of them noindexed. Each
-            city page is still linked from its region's pages and the
-            sitemap. TODO: link /locations here once it exists. */}
+        {/* The 11 main cities and /locations (spec group 5). This row used
+            to list all 63 city pages on every page, half of them noindexed;
+            /locations lists every indexed one. */}
         <div style={{ maxWidth: 1360, margin: '40px auto 0', paddingTop: 20, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
           <span style={{ display: 'block', fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.68)', fontWeight: 600, marginBottom: 10 }}>
             Website design across Pakistan

@@ -56,6 +56,11 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
     .map((slug) => allPosts.find((p) => p.slug === slug))
     .filter((p): p is BlogPost => !!p)
   const cta = PILLAR_CTA[pillar ?? 'P1']
+  // SEO-pillar posts also link the SEO service page from the article text
+  // (decided 15 Oct): the CTA box sends readers to the free audit, which
+  // left the service page itself with no link from these posts. Skipped
+  // where the post's own body already links it.
+  const seoServiceLine = pillar === 'P3' && !JSON.stringify(post.body).includes(routes.service('seo'))
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
@@ -182,6 +187,11 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                     return null
                   })}
 
+                  {seoServiceLine && (
+                    <p style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>
+                      If you would rather have this done for you, see our <Link href={routes.service('seo')} style={{ color: 'var(--ink-1)', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 3 }}>SEO services in Pakistan</Link>.
+                    </p>
+                  )}
                   <PillarCta cta={cta} style={{ marginTop: 20 }} />
 
                   {/* The article body already ends with the author card --
@@ -246,6 +256,11 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                   return null
                 })}
 
+                {seoServiceLine && (
+                  <p style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>
+                    If you would rather have this done for you, see our <Link href={routes.service('seo')} style={{ color: 'var(--ink-1)', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 3 }}>SEO services in Pakistan</Link>.
+                  </p>
+                )}
                 <PillarCta cta={cta} style={{ marginTop: 20 }} />
 
                 <AuthorCard author={author} />

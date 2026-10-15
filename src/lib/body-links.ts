@@ -8,6 +8,7 @@
 // the first of them appears in the sheet's order.
 
 import data from './generated/body-links.json'
+import { isNoindex } from './seo-indexing'
 
 export type Segment = string | { href: string; text: string }
 
@@ -73,6 +74,8 @@ function single(l: Link): Segment[] {
       return ['See ', a, ' side by side.']
     case '/blogs/local-seo-for-small-business-guide':
       return ['Start with our ', a, '.']
+    case '/locations':
+      return l.text === 'other cities' ? ['We also work in ', a, ' across Pakistan.'] : ['Find ', a, '.']
   }
   if (l.href.startsWith('/templates/')) return ['There is a ', a, ' for this kind of business.']
   if (l.href.startsWith('/blogs/')) return ['Read our guide to ', a, '.']
@@ -96,10 +99,24 @@ function sentence(g: Group): Segment[] {
   }
 }
 
-/** The page's in-body link sentences, or [] when the sheet has none for it. */
+// Links added by decision rather than by the sheet (15 Oct): the SEO
+// service page from every indexed city page, and the concierge page from
+// /pricing, /done-for-you-website and /plans/custom. Skipped where the
+// sheet already links the same target.
+const CONCIERGE_FROM = new Set(['/pricing', '/done-for-you-website', '/plans/custom'])
+function extraLinks(path: string): [string, string][] {
+  const out: [string, string][] = []
+  if (path.startsWith('/website-design-') && !isNoindex(path)) out.push(['/local-national-and-global-seo', 'SEO services'])
+  if (CONCIERGE_FROM.has(path)) out.push(['/concierge-service', 'website maintenance services'])
+  return out
+}
+
+/** The page's in-body link sentences, or [] when it has none. */
 export function bodyLinksFor(path: string): Segment[][] {
   const groups: Group[] = []
-  for (const [href, text] of BODY_LINKS[path] ?? []) {
+  const sheet = BODY_LINKS[path] ?? []
+  const extra = extraLinks(path).filter(([href]) => !sheet.some(([h]) => h === href))
+  for (const [href, text] of [...sheet, ...extra]) {
     const l = { href, text }
     const { kind, key } = groupOf(l)
     const g = groups.find((x) => x.key === key)

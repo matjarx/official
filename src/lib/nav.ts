@@ -60,14 +60,13 @@ export const NAV_ITEMS: NavItem[] = [
   },
 ]
 
-// The 11 main cities. TODO: link /locations instead once that hub page
-// exists (spec group 5, item 1).
+// The 11 main cities, then /locations for the rest (spec group 5, item 1).
 export const FOOTER_CITIES: { label: string; href: string }[] = [
   ['Karachi', 'karachi'], ['Lahore', 'lahore'], ['Islamabad', 'islamabad'],
   ['Rawalpindi', 'rawalpindi'], ['Faisalabad', 'faisalabad'], ['Multan', 'multan'],
   ['Peshawar', 'peshawar'], ['Hyderabad', 'hyderabad'], ['Gujranwala', 'gujranwala'],
   ['Sialkot', 'sialkot'], ['Quetta', 'quetta'],
-].map(([label, slug]) => ({ label, href: routes.location(slug) }))
+].map(([label, slug]) => ({ label, href: routes.location(slug) })).concat({ label: 'All cities', href: routes.locations })
 
 // No footer link may point at a noindexed page; check-internal-links.mjs
 // enforces it against seo-noindex-list.ts.

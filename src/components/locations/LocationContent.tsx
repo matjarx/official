@@ -43,7 +43,7 @@ export default function LocationContent({ locationKey, content, related = [] }: 
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
-      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://matjarx.com' + routes.home },
+      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://matjarx.com' + routes.locations },
       { '@type': 'ListItem', position: 3, name: d.name, item: pageUrl },
     ],
   }
@@ -96,7 +96,7 @@ export default function LocationContent({ locationKey, content, related = [] }: 
           <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: 'var(--ink-muted)' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
-            <span>Locations</span>
+            <Link href={routes.locations}>Locations</Link>
             <span>/</span>
             <span style={{ fontWeight: 600, color: 'var(--ink-1)' }}>{d.name}</span>
           </div>
@@ -296,15 +296,20 @@ export default function LocationContent({ locationKey, content, related = [] }: 
           </div>
         </section>
 
-        {/* Other cities */}
+        {/* Other cities: the nearest indexed cities in the same province,
+            then the full list. Skipped where there are none (Quetta: the
+            other Balochistan pages are noindexed). */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
-          <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Other cities we work in</span>
+          <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>{others.length > 0 ? 'Other cities we work in' : 'Website design across Pakistan'}</span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             {others.map((c) => (
               <Link key={c.label} href={c.href} className="plan-other-card glass-chip" style={{ padding: '11px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-4-alt)', whiteSpace: 'nowrap' }}>
                 Website design {c.label}
               </Link>
             ))}
+            <Link href={routes.locations} className="plan-other-card glass-chip" style={{ padding: '11px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)', whiteSpace: 'nowrap' }}>
+              All cities →
+            </Link>
           </div>
         </section>
 
