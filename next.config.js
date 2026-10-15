@@ -45,10 +45,20 @@ const RENAMED_BLOG_SLUGS = {
   'top-5-website-mistakes-killing-your-conversions-and-how-to-fix-them': 'top-5-website-mistakes-killing-conversions',
   'digital-marketing-trends-pakistan-2026': 'trends-in-digital-marketing-for-pakistani-businesses',
   'why-small-businesses-struggle-online': 'matjarx-complete-guide-small-business',
+  // A shorter form of the Rastah post's original slug that was also
+  // linked externally and 404s today.
+  'you-can-too-lessons-from-rastah': 'rastah-case-study-lessons-small-business',
 }
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Next's own trailing-slash 308 runs BEFORE these redirects, so a URL
+  // like /pricing-table/ used to take two hops: slash strip, then the
+  // prefix change. With it off, the redirects below match either form
+  // (Next matches a custom route's source with an optional trailing
+  // slash) and go straight to the final URL, and src/proxy.ts strips the
+  // slash itself for everything else -- one hop either way.
+  skipTrailingSlashRedirect: true,
   async redirects() {
     return [
       // /services was never a real page on the live site — the 4
@@ -80,6 +90,18 @@ const nextConfig = {
       { source: '/website-example', destination: '/website-examples', permanent: true },
       { source: '/website-audit', destination: '/complete-website-audit-for-organic-visibility', permanent: true },
       { source: '/pricing-table', destination: '/pricing', permanent: true },
+      // Was a 410 in src/proxy.ts; it has a real successor, so it keeps
+      // whatever authority it had by pointing there instead.
+      { source: '/web-development-karachi', destination: '/website-design-karachi', permanent: true },
+      // Duplicate of the clinics-and-healthcare page. The route file stays
+      // (nothing is deleted), but this redirect runs before routing, so
+      // the duplicate is never served.
+      { source: '/website-for-clinics', destination: '/website-for-clinics-and-healthcare', permanent: true },
+      // Old WordPress FAQ custom post type. /faqs has no per-question
+      // anchors, and the old item slugs don't map onto its questions, so
+      // every item goes to the page itself rather than a guessed #anchor.
+      { source: '/faq-items', destination: '/faqs', permanent: true },
+      { source: '/faq-items/:path*', destination: '/faqs', permanent: true },
       // No real equivalent for the old partner-offer landing page.
       { source: '/partner-offer', destination: '/', permanent: true },
 
@@ -116,7 +138,7 @@ const nextConfig = {
       { source: '/resources-tools', destination: '/blogs', permanent: true },
       { source: '/resources-tools/:slug', destination: '/blogs/:slug', permanent: true },
       { source: '/blog', destination: '/blogs', permanent: true },
-      // `:slug([^.]+)` and not `:slug`, because /public/blog/ holds the
+      // `:slug([^./]+)` and not `:slug`, because /public/blog/ holds the
       // post cover images and a bare wildcard swallowed them.
       //
       // The symptom was baffling: every blog image returned 200 when
@@ -131,7 +153,9 @@ const nextConfig = {
       // Excluding any segment containing a dot keeps the legacy redirect
       // working for real post slugs (none of which contain one) while
       // leaving files alone.
-      { source: '/blog/:slug([^.]+)', destination: '/blogs/:slug', permanent: true },
+      // `/` is excluded too: without it the slug swallows a trailing
+      // slash and /blog/x/ lands on /blogs/x/, which then needs a second hop.
+      { source: '/blog/:slug([^./]+)', destination: '/blogs/:slug', permanent: true },
 
       // The old WordPress taxonomy — /artist, /project-cat, /category,
       // /tag — used to redirect here to the homepage. That is a soft 404:
