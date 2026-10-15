@@ -1,0 +1,74 @@
+# Checks every pull request before it can be merged: typecheck, lint, the
+# repo's offline tests, the SEO scripts, and a full production build.
+#
+# Nothing here talks to production. The build points Supabase at an address
+# that refuses connections, so every database read takes the code's own
+# fallback content -- the same path the site takes when Supabase is down.
+# The SEO checks that need a running site (check-redirects.sh,
+# check-indexing.mjs, check-blog-post.mjs) are syntax-checked here and run
+# against a server by hand; see each PR's "How to verify".
+
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:9
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history: the prebuild step (scripts/seo/gen-lastmod.mjs)
+          # dates every page from git log, and keeps the committed dates
+          # unchanged on a shallow clone.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Offline tests (scripts/tests)
+        run: |
+          shopt -s nullglob
+          for t in scripts/tests/*.cjs scripts/tests/*.mjs; do
+            echo "::group::$t"; node "$t"; echo "::endgroup::"
+          done
+
+      - name: SEO scripts (scripts/seo)
+        run: |
+          shopt -s nullglob
+          [ -d scripts/seo ] || { echo "no scripts/seo yet"; exit 0; }
+          for f in scripts/seo/*.sh;  do bash -n "$f" && echo "ok  $f"; done
+          for f in scripts/seo/*.mjs; do node --check "$f" && echo "ok  $f"; done
+          for f in scripts/seo/*.py;  do python3 -m py_compile "$f" && echo "ok  $f"; done
+          # Runs for real: the only one that needs neither a server nor the
+          # spec sheet. Fails the job if it errors; its output is what the
+          # build's prebuild step would write anyway.
+          if [ -f scripts/seo/gen-lastmod.mjs ]; then node scripts/seo/gen-lastmod.mjs; fi
+
+      - name: Build
+        run: npm run build

@@ -2,7 +2,7 @@ import { routes } from '@/lib/routes'
 import { getBlogPosts, getBlogAuthors } from '@/lib/marketing-content'
 import { CATEGORY_SLUGS } from '@/lib/blog-categories'
 import { RIVAL_DATA } from '@/lib/comparison-data'
-import { INDUSTRY_SLUGS } from '@/lib/industry-data'
+import { INDUSTRY_SLUGS, REDIRECTED_INDUSTRY_KEYS, type IndustryKey } from '@/lib/industry-data'
 import { CITY_SLUGS } from '@/lib/location-data'
 import { PLAN_DATA } from '@/lib/plan-data'
 import { HELP_SLUGS } from '@/lib/help-articles-data'
@@ -76,7 +76,9 @@ export async function urlsForSection(id: string): Promise<MetadataRouteSitemap> 
     priority: 0.9,
   }))
 
-  const industryRoutes: MetadataRouteSitemap = Object.values(INDUSTRY_SLUGS).map((slug) => ({
+  const industryRoutes: MetadataRouteSitemap = (Object.entries(INDUSTRY_SLUGS) as [IndustryKey, string][])
+    .filter(([key]) => !REDIRECTED_INDUSTRY_KEYS.has(key))
+    .map(([, slug]) => ({
     url: `${SITE_URL}${routes.industry(slug)}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
