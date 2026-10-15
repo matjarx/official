@@ -19,7 +19,7 @@ export const CAREERS_ROLES: Role[] = [
     needs: ['Three or more years designing for web, with a portfolio', 'Strong eye for type and layout on small screens', 'Comfortable working fast without dropping quality', 'Urdu and English fluency'] },
   { title: 'Copywriter (English & Urdu)', team: 'Content', location: 'Lahore / Remote', type: 'Full-time', level: 'Mid', cat: 'Content',
     summary: "You'll write the words on client websites — homepages, service pages, product descriptions and Google Business copy. Plain, useful writing that sells without shouting.",
-    duties: ['Write full site copy from a short client questionnaire', 'Adapt tone across trades, from law firms to burger shops', 'Write SEO-aware copy without keyword stuffing', 'Produce 2,000 words of monthly content for Growth clients'],
+    duties: ['Write full site copy from a short client questionnaire', 'Adapt tone across trades, from law firms to burger shops', 'Write SEO-aware copy without keyword stuffing', 'Write 3 blog posts a month for each Growth client'],
     needs: ['Two or more years writing commercial copy', 'Native-level English plus strong Urdu', 'Able to interview a client and extract what matters', 'Samples of business writing, not just blog posts'] },
   { title: 'SEO Specialist', team: 'Growth', location: 'Lahore', type: 'Full-time', level: 'Senior', cat: 'Growth',
     summary: "You'll own local and national search for our client base — Google Business Profiles, Maps, technical SEO and the monthly reporting clients actually read.",

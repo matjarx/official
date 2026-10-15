@@ -35,7 +35,8 @@ export type StandardPlanDetail = {
     notIncluded: string[]
     roi?: { intro: string; lines: string[] }
   }
-  examples: { title: string; items: RealExample[] }
+  /** Omitted when there are no real, named client examples to show. */
+  examples?: { title: string; items: RealExample[] }
   process: { title: string; phases: ProcessPhase[]; closing: string }
   faqs: PlanFaq[]
   compareTitle: string
@@ -59,7 +60,7 @@ export const LAUNCH: StandardPlanDetail = {
     intro: '',
     sections: [
       { title: 'Website Foundation', blocks: [
-        { sub: [{ h: '5-10 Professional Pages', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Additional 1-5 custom pages'] }] },
+        { sub: [{ h: 'Up to 10 Professional Pages', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Additional 1-5 custom pages'] }] },
         { sub: [{ h: 'Professional Design', items: ['Mobile-responsive theme', 'Brand-aligned colors and layout', 'Professional typography', 'Fast-loading pages'] }] },
       ] },
       { title: 'Domain & Email', blocks: [
@@ -82,7 +83,7 @@ export const LAUNCH: StandardPlanDetail = {
     ],
   },
   glance: { title: 'Launch Plan at a Glance', rows: [
-    ['Pages', '5-10 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['Domain Included', '✅ Yes (1 year)'],
+    ['Pages', 'Up to 10 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['Domain Included', '✅ Yes (1 year)'],
     ['Email Accounts', '✅ 5 included'], ['SSL Certificate', '✅ Yes'], ['SEO Optimization', '✅ Basic'], ['Google Analytics', '✅ Yes'],
     ['Contact Forms', '✅ Yes'], ['Monthly Backups', '✅ Yes'], ['Monthly Maintenance', '✅ Yes'], ['Support', '✅ Email/WhatsApp'],
     ['VIP Phone Support', '❌ Not included'], ['Blog Posts', '❌ Not included'], ['SEO Services', '❌ Not included'], ['Marketing Services', '❌ Not included'],
@@ -95,17 +96,12 @@ export const LAUNCH: StandardPlanDetail = {
   ] },
   pricing: {
     setupFee: 'PKR 22,500', setupItems: ['Website design and setup', 'Domain registration', 'Email account setup', 'Content entry', 'Testing and launch'],
-    monthlyFee: 'PKR 4,500', monthlyItems: ['Hosting and servers', 'Maintenance and updates', 'Security and backups', 'Support and assistance', 'Unlimited edits (within reason)'],
+    monthlyFee: 'PKR 4,500', monthlyItems: ['Hosting and servers', 'Maintenance and updates', 'Security and backups', 'Support and assistance'],
     savings: { headers: ['Payment Plan', 'Setup', 'Monthly', 'Annual Total', 'You Save'], rows: [
       ['Monthly', '22,500', '4,500', '76,500'], ['Annual (Pay Yearly)', '22,500', '54,000', '76,500'], ['Two-Year (Pay Upfront)', '22,500', '108,000', '130,500'],
     ] },
     notIncluded: ['Blog posts (add later)', 'SEO services (upgrade to Boost or Growth)', 'Social media management (upgrade to Growth)', 'Phone support (available on Boost+)', 'Marketing services (upgrade to Growth)', 'Ecommerce features (available on Platinum)'],
   },
-  examples: { title: 'Launch Plan Websites We’ve Built', items: [
-    { title: 'Local Restaurant', lines: ['Website: 8 pages (Menu, location, reservations, photos)', 'Cost: PKR 4,500/month', 'Result: Online presence, online ordering integration, customer reviews', 'Timeline: 10 days'] },
-    { title: 'Consulting Business', lines: ['Website: 7 pages (Services, team bios, case studies, contact)', 'Cost: PKR 4,500/month', 'Result: Lead capture, credibility building, email newsletter signup', 'Timeline: 8 days'] },
-    { title: 'Freelance Designer', lines: ['Website: 6 pages (Portfolio, about, services, testimonials, contact)', 'Cost: PKR 4,500/month', 'Result: Portfolio showcase, client inquiries, professional presence', 'Timeline: 7 days'] },
-  ] },
   process: { title: 'How Your Website Gets Built', phases: [
     { title: 'Phase 1: Initial Setup (Day 1)', items: ['Collect your information and requirements', 'Choose domain name and colors', 'Design initial layout'] },
     { title: 'Phase 2: Design & Development (Days 2-4)', items: ['Build your website using professional theme', 'Set up pages and content structure', 'Integrate your branding', 'Configure email accounts'] },
@@ -113,8 +109,8 @@ export const LAUNCH: StandardPlanDetail = {
     { title: 'Phase 4: Going Live (Day 7)', items: ['Deploy to live servers', 'Submit to Google Search Console', 'Create initial sitemaps', 'Start monitoring'] },
   ], closing: 'Your website is live and ready to serve customers.' },
   faqs: [
-    { q: 'How many pages are included?', a: '5-10 professional pages. This typically includes:', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Blog page (optional)', 'FAQ page (optional)', '1-3 additional pages based on your needs'] },
-    { q: 'Can I add pages later?', a: 'Yes. Add pages anytime through the website editor, or request help from our team. First 30 days include unlimited edits; after that, major changes may have additional fees.' },
+    { q: 'How many pages are included?', a: 'Up to 10 professional pages. This typically includes:', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Blog page (optional)', 'FAQ page (optional)', '1-3 additional pages based on your needs'] },
+    { q: 'Can I add pages later?', a: 'Yes. You add and edit pages yourself with the theme editor, and we show you how on your launch training call. If you want our team to make changes for you, that comes with Boost and above.' },
     { q: 'What about the domain cost after the first year?', a: 'First year included. Year 2+ requires annual renewal (typically PKR 1,500-3,500 depending on domain). Paid through your MatjarX account.' },
     { q: 'Can I upgrade to a higher plan?', a: 'Yes, anytime. If you upgrade to Boost or Growth:', items: ['New setup fee applies for new plan', 'Old plan cancels', 'Previous work transfers'] },
     { q: 'Is hosting really included?', a: '100% included. No separate hosting fees. Everything is included:', items: ['Server costs', 'Domain costs', 'Email hosting', 'SSL certificate', 'Backups and security'] },
@@ -122,7 +118,7 @@ export const LAUNCH: StandardPlanDetail = {
     { q: 'Do you offer phone support?', a: 'Not on Launch Plan. Email and WhatsApp support included. Upgrade to Boost or Growth for VIP phone support.' },
     { q: 'Can I get blog posts with Launch?', a: 'No blog posts included. Launch is basic web presence. If you need blog posts, upgrade to Boost (1 blog/month) or Growth (3 blogs/month).' },
     { q: 'What if I cancel?', a: 'Cancel anytime. Provide 30 days written notice via email. Refund policy applies; setup fees are non-refundable once work starts.' },
-    { q: 'Can I get a money-back guarantee?', a: "Yes. If you're unsatisfied within 24 hours and we haven't substantially started work, full refund available." },
+    { q: 'Can I get a refund?', a: "The setup fee is refundable within 24 hours of payment if work hasn't started. Monthly fees aren't refundable once a billing cycle starts. You can cancel any time with 30 days' written notice." },
     { q: 'How is my data secure?', a: 'Industry-standard security:', items: ['SSL/HTTPS encryption', 'Daily backups', 'Malware scanning', 'Security patches', 'DDoS protection', 'Access controls'] },
     { q: "What happens if there's an emergency?", a: 'Emergency support available. Critical issues (downtime, hacking, data loss) get priority. Response within a few hours for critical issues.' },
     { q: 'Can I migrate to a different host later?', a: 'Yes, you own your website. After full payment, you can:', items: ['Export your website', 'Download your content', 'Migrate to another host', 'Export your email', 'Take complete ownership'] },
@@ -133,14 +129,14 @@ export const LAUNCH: StandardPlanDetail = {
   compareTitle: 'Launch vs. Other Plans',
   compareTable: { headers: ['Need', 'Launch', 'Boost', 'Growth', 'Platinum'], rows: [
     ['Just starting out', '✅ Perfect', '—', '—', '—'], ['Simple web presence', '✅ Yes', '✅ Yes', '✅ Yes', '✅ Yes'], ['Under 10 pages', '✅ Yes', '—', '—', '—'],
-    ['20-30 pages', '❌ No', '✅ Yes', '✅ Yes', '✅ Yes'], ['50+ pages', '❌ No', '❌ No', '✅ Yes', '✅ Yes'], ['Blog content', '❌ No', '✅ 1/mo', '✅ 3/mo', '✅ 10/mo'],
+    ['20-30 pages', '❌ No', '✅ Yes', '✅ Yes', '✅ Yes'], ['31–50 pages', '❌ No', '❌ No', '✅ Yes', '✅ Yes'], ['Blog content', '❌ No', '✅ 1/mo', '✅ 3/mo', '✅ 10/mo'],
     ['SEO services', '❌ No', '✅ Yes', '✅ Yes', '✅ Yes'], ['Marketing team', '❌ No', '❌ No', '✅ Yes', '✅ Yes'], ['Phone support', '❌ No', '✅ VIP', '✅ VIP', '✅ VIP'], ['Ecommerce', '❌ No', '❌ No', '❌ No', '✅ Yes'],
   ] },
   upgradeGroups: [
     { title: 'Stay on Launch if:', items: ['You have fewer than 10 pages', "You don't need blog content", "You don't need SEO services", 'You want the lowest price', "You're just getting started"] },
     { title: 'Upgrade to Boost if:', items: ['You need 20-30 pages', 'You want monthly blog content', 'You want SEO optimization', 'You want VIP phone support', "You're established and growing"] },
-    { title: 'Upgrade to Growth if:', items: ['You need 50+ pages', 'You want aggressive growth', 'You want dedicated marketing team', 'You want 3 blogs/month', 'You want monthly strategy calls'] },
-    { title: 'Choose Platinum if:', items: ["You're selling products online", 'You need ecommerce features', 'You want unlimited pages/products', 'You want complete management', 'You need ad campaign management'] },
+    { title: 'Upgrade to Growth if:', items: ['You need 31–50 pages', 'You want aggressive growth', 'You want dedicated marketing team', 'You want 3 blogs/month', 'You want monthly strategy calls'] },
+    { title: 'Choose Platinum if:', items: ["You're selling products online", 'You need ecommerce features', 'You want unlimited pages/products', 'You want complete management', 'You want 1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)'] },
   ],
   allPlans: [
     { name: 'Launch', desc: 'Get started affordably' }, { name: 'Boost', desc: 'More pages and services' }, { name: 'Growth', desc: 'Full marketing support' },
@@ -204,12 +200,11 @@ export const BOOST: StandardPlanDetail = {
     { title: 'How the Monthly Blog Works', blocks: [
       { h: 'Month 1: Topic Selection', items: ['Our team researches high-value keywords', 'We identify topics that match your business', 'We get your approval', 'We create content brief'] },
       { h: 'Month 2-12: Content Creation', items: ['1,000-2,000 word SEO-optimized article', 'Keyword research and integration', 'Internal and external links', 'Professional formatting', 'Social media promotion'] },
-      { h: 'Year 1 Results', items: ['12 blog posts published', '12 new keyword rankings', 'Increased organic traffic', 'Established authority', 'Continuous lead generation'] },
       { h: 'Example Blog Topics', items: ['Restaurant: "5 Best Pakistani Dishes for First-Time Visitors"', 'Real Estate: "Complete Guide to Buying Property in DHA Karachi"', 'Clinic: "7 Signs You Need to Visit a Dermatologist"', "Salon: \"Best Hair Care Tips for Pakistan's Climate\"", "Gym: \"Complete Beginner's Workout Plan for Home Fitness\""] },
     ] },
   ],
   glance: { title: 'Boost Plan at a Glance', rows: [
-    ['Pages', '30 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['SEO Optimization', '✅ Complete'], ['Blog Posts/Month', '✅ 1 post/month'],
+    ['Pages', '20–30 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['SEO Optimization', '✅ Complete'], ['Blog Posts/Month', '✅ 1 post/month'],
     ['Keyword Research', '✅ Yes'], ['Domain Included', '✅ Yes (1 year)'], ['Email Accounts', '✅ 10 accounts'], ['SSL Certificate', '✅ Yes'], ['Google Analytics', '✅ Yes with reports'],
     ['Contact Forms', '✅ Advanced forms'], ['Monthly Maintenance', '✅ Yes'], ['VIP Phone Support', '✅ Yes (1 call/mo)'], ['Social Media Integration', '✅ Yes'], ['Review Management', '✅ Yes'],
     ['Monthly Reports', '✅ Yes'], ['SEO Services', '✅ Included'], ['Marketing Team', '❌ Not included'], ['Ecommerce', '❌ Not included'],
@@ -230,11 +225,6 @@ export const BOOST: StandardPlanDetail = {
     ] },
     notIncluded: ['Additional blog posts (available at PKR 3,500 each)', 'Advanced SEO services (upgrade to Growth)', 'Dedicated marketing manager (upgrade to Growth)', 'Multiple phone calls (upgrade to Growth for unlimited)', 'Ecommerce management (upgrade to Platinum)', 'Social media management (available in Growth)'],
   },
-  examples: { title: 'Boost Plan Success Stories', items: [
-    { title: 'Local Restaurant', lines: ['Website: 25 pages (menu, locations, photos, reviews, blog)', 'Blog: 1 post/month about food, recipes, local events', 'Result: 340% traffic increase in 6 months, online reservations, customer reviews', 'Cost: PKR 15,600/month'] },
-    { title: 'Real Estate Agent', lines: ['Website: 28 pages (listings, market insights, team, testimonials, blog)', 'Blog: 1 post/month on market trends, buying tips, neighborhood guides', 'Result: 450% leads increase, 120 property inquiries first year, 15 sales', 'Cost: PKR 15,600/month'] },
-    { title: 'Dental Clinic', lines: ['Website: 30 pages (services, team, testimonials, education blog, patient forms)', 'Blog: 1 post/month on dental health, cosmetic procedures, patient tips', 'Result: 60% new patient acquisition, established authority, online booking', 'Cost: PKR 15,600/month'] },
-  ] },
   process: { title: 'How Your Website Gets Built', phases: [
     { title: 'Week 1: Planning & Strategy', items: ['Discuss your business and goals', 'Keyword research and strategy', 'Site structure planning', 'Design direction'] },
     { title: 'Week 2-3: Design & Development', items: ['Website design and development', 'Page structure and layout', 'Feature implementation', 'Email setup'] },
@@ -242,18 +232,18 @@ export const BOOST: StandardPlanDetail = {
     { title: 'Week 5-6: Launch', items: ['Final approval', 'Deploy to live servers', 'Google Search Console setup', 'Initial promotion'] },
   ], closing: 'Your website is live. Organic traffic begins.' },
   faqs: [
-    { q: 'How many pages do I actually get?', a: '30 professional pages including:', items: ['Homepage (1 page)', 'Core pages (5-7 pages: About, Services, Contact, FAQ, Team, etc.)', 'Service/Product pages (5-8 pages)', 'Blog hub and initial blog posts (3-5 pages)', 'Location/city pages (if applicable, 5-10 pages)', 'Additional custom pages (remaining space)', 'More pages needed? Upgrade to Growth (50 pages).'] },
+    { q: 'How many pages do I actually get?', a: '20–30 professional pages, including:', items: ['Homepage (1 page)', 'Core pages (5-7 pages: About, Services, Contact, FAQ, Team, etc.)', 'Service/Product pages (5-8 pages)', 'Blog hub and initial blog posts (3-5 pages)', 'Location/city pages (if applicable, 5-10 pages)', 'Additional custom pages (remaining space)', 'More pages needed? Upgrade to Growth (50 pages).'] },
     { q: 'Can I add pages after launch?', a: "Yes. Add pages anytime through the editor or request our team's help. First 30 days include unlimited edits; after that, major structural changes may require additional fees." },
     { q: 'What if I want more blog posts?', a: 'Included: 1 blog post/month. Additional posts: PKR 3,500 per post. Many clients add 1-2 extra blog posts/month as they see results.' },
     { q: 'Do I own the blog content?', a: 'Yes, 100%. You own all content created for your website, including blog posts. You can:', items: ['Republish elsewhere', 'Modify as needed', 'Remove content', 'Export everything'] },
-    { q: 'What about SEO—is it guaranteed?', a: 'No guarantees, but excellent results. We apply industry best practices, but SEO depends on competition level, your niche, market size, backlink authority and content quality. Typical results: 2-3 months to see ranking improvements, 6+ months for major growth.' },
+    { q: 'What about SEO—is it guaranteed?', a: 'No guarantees, but excellent results. We apply industry best practices, but SEO depends on competition level, your niche, market size, backlink authority and content quality. We report your results every month.' },
     { q: 'Can I upgrade or downgrade?', a: 'Yes, anytime. Want to upgrade to Growth for marketing team? Downgrade to Launch? No problem. New pricing applies on renewal date.' },
     { q: "What's included in the monthly report?", a: 'Your monthly report includes:', items: ['Traffic overview and trends', 'Top pages and content', 'Search keywords and rankings', 'User behavior and engagement', 'Conversion tracking (if set up)', 'Recommendations and next steps'] },
     { q: 'How often can I call for phone support?', a: 'Included: 1 call/month (30 minutes). Additional calls: PKR 2,500 per call. Most clients schedule their call to discuss the next month’s blog topic.' },
     { q: 'Can I cancel anytime?', a: 'Yes. Provide 30 days written notice via email. Current month services remain active. Refund policy applies.' },
     { q: 'What if I need ecommerce features?', a: 'Not included in Boost. For ecommerce: basic upgrade to Platinum; simple products can be added manually to Boost; advanced shopping requires upgrading to Platinum.' },
     { q: 'Does this include social media management?', a: 'No social media posting. Included: social media links, social sharing buttons, blog-to-social automation. Want social media posting? Upgrade to Growth Plan.' },
-    { q: 'How much traffic increase should I expect?', a: 'Results vary, but typical: 150-300% traffic increase in 6-12 months with consistent blog content and SEO. Factors: starting point, competition level, blog consistency, backlink building, your market size.' },
+    { q: 'How much traffic increase should I expect?', a: 'Results vary. Factors: starting point, competition level, blog consistency, backlink building, your market size. We report your results every month.' },
     { q: "What if the design doesn't match my vision?", a: 'Design included: one professional theme-based design with color and font customization. Want custom design? Custom plans available (contact us for pricing).' },
     { q: 'Is phone support really included?', a: '100% included. One 30-minute call per month with your account manager to discuss website performance, traffic and ranking progress, next month’s blog topic, marketing questions, and technical issues.' },
     { q: 'What happens if my website gets hacked?', a: 'We monitor for security issues. If compromised: immediate security scan, malware removal, website recovery, data restoration, security hardening. Emergency support applies — no additional fee for security incidents.' },
@@ -261,12 +251,12 @@ export const BOOST: StandardPlanDetail = {
   ],
   compareTitle: 'Should You Upgrade to Boost?',
   compareTable: { headers: ['Need', 'Launch', 'Boost'], rows: [
-    ['Pages', '5-10', '30'], ['Blog posts', 'None', '1/month'], ['SEO optimization', 'Basic', 'Complete'], ['Phone support', 'No', '1 call/mo'], ['Monthly reports', 'No', 'Yes'], ['Email accounts', '5', '10'], ['Price/month', '4,500', '15,600'],
+    ['Pages', 'Up to 10', '20–30'], ['Blog posts', 'None', '1/month'], ['SEO optimization', 'Basic', 'Complete'], ['Phone support', 'No', '1 call/mo'], ['Monthly reports', 'No', 'Yes'], ['Email accounts', '5', '10'], ['Price/month', '4,500', '15,600'],
   ] },
   upgradeIntro: 'Upgrade to Boost if you:',
   upgradeGroups: [{ title: 'Upgrade to Boost if you:', items: ['Need more than 10 pages', 'Want blog content for rankings', 'Want dedicated SEO optimization', 'Want professional phone support', 'Want monthly performance reports', 'Serious about online growth'] }],
   allPlans: [
-    { name: 'Launch', desc: '5-10 pages, affordable start' }, { name: 'Boost', desc: '30 pages with SEO and blog' }, { name: 'Growth', desc: '50 pages with marketing team' },
+    { name: 'Launch', desc: 'Up to 10 pages, affordable start' }, { name: 'Boost', desc: '20–30 pages with SEO and blog' }, { name: 'Growth', desc: 'Up to 50 pages with marketing team' },
     { name: 'Platinum', desc: 'Unlimited pages with ecommerce' }, { name: 'Custom', desc: 'Enterprise solutions' },
   ],
   closing: { eyebrow: 'Ready to Boost?', title: 'Start Growing Your Online Visibility', priceLines: ['Setup: PKR 22,500 (one-time)', 'Monthly: PKR 15,600', '1 blog post included each month'], cta: 'Start Your Boost Plan',
@@ -339,7 +329,7 @@ export const GROWTH: StandardPlanDetail = {
     ] },
   ],
   glance: { title: 'Growth Plan at a Glance', rows: [
-    ['Pages', '50 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['SEO Optimization', '✅ Complete'], ['Blog Posts/Month', '✅ 3 posts/month'],
+    ['Pages', 'Up to 50 pages'], ['Professional Design', '✅ Yes'], ['Mobile Responsive', '✅ Yes'], ['SEO Optimization', '✅ Complete'], ['Blog Posts/Month', '✅ 3 posts/month'],
     ['Keyword Research', '✅ Yes'], ['Dedicated Marketing Expert', '✅ Yes'], ['Monthly Strategy Calls', '✅ Yes (1-on-1)'], ['Domain Included', '✅ Yes (1 year)'], ['Email Accounts', '✅ 15 accounts'],
     ['SSL Certificate', '✅ Yes'], ['Google Analytics', '✅ Advanced setup'], ['Monthly Reports', '✅ Detailed'], ['Email Marketing Setup', '✅ Yes'], ['Social Media Strategy', '✅ Yes'],
     ['Phone Support', '✅ Unlimited'], ['Reputation Management', '✅ Yes'], ['SEO Services', '✅ Advanced'], ['Marketing Strategy', '✅ 5-month plan'], ['Ecommerce', '❌ Not included'],
@@ -363,11 +353,6 @@ export const GROWTH: StandardPlanDetail = {
     ] },
     notIncluded: [],
   },
-  examples: { title: 'Growth Plan Success Stories', items: [
-    { title: 'B2B Consulting Firm', lines: ['Baseline: 2,500 monthly visitors, 15 leads/month', 'Website: 48 pages (services, case studies, resources, blog)', 'Content: 3 blog posts/month on industry trends', 'Result after 6 months: 8,200 monthly visitors (+228%), 85 leads/month (+467%), 12 new clients (PKR 2.4M revenue)', 'Cost: PKR 162,000 · ROI: 14.8x'] },
-    { title: 'E-Commerce Store', lines: ['Baseline: 800 visitors/month, 12 orders/month', 'Website: 52 pages (products, guides, customer education)', 'Content: 3 blog posts/month on product tips', 'Result after 6 months: 4,100 visitors/month (+412%), 78 orders/month (+550%), PKR 1.8M in sales', 'Cost: PKR 162,000 · ROI: 11.1x'] },
-    { title: 'Local Service Business (Multi-Location)', lines: ['Baseline: 1,200 visitors/month, 8 customers/month', 'Website: 50 pages (locations, services, testimonials, blog)', 'Content: 3 blog posts/month on service tips', 'Result after 6 months: 5,800 visitors/month (+383%), 64 customers/month (+700%), PKR 3.2M in new revenue', 'Cost: PKR 162,000 · ROI: 19.7x'] },
-  ] },
   process: { title: 'How Your Growth Plan Gets Implemented', phases: [
     { title: 'Week 1-2: Strategy & Planning', items: ['In-depth business consultation', 'Market and competitive analysis', 'Keyword research and opportunity identification', '5-month growth roadmap creation', 'Website structure planning', 'Content strategy development'] },
     { title: 'Week 3-4: Website Building', items: ['Website design and development (50 pages)', 'Feature implementation', 'Email marketing setup', 'Analytics and tracking configuration', 'Content organization and structure'] },
@@ -387,19 +372,19 @@ export const GROWTH: StandardPlanDetail = {
     { q: 'What if I need more than 50 pages?', a: 'Upgrade options:', items: ['Add pages individually (PKR 2,500 per page)', 'Upgrade to Platinum (unlimited pages)', 'Create new pages as blog posts'] },
     { q: 'Does this include social media posting?', a: 'No social media posting. Included: social media strategy planning, social media optimization, sharing templates, link integration. Want actual posting? Can add social media management (contact for pricing).' },
     { q: 'What about paid advertising (Facebook, Google Ads)?', a: 'Not included in Growth. Included: ad strategy recommendations, platform setup guidance, campaign structure advice, ROI analysis recommendations. Want us to manage ads? Platinum Plan or custom arrangement available.' },
-    { q: 'How quickly will I see results?', a: 'Typical timeline: Month 1 baseline establishment, Month 2-3 initial ranking improvements, Month 3-4 traffic increase (20-40%), Month 4-6 significant growth (100-200%+), Month 6+ continuing momentum.' },
-    { q: 'Is there a contract or commitment?', a: "No long-term contract required. Cancel with 30 days notice anytime. We're confident you'll see results and want to stay." },
+    { q: 'How quickly will I see results?', a: 'We report your results every month.' },
+    { q: 'Is there a contract or commitment?', a: "No long-term contract required. Cancel with 30 days notice anytime." },
     { q: 'What if my business pivots or changes direction?', a: 'Easy to adapt. During monthly calls, we can adjust strategy for new direction, shift content focus, replan your roadmap, update keyword targeting.' },
     { q: 'Can I downgrade to Boost?', a: 'Yes, anytime. Downgrade option available. New pricing applies on renewal date.' },
-    { q: 'What if I want to upgrade to Platinum?', a: 'Yes, possible. Upgrade to Platinum for unlimited pages, ecommerce features, 10 blog posts/month, full team support, ad campaign management.' },
+    { q: 'What if I want to upgrade to Platinum?', a: 'Yes, possible. Upgrade to Platinum for unlimited pages, ecommerce features, 10 blog posts/month, full team support and 1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform).' },
   ],
   compareTitle: 'Should You Upgrade to Growth?',
   compareTable: { headers: ['Need', 'Boost', 'Growth'], rows: [
     ['Pages', '30', '50'], ['Blog posts', '1/month', '3/month'], ['Marketing expert', 'No', 'Yes'], ['Strategy calls', 'No', 'Yes, monthly'], ['Phone support', 'Limited', 'Unlimited'], ['Email strategy', 'No', 'Yes'], ['Competitive analysis', 'No', 'Yes'], ['Price/month', '15,600', '27,000'],
   ] },
-  upgradeGroups: [{ title: 'Upgrade to Growth if you:', items: ['Want aggressive growth (2-3x+ in 6 months)', 'Need expert marketing guidance', 'Want monthly strategy calls', 'Need content beyond 1 blog/month', 'Want to outrank competitors', 'Serious about scaling business'] }],
+  upgradeGroups: [{ title: 'Upgrade to Growth if you:', items: ['Want aggressive growth', 'Need expert marketing guidance', 'Want monthly strategy calls', 'Need content beyond 1 blog/month', 'Want to outrank competitors', 'Serious about scaling business'] }],
   allPlans: [
-    { name: 'Launch', desc: 'Start online affordably' }, { name: 'Boost', desc: '30 pages with blog and SEO' }, { name: 'Growth', desc: '50 pages with marketing expert' },
+    { name: 'Launch', desc: 'Start online affordably' }, { name: 'Boost', desc: '20–30 pages with blog and SEO' }, { name: 'Growth', desc: 'Up to 50 pages with marketing expert' },
     { name: 'Platinum', desc: 'Unlimited pages with ecommerce' }, { name: 'Custom', desc: 'Enterprise solutions' },
   ],
   closing: { eyebrow: 'Ready to Scale?', title: 'Get Your Dedicated Growth Expert', priceLines: ['Setup: PKR 22,500 (one-time)', 'Monthly: PKR 27,000', 'Dedicated marketing expert included'], cta: 'Start Growing Now',
@@ -411,7 +396,7 @@ export const PLATINUM: StandardPlanDetail = {
   quickOverview: {
     title: 'For Serious Online Sellers',
     intro: 'The Platinum Plan is your complete e-commerce solution. No limitations. No compromises. Full support.',
-    ticks: ['Unlimited pages and products', 'Advanced e-commerce features', '10 blog posts per month', '20 social media designs', 'Full team management', 'Ad campaign management', '30-45 day build timeline'],
+    ticks: ['Unlimited pages and products', 'Advanced e-commerce features', '10 blog posts per month', '20 social media designs', 'Full team management', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', '30-45 day build timeline'],
     setupFee: 'PKR 140,000', monthlyFee: 'PKR 55,000', totalFirstMonth: 'PKR 195,000',
   },
   whatYouGet: {
@@ -439,7 +424,7 @@ export const PLATINUM: StandardPlanDetail = {
       { title: 'Marketing & Growth Services', blocks: [
         { sub: [{ h: 'Email Marketing', items: ['Email marketing setup', 'Segmentation strategy', 'Automated email sequences', 'Welcome series', 'Abandoned cart recovery', 'Post-purchase follow-up', 'Promotional campaigns'] }] },
         { sub: [{ h: 'Reputation Management', items: ['Review collection strategy', 'Review monitoring', 'Response templates', 'Google Business Profile optimization', 'Rating aggregation'] }] },
-        { sub: [{ h: 'Ad Campaign Management', items: ['Google Shopping campaigns', 'Google Search campaigns', 'Facebook/Instagram ad campaigns', 'Retargeting campaign setup', 'Ad copywriting and optimization', 'A/B testing and optimization', 'Monthly campaign management'] }] },
+        { sub: [{ h: '1 Ad Campaign, Managed for You', items: ['1 campaign set up and managed by us', 'Ad spend under Rs. 50,000 a month, paid by you to the platform', 'Ad copywriting and optimization', 'Monthly campaign management', 'More campaigns or a bigger budget: custom ads plan, quoted separately'] }] },
       ] },
       { title: 'Advanced Analytics & Reporting', blocks: [
         { sub: [{ h: 'E-Commerce Analytics', items: ['Sales and revenue tracking', 'Conversion rate analysis', 'Average order value tracking', 'Customer lifetime value', 'Product performance analysis', 'Traffic source attribution', 'Marketing ROI tracking'] }] },
@@ -468,14 +453,14 @@ export const PLATINUM: StandardPlanDetail = {
       { h: 'Your Dedicated Account Manager', items: ['Primary contact for all needs', 'Monthly strategic reviews', 'Performance monitoring', 'Quarterly goal planning'] },
       { h: 'E-Commerce Specialists', items: ['Product page optimization', 'Inventory management', 'Order fulfillment guidance', 'Customer service setup'] },
       { h: 'SEO & Content Team', items: ['Blog writing (10 posts/month)', 'Keyword research', 'Product page optimization', 'Link building strategy'] },
-      { h: 'Marketing Specialists', items: ['Email marketing campaigns', 'Social media content (20 designs/month)', 'Ad campaign management', 'Campaign optimization'] },
+      { h: 'Marketing Specialists', items: ['Email marketing campaigns', 'Social media content (20 designs/month)', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 'Campaign optimization'] },
       { h: 'Technical Support', items: ['Website maintenance', 'Security monitoring', 'Performance optimization', 'Technical issue resolution'] },
       { h: 'Total Team', p: '5+ specialists dedicated to your success' },
     ] },
   ],
   glance: { title: 'Platinum Plan at a Glance', rows: [
     ['Pages', 'Unlimited'], ['Products', 'Unlimited'], ['Professional Design', '✅ Custom Design'], ['Mobile Responsive', '✅ Yes'], ['Shopping Cart', '✅ Full e-commerce'],
-    ['Payment Processing', '✅ Multiple gateways'], ['Blog Posts/Month', '✅ 10 posts/month'], ['Social Media Designs', '✅ 20 designs/month'], ['Email Marketing', '✅ Full setup'], ['Ad Campaign Management', '✅ Yes'],
+    ['Payment Processing', '✅ Multiple gateways'], ['Blog Posts/Month', '✅ 10 posts/month'], ['Social Media Designs', '✅ 20 designs/month'], ['Email Marketing', '✅ Full setup'], ['Ad Campaign Management', '✅ 1 campaign (ad spend under Rs. 50,000, paid by you)'],
     ['Domain Included', '✅ Yes (1 year)'], ['Email Accounts', '✅ 25 accounts'], ['SSL Certificate', '✅ Yes'], ['Advanced Analytics', '✅ E-commerce focused'], ['Monthly Reports', '✅ Comprehensive'],
     ['Phone Support', '✅ Unlimited'], ['Account Manager', '✅ Dedicated'], ['SEO Services', '✅ E-commerce SEO'], ['Inventory Management', '✅ Yes'], ['Order Management', '✅ Yes'], ['Security & Compliance', '✅ PCI-DSS compliant'],
   ] },
@@ -489,22 +474,17 @@ export const PLATINUM: StandardPlanDetail = {
   ] },
   pricing: {
     setupFee: 'PKR 140,000', setupItems: ['Custom e-commerce design', 'Domain and email setup', 'Payment gateway integration', 'Email marketing setup', 'Analytics and tracking setup', 'Initial product import', 'SEO configuration', '30-45 day build and launch'],
-    monthlyFee: 'PKR 55,000', monthlyItems: ['Hosting and servers', '10 monthly blog posts', '20 monthly social designs', 'Ad campaign management', 'Email marketing management', 'E-commerce maintenance', 'Inventory management support', 'Full team access', 'Account manager', 'Phone and email support'],
+    monthlyFee: 'PKR 55,000', monthlyItems: ['Hosting and servers', '10 monthly blog posts', '20 monthly social designs', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 'Email marketing management', 'E-commerce maintenance', 'Inventory management support', 'Full team access', 'Account manager', 'Phone and email support'],
     perMonthValue: { intro: 'For PKR 55,000/month you receive:', items: [
       { label: 'Full team support (5+ specialists)', value: '' }, { label: '10 blog posts', value: 'PKR 35,000 value' }, { label: '20 social designs', value: 'PKR 10,000 value' },
-      { label: 'Ad campaign management', value: 'PKR 15,000 value' }, { label: 'Email marketing setup', value: 'PKR 5,000 value' }, { label: 'Account manager support', value: 'PKR 10,000 value' }, { label: 'Hosting and maintenance', value: 'PKR 5,000 value' }, { label: 'Plus much more', value: '' },
+      { label: '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', value: 'PKR 15,000 value' }, { label: 'Email marketing setup', value: 'PKR 5,000 value' }, { label: 'Account manager support', value: 'PKR 10,000 value' }, { label: 'Hosting and maintenance', value: 'PKR 5,000 value' }, { label: 'Plus much more', value: '' },
     ], total: 'Total value: ~PKR 100,000+/month for PKR 55,000' },
     savings: { headers: ['Payment Plan', 'Setup', 'Monthly', 'Annual Total', 'You Save'], rows: [
       ['Monthly', '140,000', '55,000', '800,000'], ['Annual (Pay Yearly)', '140,000', '660,000', '800,000'], ['Two-Year (Pay Upfront)', '140,000', '1,320,000', '1,460,000'],
     ] },
     notIncluded: [],
-    roi: { intro: 'Investment: PKR 55,000/month · Average client increase: 3-5x sales in 6 months', lines: ['Starting sales: PKR 500K/month', 'After 6 months: PKR 1.5M-2.5M/month', 'Sales increase: PKR 1M-2M/month', 'Platinum investment: PKR 330K (6 months)', 'ROI: 3-6x in first 6 months'] },
   },
-  examples: { title: 'Platinum Plan Success Stories', items: [
-    { title: 'Fashion E-Commerce', lines: ['Baseline: 150 products, PKR 400K/month sales', 'Website: unlimited products, custom design, blog, social', 'Content: 10 blogs, 20 social designs/month', 'Ads: Google Shopping, Facebook ads', 'Result after 6 months: 500+ products online, PKR 1.8M/month sales (+350%), 40% repeat customer rate', 'Cost: PKR 330,000 · Revenue gain: PKR 8.4M · ROI: 25.4x'] },
-    { title: 'Digital Products (Online Courses)', lines: ['Baseline: 8 courses, 120 students, PKR 250K/month', 'Website: unlimited pages, course platform, blog', 'Content: 10 educational blogs/month', 'Ads: Facebook and Google ads', 'Result after 6 months: 35 courses available, 620 active students (+416%), PKR 1.6M/month revenue', 'Cost: PKR 330,000 · Revenue gain: PKR 8.1M · ROI: 24.5x'] },
-    { title: 'Multi-Location Retail', lines: ['Baseline: 3 stores, 200 products, PKR 800K/month sales', 'Website: unified online store, inventory sync', 'Content: 10 blogs, 20 social/month', 'Ads: location-based Google/Facebook campaigns', 'Result after 6 months: unified online + offline, PKR 3.2M/month sales, 20% online of total revenue', 'Cost: PKR 330,000 · Revenue gain: PKR 14.4M · ROI: 43.6x'] },
-  ] },
+  // Example case studies removed 13 Oct: none were real, named clients.
   process: { title: 'Your E-Commerce Store Launch Timeline', phases: [
     { title: 'Phase 1: Strategy & Design (Days 1-7)', items: ['Business and product analysis', 'Market and competitive research', 'E-commerce strategy', 'Custom design mockups', 'Feature planning'] },
     { title: 'Phase 2: Development (Days 8-25)', items: ['Website development', 'Shopping cart setup', 'Payment integration', 'Email marketing setup', 'Analytics configuration'] },
@@ -517,23 +497,23 @@ export const PLATINUM: StandardPlanDetail = {
     { q: 'Can I integrate shipping management?', a: 'Yes. Integration options include:', items: ['Courier APIs', 'Manual shipping tracking', 'Automated shipping labels', 'Real-time tracking', 'Customer notifications'] },
     { q: 'What payment gateways do you support?', a: 'Multiple integrations: credit card processing, bank transfers, PayPal or Stripe, local Pakistani options, and more available (contact for details).' },
     { q: 'Do you offer inventory management?', a: 'Complete inventory system:', items: ['Real-time stock tracking', 'Low-stock alerts', 'Automatic reorder points', 'Multiple warehouse support', 'Inventory forecasting'] },
-    { q: 'How many ads can you manage?', a: 'Unlimited campaigns. Includes:', items: ['Google Shopping ads', 'Google Search ads', 'Facebook ads', 'Instagram ads', 'Retargeting campaigns', 'All actively managed and optimized'] },
-    { q: "What's the average ad spend recommendation?", a: 'Depends on your business. Typical ranges: Google Shopping PKR 10K-50K/month, Facebook/Instagram PKR 5K-30K/month, Search ads PKR 5K-20K/month. We’ll discuss your budget and ROI expectations.' },
+    { q: 'Are ads included?', a: 'We set up and manage 1 ad campaign for you, with an ad spend of up to Rs. 50,000 a month. You pay the ad spend directly to the platform (for example Meta or TikTok). Need more campaigns or a bigger budget? We quote a custom ads plan.' },
+    { q: "What's the average ad spend recommendation?", a: "Platinum includes 1 ad campaign managed, with ad spend under Rs. 50,000 a month paid by you directly to the platform. We'll recommend the right budget for your goal. For more campaigns or a bigger budget, we quote a custom ads plan." },
     { q: 'Can I sell digital products?', a: 'Absolutely. We support:', items: ['Digital downloads', 'Online courses', 'Software/templates', 'eBooks and guides', 'Membership access', 'Recurring subscriptions'] },
     { q: 'Do you handle customer support?', a: 'We set it up. You handle it. Includes helpdesk setup, FAQ pages, support email templates, customer communication guides. Optional: we can train your team or provide support guidance.' },
     { q: 'What about email marketing?', a: 'Full setup included. Includes:', items: ['Email service integration', 'Welcome series setup', 'Abandoned cart recovery', 'Post-purchase sequences', 'Newsletter management', 'Segmentation strategies'] },
     { q: 'Can I do dropshipping?', a: 'Yes. Suitable for connecting to supplier APIs, automated order forwarding, inventory syncing, dropship supplier integration, affiliate product selling. Contact for specific setup needs.' },
     { q: 'Is there a setup deadline?', a: "No deadline. Get the infrastructure ready whenever you're prepared to launch." },
     { q: 'Can I upgrade or downgrade?', a: 'Yes, anytime. Downgrade to Growth or Boost anytime. Upgrade available if needed.' },
-    { q: "What if I'm not happy with results?", a: "100% refund guarantee if unsatisfied within 24 hours and we haven't substantially started work. After that: we focus on optimization until you see results. Our average client does." },
-    { q: 'How quickly will I make money?', a: 'Typically: first 30 days initial sales and testing, month 2-3 optimization and growth, month 3-6 significant revenue increase, month 6+ scaling and expansion. Depends on your traffic sources, conversion rate, product quality, marketing execution.' },
+    { q: "What if I'm not happy with results?", a: "The setup fee is refundable within 24 hours of payment if work hasn't started. We report your results every month." },
+    { q: 'How quickly will I make money?', a: 'We report your results every month.' },
     { q: 'Can I integrate with my POS system?', a: 'Yes, possibly. Integration options include inventory sync, sales sync, multi-channel selling, unified reporting. Contact for your specific system.' },
     { q: 'Do you provide training?', a: 'Yes. Training included on dashboard and analytics, product management, order management, email marketing, basic optimization. Video tutorials and documentation included.' },
     { q: 'What if I need custom features?', a: 'Custom development available. Discuss special requirements: custom functionality, specialized integrations, unique workflows, advanced features. Additional costs apply for custom work.' },
   ],
   compareTitle: 'Compare All Plans',
   allPlans: [
-    { name: 'Launch', desc: '5-10 pages for starters' }, { name: 'Boost', desc: '30 pages with SEO' }, { name: 'Growth', desc: '50 pages with marketing expert' },
+    { name: 'Launch', desc: 'Up to 10 pages for starters' }, { name: 'Boost', desc: '20–30 pages with SEO' }, { name: 'Growth', desc: 'Up to 50 pages with marketing expert' },
     { name: 'Platinum', desc: 'Unlimited e-commerce' }, { name: 'Custom', desc: 'Enterprise solutions' },
   ],
   closing: { eyebrow: 'Ready to Launch Your E-Commerce Store?', title: 'Build Your Online Business Today', priceLines: ['Setup: PKR 140,000 (one-time)', 'Monthly: PKR 55,000', 'Everything included'], cta: 'Start Your E-Commerce Store',
@@ -565,13 +545,6 @@ export const CUSTOM = {
     { title: 'Unique Design Needs', items: ['Complex design requirements', 'Custom brand guidelines', 'Specialized animations or interactions', 'Unique user experience'] },
     { title: 'Multiple Websites', items: ['Multiple domains/brands', 'Centralized management', 'Unified analytics', 'Shared resources'] },
   ] as BestForGroup[] },
-  examples: { title: 'What We’ve Built for Other Clients', items: [
-    { title: 'Multi-Marketplace E-Commerce', business: 'Reseller platform connecting suppliers and buyers', needs: ['Dual-user system (suppliers and buyers)', 'Commission tracking and reporting', 'Dispute resolution system', 'Custom rating and review system', 'Advanced analytics per supplier'], solution: 'Custom e-commerce platform with seller dashboard', timeline: '90 days', price: 'Custom (similar to Platinum, customized)' },
-    { title: 'SaaS Platform', business: 'Subscription-based software service', needs: ['User accounts and subscriptions', 'Payment and billing automation', 'API access for customers', 'Custom dashboards per customer', 'Advanced security requirements'], solution: 'Custom SaaS platform with full billing system', timeline: '120 days', price: 'Custom (premium due to complexity)' },
-    { title: 'Real Estate Platform', business: 'Property listing aggregation and CRM', needs: ['Multiple property listing sources', 'Agent management system', 'Lead capture and CRM', 'Advanced property filtering', 'Map integration', 'Virtual tour support'], solution: 'Custom real estate platform with integrated CRM', timeline: '100 days', price: 'Custom' },
-    { title: 'Education Platform', business: 'Online school with courses and community', needs: ['Course management system', 'Student progress tracking', 'Live class scheduling', 'Certificate generation', 'Community forum', 'Parent communication portal'], solution: 'Custom education platform with learning management', timeline: '110 days', price: 'Custom' },
-    { title: 'B2B Wholesale Platform', business: 'Wholesale distributor with complex pricing', needs: ['Tiered customer pricing', 'Volume discounts', 'Custom pricing per customer', 'Purchase order system', 'Credit management', 'Automated invoicing'], solution: 'Custom wholesale platform with advanced pricing', timeline: '95 days', price: 'Custom' },
-  ] as ExampleSolution[] },
   discovery: { title: 'How We Build Your Custom Solution', phases: [
     { title: 'Phase 1: Initial Consultation (1-2 weeks)', body: 'Understand Your Business', items: ['In-depth business review', 'Goals and objectives', 'Current systems and workflows', 'User types and needs', 'Technical requirements', 'Budget and timeline', 'Competitive landscape'], deliverable: 'Detailed discovery document' },
     { title: 'Phase 2: Solution Design (2-3 weeks)', body: 'Create Your Custom Solution', items: ['Custom solution architecture', 'Feature and functionality design', 'User experience flows', 'Technical specifications', 'Integration planning', 'Timeline estimation', 'Detailed proposal and pricing'], deliverable: 'Detailed proposal + custom pricing' },
@@ -653,7 +626,7 @@ export const CUSTOM = {
   ] },
   showcase: { title: 'Featured Custom Projects', items: ['E-commerce marketplace (PKR 3.5M)', 'SaaS platform (PKR 4.2M)', 'Real estate platform (PKR 2.8M)', 'Education platform (PKR 3.1M)', 'B2B wholesale platform (PKR 2.5M)'], note: 'Video walkthroughs and client testimonials available.' },
   allPlans: [
-    { name: 'Launch', desc: '5-10 pages for starters' }, { name: 'Boost', desc: '30 pages with SEO' }, { name: 'Growth', desc: '50 pages with marketing expert' },
+    { name: 'Launch', desc: 'Up to 10 pages for starters' }, { name: 'Boost', desc: '20–30 pages with SEO' }, { name: 'Growth', desc: 'Up to 50 pages with marketing expert' },
     { name: 'Platinum', desc: 'Unlimited e-commerce' }, { name: 'Custom', desc: 'Exactly what you need' },
   ],
   closing: { title: "Let's Create Your Custom Solution", body: "Not sure if you need custom? Let's talk. During a brief discovery call, we'll understand your needs and recommend the right solution (could be standard plan or custom). No pressure. Just honest advice.", cta: 'Schedule Your Discovery Call',

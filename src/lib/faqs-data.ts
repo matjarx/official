@@ -42,7 +42,7 @@ export const FAQ_GROUPS = {
   'Editing & Management': [
     ["Can I easily edit my MatjarX website, even if I'm not great with computers?", "Absolutely. Our editor is designed for non-technical people — click to edit text, swap an image in seconds. If editing isn't your thing, your plan includes professional edit support: tell us what you want changed, and we do it."],
     ['Can I change the layout and design of my website easily?', 'Yes. Switch colours, fonts and styling without touching code. Advanced customisation is available for those who want it.'],
-    ["Can MatjarX's concierge team edit my site if I prefer not to do it myself?", 'Yes. Boost and above include unlimited done-for-you edits — just request a change and our team handles it. Growth and Platinum include ongoing website management on top of that.'],
+    ["Can MatjarX's concierge team edit my site if I prefer not to do it myself?", 'Yes. Boost and Growth include edits by our team for the first 30 days, and Platinum includes unlimited edits — just request a change and our team handles it. Growth and Platinum include ongoing website management on top of that.'],
   ],
   'Marketing & Growth': [
     ['Will a MatjarX website help me get more customers and grow my business?', 'Yes. A professionally designed, SEO-optimised, conversion-focused website attracts customers and turns them into sales and leads. Boost and above add marketing features — blogs, lead forms, Google promotion — to drive traffic and convert visitors.'],

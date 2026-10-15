@@ -20,7 +20,7 @@ export const NAV_ITEMS: NavItem[] = [
     menu: [
       { label: 'Done-for-you website', href: routes.service('dfy'), note: 'Built and launched in 7 days' },
       { label: 'Local, national & global SEO', href: routes.service('seo'), note: 'Get found on Google' },
-      { label: 'Concierge service', href: routes.service('concierge'), note: 'Unlimited edits, done by us' },
+      { label: 'Concierge service', href: routes.service('concierge'), note: 'Edits done by us, as agreed' },
       { label: 'Growth marketing', href: routes.service('growth'), note: 'A team that grows your revenue' },
       { label: 'Website audit', href: routes.websiteAudit, note: '10 areas checked, delivered by WhatsApp or email' },
     ],
