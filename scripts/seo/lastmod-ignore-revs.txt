@@ -1,0 +1,3 @@
+# Commits that touched page files without changing their content.
+# Skipped by scripts/seo/gen-lastmod.mjs (same idea as .git-blame-ignore-revs).
+2aa18ee1adfed9a261b9f1b5fdd504e4cd96db23  # group 2: robotsFor() added to 106 page files, no content change

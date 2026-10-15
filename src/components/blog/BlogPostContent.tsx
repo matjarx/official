@@ -14,7 +14,7 @@ import ArticleToc from './ArticleToc'
 import AuthorCard, { AuthorByline } from './AuthorCard'
 import NewsletterSignup from './NewsletterSignup'
 import { routes } from '@/lib/routes'
-import { AUTHOR, SHARE_LINKS, type BlogPost } from '@/lib/blog-data'
+import { AUTHOR, SHARE_LINKS, type BlogPost, type BodyBlock } from '@/lib/blog-data'
 import { richText, plainText } from '@/lib/rich-text'
 
 // allPosts comes from the same getBlogPosts() call the page already made
@@ -136,6 +136,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                         )}
                       </figure>
                     )
+                    if (b.t === 'table') return <TableBlock key={i} block={b} />
                     if (b.t === 'ol') return (
                       <ol key={i} style={{ margin: 0, paddingLeft: 26, display: 'flex', flexDirection: 'column', gap: 13 }}>
                         {b.items.map((li, k) => (
@@ -148,7 +149,8 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                         {b.items.map((li, k) => (
                           <span key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
                             <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
-                            {richText(li)}
+                            {/* One flex child: text mixed with links or bold is several nodes. */}
+                            <span>{richText(li)}</span>
                           </span>
                         ))}
                       </div>
@@ -203,6 +205,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                       )}
                     </figure>
                   )
+                  if (b.t === 'table') return <TableBlock key={i} block={b} />
                   if (b.t === 'ol') return (
                     <ol key={i} style={{ margin: 0, paddingLeft: 26, display: 'flex', flexDirection: 'column', gap: 13 }}>
                       {b.items.map((li, k) => (
@@ -215,7 +218,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                       {b.items.map((li, k) => (
                         <span key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
                           <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
-                          {richText(li)}
+                          <span>{richText(li)}</span>
                         </span>
                       ))}
                     </div>
@@ -303,5 +306,36 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
       </div>
       </SiteChrome>
     </div>
+  )
+}
+
+// A body table. Scrolls sideways inside its own box on a phone rather than
+// widening the page; the first column stays readable as a row label.
+function TableBlock({ block }: { block: Extract<BodyBlock, { t: 'table' }> }) {
+  const cell = { padding: '12px 14px', fontSize: 15, lineHeight: 1.55, textAlign: 'left' as const, verticalAlign: 'top' as const, borderBottom: '1px solid var(--card-line)' }
+  return (
+    <figure style={{ margin: '4px 0' }}>
+      <div style={{ overflowX: 'auto', borderRadius: 14, border: '1px solid var(--card-line)' }}>
+        <table style={{ width: '100%', minWidth: 520, borderCollapse: 'collapse', color: 'var(--ink-3-alt)' }}>
+          <thead>
+            <tr>
+              {block.head.map((h, k) => (
+                <th key={k} scope="col" style={{ ...cell, fontWeight: 800, color: 'var(--ink-1)', background: 'var(--surface)' }}>{richText(h)}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {block.rows.map((row, r) => (
+              <tr key={r}>
+                {row.map((c, k) => (k === 0
+                  ? <th key={k} scope="row" style={{ ...cell, fontWeight: 700, color: 'var(--ink-1)' }}>{richText(c)}</th>
+                  : <td key={k} style={cell}>{richText(c)}</td>))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {block.caption && <figcaption style={{ marginTop: 8, fontSize: 14, color: 'var(--ink-muted)' }}>{richText(block.caption)}</figcaption>}
+    </figure>
   )
 }
