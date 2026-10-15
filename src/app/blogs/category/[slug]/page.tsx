@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import BlogArchive from '@/components/blog/BlogArchive'
-import { getBlogPosts, getSeoOverride, pageTitle, pageDescription, toCard } from '@/lib/marketing-content'
+import { getBlogPosts, getSeoOverride, pageTitle, pageSeo, toCard } from '@/lib/marketing-content'
 import { BLOG_CATEGORIES, type BlogCategory } from '@/lib/blog-data'
 import { slugifyCategory, categoryForSlug, CATEGORY_INTROS } from '@/lib/blog-categories'
 
@@ -35,12 +35,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     alternates: { canonical: url },
-    title: pageTitle(title),
-    description: pageDescription(description),
-    // Without these the page inherits the sitewide defaults, so sharing a
-    // category link previewed as the homepage -- same title, same URL.
-    openGraph: { type: 'website', title, description, url },
-    twitter: { title, description },
+    // og:/twitter: too -- without them the page inherits the sitewide
+    // defaults, so sharing a category link previewed as the homepage.
+    ...pageSeo(url, title, description),
   }
 }
 
@@ -49,7 +46,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const category = categoryForSlug(slug)
   if (!category) notFound()
 
-  const posts = (await getBlogPosts()).filter((p) => p.category === category)
+  const [allPosts, seo] = await Promise.all([getBlogPosts(), getSeoOverride(`blogs/category/${slug}`)])
+  const posts = allPosts.filter((p) => p.category === category)
 
-  return <BlogArchive heading={`${category} articles`} intro={CATEGORY_INTROS[category]} posts={posts.map(toCard)} />
+  return <BlogArchive heading={`${category} articles`} h1={seo?.h1} intro={CATEGORY_INTROS[category]} posts={posts.map(toCard)} />
 }

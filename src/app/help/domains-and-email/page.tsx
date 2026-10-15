@@ -1,14 +1,13 @@
 import type { Metadata } from 'next'
 import HelpArticleContent from '@/components/help/HelpArticleContent'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 import type { HelpArticle } from '@/lib/help-articles-data'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('help/domains-and-email')
   return {
     alternates: { canonical: '/help/domains-and-email' },
-    title: pageTitle(seo?.title || "Domains & Email - Setup Custom Domain & Professional Email"),
-    description: pageDescription(seo?.description || "Complete guide to connecting your custom domain and setting up professional email accounts with your MatjarX website."),
+    ...pageSeo('/help/domains-and-email', seo?.title || "Domains & Email - Setup Custom Domain & Professional Email", seo?.description || "Complete guide to connecting your custom domain and setting up professional email accounts with your MatjarX website."),
   }
 }
 

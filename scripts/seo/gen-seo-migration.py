@@ -4,6 +4,7 @@ Reads a read-only export of marketing_content and marketing_blog_posts (JSON
 arrays as PostgREST returns them) and the sheet's "Metadata (all pages)" tab.
 
 Writes:
+  src/lib/generated/seo-map.json          the sheet's live rows (title, description, H1) for the code
   <out>/supabase-seo-export.csv           every __seo row + every blog post, DB vs sheet
   <out>/migrations/seo-overrides.sql      UPDATEs that set the sheet values (review, then run)
   <out>/migrations/seo-overrides-rollback.sql   the same rows back to today's values
@@ -123,6 +124,23 @@ def sheet_values(url):
         return None, 'skip: sheet has no new values'
     return r, None
 
+
+# The same values for the code: every live row with all three new values,
+# keyed by URL, with the marketing_content slug the page reads its __seo
+# override from (blog posts read blog/<slug>; template pages have no row).
+seo_map = {}
+for url in sorted(sheet):
+    r, _ = sheet_values(url)
+    if not r:
+        continue
+    m = re.match(r'^/blogs/([^/]+)$', url)
+    slug = f'blog/{m.group(1)}' if m else content_slug(url)
+    seo_map[url] = {'slug': slug, 'title': r[T], 'description': r[D], 'h1': r[H]}
+MAP_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'src', 'lib', 'generated', 'seo-map.json')
+with open(MAP_PATH, 'w', encoding='utf-8') as f:
+    json.dump(seo_map, f, ensure_ascii=False, indent=1)
+    f.write('\n')
+print(f'{len(seo_map)} pages in src/lib/generated/seo-map.json')
 
 export_rows, updates, rollbacks = [], [], []
 

@@ -12,6 +12,7 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc, type LegalBlock, type LegalDocData } from '@/lib/legal-data'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
+import { seoH1 } from '@/lib/seo-h1'
 
 function renderInline(text: string): ReactNode {
   const parts = text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean)
@@ -80,7 +81,7 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
       <section style={{ background: 'var(--navy)', padding: '54px 24px 46px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 14 }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Legal</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 44px)', lineHeight: 1.1, letterSpacing: '-1.5px', color: 'var(--ink-inverse)' }}>{d.title}</h1>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 44px)', lineHeight: 1.1, letterSpacing: '-1.5px', color: 'var(--ink-inverse)' }}>{seoH1(content) ?? <>{d.title}</>}</h1>
           <span style={{ fontSize: 14, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>Last updated {d.updated}</span>
         </div>
       </section>

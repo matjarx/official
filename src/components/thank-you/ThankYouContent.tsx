@@ -7,6 +7,7 @@ import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { THANK_YOU_STEPS, THANK_YOU_LINKS } from '@/lib/thank-you-data'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF, WHATSAPP_HREF } from '@/lib/contact-details'
+import { seoH1 } from '@/lib/seo-h1'
 
 export type ThankYouContentShape = { steps: typeof THANK_YOU_STEPS; links: typeof THANK_YOU_LINKS }
 const DEFAULT_CONTENT: ThankYouContentShape = { steps: THANK_YOU_STEPS, links: THANK_YOU_LINKS }
@@ -36,7 +37,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
           <span style={{ width: 72, height: 72, borderRadius: '50%', background: 'var(--moss-light)', display: 'grid', placeItems: 'center' }}>
             <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--ink-on-butter)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.5 4.5L19 7" /></svg>
           </span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 48px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>Thank you — we&rsquo;ve got it</h1>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 48px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>{seoH1(content) ?? <>Thank you — we&rsquo;ve got it</>}</h1>
           <p style={{ margin: 0, maxWidth: '30em', fontSize: 17.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.75)' }}>{subtitle}</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 20px', borderRadius: 999, background: 'rgba(var(--surface-rgb), 0.08)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.16)' }}>
             <span style={{ width: 34, height: 34, flex: '0 0 auto', borderRadius: '50%', background: 'linear-gradient(150deg, var(--moss-light), var(--olive-active))', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: 'var(--ink-on-butter)' }}>JA</span>

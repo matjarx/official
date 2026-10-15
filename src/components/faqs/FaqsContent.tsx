@@ -13,6 +13,7 @@ import { routes } from '@/lib/routes'
 import { FAQ_GROUPS, FAQ_GROUP_NAMES, type FaqGroupName } from '@/lib/faqs-data'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
+import { seoH1 } from '@/lib/seo-h1'
 
 type FlatQ = { key: string; question: string; answer: string }
 
@@ -70,7 +71,9 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Help centre</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>
-            Frequently asked <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>questions</span>
+            {seoH1(content) ?? (
+              <>Frequently asked <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>questions</span></>
+            )}
           </h1>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 17, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Everything you need to use MatjarX like a pro. Still stuck? We&rsquo;re a phone call away.</p>
         </div>

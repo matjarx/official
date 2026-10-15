@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import WebsiteExamplesContent, { type WebsiteExamplesContentShape } from '@/components/examples/WebsiteExamplesContent'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('website-examples')
   return {
     alternates: { canonical: '/website-examples' },
-    title: pageTitle(seo?.title || 'Website Examples'),
-    description: pageDescription(seo?.description || '70,000+ websites built globally. Browse real MatjarX sites across restaurants, boutiques, clinics, textiles, e-commerce and more.'),
+    ...pageSeo('/website-examples', seo?.title || 'Website Examples', seo?.description || '70,000+ websites built globally. Browse real MatjarX sites across restaurants, boutiques, clinics, textiles, e-commerce and more.'),
   }
 }
 

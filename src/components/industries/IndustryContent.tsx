@@ -20,6 +20,7 @@ import { FaqList } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
+import { seoH1 } from '@/lib/seo-h1'
 
 export type IndustryContentShape = (typeof INDUSTRY_DATA)[IndustryKey] & { detail?: IndustryDetail | null }
 
@@ -70,7 +71,9 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
             )}
 
             <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5vw, 52px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
-              {d.headline ?? <>Websites for <span className="marker">{d.lower}</span> — built in 7 days</>}
+              {seoH1(content) ?? (
+                <>{d.headline ?? <>Websites for <span className="marker">{d.lower}</span> — built in 7 days</>}</>
+              )}
             </h1>
 
             <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>{d.subhead}</p>

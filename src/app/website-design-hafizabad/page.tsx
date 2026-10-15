@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import LocationContent, { type LocationContentShape } from '@/components/locations/LocationContent'
 import { robotsFor } from '@/lib/seo-indexing'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 import { CITY_DATA } from '@/lib/location-data'
 
 const city = CITY_DATA['hafizabad']
@@ -11,8 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/website-design-hafizabad' },
     ...robotsFor('/website-design-hafizabad'),
-    title: pageTitle(seo?.title || city.metaTitle),
-    description: pageDescription(seo?.description || city.metaDesc),
+    ...pageSeo('/website-design-hafizabad', seo?.title || city.metaTitle, seo?.description || city.metaDesc),
   }
 }
 

@@ -33,7 +33,7 @@ function headingId(text: string, index: number): string {
   return `${slug || 'section'}-${index}`
 }
 
-export default function BlogPostContent({ post, allPosts }: { post: BlogPost; allPosts: BlogPost[] }) {
+export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost; allPosts: BlogPost[]; h1?: string }) {
   const toc = post.body
     .map((b, i) => ({ ...b, index: i }))
     .filter((b): b is typeof b & { t: 'h' } => b.t === 'h')
@@ -54,7 +54,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
             <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.4)' }}>/</span>
             <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>{post.category}</span>
           </div>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(29px, 5.2vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: 'var(--ink-inverse)' }}>{post.title}</h1>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(29px, 5.2vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: 'var(--ink-inverse)' }}>{h1 || post.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 13, flexWrap: 'wrap' }}>
             <AuthorByline author={author} meta={`${post.date} · ${post.readTime}`} />
             <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>

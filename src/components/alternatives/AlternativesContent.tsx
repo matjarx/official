@@ -13,6 +13,7 @@ import { routes } from '@/lib/routes'
 import { HERO, GROUPS, WHY_COMPARE, CANT_FIND, CLOSING } from '@/lib/alternatives-data'
 import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { useCurrency } from '@/components/CurrencyProvider'
+import { seoH1 } from '@/lib/seo-h1'
 
 export type AlternativesContentShape = { hero: typeof HERO; groups: typeof GROUPS; whyCompare: typeof WHY_COMPARE }
 const DEFAULT_CONTENT: AlternativesContentShape = { hero: HERO, groups: GROUPS, whyCompare: WHY_COMPARE }
@@ -30,7 +31,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
       <section style={{ background: 'var(--navy)', padding: '58px 24px 52px' }}>
         <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Compare your options</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 46px)', lineHeight: 1.14, letterSpacing: '-1.5px', color: 'var(--ink-inverse)' }}>{HERO_ACTIVE.h1}</h1>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 46px)', lineHeight: 1.14, letterSpacing: '-1.5px', color: 'var(--ink-inverse)' }}>{seoH1(content) ?? <>{HERO_ACTIVE.h1}</>}</h1>
           {HERO_ACTIVE.intro.map((p, i) => (
             <p key={i} style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{p}</p>
           ))}

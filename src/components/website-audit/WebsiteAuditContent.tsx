@@ -22,6 +22,7 @@ import {
   TIMELINE_ROWS, TIMELINE_TOTAL, RUSH_NOTE, OUTCOMES, BENEFITS, COMPARISON_TABLE, AUDIT_FAQS, CHANNELS,
 } from '@/lib/website-audit-data'
 import { FaqList } from '@/components/FaqList'
+import { seoH1 } from '@/lib/seo-h1'
 
 function IntakeForm() {
   const [name, setName] = useState('')
@@ -106,7 +107,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
         <div style={{ maxWidth: 1260, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 40, alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO_ACTIVE.eyebrow}</span>
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: 'var(--ink-inverse)' }}>{HERO_ACTIVE.headline}</h1>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.8vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: 'var(--ink-inverse)' }}>{seoH1(content) ?? <>{HERO_ACTIVE.headline}</>}</h1>
             <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{HERO_ACTIVE.subhead}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingTop: 6 }}>
               {PROBLEMS.map((p) => (

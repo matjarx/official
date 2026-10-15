@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import IndustryContent, { type IndustryContentShape } from '@/components/industries/IndustryContent'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 import { INDUSTRY_DATA } from '@/lib/industry-data'
 
 const industry = INDUSTRY_DATA['auto-repair-shops']
@@ -9,8 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('industries/auto-repair-shops')
   return {
     alternates: { canonical: '/website-for-auto-repair-shops' },
-    title: pageTitle(seo?.title || industry.metaTitle),
-    description: pageDescription(seo?.description || industry.metaDesc),
+    ...pageSeo('/website-for-auto-repair-shops', seo?.title || industry.metaTitle, seo?.description || industry.metaDesc),
   }
 }
 

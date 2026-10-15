@@ -19,7 +19,7 @@ import { AuthorName } from './AuthorCard'
 import { routes } from '@/lib/routes'
 import { BLOG_CATEGORIES, FEATURED_SLUG, AUTHOR, type BlogCategory, type BlogPost } from '@/lib/blog-data'
 
-export default function BlogContent({ posts }: { posts: BlogPost[] }) {
+export default function BlogContent({ posts, h1 }: { posts: BlogPost[]; h1?: string }) {
   const [cat, setCat] = useState<(typeof BLOG_CATEGORIES)[number]>('All')
   // Falls back to the first post if the originally-featured slug was ever
   // deleted through the admin — never crashes on an empty/edited list.
@@ -52,7 +52,9 @@ export default function BlogContent({ posts }: { posts: BlogPost[] }) {
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>MatjarX resources</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>
-            Helping small businesses <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>grow online</span>
+            {h1 || (
+              <>Helping small businesses <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>grow online</span></>
+            )}
           </h1>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 17, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Practical guides written for Pakistani and Gulf business owners — no jargon, no theory.</p>
         </div>
