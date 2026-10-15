@@ -23,7 +23,8 @@ export type IndustryDetail = {
   reality: { title: string; intro?: string; points: string[] }
   solution: { title: string; intro?: string; points: string[] }
   included: { title: string; sections: Section[] }
-  successStories: { title: string; items: StoryItem[] }
+  /** Unnamed example results removed 15 Oct; the section is skipped when absent. */
+  successStories?: { title: string; items: StoryItem[] }
   featuresSpecific: { title: string; sections: Section[] }
   marketing: { title: string; sections: Section[] }
   testimonials?: { title: string; items: { quote: string; name: string }[] }
@@ -45,11 +46,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Gallery', blocks: [{ sub: [{ h: 'Showcase your restaurant', items: ['Restaurant interior photos', 'Plated dish photos', 'Ambiance images', 'Team photos', 'Customer moments'] }, { h: 'Professional photography', items: ['Make food look amazing', 'Build appetite appeal', 'Create desire to visit'] }] }] },
       { title: 'Location & Hours', blocks: [{ items: ['Address prominently displayed', 'Google Maps integration', 'Directions link', 'Phone number', 'Hours (with notes for special days)'] }] },
       { title: 'Testimonials & Reviews', blocks: [{ items: ['Customer quotes', 'Star ratings', 'Review aggregation', 'Google reviews display', 'Video testimonials'] }] },
-    ] },
-    successStories: { title: 'Real Restaurant Success', items: [
-      { title: 'Mumbai Restaurant Chain', lines: ['Before: 60 customers/week from word-of-mouth', 'After: 240 customers/week (200% increase)', 'Added online menu visibility and Google presence', 'Cost: PKR 15,600/month'] },
-      { title: 'Karachi Fine Dining', lines: ['Before: 15 reservations/month through phone', 'After: 65 reservations/month online', 'Cost: PKR 27,000/month (includes marketing expert)', 'Result: 4x reservation increase in 6 months'] },
-      { title: 'Lahore Quick Service Restaurant', lines: ['Before: missed online orders during busy times', 'After: online ordering system integrated', 'Cost: PKR 55,000/month (Platinum)', 'Result: 35% revenue increase from online orders'] },
     ] },
     featuresSpecific: { title: 'Features Specific to Restaurants', sections: [
       { title: 'Menu Management', blocks: [{ items: ['Multiple menu formats (PDF, web, print)', 'Easy updates (add new dishes, seasonal items)', 'Photo highlighting (feature your best dishes)', 'Ingredient specifications', 'Allergen information'] }] },
@@ -99,11 +95,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Blog Section', blocks: [{ items: ['Neighborhood guides', 'Buying tips', 'Selling tips', 'Market updates', 'Home improvement ideas', 'School information'] }] },
       { title: 'Testimonials & Reviews', blocks: [{ items: ['Client success stories', 'Before/after sales', 'Closing timelines', 'Client quotes', 'Video testimonials'] }] },
     ] },
-    successStories: { title: 'Agents Making More Money', items: [
-      { title: 'Karachi Real Estate Agent', lines: ['Before: 8 sales/month, leads from personal network only', 'After: 22 sales/month, 60% from website', 'Added property listings and lead capture', 'Cost: PKR 15,600/month · ROI: 200% increase in 6 months'] },
-      { title: 'Lahore Brokerage Firm', lines: ['Before: 5 agents, manual lead handling', 'After: integrated all agents and listings, automated lead distribution', 'Cost: PKR 27,000/month', 'Result: 45 sales/month (up from 18)'] },
-      { title: 'Islamabad Real Estate Team', lines: ['Before: 3,000 website visitors/month, low conversion', 'After: 12,000 visitors/month, 18% inquiry conversion', 'Added property search and CRM integration', 'Cost: PKR 55,000/month (Platinum)', 'Result: leads automatically qualified and distributed'] },
-    ] },
     featuresSpecific: { title: 'Features Real Estate Agents Love', sections: [
       { title: 'MLS Integration', blocks: [{ items: ['Connect MLS feeds', 'Auto-update listings', 'Sold data integration', 'Automatic property removal', 'Multi-MLS support'] }] },
       { title: 'Virtual Tours', blocks: [{ items: ['3D property tours', 'Matterport integration', 'Drone photography gallery', 'Video walkthroughs', '360° photos'] }] },
@@ -146,11 +137,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Insurance & Payment Information', blocks: [{ sub: [{ h: 'Clear transparency', items: ['Accepted insurance providers', 'Payment methods', 'Billing procedures', 'Financial policies', 'In-network status'] }, { h: 'No surprises', items: ['Cost estimators', 'Payment plans', 'Insurance verification', 'Transparent pricing'] }] }] },
       { title: 'Testimonials & Success Stories', blocks: [{ items: ['Patient success stories (anonymized)', 'Patient testimonials', 'Case studies', 'Before/after improvements', 'Patient satisfaction ratings'] }] },
       { title: 'Facility & Office Information', blocks: [{ sub: [{ h: 'Location & hours', items: ['Clear address', 'Google Maps', 'Parking information', 'Hours of operation', 'Emergency hours', 'Telehealth availability'] }, { h: 'Modern facility showcase', items: ['Office photos', 'Equipment showcase', 'Waiting area', 'Consultation rooms', 'Lab facilities'] }] }] },
-    ] },
-    successStories: { title: 'What Practices Are Seeing', items: [
-      { title: 'Delhi Multi-Specialty Clinic', lines: ['Before: 30 appointments/week from walk-ins and phone calls', 'After: 85 appointments/week (65% increase)', 'Added online booking + doctor profiles', 'Cost: PKR 15,600/month', 'Result: 55 extra patients per week'] },
-      { title: 'Karachi Dental Practice', lines: ['Before: 15 new patient inquiries/month', 'After: 48 new patient inquiries/month (220% increase)', 'Added service pages + specialist profiles', 'Cost: PKR 27,000/month', 'Result: fully booked 3 months in advance'] },
-      { title: 'Lahore Dermatology Clinic', lines: ['Before: 40% no-show rate, limited online presence', 'After: 8% no-show rate with online booking', 'Better patient preparation + email reminders', 'Cost: PKR 15,600/month', 'Result: more predictable schedule, happier staff'] },
     ] },
     featuresSpecific: { title: 'Features Healthcare Practices Love', sections: [
       { title: 'Patient Portal Integration', blocks: [{ items: ['Patients access medical records', 'Upload test results', 'Message doctors', 'Refill prescriptions', 'Track health metrics'] }] },
@@ -200,11 +186,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Promotions & Special Offers', blocks: [{ items: ['New client special', 'Seasonal promotions', 'Loyalty rewards', 'Group packages', 'Gift certificates (online purchase)', 'Holiday specials'] }] },
       { title: 'Blog Section', blocks: [{ items: ['Hair care tips', 'Trending styles', 'Color care guides', 'Styling tutorials', 'Makeup tips', 'Wellness articles'] }] },
     ] },
-    successStories: { title: 'What Salons Are Experiencing', items: [
-      { title: 'Karachi High-End Salon', lines: ['Before: 60 appointments/week through phone/walk-ins', 'After: 140 appointments/week (130% increase)', 'Added before/after gallery + stylist profiles + online booking', 'Cost: PKR 15,600/month', 'Result: chair was always full; 3-week booking wait'] },
-      { title: 'Lahore Beauty Studio', lines: ['Before: Instagram followers (3,000) didn’t convert to clients', 'After: website + Instagram integration = regular clients', 'Added portfolio showcase + booking link', 'Cost: PKR 15,600/month', 'Result: Instagram followers became regular clients with 60% conversion'] },
-      { title: 'Islamabad Bridal Salon', lines: ['Before: lost seasonal business; couldn’t scale beyond walk-ins', 'After: online booking + stylist profiles = consistent revenue', 'Seasonal promotions on website', 'Cost: PKR 27,000/month', 'Result: fully booked during wedding season; steady business off-season'] },
-    ] },
     featuresSpecific: { title: 'Built for Beauty Professionals', sections: [
       { title: 'Stylist Booking Preferences', blocks: [{ items: ['Clients select preferred stylist', 'Each stylist manages own schedule', 'Stylist builds own client base', 'Incentivize top stylists (they attract clients)'] }] },
       { title: 'Service Duration Management', blocks: [{ items: ['Automatic booking based on service', 'Prevents double-booking', 'Buffer time between appointments', 'Lunch break scheduling', 'Vacation blocking'] }] },
@@ -249,11 +230,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Facility Showcase', blocks: [{ items: ['Equipment showcase', 'Cardio area', 'Weight training area', 'Functional training space', 'Locker room/showers', 'Member lounge', 'Cleanliness standards'] }] },
       { title: 'Testimonials & Success Stories', blocks: [{ items: ['Success stories (detailed)', 'Video testimonials', 'Star ratings', 'Quote testimonials', 'Results achieved', 'Timeline to results', 'Community feedback'] }] },
       { title: 'Fitness Resources', blocks: [{ items: ['Workout tips by trainer', 'Nutrition guides', 'Recovery articles', 'Fitness goal setting', 'Progress tracking tips'] }] },
-    ] },
-    successStories: { title: 'Members & Revenue Growth', items: [
-      { title: 'Karachi Premium Gym', lines: ['Before: 200 active members, 30 new sign-ups/month', 'After: 420 active members, 85 new sign-ups/month (183% increase)', 'Added member transformations + trainer profiles + class schedule', 'Cost: PKR 27,000/month', 'Result: transformation photos drove member referrals'] },
-      { title: 'Lahore Fitness Studio', lines: ['Before: seasonal memberships (busy winter, quiet summer)', 'After: consistent memberships year-round', 'Online challenge + community posts', 'Cost: PKR 15,600/month', 'Result: 40% increase in non-peak season memberships'] },
-      { title: 'Islamabad CrossFit Box', lines: ['Before: unknown to broader market, 60 members', 'After: local celebrity gym, 180+ members', 'Showcased transformations + athlete profiles', 'Cost: PKR 27,000/month', 'Result: 200% growth in 6 months from website visibility'] },
     ] },
     featuresSpecific: { title: 'Built for Fitness Businesses', sections: [
       { title: 'Class Booking System', blocks: [{ items: ['Members can pre-book classes', 'Reduces no-shows with email reminders', 'Waitlist for full classes', 'Trainer can manage max class size', 'HIIT class priority (popular classes book fast)'] }] },
@@ -300,11 +276,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Equipment & Capabilities', blocks: [{ items: ['Heavy equipment owned', 'Safety equipment', 'Technology (3D modeling, drones, etc.)', 'Workforce size', 'Capacity for large projects', 'Production capabilities'] }] },
       { title: 'Contact & Inquiry Forms', blocks: [{ items: ['Project description', 'Timeline needed', 'Budget range', 'Contact information', 'Automatic quote process', 'Project inquiry tracking'] }] },
     ] },
-    successStories: { title: 'Contracts & Revenue Growth', items: [
-      { title: 'Karachi Construction Firm', lines: ['Before: 2-3 bids/week, 20% bid win rate', 'After: 8-10 bids/week, 45% bid win rate (4x more revenue)', 'Added project portfolio + team credentials', 'Cost: PKR 27,000/month', 'Result: credibility increased; price competitiveness less important'] },
-      { title: 'Lahore Renovation Contractor', lines: ['Before: mostly word-of-mouth; seasonal work', 'After: steady pipeline of leads year-round', 'Google visibility + project showcase', 'Cost: PKR 15,600/month', 'Result: calendar booked 4 months in advance'] },
-      { title: 'Islamabad Multi-Specialty Construction', lines: ['Before: competed mainly with local firms; limited to region', 'After: competitive for larger regional projects', 'Professional website + detailed case studies', 'Cost: PKR 27,000/month', 'Result: 3x project value from larger commercial work'] },
-    ] },
     featuresSpecific: { title: 'Built for Your Trade', sections: [
       { title: 'Quote Request System', blocks: [{ items: ['Automated project intake forms', 'Lead scoring by project size', 'Automatic quote generation', 'Project timeline management', 'Progress tracking'] }] },
       { title: 'Project Timeline Showcase', blocks: [{ items: ['Start date → completion date', 'Key milestones highlighted', 'On-time performance metric', 'Budget adherence shown', 'Variations managed'] }] },
@@ -344,11 +315,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Testimonials & Reviews', blocks: [{ items: ['Client testimonials (anonymized)', 'Case outcome testimonials', 'Professional testimonials (other attorneys, judges)', 'Google reviews', 'Avvo ratings', 'Video testimonials (powerful)'] }] },
       { title: 'Legal Resources', blocks: [{ items: ['Practice area guides', 'Legal process explanations', 'FAQ by practice area', 'Blog articles', 'Videos explaining legal concepts', 'Resource guides for clients'] }] },
       { title: 'Contact & Consultation', blocks: [{ items: ['Contact form', 'Phone/email', 'Online intake form', 'Free consultation offer', 'Retainer information', 'Confidentiality assurance'] }] },
-    ] },
-    successStories: { title: 'Growing Practice & More Clients', items: [
-      { title: 'Delhi Family Law Firm', lines: ['Before: 15 new clients/month from referrals', 'After: 45 new clients/month (200% increase)', 'Added practice areas + attorney profiles + testimonials', 'Cost: PKR 27,000/month', 'Result: became known for specific practice area'] },
-      { title: 'Karachi Corporate Law Firm', lines: ['Before: competed mainly on reputation; hard to reach', 'After: easily found; professional presence', 'Added case results + legal resources', 'Cost: PKR 27,000/month', 'Result: 50% increase in initial consultations'] },
-      { title: 'Lahore Criminal Defense', lines: ['Before: mostly referral clients; low online visibility', 'After: visible for "criminal defense near me"', 'Added attorney profiles + case results + testimonials', 'Cost: PKR 15,600/month', 'Result: doubled client volume in 12 months'] },
     ] },
     featuresSpecific: { title: 'Built for Law Firms', sections: [
       { title: 'Matter Management Integration', blocks: [{ items: ['Client portal for case documents', 'Secure communications', 'Document sharing', 'Timeline tracking', 'Billing transparency'] }] },
@@ -396,11 +362,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Customer Reviews', blocks: [{ items: ['Product reviews', 'Star ratings', 'Review moderation', 'Customer photos', 'Review responses', 'Verified purchases'] }] },
       { title: 'Promotions & Discounts', blocks: [{ items: ['Coupon codes', 'Percentage discounts', 'Fixed amount discounts', 'Bundle deals', 'Free shipping promotions', 'Seasonal sales'] }] },
     ] },
-    successStories: { title: 'Revenue Growth', items: [
-      { title: 'Karachi Fashion E-Commerce', lines: ['Before: 20 online orders/month', 'After: 180 online orders/month (800% increase)', 'Professional store + payment processing', 'Cost: PKR 27,000/month', 'Result: 45% of revenue now online'] },
-      { title: 'Lahore Handcrafts Store', lines: ['Before: $2,000/month local sales', 'After: $8,000/month (nationwide shipping)', 'Online store opened nationwide market', 'Cost: PKR 15,600/month', 'Result: sold out inventory within months'] },
-      { title: 'Islamabad Electronics Retailer', lines: ['Before: inventory gathering dust in showroom', 'After: inventory turning over monthly', 'Online + physical store integration', 'Cost: PKR 27,000/month', 'Result: 3x sales volume'] },
-    ] },
     featuresSpecific: { title: 'Built for Online Selling', sections: [
       { title: 'SEO for Products', blocks: [{ items: ['Each product SEO optimized', 'Product keywords ranking', 'Google Shopping integration', 'Product schema markup', 'Rich snippets for products'] }] },
       { title: 'Email Marketing', blocks: [{ items: ['Abandoned cart recovery', 'New product announcements', 'Sale promotions', 'Customer retention campaigns', 'Upsell recommendations'] }] },
@@ -442,11 +403,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Service Details', blocks: [{ items: ['Ceremony coordination', 'Reception management', 'Vendor communication', 'Timeline creation', 'Budget management', 'Problem solving', 'Design consultation'] }] },
       { title: 'FAQs & Planning Guide', blocks: [{ items: ['How far in advance to book', 'Budget guidance', 'Customization options', 'Your cancellation policy', 'What happens day-of', 'Payment terms'] }] },
     ] },
-    successStories: { title: 'Bookings & Revenue', items: [
-      { title: 'Delhi Wedding Planner', lines: ['Before: 8 bookings/year (mostly referrals)', 'After: 28 bookings/year (250% increase)', 'Added event gallery + packages + inquiry form', 'Cost: PKR 27,000/month', 'Result: fully booked 1 year in advance'] },
-      { title: 'Karachi Corporate Event Planner', lines: ['Before: corporate events only; inconsistent bookings', 'After: mix of weddings + corporate + intimate events', 'Website opened new market segments', 'Cost: PKR 15,600/month', 'Result: 3x revenue from diversification'] },
-      { title: 'Lahore Destination Wedding Planner', lines: ['Before: limited to local clients; word-of-mouth only', 'After: destination wedding inquiries nationwide', 'Professional website + stunning portfolio', 'Cost: PKR 27,000/month', 'Result: highest-value bookings increased significantly'] },
-    ] },
     featuresSpecific: { title: 'Built for Event Businesses', sections: [
       { title: 'Portfolio Management', blocks: [{ items: ['Unlimited event photos', 'Organized by event type and style', 'Before/after transformations', 'Vendor highlights'] }] },
       { title: 'Inquiry & Booking', blocks: [{ items: ['Easy client contact forms', 'Consultation request booking', 'Automatic response', 'Lead tracking'] }] },
@@ -487,11 +443,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Service Descriptions', blocks: [{ items: ['What each service includes', 'Why it’s important', 'Recommended timeline', 'Warning signs', 'Maintenance schedule', 'Preventative tips'] }] },
       { title: 'Contact & Inquiry', blocks: [{ items: ['Online appointment booking', 'Phone/email', 'Emergency service info', 'Emergency contact', 'Hours including emergency'] }] },
       { title: 'Maintenance Tips Blog', blocks: [{ items: ['Car maintenance guides', 'Seasonal maintenance', 'Common repair issues', 'Preventative tips', 'Cost-saving advice'] }] },
-    ] },
-    successStories: { title: 'Bookings & Revenue Growth', items: [
-      { title: 'Karachi Auto Repair Shop', lines: ['Before: 15-20 appointments/week, many no-shows', 'After: 35-40 appointments/week, 5% no-show rate', 'Added online booking + transparent pricing', 'Cost: PKR 15,600/month', 'Result: doubled revenue from fewer no-shows + repeat customers'] },
-      { title: 'Lahore Brake & Tire Specialist', lines: ['Before: mostly walk-in customers', 'After: 60% of customers from online booking', 'Professional website + service pricing', 'Cost: PKR 15,600/month', 'Result: predictable schedule; happy customers from transparency'] },
-      { title: 'Islamabad General Auto Service', lines: ['Before: lost customers to shops with better reputations', 'After: customer testimonials online built trust', 'Cost: PKR 15,600/month', 'Result: 40% increase in new customer bookings'] },
     ] },
     featuresSpecific: { title: 'Built for Your Shop', sections: [
       { title: 'Service Pricing', blocks: [{ items: ['Different pricing for different vehicle types', 'Labor + parts separated', 'Warranty information', 'Guarantee period shown'] }] },
@@ -536,11 +487,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Company Information', blocks: [{ items: ['Manufacturing capabilities', 'Years in business', 'Production capacity', 'Quality certifications', 'Testing certifications', 'Awards/recognition', 'Supply chain transparency'] }] },
       { title: 'Testimonials & References', blocks: [{ items: ['Retailer testimonials', 'Brand testimonials', 'Quality feedback', 'On-time delivery feedback', 'Long-term partnership examples'] }] },
     ] },
-    successStories: { title: 'Wholesale Orders & Revenue Growth', items: [
-      { title: 'Punjab Clothing Manufacturer', lines: ['Before: 15-20 retailer inquiries/month', 'After: 60-80 retailer inquiries/month (300% increase)', 'Added online catalog + sample request system', 'Cost: PKR 27,000/month', 'Result: 3x wholesale orders within 6 months'] },
-      { title: 'Karachi Fashion Supplier', lines: ['Before: manual sample request process; slow responses', 'After: instant sample requests processed daily', 'Streamlined wholesale operations', 'Cost: PKR 15,600/month', 'Result: 50% increase in retail partnerships'] },
-      { title: 'Lahore Textile Exporter', lines: ['Before: local market focus; limited reach', 'After: national + international retail orders', 'Professional B2B website opened new markets', 'Cost: PKR 27,000/month', 'Result: 5x revenue from expanded retail reach'] },
-    ] },
     featuresSpecific: { title: 'Built for Manufacturers', sections: [
       { title: 'Inventory Management', blocks: [{ items: ['Real-time stock levels', 'Low stock alerts', 'Production planning', 'Reorder management'] }] },
       { title: 'Bulk Quote System', blocks: [{ items: ['Automatic quote generation based on quantity', 'MOQ enforcement', 'Volume discounts applied', 'Lead time calculation'] }] },
@@ -584,11 +530,6 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Manufacturing Capabilities', blocks: [{ items: ['Production capacity (units per month)', 'Available customizations', 'Turnaround times', 'Quality control process', 'Workshop capacity', 'Team size', 'Expansion possibilities'] }] },
       { title: 'Testimonials & Client References', blocks: [{ items: ['Designer testimonials', 'Retailer testimonials', 'Luxury brand testimonials', 'Quality feedback', 'Customization capability feedback', 'On-time delivery testimonials', 'Long-term partnership examples'] }] },
       { title: 'Process Documentation', blocks: [{ items: ['Step-by-step process photos', 'Leather selection photos', 'Cutting and stitching process', 'Quality control checkpoints', 'Finishing details', 'Packaging process'] }] },
-    ] },
-    successStories: { title: 'High-Value Orders & Partnerships', items: [
-      { title: 'Faisalabad Leather Workshop', lines: ['Before: 5-8 bulk inquiries/month, mostly local', 'After: 25-35 inquiries/month, nationwide + international', 'Added online catalog + customization options + artisan story', 'Cost: PKR 27,000/month', 'Result: 3x order value from premium brand partnerships'] },
-      { title: 'Karachi Leather Artisan', lines: ['Before: manual customization process; slow response', 'After: instant custom quotes generated online', 'Streamlined B2B ordering process', 'Cost: PKR 15,600/month', 'Result: 60% increase in custom orders in 3 months'] },
-      { title: 'Lahore Luxury Leather', lines: ['Before: limited to direct relationships; hard to scale', 'After: worldwide buyer inquiries from website', 'Professional B2B platform built credibility', 'Cost: PKR 27,000/month', 'Result: 5x revenue from international luxury brand orders'] },
     ] },
     featuresSpecific: { title: 'Built for Artisan Manufacturers', sections: [
       { title: 'Leather Inventory Management', blocks: [{ items: ['Track leather grades and colors', 'Supplier tracking', 'Stock availability', 'Tanning batch information'] }] },

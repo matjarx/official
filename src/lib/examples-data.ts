@@ -11,7 +11,7 @@
 export type ExampleSite = {
   name: string; brand: string; domain: string; category: string; cat: string
   nav: string[]; cta: string; ctaBg: string; ctaInk: string
-  heroLine: string; heroBlurb: string; result: string; tint: string
+  heroLine: string; heroBlurb: string; result?: string; tint: string
   // Real proof screenshot (Google search/Maps listing) pulled from
   // matjarx.com's WordPress media library — same file and alt text
   // already indexed by Google, not a new asset.
@@ -22,7 +22,7 @@ export const EXAMPLES: ExampleSite[] = [
   { name: 'Bin Adam Textile', brand: 'BIN ADAM', domain: 'binadamtextiles.com', category: 'Textiles', cat: 'Textiles',
     nav: ['Rates', 'Bulk orders', 'About'], cta: 'Get A Quote', ctaBg: '#F4F2AE', ctaInk: '#16210B',
     heroLine: 'Fabric by the bale, priced clearly.', heroBlurb: 'Faisalabad wholesaler with live rate tables and bulk enquiry forms.',
-    result: '#1 on Google', tint: 'linear-gradient(150deg, #003366, #0A2647)' },
+    tint: 'linear-gradient(150deg, #003366, #0A2647)' },
   { name: 'Elegance Embroidery', brand: 'ELEGANCE', domain: 'elegance-handicraft.matjarpk.com', category: 'Boutiques', cat: 'Boutiques',
     nav: ['Shop', 'Collections', 'Fabric guide'], cta: 'Order Now', ctaBg: '#F4F2AE', ctaInk: '#16210B',
     heroLine: 'Hand-stitched, made to be seen.', heroBlurb: 'Chikankari and ajrak work, delivered nationwide with cash on delivery.',
@@ -30,7 +30,7 @@ export const EXAMPLES: ExampleSite[] = [
   { name: 'Zulfay Hair', brand: 'ZULFAY', domain: 'zulfayhair.com', category: 'Salons', cat: 'Salons',
     nav: ['Stylists', 'Price list', 'Gallery'], cta: 'Book Now', ctaBg: '#E8B4C8', ctaInk: '#2A0F1A',
     heroLine: 'Your chair is ready.', heroBlurb: 'Multi-seat booking across three branches, synced to every stylist\'s calendar.',
-    result: '1,520 messages', tint: 'linear-gradient(150deg, #A0522D, #3E1B0C)',
+    tint: 'linear-gradient(150deg, #A0522D, #3E1B0C)',
     proofImage: { src: '/services/zulfay-map-listing.webp', alt: 'Zulfay Hair Google search listing featuring the Zulfay logo, 4.8-star rating, salon information, and website button.', width: 1552, height: 1013 } },
   { name: 'CapActix Offshore', brand: 'CAPACTIX', domain: 'capactix.com', category: 'Accounting', cat: 'Accounting',
     nav: ['Services', 'Pricing', 'Blog'], cta: 'Request Call', ctaBg: '#C4262E', ctaInk: '#FFFFFF',
@@ -39,16 +39,16 @@ export const EXAMPLES: ExampleSite[] = [
   { name: 'Eebeel Home', brand: 'EEBEEL', domain: 'eebeel.com', category: 'E-commerce', cat: 'E-commerce',
     nav: ['Shop', 'Track order', 'Support'], cta: 'Order Now', ctaBg: '#F4F2AE', ctaInk: '#16210B',
     heroLine: 'Everything for the home.', heroBlurb: '400+ products with JazzCash, Easypaisa and cash-on-delivery checkout.',
-    result: '2,000+ leads', tint: 'linear-gradient(150deg, #6A2C8E, #2A0F3A)',
+    tint: 'linear-gradient(150deg, #6A2C8E, #2A0F3A)',
     proofImage: { src: '/services/eebeel-map-listing.webp', alt: 'eebeel Google search listing featuring the eebeel logo, 4.8-star rating, beauty and personal care information, and website button.', width: 1552, height: 1013 } },
   { name: 'Askari Estates', brand: 'ASKARI ESTATES', domain: 'askariestateco.com', category: 'Real Estate', cat: 'Real Estate',
     nav: ['Listings', 'Plots', 'Contact'], cta: 'View Listings', ctaBg: '#0A3D62', ctaInk: '#FFFFFF',
     heroLine: 'Find your next address in Islamabad.', heroBlurb: 'Live plot and house listings with price, size and location filters, updated daily.',
-    result: '3× more enquiries', tint: 'linear-gradient(150deg, #0A3D62, #041B2E)' },
+    tint: 'linear-gradient(150deg, #0A3D62, #041B2E)' },
   { name: 'IronCore Fitness', brand: 'IRONCORE', domain: 'ironcorefitness.net', category: 'Gyms And Fitness', cat: 'Gyms And Fitness',
     nav: ['Memberships', 'Classes', 'Trainers'], cta: 'Join Now', ctaBg: '#D6E63A', ctaInk: '#1A2004',
     heroLine: 'Train like it matters.', heroBlurb: 'Membership sign-up and class booking online, with trainer profiles and a live timetable.',
-    result: '200+ sign-ups online', tint: 'linear-gradient(150deg, #23291A, #0A0D06)' },
+    tint: 'linear-gradient(150deg, #23291A, #0A0D06)' },
   { name: 'Chaudhry & Fitzgerald Law', brand: 'C&F LAW', domain: 'chaudhrylaw.com', category: 'Legal Services', cat: 'Legal Services',
     nav: ['Practice areas', 'Our team', 'Consult'], cta: 'Book A Consult', ctaBg: '#8A6D1E', ctaInk: '#FFFFFF',
     heroLine: 'Advice you can act on.', heroBlurb: 'Corporate, property and family law in Lahore, with a confidential online consultation form.',
@@ -60,7 +60,7 @@ export const EXAMPLES: ExampleSite[] = [
   { name: 'Speedway Auto Care', brand: 'SPEEDWAY', domain: 'speedwayautotrading.com', category: 'Trades', cat: 'Trades',
     nav: ['Services', 'Book a slot', 'Reviews'], cta: 'Book A Slot', ctaBg: '#C4262E', ctaInk: '#FFFFFF',
     heroLine: 'Your car, back on the road fast.', heroBlurb: 'Online booking for servicing and repairs across two Rawalpindi branches, synced to one calendar.',
-    result: 'Bookings up 2.5×', tint: 'linear-gradient(150deg, #1A1A1A, #050505)' },
+    tint: 'linear-gradient(150deg, #1A1A1A, #050505)' },
   { name: 'Margalla Builders', brand: 'MARGALLA', domain: 'margallaeliteconstruction.com', category: 'Construction', cat: 'Construction',
     nav: ['Projects', 'Services', 'Get A Quote'], cta: 'Get A Quote', ctaBg: '#E9A94F', ctaInk: '#2A1608',
     heroLine: 'Built to last, on schedule.', heroBlurb: 'Islamabad contractor with a project gallery and a quote-request form routed to the right site manager.',

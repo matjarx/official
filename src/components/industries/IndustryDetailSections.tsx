@@ -50,6 +50,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
       </section>
 
       {/* Success stories */}
+      {d.successStories && d.successStories.items.length > 0 && (
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.successStories.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 18 }}>
@@ -61,6 +62,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
           ))}
         </div>
       </section>
+      )}
 
       {/* Features specific */}
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>

@@ -136,9 +136,12 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
           </div>
         </section>
 
-        {/* Testimonial */}
+        {/* Testimonial and result stats -- either half is skipped when empty
+            (client results were removed 15 Oct until documented ones replace them) */}
+        {(d.quote || d.resultStats.length > 0) && (
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '74px 24px' }}>
           <div style={{ padding: 'clamp(26px, 4vw, 42px) clamp(22px, 3.5vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 34, alignItems: 'center' }}>
+            {d.quote && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               <span style={{ fontSize: 15, letterSpacing: '2.5px', color: 'var(--butter)' }}>★★★★★</span>
               <p style={{ margin: 0, fontSize: 17, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.9)' }}>&ldquo;{inText(d.quote)}&rdquo;</p>
@@ -147,6 +150,8 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
                 <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.quoteCompany}</span>
               </div>
             </div>
+            )}
+            {d.resultStats.length > 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
               {d.resultStats.map((r) => (
                 <div key={r.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -155,8 +160,10 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
                 </div>
               ))}
             </div>
+            )}
           </div>
         </section>
+        )}
 
         <ServiceDetailSections svc={svc} />
 

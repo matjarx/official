@@ -17,7 +17,9 @@ export type ServiceDataEntry = {
   kicker: string; titleLead: string; titleMark: string; subtitle: string; heroCta: string
   pitchTitle: string; pitchBody: string; blocks: ServiceBlock[]
   gridTitle: string; gridItems: GridItem[]
-  quote: string; quoteName: string; quoteCompany: string; resultStats: ResultStat[]
+  // quote is optional and resultStats may be empty: client results were
+  // removed 15 Oct until documented case studies replace them.
+  quote?: string; quoteName?: string; quoteCompany?: string; resultStats: ResultStat[]
   detail?: unknown
 }
 
@@ -86,8 +88,6 @@ export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
       { title: 'Content written for you', body: '3 blog posts a month on Growth and above, optimised for the terms you want to win.', icon: 'M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 13h6M10 16.5h4' },
       { title: 'Competitor insight', body: "Who's outranking you locally, and exactly what we're doing about it.", icon: 'M4 20V6M4 6l7 4 9-5v9l-9 5-7-4Z' },
     ],
-    quote: 'Ranks #1 on Google Search and Google Maps for Chinese restaurant catering. Rs. 150,000 in website sales and 4,400 customers served.',
-    quoteName: 'China Friend', quoteCompany: 'MatjarX Growth member',
     resultStats: [
       { value: '70%', label: 'more likely to buy from a complete presence' },
       { value: '93%', label: 'of buyers search Maps to find a business' },
@@ -160,12 +160,7 @@ export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
       { title: 'Competitor insight', body: 'See how you rank against the businesses taking your customers.', icon: 'M4 20V6M4 6l7 4 9-5v9l-9 5-7-4Z' },
       { title: 'Monthly reporting', body: 'What we did, what it produced, and what happens next month.', icon: 'M4 18V9M9.5 18V5M15 18v-6M20.5 18v-9' },
     ],
-    quote: "It's only been 6 months since MatjarX built my site, and ROI is over 2,500%. Hands down best money I ever spent — monthly growth sessions have been enlightening.",
-    quoteName: 'Slavi', quoteCompany: 'Perun Roofing',
     resultStats: [
-      { value: '1,520', label: 'messages for Zulfay Hair' },
-      { value: '350', label: 'orders in the first quarter' },
-      { value: '2,500%', label: 'return for Perun Roofing' },
     ],
   },
 }
