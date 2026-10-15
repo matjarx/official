@@ -44,6 +44,12 @@ export const INDUSTRY_SLUGS: Record<IndustryKey, string> = {
   'b2b-leather-goods-manufacturer': 'b2b-leather-goods-manufacturer',
 }
 
+// Industry pages that now 301 elsewhere (see next.config.js). Their data
+// stays because the route file stays, but nothing should list or link
+// them: a link to a redirect wastes a hop and the sitemap must not carry
+// a URL that isn't a 200.
+export const REDIRECTED_INDUSTRY_KEYS: ReadonlySet<IndustryKey> = new Set<IndustryKey>(['clinics'])
+
 export type IndustryFeature = { title: string; body: string; icon: string }
 export type IndustryTile = { label: string; tint: string }
 
@@ -244,6 +250,6 @@ export const INDUSTRY_DATA: Record<IndustryKey, {
 
 export function otherIndustriesFor(key: IndustryKey) {
   return (Object.keys(INDUSTRY_DATA) as IndustryKey[])
-    .filter((k) => k !== key)
+    .filter((k) => k !== key && !REDIRECTED_INDUSTRY_KEYS.has(k))
     .map((k) => ({ label: INDUSTRY_DATA[k].name, href: routes.industry(INDUSTRY_SLUGS[k]) }))
 }

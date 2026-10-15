@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import LocationContent, { type LocationContentShape } from '@/components/locations/LocationContent'
+import { robotsFor } from '@/lib/seo-indexing'
 import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
 import { CITY_DATA } from '@/lib/location-data'
 
@@ -9,6 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('cities/chiniot')
   return {
     alternates: { canonical: '/website-design-chiniot' },
+    ...robotsFor('/website-design-chiniot'),
     title: pageTitle(seo?.title || city.metaTitle),
     description: pageDescription(seo?.description || city.metaDesc),
   }

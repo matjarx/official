@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import ComparisonContent, { type ComparisonContentShape } from '@/components/comparisons/ComparisonContent'
+import { robotsFor } from '@/lib/seo-indexing'
 import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('comparisons/godaddy')
   return {
     alternates: { canonical: '/alternatives/matjarx-vs-godaddy' },
+    ...robotsFor('/alternatives/matjarx-vs-godaddy'),
     title: pageTitle(seo?.title || 'MatjarX vs GoDaddy'),
     description: pageDescription(seo?.description || 'An honest comparison of MatjarX and GoDaddy — no renewal upsells, no add-on subscriptions, and when GoDaddy is genuinely the better pick.'),
   }

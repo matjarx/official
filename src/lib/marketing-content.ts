@@ -584,3 +584,29 @@ export type PricingContentShape = {
 export type HomeContentShape = { faqs: typeof HOME_FAQS; voices: typeof VOICES }
 export type FeaturesContentShape = { groups: typeof FEATURE_GROUPS; alwaysOn: typeof ALWAYS_ON; faqs: typeof FEATURES_FAQ }
 export type PlanContentShape = (typeof ALL_PLANS)[PlanKey] & (typeof PLAN_DATA)[PlanKey] & { detail: unknown }
+
+/**
+ * When each database-edited page last changed, for the sitemap's <lastmod>.
+ *
+ * Two narrow reads -- slug and updated_at only, published rows only -- so
+ * the sitemap never pulls post bodies or page content just to date them.
+ * Either map comes back empty on any error, and the sitemap falls back to
+ * the code's own git date (or the post's publish date).
+ */
+export async function getContentUpdatedAt(): Promise<{ content: Map<string, Date>; blog: Map<string, Date> }> {
+  const read = async (table: 'marketing_content' | 'marketing_blog_posts') => {
+    try {
+      const { data, error } = await supabase.from(table).select('slug, updated_at').eq('published', true)
+      if (error || !data) return new Map<string, Date>()
+      return new Map(
+        (data as { slug: string; updated_at: string | null }[])
+          .filter((r) => r.updated_at)
+          .map((r) => [r.slug, new Date(r.updated_at as string)]),
+      )
+    } catch {
+      return new Map<string, Date>()
+    }
+  }
+  const [content, blog] = await Promise.all([read('marketing_content'), read('marketing_blog_posts')])
+  return { content, blog }
+}
