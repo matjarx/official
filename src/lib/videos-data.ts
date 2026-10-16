@@ -84,7 +84,7 @@ export const VIDEO_SECTIONS: VideoSection[] = [
     title: 'Regional & Cultural Videos',
     videos: [
       { number: 11, title: 'Hey Pakistan, Heard About MatjarX?', length: '~3 minutes',
-        body: "Specifically designed for Pakistani business owners, this video explains MatjarX in context — how we've helped 70,000+ Pakistani businesses get online.",
+        body: "Specifically designed for Pakistani business owners, this video explains MatjarX in context. Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.",
         items: ['Local success stories', 'Pakistan-specific features (JazzCash, Easypaisa, etc.)', 'Urdu/English navigation', 'Local customer support', 'Pakistan business challenges solved'], url: '' },
     ],
   },

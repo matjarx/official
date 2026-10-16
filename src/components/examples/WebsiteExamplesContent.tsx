@@ -48,7 +48,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         {/* Hero */}
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
-            <span className="marker">70,000+ Websites</span> Built Globally
+            Our team has 7+ years of experience and has built <span className="marker">70,000+ websites</span>, first under our US brand and now in Pakistan.
           </h1>
           <p style={{ margin: 0, maxWidth: '40em', fontSize: 'clamp(14.5px, 1.7vw, 17px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>
             New or established, local or e-commerce, we serve businesses of all kinds. Serving over 100s of business categories.
