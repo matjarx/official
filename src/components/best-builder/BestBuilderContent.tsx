@@ -47,7 +47,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '58px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
           <span className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-4-alt)' }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)' }} />
-            Updated September 2026 · 70,000 websites built
+            Updated September 2026 · Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.
           </span>
 
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 56px)', lineHeight: 1.06, letterSpacing: '-2px', color: 'var(--ink-1)' }}>

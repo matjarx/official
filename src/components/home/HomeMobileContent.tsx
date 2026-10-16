@@ -131,7 +131,7 @@ export default function HomeMobileContent() {
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
             <span style={{ fontSize: 12, lineHeight: 1.5, color: theme.ink3 }}>Having trouble launching the right website for your business?</span>
-            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, lineHeight: 1.1, letterSpacing: '-1.1px', color: theme.ink1 }}>We&rsquo;ll build complete <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 6px', borderRadius: 3 }}>small business websites</span> in 7 days for Rs. 22,500</h1>
+            <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, lineHeight: 1.1, letterSpacing: '-1.1px', color: theme.ink1 }}>We&rsquo;ll build complete <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 6px', borderRadius: 3 }}>small business websites</span> in 7 days, from Rs. 4,500/month + Rs. 22,500 setup</h1>
             <span style={{ fontSize: 13.5, lineHeight: 1.6, color: theme.ink3 }}>Support your business growth with affordable agency services.</span>
 
             <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 9, paddingTop: 4 }}>
@@ -149,7 +149,7 @@ export default function HomeMobileContent() {
                 ))}
               </span>
             </div>
-            <span style={{ fontSize: 12, fontWeight: 600, color: theme.accentInk }}>Become part of a network of over 70,000 business owners.</span>
+            <span style={{ fontSize: 12, fontWeight: 600, color: theme.accentInk }}>Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.</span>
 
             <div className="mx-rail" style={{ width: '100%', display: 'flex', gap: 8, overflowX: 'auto', margin: '0 -16px', padding: '4px 16px' }}>
               {RATING_BADGES.map((b) => (
@@ -306,7 +306,7 @@ export default function HomeMobileContent() {
                 /home-mobile renders this instead of SiteFooter's card. */}
             <span style={{ fontSize: 13.5, lineHeight: 1.6, fontWeight: 600, color: '#3D4A16' }}>Completely zero-risk. Unmatched customer service.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.</span>
-            <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>More than 70,000 businesses trust MatjarX. Your business deserves to join them.</span>
+            <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.</span>
             <a className="btn-trace" href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-inverse)', background: 'var(--navy-deepest)' }}>Get started</a>
             <a className="btn-trace" href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: '#1F2A08', background: 'rgba(var(--surface-rgb), 0.62)', border: '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)' }}>Talk to us on WhatsApp</a>
           </div>

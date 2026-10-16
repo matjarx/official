@@ -1529,3 +1529,41 @@ textarea.input {
 @media (min-width: 641px) {
   .theme-rail:not(:hover)::-webkit-scrollbar-thumb { transition: background 150ms ease; }
 }
+
+/* Mobile sticky bar (src/components/MobileStickyBar.tsx). Phones only. The
+   body padding is what keeps it from covering the end of any page: forms,
+   the footer, the last FAQ all scroll clear of it. */
+:root { --mobile-bar-h: 64px; }
+.mobile-sticky-bar { display: none; }
+@media (max-width: 767px) {
+  body { padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom)); }
+  .mobile-sticky-bar {
+    display: flex;
+    gap: 10px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 45;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(var(--cream-rgb), 0.92);
+    border-top: 1px solid rgba(var(--ink-1-rgb), 0.1);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 -8px 24px rgba(var(--scrim-rgb), 0.08);
+    transition: transform 180ms ease;
+  }
+  .mobile-sticky-bar[data-hidden] { transform: translateY(110%); }
+  .mobile-sticky-bar-btn {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    min-height: 44px;
+    border-radius: 999px;
+    font-family: var(--font-lato), Lato, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .mobile-sticky-bar-wa { background: #1F8F4E; color: #fff; }
+  .mobile-sticky-bar-plans { background: var(--navy-deepest); color: #fff; border: 1px solid rgba(255,255,255,0.18); }
+}
