@@ -21,6 +21,7 @@ import { parsePkr } from '@/lib/currency'
 import type { PricingContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
+import BodyLinks from '@/components/BodyLinks'
 
 export const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
 
@@ -432,6 +433,8 @@ export default function PricingContent({ content }: { content: PricingContentSha
           </div>
         </div>
       </section>
+
+      <BodyLinks path="/pricing" />
 
       {/* FAQs */}
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: '78px 24px' }}>

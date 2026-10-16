@@ -35,6 +35,7 @@ import { CITY_DATA, type CityKey } from '@/lib/location-data'
 import { routes, appSignup } from '@/lib/routes'
 import type { ThemeLanding } from '@/lib/theme-landing-data'
 import SiteChrome from '@/components/SiteChrome'
+import BodyLinks from '@/components/BodyLinks'
 
 // Environment-aware so the previews are real in development. Hardcoding
 // production meant every mockup on localhost framed app.matjarx.com, which
@@ -57,7 +58,7 @@ export default function ThemeLandingContent({ landing, minPlan }: Props) {
           from search had no navigation off the page and no legal links,
           and the footer's city and industry rows are a chunk of the
           internal linking every other page contributes. */}
-      <SiteChrome active="examples">
+      <SiteChrome active="templates">
       {/* ── Hero ───────────────────────────────────────────────────── */}
       <section style={{ background: 'var(--cream)', padding: '64px 24px 0' }}>
         <div style={{ maxWidth: 1180, margin: '0 auto' }}>
@@ -262,6 +263,8 @@ export default function ThemeLandingContent({ landing, minPlan }: Props) {
           </div>
         </section>
       )}
+
+      <BodyLinks path={`${routes.templates}/${landing.slug}`} />
 
       {/* ── Close ──────────────────────────────────────────────────── */}
       <section style={{ padding: '72px 24px 90px' }}>

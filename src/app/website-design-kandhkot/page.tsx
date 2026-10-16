@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import LocationContent, { type LocationContentShape } from '@/components/locations/LocationContent'
 import { robotsFor } from '@/lib/seo-indexing'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getBlogPosts, getMergedContent, getSeoOverride, pageTitle, pageDescription, toCard } from '@/lib/marketing-content'
+import { postsInPillar } from '@/lib/pillars'
 import { CITY_DATA } from '@/lib/location-data'
 
 const city = CITY_DATA['kandhkot']
@@ -19,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export const revalidate = 60
 
 export default async function Page() {
-  const content = await getMergedContent<LocationContentShape>('cities/kandhkot')
-  return <LocationContent locationKey="kandhkot" content={content} />
+  const [content, posts] = await Promise.all([getMergedContent<LocationContentShape>('cities/kandhkot'), getBlogPosts()])
+  // City pages belong to pillar 1, website design & development.
+  return <LocationContent locationKey="kandhkot" content={content} related={postsInPillar('P1', posts).map(toCard)} />
 }

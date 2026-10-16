@@ -1,15 +1,15 @@
 // Blog Post detail — from Marketing - Blog Post.dc.html. Navy hero
 // with breadcrumb/byline/share icons, cover placeholder, two-column
 // body (sticky "in this article" TOC + newsletter card) with heading/
-// paragraph/quote/list blocks, author bio card, "want this handled"
-// CTA, related-posts grid.
+// paragraph/quote/list blocks, author bio card, a CTA box and three
+// related posts, both matched to the post's content pillar.
 
 import Link from 'next/link'
 import Image from 'next/image'
 import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
-import CrossLinkRail from '@/components/CrossLinkRail'
-import { crossLinksForPost } from '@/lib/cross-links'
+import PillarCta from '@/components/PillarCta'
+import { PILLAR_CTA, pillarOf, relatedInPillar } from '@/lib/pillars'
 import ArticleToc from './ArticleToc'
 import AuthorCard, { AuthorByline } from './AuthorCard'
 import NewsletterSignup from './NewsletterSignup'
@@ -38,9 +38,29 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
     .map((b, i) => ({ ...b, index: i }))
     .filter((b): b is typeof b & { t: 'h' } => b.t === 'h')
   const author = post.author ?? AUTHOR
-  const related = post.relatedSlugs
+  // Three posts from the same pillar, and that pillar's CTA (spec group
+  // 5). This replaced a rail that rotated through unrelated cities and
+  // industries -- the GEO guide linked Abbottabad and Attock. The post's
+  // own relatedSlugs still lead, where they are in the same pillar.
+  // A post not yet in the pillar map keeps its relatedSlugs and gets the
+  // website-development CTA.
+  const pillar = pillarOf(post.slug)
+  const live = new Set(allPosts.map((p) => p.slug))
+  const relatedSlugs = pillar
+    ? [...new Set([
+        ...post.relatedSlugs.filter((s) => s !== post.slug && live.has(s) && pillarOf(s) === pillar),
+        ...relatedInPillar(pillar, live, { exclude: post.slug }),
+      ])].slice(0, 3)
+    : post.relatedSlugs
+  const related = relatedSlugs
     .map((slug) => allPosts.find((p) => p.slug === slug))
     .filter((p): p is BlogPost => !!p)
+  const cta = PILLAR_CTA[pillar ?? 'P1']
+  // SEO-pillar posts also link the SEO service page from the article text
+  // (decided 15 Oct): the CTA box sends readers to the free audit, which
+  // left the service page itself with no link from these posts. Skipped
+  // where the post's own body already links it.
+  const seoServiceLine = pillar === 'P3' && !JSON.stringify(post.body).includes(routes.service('seo'))
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
@@ -167,11 +187,12 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                     return null
                   })}
 
-                  <div style={{ marginTop: 20, padding: '30px 32px', borderRadius: 22, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 14 }}>
-                    <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 25, lineHeight: 1.16, letterSpacing: '-0.7px', color: '#1F2A08' }}>Want this handled for you?</h3>
-                    <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: '#3D4A16' }}>We build the whole website — design, copy, images, Google listing — and launch it in seven days from Rs. 22,500.</p>
-                    <Link href={routes.pricing} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 4 }}>See plans</Link>
-                  </div>
+                  {seoServiceLine && (
+                    <p style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>
+                      If you would rather have this done for you, see our <Link href={routes.service('seo')} style={{ color: 'var(--ink-1)', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 3 }}>SEO services in Pakistan</Link>.
+                    </p>
+                  )}
+                  <PillarCta cta={cta} style={{ marginTop: 20 }} />
 
                   {/* The article body already ends with the author card --
                       this layout does not add a second one. It did, and the
@@ -235,11 +256,12 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
                   return null
                 })}
 
-                <div style={{ marginTop: 20, padding: '30px 32px', borderRadius: 22, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 14 }}>
-                  <h3 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 25, lineHeight: 1.16, letterSpacing: '-0.7px', color: '#1F2A08' }}>Want this handled for you?</h3>
-                  <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: '#3D4A16' }}>We build the whole website — design, copy, images, Google listing — and launch it in seven days from Rs. 22,500.</p>
-                  <Link href={routes.pricing} className="btn-navy" style={{ alignSelf: 'flex-start', marginTop: 4 }}>See plans</Link>
-                </div>
+                {seoServiceLine && (
+                  <p style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>
+                    If you would rather have this done for you, see our <Link href={routes.service('seo')} style={{ color: 'var(--ink-1)', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 3 }}>SEO services in Pakistan</Link>.
+                  </p>
+                )}
+                <PillarCta cta={cta} style={{ marginTop: 20 }} />
 
                 <AuthorCard author={author} />
               </article>
@@ -263,7 +285,8 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
             </section>
           )}
 
-          {/* Keep reading */}
+          {/* Keep reading: same-pillar posts, skipped when there are none */}
+          {related.length > 0 && (
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '74px 24px 20px' }}>
             <h2 style={{ margin: '0 0 28px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 32, letterSpacing: '-1px', color: 'var(--ink-1)' }}>Keep reading</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
@@ -294,12 +317,7 @@ export default function BlogPostContent({ post, allPosts }: { post: BlogPost; al
               ))}
             </div>
           </section>
-
-          <CrossLinkRail
-            links={crossLinksForPost(post.slug)}
-            title="Want this done for you?"
-            subtitle="The work this article describes, and who we build it for."
-          />
+          )}
 
           <div style={{ height: 60 }} />
         </div>

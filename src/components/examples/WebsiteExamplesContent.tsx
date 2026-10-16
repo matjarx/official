@@ -14,6 +14,7 @@ import { EXAMPLES_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import PortfolioShowcase from './PortfolioShowcase'
 import { EXAMPLES, EXAMPLE_CATEGORIES, EXAMPLE_PILLARS } from '@/lib/examples-data'
+import BodyLinks from '@/components/BodyLinks'
 
 export type WebsiteExamplesContentShape = { examples: typeof EXAMPLES; categories: typeof EXAMPLE_CATEGORIES; pillars: typeof EXAMPLE_PILLARS }
 const DEFAULT_CONTENT: WebsiteExamplesContentShape = { examples: EXAMPLES, categories: EXAMPLE_CATEGORIES, pillars: EXAMPLE_PILLARS }
@@ -117,6 +118,8 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         </section>
 
         <div style={{ height: 70 }} />
+        <BodyLinks path="/website-examples" />
+
         <FaqSection faqs={EXAMPLES_FAQS} intro="What you are looking at, and what it would take to get one." />
         <div style={{ height: 66 }} />
         </SiteChrome>

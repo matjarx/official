@@ -1,92 +1,104 @@
 import { WHATSAPP_HREF } from '@/lib/contact-details'
-// Header nav structure — shared by SiteHeader (light) and SiteHeaderDark so
-// the menu is defined once. Mirrors the `defs` array in the Site Header
-// design files exactly (labels, notes, grouping); hrefs point at real
-// routes instead of the prototype's .dc.html filenames.
+// Header and footer nav, defined once. The header menu follows the SEO
+// spec (group 5): Services, Industries, Templates, Examples, Pricing,
+// Resources.
 
 import { routes } from './routes'
 
-export type NavKey = 'home' | 'services' | 'examples' | 'pricing' | 'resources' | 'company'
+// `home` and `company` have no header item any more (spec group 5), but
+// pages still pass them as `active`; they simply highlight nothing.
+export type NavKey = 'home' | 'services' | 'industries' | 'templates' | 'examples' | 'pricing' | 'resources' | 'company'
 
 export type NavMenuItem = { label: string; href: string; note?: string }
-export type NavItem = { label: string; href: string; key: NavKey; menu?: NavMenuItem[] }
+// `href` is optional: Industries has no hub page, so its label opens the
+// menu instead of navigating.
+export type NavItem = { label: string; href?: string; key: NavKey; menu?: NavMenuItem[] }
+
+// The 13 live industry pages. /website-for-clinics 301s to
+// /website-for-clinics-and-healthcare, so it is not listed.
+export const NAV_INDUSTRIES: NavMenuItem[] = [
+  { label: 'Restaurants', href: routes.industry('restaurants') },
+  { label: 'Boutiques', href: routes.industry('boutiques') },
+  { label: 'Clinics & healthcare', href: routes.industry('clinics-and-healthcare') },
+  { label: 'Real estate', href: routes.industry('real-estate') },
+  { label: 'Salons & spas', href: routes.industry('salons-and-spas') },
+  { label: 'Gyms & fitness', href: routes.industry('gyms-and-fitness') },
+  { label: 'Construction', href: routes.industry('construction-companies') },
+  { label: 'Law firms', href: routes.industry('law-firms') },
+  { label: 'Online stores', href: routes.industry('online-stores-ecommerce') },
+  { label: 'Weddings & events', href: routes.industry('wedding-and-event-planners') },
+  { label: 'Auto repair', href: routes.industry('auto-repair-shops') },
+  { label: 'B2B clothing manufacturers', href: routes.industry('b2b-clothing-manufacturer') },
+  { label: 'B2B leather goods manufacturers', href: routes.industry('b2b-leather-goods-manufacturer') },
+]
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Home', href: routes.home, key: 'home' },
   {
     label: 'Services',
     href: routes.service('dfy'),
     key: 'services',
     menu: [
-      { label: 'Done-for-you website', href: routes.service('dfy'), note: 'Built and launched in 7 days' },
-      { label: 'Local, national & global SEO', href: routes.service('seo'), note: 'Get found on Google' },
-      { label: 'Concierge service', href: routes.service('concierge'), note: 'Edits done by us, as agreed' },
-      { label: 'Growth marketing', href: routes.service('growth'), note: 'A team that grows your revenue' },
-      { label: 'Website audit', href: routes.websiteAudit, note: '10 areas checked, delivered by WhatsApp or email' },
+      { label: 'Website development', href: routes.service('dfy'), note: 'Built and launched in 7 business days' },
+      { label: 'SEO services', href: routes.service('seo'), note: 'Get found on Google' },
+      { label: 'Digital marketing', href: routes.service('growth'), note: 'Social media and ads, run for you' },
+      { label: 'Website maintenance', href: routes.service('concierge'), note: 'Edits done by us, as agreed' },
     ],
   },
-  { label: 'Website examples', href: routes.websiteExamples, key: 'examples' },
-  {
-    label: 'Pricing',
-    href: routes.pricing,
-    key: 'pricing',
-    menu: [
-      { label: 'All plans & pricing', href: routes.pricing, note: 'Compare all five plans' },
-      { label: 'Features', href: routes.features, note: 'Everything included, by plan' },
-      { label: 'Templates', href: routes.templates, note: '100+ designs to launch from' },
-      { label: 'Launch plan', href: routes.plan('launch'), note: 'Get online properly, in 7 days' },
-      { label: 'Boost plan', href: routes.plan('boost'), note: 'More pages, more SEO, more growth' },
-      { label: 'Growth plan', href: routes.plan('growth'), note: 'A marketing team, not just a website' },
-      { label: 'Platinum plan', href: routes.plan('platinum'), note: 'A custom store, built to scale' },
-      { label: 'Custom plan', href: routes.plan('custom'), note: 'Built exactly for your business' },
-    ],
-  },
+  { label: 'Industries', key: 'industries', menu: NAV_INDUSTRIES },
+  { label: 'Templates', href: routes.templates, key: 'templates' },
+  { label: 'Examples', href: routes.websiteExamples, key: 'examples' },
+  { label: 'Pricing', href: routes.pricing, key: 'pricing' },
   {
     label: 'Resources',
     href: routes.blog,
     key: 'resources',
     menu: [
       { label: 'Blog', href: routes.blog, note: 'Guides for Pakistani businesses' },
-      { label: 'Videos', href: routes.videos, note: 'See the platform in action' },
-      { label: 'FAQs', href: routes.faqs },
-      { label: 'Help centre', href: routes.help, note: 'Guides, and a real person to ask' },
-      { label: 'Best website builder in Pakistan', href: routes.bestBuilder, note: 'Every option, side by side' },
-      { label: 'Compare all alternatives', href: routes.alternatives, note: '42 platforms, side by side' },
-      { label: 'Partner program', href: routes.partner },
-    ],
-  },
-  {
-    label: 'Company',
-    href: routes.about,
-    key: 'company',
-    menu: [
-      { label: 'About us', href: routes.about },
-      { label: 'Careers', href: routes.careers, note: "We're hiring in Lahore" },
-      { label: 'Become a partner', href: routes.partner },
-      { label: 'Get in touch', href: routes.contact },
+      { label: 'Help', href: routes.help, note: 'Guides, and a real person to ask' },
+      { label: 'Free SEO check', href: routes.websiteAudit, note: "Check your website's SEO for free" },
     ],
   },
 ]
 
+// The 11 main cities, then /locations for the rest (spec group 5, item 1).
+export const FOOTER_CITIES: { label: string; href: string }[] = [
+  ['Karachi', 'karachi'], ['Lahore', 'lahore'], ['Islamabad', 'islamabad'],
+  ['Rawalpindi', 'rawalpindi'], ['Faisalabad', 'faisalabad'], ['Multan', 'multan'],
+  ['Peshawar', 'peshawar'], ['Hyderabad', 'hyderabad'], ['Gujranwala', 'gujranwala'],
+  ['Sialkot', 'sialkot'], ['Quetta', 'quetta'],
+].map(([label, slug]) => ({ label, href: routes.location(slug) })).concat({ label: 'All cities', href: routes.locations })
+
+// No footer link may point at a noindexed page; check-internal-links.mjs
+// enforces it against seo-noindex-list.ts.
 export const FOOTER_COLUMNS = [
   {
     title: 'Product',
     links: [
       { label: 'Pricing', href: routes.pricing },
       { label: 'Features', href: routes.features },
+      { label: 'Templates', href: routes.templates },
       { label: 'Website examples', href: routes.websiteExamples },
-      { label: 'Done-for-you website', href: routes.service('dfy') },
-      { label: 'Help centre', href: routes.help },
     ],
   },
   {
     title: 'Services',
     links: [
-      { label: 'Done-for-you website', href: routes.service('dfy') },
-      { label: 'Local & global SEO', href: routes.service('seo') },
-      { label: 'Concierge service', href: routes.service('concierge') },
-      { label: 'Growth marketing', href: routes.service('growth') },
-      { label: 'Website audit', href: routes.websiteAudit },
+      { label: 'Website development', href: routes.service('dfy') },
+      { label: 'SEO services', href: routes.service('seo') },
+      { label: 'Digital marketing', href: routes.service('growth') },
+      { label: 'Website maintenance', href: routes.service('concierge') },
+      { label: 'Free SEO check', href: routes.websiteAudit },
+    ],
+  },
+  {
+    // These pages lost their header links in the new menu; listing them
+    // here keeps each one linked from every page.
+    title: 'Resources',
+    links: [
+      { label: 'Blog', href: routes.blog },
+      { label: 'Help centre', href: routes.help },
+      { label: 'FAQs', href: routes.faqs },
+      { label: 'Videos', href: routes.videos },
     ],
   },
   {
@@ -105,6 +117,7 @@ export const FOOTER_COLUMNS = [
       { label: 'MatjarX vs Squarespace', href: routes.compare('squarespace') },
       { label: 'MatjarX vs GoDaddy', href: routes.compare('godaddy') },
       { label: 'Best builder in Pakistan', href: routes.bestBuilder },
+      { label: 'All alternatives', href: routes.alternatives },
     ],
   },
 ]

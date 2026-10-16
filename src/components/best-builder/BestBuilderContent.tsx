@@ -19,6 +19,7 @@ import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { FaqList } from '@/components/FaqList'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
+import BodyLinks from '@/components/BodyLinks'
 
 const TONE_COLOR = { us: 'var(--navy)', ok: 'var(--ink-4-alt)', bad: 'var(--terracotta)' } as const
 
@@ -272,6 +273,8 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             ))}
           </div>
         </section>
+
+        <BodyLinks path="/best-website-builder-pakistan" />
 
         {/* FAQs */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
