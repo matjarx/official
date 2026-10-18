@@ -24,6 +24,7 @@ import { SERVICE_TABS, SERVICE_DATA, type ServiceKey, type ServiceDataEntry } fr
 import ServiceDetailSections from './ServiceDetailSections'
 import { useCurrency } from '@/components/CurrencyProvider'
 import BodyLinks from '@/components/BodyLinks'
+import { CLAIM, showsClaimTile } from '@/lib/claim'
 
 export type ServicesContentShape = ServiceDataEntry
 const DEFAULT_CONTENT: Record<ServiceKey, ServicesContentShape> = SERVICE_DATA
@@ -157,6 +158,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
                   <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>{r.label}</span>
                 </div>
               ))}
+              {showsClaimTile(d.resultStats) && <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{CLAIM}</p>}
             </div>
           </div>
         </section>

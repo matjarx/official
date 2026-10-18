@@ -19,6 +19,7 @@ import AnnouncementBar from '@/components/AnnouncementBar'
 import ThemeProvider from '@/components/ThemeProvider'
 import CurrencyProvider from '@/components/CurrencyProvider'
 import SitePopup from '@/components/SitePopup'
+import MobileStickyBar from '@/components/MobileStickyBar'
 import './globals.css'
 
 // Without this, Next's Data Cache would cache the layout's own
@@ -63,7 +64,7 @@ const SITE_URL = 'https://matjarx.com'
 // number Google is told is the number the page actually dials.
 const BUSINESS_PHONE = BUSINESS_PHONE_E164
 const DEFAULT_TITLE = 'MatjarX — Done-for-you websites, live in 7 days'
-const DEFAULT_DESCRIPTION = 'MatjarX builds complete small business websites in 7 days for Rs. 22,500 — done-for-you design, SEO and growth marketing for businesses across Pakistan and the Gulf.'
+const DEFAULT_DESCRIPTION = 'MatjarX builds complete small business websites in 7 days, from Rs. 4,500/month + Rs. 22,500 setup — done-for-you design, SEO and growth marketing.'
 const DEFAULT_SOCIALS: Record<string, string> = {
   Facebook: 'https://www.facebook.com/matjarxpakistan/',
   Instagram: 'https://www.instagram.com/matjarxpakistan/',
@@ -275,6 +276,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             as "the popup is broken". Checking it here at least keeps the
             two in agreement; the admin now warns about it on the way in. */}
           {isWidgetActive(popupConfig) && !!popupConfig.heading && <SitePopup config={popupConfig} />}
+          <MobileStickyBar />
         </ThemeProvider>
         </CurrencyProvider>
         <GoogleAnalytics gaId={gaId} />

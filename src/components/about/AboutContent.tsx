@@ -14,6 +14,7 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { ABOUT_STATS, ABOUT_VALUES, ABOUT_TEAM, ABOUT_FAQS } from '@/lib/about-data'
 import { FaqList } from '@/components/FaqList'
+import { CLAIM, showsClaimTile } from '@/lib/claim'
 
 export type AboutContentShape = { stats: typeof ABOUT_STATS; values: typeof ABOUT_VALUES; team: typeof ABOUT_TEAM; faqs: typeof ABOUT_FAQS }
 const DEFAULT_CONTENT: AboutContentShape = { stats: ABOUT_STATS, values: ABOUT_VALUES, team: ABOUT_TEAM, faqs: ABOUT_FAQS }
@@ -52,6 +53,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                   </div>
                 ))}
               </div>
+              {showsClaimTile(ABOUT_STATS_ACTIVE) && <p style={{ margin: '14px 4px 0', fontSize: 14, lineHeight: 1.55, color: 'var(--ink-muted)', textAlign: 'center' }}>{CLAIM}</p>}
             </div>
           </section>
 
@@ -63,7 +65,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                 <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.3px', color: 'var(--ink-1)' }}>It started with a question we couldn&rsquo;t answer well</h2>
                 <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: 'var(--ink-3-alt)' }}>A fabric wholesaler in Faisalabad asked us what a website would cost him. The honest answer at the time was uncomfortable: either several hundred thousand rupees to an agency, or a year of his own evenings learning a builder he would probably abandon.</p>
                 <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: 'var(--ink-3-alt)' }}>Neither answer was reasonable for a business doing solid trade with twelve staff. So we built the option that should have existed: a fixed price, a fixed timeline, and a team that does the work.</p>
-                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: 'var(--ink-3-alt)' }}>Eight years later we&rsquo;ve built 70,000+ websites. The model hasn&rsquo;t changed much — you tell us about your business, we build the whole thing, and we stay on to keep it working.</p>
+                <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: 'var(--ink-3-alt)' }}>Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan. The model hasn&rsquo;t changed much — you tell us about your business, we build the whole thing, and we stay on to keep it working.</p>
               </div>
               {/* The real team photo, where a gradient box saying "Team
                   photo" used to sit. The two smaller gradient panels under

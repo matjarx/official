@@ -18,7 +18,7 @@ import type { IndustryGroup, Theme } from '@/lib/theme-catalogue'
 import {
   HERO, WHY_TEMPLATES, TEMPLATE_FEATURES, CATEGORIES, SELECTION_PROCESS,
   CUSTOMIZATION, POPULAR, TEMPLATE_UPDATES, MIGRATION, TEMPLATE_FAQS, RELATED,
-  TEMPLATE_PREVIEWS, type IconCard,
+  TEMPLATE_PREVIEWS, TEMPLATE_COUNT, type IconCard,
 } from '@/lib/templates-data'
 import { FaqList } from '@/components/FaqList'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
@@ -78,7 +78,7 @@ export default function TemplatesContent({
       {/* Hero */}
       <section style={{ background: 'var(--navy)', padding: '58px 24px 56px' }}>
         <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
-          <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>100+ designs, ready to launch</span>
+          <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{TEMPLATE_COUNT} designs, ready to launch</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>{HERO_ACTIVE.headline}</h1>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{HERO_ACTIVE.subhead}</p>
           <a href={appLogin} className="btn-primary" style={{ marginTop: 4 }}>{HERO_ACTIVE.cta}</a>

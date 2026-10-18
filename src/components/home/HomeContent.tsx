@@ -26,6 +26,7 @@ import { FaqList } from '@/components/FaqList'
 import { useTheme } from '@/components/ThemeProvider'
 import { useCurrency } from '@/components/CurrencyProvider'
 import BodyLinks from '@/components/BodyLinks'
+import { CLAIM, showsClaimTile } from '@/lib/claim'
 
 // Code-split rather than statically imported: both sit well below the
 // fold (savings calculator, website-examples grid + its full-screen
@@ -78,7 +79,7 @@ const STEPS = [
 ]
 
 const PROOF_STATS = [
-  { value: '70,000', label: 'websites built' },
+  { value: '70,000+', label: 'websites built by our team' },
   { value: '7 days', label: 'average launch' },
   { value: '0%', label: 'commission on sales' },
 ]
@@ -233,7 +234,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           <p style={{ margin: 0, fontSize: 'clamp(14px, 1.6vw, 17px)', color: ink4 }}>Having trouble launching the right website for your business?</p>
 
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 5.6vw, 60px)', lineHeight: 1.08, letterSpacing: '-2px', color: ink1 }}>
-            We&apos;ll build complete <span className="marker">small business websites</span> in 7 days for {inText('Rs. 22,500')}
+            We&apos;ll build complete <span className="marker">small business websites</span> in 7 days, {inText('from Rs. 4,500/month + Rs. 22,500 setup')}
           </h1>
 
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: ink4 }}>
@@ -260,7 +261,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             </span>
           </div>
 
-          <p style={{ margin: 0, fontSize: 'clamp(13.5px, 1.6vw, 16px)', fontWeight: 600, color: dark ? 'var(--butter)' : '#776810' }}>Become part of a thriving network of over 70,000 business owners.</p>
+          <p style={{ margin: 0, fontSize: 'clamp(13.5px, 1.6vw, 16px)', fontWeight: 600, color: dark ? 'var(--butter)' : '#776810' }}>Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.</p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 10 }}>
             {RATING_BADGES.map((b) => (
@@ -525,7 +526,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           <div style={{ maxWidth: 1360, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginRight: 'auto', maxWidth: 560 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Real sites, real businesses</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>70,000 websites built and counting</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.</h2>
             </div>
             <Link className="btn-trace" href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(var(--ink-inverse-rgb), 0.07)' : 'var(--surface)', border: `1.5px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.16)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>Browse all examples</Link>
           </div>
@@ -602,6 +603,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   </div>
                 ))}
               </div>
+              {showsClaimTile(PROOF_STATS) && <p style={{ margin: 0, maxWidth: '36em', fontSize: 13.5, lineHeight: 1.55, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{CLAIM}</p>}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               {REVIEWS.map((r) => (
