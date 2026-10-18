@@ -15,6 +15,7 @@ only if it is still exactly as exported, and the script aborts (changing
 nothing) if any row has been edited since -- re-export and regenerate then.
 Never connects to a database.
 """
+import hashlib
 import json
 import os
 import sys
@@ -44,7 +45,7 @@ ADS_SECTION_NOTE = {'p': 'On Growth, your team advises you on ads. Ad campaign m
 REPORT = 'We report your results every month.'
 CONCIERGE = 'Edits done by our team, as agreed in your plan'
 DETAIL_DROP = {'plans/boost', 'plans/growth', 'plans/platinum', 'plans/custom'}  # detail.examples
-SLUGS = {'plans/boost', 'plans/growth', 'plans/platinum', 'plans/custom', 'services/dfy', 'services/growth', 'careers',
+SLUGS = {'website-examples', 'plans/boost', 'plans/growth', 'plans/platinum', 'plans/custom', 'services/dfy', 'services/growth', 'careers',
          'services/concierge', 'faqs',
          'industries/restaurants', 'industries/real-estate', 'industries/clinics-and-healthcare',
          'industries/online-stores-ecommerce', 'industries/boutiques', 'industries/salons-and-spas',
@@ -154,6 +155,13 @@ LIST_EXACT = {
         'More campaigns or a bigger budget: custom ads plan, quoted separately'],
     ('25-100% increase in website traffic within 6 months', '2-5x increase in leads and bookings', '$1-10 return for every $1 spent on marketing'): [REPORT],
 }
+# Undocumented client results, removed 15 Oct (Zulfay Hair's is documented and stays).
+CASE_STUDY_TITLES = {'How Done-For-You Websites Drive Results', 'Real Results: Growth Members Achieving Massive Success'}
+REMOVED_STATS = {'orders in the first quarter', 'return for Perun Roofing'}
+REMOVED_RESULTS = {'Bin Adam Textile': '#1 on Google', 'Eebeel Home': '2,000+ leads', 'Askari Estates': '3× more enquiries',
+                   'IronCore Fitness': '200+ sign-ups online', 'Speedway Auto Care': 'Bookings up 2.5×'}
+# None of these may appear anywhere in plan-copy.sql -- not even in its guards.
+MUST_NOT_APPEAR = ['3-5x', 'Top 10 Google', '5000%', '2500%', 'Slavi', 'Unlimited edits, at your request', 'No limits']
 PLATINUM_FEATURE_ANCHOR, PLATINUM_FEATURE = 'Full webstore built for you', 'Social media management'
 
 hits = {}
@@ -177,7 +185,8 @@ def walk(v, slug, path=''):
         for i, x in enumerate(v):
             # Decision 4: "Example results" paragraphs and "Year 1 Results"; decision 1: the unlimited-edits stat.
             if isinstance(x, dict) and (str(x.get('p', '')).startswith('Example results:') or x.get('h') == 'Year 1 Results'
-                                        or x.get('label') == 'edits on Boost and above'):
+                                        or x.get('label') == 'edits on Boost and above'
+                                        or (path == '.resultStats' and x.get('label') in REMOVED_STATS)):
                 hits.setdefault(slug, []).append(f'{path}[{i}]: removed {json.dumps(x, ensure_ascii=False)[:90]}')
                 continue
             kept.append(walk(x, slug, f'{path}[{i}]'))
@@ -199,6 +208,20 @@ def walk(v, slug, path=''):
             # The example case studies were not real, named clients (decision 3).
             hits.setdefault(slug, []).append(f'{path}.examples: removed')
             v = {k: x for k, x in v.items() if k != 'examples'}
+        # Undocumented client results (15 Oct), same as case-studies.sql: the
+        # named case studies, Slavi's story and quote. Zulfay Hair's result is
+        # documented and stays.
+        if slug in ('services/dfy', 'services/growth') and path == '.detail':
+            for key in ('caseStudies', 'slaviStory'):
+                if key in v and (key == 'slaviStory' or v[key].get('title') in CASE_STUDY_TITLES):
+                    hits.setdefault(slug, []).append(f'{path}.{key}: removed')
+                    v = {k: x for k, x in v.items() if k != key}
+        if slug == 'services/growth' and path == '' and v.get('quoteName') == 'Slavi':
+            hits.setdefault(slug, []).append('.quote: Slavi quote removed')
+            v = {k: x for k, x in v.items() if k not in ('quote', 'quoteName', 'quoteCompany')}
+        if slug == 'website-examples' and v.get('name') in REMOVED_RESULTS and REMOVED_RESULTS[v['name']] == v.get('result'):
+            hits.setdefault(slug, []).append(f'{path}.result: {v["result"]!r} removed')
+            v = {k: x for k, x in v.items() if k != 'result'}
         if slug == 'plans/platinum' and path == '.detail.pricing' and 'roi' in v:
             hits.setdefault(slug, []).append(f'{path}.roi: removed ("Average client increase: 3-5x sales")')
             v = {k: x for k, x in v.items() if k != 'roi'}
@@ -218,6 +241,33 @@ def lit(obj):
     return "'" + json.dumps(obj, ensure_ascii=False).replace("'", "''") + "'::jsonb"
 
 
+def _jstr(s):
+    esc = {'"': '\\"', '\\': '\\\\', '\b': '\\b', '\f': '\\f', '\n': '\\n', '\r': '\\r', '\t': '\\t'}
+    return '"' + ''.join(esc.get(c) or ('\\u%04x' % ord(c) if ord(c) < 0x20 else c) for c in s) + '"'
+
+
+def jsonb_text(v):
+    """What Postgres prints for v::jsonb::text -- keys by byte length then bytes, ', ' and ': '."""
+    if v is None:
+        return 'null'
+    if isinstance(v, bool):
+        return 'true' if v else 'false'
+    if isinstance(v, (int, float)):
+        return json.dumps(v)
+    if isinstance(v, str):
+        return _jstr(v)
+    if isinstance(v, list):
+        return '[' + ', '.join(jsonb_text(x) for x in v) + ']'
+    keys = sorted(v, key=lambda k: (len(k.encode()), k.encode()))
+    return '{' + ', '.join(_jstr(k) + ': ' + jsonb_text(v[k]) for k in keys) + '}'
+
+
+def fingerprint(obj):
+    # The drift guard compares an md5 of the row rather than the row itself,
+    # so plan-copy.sql does not carry the old copy it is replacing.
+    return hashlib.md5(jsonb_text(obj).encode()).hexdigest()
+
+
 rows = {r['slug']: r for r in json.load(open(SRC, encoding='utf-8')) if r['slug'] in SLUGS}
 updates, rollbacks = [], []
 for slug in sorted(rows):
@@ -233,13 +283,13 @@ for slug in sorted(rows):
 UPDATE marketing_content
    SET data = CASE WHEN data ? '__seo' THEN {lit(new_body)} || jsonb_build_object('__seo', data->'__seo') ELSE {lit(new_body)} END,
        updated_at = now()
- WHERE slug = '{slug}' AND (data - '__seo') = {lit(old_body)};
+ WHERE slug = '{slug}' AND md5((data - '__seo')::text) = '{fingerprint(old_body)}';
 GET DIAGNOSTICS n = ROW_COUNT;
 IF n <> 1 THEN RAISE EXCEPTION '{slug} changed since the export; nothing applied. Re-export and regenerate.'; END IF;
 """)
     rollbacks.append(f"""UPDATE marketing_content
    SET data = CASE WHEN data ? '__seo' THEN {lit(old_body)} || jsonb_build_object('__seo', data->'__seo') ELSE {lit(old_body)} END
- WHERE slug = '{slug}' AND (data - '__seo') = {lit(new_body)};
+ WHERE slug = '{slug}' AND md5((data - '__seo')::text) = '{fingerprint(new_body)}';
 GET DIAGNOSTICS n = ROW_COUNT;
 IF n <> 1 THEN RAISE EXCEPTION '{slug} changed since plan-copy.sql ran; nothing rolled back.'; END IF;
 """)
@@ -258,9 +308,14 @@ open(os.path.join(OUT, 'plan-copy.sql'), 'w', encoding='utf-8').write(wrap(
     '-- Platinum social media and ad management; page limits; no refund guarantee.\n'
     '-- Round 2: concierge edits as agreed in the plan; Growth edits for the first\n'
     '-- 30 days; no unnamed example case studies; no promised results or timeframes.\n'
+    '-- 15 Oct: undocumented client results removed (as case-studies.sql, which is a\n'
+    '-- no-op after this). Each row is matched by an md5 of its exported content.\n'
     '-- All or nothing.', updates))
 open(os.path.join(OUT, 'plan-copy-rollback.sql'), 'w', encoding='utf-8').write(wrap(
     '-- Restores the rows plan-copy.sql changes. All or nothing.', rollbacks))
+forward = open(os.path.join(OUT, 'plan-copy.sql'), encoding='utf-8').read()
+for phrase in MUST_NOT_APPEAR:
+    assert phrase.replace("'", "''") not in forward, f'{phrase!r} is in plan-copy.sql'
 for slug, h in sorted(hits.items()):
     print(f'{slug}: {len(h)} change(s)')
     for line in h:

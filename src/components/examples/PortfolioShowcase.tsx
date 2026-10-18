@@ -57,7 +57,7 @@ export default function PortfolioShowcase({ items, modalIndex, setModalIndex }: 
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, letterSpacing: '-0.2px', color: 'var(--ink-1)' }}>{ex.name}</span>
                 <span style={{ fontSize: 12, color: 'var(--ink-muted)' }}>{ex.category} · {ex.domain}</span>
               </div>
-              <span style={{ flex: '0 0 auto', fontSize: 11.5, fontWeight: 600, padding: '6px 12px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{ex.result}</span>
+              {ex.result && <span style={{ flex: '0 0 auto', fontSize: 11.5, fontWeight: 600, padding: '6px 12px', borderRadius: 999, color: 'var(--ink-on-butter-alt)', background: 'var(--butter)', whiteSpace: 'nowrap' }}>{ex.result}</span>}
             </div>
           </div>
         ))}
