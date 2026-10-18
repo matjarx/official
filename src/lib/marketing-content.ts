@@ -320,16 +320,18 @@ export type PopupConfig = {
 // side — e.g. only an end_date means "active until then", only a
 // start_date means "active from then on".
 /**
- * Exactly the strip that was hardcoded in SiteHeader before the two
- * copies were merged, so an empty or missing `_announcement_bar` row
- * renders the site the way it has always rendered. `enabled: true` for
- * the same reason -- the bar is part of the design, not a campaign
- * someone has to switch on.
+ * What an empty or missing `_announcement_bar` row renders. `enabled:
+ * true` -- the bar is part of the design, not a campaign someone has to
+ * switch on. It points at the free SEO check (decided Oct 2026); the
+ * old "Get 49% discount on sign up now" / "Go digital with 100,000
+ * business in 2026" strip promised a discount and a number nobody stands
+ * behind.
  */
 export const DEFAULT_ANNOUNCEMENT: AnnouncementBarConfig = {
   enabled: true,
-  badge_text: 'Get 49% discount on sign up now',
-  text: 'Go digital with 100,000 business in 2026',
+  text: 'Free website SEO check:',
+  link_text: 'get your report',
+  link_url: '/complete-website-audit-for-organic-visibility',
   bg_color: BRAND_GRADIENT,
   text_color: '#FFFFFF',
   dismissible: false,

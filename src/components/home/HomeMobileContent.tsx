@@ -95,11 +95,7 @@ export default function HomeMobileContent() {
 
         {/* Promo bar */}
         <div style={{ position: 'relative', zIndex: 3, flex: '0 0 auto', background: 'linear-gradient(90deg, var(--navy) 0%, var(--mid-blue) 20%, var(--olive) 42%, #C9A227 60%, #C4262E 80%, #7A2E6B 100%)', padding: '14px 14px 9px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '4px 11px', borderRadius: 999, background: 'rgba(var(--shadow-rgb), 0.26)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.32)' }}>
-            <span style={{ width: 5, height: 5, flex: '0 0 auto', borderRadius: '50%', background: 'var(--butter)' }} />
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 10.5, color: 'var(--ink-inverse)', whiteSpace: 'nowrap' }}>49% off on sign up</span>
-          </span>
-          <span style={{ fontSize: 10.5, fontWeight: 600, color: 'rgba(var(--ink-inverse-rgb), 0.94)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>100,000 businesses in 2026</span>
+          <span style={{ fontSize: 10.5, fontWeight: 600, color: 'rgba(var(--ink-inverse-rgb), 0.94)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Free website SEO check: <a href="/complete-website-audit-for-organic-visibility" style={{ color: 'inherit', fontWeight: 700, textDecoration: 'underline' }}>get your report</a></span>
         </div>
 
         {/* Header */}
@@ -304,7 +300,7 @@ export default function HomeMobileContent() {
             <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, lineHeight: 1.12, letterSpacing: '-0.9px', color: '#1F2A08' }}>Professional website done for you. 7-day turnaround.</h2>
             {/* Same copy as the footer CTA, kept in step deliberately —
                 /home-mobile renders this instead of SiteFooter's card. */}
-            <span style={{ fontSize: 13.5, lineHeight: 1.6, fontWeight: 600, color: '#3D4A16' }}>Completely zero-risk. Unmatched customer service.</span>
+            <span style={{ fontSize: 13.5, lineHeight: 1.6, fontWeight: 600, color: '#3D4A16' }}>No long-term contract. Cancel with 30 days&apos; notice. Unmatched customer service.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.</span>
             <span style={{ fontSize: 13, lineHeight: 1.6, color: '#3D4A16' }}>Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.</span>
             <a className="btn-trace" href={appSignup()} style={{ width: '100%', textAlign: 'center', padding: '15px 20px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-inverse)', background: 'var(--navy-deepest)' }}>Get started</a>

@@ -26,6 +26,7 @@ import { FaqList } from '@/components/FaqList'
 import { useTheme } from '@/components/ThemeProvider'
 import { useCurrency } from '@/components/CurrencyProvider'
 import BodyLinks from '@/components/BodyLinks'
+import { CLAIM, showsClaimTile } from '@/lib/claim'
 
 // Code-split rather than statically imported: both sit well below the
 // fold (savings calculator, website-examples grid + its full-screen
@@ -78,7 +79,7 @@ const STEPS = [
 ]
 
 const PROOF_STATS = [
-  { value: '70,000', label: 'websites built' },
+  { value: '70,000+', label: 'websites built by our team' },
   { value: '7 days', label: 'average launch' },
   { value: '0%', label: 'commission on sales' },
 ]
@@ -602,6 +603,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   </div>
                 ))}
               </div>
+              {showsClaimTile(PROOF_STATS) && <p style={{ margin: 0, maxWidth: '36em', fontSize: 13.5, lineHeight: 1.55, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{CLAIM}</p>}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               {REVIEWS.map((r) => (

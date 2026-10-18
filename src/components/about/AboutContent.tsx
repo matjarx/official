@@ -14,6 +14,7 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { ABOUT_STATS, ABOUT_VALUES, ABOUT_TEAM, ABOUT_FAQS } from '@/lib/about-data'
 import { FaqList } from '@/components/FaqList'
+import { CLAIM, showsClaimTile } from '@/lib/claim'
 
 export type AboutContentShape = { stats: typeof ABOUT_STATS; values: typeof ABOUT_VALUES; team: typeof ABOUT_TEAM; faqs: typeof ABOUT_FAQS }
 const DEFAULT_CONTENT: AboutContentShape = { stats: ABOUT_STATS, values: ABOUT_VALUES, team: ABOUT_TEAM, faqs: ABOUT_FAQS }
@@ -52,6 +53,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
                   </div>
                 ))}
               </div>
+              {showsClaimTile(ABOUT_STATS_ACTIVE) && <p style={{ margin: '14px 4px 0', fontSize: 14, lineHeight: 1.55, color: 'var(--ink-muted)', textAlign: 'center' }}>{CLAIM}</p>}
             </div>
           </section>
 

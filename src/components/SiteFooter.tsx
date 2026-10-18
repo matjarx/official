@@ -15,6 +15,7 @@ import { trackEvent } from '@/lib/analytics'
 import type { SiteSettings } from '@/lib/marketing-content'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF, WHATSAPP_HREF } from '@/lib/contact-details'
 import { pillarOf } from '@/lib/pillars'
+import { CLAIM } from '@/lib/claim'
 
 // The closing CTA band matches the page it ends (spec group 6, item 4):
 // website pages sell the website, SEO pages the free SEO check, marketing
@@ -22,7 +23,6 @@ import { pillarOf } from '@/lib/pillars'
 // SEO pages: the SEO service, the audit and SEO-pillar posts. Marketing
 // pages: the growth service and posts whose CTA is digital marketing (P4,
 // including the social/WhatsApp setup posts).
-const CLAIM = 'Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.'
 type CtaKind = 'website' | 'seo' | 'marketing'
 const CLOSING_CTA: Record<CtaKind, { heading: string; lines: string[]; label: string; href: string }> = {
   website: {
@@ -110,11 +110,9 @@ export default function SiteFooter() {
           <h2 style={{ margin: 0, maxWidth: '22em', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 40, lineHeight: 1.08, letterSpacing: '-1.4px', color: '#1F2A08' }}>
             {cta.heading}
           </h2>
-          {kind === 'website' && (
-            <p style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.6, color: '#3D4A16', fontWeight: 600 }}>
-              Completely zero-risk. Unmatched customer service.
-            </p>
-          )}
+          <p style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.6, color: '#3D4A16', fontWeight: 600 }}>
+            No long-term contract. Cancel with 30 days&apos; notice. Unmatched customer service.
+          </p>
           {[...cta.lines, CLAIM].map((line) => (
             <p key={line} style={{ margin: 0, maxWidth: '38em', fontSize: 16, lineHeight: 1.6, color: '#3D4A16' }}>
               {line}
