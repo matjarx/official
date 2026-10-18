@@ -30,9 +30,10 @@ CHANGES = [
     ('services/dfy', '100% secure. In 8+ years serving 70,000+ customers: zero security breaches, zero cyber attacks, data stored on secured AWS servers, SSL certificate on every website, automatic updates and patches, daily backups.',
                      f'{SECURITY} Your data is stored on secured AWS servers, with daily backups.'),
     ('services/dfy', 'Completely zero-risk. Unmatched customer service.', "No long-term contract. Cancel with 30 days' notice. Unmatched customer service."),
-    # 18 Oct, later: years match the claim; the headcount was not confirmed.
+    # 18 Oct, later: years match the claim; team size and client countries
+    # as confirmed by MatjarX (clients' countries, not offices).
     ('about', "8+ years helping small businesses get online. We've grown from a small team to 120 professionals across 4 countries, but",
-              "7+ years helping small businesses get online. We're a growing team across 4 countries, but"),
+              "7+ years helping small businesses get online. We're a team of 18–20 people, serving clients across Pakistan, the UAE, the UK and the US, but"),
 ]
 
 for _, old, new in CHANGES:

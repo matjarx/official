@@ -16,7 +16,7 @@ export const ABOUT_VALUES = [
 ]
 
 export const ABOUT_FAQS: [string, string][] = [
-  ['How long has MatjarX been around?', "7+ years helping small businesses get online. We're a growing team across 4 countries, but our mission remains the same: solve the website problem."],
+  ['How long has MatjarX been around?', "7+ years helping small businesses get online. We're a team of 18–20 people, serving clients across Pakistan, the UAE, the UK and the US, but our mission remains the same: solve the website problem."],
   ['Is MatjarX a Pakistani company?', "Yes and no. MatjarX was founded in Pakistan and is headquartered here. Our team operates across Pakistan, the US, the UK and the UAE — optimised for serving Pakistani businesses with local payment methods, support in Urdu and English, and a deep understanding of the Pakistani market."],
   ['How many websites has MatjarX built?', "Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan. They span 1,000+ business categories — everything from local services to e-commerce, solo entrepreneurs to small teams."],
   ['Do you have a security track record?', "SSL on every site, plus security and platform updates. All data is stored on AWS, one of the safest providers in the world, and every website includes an SSL security certificate."],
