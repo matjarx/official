@@ -110,7 +110,7 @@ export const LAUNCH: StandardPlanDetail = {
   ], closing: 'Your website is live and ready to serve customers.' },
   faqs: [
     { q: 'How many pages are included?', a: 'Up to 10 professional pages. This typically includes:', items: ['Home page', 'About page', 'Services/Products page', 'Contact page', 'Blog page (optional)', 'FAQ page (optional)', '1-3 additional pages based on your needs'] },
-    { q: 'Can I add pages later?', a: 'Yes. You add and edit pages yourself with the theme editor, and we show you how on your launch training call. If you want our team to make changes for you, that comes with Boost and above.' },
+    { q: 'Can I add pages later?', a: 'Yes. You add and edit pages yourself with the theme editor, and we show you how on your launch training call. If you want our team to make changes for you: Boost and Growth include edits by our team for the first 30 days, and Platinum includes unlimited edits.' },
     { q: 'What about the domain cost after the first year?', a: 'First year included. Year 2+ requires annual renewal (typically PKR 1,500-3,500 depending on domain). Paid through your MatjarX account.' },
     { q: 'Can I upgrade to a higher plan?', a: 'Yes, anytime. If you upgrade to Boost or Growth:', items: ['New setup fee applies for new plan', 'Old plan cancels', 'Previous work transfers'] },
     { q: 'Is hosting really included?', a: '100% included. No separate hosting fees. Everything is included:', items: ['Server costs', 'Domain costs', 'Email hosting', 'SSL certificate', 'Backups and security'] },

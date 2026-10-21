@@ -29,7 +29,8 @@ export type ServiceDetail = {
   numbers?: { title: string; rows: [string, string][]; footnote?: string }
   planTable?: { title: string; table: CompareTable; note?: string }
   marketingJourney?: { title: string; months: { title: string; focus: string; weDo: string[]; yourAction: string[]; outcome: string }[] }
-  caseStudies: { title: string; items: CaseStudy[] }
+  /** Optional: unnamed and undocumented case studies were removed 15 Oct. */
+  caseStudies?: { title: string; items: CaseStudy[] }
   testimonials?: { items: Testimonial[] }
   slaviStory?: { title: string; quote: string; name: string; points: string[] }
   pricing?: { title: string; setup?: { amount: string; items: string[] }; monthly?: { amount: string; items: string[] }; note?: string }
@@ -105,12 +106,6 @@ export const DFY: ServiceDetail = {
     { title: 'DIY Website Builders (Wix, Squarespace, etc.)', items: ['You spend 50-100+ hours learning and building', 'Results look amateur or templated', 'No support when you’re stuck', 'Unclear what you’re doing wrong', 'Months to get it right'] },
     { title: 'Expensive Web Agencies', items: ['Cost Rs. 50,000–200,000+ upfront', 'Wait weeks or months for launch', 'You become dependent on them for any changes', 'Can’t easily switch providers', 'Ongoing maintenance costs'] },
     { title: 'MatjarX Done-For-You', items: ['Professional design in just 7 days', 'Expert copywriting and optimization included', 'Personal launch call and training', 'Easy self-editing afterward (if you want)', 'Affordable — agency quality at fraction of the cost'], positive: true },
-  ] },
-  caseStudies: { title: 'How Done-For-You Websites Drive Results', items: [
-    { title: 'Health & Beauty Natural Oils — 5000% ROI in First 6 Months', lines: ['Challenge: an online essential oils business needed visibility', 'Solution: MatjarX built a custom e-commerce website with SEO optimization', 'Ranks #1 for primary keyword "Best Essential Oils" on Google Search', 'Ranks #1 on Google Maps for local searches', '5000% return on investment in first 6 months', 'Massive increase in customer inquiries', '"The website and SEO has played a pivotal role in elevating our reach and visibility to unprecedented levels." — Joseph Demangeat, Owner'] },
-    { title: 'AtoZ Wholesale', lines: ['Ranks #1 after Yelp on Google for "Best Cutlery Provider"', 'Top ranking for "Restaurant Supply Chain Dubai"', 'Significant increase in wholesale inquiries'] },
-    { title: 'ABC Handyman', lines: ['Ranks #1 on Google Maps for "Handyman Aiken"', '#1 ranking after Angi and Better Business Bureau on Google Search', 'Consistent local lead generation'] },
-    { title: 'Maui Teriyaki & Sushi', lines: ['Ranks #1 on Google Maps for "Teriyaki Gainesville"', '#2 on Google Search (ahead of most competitors)', 'Increase in online orders and reservations'] },
   ] },
   pricing: { title: 'What You Pay vs. What You Get', setup: { amount: 'Rs. 22,500 one-time', items: ['Complete website design and build', 'Professional copywriting', 'SEO optimization', 'E-commerce and booking setup', 'Live in 7 business days', 'Launch call and training', 'Easy-to-use editor'] },
     monthly: { amount: 'Rs. 4,500/month', items: ['Domain name (or use your own)', 'Professional email inbox', 'Hosting on fast, secure servers', 'SSL certificate (auto-renewed)', 'Unlimited sales, bookings, leads', '0% commission on all transactions', 'Platform updates and upgrades', 'Live chat support', 'Analytics and tracking'] },
@@ -193,11 +188,6 @@ export const SEO: ServiceDetail = {
     ['Monthly Profile Posts', '2', '3-4', '4+'], ['SEO Audit Report', '✅ Monthly', '✅ Monthly', '✅ Monthly'], ['Keyword Optimization', '✅ Basic', '✅ Advanced', '✅ Advanced'],
     ['Dedicated SEO Expert', '❌', '✅ Growth Expert', '✅ SEO Team'], ['Monthly Strategy Session', '❌', '✅ 1-on-1', '✅ 1-on-1'],
   ] }, note: 'All plans include all Local SEO fundamentals. Growth and Platinum add dedicated expert support.' },
-  caseStudies: { title: 'Real Results From Businesses Like Yours', items: [
-    { title: 'Local Service Business: Handyman Services', lines: ['Before: ranked page 3 for "handyman near me," getting 2-3 calls per week', 'After (6 months): ranks #1 on Google Maps, #1 on Google Search, getting 15-20 calls per week', 'Result: 5x increase in business, booked out weeks in advance'] },
-    { title: 'Restaurant: Local Pizza Shop', lines: ['Before: 10-15 walk-in customers per day, unknown online', 'After (3 months): ranks #1 for "pizza near me," gets 30+ online orders daily', 'Result: online orders now exceed walk-in traffic, revenue doubled in 4 months'] },
-    { title: 'Professional Services: Legal Firm', lines: ['Before: relied on referrals, minimal online visibility', 'After (6 months): ranks #1 locally for multiple practice areas, getting 20+ inquiry calls per month', 'Result: tripled new client intake, now expanding team to handle demand'] },
-  ] },
   whyChoose: { title: 'Be the Highest-Ranked, Most Visible Business in Your Area', items: [
     { h: 'Local SEO done right transforms your online visibility from invisible to dominant.', body: 'Customers searching for your services see you first. You get more calls, bookings, and sales. Local, National & Global SEO is part of every MatjarX plan.' },
   ] },
@@ -318,11 +308,6 @@ export const GROWTH: ServiceDetail = {
     { title: 'Month 4: Posting on Facebook & Instagram', focus: 'Brand presence and awareness', weDo: ['Create content calendar', 'Design and schedule posts', 'Manage community engagement', 'Analyze performance metrics', 'Optimize posting strategy'], yourAction: ['Provide content ideas and photos', 'Engage with audience responses', 'Approve content before posting', 'Share feedback on performance'], outcome: 'Consistent social presence, growing followers, increased brand awareness and website traffic.' },
     { title: 'Month 5: Advanced SEO', focus: 'Organic search ranking and traffic', weDo: ['Create SEO content strategy', 'Write and publish optimized blog posts', 'Optimize on-page elements', 'Build internal linking strategy', 'Monitor keyword rankings and traffic'], yourAction: ['Approve content topics and strategy', 'Gather information for content', 'Approve published content', 'Track ranking progress'], outcome: 'Ranking for target keywords, consistent organic traffic increase, 3-6 month compounding growth.' },
   ] },
-  caseStudies: { title: 'Real Results: Growth Members Achieving Massive Success', items: [
-    { title: 'China Friend Restaurant — Chinese restaurant in Barking (competitive market)', lines: ['Challenges: rank locally for "Chinese restaurant," needed more online orders and reservations, facing stiff competition', 'Focus: local SEO, Google Business Profile optimization, content marketing, review generation, Facebook/Instagram marketing', 'Ranks #1 on Google Search and Google Maps for "Chinese restaurant Barking"', '$150,000 in website sales generated · 4,400 customers served', '650+ Google reviews (4.4 rating) · 3,000+ website views monthly', 'Timeline: 6-9 months from growth program start to dominant rankings'] },
-    { title: 'Spokane Taxi Service — Taxi booking service (highly competitive market)', lines: ['Challenges: competing with established taxi companies, wanted online bookings and reputation', 'Focus: local SEO (multiple locations), Google Business Profile, review generation, Google Local Ads, social media', 'Ranks #1 on Google Search & Google Maps for "Taxi Spokane"', '4,000+ phone calls generated · 1,220 messages (booking requests) · 350+ bookings via website', '87+ Google reviews (4.5 rating)', 'Timeline: 4-6 months to achieve top rankings'] },
-    { title: 'Tony’s Pizza Bros — Pizza restaurant (local market)', lines: ['Challenges: page 3 or worse on Google, limited online visibility, competing with pizza chains', 'Focus: content marketing, local SEO, review generation, social media strategy, Google Business Profile', 'Page 1 ranking on Google Search for multiple pizza keywords', '2,500+ phone calls generated · 2,000+ leads captured', '350+ Google reviews (4.3 rating) · consistent order growth', 'Timeline: 3-6 months to achieve first page rankings'] },
-  ] },
   testimonials: { items: [
     { quote: 'Building your dream on the internet takes a team — either yours OR an outside group of experts. The latter is what I found. Every step of the way I found help and guidance to adjust and help in my dream.', name: 'Troy A., Trustpilot 5-star review' },
     { quote: 'Dani B. from MatjarX has really made my work life so much easier. She is so patient with me in helping me understand how to use the website, SEO’s, social media and marketing strategies. MatjarX really is the whole package and so worth it.', name: 'Sherrie S., Trustpilot 5-star review' },
@@ -331,7 +316,6 @@ export const GROWTH: ServiceDetail = {
     { quote: 'I love the monthly "growth" calls (for helping me to grow my business), and I have support for any change or question through e-mail, chat, etc. This is what makes MatjarX unique, usable, and the best.', name: 'Demetrius K., Trustpilot 5-star review' },
     { quote: 'The experience has been transformative for my website. With Adolfo’s help, my website has climbed to the first page of Google results. Adolfo is a true artist in marketing and branding. I highly recommend Adolfo and MatjarX!', name: 'Lane V., Trustpilot 5-star review' },
   ] },
-  slaviStory: { title: 'Slavi’s Story: 2500% ROI in 6 Months', quote: 'It’s only been 6 months or so since MatjarX built my site and ROI is over 2500% — hands down the best money I ever spent. The monthly growth sessions have been enlightening and edits are quick and easy whether you do them yourself or by their dedicated teams. If you need a good site for your new or growing business, get a MatjarX site. Excellent SEO and visibility, highly personalized services, and best of all — regular monthly meetings with a dedicated account manager. Many thanks!', name: 'Perun Roofing, Growth Member for 6 Months', points: ['$1,000 invested in Growth plan = $25,000+ in new revenue generated', 'Monthly growth sessions directly contributed to business decisions', 'Professional website + marketing expertise = compounding growth'] },
   whyChoose: { title: 'Marketing Is Hard. We’re Here to Help.', items: [
     { h: 'What You Get', items: ['Expert strategy tailored to your business', 'Hands-on support from a dedicated manager', 'Monthly accountability through regular meetings', 'Continuous learning about marketing fundamentals', 'Rapid implementation of proven tactics', 'Data-driven optimization based on what works', 'Peace of mind knowing an expert is helping'] },
     { h: 'ROI That Matters', body: 'Growth Marketing isn’t a cost — it’s an investment that generates revenue.', items: ['We report your results every month.'] },
