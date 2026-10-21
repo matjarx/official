@@ -11,8 +11,9 @@ import Link from 'next/link'
 import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import TestimonialColumn from '@/components/TestimonialColumn'
-import CrossLinkRail from '@/components/CrossLinkRail'
-import { crossLinksForCity } from '@/lib/cross-links'
+import PillarCta from '@/components/PillarCta'
+import { PILLAR_CTA } from '@/lib/pillars'
+import type { BlogCard } from '@/lib/marketing-content'
 import { routes } from '@/lib/routes'
 import { CITY_DATA, otherCitiesFor, type CityKey } from '@/lib/location-data'
 import { CITY_DETAIL, type CityProcessStep, type CityPlanTier, type CityCompareGroup } from '@/lib/location-detail-data'
@@ -21,12 +22,13 @@ import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 import { ORGANIZATION_ID } from '@/lib/schema'
+import BodyLinks from '@/components/BodyLinks'
 
 export type LocationContentShape = (typeof CITY_DATA)[CityKey] & {
   detail: { process: CityProcessStep[]; plans: CityPlanTier[]; whyOver: CityCompareGroup[] }
 }
 
-export default function LocationContent({ locationKey, content }: { locationKey: CityKey; content?: LocationContentShape }) {
+export default function LocationContent({ locationKey, content, related = [] }: { locationKey: CityKey; content?: LocationContentShape; related?: BlogCard[] }) {
   // Every city page quotes the plans, so they follow the footer's currency
   // like every other price. The list items go through the shared bullet,
   // which converts on its own.
@@ -42,7 +44,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
-      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://matjarx.com' + routes.home },
+      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://matjarx.com' + routes.locations },
       { '@type': 'ListItem', position: 3, name: d.name, item: pageUrl },
     ],
   }
@@ -95,7 +97,7 @@ export default function LocationContent({ locationKey, content }: { locationKey:
           <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: 'var(--ink-muted)' }}>
             <Link href={routes.home}>Home</Link>
             <span>/</span>
-            <span>Locations</span>
+            <Link href={routes.locations}>Locations</Link>
             <span>/</span>
             <span style={{ fontWeight: 600, color: 'var(--ink-1)' }}>{d.name}</span>
           </div>
@@ -280,6 +282,8 @@ export default function LocationContent({ locationKey, content }: { locationKey:
           </section>
         )}
 
+        <BodyLinks path={routes.location(locationKey)} />
+
         {/* FAQs */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 34, alignItems: 'start' }}>
@@ -293,23 +297,42 @@ export default function LocationContent({ locationKey, content }: { locationKey:
           </div>
         </section>
 
-        {/* Other cities */}
+        {/* Other cities: the nearest indexed cities in the same province,
+            then the full list. Skipped where there are none (Quetta: the
+            other Balochistan pages are noindexed). */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
-          <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Other cities we work in</span>
+          <span style={{ display: 'block', marginBottom: 20, fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>{others.length > 0 ? 'Other cities we work in' : 'Website design across Pakistan'}</span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             {others.map((c) => (
               <Link key={c.label} href={c.href} className="plan-other-card glass-chip" style={{ padding: '11px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-4-alt)', whiteSpace: 'nowrap' }}>
                 Website design {c.label}
               </Link>
             ))}
+            <Link href={routes.locations} className="plan-other-card glass-chip" style={{ padding: '11px 18px', borderRadius: 999, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)', whiteSpace: 'nowrap' }}>
+              All cities →
+            </Link>
           </div>
         </section>
 
-        <CrossLinkRail
-          links={crossLinksForCity(locationKey)}
-          title={`Popular with businesses in ${d.name}`}
-          subtitle="The industries we build for most here, and the guides worth reading first."
-        />
+        {/* Three website-development guides and that pillar's CTA (spec
+            group 5). This replaced a rail of industries and posts picked by
+            rotating through alphabetical lists, unrelated to the city. */}
+        <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0', display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {related.length > 0 && (
+            <>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(19px, 2.4vw, 23px)', color: 'var(--ink-1)' }}>Guides worth reading first</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 14 }}>
+                {related.map((r) => (
+                  <Link key={r.slug} href={routes.blogPost(r.slug)} className="keep-reading-card" style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '18px 20px', borderRadius: 16, background: 'var(--surface)', border: '1px solid rgba(var(--ink-1-rgb), 0.09)', minWidth: 0 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--mid-blue)' }}>{r.category}</span>
+                    <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, lineHeight: 1.3, color: 'var(--ink-1)' }}>{r.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+          <PillarCta cta={PILLAR_CTA.P1} />
+        </section>
 
         <div style={{ height: 70 }} />
         </SiteChrome>

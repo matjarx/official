@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/website-examples' },
     title: pageTitle(seo?.title || 'Website Examples'),
-    description: pageDescription(seo?.description || '70,000+ websites built globally. Browse real MatjarX sites across restaurants, boutiques, clinics, textiles, e-commerce and more.'),
+    description: pageDescription(seo?.description || 'Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan. Browse real MatjarX sites.'),
   }
 }
 

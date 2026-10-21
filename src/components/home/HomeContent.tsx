@@ -25,6 +25,8 @@ import type { HomeContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { useTheme } from '@/components/ThemeProvider'
 import { useCurrency } from '@/components/CurrencyProvider'
+import BodyLinks from '@/components/BodyLinks'
+import { CLAIM, showsClaimTile } from '@/lib/claim'
 
 // Code-split rather than statically imported: both sit well below the
 // fold (savings calculator, website-examples grid + its full-screen
@@ -77,7 +79,7 @@ const STEPS = [
 ]
 
 const PROOF_STATS = [
-  { value: '70,000', label: 'websites built' },
+  { value: '70,000+', label: 'websites built by our team' },
   { value: '7 days', label: 'average launch' },
   { value: '0%', label: 'commission on sales' },
 ]
@@ -127,9 +129,9 @@ const WHY_CHOOSE = [
 export const DEFAULT_FAQ_DATA = [
   { question: 'How does it actually work?', answer: 'Pick a plan and check out. You fill in a short questionnaire about your business, our team builds the whole site in seven days, then we launch it with you on a live call and show you how to edit it yourself.' },
   { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional site, domain, email and hosting. Boost adds unlimited edits done by us for the first 30 days, advanced SEO and selling on Google, Facebook and Instagram. Growth is the one most businesses settle on — it adds a dedicated team, monthly 1-on-1 marketing sessions and 3 blog posts written for you every month. Platinum is a fully custom build for serious e-commerce.' },
-  { question: 'Can I edit the website myself afterwards?', answer: "Yes. Every site comes with our own editor — change photos, text, prices and products from any device, no technical skill needed. On Boost and above, you can send changes to your concierge and we'll make them." },
+  { question: 'Can I edit the website myself afterwards?', answer: "Yes. Every site comes with our own editor — change photos, text, prices and products from any device, no technical skill needed. Boost and Growth include edits by our team for the first 30 days, and Platinum includes unlimited edits." },
   { question: 'Are hosting, domain and email included?', answer: 'Yes, in every plan: a custom domain (or connect one you already own), matching business email, fast secure hosting and an SSL certificate. There are no separate charges for these.' },
-  { question: "What if I don't like the website?", answer: "You review and approve the design before it goes live, and we make adjustments then. After launch you can edit it yourself, and on Boost and above our team makes changes for you. The setup fee itself isn't refundable once work has started, but there's no long-term contract: cancel your plan at any time with 30 days' notice." },
+  { question: "What if I don't like the website?", answer: "You review and approve the design before it goes live, and we make adjustments then. After launch you can edit it yourself. Boost and Growth include edits by our team for the first 30 days, and Platinum includes unlimited edits. The setup fee itself isn't refundable once work has started, but there's no long-term contract: cancel your plan at any time with 30 days' notice." },
   { question: 'Do you work with businesses outside Pakistan?', answer: 'Yes — we serve clients across the Gulf as well. Pricing is quoted in AED for UAE, Saudi and Qatar businesses, and your concierge works your time zone.' },
 ]
 
@@ -232,7 +234,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           <p style={{ margin: 0, fontSize: 'clamp(14px, 1.6vw, 17px)', color: ink4 }}>Having trouble launching the right website for your business?</p>
 
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 5.6vw, 60px)', lineHeight: 1.08, letterSpacing: '-2px', color: ink1 }}>
-            We&apos;ll build complete <span className="marker">small business websites</span> in 7 days for {inText('Rs. 22,500')}
+            We&apos;ll build complete <span className="marker">small business websites</span> in 7 days, {inText('from Rs. 4,500/month + Rs. 22,500 setup')}
           </h1>
 
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: ink4 }}>
@@ -259,7 +261,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             </span>
           </div>
 
-          <p style={{ margin: 0, fontSize: 'clamp(13.5px, 1.6vw, 16px)', fontWeight: 600, color: dark ? 'var(--butter)' : '#776810' }}>Become part of a thriving network of over 70,000 business owners.</p>
+          <p style={{ margin: 0, fontSize: 'clamp(13.5px, 1.6vw, 16px)', fontWeight: 600, color: dark ? 'var(--butter)' : '#776810' }}>Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.</p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 10 }}>
             {RATING_BADGES.map((b) => (
@@ -524,7 +526,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           <div style={{ maxWidth: 1360, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginRight: 'auto', maxWidth: 560 }}>
               <span style={{ fontSize: 12, letterSpacing: '2px', textTransform: 'uppercase', color: dark ? 'var(--moss-light)' : 'var(--olive)', fontWeight: 600 }}>Real sites, real businesses</span>
-              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>70,000 websites built and counting</h2>
+              <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 40px)', lineHeight: 1.12, letterSpacing: '-1.2px', color: ink1 }}>Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.</h2>
             </div>
             <Link className="btn-trace" href={routes.websiteExamples} style={{ padding: '14px 24px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: ink1, background: dark ? 'rgba(var(--ink-inverse-rgb), 0.07)' : 'var(--surface)', border: `1.5px solid ${dark ? 'rgba(var(--ink-inverse-rgb), 0.16)' : 'rgba(var(--ink-1-rgb), 0.14)'}` }}>Browse all examples</Link>
           </div>
@@ -601,6 +603,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
                   </div>
                 ))}
               </div>
+              {showsClaimTile(PROOF_STATS) && <p style={{ margin: 0, maxWidth: '36em', fontSize: 13.5, lineHeight: 1.55, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{CLAIM}</p>}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
               {REVIEWS.map((r) => (
@@ -615,6 +618,8 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
             </div>
           </div>
         </section>
+
+        <BodyLinks path="/" />
 
         {/* FAQs */}
         <section style={{ maxWidth: 860, margin: '0 auto', padding: '82px 24px' }}>

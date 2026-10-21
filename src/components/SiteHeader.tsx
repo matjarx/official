@@ -133,13 +133,25 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
                         top-level item) navigates to its own page. The
                         chevron is a separate click target so the dropdown
                         can still be browsed without leaving the page. */}
-                    <a
-                      href={item.href}
-                      className={dark ? 'nav-link-dark' : 'nav-link-light'}
-                      style={{ display: 'flex', alignItems: 'center', gap: 5, padding: item.menu ? '9px 4px 9px 15px' : '9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
-                    >
-                      {item.label}
-                    </a>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className={dark ? 'nav-link-dark' : 'nav-link-light'}
+                        style={{ display: 'flex', alignItems: 'center', gap: 5, padding: item.menu ? '9px 4px 9px 15px' : '9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      // No hub page (Industries): the label opens the menu.
+                      <button
+                        type="button"
+                        onClick={() => setOpen(isOpen ? -1 : i)}
+                        className={dark ? 'nav-link-dark' : 'nav-link-light'}
+                        style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, padding: '9px 4px 9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
+                      >
+                        {item.label}
+                      </button>
+                    )}
                     {item.menu && (
                       <button
                         type="button"
@@ -153,12 +165,10 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
                     {/* Rendered ALWAYS, hidden with CSS, never unmounted.
                         It used to be `isOpen && <div>`, so the eight links
                         inside each menu existed only after a human clicked.
-                        A crawler never clicks: /templates, /faqs, /features,
-                        /videos, /alternatives, /careers and /become-a-partner
-                        are all reachable ONLY from these menus, and a crawl of
-                        all 149 pages found zero inbound links to them. They
-                        were invisible to search engines while looking
-                        perfectly linked to us. */}
+                        A crawler never clicks, and a crawl of all 149 pages
+                        once found zero inbound links to pages reachable only
+                        from these menus. They were invisible to search
+                        engines while looking perfectly linked to us. */}
                     {item.menu && (
                       <div
                         aria-hidden={!isOpen}
@@ -176,8 +186,11 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
                           border: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.14)' : '1px solid rgba(var(--ink-inverse-rgb), 0.9)',
                           backdropFilter: 'blur(28px)',
                           boxShadow: dark ? '0 22px 50px rgba(0,8,18,0.5), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.14)' : '0 22px 50px rgba(var(--scrim-rgb), 0.16), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
-                          display: 'flex',
-                          flexDirection: 'column',
+                          // A long menu (Industries, 13 links) goes into two
+                          // columns so it stays inside the viewport.
+                          ...(item.menu.length > 8
+                            ? { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(230px, 1fr))' }
+                            : { display: 'flex', flexDirection: 'column' as const }),
                           gap: 2,
                         }}
                       >
@@ -279,14 +292,25 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
               return (
                 <div key={item.key} style={{ display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <a
-                      href={item.href}
-                      onClick={() => setDrawer(false)}
-                      className={dark ? 'mobile-link-dark' : 'mobile-link-light'}
-                      style={{ display: 'flex', alignItems: 'center', flex: 1, minWidth: 0, gap: 10, padding: '15px 14px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 16, fontWeight: isActive ? 700 : 500, color }}
-                    >
-                      <span>{item.label}</span>
-                    </a>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        onClick={() => setDrawer(false)}
+                        className={dark ? 'mobile-link-dark' : 'mobile-link-light'}
+                        style={{ display: 'flex', alignItems: 'center', flex: 1, minWidth: 0, gap: 10, padding: '15px 14px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 16, fontWeight: isActive ? 700 : 500, color }}
+                      >
+                        <span>{item.label}</span>
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setOpen(isOpen ? -1 : i)}
+                        className={dark ? 'mobile-link-dark' : 'mobile-link-light'}
+                        style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', flex: 1, minWidth: 0, gap: 10, padding: '15px 14px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 16, fontWeight: isActive ? 700 : 500, color }}
+                      >
+                        <span>{item.label}</span>
+                      </button>
+                    )}
                     {item.menu && (
                       <button
                         type="button"

@@ -4,16 +4,58 @@
 // dark footer with brand column + 4 link columns.
 
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import CurrencyConverter from '@/components/CurrencyConverter'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
-import { FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
-import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
-import { routes, appSignup } from '@/lib/routes'
+import { FOOTER_CITIES, FOOTER_COLUMNS, FOOTER_SOCIALS } from '@/lib/nav'
+import { routes } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import type { SiteSettings } from '@/lib/marketing-content'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF, WHATSAPP_HREF } from '@/lib/contact-details'
+import { pillarOf } from '@/lib/pillars'
+import { CLAIM } from '@/lib/claim'
+
+// The closing CTA band matches the page it ends (spec group 6, item 4):
+// website pages sell the website, SEO pages the free SEO check, marketing
+// pages the growth service. WhatsApp stays the second button everywhere.
+// SEO pages: the SEO service, the audit and SEO-pillar posts. Marketing
+// pages: the growth service and posts whose CTA is digital marketing (P4,
+// including the social/WhatsApp setup posts).
+type CtaKind = 'website' | 'seo' | 'marketing'
+const CLOSING_CTA: Record<CtaKind, { heading: string; lines: string[]; label: string; href: string }> = {
+  website: {
+    heading: 'Professional website done for you. 7-day turnaround.',
+    lines: ['Your website is the foundation of your online business. Let us build it for you — right, fast, and affordable.'],
+    label: 'Get my website in 7 days',
+    href: routes.pricing,
+  },
+  seo: {
+    heading: "Find out what's holding your website back on Google.",
+    lines: ['We check 10 areas of your website and send you what to fix, by WhatsApp or email.'],
+    label: "Check my website's SEO for free",
+    href: routes.websiteAudit,
+  },
+  marketing: {
+    heading: 'Let our team run your social media and ads.',
+    lines: ['We plan and run your campaigns, and we report your results every month.'],
+    label: 'Plan my social and ads',
+    href: routes.service('growth'),
+  },
+}
+
+function ctaKindFor(path: string): CtaKind {
+  if (path === routes.service('seo') || path === routes.websiteAudit) return 'seo'
+  if (path === routes.service('growth')) return 'marketing'
+  const post = path.startsWith('/blogs/') ? path.slice('/blogs/'.length) : null
+  if (post) {
+    const pillar = pillarOf(post)
+    if (pillar === 'P3') return 'seo'
+    if (pillar === 'P4') return 'marketing'
+  }
+  return 'website'
+}
 
 export default function SiteFooter() {
   // FOOTER_SOCIALS' own hrefs render immediately (real, live values, not
@@ -40,6 +82,8 @@ export default function SiteFooter() {
     }
   }, [])
   const socials = FOOTER_SOCIALS.map((s) => ({ ...s, href: socialOverrides[s.name] || s.href }))
+  const kind = ctaKindFor(usePathname() || '/')
+  const cta = CLOSING_CTA[kind]
 
   return (
     // position/z-index so the footer stacks above AmbientOrbs, which is
@@ -64,31 +108,25 @@ export default function SiteFooter() {
           }}
         >
           <h2 style={{ margin: 0, maxWidth: '22em', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 40, lineHeight: 1.08, letterSpacing: '-1.4px', color: '#1F2A08' }}>
-            Professional website done for you. 7-day turnaround.
+            {cta.heading}
           </h2>
-          {/* Moved here from the closing block on /done-for-you-website,
-              where it sat directly above this card — two closing pitches
-              stacked, saying the same thing twice in different words.
-              This card is on all 184 pages, so the better-written one
-              belongs in it. */}
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 16.5, lineHeight: 1.6, color: '#3D4A16', fontWeight: 600 }}>
-            Completely zero-risk. Unmatched customer service.
+            No long-term contract. Cancel with 30 days&apos; notice. Unmatched customer service.
           </p>
-          <p style={{ margin: 0, maxWidth: '38em', fontSize: 16, lineHeight: 1.6, color: '#3D4A16' }}>
-            Your website is the foundation of your online business. Let us build it for you &mdash; right, fast, and affordable.
-          </p>
-          <p style={{ margin: 0, maxWidth: '38em', fontSize: 16, lineHeight: 1.6, color: '#3D4A16' }}>
-            More than 70,000 businesses trust MatjarX. Your business deserves to join them.
-          </p>
+          {[...cta.lines, CLAIM].map((line) => (
+            <p key={line} style={{ margin: 0, maxWidth: '38em', fontSize: 16, lineHeight: 1.6, color: '#3D4A16' }}>
+              {line}
+            </p>
+          ))}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 8 }}>
-            <a
-              href={appSignup()}
-              onClick={() => trackEvent('cta_click', { label: 'footer_get_started' })}
+            <Link
+              href={cta.href}
+              onClick={() => trackEvent('cta_click', { label: `footer_${kind}` })}
               style={{ padding: '17px 32px', borderRadius: 999, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15.5, color: 'var(--ink-inverse)', background: 'linear-gradient(160deg, #10293D, var(--navy-deepest))', boxShadow: '0 12px 26px rgba(var(--scrim-rgb), 0.28), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.18)' }}
               className="footer-cta-primary"
             >
-              Get started
-            </a>
+              {cta.label}
+            </Link>
             <a
               href={WHATSAPP_HREF}
               target="_blank"
@@ -158,22 +196,17 @@ export default function SiteFooter() {
           ))}
         </div>
 
-        {/* Every city we have a page for, on every page of the site.
-            Deliberately small and quiet: this is a link row, not a nav.
-
-            Each of the 63 city pages is written for "website design in
-            <city>" and none of them had a reliable inbound link -- the
-            rail at the foot of each city page linked a fixed set of six,
-            so 56 were orphaned. That rail now rotates, and this row is the
-            belt to its braces: one link from every page on the site. */}
+        {/* The 11 main cities and /locations (spec group 5). This row used
+            to list all 63 city pages on every page, half of them noindexed;
+            /locations lists every indexed one. */}
         <div style={{ maxWidth: 1360, margin: '40px auto 0', paddingTop: 20, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.1)' }}>
           <span style={{ display: 'block', fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.68)', fontWeight: 600, marginBottom: 10 }}>
             Website design across Pakistan
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px 10px' }}>
-            {CITY_SLUGS.map((slug) => (
-              <Link key={slug} href={routes.location(slug)} className="footer-link footer-link-tap" style={{ fontSize: 12, color: 'rgba(var(--ink-inverse-rgb), 0.62)', whiteSpace: 'nowrap' }}>
-                {CITY_DATA[slug].name}
+            {FOOTER_CITIES.map((c) => (
+              <Link key={c.href} href={c.href} className="footer-link footer-link-tap" style={{ fontSize: 12, color: 'rgba(var(--ink-inverse-rgb), 0.62)', whiteSpace: 'nowrap' }}>
+                {c.label}
               </Link>
             ))}
           </div>

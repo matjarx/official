@@ -1,9 +1,11 @@
 // Data for the Website Design {City} pages — the 3 majors (karachi/lahore/
-// islamabad) carry the original design handoff's handcrafted stats/areas/
-// testimonial; all 63 cities carry real why/industries/FAQ content parsed
+// islamabad) carry the original design handoff's handcrafted stats/areas
+// and, where the client is confirmed real, a quote. Result figures are
+// not shown (Oct 2026); all 63 cities carry real why/industries/FAQ content parsed
 // from each city's own content file (files/matjarx_website_design_*.md).
 
 import { routes } from './routes'
+import { nearestCities } from './location-geo'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 
 export type CityKey = "abbottabad" | "attock" | "bahawalnagar" | "bahawalpur" | "burewala" | "charsadda" | "chichawatni" | "chiniot" | "dadu" | "daska" | "dera-ghazi-khan" | "dera-ismail-khan" | "faisalabad" | "gojra" | "gujranwala" | "gujrat" | "hafizabad" | "haripur" | "hyderabad" | "islamabad" | "jacobabad" | "jhang" | "jhelum" | "kamoke" | "kandhkot" | "karachi" | "khairpur" | "khanewal" | "khanpur" | "khuzdar" | "kohat" | "kot-adu" | "lahore" | "larkana" | "mandi-bahauddin" | "mansehra" | "mardan" | "mianwali" | "mirpur-khas" | "multan" | "muridke" | "murree" | "muzaffargarh" | "nawabshah" | "nowshera" | "okara" | "pakpattan" | "peshawar" | "quetta" | "rahim-yar-khan" | "rawalpindi" | "sadiqabad" | "sahiwal" | "sargodha" | "sheikhupura" | "shikarpur" | "sialkot" | "sukkur" | "swabi" | "tando-allahyar" | "vehari" | "wah-cantonment" | "zhob"
@@ -225,7 +227,6 @@ export const CITY_DATA: Record<CityKey, {
     quote: "Quotes from agencies here were in the hundreds of thousands. MatjarX delivered in a week for a fraction, and the quality held up.",
     quoteName: "Saeed Ahmed",
     quoteCompany: "Caterer, Islamabad",
-    wins: ["Enquiries doubled in the first quarter after launch", "Ranking for \"catering Islamabad\" inside ten weeks", "Bookings taken online instead of over the phone"],
     officeLine: `Islamabad and Rawalpindi clients work with us over WhatsApp and video call — call ${BUSINESS_PHONE_DISPLAY}, Monday to Saturday, 11am to 8pm.`,
   },
   "jacobabad": {
@@ -293,10 +294,6 @@ export const CITY_DATA: Record<CityKey, {
     areasLine: "Clifton · DHA · Gulshan · Saddar · Korangi",
     areas: ["Clifton", "DHA Phase 1–8", "Zamzama", "Saddar", "Gulshan-e-Iqbal", "North Nazimabad", "Korangi", "Malir", "Shahrah-e-Faisal", "Tariq Road", "Zainab Market", "SITE Area", "Bahadurabad", "Gulistan-e-Johar"],
     areasNote: "Whether you run a boutique in Zainab Market, a clinic in DHA or a factory in SITE, the site is written for the customers in that area — not a generic Karachi paragraph.",
-    quote: "Ranks first on Google for Chinese restaurant catering in Karachi now. The team understood the market here without us explaining it.",
-    quoteName: "China Friend",
-    quoteCompany: "Karachi",
-    wins: ["#1 for \"restaurant catering Karachi\" within four months", "142 Google profile views a week from Clifton and DHA", "21 calls a week straight from the Maps listing"],
     officeLine: "Visit us at B6, 4th Street, Zamzama, Clifton — Monday to Saturday, 11am to 8pm.",
   },
   "khairpur": {
@@ -367,17 +364,13 @@ export const CITY_DATA: Record<CityKey, {
     intro: ["Lahore's business community is growing fast. Restaurants, retail, e-commerce, services—every business needs a strong online presence.", "MatjarX builds professional websites for Lahore businesses in just 7 days. With PKR 22,500 setup, local payment support (JazzCash, EasyPaisa), and SEO from day one—your website ranks in Google while competitors are still planning.", "No developers. No delays. Just a professional website that brings customers."],
     why: [{ title: "Local Payment Support", body: "Lahore customers use JazzCash, EasyPaisa, bank transfer. Not international payment gateways. MatjarX integrates local payments natively. Your customers checkout with what they know." }, { title: "Rank for Lahore Keywords", body: "Show up for \"restaurant near me Lahore,\" \"online shop Lahore,\" \"salon in Lahore.\" Organic ranking brings free customers continuously." }, { title: "7-Day Launch Guarantee", body: "While competitors wait for developers or agencies (3–8 weeks), you're already live. Your website launches in 7 days. That's a 3–7 week competitive advantage." }],
     industries: [{ title: "Restaurants & Cafes", body: "Menu online, reservation system, delivery integration, photo gallery, reviews. Rank for food-related searches in your area." }, { title: "Retail & Clothing", body: "Product catalogs, online shopping, local inventory sync, customer loyalty. Compete with e-commerce platforms as an independent seller." }, { title: "E-Commerce Stores", body: "Full product management, JazzCash checkout, inventory tracking, order management. Sell online 24/7 to Lahore and beyond." }, { title: "Services (Beauty, Fitness, Medical)", body: "Appointment booking, professional profiles, service details, customer testimonials. Rank for \"salon near me\" or \"gym Lahore.\"" }, { title: "B2B & Wholesale", body: "Catalog display, bulk order forms, price lists, distributor info. Streamline B2B sales with professional online presence." }],
-    faqs: [["How much will it cost by the end of the year?", "Launch plan = PKR 22,500 + (PKR 4,500 × 12) = PKR 76,500 total. Boost = PKR 22,500 + (PKR 15,600 × 12) = PKR 209,500. That includes website, hosting, domain, email, and ongoing updates."], ["Do you include content creation?", "Yes. Growth+ plans include blog posts and social media content written by our team. Launch and Boost plans include email templates and initial content setup."], ["Can I add e-commerce later?", "Yes. Start with Launch, upgrade to Boost or Growth as you scale. Our platform handles e-commerce from the start."], ["What if I want to make changes?", "Log into your dashboard and update instantly. Or request changes from our team (included—no per-change fees)."], ["Do I own my website?", "Completely. You own the platform, all your data, customer relationships, and email lists. If you ever leave, your data comes with you."], ["How does SEO work?", "We build SEO into your website architecture. No separate tools needed. Your site ranks naturally through quality content and optimization."], ["What payment methods do customers use?", "JazzCash, EasyPaisa, bank transfer, cash on delivery (for e-commerce). We support what Lahore customers actually use."], ["How long until I rank?", "We report your results every month."]],
+    faqs: [["How much will it cost by the end of the year?", "Launch plan = PKR 22,500 + (PKR 4,500 × 12) = PKR 76,500 total. Boost = PKR 22,500 + (PKR 15,600 × 12) = PKR 209,500. That includes website, hosting, domain, email, security and platform updates."], ["Do you include content creation?", "Yes. Growth+ plans include blog posts and social media content written by our team. Launch and Boost plans include email templates and initial content setup."], ["Can I add e-commerce later?", "Yes. Start with Launch, upgrade to Boost or Growth as you scale. Our platform handles e-commerce from the start."], ["What if I want to make changes?", "Log into your dashboard and update instantly. Boost and Growth include edits by our team for the first 30 days, and Platinum includes unlimited edits."], ["Do I own my website?", "Completely. You own the platform, all your data, customer relationships, and email lists. If you ever leave, your data comes with you."], ["How does SEO work?", "We build SEO into your website architecture. No separate tools needed. Your site ranks naturally through quality content and optimization."], ["What payment methods do customers use?", "JazzCash, EasyPaisa, bank transfer, cash on delivery (for e-commerce). We support what Lahore customers actually use."], ["How long until I rank?", "We report your results every month."]],
     built: "1,900+ Lahore businesses online with MatjarX",
     stats: [{ value: "1,900+", label: "Lahore websites built" }, { value: "7 days", label: "average launch time" }, { value: "4.8 / 5", label: "client rating" }, { value: "0%", label: "commission on sales" }],
     tint: "linear-gradient(150deg, #6B4A22, #2A1A08)",
     areasLine: "Gulberg · DHA · Model Town · Johar Town",
     areas: ["Gulberg", "DHA Lahore", "Model Town", "Johar Town", "Bahria Town", "Cantt", "Faisal Town", "Garden Town", "Iqbal Town", "Shadman", "Anarkali", "Azam Cloth Market", "Township", "Wapda Town"],
     areasNote: "Lahore's trade is concentrated by area — fabric in Azam Cloth Market, services in Gulberg, clinics in Model Town. We write and structure the site for the customers who actually search in your part of the city.",
-    quote: "\"Fabric supplier lahore\" moved from nineteenth to eleventh in a month, and the enquiries followed it.",
-    quoteName: "Al-Falah Traders",
-    quoteCompany: "Lahore",
-    wins: ["4,812 monthly visitors, up 18% on the previous month", "96 enquiries a month, 34 of which became orders", "Ranking in three Lahore areas within two months"],
     officeLine: `Lahore clients work with us over WhatsApp and video call — call ${BUSINESS_PHONE_DISPLAY}, Monday to Saturday, 11am to 8pm.`,
   },
   "larkana": {
@@ -684,35 +677,13 @@ export const CITY_DATA: Record<CityKey, {
 
 export const CITY_SLUGS = Object.keys(CITY_DATA) as CityKey[]
 
-const MAJOR_CITIES: CityKey[] = ['karachi', 'lahore', 'islamabad']
-
 /**
- * The "other cities" rail at the foot of every city page.
- *
- * This used to be `[...majors, ...rest.slice(0, 3)]` -- a FIXED slice, so all
- * 63 city pages linked to the same six: Karachi, Lahore, Islamabad,
- * Abbottabad, Attock and Bahawalnagar. The other 57 received no inbound link
- * from anywhere on the site. A crawl of all 149 live pages found exactly
- * that: 56 orphaned city pages.
- *
- * The window now rotates from each city's own position, so the set differs
- * per page and every city is linked from several others. With 60 non-major
- * cities and a window of 5, each one appears on 5 pages instead of 0.
- *
- * The three majors stay on every page deliberately -- they are the pages
- * with the most search demand, and a visitor in Kot Adu looking for a
- * designer may well accept one in Lahore.
+ * "Other cities we work in" at the foot of every city page: the nearest
+ * indexed cities in the same province (decided 15 Oct), from
+ * location-geo.ts. This replaced the three majors plus an alphabetical
+ * rotation, which linked cities with no relation to the page. Every city
+ * is also listed on /locations.
  */
 export function otherCitiesFor(key: CityKey) {
-  const majors = MAJOR_CITIES.filter((k) => k !== key)
-  const rest = CITY_SLUGS.filter((k) => k !== key && !MAJOR_CITIES.includes(k))
-  // The offset has to come from the FULL list. `rest` has `key` filtered
-  // out of it by construction, so rest.indexOf(key) is always -1 -- which
-  // clamped to 0 and handed every one of the 63 pages the same five
-  // cities. A rotation that does not rotate looks exactly like the fixed
-  // slice it replaced, and a crawl found the same 8 targets as before.
-  const start = CITY_SLUGS.indexOf(key)
-  const WINDOW = 5
-  const picks = [...majors, ...Array.from({ length: WINDOW }, (_, i) => rest[(start + i) % rest.length])]
-  return picks.map((k) => ({ label: CITY_DATA[k].name, href: routes.location(k) }))
+  return nearestCities(key).map((k) => ({ label: CITY_DATA[k].name, href: routes.location(k) }))
 }

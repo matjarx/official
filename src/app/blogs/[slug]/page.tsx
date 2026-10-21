@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import BlogPostContent from '@/components/blog/BlogPostContent'
-import { BLOG_POSTS, AUTHOR } from '@/lib/blog-data'
+import { AUTHOR } from '@/lib/blog-data'
 import { routes } from '@/lib/routes'
 import { getBlogPost, getBlogPosts, getSeoOverride, toCard, pageTitle, getContentUpdatedAt } from '@/lib/marketing-content'
 import { isoPublishDate, postLastModified } from '@/lib/blog-dates'
@@ -9,18 +9,20 @@ import { slugifyCategory } from '@/lib/blog-categories'
 import { ORGANIZATION_ID, breadcrumbJsonLd } from '@/lib/schema'
 import { faqFromBody } from '@/lib/blog-faq'
 
-// Re-checks marketing_blog_posts at most once a minute rather than only at
-// build time — otherwise a new/edited post would need a full redeploy to
-// show up, defeating the point of a real editor.
-export const revalidate = 60
-
-// Pre-warms the 28 original posts at build time; a post created later
-// through the admin still renders fine on first request (dynamicParams
-// isn't disabled here, so Next falls through to on-demand rendering for
-// any slug not in this list).
-export function generateStaticParams() {
-  return BLOG_POSTS.map((p) => ({ slug: p.slug }))
-}
+// Rendered per request, not cached (ISR) -- so a post shows, with its own
+// title and description, the moment its row exists.
+//
+// Under ISR, a URL requested before its row existed was cached as a 404.
+// When the row appeared, the background regeneration that replaced that
+// entry ran with the cached 404 status still set, and Next 16 picks the
+// metadata from the status (is404 -> the not-found boundary's): the post's
+// body went out under "Page Not Found" and noindex until a SECOND
+// regeneration. That is what /blogs/website-price-in-pakistan served on
+// 15 Oct. Calling connection() on a miss is not an option either: switching
+// an ISR route to dynamic at runtime is a 500. Rendering per request has no
+// cached 404 to inherit. Hostinger's CDN does not cache these pages anyway
+// (x-hcdn-cache-status: DYNAMIC), so the cost is a few database reads per view.
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
