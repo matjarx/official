@@ -1,6 +1,6 @@
 'use client'
 
-// The industries rail under "70,000 websites built and counting".
+// The industries rail under the "Real sites, real businesses" heading.
 //
 // That heading used to sit above a grid of four client screenshots. It
 // answered "can you prove it" and not "have you built one for a business

@@ -6,7 +6,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('website-examples')
   return {
     alternates: { canonical: '/website-examples' },
-    ...pageSeo('/website-examples', seo?.title || 'Website Examples', seo?.description || '70,000+ websites built globally. Browse real MatjarX sites across restaurants, boutiques, clinics, textiles, e-commerce and more.'),
+...pageSeo('/website-examples', seo?.title || 'Website Examples', seo?.description || 'Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan. Browse real MatjarX sites.'),
   }
 }
 

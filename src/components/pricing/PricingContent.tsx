@@ -22,6 +22,7 @@ import type { PricingContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
+import BodyLinks from '@/components/BodyLinks'
 
 export const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
 
@@ -91,7 +92,7 @@ export const DEFAULT_FAQ_DATA = [
   { question: 'Which plan is right for me?', answer: 'Launch gets you online with a professional website, domain, email and hosting. Boost is our most popular — it adds unlimited edits done by us for the first 30 days, advanced SEO and selling on Google, Facebook and Instagram. Growth adds a dedicated team and monthly marketing sessions. Platinum is a fully custom build for serious e-commerce.' },
   { question: 'How many pages do I get on each plan?', answer: 'Launch: up to 10 pages. Boost: 20–30 pages. Growth: up to 50 pages. Platinum: unlimited pages. If you need more than your plan includes, we’ll tell you before you pay.' },
   { question: 'How do I get started?', answer: 'Pick a plan and check out. You fill in a short questionnaire about your business, we build the whole site in seven days, then we launch it with you on a live call.' },
-  { question: 'How does this all work?', answer: "Our team designs, writes and builds your site — you don't touch a builder. Once live, you can edit anything yourself in our editor, or send changes to your concierge and we do them for you." },
+  { question: 'How does this all work?', answer: "Our team designs, writes and builds your site — you don't touch a builder. Once live, you can edit anything yourself in our editor. Boost and Growth include edits by our team for the first 30 days, and Platinum includes unlimited edits." },
   { question: 'Can I switch plans?', answer: 'Yes, any time. Upgrading applies immediately and we only charge the difference. Downgrading takes effect at your next billing date.' },
   { question: 'How do I cancel?', answer: "Message your concierge or email office@matjarx.com with 30 days' written notice. There's no long-term contract — your site stays active through the notice period and isn't renewed after it, with no exit fee." },
   { question: 'Is the setup fee charged every year?', answer: 'No. The setup fee is one-time and covers the full build — design, copy, images, SEO and launch. After that you only pay the monthly plan fee.' },
@@ -402,7 +403,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       <section style={{ background: 'var(--cream-deep)', padding: '78px 24px' }}>
         <div style={{ maxWidth: 1260, margin: '0 auto' }}>
           <h2 style={{ margin: '0 0 40px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>
-            Join 70,000+ business owners <span style={{ background: 'var(--moss-light)', padding: '0 9px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>who love MatjarX</span>
+            Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.
           </h2>
           {/* Seven reviews in an auto-fit grid came out as three, three and
               a lone one, and the odd card at the end reads as a mistake.
@@ -435,6 +436,8 @@ export default function PricingContent({ content }: { content: PricingContentSha
           </div>
         </div>
       </section>
+
+      <BodyLinks path="/pricing" />
 
       {/* FAQs */}
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: '78px 24px' }}>

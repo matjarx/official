@@ -10,14 +10,11 @@ import { getBlogAuthors, getBlogAuthor, getBlogPosts, getSeoOverride, pageTitle,
 // articles they wrote, their profiles -- is the difference between a claim
 // and something a reader (or Google) can check, which is the whole of E-E-A-T.
 
-export const revalidate = 60
-
-export async function generateStaticParams() {
-  // Built from the same table the pages read, so an author added in the
-  // admin appears without a redeploy -- revalidate handles the rest.
-  const authors = await getBlogAuthors()
-  return authors.filter((a) => a.slug).map((a) => ({ slug: a.slug as string }))
-}
+// Per request, like the post pages, and for the same reason: an author
+// URL requested before its row existed would otherwise be cached as a 404
+// whose status leaks into the next regeneration's metadata. See the note in
+// blogs/[slug]/page.tsx.
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params

@@ -23,6 +23,7 @@ import {
 } from '@/lib/website-audit-data'
 import { FaqList } from '@/components/FaqList'
 import { seoH1 } from '@/lib/seo-h1'
+import BodyLinks from '@/components/BodyLinks'
 
 function IntakeForm() {
   const [name, setName] = useState('')
@@ -303,6 +304,8 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
             </div>
           </section>
 
+          <BodyLinks path="/complete-website-audit-for-organic-visibility" style={{ padding: '56px 0 0' }} />
+
           {/* FAQ + comparison table */}
           <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, textAlign: 'center', alignItems: 'center', marginBottom: 30 }}>
@@ -337,7 +340,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
           <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
             <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
               <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.8vw, 32px)', lineHeight: 1.18, letterSpacing: '-1px', color: 'var(--ink-inverse)' }}>Your website could be perfectly optimized. Or severely underperforming. You won&apos;t know until you look.</h2>
-              <p style={{ margin: 0, maxWidth: '38em', fontSize: 15, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>70,000+ small businesses use MatjarX to improve their online visibility. Your website could be next.</p>
+              <p style={{ margin: 0, maxWidth: '38em', fontSize: 15, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.65)' }}>Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan. Your website could be next.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', paddingTop: 6 }}>
                 <a href={`https://wa.me/${CHANNELS.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="btn-primary">Request your free consultation</a>
                 <a href={`mailto:${CHANNELS.email}`} className="btn-ghost">Email us</a>

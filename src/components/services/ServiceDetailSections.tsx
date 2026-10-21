@@ -173,6 +173,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
       )}
 
       {/* Case studies */}
+      {d.caseStudies && d.caseStudies.items.length > 0 && (
       <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
         <h2 style={H2}>{d.caseStudies.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
@@ -184,6 +185,7 @@ export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
           ))}
         </div>
       </section>
+      )}
 
       {/* More testimonials */}
       {d.testimonials && (

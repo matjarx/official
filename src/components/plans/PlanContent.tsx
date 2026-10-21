@@ -23,6 +23,7 @@ import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY, WHATSAPP_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
+import BodyLinks from '@/components/BodyLinks'
 
 const DEFAULT_CONTENT: Record<PlanKey, PlanContentShape> = (Object.keys(ALL_PLANS) as PlanKey[]).reduce((acc, key) => {
   acc[key] = { ...ALL_PLANS[key], ...PLAN_DATA[key], detail: undefined }
@@ -211,6 +212,8 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
             </div>
           </div>
         </section>
+
+        <BodyLinks path={routes.plan(planKey)} />
 
         {/* FAQs */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>

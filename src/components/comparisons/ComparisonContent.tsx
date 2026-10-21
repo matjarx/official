@@ -14,6 +14,7 @@ import { routes } from '@/lib/routes'
 import { RIVAL_DATA, otherComparisonsFor, type RivalKey } from '@/lib/comparison-data'
 import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { seoH1 } from '@/lib/seo-h1'
+import BodyLinks from '@/components/BodyLinks'
 
 export type ComparisonContentShape = (typeof RIVAL_DATA)[RivalKey]
 
@@ -204,6 +205,8 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
             </div>
           </div>
         </section>
+
+        <BodyLinks path={routes.compare(rivalKey)} />
 
         {/* Other comparisons */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>
