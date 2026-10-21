@@ -21,6 +21,7 @@ import { parsePkr } from '@/lib/currency'
 import type { PricingContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
+import BodyLinks from '@/components/BodyLinks'
 
 export const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
 
@@ -399,7 +400,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
       <section style={{ background: 'var(--cream-deep)', padding: '78px 24px' }}>
         <div style={{ maxWidth: 1260, margin: '0 auto' }}>
           <h2 style={{ margin: '0 0 40px', textAlign: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(26px, 4.4vw, 38px)', lineHeight: 1.14, letterSpacing: '-1.2px', color: 'var(--ink-1)' }}>
-            Join 70,000+ business owners <span style={{ background: 'var(--moss-light)', padding: '0 9px', borderRadius: 3, color: 'var(--ink-on-butter)' }}>who love MatjarX</span>
+            Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan.
           </h2>
           {/* Seven reviews in an auto-fit grid came out as three, three and
               a lone one, and the odd card at the end reads as a mistake.
@@ -432,6 +433,8 @@ export default function PricingContent({ content }: { content: PricingContentSha
           </div>
         </div>
       </section>
+
+      <BodyLinks path="/pricing" />
 
       {/* FAQs */}
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: '78px 24px' }}>

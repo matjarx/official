@@ -19,6 +19,8 @@ import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { FaqList } from '@/components/FaqList'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
+import BodyLinks from '@/components/BodyLinks'
+import { CLAIM, showsClaimTile } from '@/lib/claim'
 
 const TONE_COLOR = { us: 'var(--navy)', ok: 'var(--ink-4-alt)', bad: 'var(--terracotta)' } as const
 
@@ -46,7 +48,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '58px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
           <span className="glass-chip" style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '8px 16px 8px 12px', borderRadius: 999, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-4-alt)' }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--olive)' }} />
-            Updated September 2026 · 70,000 websites built
+            Updated September 2026
           </span>
 
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 56px)', lineHeight: 1.06, letterSpacing: '-2px', color: 'var(--ink-1)' }}>
@@ -70,6 +72,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
               </div>
             ))}
           </div>
+          {showsClaimTile(HERO_STATS_ACTIVE) && <p style={{ margin: 0, maxWidth: '40em', fontSize: 14, lineHeight: 1.55, color: 'var(--ink-muted)', textAlign: 'center' }}>{CLAIM}</p>}
         </section>
 
         {/* Comparison matrix */}
@@ -272,6 +275,8 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
             ))}
           </div>
         </section>
+
+        <BodyLinks path="/best-website-builder-pakistan" />
 
         {/* FAQs */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '76px 24px 0' }}>

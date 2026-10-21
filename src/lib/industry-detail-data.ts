@@ -158,11 +158,11 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     ] },
     gettingStarted: { title: 'Your Healthcare Website in 7-14 Days', steps: ['Choose your plan', 'Provide doctor credentials and bios', 'List services and specialties', 'Configure appointment system', 'Add patient resources and FAQs', 'Review and test', 'Launch!'] },
     extras: [
-      { title: 'Building Patient Trust Online', body: ['Medical Board Verification — state medical board license displayed, verification numbers, board certifications listed, no disciplinary history noted.', 'Accreditations & Affiliations — hospital affiliations, accredited facility certifications, professional memberships, research publications, academic appointments.', 'Patient Reviews — Google reviews integrated, Healthgrades ratings, WebMD ratings, verified patient testimonials, response to reviews (showing you care).', 'HIPAA Compliance — privacy commitment visible, secure patient data handling, confidentiality assurance, encryption disclosure, data protection explained.', 'Professional Content — medical articles written by doctors, evidence-based information, links to peer-reviewed research, acknowledgment of latest treatments, continuing education commitment.'] },
-      { title: 'Compliance & Security', body: ['HIPAA Compliant: patient data encryption, secure portal, access controls, audit logs, regular security updates.', 'Data Protection: daily backups, disaster recovery, security monitoring, threat detection, SSL/HTTPS encryption.'] },
+      { title: 'Building Patient Trust Online', body: ['Medical Board Verification — state medical board license displayed, verification numbers, board certifications listed, no disciplinary history noted.', 'Accreditations & Affiliations — hospital affiliations, accredited facility certifications, professional memberships, research publications, academic appointments.', 'Patient Reviews — Google reviews integrated, Healthgrades ratings, WebMD ratings, verified patient testimonials, response to reviews (showing you care).', 'Patient privacy — privacy commitment visible, secure patient data handling, confidentiality assurance, encryption disclosure, data protection explained.', 'Professional Content — medical articles written by doctors, evidence-based information, links to peer-reviewed research, acknowledgment of latest treatments, continuing education commitment.'] },
+      { title: 'Compliance & Security', body: ['Data Protection: daily backups, disaster recovery, security monitoring, threat detection, SSL/HTTPS encryption.'] },
     ],
     faqs: [
-      { q: 'Is my patient data secure?', a: 'Yes! HIPAA compliant, encrypted, and secure. Patient privacy is paramount.' },
+      { q: 'Is my patient data secure?', a: 'Yes! Patient privacy is paramount.' },
       { q: 'Can patients book appointments online?', a: 'Yes! Automatic scheduling, confirmation emails, and reminders reduce no-shows.' },
       { q: 'Can I add multiple doctors?', a: 'Yes! Each doctor gets their own profile with schedules and specialties.' },
       { q: 'Can I show insurance information?', a: 'Yes! Display accepted insurances, verify coverage, and explain benefits.' },
@@ -317,7 +317,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
     ] },
     featuresSpecific: { title: 'Built for Law Firms', sections: [
       { title: 'Matter Management Integration', blocks: [{ items: ['Client portal for case documents', 'Secure communications', 'Document sharing', 'Timeline tracking', 'Billing transparency'] }] },
-      { title: 'Confidentiality & HIPAA Compliance', blocks: [{ items: ['Client privacy protected', 'Secure communications', 'Encrypted portals', 'Compliance documentation'] }] },
+      { title: 'Confidentiality', blocks: [{ items: ['Client privacy protected', 'Secure communications', 'Encrypted portals', 'Compliance documentation'] }] },
       { title: 'Appointment Scheduling', blocks: [{ items: ['Consultation booking', 'Follow-up scheduling', 'Calendar management', 'Automated reminders'] }] },
       { title: 'Client Intake', blocks: [{ items: ['Online intake forms', 'Information collection', 'Conflict check process', 'Automated follow-up'] }] },
       { title: 'Legal Resources Library', blocks: [{ items: ['Practice guides', 'Process explanations', 'FAQ articles', 'Video tutorials', 'Resource documents'] }] },

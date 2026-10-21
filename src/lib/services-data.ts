@@ -55,7 +55,7 @@ export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
     quote: 'MatjarX delivered our website in 7 days, with excellent quality and smooth communication throughout.',
     quoteName: 'Samuel Abbas Jaffri', quoteCompany: 'Verified client',
     resultStats: [
-      { value: '70,000', label: 'websites built' },
+      { value: '70,000+', label: 'websites built by our team' },
       { value: '7 days', label: 'average launch time' },
       { value: 'Rs. 22,500', label: 'one-time setup' },
     ],

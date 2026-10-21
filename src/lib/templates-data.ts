@@ -6,13 +6,19 @@
 // library (already Google-indexed with real alt text) for 6 of the
 // available niches.
 
+// The real number of templates: one page per template under /templates/<slug>
+// (16 in Oct 2026, the same 16 the /templates grid lists from the themes
+// table). It replaced "100+", which was never true.
+import { THEME_LANDINGS } from './theme-landing-data'
+export const TEMPLATE_COUNT = THEME_LANDINGS.length
+
 export const META = {
   title: 'Website Templates - Professional Design Templates for Your Business',
-  description: 'Explore 100+ professional website templates for small business. Industry-specific designs, templates for every business type. Browse in dashboard.',
+  description: `Explore ${TEMPLATE_COUNT} professional website templates for small business. Industry-specific designs, templates for every business type. Browse in dashboard.`,
 }
 
 export const HERO = {
-  headline: '100+ Professional Website Templates',
+  headline: `${TEMPLATE_COUNT} Professional Website Templates`,
   subhead: 'Choose from industry-specific designs, customize, and launch your professional website in days.',
   cta: 'Browse Templates in Dashboard',
 }
