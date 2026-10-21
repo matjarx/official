@@ -36,7 +36,6 @@ export const revalidate = 60
 // unreachable, so nothing regresses.
 const DEFAULT_GA_MEASUREMENT_ID = 'G-FPFM7MMEDB'
 const DEFAULT_META_PIXEL_ID = '1082965164297632'
-const DEFAULT_CONTACT_EMAIL = 'office@matjarx.com'
 
 const lato = Lato({
   subsets: ['latin'],
@@ -52,17 +51,11 @@ const openSans = Open_Sans({
   display: 'swap',
 })
 
-import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
-import { BUSINESS_PHONE_E164 } from '@/lib/contact-details'
+import { organizationJsonLd } from '@/lib/schema'
 import { dirFor, DEFAULT_LOCALE } from '@/lib/locale'
 
 const SITE_URL = 'https://matjarx.com'
 
-// Duplicated from SiteFooter, FaqSection, ContactContent and the two home
-// variants, which each hardcode the same number. Worth centralising, but
-// not in a change about structured data -- what matters here is that the
-// number Google is told is the number the page actually dials.
-const BUSINESS_PHONE = BUSINESS_PHONE_E164
 const DEFAULT_TITLE = 'MatjarX — Done-for-you websites, live in 7 days'
 const DEFAULT_DESCRIPTION = 'MatjarX builds complete small business websites in 7 days, from Rs. 4,500/month + Rs. 22,500 setup — done-for-you design, SEO and growth marketing.'
 const DEFAULT_SOCIALS: Record<string, string> = {
@@ -162,99 +155,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   ])
   const gaId = settings.ga_measurement_id || DEFAULT_GA_MEASUREMENT_ID
   const pixelId = settings.meta_pixel_id || DEFAULT_META_PIXEL_ID
-  const contactEmail = settings.contact_email || DEFAULT_CONTACT_EMAIL
   const description = settings.default_description || DEFAULT_DESCRIPTION
-  // Overrides apply per-platform by name; a platform with no override (or
-  // this whole row missing) keeps its real, live default — never drops a
-  // profile just because settings hasn't been touched yet.
-  const socials = { ...DEFAULT_SOCIALS, ...settings.socials }
 
-  const organizationJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'MatjarX',
-    url: SITE_URL,
-    logo: `${SITE_URL}/icon.png`,
-    description,
-    sameAs: Object.values(socials),
-    contactPoint: [{
-      '@type': 'ContactPoint',
-      contactType: 'customer service',
-      email: contactEmail,
-      areaServed: ['PK'],
-    }],
-  }
-
-  // MatjarX's own local identity.
-  //
-  // The site published Organization but never LocalBusiness -- so the one
-  // business here with a real office, a published phone number and stated
-  // opening hours was the only one not telling Google any of it. Organization
-  // says who a company is; LocalBusiness is what makes it eligible to appear
-  // for "near me" and city-qualified searches, which is most of the intent
-  // behind "website builder in Lahore".
-  //
-  // Only what the site already states publicly: the phone number and hours
-  // from the contact page, the cities from about-us and careers. No street
-  // address is published anywhere, so none is claimed -- addressLocality and
-  // addressCountry alone are valid, and an invented street would be worse
-  // than an incomplete one. Adding the real street address later is what
-  // unlocks the full local rich result.
-  const localBusinessJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `${SITE_URL}/#localbusiness`,
-    name: 'MatjarX',
-    url: SITE_URL,
-    image: `${SITE_URL}/icon.png`,
-    logo: `${SITE_URL}/icon.png`,
-    description,
-    telephone: BUSINESS_PHONE,
-    email: contactEmail,
-    // Karachi is the address; the other three cities are areaServed.
-    //
-    // A LocalBusiness node describes ONE location -- that is what lets Google
-    // attach a map pin, hours and directions to it. Four addresses on one node
-    // gives it nothing to pin, and the alternative (a separate branch node per
-    // city) is only worth emitting with a real street address behind each one,
-    // which is not published for any of them yet. areaServed is the honest way
-    // to say the business operates in all four without inventing four offices.
-    //
-    // Give me street addresses per city and these become proper branch nodes.
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Karachi',
-      addressRegion: 'Sindh',
-      addressCountry: 'PK',
-    },
-    // Every city with a page behind it, generated from the same list those
-    // pages are generated from -- so a city added to CITY_DATA appears here
-    // without anyone remembering to update a second list. Each of those
-    // pages also declares the service for its own city; this is the
-    // sitewide claim, and the country closes it off for the rest.
-    areaServed: [
-      ...CITY_SLUGS.map((slug) => ({ '@type': 'City', name: CITY_DATA[slug].name })),
-      { '@type': 'Country', name: 'Pakistan' },
-    ],
-    openingHoursSpecification: [{
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '11:00',
-      closes: '20:00',
-    }],
-    sameAs: Object.values(socials),
-  }
+  // Organization only; LocalBusiness lives on /contact (lib/schema.ts).
+  // Its email, phone, address and sameAs are the values specified for SEO
+  // group 4, not the admin's settings row, so the schema can't drift from
+  // what /contact publishes.
+  const orgJsonLd = organizationJsonLd(description)
 
   return (
     <html lang={locale} dir={dir} className={`${lato.variable} ${openSans.variable}`}>
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         <Suspense fallback={null}>
           <PageviewTracker />

@@ -21,6 +21,7 @@ import { FaqList, bullet } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
+import { ORGANIZATION_ID } from '@/lib/schema'
 import BodyLinks from '@/components/BodyLinks'
 
 export type LocationContentShape = (typeof CITY_DATA)[CityKey] & {
@@ -61,7 +62,7 @@ export default function LocationContent({ locationKey, content, related = [] }: 
   // and doing it on the site that sells SEO is not a risk worth taking.
   // Service + areaServed says the true thing instead: we serve this city.
   //
-  // provider points at the LocalBusiness @id from the root layout, so this
+  // provider points at the Organization @id from the root layout, so this
   // reads as the same business rather than 63 unrelated providers.
   const serviceJsonLd = {
     '@context': 'https://schema.org',
@@ -71,7 +72,7 @@ export default function LocationContent({ locationKey, content, related = [] }: 
     url: pageUrl,
     provider: {
       '@type': 'Organization',
-      '@id': 'https://matjarx.com/#localbusiness',
+      '@id': ORGANIZATION_ID,
       name: 'MatjarX',
       url: 'https://matjarx.com/',
     },

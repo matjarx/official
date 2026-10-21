@@ -52,6 +52,9 @@ const RENAMED_BLOG_SLUGS = {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    cpus: 2,
+  },
   // Next's own trailing-slash 308 runs BEFORE these redirects, so a URL
   // like /pricing-table/ used to take two hops: slash strip, then the
   // prefix change. With it off, the redirects below match either form
