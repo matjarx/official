@@ -11,6 +11,7 @@ import FaqSection from '@/components/FaqSection'
 import { CAREERS_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { CAREERS_PERKS, CAREERS_ROLES, CAREERS_CATEGORIES } from '@/lib/careers-data'
+import { seoH1 } from '@/lib/seo-h1'
 
 export type CareersContentShape = { perks: typeof CAREERS_PERKS; roles: typeof CAREERS_ROLES }
 const DEFAULT_CONTENT: CareersContentShape = { perks: CAREERS_PERKS, roles: CAREERS_ROLES }
@@ -37,7 +38,9 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Careers at MatjarX</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>
-            Build things that put real businesses <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>on the map</span>
+            {seoH1(content) ?? (
+              <>Build things that put real businesses <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>on the map</span></>
+            )}
           </h1>
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Every site we ship belongs to someone who runs a shop, a clinic or a factory. The work lands somewhere you can point at.</p>
         </div>

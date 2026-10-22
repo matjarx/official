@@ -21,6 +21,7 @@ import { FaqList, bullet } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
+import { seoH1 } from '@/lib/seo-h1'
 import { ORGANIZATION_ID } from '@/lib/schema'
 import BodyLinks from '@/components/BodyLinks'
 
@@ -114,7 +115,9 @@ export default function LocationContent({ locationKey, content, related = [] }: 
             )}
 
             <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 4.6vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: 'var(--ink-1)' }}>
-              Website design in <span className="marker">{d.name}</span> — launched in 7 days
+              {seoH1(content) ?? (
+                <>Website design in <span className="marker">{d.name}</span> — launched in 7 days</>
+              )}
             </h1>
 
             <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>{d.intro[0]}</p>

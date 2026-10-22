@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import LocationContent, { type LocationContentShape } from '@/components/locations/LocationContent'
 import { robotsFor } from '@/lib/seo-indexing'
-import { getBlogPosts, getMergedContent, getSeoOverride, pageTitle, pageDescription, toCard } from '@/lib/marketing-content'
+import { getBlogPosts, getMergedContent, getSeoOverride, pageSeo, pageTitle, pageDescription, toCard } from '@/lib/marketing-content'
 import { postsInPillar } from '@/lib/pillars'
 import { CITY_DATA } from '@/lib/location-data'
 
@@ -12,8 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: { canonical: '/website-design-daska' },
     ...robotsFor('/website-design-daska'),
-    title: pageTitle(seo?.title || city.metaTitle),
-    description: pageDescription(seo?.description || city.metaDesc),
+    ...pageSeo('/website-design-daska', seo?.title || city.metaTitle, seo?.description || city.metaDesc),
   }
 }
 

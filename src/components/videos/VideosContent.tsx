@@ -21,6 +21,7 @@ import {
   VIDEO_FAQS, RESOURCES_BY_AUDIENCE, CHANNELS,
 } from '@/lib/videos-data'
 import { FaqList } from '@/components/FaqList'
+import { seoH1 } from '@/lib/seo-h1'
 
 function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos'][number] }) {
   return (
@@ -80,7 +81,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
       <section style={{ background: 'var(--navy)', padding: '58px 24px 52px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{HERO_ACTIVE.eyebrow}</span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>{HERO_ACTIVE.headline}</h1>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(28px, 5vw, 48px)', lineHeight: 1.1, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>{seoH1(content) ?? <>{HERO_ACTIVE.headline}</>}</h1>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 16.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{HERO_ACTIVE.subhead}</p>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 14, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{INTRO}</p>
         </div>

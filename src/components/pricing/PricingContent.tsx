@@ -21,6 +21,7 @@ import { parsePkr } from '@/lib/currency'
 import type { PricingContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
+import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 
 export const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
@@ -187,7 +188,9 @@ export default function PricingContent({ content }: { content: PricingContentSha
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>MatjarX website pricing</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 6vw, 54px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: 'var(--ink-inverse)' }}>
-            Launch, manage and grow your <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>business online</span>
+            {seoH1(content) ?? (
+              <>Launch, manage and grow your <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>business online</span></>
+            )}
           </h1>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px 30px', paddingTop: 6 }}>
             {HERO_TICKS.map((t) => (

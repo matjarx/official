@@ -43,9 +43,10 @@ import BodyLinks from '@/components/BodyLinks'
 // with two 404s in it and there was no way to check the layout locally.
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.matjarx.com'
 
-type Props = { landing: ThemeLanding; minPlan: 'launch' | 'boost' | 'growth' | 'platinum' }
+// h1: the spec sheet's H1 for this template's URL, when it has one.
+type Props = { landing: ThemeLanding; minPlan: 'launch' | 'boost' | 'growth' | 'platinum'; h1?: string }
 
-export default function ThemeLandingContent({ landing, minPlan }: Props) {
+export default function ThemeLandingContent({ landing, minPlan, h1 }: Props) {
   const previewUrl = `${APP_URL}/themes/${landing.themeKey}`
   // ?framed=1 drops the app's "this is a template" banner, which is noise
   // inside a mockup on a page already headed "Website template".
@@ -99,7 +100,7 @@ export default function ThemeLandingContent({ landing, minPlan }: Props) {
                   color: 'var(--ink-1)',
                 }}
               >
-                {landing.name}
+                {h1 || landing.name}
               </h1>
               <p style={{ margin: '0 0 26px', fontSize: 17.5, lineHeight: 1.6, color: 'var(--ink-4)', maxWidth: '34em' }}>
                 {landing.tagline}

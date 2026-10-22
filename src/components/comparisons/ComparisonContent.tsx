@@ -13,6 +13,7 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { RIVAL_DATA, otherComparisonsFor, type RivalKey } from '@/lib/comparison-data'
 import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
+import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 
 export type ComparisonContentShape = (typeof RIVAL_DATA)[RivalKey]
@@ -59,7 +60,9 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
             </span>
           )}
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 54px)', lineHeight: 1.06, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
-            MatjarX vs <span className="marker">{d.name}</span>
+            {seoH1(content) ?? (
+              <>MatjarX vs <span className="marker">{d.name}</span></>
+            )}
           </h1>
           {d.intro.map((p) => (
             <p key={p} style={{ margin: 0, maxWidth: '38em', fontSize: 'clamp(14.5px, 1.8vw, 18px)', lineHeight: 1.62, color: 'var(--ink-4)' }}>{p}</p>

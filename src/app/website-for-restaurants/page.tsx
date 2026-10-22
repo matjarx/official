@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import IndustryContent, { type IndustryContentShape } from '@/components/industries/IndustryContent'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('industries/restaurants')
   return {
     alternates: { canonical: '/website-for-restaurants' },
-    title: pageTitle(seo?.title || 'Websites for Restaurants'),
-    description: pageDescription(seo?.description || '1,240 restaurant websites built. Table bookings, a live menu, Google Maps and reviews, online ordering with 0% commission — built in 7 days.'),
+    ...pageSeo('/website-for-restaurants', seo?.title || 'Websites for Restaurants', seo?.description || '1,240 restaurant websites built. Table bookings, a live menu, Google Maps and reviews, online ordering with 0% commission — built in 7 days.'),
   }
 }
 

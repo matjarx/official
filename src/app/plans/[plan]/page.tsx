@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import PlanContent from '@/components/plans/PlanContent'
 import { ALL_PLANS, PLAN_DATA, type PlanKey } from '@/lib/plan-data'
 import { routes } from '@/lib/routes'
-import { getMergedContent, getSeoOverride, type PlanContentShape, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, type PlanContentShape, pageSeo } from '@/lib/marketing-content'
 
 // Re-checks marketing_content at most once a minute rather than only at
 // build time — otherwise an admin edit would need a full redeploy to show
@@ -25,8 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ plan: str
   const d = PLAN_DATA[plan]
   const seo = await getSeoOverride(`plans/${plan}`)
   return {
-    title: pageTitle(seo?.title || `${p.name} Plan`),
-    description: pageDescription(seo?.description || d.subhead),
+    ...pageSeo(routes.plan(plan), seo?.title || `${p.name} Plan`, seo?.description || d.subhead),
     alternates: { canonical: routes.plan(plan) },
   }
 }

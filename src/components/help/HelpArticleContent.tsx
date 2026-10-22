@@ -17,6 +17,7 @@ import { HELP_ARTICLES, type HelpSlug, type HelpBlock, type HelpArticle } from '
 import { HELP_CHANNELS } from '@/lib/help-data'
 import { FaqList } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
+import { seoH1 } from '@/lib/seo-h1'
 
 // Turns the source markdown's inline **bold** and [text](url) into real
 // <strong>/<a> nodes, so the generated data can stay plain strings.
@@ -93,7 +94,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
             <span style={{ opacity: 0.5 }}>/</span>
             <span style={{ color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>Guide</span>
           </span>
-          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 42px)', lineHeight: 1.1, letterSpacing: '-1.3px', color: 'var(--ink-inverse)' }}>{d.title}</h1>
+          <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(27px, 4.6vw, 42px)', lineHeight: 1.1, letterSpacing: '-1.3px', color: 'var(--ink-inverse)' }}>{seoH1(content) ?? <>{d.title}</>}</h1>
           {d.intro && <p style={{ margin: 0, maxWidth: '34em', fontSize: 16, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.intro}</p>}
           {d.metaLines && d.metaLines.length > 0 && (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginTop: 4 }}>

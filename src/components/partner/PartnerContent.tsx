@@ -24,6 +24,7 @@ import {
 import { money } from '@/lib/money'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { PARTNER_CATEGORY_ICONS, PARTNER_TOOL_LOGOS } from '@/lib/partner-icons-data'
+import { seoH1 } from '@/lib/seo-h1'
 
 export type PartnerContentShape = { tiers: typeof PARTNER_TIERS; steps: typeof PARTNER_STEPS; toolLogos: typeof PARTNER_TOOL_LOGOS; categoryIcons: typeof PARTNER_CATEGORY_ICONS }
 const DEFAULT_CONTENT: PartnerContentShape = { tiers: PARTNER_TIERS, steps: PARTNER_STEPS, toolLogos: PARTNER_TOOL_LOGOS, categoryIcons: PARTNER_CATEGORY_ICONS }
@@ -86,7 +87,9 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
         <div style={{ maxWidth: 920, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Partner program</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>
-            Refer a business. Earn on every plan, <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>every month</span>
+            {seoH1(content) ?? (
+              <>Refer a business. Earn on every plan, <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>every month</span></>
+            )}
           </h1>
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>For agencies, freelancers, accountants and consultants whose clients keep asking for a website they can&rsquo;t build.</p>
           <a href="#apply" className="btn-primary" style={{ marginTop: 6 }}>Apply to partner</a>

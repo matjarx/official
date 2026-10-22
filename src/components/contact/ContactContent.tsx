@@ -13,6 +13,7 @@ import { trackEvent } from '@/lib/analytics'
 import { FaqList } from '@/components/FaqList'
 import LeadForm from '@/components/LeadForm'
 import { WHATSAPP_HREF } from '@/lib/contact-details'
+import { seoH1 } from '@/lib/seo-h1'
 
 export type ContactContentShape = { channels: typeof CONTACT_CHANNELS; topics: typeof CONTACT_TOPICS; officeRows: typeof CONTACT_OFFICE_ROWS; faqs: typeof CONTACT_FAQS }
 const DEFAULT_CONTENT: ContactContentShape = { channels: CONTACT_CHANNELS, topics: CONTACT_TOPICS, officeRows: CONTACT_OFFICE_ROWS, faqs: CONTACT_FAQS }
@@ -33,7 +34,9 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>Get in touch</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.6vw, 50px)', lineHeight: 1.08, letterSpacing: '-1.7px', color: 'var(--ink-inverse)' }}>
-            Talk to a real person, <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>today</span>
+            {seoH1(content) ?? (
+              <>Talk to a real person, <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>today</span></>
+            )}
           </h1>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 17, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>No bots, no ticket queues. Ask us anything about plans, timelines or what your business needs.</p>
         </div>
