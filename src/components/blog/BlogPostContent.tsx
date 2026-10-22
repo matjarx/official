@@ -16,6 +16,7 @@ import NewsletterSignup from './NewsletterSignup'
 import { routes } from '@/lib/routes'
 import { AUTHOR, SHARE_LINKS, type BlogPost, type BodyBlock } from '@/lib/blog-data'
 import { richText, plainText } from '@/lib/rich-text'
+import { slugifyCategory } from '@/lib/blog-categories'
 
 // allPosts comes from the same getBlogPosts() call the page already made
 // for the listing — resolving relatedSlugs against the live table rather
@@ -69,11 +70,16 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
       {/* Navy hero */}
       <section style={{ background: 'var(--navy)', padding: '46px 24px 54px' }}>
         <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-            <Link href={routes.blog} style={{ fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>← All posts</Link>
-            <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.4)' }}>/</span>
-            <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>{post.category}</span>
-          </div>
+          {/* Breadcrumb: Home / Blog / Category / Post (BreadcrumbList on the page) */}
+          <nav aria-label="Breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', fontSize: 13, minWidth: 0 }}>
+            <Link href={routes.home} style={{ fontWeight: 600, color: 'var(--moss-light)' }}>Home</Link>
+            <span style={{ color: 'rgba(var(--ink-inverse-rgb), 0.4)' }}>/</span>
+            <Link href={routes.blog} style={{ fontWeight: 600, color: 'var(--moss-light)' }}>Blog</Link>
+            <span style={{ color: 'rgba(var(--ink-inverse-rgb), 0.4)' }}>/</span>
+            <Link href={routes.blogCategory(slugifyCategory(post.category))} style={{ fontWeight: 600, color: 'var(--moss-light)' }}>{post.category}</Link>
+            <span style={{ color: 'rgba(var(--ink-inverse-rgb), 0.4)' }}>/</span>
+            <span aria-current="page" style={{ color: 'rgba(var(--ink-inverse-rgb), 0.6)', maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{post.title}</span>
+          </nav>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(29px, 5.2vw, 46px)', lineHeight: 1.1, letterSpacing: '-1.6px', color: 'var(--ink-inverse)' }}>{h1 || post.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 13, flexWrap: 'wrap' }}>
             <AuthorByline author={author} meta={`${post.date} · ${post.readTime}`} />
