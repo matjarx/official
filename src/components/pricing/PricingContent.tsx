@@ -430,7 +430,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 15.5, color: 'var(--ink-1)' }}>Trustpilot</span>
             </span>
             <span style={{ width: 1, height: 26, background: 'rgba(var(--scrim-rgb), 0.12)' }} />
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'var(--ink-1)' }}>4.8 / 5</span>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'var(--ink-1)' }}>4.1 / 5</span>
             <span style={{ fontSize: 14, letterSpacing: '2px', color: 'var(--trustpilot)' }}>★★★★★</span>
             <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>Rated &lsquo;Excellent&rsquo; by our clients</span>
           </div>

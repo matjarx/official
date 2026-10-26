@@ -250,7 +250,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'center', paddingTop: 12 }}>
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, letterSpacing: '0.3px', color: ink1 }}>RATED 4.8 EXCELLENT</span>
+            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, letterSpacing: '0.3px', color: ink1 }}>RATED 4.1 EXCELLENT</span>
             <span style={{ display: 'flex', gap: 2 }}>
               {[1, 2, 3, 4, 5].map((n) => (
                 <span key={n} style={{ width: 21, height: 21, display: 'grid', placeItems: 'center', background: 'var(--trustpilot)' }}>
@@ -593,7 +593,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           <div style={{ maxWidth: 1360, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 44, alignItems: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'var(--butter)' }}>4.8 / 5</span>
+                <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 17, color: 'var(--butter)' }}>4.1 / 5</span>
                 <span style={{ fontSize: 15, letterSpacing: '2px', color: 'var(--butter)' }}>★★★★★</span>
                 <span style={{ fontSize: 13, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>on Trustpilot</span>
               </div>
