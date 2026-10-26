@@ -102,13 +102,13 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '46px 24px 0' }}>
             {post.coverImage ? (
               <figure style={{ margin: 0 }}>
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '1140 / 380', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '1200 / 630', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
                   <Image
                     src={post.coverImage.src}
                     alt={post.coverImage.alt}
                     title={post.coverImage.title}
                     fill
-                    sizes="(max-width: 1140px) 100vw, 1140px"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
                     style={{ objectFit: 'cover' }}
                     priority
                   />
@@ -118,7 +118,7 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
                 )}
               </figure>
             ) : (
-              <div style={{ height: 380, borderRadius: 24, background: 'linear-gradient(150deg, var(--navy), var(--olive-ground))', display: 'grid', placeItems: 'center', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
+              <div style={{ aspectRatio: '1200 / 630', borderRadius: 24, background: 'linear-gradient(150deg, var(--navy), var(--olive-ground))', display: 'grid', placeItems: 'center', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
                 <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '0.4px', color: 'rgba(var(--ink-inverse-rgb), 0.85)' }}>Article cover image</span>
               </div>
             )}
