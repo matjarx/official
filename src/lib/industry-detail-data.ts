@@ -253,7 +253,7 @@ export const INDUSTRY_DETAIL: Partial<Record<IndustryKey, IndustryDetail>> = {
       { title: 'Member Benefits: Why Members Love Gyms With Websites', body: ['Convenience: find class schedule, book, get reminders', 'Inspiration: see transformations of members like them', 'Community: feel part of something bigger', 'Progress: track achievements alongside others', 'Access: message trainers, get tips, stay motivated'] },
     ],
     faqs: [
-      { q: 'Can members book classes online?', a: 'Yes! Class booking with email reminder reduces no-shows 40%.' },
+      { q: 'Can members book classes online?', a: 'Yes! Class booking comes with email reminders. Reminders help reduce no-shows.' },
       { q: 'How do I get member before/afters?', a: 'Request permission from members achieving results. Offer incentive if needed.' },
       { q: 'Can I showcase multiple trainers?', a: 'Yes! Each trainer gets their own profile with their transformation stories.' },
       { q: 'Will this increase class attendance?', a: 'Yes! Transparent schedule + online booking + community = higher attendance.' },
