@@ -138,20 +138,15 @@ function normaliseIndustries(raw: string[] | null): string[] {
 
 export async function getThemes(): Promise<Theme[]> {
   try {
+    // Reads the restricted view, not the table: the anon key has no
+    // column access to `themes` itself (it carries custom_css and other
+    // fields no client should read). The view already excludes a
+    // client's private clone -- picking a theme clones it into a private
+    // row for that site, so the client can recolour it without changing
+    // anyone else's, and those rows live in the same table.
     const { data, error } = await supabase
-      .from('themes')
+      .from('themes_public')
       .select('id, name, description, industries, category, coming_soon, plans, demo_site_id, preview_image_url, primary_color, secondary_color, structure_key')
-      // Templates only — never a client's private clone.
-      //
-      // Picking a theme clones it into a private row for that site, so the
-      // client can recolour it without changing anyone else's. Those rows
-      // live in the same table, and nothing here excluded them: the public
-      // /templates page was listing two of them already, both called "Pet
-      // Store Matjar" because a clone is named after its template, which
-      // is why it read as duplicate cards rather than as a leak. It grows
-      // by one per signup, and the moment a client renames their theme
-      // their name appears on matjarx.com.
-      .is('cloned_from_theme_id', null)
       // Ordered again below -- see rankOf. This one only has to be stable.
       .order('coming_soon', { ascending: true })
       .order('id', { ascending: true })
