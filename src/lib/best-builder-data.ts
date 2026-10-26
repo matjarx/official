@@ -10,7 +10,7 @@ import { routes } from './routes'
 export const HERO_STATS = [
   { value: '70,000+', label: 'websites built by our team' },
   { value: '5–10 days', label: 'to launch' },
-  { value: '4.8 / 5', label: 'client rating' },
+  { value: '4.1 / 5', label: 'client rating' },
   { value: '0%', label: 'commission on sales' },
 ]
 

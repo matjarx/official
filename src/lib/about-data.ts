@@ -3,7 +3,7 @@ import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 
 export const ABOUT_STATS = [
   { value: '70,000+', label: 'websites built by our team' },
-  { value: '4.8 / 5', label: 'average client rating' },
+  { value: '4.1 / 5', label: 'average client rating' },
   { value: '7 days', label: 'from brief to live site' },
   { value: '1,000+', label: 'business categories served' },
 ]
@@ -23,7 +23,7 @@ export const ABOUT_FAQS: [string, string][] = [
   ["What are MatjarX's values?", 'Help our customers succeed, take ownership of your work, be ambitious, be humble, and be loyal to each other. These values drive every decision we make.'],
   ["Who should use MatjarX?", "Small business owners who want a professional website without learning web design, don't have 60+ hours to spend building one, can't afford expensive agencies, need ongoing support and updates, and want to rank on Google and get customers online."],
   ["Who might not be a good fit for MatjarX?", "You might prefer something else if you enjoy learning web design and want full control, your needs are extremely custom or enterprise-scale, or you prefer a pure DIY approach. Our team has 7+ years of experience and has built 70,000+ websites, first under our US brand and now in Pakistan. Chances are we're a great fit."],
-  ["What's MatjarX's customer satisfaction rate?", "4.8 stars on Trustpilot, with hundreds of verified reviews. Feedback most often mentions fast turnaround, professional design, excellent support, affordability and real results."],
+  ["What's MatjarX's customer satisfaction rate?", "4.1 stars on Trustpilot, with hundreds of verified reviews. Feedback most often mentions fast turnaround, professional design, excellent support, affordability and real results."],
   ['How do you pronounce MatjarX?', 'Mat-jar-ex (متجرایکس) — Urdu-inspired, reflecting our Pakistani roots. Everyone gets it wrong the first time.'],
   ["Do you have team members you'd recommend talking to?", 'Absolutely. Sales — want to learn about our service? Contact Junaid. Marketing — want marketing strategy advice? Chat with Ijlal. Operations — want to discuss partnership? Talk to Wajeeh. Everyone on our team talks to customers; we believe it keeps us honest and improves our service.'],
   ['Is MatjarX hiring?', "Yes — we're always looking for talented people who share our values. See our careers page for open roles."],
