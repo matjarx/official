@@ -299,21 +299,38 @@ function resolvedTitle(raw: string): string {
 }
 
 /**
+ * The sitewide branded image, used as the og:image/twitter:image fallback
+ * for any page that doesn't have a more specific one (a blog post's own
+ * cover, for instance). Points at the root `opengraph-image.tsx` route
+ * directly rather than relying on Next's file-convention auto-injection --
+ * a page's own `openGraph` object replaces the root layout's whole
+ * openGraph object (metadata merges shallowly, and the file-convention
+ * image is injected as part of that same merge), so a page that sets its
+ * own `openGraph` loses the auto-injected image entirely. That silently
+ * dropped og:image/twitter:image from every one of this function's ~150
+ * callers until caught by a mobile/SEO audit -- the line below used to
+ * claim the opposite.
+ */
+const DEFAULT_OG_IMAGE = { url: 'https://matjarx.com/opengraph-image', width: 1200, height: 630, alt: 'MatjarX — Done-for-you websites, live in 7 days' }
+
+/**
  * title, description, og:title/og:description and twitter:title/description
  * for a page, all from the same two values. A page's openGraph replaces the
  * root layout's whole openGraph object (metadata merges shallowly), so the
- * layout's type, site name, locale and card are repeated here; og:image
- * still comes from the opengraph-image file convention.
+ * layout's type, site name, locale and card are repeated here. og:image
+ * defaults to the sitewide image; pass `image` to use something more
+ * specific (a blog post's cover, say).
  */
-export function pageSeo(path: string, title: string | undefined | null, description: string | undefined | null): Pick<import('next').Metadata, 'title' | 'description' | 'openGraph' | 'twitter'> {
+export function pageSeo(path: string, title: string | undefined | null, description: string | undefined | null, image?: { url: string; width: number; height: number; alt: string }): Pick<import('next').Metadata, 'title' | 'description' | 'openGraph' | 'twitter'> {
   const desc = pageDescription(description)
   if (!title) return { description: desc }
   const full = resolvedTitle(title)
+  const ogImage = image || DEFAULT_OG_IMAGE
   return {
     title: pageTitle(title),
     description: desc,
-    openGraph: { type: 'website', siteName: 'MatjarX', locale: 'en_US', url: path, title: full, description: desc },
-    twitter: { card: 'summary_large_image', title: full, description: desc },
+    openGraph: { type: 'website', siteName: 'MatjarX', locale: 'en_US', url: path, title: full, description: desc, images: [ogImage] },
+    twitter: { card: 'summary_large_image', title: full, description: desc, images: [ogImage.url] },
   }
 }
 

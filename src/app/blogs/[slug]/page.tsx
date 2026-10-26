@@ -31,7 +31,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // A post's `title` is its H1. Its <title> and meta description come from
   // the __seo override for `blog/<slug>` -- the spec sheet's values (SEO
   // group 3), or an admin edit on top -- falling back to the H1 and excerpt.
-  const meta = pageSeo(routes.blogPost(post.slug), seo?.title || post.title, seo?.description || post.excerpt)
+  const coverImage = post.coverImage && {
+    url: post.coverImage.src.startsWith('http') ? post.coverImage.src : `https://matjarx.com${post.coverImage.src}`,
+    width: post.coverImage.width,
+    height: post.coverImage.height,
+    alt: post.coverImage.alt,
+  }
+  const meta = pageSeo(routes.blogPost(post.slug), seo?.title || post.title, seo?.description || post.excerpt, coverImage || undefined)
   return {
     ...meta,
     alternates: { canonical: routes.blogPost(post.slug) },
