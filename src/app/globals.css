@@ -1533,7 +1533,11 @@ textarea.input {
 /* Mobile sticky bar (src/components/MobileStickyBar.tsx). Phones only. The
    body padding is what keeps it from covering the end of any page: forms,
    the footer, the last FAQ all scroll clear of it. */
-:root { --mobile-bar-h: 64px; }
+/* Measured via Playwright against the real rendered bar (1px top
+   border + 10px top/bottom padding + content), not eyeballed -- the
+   64px guess this replaced was 1px short, so a page's very last pixel
+   could still end up under the bar. */
+:root { --mobile-bar-h: 65px; }
 .mobile-sticky-bar { display: none; }
 @media (max-width: 767px) {
   body { padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom)); }
