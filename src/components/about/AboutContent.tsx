@@ -14,6 +14,7 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { ABOUT_STATS, ABOUT_VALUES, ABOUT_TEAM, ABOUT_FAQS } from '@/lib/about-data'
 import { FaqList } from '@/components/FaqList'
+import { seoH1 } from '@/lib/seo-h1'
 import { CLAIM, showsClaimTile } from '@/lib/claim'
 
 export type AboutContentShape = { stats: typeof ABOUT_STATS; values: typeof ABOUT_VALUES; team: typeof ABOUT_TEAM; faqs: typeof ABOUT_FAQS }
@@ -32,7 +33,9 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>About MatjarX</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(31px, 5.8vw, 52px)', lineHeight: 1.08, letterSpacing: '-1.8px', color: 'var(--ink-inverse)' }}>
-            We think every business deserves to be <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>findable</span>
+            {seoH1(content) ?? (
+              <>We think every business deserves to be <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>findable</span></>
+            )}
           </h1>
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.62, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Not just the ones who can afford an agency, or who have the spare evenings to learn a website builder.</p>
         </div>

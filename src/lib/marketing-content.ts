@@ -11,6 +11,7 @@
 // the real content, not a duplicate maintained here.
 
 import { supabase } from './supabase'
+import SEO_MAP from './generated/seo-map.json'
 import { CITY_DATA, type CityKey } from './location-data'
 import { CITY_DETAIL } from './location-detail-data'
 import { INDUSTRY_DATA, type IndustryKey } from './industry-data'
@@ -162,10 +163,10 @@ export async function getMergedContent<T = Record<string, unknown>>(slug: string
   const base = getDefaultContent(slug) ?? {}
   try {
     const { data, error } = await supabase.from('marketing_content').select('data, published').eq('slug', slug).maybeSingle()
-    if (error || !data || data.published === false) return base as T
-    return deepMerge(base, data.data) as T
+    if (error || !data || data.published === false) return withSheetSeo(slug, base) as T
+    return withSheetSeo(slug, deepMerge(base, data.data)) as T
   } catch {
-    return base as T
+    return withSheetSeo(slug, base) as T
   }
 }
 
@@ -191,14 +192,52 @@ export async function getContentOverride<T>(slug: string): Promise<T | null> {
 // blank, so a page is never left with an empty <title>. A draft
 // (published = false) page's SEO override stays hidden too, same as
 // its content — its metadata shouldn't leak out before the rest does.
-export type SeoOverride = { title?: string; description?: string }
+//
+// Below the admin's override sits the spec sheet ("Metadata (all pages)",
+// SEO group 3): src/lib/generated/seo-map.json, written by
+// scripts/seo/gen-seo-migration.py from the sheet and the reviewed
+// rewrites. A non-blank admin value wins field by field; the sheet fills
+// the rest; the page's own default is the last resort. `h1` is the page's
+// visible heading, read by the page components from content.__seo.h1.
+export type SeoOverride = { title?: string; description?: string; h1?: string }
+type SheetSeo = { slug: string | null; title: string; description: string; h1: string }
+const SHEET_BY_PATH = SEO_MAP as Record<string, SheetSeo>
+const SHEET_TITLES = new Set(Object.values(SHEET_BY_PATH).map((r) => r.title))
+const SHEET_BY_SLUG: Record<string, SeoOverride> = Object.fromEntries(
+  Object.values(SHEET_BY_PATH).filter((r) => r.slug).map((r) => [r.slug, { title: r.title, description: r.description, h1: r.h1 }]),
+)
+
+/** The sheet's values for a URL path, for pages with no marketing_content slug (template pages). */
+export function sheetSeo(path: string): SeoOverride | null {
+  const r = SHEET_BY_PATH[path]
+  return r ? { title: r.title, description: r.description, h1: r.h1 } : null
+}
+
+function layerSeo(sheet: SeoOverride | null | undefined, admin: SeoOverride | null | undefined): SeoOverride | null {
+  if (!sheet && !admin) return null
+  const out: SeoOverride = { ...sheet }
+  for (const k of ['title', 'description', 'h1'] as const) {
+    const v = admin?.[k]
+    if (typeof v === 'string' && v.trim()) out[k] = v
+  }
+  return out
+}
+
+function withSheetSeo<T>(slug: string, content: T): T {
+  const sheet = SHEET_BY_SLUG[slug]
+  if (!sheet || !content || typeof content !== 'object') return content
+  const merged = layerSeo(sheet, (content as { __seo?: SeoOverride }).__seo)
+  return { ...content, __seo: merged } as T
+}
+
 export async function getSeoOverride(slug: string): Promise<SeoOverride | null> {
+  const sheet = SHEET_BY_SLUG[slug]
   try {
     const { data, error } = await supabase.from('marketing_content').select('data, published').eq('slug', slug).maybeSingle()
-    if (error || !data || data.published === false) return null
-    return (data.data as { __seo?: SeoOverride })?.__seo ?? null
+    if (error || !data || data.published === false) return layerSeo(sheet, null)
+    return layerSeo(sheet, (data.data as { __seo?: SeoOverride })?.__seo)
   } catch {
-    return null
+    return layerSeo(sheet, null)
   }
 }
 
@@ -223,7 +262,7 @@ export async function getSeoOverride(slug: string): Promise<SeoOverride | null> 
  * website audit at 169. Cut on a word boundary and end with an ellipsis
  * rather than mid-word.
  */
-export function pageDescription(raw: string | undefined | null, limit = 158): string | undefined {
+export function pageDescription(raw: string | undefined | null, limit = 160): string | undefined {
   if (!raw) return undefined
   const text = raw.replace(/\s+/g, ' ').trim()
   if (text.length <= limit) return text
@@ -238,6 +277,9 @@ const TITLE_BUDGET = 60
 export function pageTitle(raw: string | undefined | null): import('next').Metadata['title'] {
   if (!raw) return undefined // no override and no hardcoded default — let the parent's own default show
   if (/matjarx/i.test(raw)) return { absolute: raw }
+  // A title from the spec sheet is the whole <title>, exactly as written:
+  // the sheet left the brand off where the keyword needed the room.
+  if (SHEET_TITLES.has(raw)) return { absolute: raw }
   // The root layout's template appends " | MatjarX", ten characters that
   // are worth having on a short title and not worth losing the end of a
   // sentence for. Twelve blog posts were running to 69–82 characters,
@@ -248,6 +290,31 @@ export function pageTitle(raw: string | undefined | null): import('next').Metada
   // characters is still too long, and the admin's per-page SEO title is
   // where that gets solved properly.
   return raw.length + ' | MatjarX'.length > TITLE_BUDGET ? { absolute: raw } : raw
+}
+
+/** The <title> text pageTitle() produces, for og:title and twitter:title. */
+function resolvedTitle(raw: string): string {
+  const t = pageTitle(raw)
+  return typeof t === 'string' ? `${t} | MatjarX` : (t as { absolute: string }).absolute
+}
+
+/**
+ * title, description, og:title/og:description and twitter:title/description
+ * for a page, all from the same two values. A page's openGraph replaces the
+ * root layout's whole openGraph object (metadata merges shallowly), so the
+ * layout's type, site name, locale and card are repeated here; og:image
+ * still comes from the opengraph-image file convention.
+ */
+export function pageSeo(path: string, title: string | undefined | null, description: string | undefined | null): Pick<import('next').Metadata, 'title' | 'description' | 'openGraph' | 'twitter'> {
+  const desc = pageDescription(description)
+  if (!title) return { description: desc }
+  const full = resolvedTitle(title)
+  return {
+    title: pageTitle(title),
+    description: desc,
+    openGraph: { type: 'website', siteName: 'MatjarX', locale: 'en_US', url: path, title: full, description: desc },
+    twitter: { card: 'summary_large_image', title: full, description: desc },
+  }
 }
 
 // Site-wide settings — GA4/Meta Pixel IDs, social links, contact email,

@@ -19,6 +19,7 @@ import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { FaqList } from '@/components/FaqList'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
+import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 import { CLAIM, showsClaimTile } from '@/lib/claim'
 
@@ -52,7 +53,9 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
           </span>
 
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.4vw, 56px)', lineHeight: 1.06, letterSpacing: '-2px', color: 'var(--ink-1)' }}>
-            The best website builder in Pakistan is the one <span className="marker">you don&rsquo;t have to use</span>
+            {seoH1(content) ?? (
+              <>The best website builder in Pakistan is the one <span className="marker">you don&rsquo;t have to use</span></>
+            )}
           </h1>
 
           <p style={{ margin: 0, maxWidth: '36em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.62, color: 'var(--ink-4)' }}>

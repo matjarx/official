@@ -1,14 +1,13 @@
 import type { Metadata } from 'next'
 import HelpArticleContent from '@/components/help/HelpArticleContent'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 import type { HelpArticle } from '@/lib/help-articles-data'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('help/website-editor')
   return {
     alternates: { canonical: '/help/website-editor' },
-    title: pageTitle(seo?.title || "Website Editor - Edit & Customize Your Website"),
-    description: pageDescription(seo?.description || "Learn to edit your MatjarX website. Step-by-step guide to making changes, adding content, and self-serve website customization."),
+    ...pageSeo('/help/website-editor', seo?.title || "Website Editor - Edit & Customize Your Website", seo?.description || "Learn to edit your MatjarX website. Step-by-step guide to making changes, adding content, and self-serve website customization."),
   }
 }
 

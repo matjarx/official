@@ -1,15 +1,14 @@
 import type { Metadata } from 'next'
 import ComparisonContent, { type ComparisonContentShape } from '@/components/comparisons/ComparisonContent'
 import { robotsFor } from '@/lib/seo-indexing'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('comparisons/wix')
   return {
     alternates: { canonical: '/alternatives/matjarx-vs-wix' },
     ...robotsFor('/alternatives/matjarx-vs-wix'),
-    title: pageTitle(seo?.title || 'MatjarX vs Wix'),
-    description: pageDescription(seo?.description || 'An honest comparison of MatjarX and Wix — who builds the site, how long it takes, what it costs, and when Wix is genuinely the better pick.'),
+    ...pageSeo('/alternatives/matjarx-vs-wix', seo?.title || 'MatjarX vs Wix', seo?.description || 'An honest comparison of MatjarX and Wix — who builds the site, how long it takes, what it costs, and when Wix is genuinely the better pick.'),
   }
 }
 

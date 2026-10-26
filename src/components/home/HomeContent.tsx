@@ -25,6 +25,7 @@ import type { HomeContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { useTheme } from '@/components/ThemeProvider'
 import { useCurrency } from '@/components/CurrencyProvider'
+import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 import { CLAIM, showsClaimTile } from '@/lib/claim'
 
@@ -234,7 +235,9 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
           <p style={{ margin: 0, fontSize: 'clamp(14px, 1.6vw, 17px)', color: ink4 }}>Having trouble launching the right website for your business?</p>
 
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 5.6vw, 60px)', lineHeight: 1.08, letterSpacing: '-2px', color: ink1 }}>
-            We&apos;ll build complete <span className="marker">small business websites</span> in 7 days, {inText('from Rs. 4,500/month + Rs. 22,500 setup')}
+{seoH1(content) ?? (
+              <>We&apos;ll build complete <span className="marker">small business websites</span> in 7 days, {inText('from Rs. 4,500/month + Rs. 22,500 setup')}</>
+            )}
           </h1>
 
           <p style={{ margin: 0, maxWidth: '34em', fontSize: 'clamp(14.5px, 1.7vw, 17.5px)', lineHeight: 1.6, color: ink4 }}>

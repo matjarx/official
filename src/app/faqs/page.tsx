@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import FaqsContent, { type FaqsContentShape } from '@/components/faqs/FaqsContent'
-import { getMergedContent, getSeoOverride, pageTitle, pageDescription } from '@/lib/marketing-content'
+import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoOverride('faqs')
   return {
     alternates: { canonical: '/faqs' },
-    title: pageTitle(seo?.title || 'Frequently Asked Questions'),
-    description: pageDescription(seo?.description || 'Everything you need to know about getting started, your website, domains and email, pricing and plans, and support and guarantees.'),
+    ...pageSeo('/faqs', seo?.title || 'Frequently Asked Questions', seo?.description || 'Everything you need to know about getting started, your website, domains and email, pricing and plans, and support and guarantees.'),
   }
 }
 

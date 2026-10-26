@@ -14,6 +14,7 @@ import { routes, appLogin } from '@/lib/routes'
 import { HELP_TOPICS, HELP_POPULAR, HELP_CHANNELS, HELP_SUBJECTS, HELP_CONTACT_ROWS, HELP_FAQS, HELP_VIDEOS, HELP_BY_PLAN, HELP_TROUBLESHOOTING, HELP_KNOWLEDGE_BASE, HELP_BEST_PRACTICES, HELP_QUICK_LINKS } from '@/lib/help-data'
 import { FaqList } from '@/components/FaqList'
 import LeadForm from '@/components/LeadForm'
+import { seoH1 } from '@/lib/seo-h1'
 
 function slugFor(topic: string) {
   return HELP_TOPICS.find((t) => t.title === topic)?.slug
@@ -38,7 +39,9 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
         <section style={{ maxWidth: 1160, margin: '0 auto', padding: '56px 24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
           <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--olive)', fontWeight: 600 }}>Help centre</span>
           <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(30px, 5.2vw, 52px)', lineHeight: 1.07, letterSpacing: '-1.9px', color: 'var(--ink-1)' }}>
-            How can we <span className="marker">help you</span>?
+            {seoH1(content) ?? (
+              <>How can we <span className="marker">help you</span>?</>
+            )}
           </h1>
           <p style={{ margin: 0, maxWidth: '32em', fontSize: 'clamp(14.5px, 1.7vw, 17px)', lineHeight: 1.6, color: 'var(--ink-4)' }}>Search the guides below, or talk to a real person — whichever you prefer.</p>
 

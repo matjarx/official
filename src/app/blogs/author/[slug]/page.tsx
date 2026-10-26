@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import BlogArchive from '@/components/blog/BlogArchive'
-import { getBlogAuthors, getBlogAuthor, getBlogPosts, getSeoOverride, pageTitle, pageDescription, toCard, withAuthors } from '@/lib/marketing-content'
+import { getBlogAuthors, getBlogAuthor, getBlogPosts, getSeoOverride, pageTitle, pageSeo, toCard, withAuthors } from '@/lib/marketing-content'
 
 // Everything one person has written.
 //
@@ -26,23 +26,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const description = seo?.description || author.bio || `Articles written by ${author.name} for the MatjarX blog.`
   const url = `/blogs/author/${slug}`
 
+  const meta = pageSeo(url, title, description)
   return {
     alternates: { canonical: url },
-    title: pageTitle(title),
-    description: pageDescription(description),
+    ...meta,
     // 'profile' rather than 'website': this page is a person, and without
     // these it inherited the sitewide defaults, so sharing an author link
     // previewed as the homepage instead of them.
     openGraph: {
+      ...meta.openGraph,
       type: 'profile',
-      title,
-      description,
-      url,
       ...(author.avatarUrl ? { images: [{ url: author.avatarUrl, alt: author.name }] } : {}),
     },
     twitter: {
-      title,
-      description,
+      ...meta.twitter,
       ...(author.avatarUrl ? { images: [author.avatarUrl] } : {}),
     },
   }
@@ -50,12 +47,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const [author, allPosts, authors] = await Promise.all([getBlogAuthor(slug), getBlogPosts(), getBlogAuthors()])
+  const [author, allPosts, authors, seo] = await Promise.all([getBlogAuthor(slug), getBlogPosts(), getBlogAuthors(), getSeoOverride(`blogs/author/${slug}`)])
   // A 404 rather than an empty page: a slug matching nobody is a dead URL,
   // and serving 200 for it would let every typo into the index.
   if (!author) notFound()
 
   const posts = withAuthors(allPosts, authors).filter((p) => p.authorSlug === slug)
 
-  return <BlogArchive heading={author.name} author={author} posts={posts.map(toCard)} />
+  return <BlogArchive heading={author.name} h1={seo?.h1} author={author} posts={posts.map(toCard)} />
 }

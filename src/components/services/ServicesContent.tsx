@@ -23,6 +23,7 @@ import { routes, SERVICE_ROUTES } from '@/lib/routes'
 import { SERVICE_TABS, SERVICE_DATA, type ServiceKey, type ServiceDataEntry } from '@/lib/services-data'
 import ServiceDetailSections from './ServiceDetailSections'
 import { useCurrency } from '@/components/CurrencyProvider'
+import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 import { CLAIM, showsClaimTile } from '@/lib/claim'
 
@@ -45,7 +46,9 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
           <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, textAlign: 'center' }}>
             <span style={{ fontSize: 12, letterSpacing: '2.4px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{d.kicker}</span>
             <h1 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(31px, 5.8vw, 52px)', lineHeight: 1.08, letterSpacing: '-1.8px', color: 'var(--ink-inverse)' }}>
-              {d.titleLead} <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>{d.titleMark}</span>
+              {seoH1(content) ?? (
+                <>{d.titleLead} <span style={{ background: 'var(--moss-light)', color: 'var(--ink-on-butter)', padding: '0 10px', borderRadius: 3 }}>{d.titleMark}</span></>
+              )}
             </h1>
             <p style={{ margin: 0, maxWidth: '34em', fontSize: 17, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{d.subtitle}</p>
             <Link href={routes.pricing} className="btn-primary" style={{ marginTop: 6 }}>{d.heroCta}</Link>
