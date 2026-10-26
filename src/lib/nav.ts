@@ -33,6 +33,7 @@ export const NAV_INDUSTRIES: NavMenuItem[] = [
 ]
 
 export const NAV_ITEMS: NavItem[] = [
+  { label: 'Home', href: routes.home, key: 'home' },
   {
     label: 'Services',
     href: routes.service('dfy'),
