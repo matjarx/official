@@ -10,7 +10,7 @@
 import type { BodyBlock } from './blog-data'
 import { plainText } from './rich-text'
 
-const FAQ_HEADING = /^(frequently asked questions|faqs?)\b/i
+export const FAQ_HEADING = /^(frequently asked questions|faqs?)\b/i
 
 export type FaqPair = { question: string; answer: string }
 

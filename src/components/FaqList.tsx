@@ -40,7 +40,12 @@ import { useCurrency } from '@/components/CurrencyProvider'
 
 export type FaqEntry = {
   q: string
-  a: string
+  /** A plain string goes through `inText` (currency conversion) like every
+   *  existing caller. A ReactNode is rendered as-is -- for an answer that
+   *  carries its own links/bold/multiple paragraphs (the blog template's
+   *  in-body FAQ, built from rich body blocks) and would lose that
+   *  formatting if flattened to a string. */
+  a: string | React.ReactNode
   /** Rendered as a bullet list under the answer. Only the detail sections
    *  use it; without it the answer is a plain paragraph. */
   items?: string[]
@@ -117,11 +122,13 @@ export function FaqList({
             {open && (
               bullets ? (
                 <div style={{ padding: '0 22px 20px' }}>
-                  <p style={{ margin: f.items ? '0 0 8px' : 0, fontSize: 14.5, lineHeight: 1.68, color: body }}>{inText(f.a)}{answerLink(f)}</p>
+                  <p style={{ margin: f.items ? '0 0 8px' : 0, fontSize: 14.5, lineHeight: 1.68, color: body }}>{typeof f.a === 'string' ? inText(f.a) : f.a}{answerLink(f)}</p>
                   {f.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{f.items.map((it, j) => bullet(it, j))}</ul>}
                 </div>
-              ) : (
+              ) : typeof f.a === 'string' ? (
                 <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: body }}>{inText(f.a)}{answerLink(f)}</p>
+              ) : (
+                <div style={{ padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: body, display: 'flex', flexDirection: 'column', gap: 10 }}>{f.a}{answerLink(f)}</div>
               )
             )}
           </div>
