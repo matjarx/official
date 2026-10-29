@@ -321,7 +321,7 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
                     title={post.coverImage.title}
                     fill
                     sizes="(max-width: 1200px) 100vw, 1200px"
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', objectPosition: post.coverImage.focalPosition ?? 'center' }}
                     priority
                   />
                 </div>
