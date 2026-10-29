@@ -4,6 +4,7 @@
 // paragraph/quote/list blocks, author bio card, a CTA box and three
 // related posts, both matched to the post's content pillar.
 
+import type { ReactNode } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import SiteChrome from '@/components/SiteChrome'
@@ -13,10 +14,13 @@ import { PILLAR_CTA, pillarOf, relatedInPillar } from '@/lib/pillars'
 import ArticleToc from './ArticleToc'
 import AuthorCard, { AuthorByline } from './AuthorCard'
 import NewsletterSignup from './NewsletterSignup'
+import BlogFaqAccordion from './BlogFaqAccordion'
+import type { FaqEntry } from '@/components/FaqList'
 import { routes } from '@/lib/routes'
 import { AUTHOR, SHARE_LINKS, type BlogPost, type BodyBlock } from '@/lib/blog-data'
 import { richText, plainText } from '@/lib/rich-text'
 import { slugifyCategory } from '@/lib/blog-categories'
+import { FAQ_HEADING } from '@/lib/blog-faq'
 
 // allPosts comes from the same getBlogPosts() call the page already made
 // for the listing — resolving relatedSlugs against the live table rather
@@ -32,6 +36,214 @@ function headingId(text: string, index: number): string {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
   return `${slug || 'section'}-${index}`
+}
+
+// A short standalone paragraph that is functioning as a subheading --
+// "Why Hosting Matters:", "Tips for Choosing a Domain:" -- rather than a
+// sentence of body copy. Some older posts have these as their own `p`
+// block (not an `h3`), which is why they render as flat body text today.
+// Deliberately narrow: only a paragraph whose ENTIRE text is a short,
+// colon-terminated label. A paragraph that merely contains a colon
+// ("Types of Hosting Commonly Used: Shared Hosting: Cost effective...")
+// is a label run on into real content in the same block -- splitting that
+// safely would mean rewriting the block, which is a content change, not a
+// styling one, so it is deliberately left alone and still renders as a
+// normal paragraph.
+function isPseudoHeading(text: string): boolean {
+  const t = plainText(text).trim()
+  return t.length > 0 && t.length <= 70 && t.endsWith(':') && !t.slice(0, -1).includes('. ')
+}
+
+type RenderGroup =
+  | { kind: 'block'; block: BodyBlock; index: number }
+  | { kind: 'pgroup'; blocks: Extract<BodyBlock, { t: 'p' }>[]; indices: number[] }
+  | { kind: 'faq'; heading: Extract<BodyBlock, { t: 'h' }>; index: number; items: FaqEntry[] }
+
+/** One answer's rich content, built from the blocks between an FAQ's `h3`
+ *  and the next `h3`/`h` -- same shape blog-faq.ts assumes, but kept as
+ *  JSX (richText) instead of flattened to a string, so a link or bold run
+ *  in an answer survives into the accordion. */
+function faqAnswerNode(blocks: BodyBlock[]): ReactNode {
+  return (
+    <>
+      {blocks.map((b, k) => {
+        if (b.t === 'p' || b.t === 'q') return <p key={k} style={{ margin: 0 }}>{richText(b.text)}</p>
+        if (b.t === 'l' || b.t === 'ol') return (
+          <ul key={k} style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {b.items.map((li, j) => (
+              <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                <span style={{ width: 5, height: 5, flex: '0 0 auto', marginTop: 8, borderRadius: '50%', background: 'var(--moss-light)' }} />
+                <span>{richText(li)}</span>
+              </li>
+            ))}
+          </ul>
+        )
+        return null
+      })}
+    </>
+  )
+}
+
+/**
+ * Groups a post's body into render units: the in-body FAQ section (same
+ * convention blog-faq.ts uses for schema -- an `h` matching FAQ_HEADING,
+ * then one `h3` per question) collapses into one accordion; 3 or more
+ * consecutive plain paragraphs collapse into one card; everything else
+ * renders exactly as before, one block at a time.
+ *
+ * A pseudo-heading paragraph (see isPseudoHeading) breaks a paragraph run
+ * rather than joining it -- it gets its own heading-styled block, not a
+ * ride inside the card next to it.
+ */
+function groupBody(body: BodyBlock[]): RenderGroup[] {
+  const groups: RenderGroup[] = []
+  let i = 0
+  while (i < body.length) {
+    const b = body[i]
+
+    if (b.t === 'h' && FAQ_HEADING.test(plainText(b.text).trim())) {
+      const items: FaqEntry[] = []
+      let current: { q: string; blocks: BodyBlock[] } | null = null
+      let j = i + 1
+      const flush = () => { if (current && current.blocks.length) items.push({ q: current.q, a: faqAnswerNode(current.blocks) }) }
+      for (; j < body.length; j++) {
+        const bb = body[j]
+        if (bb.t === 'h') break
+        if (bb.t === 'h3') {
+          flush()
+          current = { q: plainText(bb.text).trim(), blocks: [] }
+        } else if (current) {
+          current.blocks.push(bb)
+        }
+      }
+      flush()
+      if (items.length > 0) {
+        groups.push({ kind: 'faq', heading: b, index: i, items })
+        i = j
+        continue
+      }
+      // No h3-based questions found (an older post's FAQ written a
+      // different way) -- fall through and render this block normally,
+      // same as every post did before this change.
+    }
+
+    if (b.t === 'p' && !isPseudoHeading(b.text)) {
+      const run: Extract<BodyBlock, { t: 'p' }>[] = []
+      const indices: number[] = []
+      let j = i
+      while (j < body.length) {
+        const bb = body[j]
+        if (bb.t !== 'p' || isPseudoHeading(bb.text)) break
+        run.push(bb)
+        indices.push(j)
+        j++
+      }
+      if (run.length >= 3) {
+        groups.push({ kind: 'pgroup', blocks: run, indices })
+        i = j
+        continue
+      }
+      // 1-2 plain paragraphs: render individually, as before.
+    }
+
+    groups.push({ kind: 'block', block: b, index: i })
+    i++
+  }
+  return groups
+}
+
+/** One body block, exactly as both layouts rendered it before -- except a
+ *  `p` that isPseudoHeading() now gets heading-weight treatment (same step
+ *  up from body text as a real h3, not a new size of its own), and `ol`
+ *  draws its own numbers (see the comment on that branch). */
+function renderBlock(b: BodyBlock, i: number): ReactNode {
+  if (b.t === 'h') return <h2 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{richText(b.text)}</h2>
+  if (b.t === 'h3') return <h3 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '10px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.25, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{richText(b.text)}</h3>
+  if (b.t === 'p') {
+    if (isPseudoHeading(b.text)) return <p key={i} style={{ margin: '6px 0 0', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 18, lineHeight: 1.3, letterSpacing: '-0.3px', color: 'var(--ink-1)' }}>{richText(b.text)}</p>
+    return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{richText(b.text)}</p>
+  }
+  if (b.t === 'q') return (
+    <blockquote key={i} style={{ margin: '8px 0', padding: '24px 28px', borderRadius: 18, background: 'var(--cream-deep)', borderLeft: '4px solid var(--moss-light)' }}>
+      <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{richText(b.text)}</p>
+    </blockquote>
+  )
+  if (b.t === 'img') return (
+    <figure key={i} style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={b.src} alt={b.alt} loading="lazy" style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
+      {b.caption && (
+        <figcaption style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-3-alt)' }}>{richText(b.caption)}</figcaption>
+      )}
+    </figure>
+  )
+  if (b.t === 'table') return <TableBlock key={i} block={b} />
+  if (b.t === 'ol') return (
+    // Real <ol>/<li> (a screen reader still announces list length and
+    // position with listStyle: none), but the number is drawn manually,
+    // same idea as the 'l' block's hand-drawn dot below -- Tailwind's
+    // Preflight reset (`@import "tailwindcss"` in globals.css) sets
+    // `list-style: none` on every ol/ul, which silently ate the browser's
+    // default numbering with nothing here to replace it. A multi-step
+    // guide read as un-numbered paragraphs with no visible sequence.
+    <ol key={i} style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 13 }}>
+      {b.items.map((li, k) => (
+        <li key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
+          <span style={{ flex: '0 0 auto', minWidth: 24, fontWeight: 800, color: 'var(--ink-1)' }}>{k + 1}.</span>
+          <span>{richText(li)}</span>
+        </li>
+      ))}
+    </ol>
+  )
+  if (b.t === 'l') return (
+    <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
+      {b.items.map((li, k) => (
+        <span key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
+          <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
+          {/* One flex child: text mixed with links or bold is several nodes. */}
+          <span>{richText(li)}</span>
+        </span>
+      ))}
+    </div>
+  )
+  // An unknown block renders NOTHING.
+  //
+  // This branch used to be the list renderer, reached by falling through --
+  // so any block type this deploy did not know about hit `b.items.map` on
+  // an object with no items and threw, taking the whole post page down
+  // with it. The platform and this site deploy separately, so the editor
+  // WILL emit a type this renderer has not learned yet; that has to cost a
+  // missing paragraph, not a white screen.
+  return null
+}
+
+/** A run of 3+ plain paragraphs, boxed the same way this page already
+ *  boxes its TOC/newsletter/CTA cards -- `.glass-card` -- instead of
+ *  running together as a flat, undifferentiated wall of text. 1-2
+ *  paragraphs in a row stay exactly as they were: this is for the long
+ *  runs, not every paragraph gap on the page. */
+function ParagraphGroup({ blocks, indices }: { blocks: Extract<BodyBlock, { t: 'p' }>[]; indices: number[] }) {
+  return (
+    <div className="glass-card" style={{ borderRadius: 18, padding: '22px 24px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+      {blocks.map((b, k) => <p key={indices[k]} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{richText(b.text)}</p>)}
+    </div>
+  )
+}
+
+function renderGroups(groups: RenderGroup[]): ReactNode[] {
+  return groups.map((g) => {
+    if (g.kind === 'block') return renderBlock(g.block, g.index)
+    if (g.kind === 'pgroup') return <ParagraphGroup key={g.indices[0]} blocks={g.blocks} indices={g.indices} />
+    // 'faq': the section heading renders exactly as any other h2, the
+    // questions beneath it become the shared accordion instead of plain
+    // h3 + paragraph pairs.
+    return (
+      <div key={g.index} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        {renderBlock(g.heading, g.index)}
+        <BlogFaqAccordion items={g.items} />
+      </div>
+    )
+  })
 }
 
 export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost; allPosts: BlogPost[]; h1?: string }) {
@@ -144,54 +356,7 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
                 <ArticleToc items={toc.map((t) => ({ id: headingId(plainText(t.text), t.index), text: plainText(t.text) }))} />
               )}
                 <article style={{ minWidth: 0, maxWidth: '100%', display: 'flex', flexDirection: 'column', gap: 24 }}>
-                  {post.body.map((b, i) => {
-                    if (b.t === 'h') return <h2 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{richText(b.text)}</h2>
-                    if (b.t === 'h3') return <h3 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '10px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.25, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{richText(b.text)}</h3>
-                    if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{richText(b.text)}</p>
-                    if (b.t === 'q') return (
-                      <blockquote key={i} style={{ margin: '8px 0', padding: '24px 28px', borderRadius: 18, background: 'var(--cream-deep)', borderLeft: '4px solid var(--moss-light)' }}>
-                        <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{richText(b.text)}</p>
-                      </blockquote>
-                    )
-                    if (b.t === 'img') return (
-                      <figure key={i} style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={b.src} alt={b.alt} loading="lazy" style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
-                        {b.caption && (
-                          <figcaption style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-3-alt)' }}>{richText(b.caption)}</figcaption>
-                        )}
-                      </figure>
-                    )
-                    if (b.t === 'table') return <TableBlock key={i} block={b} />
-                    if (b.t === 'ol') return (
-                      <ol key={i} style={{ margin: 0, paddingLeft: 26, display: 'flex', flexDirection: 'column', gap: 13 }}>
-                        {b.items.map((li, k) => (
-                          <li key={k} style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>{richText(li)}</li>
-                        ))}
-                      </ol>
-                    )
-                    if (b.t === 'l') return (
-                      <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
-                        {b.items.map((li, k) => (
-                          <span key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
-                            <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
-                            {/* One flex child: text mixed with links or bold is several nodes. */}
-                            <span>{richText(li)}</span>
-                          </span>
-                        ))}
-                      </div>
-                    )
-                    // An unknown block renders NOTHING.
-                    //
-                    // This branch used to be the list renderer, reached by
-                    // falling through -- so any block type this deploy did not
-                    // know about hit `b.items.map` on an object with no items
-                    // and threw, taking the whole post page down with it. The
-                    // platform and this site deploy separately, so the editor
-                    // WILL emit a type this renderer has not learned yet; that
-                    // has to cost a missing paragraph, not a white screen.
-                    return null
-                  })}
+                  {renderGroups(groupBody(post.body))}
 
                   {seoServiceLine && (
                     <p style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>
@@ -214,53 +379,7 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
             <section style={{ maxWidth: 1300, margin: '0 auto', padding: '52px 24px 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 46, alignItems: 'start' }}>
 
               <article style={{ minWidth: 0, maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 24 }}>
-                {post.body.map((b, i) => {
-                  if (b.t === 'h') return <h2 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '16px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 29, lineHeight: 1.18, letterSpacing: '-0.9px', color: 'var(--ink-1)' }}>{richText(b.text)}</h2>
-                  if (b.t === 'h3') return <h3 key={i} id={headingId(plainText(b.text), i)} style={{ margin: '10px 0 0', scrollMarginTop: 96, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.25, letterSpacing: '-0.5px', color: 'var(--ink-1)' }}>{richText(b.text)}</h3>
-                  if (b.t === 'p') return <p key={i} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>{richText(b.text)}</p>
-                  if (b.t === 'q') return (
-                    <blockquote key={i} style={{ margin: '8px 0', padding: '24px 28px', borderRadius: 18, background: 'var(--cream-deep)', borderLeft: '4px solid var(--moss-light)' }}>
-                      <p style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 20, lineHeight: 1.45, letterSpacing: '-0.4px', color: 'var(--ink-1)' }}>{richText(b.text)}</p>
-                    </blockquote>
-                  )
-                  if (b.t === 'img') return (
-                    <figure key={i} style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={b.src} alt={b.alt} loading="lazy" style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
-                      {b.caption && (
-                        <figcaption style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-3-alt)' }}>{richText(b.caption)}</figcaption>
-                      )}
-                    </figure>
-                  )
-                  if (b.t === 'table') return <TableBlock key={i} block={b} />
-                  if (b.t === 'ol') return (
-                    <ol key={i} style={{ margin: 0, paddingLeft: 26, display: 'flex', flexDirection: 'column', gap: 13 }}>
-                      {b.items.map((li, k) => (
-                        <li key={k} style={{ fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>{richText(li)}</li>
-                      ))}
-                    </ol>
-                  )
-                  if (b.t === 'l') return (
-                    <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
-                      {b.items.map((li, k) => (
-                        <span key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 17, lineHeight: 1.65, color: 'var(--ink-3-alt)' }}>
-                          <span style={{ width: 7, height: 7, flex: '0 0 auto', marginTop: 10, borderRadius: '50%', background: 'var(--moss-light)' }} />
-                          <span>{richText(li)}</span>
-                        </span>
-                      ))}
-                    </div>
-                  )
-                  // An unknown block renders NOTHING.
-                  //
-                  // This branch used to be the list renderer, reached by
-                  // falling through -- so any block type this deploy did not
-                  // know about hit `b.items.map` on an object with no items
-                  // and threw, taking the whole post page down with it. The
-                  // platform and this site deploy separately, so the editor
-                  // WILL emit a type this renderer has not learned yet; that
-                  // has to cost a missing paragraph, not a white screen.
-                  return null
-                })}
+                {renderGroups(groupBody(post.body))}
 
                 {seoServiceLine && (
                   <p style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--ink-3-alt)' }}>
@@ -336,15 +455,35 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
 // A body table. Scrolls sideways inside its own box on a phone rather than
 // widening the page; the first column stays readable as a row label.
 function TableBlock({ block }: { block: Extract<BodyBlock, { t: 'table' }> }) {
-  const cell = { padding: '12px 14px', fontSize: 15, lineHeight: 1.55, textAlign: 'left' as const, verticalAlign: 'top' as const, borderBottom: '1px solid var(--card-line)' }
+  // Column borders are right-only: a left+right border on every <td> would
+  // double up into a 2px seam at each boundary (adjacent cells each drawing
+  // their own edge). Right-only gives one clean line between columns and
+  // none after the last column.
+  const cell = { padding: '12px 14px', fontSize: 15, lineHeight: 1.55, textAlign: 'left' as const, verticalAlign: 'top' as const, borderBottom: '1px solid var(--card-line)', borderRight: '1px solid var(--card-line)' }
+  const lastCell = (k: number, len: number) => (k === len - 1 ? { borderRight: 'none' } : null)
   return (
     <figure style={{ margin: '4px 0' }}>
-      <div style={{ overflowX: 'auto', borderRadius: 14, border: '1px solid var(--card-line)' }}>
-        <table style={{ width: '100%', minWidth: 520, borderCollapse: 'collapse', color: 'var(--ink-3-alt)' }}>
+      {/* Was transparent, sitting directly on the page's cream/ambient-orb
+          background with nothing but the outer border containing it --
+          and the header row shared that same background as the body, so
+          only font-weight marked it as a header. A surface fill + header
+          tint are what make this read as a table rather than a bare grid
+          of text in a rounded box.
+          No `minWidth` on the table itself any more: it used to force
+          520px regardless of column count, so a simple 2-column table
+          went into horizontal-scroll mode on a 325px mobile content area
+          even though it would have fit -- hiding the one thing a reader
+          opened the table for (confirmed on payment-gateways-in-pakistan's
+          PayFast fee table). Table layout now sizes to its own content;
+          the wrapper's overflow-x: auto still catches a table that's
+          genuinely too wide (the 4-column gateway comparison), same as
+          before. */}
+      <div style={{ overflowX: 'auto', borderRadius: 14, border: '1px solid var(--card-line)', background: 'var(--surface)' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', color: 'var(--ink-3-alt)' }}>
           <thead>
             <tr>
               {block.head.map((h, k) => (
-                <th key={k} scope="col" style={{ ...cell, fontWeight: 800, color: 'var(--ink-1)', background: 'var(--surface)' }}>{richText(h)}</th>
+                <th key={k} scope="col" style={{ ...cell, ...lastCell(k, block.head.length), fontWeight: 800, color: 'var(--ink-1)', background: 'var(--cream-deep)' }}>{richText(h)}</th>
               ))}
             </tr>
           </thead>
@@ -352,8 +491,8 @@ function TableBlock({ block }: { block: Extract<BodyBlock, { t: 'table' }> }) {
             {block.rows.map((row, r) => (
               <tr key={r}>
                 {row.map((c, k) => (k === 0
-                  ? <th key={k} scope="row" style={{ ...cell, fontWeight: 700, color: 'var(--ink-1)' }}>{richText(c)}</th>
-                  : <td key={k} style={cell}>{richText(c)}</td>))}
+                  ? <th key={k} scope="row" style={{ ...cell, ...lastCell(k, row.length), fontWeight: 700, color: 'var(--ink-1)' }}>{richText(c)}</th>
+                  : <td key={k} style={{ ...cell, ...lastCell(k, row.length) }}>{richText(c)}</td>))}
               </tr>
             ))}
           </tbody>
