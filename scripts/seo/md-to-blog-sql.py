@@ -9,8 +9,13 @@ the same pillar, as the existing posts carry).
 Body blocks (src/lib/blog-data.ts BodyBlock):
   ## heading -> {t:'h'}      ### heading -> {t:'h3'}     paragraph -> {t:'p'}
   - item     -> {t:'l'}      1. item     -> {t:'ol'}     | table | -> {t:'table'}
+  > quote    -> {t:'q'}  (a bare '>' line is a paragraph break *within* the
+                          same quote, not the end of it -- multiple `> `
+                          lines/groups collapse into one block, space-joined)
 Inline `[label](href)` and `**bold**` are kept as written (lib/rich-text.tsx
-renders them). Links to a domain in `nofollow_links` get the "nofollow" marker.
+renders them). A lone *italic* pair is stripped (not kept as literal
+asterisks): the renderer has no italic syntax, only **bold** and links.
+Links to a domain in `nofollow_links` get the "nofollow" marker.
 
 Also inserts marketing_content `blog/<slug>` with an __seo override when the
 frontmatter `title`/`meta_description` differ from the H1/excerpt, so the
@@ -62,12 +67,25 @@ nofollow = {d.lower().removeprefix('www.') for d in front.get('nofollow_links', 
 LINK = re.compile(r'\[([^\]]+)\]\(([^\s()[\]]+)\)')
 
 
+# A lone *italic* pair, as opposed to **bold**. src/lib/rich-text.tsx only
+# parses **bold** and [label](href) -- it has no italic syntax at all, so a
+# *single-asterisk* pair would render as two literal asterisk characters
+# stuck to the words rather than as emphasis. Matched directly as asterisk,
+# text, asterisk, with no asterisk adjacent on either side (so it never
+# matches into or out of a **bold** run).
+ITALIC = re.compile(r'(?<!\*)\*([^\s*][^*]*?)\*(?!\*)')
+
+
 def inline(text):
     def mark(lm):
         host = (urlparse(lm.group(2)).hostname or '').lower().removeprefix('www.')
         if any(host == d or host.endswith('.' + d) for d in nofollow):
             return f'[{lm.group(1)}]({lm.group(2)} "nofollow")'
         return lm.group(0)
+    # Strip unsupported *italic* markers before anything else, so a stray
+    # single asterisk never ends up inside a [link](href) or alongside a
+    # **bold** run that LINK/the bold-pass below still needs to see correctly.
+    text = ITALIC.sub(r'\1', text)
     return LINK.sub(mark, text.strip())
 
 
@@ -100,6 +118,20 @@ while i < len(lines):
     elif line.startswith('# '):
         flush_para()
         notes.append(f'Skipped a markdown H1 ("{line[2:]}"): the page renders `title` as its only H1.')
+    elif line.startswith('> '):
+        flush_para()
+        quote = []
+        # A bare '>' (no trailing space) is a paragraph break *within* the
+        # same blockquote, not the end of it -- common when a quoted message
+        # has multiple lines/paragraphs. The 'q' block has one text field,
+        # so those breaks collapse into a single-spaced join rather than
+        # fragmenting into several small blockquote boxes.
+        while i < len(lines) and (lines[i].startswith('> ') or lines[i].strip() == '>'):
+            if lines[i].strip() != '>':
+                quote.append(lines[i][2:].strip())
+            i += 1
+        blocks.append({'t': 'q', 'text': inline(' '.join(quote))})
+        continue
     elif line.startswith('|'):
         flush_para()
         rows = []
