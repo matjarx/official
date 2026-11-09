@@ -26,7 +26,11 @@ const AI_AGENTS = [
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: '*', allow: '/' },
+      // Content-Signal (https://contentsignal.org): a licensing signal
+      // separate from crawl permission -- says search indexing AND AI
+      // training are both fine, matching the AI_AGENTS allow-list above
+      // rather than contradicting it with a training opt-out.
+      { userAgent: '*', allow: '/', other: { 'Content-Signal': 'search=yes, ai-train=yes' } },
       ...AI_AGENTS.map((userAgent) => ({ userAgent, allow: '/' })),
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

@@ -172,6 +172,12 @@ export function proxy(request: NextRequest) {
 
   const res = NextResponse.next()
   res.headers.set(LOCALE_HEADER, DEFAULT_LOCALE)
+  // The homepage advertises its llms.txt via a Link header (RFC 8288) so an
+  // agent that fetches / can discover the markdown alternate without a
+  // separate guess-and-check request.
+  if (path === '/') {
+    res.headers.set('Link', '<https://matjarx.com/llms.txt>; rel="alternate"; type="text/markdown"')
+  }
   return res
 }
 
