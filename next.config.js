@@ -179,6 +179,17 @@ const nextConfig = {
         hostname: 'tbgywxuebckwhxukfkdx.supabase.co',
         pathname: '/storage/v1/object/public/**',
       },
+      // Some marketing_blog_posts rows store cover_image.src as a full
+      // self-referencing URL (https://matjarx.com/blog/...) instead of a
+      // relative path. next/image treats any absolute URL as remote and
+      // 400s it unless the host is allow-listed here, even when it points
+      // back at this same site -- this covers that case so a row written
+      // either way renders.
+      {
+        protocol: 'https',
+        hostname: 'matjarx.com',
+        pathname: '/blog/**',
+      },
     ],
     // AVIF first: for photographic showcase/example images it typically
     // beats WebP by another 15-25% at the same visual quality, which is
