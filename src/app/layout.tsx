@@ -82,6 +82,16 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = settings.default_description || DEFAULT_DESCRIPTION
   return {
     metadataBase: new URL(SITE_URL),
+    // Plain public/icon.png, not the app/icon.png convention file it used
+    // to be -- that convention auto-generates a dynamic route that
+    // defaults to `Cache-Control: public, max-age=0, must-revalidate`
+    // even for a static source image that never changes. Confirmed live:
+    // every single request re-fetched it, no caching at all, same root
+    // cause class as app.matjarx.com's own favicon bug (fixed there
+    // 2026-11-13). A plain public/ file gets normal long-lived static
+    // caching for free and is served before any redirect logic runs
+    // (see next.config.js's own note on this for blog cover images).
+    icons: { icon: '/icon.png' },
     title: {
       default: title,
       // Every real page wraps its own title with pageTitle() (see
