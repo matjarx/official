@@ -15,6 +15,7 @@ import ArticleToc from './ArticleToc'
 import AuthorCard, { AuthorByline } from './AuthorCard'
 import NewsletterSignup from './NewsletterSignup'
 import BlogFaqAccordion from './BlogFaqAccordion'
+import YouTubeEmbed from './YouTubeEmbed'
 import type { FaqEntry } from '@/components/FaqList'
 import { routes } from '@/lib/routes'
 import { AUTHOR, SHARE_LINKS, type BlogPost, type BodyBlock } from '@/lib/blog-data'
@@ -177,6 +178,7 @@ function renderBlock(b: BodyBlock, i: number): ReactNode {
       )}
     </figure>
   )
+  if (b.t === 'youtube') return <YouTubeEmbed key={i} videoId={b.videoId} caption={b.caption} />
   if (b.t === 'table') return <TableBlock key={i} block={b} />
   if (b.t === 'ol') return (
     // Real <ol>/<li> (a screen reader still announces list length and

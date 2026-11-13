@@ -27,6 +27,11 @@ export type BodyBlock =
    *  column. Cells take the same inline syntax as a paragraph (links, bold).
    *  A deploy that predates this type renders nothing for it, never a crash. */
   | { t: 'table'; head: string[]; rows: string[][]; caption?: string }
+  /** An embedded YouTube video. `videoId` is just the id (the part after
+   *  `v=` or `youtu.be/`), not a full URL -- the renderer builds the
+   *  embed/thumbnail URLs itself, on youtube-nocookie.com so no tracking
+   *  cookie is set until the viewer presses play. */
+  | { t: 'youtube'; videoId: string; caption?: string }
 
 export type BlogPost = {
   slug: string; title: string; category: BlogCategory; excerpt: string
@@ -137,6 +142,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { t: "p", text: "Costly Agency Services: Working with professional agencies often comes with a high price tag, and most small businesses simply can’t commit to long term retainers or large upfront costs." },
       { t: "p", text: "Disconnected Marketing Efforts: Trying to manage social platforms, Serp visibility, and Search Engine Optimization all at once quickly becomes overwhelming. As a result many businesses stay active online but struggle to turn traffic into actual sales." },
       { t: "p", text: "Lack of System: Tools alone aren’t enough. Without a structured approach from product visibility and transparent pricing to a smooth checkout flow online sales remain inconsistent. MatjarX was created specifically to address and eliminate these problems. It bridges the gap between costly agencies and DIY tools by offering a done for you, step by step system that helps small businesses build a digital presence that actually generates leads and sales, Whether you are a local shop, a startup, or a freelancer, MatjarX ensures your business not only maintains an online presence but also operates with a ready to scale sales system." },
+      { t: "youtube", videoId: "VIpnQdjREfY", caption: "Heard of MatjarX? Let's talk about it." },
       { t: "h", text: "What is MatjarX.com?" },
       { t: "p", text: "MatjarX is more than just a website builder. It’s a full-service digital growth platform for small businesses in Pakistan and beyond. At its core, MatjarX provides a done-for-you solution that takes businesses from zero digital presence to a fully functional online system all without the headaches of Diy tools or exorbitant agency costs. Here’s what sets MatjarX apart:" },
       { t: "p", text: "Complete Digital Solutions: From websites to Google Business Profiles, social media integration, and SEO  every aspect of your digital presence is handled." },
