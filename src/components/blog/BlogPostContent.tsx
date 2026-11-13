@@ -314,7 +314,15 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
 
           {/* Cover image — real photo/graphic from matjarx.com's media library when available */}
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '46px 24px 0' }}>
-            {post.coverImage ? (
+            {post.coverImage?.videoId ? (
+              <YouTubeEmbed
+                videoId={post.coverImage.videoId}
+                caption={post.coverImage.videoCaption ?? post.coverImage.caption}
+                aspectRatio="1200 / 630"
+                borderRadius={24}
+                boxShadow="0 22px 50px rgba(var(--scrim-rgb), 0.16)"
+              />
+            ) : post.coverImage ? (
               <figure style={{ margin: 0 }}>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '1200 / 630', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
                   <Image
