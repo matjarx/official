@@ -190,6 +190,16 @@ const nextConfig = {
         hostname: 'matjarx.com',
         pathname: '/blog/**',
       },
+      // A post with a video cover banner but no dedicated cover photo
+      // (coverImage.videoId set, no real src of its own) falls back to
+      // that video's own YouTube thumbnail as cover_image.src -- read
+      // wherever a post's cover normally would be (og:image, related-post
+      // cards), so it needs the same remote-pattern allowance.
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+        pathname: '/vi/**',
+      },
     ],
     // AVIF first: for photographic showcase/example images it typically
     // beats WebP by another 15-25% at the same visual quality, which is

@@ -8,12 +8,19 @@
 
 import { useState } from 'react'
 
-export default function YouTubeEmbed({ videoId, caption }: { videoId: string; caption?: string }) {
+export default function YouTubeEmbed({
+  videoId, caption, aspectRatio = '16 / 9', borderRadius = 18, boxShadow,
+}: {
+  videoId: string; caption?: string
+  /** Lets the cover-banner slot match its own box (1200:630, radius 24,
+   *  with a shadow) instead of this component's in-body defaults. */
+  aspectRatio?: string; borderRadius?: number; boxShadow?: string
+}) {
   const [playing, setPlaying] = useState(false)
 
   return (
     <figure style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
-      <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', borderRadius: 18, overflow: 'hidden', background: 'var(--ink-1)' }}>
+      <div style={{ position: 'relative', width: '100%', aspectRatio, borderRadius, overflow: 'hidden', background: 'var(--ink-1)', boxShadow }}>
         {playing ? (
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`}
