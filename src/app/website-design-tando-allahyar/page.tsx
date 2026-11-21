@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import LocationContent, { type LocationContentShape } from '@/components/locations/LocationContent'
 import { robotsFor } from '@/lib/seo-indexing'
-import { getBlogPosts, getMergedContent, getSeoOverride, pageSeo, pageTitle, pageDescription, toCard } from '@/lib/marketing-content'
+import { getBlogPosts, getMergedContent, getSeoOverride, pageSeo, toCard } from '@/lib/marketing-content'
 import { postsInPillar } from '@/lib/pillars'
 import { CITY_DATA } from '@/lib/location-data'
 
