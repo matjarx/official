@@ -13,17 +13,20 @@ import { routes, appLogin, appSignup } from '@/lib/routes'
 import { trackEvent } from '@/lib/analytics'
 import { useTheme } from '@/components/ThemeProvider'
 
-export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { active: NavKey; dark?: boolean; onToggleDark?: () => void }) {
-  // The theme comes from context unless a caller overrides it. That is what
-  // gives all 27 pages the toggle without editing 27 files: they render
-  // <SiteHeader active="..."/> exactly as before and pick it up.
+export default function SiteHeader({ active, dark: darkProp }: { active: NavKey; dark?: boolean }) {
+  // The theme comes from context unless a caller overrides it.
   //
-  // HomeContent still passes both explicitly, because its own `dark` prop
+  // HomeContent still passes this explicitly, because its own `dark` prop
   // drives ~40 JS branches that the CSS tokens do not cover yet. Its
   // override wins, so the two mechanisms cannot disagree on one page.
+  //
+  // The dark-mode toggle itself has been removed (no button, no way for a
+  // visitor to switch) -- theme.dark is now permanently false, so dark is
+  // effectively always false here too. The branches below are kept, not
+  // unpicked, for the same reason HomeContent's are: that's a separate,
+  // larger cleanup from removing the switch.
   const theme = useTheme()
   const dark = darkProp ?? theme.dark
-  const toggleDark = onToggleDark ?? theme.toggle
   const [narrow, setNarrow] = useState(false)
   const [open, setOpen] = useState(-1)
   const [drawer, setDrawer] = useState(false)
@@ -215,34 +218,6 @@ export default function SiteHeader({ active, dark: darkProp, onToggleDark }: { a
             </nav>
 
           <div className="site-header-actions" style={{ display: 'flex', alignItems: 'center', gap: 10, flex: '0 0 auto' }}>
-            {/* Every page gets the toggle. A caller may still pass
-                onToggleDark to drive its own dark treatment -- HomeContent
-                does, because its `dark` prop controls ~40 JS branches the
-                tokens do not cover. Its override wins so the two
-                mechanisms cannot disagree on one page. */}
-            {(
-
-              <button
-                type="button"
-                onClick={toggleDark}
-                title={dark ? 'Switch to light' : 'Switch to dark'}
-                style={{
-                  all: 'unset', cursor: 'pointer', flex: '0 0 auto', width: 40, height: 40, borderRadius: 12,
-                  display: 'grid', placeItems: 'center',
-                  background: dark ? 'rgba(var(--ink-inverse-rgb), 0.08)' : 'rgba(var(--ink-inverse-rgb), 0.66)',
-                  border: dark ? '1.5px solid rgba(var(--ink-inverse-rgb), 0.18)' : '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)',
-                  backdropFilter: 'blur(20px)',
-                  boxShadow: dark ? 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' : 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
-                }}
-              >
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke={dark ? '#E9EFF5' : 'var(--ink-1)'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={dark
-                    ? 'M12 3.5a8.5 8.5 0 1 0 8.5 8.5c0-.4 0-.8-.1-1.2A6 6 0 0 1 12 3.6Z'
-                    : 'M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9ZM12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M18.5 5.5l-1.4 1.4M6.9 17.1 5.5 18.5'} />
-                </svg>
-              </button>
-            )}
-
             <a href={appSignup()} onClick={() => trackEvent('cta_click', { label: 'header_get_started' })} className="btn-navy btn-pulse" style={{ flex: '0 0 auto' }}>Get started</a>
 
             <button
