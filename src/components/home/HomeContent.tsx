@@ -8,7 +8,7 @@
 // Dark theme layer: pass `dark` to render Home Dark (same structure/copy,
 // swapped tokens + Site Header Dark) rather than building a second page.
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
@@ -178,40 +178,22 @@ const PLAN_ROWS = [
     features: ['Everything in Growth', 'Custom design in our own tool', 'Full webstore, unlimited products', 'Subscriptions & digital products', 'Multi-seat bookings'] },
 ]
 
-// /home-dark and /home-mobile (noindex design-review surfaces, not the
-// canonical page) render this without fetching content — they keep using
-// the hardcoded defaults, which is fine since they're not what admins edit.
+// /home-mobile (a noindex design-review surface, not the canonical page)
+// renders this without fetching content — it keeps using the hardcoded
+// defaults, which is fine since it's not what admins edit.
 const DEFAULT_CONTENT: HomeContentShape = { faqs: DEFAULT_FAQ_DATA, voices: VOICES }
 
-export default function HomeContent({ dark: initialDark = false, content = DEFAULT_CONTENT }: { dark?: boolean; content?: HomeContentShape }) {
-  // Real toggle, not a fixed prop: the design handoff's own instruction is to
-  // treat dark as "a theme layer over one page component, not a second
-  // page" — a live switch in the header delivers that better than a
-  // separate /home-dark URL ever could. /home-dark still works (renders
-  // with dark as the starting state) and now also gets a working toggle.
-  // The shared theme, not a second copy of it.
-  //
-  // This was `useState(initialDark)`, and the header's toggle flipped it --
-  // which moved AmbientOrbs, IndustryRail and the header's own inline styles
-  // while never touching ThemeProvider. So on the home page the button
-  // changed some of the page and left <html class="dark-theme"> and the
-  // stored preference exactly as they were: every token-driven surface,
-  // which is most of the site, stayed in the other mode.
-  //
-  // It also let the two disagree outright. Arriving with a stored dark
-  // preference, the provider set the class while this state was still false,
-  // so the button read "Switch to dark" on an already-dark page.
+export default function HomeContent({ content = DEFAULT_CONTENT }: { content?: HomeContentShape }) {
+  // Dark mode has been removed sitewide (no toggle, no /home-dark review
+  // route) -- theme.dark is permanently false now, kept only so the
+  // dark-branch styling below (ink1/ink4/cream/bgGradient and everything
+  // downstream) doesn't need to be unpicked from every section in the same
+  // change as removing the switch itself.
   const theme = useTheme()
   // Prices on this page follow the footer's selector like every other page.
   const { display, inText } = useCurrency()
   const dark = theme.dark
   const [openFaq, setOpenFaq] = useState(0)
-
-  // /home-dark asks for dark as a starting state rather than a preference.
-  // Told to the provider once, so there is still only one source of truth.
-  useEffect(() => {
-    if (initialDark) theme.setDark(true)
-  }, [initialDark, theme])
 
   const FAQ_DATA = content.faqs
   const VOICES_ACTIVE = content.voices
@@ -227,7 +209,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: bgGradient ?? cream, color: dark ? '#E9EFF5' : 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs dark={dark} />
       <div className="page-content">
-        <SiteHeader active="home" dark={dark} onToggleDark={theme.toggle} />
+        <SiteHeader active="home" dark={dark} />
 
         <main>
         {/* Hero */}

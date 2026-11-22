@@ -104,9 +104,9 @@ export async function generateMetadata(): Promise<Metadata> {
     // one. So the homepage renders its own <link> instead, and this fallback
     // is removed rather than left to emit a second, conflicting canonical.
     //
-    // Nothing else depended on it: 151 of the 153 routes set their own, and
-    // the two that do not (home-dark, home-mobile) are noindex,nofollow and
-    // absent from the sitemap.
+    // Nothing else depended on it: all routes but one set their own, and
+    // the one that does not (home-mobile) is noindex,nofollow and absent
+    // from the sitemap.
     openGraph: {
       type: 'website',
       siteName: 'MatjarX',
