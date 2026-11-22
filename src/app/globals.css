@@ -812,42 +812,98 @@ textarea.input {
   .mx-marquee { animation: none; }
 }
 
-/* Site Header hover states — inline styles can't express :hover, so these
-   pair with the header's inline base styles. */
-.nav-link-light:hover { background: rgba(255,255,255,0.75); color: #04121F; }
-.nav-link-dark:hover { background: rgba(255,255,255,0.14); color: #F7FAFD; }
-.menu-item-light:hover { background: #F2EEE2; }
-.menu-item-dark:hover { background: rgba(255,255,255,0.08); }
-.mobile-link-light:hover { background: #F2EEE2; }
-.mobile-link-dark:hover { background: rgba(255,255,255,0.08); }
-.mobile-submenu-light:hover { background: #F2EEE2; color: #04121F; }
-.mobile-submenu-dark:hover { background: rgba(255,255,255,0.08); color: #F7FAFD; }
+/* ── Site header (src/components/SiteHeader.tsx), every page ─────────
+   Desktop pill vs phone menu is decided here in CSS, never by JS state:
+   a JS-driven swap after hydration once caused a 0.78 mobile CLS. */
+.sh { position: sticky; top: 0; z-index: 40; font-family: var(--font-lato), Lato, system-ui, sans-serif; transition: background-color .4s; }
+.sh[data-scrolled] { background: linear-gradient(to bottom, var(--hv-page, var(--cream)) 35%, rgba(var(--cream-rgb), 0)); }
+.sh-in { max-width: 1360px; height: 74px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; transition: height .45s cubic-bezier(.2, .8, .2, 1); }
+.sh[data-scrolled] .sh-in { height: 64px; }
+.sh-logo { flex: none; display: inline-flex; margin-left: -10px; padding: 8px 10px; border-radius: 16px; transition: background-color .4s, box-shadow .4s; }
+.sh-logo img { display: block; width: 122px; height: auto; }
+.sh[data-scrolled] .sh-logo, .sh[data-scrolled] .sh-pill { background: rgba(255, 255, 255, .55); -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5), 0 16px 34px -20px rgba(4, 18, 31, .4); }
 
-/* Site Header desktop-nav / mobile-toggle split — CSS-driven, not the
-   `narrow` JS state, and on purpose: a real mobile visitor's very first
-   paint (before React hydrates and matchMedia() can run) used to render
-   the full desktop nav pill regardless of viewport, then swap to the
-   compact hamburger header a beat later once the useEffect fired. That
-   swap was a massive layout shift right at the top of the page — it
-   pushed the whole page down and was the direct cause of a 0.78 mobile
-   CLS score (vs ~0.02 on desktop, where the swap never visibly happens
-   because the nav already fits). Gating visibility with plain CSS at the
-   same 940px breakpoint means the browser paints the correct layout
-   immediately, with no JS involved and nothing to shift. `narrow` in
-   SiteHeader.tsx is now only consulted for behavior (closing the drawer
-   on resize), never for what's visible on first paint. */
-.site-header-nav-desktop { display: flex; }
-/* !important here too: the button also carries an inline `all: unset`
-   (to strip default button chrome), which itself sets an inline
-   `display` value and would otherwise beat a plain, non-important class
-   rule — only an !important stylesheet rule outranks that. */
-.site-header-mobile-toggle { display: none !important; }
-.site-header-actions { margin-left: 0; }
-@media (max-width: 940px) {
-  .site-header-nav-desktop { display: none !important; }
-  .site-header-mobile-toggle { display: grid !important; }
-  .site-header-actions { margin-left: auto; }
+.sh-pill { display: flex; align-items: center; gap: 2px; padding: 6px; border-radius: 999px; background: #fff; box-shadow: 0 1px 0 #ece6d3, 0 6px 20px -10px rgba(4, 18, 31, .25); transition: background-color .4s, box-shadow .4s; }
+.sh-item { position: relative; display: flex; align-items: center; max-width: 220px; transition: max-width .55s cubic-bezier(.7, 0, .2, 1), opacity .3s; }
+.sh-link { all: unset; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; padding: 10px 16px; border-radius: 999px; font-size: 15px; font-weight: 700; color: #24384a; white-space: nowrap; text-decoration: none; transition: background-color .2s, color .2s; }
+.sh-item:has(.sh-caret) .sh-link { padding-right: 4px; }
+.sh-caret { all: unset; cursor: pointer; display: flex; align-items: center; padding: 10px 12px 10px 4px; border-radius: 999px; color: #24384a; }
+.sh-chev { transition: transform .3s; }
+.sh-item.is-open .sh-chev, .sh-caret:hover .sh-chev { transform: rotate(180deg); }
+.sh-link:hover, .sh-item.is-open .sh-link { background: #f2eee2; color: #04121f; }
+.sh-item.is-on .sh-link, .sh-item.is-on .sh-caret { color: #696d34; }
+.sh-link:focus-visible, .sh-caret:focus-visible, .sh-fold:focus-visible, .sh-login:focus-visible, .sh-cta:focus-visible, .sh-burger:focus-visible { outline: 3px solid #2e6ea8; outline-offset: 2px; }
+.sh-menu { position: absolute; top: calc(100% + 14px); left: -6px; z-index: 2; display: flex; flex-direction: column; gap: 2px; min-width: 260px; padding: 10px; border-radius: 18px; background: rgba(255, 255, 255, .96); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); box-shadow: 0 1px 0 #ece6d3, 0 24px 50px -18px rgba(4, 18, 31, .35); visibility: hidden; opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity .2s, transform .25s cubic-bezier(.2, .8, .2, 1), visibility 0s .25s; }
+.sh-menu--wide { display: grid; grid-template-columns: repeat(2, minmax(230px, 1fr)); }
+.sh-item.is-open .sh-menu { visibility: visible; opacity: 1; transform: none; pointer-events: auto; transition: opacity .2s, transform .25s cubic-bezier(.2, .8, .2, 1); }
+.sh-mi { display: flex; flex-direction: column; gap: 2px; padding: 11px 14px; border-radius: 12px; text-decoration: none; transition: background-color .2s; }
+.sh-mi:hover, .sh-mi:focus-visible { background: #f2eee2; outline: none; }
+.sh-mi .t { font-size: 14px; font-weight: 700; color: #04121f; }
+.sh-mi .n { font-size: 12px; color: #5a6e81; }
+.sh-fold { all: unset; cursor: pointer; display: flex; align-items: center; gap: 3px; max-width: 0; padding: 0; opacity: 0; overflow: hidden; border-radius: 999px; font-size: 15px; font-weight: 700; color: #24384a; white-space: nowrap; transition: max-width .55s cubic-bezier(.7, 0, .2, 1), padding .55s cubic-bezier(.7, 0, .2, 1), opacity .3s; }
+.sh-fold span { width: 4px; height: 4px; border-radius: 50%; background: #696d34; }
+.sh-fold span:nth-child(3) { margin-right: 6px; }
+.sh-fold:hover { background: #f2eee2; }
+.sh[data-folded] .sh-item:not(.is-on) { max-width: 0; opacity: 0; overflow: hidden; }
+.sh[data-folded] .sh-fold { max-width: 120px; padding: 10px 16px; opacity: 1; }
+
+.sh-r { flex: none; display: flex; align-items: center; gap: 10px; }
+.sh-login { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: #003366; box-shadow: 0 1px 0 #ece6d3, 0 6px 16px -10px rgba(4, 18, 31, .3); transition: background-color .2s, color .2s; }
+.sh-login:hover { background: #003366; color: #f4f2ae; }
+.sh-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 999px; background: #003366; color: #fff; font-size: 15px; font-weight: 700; text-decoration: none; white-space: nowrap; box-shadow: 0 12px 24px -12px rgba(0, 51, 102, .7); transition: background-color .25s, transform .3s cubic-bezier(.2, .8, .2, 1); }
+.sh-cta:hover { background: #0a4278; color: #fff; transform: translateY(-2px); }
+.sh-burger { all: unset; cursor: pointer; display: none; place-items: center; width: 44px; height: 44px; border-radius: 12px; border: 1px solid #ece6d3; background: #fff; color: #04121f; }
+
+.sh--dark .sh-link, .sh--dark .sh-caret, .sh--dark .sh-fold { color: #e2ecf5; }
+.sh--dark .sh-pill { background: rgba(255, 255, 255, .08); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); }
+.sh--dark .sh-link:hover, .sh--dark .sh-item.is-open .sh-link { background: rgba(255, 255, 255, .12); color: #fff; }
+.sh--dark .sh-item.is-on .sh-link, .sh--dark .sh-item.is-on .sh-caret { color: #f4f2ae; }
+
+/* Phone menu drawer */
+.sh-drawer { position: fixed; inset: 0; z-index: 70; pointer-events: none; }
+.sh-drawer.is-open { pointer-events: auto; }
+.sh-scrim { position: absolute; inset: 0; border: 0; padding: 0; background: rgba(4, 18, 31, .5); opacity: 0; transition: opacity .4s; cursor: pointer; }
+.sh-drawer.is-open .sh-scrim { opacity: 1; }
+.sh-panel { position: absolute; top: 0; right: 0; bottom: 0; display: flex; flex-direction: column; width: min(440px, 100%); padding: 18px 24px calc(24px + env(safe-area-inset-bottom)); background: #04121f; color: #fff; overflow-y: auto; transform: translateX(100%); transition: transform .55s cubic-bezier(.7, 0, .2, 1); }
+.sh-drawer.is-open .sh-panel { transform: none; }
+.sh-top { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.sh-k { font-size: 12px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; color: #c6cb8a; }
+.sh-x { all: unset; cursor: pointer; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; border: 1px solid #23405c; color: #fff; transition: transform .4s, background-color .3s; }
+.sh-x:hover { transform: rotate(90deg); background: #0e2134; }
+.sh-list { list-style: none; margin: 18px 0 0; padding: 0; }
+.sh-list > li { border-bottom: 1px solid rgba(255, 255, 255, .1); opacity: 0; transform: translateX(28px); transition: opacity .4s, transform .5s cubic-bezier(.2, .8, .2, 1); }
+.sh-drawer.is-open .sh-list > li { opacity: 1; transform: none; transition-delay: calc(.18s + var(--i) * .045s); }
+.sh-list .row { display: flex; align-items: center; justify-content: space-between; }
+.sh-list .row a, .sh-list .row .lbl { all: unset; box-sizing: border-box; cursor: pointer; flex: 1; display: flex; align-items: baseline; gap: 14px; padding: 15px 0; color: #fff; font-size: 26px; font-weight: 900; letter-spacing: -.02em; text-decoration: none; transition: color .2s, padding .35s cubic-bezier(.2, .8, .2, 1); }
+.sh-list .row a:hover, .sh-list .row .lbl:hover { color: #f4f2ae; padding-left: 6px; }
+.sh-list li.is-on .row a, .sh-list li.is-on .row .lbl { color: #f4f2ae; }
+.sh-list .n { font-size: 11.5px; font-weight: 900; letter-spacing: .12em; color: #8ea3b6; }
+.sh-list .tog { all: unset; cursor: pointer; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #23405c; color: #c6cb8a; }
+.sh-list li.is-sub .tog .sh-chev { transform: rotate(180deg); }
+.sh-list .subs { list-style: none; margin: 0; padding: 0 0 0 38px; max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.2, .8, .2, 1), padding .45s; }
+.sh-list li.is-sub .subs { max-height: 640px; padding-bottom: 12px; }
+.sh-list .subs a { display: block; padding: 9px 0; color: #b7c6d3; font-size: 16px; font-weight: 700; text-decoration: none; }
+.sh-list .subs a:hover { color: #f4f2ae; }
+.sh-list a:focus-visible, .sh-list button:focus-visible, .sh-x:focus-visible { outline: 2px solid #f4f2ae; outline-offset: 3px; border-radius: 8px; }
+.sh-dcta { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 28px; }
+.sh-cta--block { display: flex; width: 100%; height: 56px; }
+.sh-wa { display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; border: 2px solid #0b6b38; background: #fff; color: #0b6b38; font-size: 16px; font-weight: 700; text-decoration: none; }
+.sh-dlogin { display: block; padding: 10px; text-align: center; color: #b7c6d3; font-size: 15px; font-weight: 700; text-decoration: none; }
+.sh-dlogin:hover { color: #fff; }
+
+@media (max-width: 1099px) {
+  .sh-pill, .sh-login { display: none; }
+  .sh-burger { display: grid; }
+  .sh-r { margin-left: auto; }
 }
+@media (max-width: 699px) {
+  .sh-in { height: 66px; padding: 0 20px; }
+  .sh[data-scrolled] .sh-in { height: 60px; }
+  .sh-logo img { width: 110px; }
+  .sh-cta { height: 42px; padding: 0 16px; font-size: 14px; }
+}
+@media (max-width: 359px) { .sh-r .sh-cta { display: none; } }
+@media (prefers-reduced-motion: reduce) { .sh-panel, .sh-list > li, .sh-scrim, .sh-item, .sh-fold, .sh-menu { transition: none !important; } }
 
 /* Site Footer hover states */
 .footer-cta-primary:hover { background: #003366; color: #FFFFFF; }

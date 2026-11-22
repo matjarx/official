@@ -1,335 +1,182 @@
 'use client'
 
-// Site Header — from Site Header.dc.html / Site Header Dark.dc.html. One
-// component for both themes (`dark` prop) rather than two files, since the
-// only difference is tokens, not structure or behavior — the README asks
-// for "one theme layer, not three" across the whole handoff.
+// The site header, on every page: the homepage redesign's header.
+//
+// Desktop: logo, a glass pill nav, Log in and Get started. The pill turns
+// glassy once the page scrolls and folds down to "Home ··· Menu" while the
+// reader scrolls down past the first screens; scrolling up, hovering it or
+// pressing Menu unfolds it again.
+//
+// Phone and tablet (< 1100px): logo, Get started and a menu button that
+// opens a full-screen drawer, with each dropdown's pages one tap away.
+//
+// SEO: every dropdown's links are rendered ALWAYS and hidden with CSS, never
+// mounted on click. A crawler never clicks, and an earlier crawl found zero
+// inbound links to pages that were only reachable from click-mounted menus.
+// The drawer is likewise always in the HTML (inert while closed).
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { NAV_ITEMS, type NavKey } from '@/lib/nav'
 import { routes, appLogin, appSignup } from '@/lib/routes'
+import { WHATSAPP_HREF } from '@/lib/contact-details'
 import { trackEvent } from '@/lib/analytics'
-import { useTheme } from '@/components/ThemeProvider'
 
-export default function SiteHeader({ active, dark: darkProp }: { active: NavKey; dark?: boolean }) {
-  // The theme comes from context unless a caller overrides it.
-  //
-  // HomeContent still passes this explicitly, because its own `dark` prop
-  // drives ~40 JS branches that the CSS tokens do not cover yet. Its
-  // override wins, so the two mechanisms cannot disagree on one page.
-  //
-  // The dark-mode toggle itself has been removed (no button, no way for a
-  // visitor to switch) -- theme.dark is now permanently false, so dark is
-  // effectively always false here too. The branches below are kept, not
-  // unpicked, for the same reason HomeContent's are: that's a separate,
-  // larger cleanup from removing the switch.
-  const theme = useTheme()
-  const dark = darkProp ?? theme.dark
-  const [narrow, setNarrow] = useState(false)
-  const [open, setOpen] = useState(-1)
-  const [drawer, setDrawer] = useState(false)
-  const navRef = useRef<HTMLDivElement>(null)
-  // Wraps the desktop nav AND the mobile drawer — see the outside-click
-  // effect below for why that distinction mattered.
-  const headerRef = useRef<HTMLElement>(null)
+const Chevron = () => (
+  <svg className="sh-chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+)
+const Arrow = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+)
 
+export default function SiteHeader({ active, dark = false }: { active: NavKey; dark?: boolean }) {
+  const [open, setOpen] = useState(-1)       // desktop dropdown index
+  const [drawer, setDrawer] = useState(false) // phone menu
+  const [sub, setSub] = useState(-1)          // drawer sub-list
+  const ref = useRef<HTMLElement>(null)
+
+  // Scrolled (glass) and folded states. Written straight to data attributes
+  // rather than state: this runs on every scroll frame.
   useEffect(() => {
-    const mq = window.matchMedia('(max-width: 940px)')
-    const sync = () => {
-      setNarrow(mq.matches)
-      setOpen(-1)
-      setDrawer(false)
+    const el = ref.current
+    if (!el) return
+    let last = window.scrollY, raf = 0, hover = false, forced = false
+    const tick = () => {
+      raf = 0
+      const y = window.scrollY
+      el.toggleAttribute('data-scrolled', y > 24)
+      const down = y > last + 2, up = y < last - 2
+      if (up) forced = false
+      if (down && y > 700 && !hover && !forced) el.setAttribute('data-folded', '')
+      else if (up || y < 700) el.removeAttribute('data-folded')
+      last = y
     }
-    sync()
-    mq.addEventListener('change', sync)
-    return () => mq.removeEventListener('change', sync)
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(tick) }
+    const enter = () => { hover = true; el.removeAttribute('data-folded') }
+    const leave = () => { hover = false }
+    const unfold = () => { forced = true; el.removeAttribute('data-folded') }
+    const pill = el.querySelector('.sh-pill')
+    const menuBtn = el.querySelector('.sh-fold')
+    tick()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    pill?.addEventListener('mouseenter', enter)
+    pill?.addEventListener('mouseleave', leave)
+    menuBtn?.addEventListener('click', unfold)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      pill?.removeEventListener('mouseenter', enter)
+      pill?.removeEventListener('mouseleave', leave)
+      menuBtn?.removeEventListener('click', unfold)
+      cancelAnimationFrame(raf)
+    }
   }, [])
 
-  // Not in the original prototype (single-file sandbox had no room for it),
-  // but a dropdown that only closes by re-clicking its own trigger is a
-  // real usability regression on a live site — close on outside click too.
-  //
-  // Scoped to the whole header, not just the desktop nav. navRef sits on
-  // <nav className="site-header-nav-desktop">, and the mobile drawer is a
-  // SIBLING of it -- so on a phone every tap inside the drawer counted as
-  // "outside", including taps on the submenu links themselves. mousedown
-  // closed the submenu, the link unmounted, and the click that followed
-  // landed on nothing: the mobile dropdown links could not be opened at
-  // all. headerRef wraps both, so a tap anywhere in the header is inside.
+  // Close a dropdown on outside click or Escape.
   useEffect(() => {
     if (open < 0) return
-    function onDocClick(e: MouseEvent) {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) setOpen(-1)
-    }
-    document.addEventListener('mousedown', onDocClick)
-    return () => document.removeEventListener('mousedown', onDocClick)
+    const onDoc = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(-1) }
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(-1) }
+    document.addEventListener('mousedown', onDoc)
+    document.addEventListener('keydown', onKey)
+    return () => { document.removeEventListener('mousedown', onDoc); document.removeEventListener('keydown', onKey) }
   }, [open])
 
-  const logo = dark ? '/brand/matjarx-logo-light.png' : '/brand/matjarx-logo-black.png'
-  const drawerOpen = narrow && drawer
+  // Drawer: Escape closes, and the page behind cannot scroll.
+  useEffect(() => {
+    if (!drawer) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setDrawer(false) }
+    document.addEventListener('keydown', onKey)
+    document.documentElement.style.overflow = 'hidden'
+    return () => { document.removeEventListener('keydown', onKey); document.documentElement.style.overflow = '' }
+  }, [drawer])
+
+  const close = () => { setDrawer(false); setOpen(-1) }
 
   return (
-    // The sticky lives HERE, not on the <header> inside it.
-    //
-    // A sticky element sticks within its own parent's box. This wrapper
-    // was exactly as tall as the header it contained -- 83px of room for
-    // an 83px element -- so `position: sticky` on the header computed as
-    // sticky, reported as sticky, and scrolled straight off the top of
-    // the page with everything else. Measured: header top went to -2000
-    // at 2000px of scroll.
-    //
-    // On the wrapper the containing block is the page, which is where
-    // the room is.
-    <div style={{ position: 'sticky', top: 0, zIndex: 40 }}>
-      {/* The gradient announcement strip that used to sit here is now
-          <AnnouncementBar>, rendered from the root layout and edited in
-          the admin. Its markup and copy moved across unchanged; this
-          header rendering its own hardcoded copy on top of it was why
-          the site showed two strips and editing the admin one appeared
-          to do nothing. */}
-      <header
-        ref={headerRef}
-        style={{
-          background: dark ? 'rgba(0,20,35,0.74)' : 'rgba(var(--cream-rgb), 0.72)',
-          backdropFilter: 'blur(26px)',
-          borderBottom: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.12)' : '1px solid rgba(var(--ink-inverse-rgb), 0.8)',
-          boxShadow: dark ? '0 10px 30px rgba(0,8,18,0.3), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.14)' : '0 10px 30px rgba(var(--scrim-rgb), 0.05), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
-        }}
-      >
-        <div style={{ maxWidth: 1360, margin: '0 auto', padding: '15px 20px', display: 'flex', alignItems: 'center', gap: 20 }}>
-          <Link href={routes.home} style={{ flex: '0 0 auto', display: 'block' }}>
-            <Image src={logo} alt="MatjarX" width={128} height={34} style={{ width: 128, height: 'auto', display: 'block' }} priority />
-          </Link>
+    <header ref={ref} className={`sh${dark ? ' sh--dark' : ''}`}>
+      <div className="sh-in">
+        <Link href={routes.home} className="sh-logo" aria-label="MatjarX home">
+          <Image src={dark ? '/brand/matjarx-logo-light.png' : '/brand/matjarx-logo-black.png'} alt="MatjarX" width={128} height={34} priority />
+        </Link>
 
-          <nav
-            ref={navRef}
-            className="site-header-nav-desktop"
-            style={{
-              alignItems: 'center',
-              gap: 3,
-              margin: '0 auto',
-              // Symmetric, and it was not: '5px 5px 5px 9px' put 9px on the
-              // left against 5px on the right, so the first item's hover pill
-              // sat 4px further in than the last one's and the highlight read
-              // as misaligned with the row it belongs to. That asymmetry was
-              // the misalignment; the glass itself was never the problem.
-              padding: '5px',
-              borderRadius: 999,
-              // The glass is back, lighter than it was. It had been removed
-              // entirely, which took the pill out from under the nav and left
-              // the links floating on the page.
-              background: dark ? 'rgba(var(--ink-inverse-rgb), 0.05)' : 'rgba(var(--ink-inverse-rgb), 0.42)',
-              border: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.10)' : '1px solid rgba(var(--ink-inverse-rgb), 0.7)',
-              backdropFilter: 'blur(24px)',
-              boxShadow: dark ? '0 10px 26px rgba(0,8,18,0.22), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.10)' : '0 10px 26px rgba(var(--scrim-rgb), 0.06), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.8)',
-            }}
-          >
-              {NAV_ITEMS.map((item, i) => {
-                const isActive = active === item.key
-                const isOpen = open === i
-                const color = isActive ? (dark ? 'var(--butter)' : 'var(--olive)') : dark ? 'rgba(var(--ink-on-dark-rgb), 0.78)' : '#1C3B56'
-                return (
-                  <div key={item.key} style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                    {/* The label is a real link — clicking "Pricing" (or any
-                        top-level item) navigates to its own page. The
-                        chevron is a separate click target so the dropdown
-                        can still be browsed without leaving the page. */}
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        className={dark ? 'nav-link-dark' : 'nav-link-light'}
-                        style={{ display: 'flex', alignItems: 'center', gap: 5, padding: item.menu ? '9px 4px 9px 15px' : '9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
-                      >
-                        {item.label}
-                      </a>
-                    ) : (
-                      // No hub page (Industries): the label opens the menu.
-                      <button
-                        type="button"
-                        onClick={() => setOpen(isOpen ? -1 : i)}
-                        className={dark ? 'nav-link-dark' : 'nav-link-light'}
-                        style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, padding: '9px 4px 9px 15px', borderRadius: 999, fontSize: 13.5, fontWeight: isActive ? 700 : 500, color, whiteSpace: 'nowrap' }}
-                      >
-                        {item.label}
-                      </button>
-                    )}
-                    {item.menu && (
-                      <button
-                        type="button"
-                        onClick={() => setOpen(isOpen ? -1 : i)}
-                        aria-label={`${item.label} menu`}
-                        style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '9px 12px 9px 4px', borderRadius: 999, color }}
-                      >
-                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 180ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                      </button>
-                    )}
-                    {/* Rendered ALWAYS, hidden with CSS, never unmounted.
-                        It used to be `isOpen && <div>`, so the eight links
-                        inside each menu existed only after a human clicked.
-                        A crawler never clicks, and a crawl of all 149 pages
-                        once found zero inbound links to pages reachable only
-                        from these menus. They were invisible to search
-                        engines while looking perfectly linked to us. */}
-                    {item.menu && (
-                      <div
-                        aria-hidden={!isOpen}
-                        style={{
-                          visibility: isOpen ? 'visible' : 'hidden',
-                          opacity: isOpen ? 1 : 0,
-                          pointerEvents: isOpen ? 'auto' : 'none',
-                          position: 'absolute',
-                          top: 'calc(100% + 16px)',
-                          left: -8,
-                          minWidth: 250,
-                          padding: 10,
-                          borderRadius: 18,
-                          background: dark ? 'rgba(4,24,42,0.94)' : 'rgba(var(--ink-inverse-rgb), 0.86)',
-                          border: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.14)' : '1px solid rgba(var(--ink-inverse-rgb), 0.9)',
-                          backdropFilter: 'blur(28px)',
-                          boxShadow: dark ? '0 22px 50px rgba(0,8,18,0.5), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.14)' : '0 22px 50px rgba(var(--scrim-rgb), 0.16), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
-                          // A long menu (Industries, 13 links) goes into two
-                          // columns so it stays inside the viewport.
-                          ...(item.menu.length > 8
-                            ? { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(230px, 1fr))' }
-                            : { display: 'flex', flexDirection: 'column' as const }),
-                          gap: 2,
-                        }}
-                      >
-                        {item.menu.map((m) => (
-                          <Link key={m.label} href={m.href} className={dark ? 'menu-item-dark' : 'menu-item-light'} style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '11px 14px', borderRadius: 12 }}>
-                            <span style={{ fontSize: 13.5, fontWeight: 600, color: dark ? '#F2F6FA' : 'var(--ink-1)' }}>{m.label}</span>
-                            {m.note && <span style={{ fontSize: 11.5, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.5)' : 'var(--ink-muted)' }}>{m.note}</span>}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-              <a
-                href={appLogin}
-                title="Log in"
-                style={{ width: 40, height: 40, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--navy-gradient)', boxShadow: '0 8px 18px rgba(var(--navy-rgb), 0.28), inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22)' }}
-              >
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM5 20a7 7 0 0 1 14 0" /></svg>
-              </a>
-            </nav>
-
-          <div className="site-header-actions" style={{ display: 'flex', alignItems: 'center', gap: 10, flex: '0 0 auto' }}>
-            <a href={appSignup()} onClick={() => trackEvent('cta_click', { label: 'header_get_started' })} className="btn-navy btn-pulse" style={{ flex: '0 0 auto' }}>Get started</a>
-
-            <button
-              type="button"
-              onClick={() => setDrawer((v) => !v)}
-              title="Menu"
-              className="site-header-mobile-toggle"
-              style={{
-                all: 'unset',
-                cursor: 'pointer',
-                flex: '0 0 auto',
-                width: 44,
-                height: 44,
-                borderRadius: 13,
-                placeItems: 'center',
-                background: dark ? 'rgba(var(--ink-inverse-rgb), 0.08)' : 'rgba(var(--ink-inverse-rgb), 0.66)',
-                border: dark ? '1.5px solid rgba(var(--ink-inverse-rgb), 0.18)' : '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)',
-                backdropFilter: 'blur(20px)',
-                boxShadow: dark ? 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' : 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.9)',
-              }}
-            >
-              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke={dark ? '#E9EFF5' : 'var(--ink-1)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d={drawer ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16'} />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {drawerOpen && (
-          <div
-            style={{
-              borderTop: dark ? '1px solid rgba(var(--ink-inverse-rgb), 0.12)' : '1px solid rgba(var(--ink-1-rgb), 0.09)',
-              background: dark ? 'rgba(0,20,35,0.92)' : 'rgba(var(--cream-rgb), 0.86)',
-              backdropFilter: 'blur(26px)',
-              padding: '14px 20px 22px',
-              maxHeight: '70vh',
-              overflowY: 'auto',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 4,
-            }}
-          >
-            {NAV_ITEMS.map((item, i) => {
-              const isActive = active === item.key
-              const isOpen = open === i
-              const color = isActive ? (dark ? 'var(--butter)' : 'var(--olive)') : dark ? 'rgba(var(--ink-on-dark-rgb), 0.78)' : '#1C3B56'
-              return (
-                <div key={item.key} style={{ display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        onClick={() => setDrawer(false)}
-                        className={dark ? 'mobile-link-dark' : 'mobile-link-light'}
-                        style={{ display: 'flex', alignItems: 'center', flex: 1, minWidth: 0, gap: 10, padding: '15px 14px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 16, fontWeight: isActive ? 700 : 500, color }}
-                      >
-                        <span>{item.label}</span>
-                      </a>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={() => setOpen(isOpen ? -1 : i)}
-                        className={dark ? 'mobile-link-dark' : 'mobile-link-light'}
-                        style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', flex: 1, minWidth: 0, gap: 10, padding: '15px 14px', borderRadius: 13, fontFamily: 'var(--font-lato), Lato, sans-serif', fontSize: 16, fontWeight: isActive ? 700 : 500, color }}
-                      >
-                        <span>{item.label}</span>
-                      </button>
-                    )}
-                    {item.menu && (
-                      <button
-                        type="button"
-                        onClick={() => setOpen(isOpen ? -1 : i)}
-                        aria-label={`${item.label} menu`}
-                        style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '15px 14px', color }}
-                      >
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 180ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
-                      </button>
-                    )}
-                  </div>
-                  {item.menu && isOpen && (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 2, margin: '2px 0 8px 16px', paddingLeft: 16, borderLeft: '2px solid rgba(var(--moss-light-rgb), 0.7)' }}>
+        <nav className="sh-pill" aria-label="Main">
+          {NAV_ITEMS.map((item, i) => {
+            const on = active === item.key
+            return (
+              <div key={item.key} className={`sh-item${on ? ' is-on' : ''}${open === i ? ' is-open' : ''}`}>
+                {item.href ? (
+                  <Link href={item.href} className="sh-link" aria-current={on ? 'page' : undefined}>{item.label}</Link>
+                ) : (
+                  <button type="button" className="sh-link" aria-expanded={open === i} onClick={() => setOpen(open === i ? -1 : i)}>{item.label}</button>
+                )}
+                {item.menu && (
+                  <>
+                    <button type="button" className="sh-caret" aria-label={`${item.label} menu`} aria-expanded={open === i} onClick={() => setOpen(open === i ? -1 : i)}><Chevron /></button>
+                    <div className={`sh-menu${item.menu.length > 8 ? ' sh-menu--wide' : ''}`} aria-hidden={open !== i}>
                       {item.menu.map((m) => (
-                        <Link key={m.label} href={m.href} onClick={() => setDrawer(false)} className={dark ? 'mobile-submenu-dark' : 'mobile-submenu-light'} style={{ display: 'block', padding: '12px 12px', borderRadius: 11, fontSize: 14.5, color: dark ? 'rgba(var(--ink-on-dark-rgb), 0.76)' : 'var(--ink-4-alt)' }}>
-                          {m.label}
+                        <Link key={m.label} href={m.href} prefetch={false} className="sh-mi" tabIndex={open === i ? 0 : -1} onClick={close}>
+                          <span className="t">{m.label}</span>
+                          {m.note && <span className="n">{m.note}</span>}
                         </Link>
                       ))}
                     </div>
+                  </>
+                )}
+              </div>
+            )
+          })}
+          <button type="button" className="sh-fold" aria-label="Show menu"><span /><span /><span />Menu</button>
+        </nav>
+
+        <div className="sh-r">
+          <a href={appLogin} className="sh-login" aria-label="Log in" title="Log in">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM5 20a7 7 0 0 1 14 0" /></svg>
+          </a>
+          <a href={appSignup()} className="sh-cta" onClick={() => trackEvent('cta_click', { label: 'header_get_started' })}>Get started</a>
+          <button type="button" className="sh-burger" aria-label="Open menu" aria-expanded={drawer} aria-controls="sh-drawer" onClick={() => setDrawer(true)}>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <div className={`sh-drawer${drawer ? ' is-open' : ''}`} id="sh-drawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden={!drawer} inert={!drawer}>
+        <button type="button" className="sh-scrim" aria-label="Close menu" tabIndex={-1} onClick={close} />
+        <div className="sh-panel">
+          <div className="sh-top">
+            <span className="sh-k">Menu</span>
+            <button type="button" className="sh-x" aria-label="Close menu" onClick={close}>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+            </button>
+          </div>
+          <ol className="sh-list">
+            {NAV_ITEMS.map((item, i) => (
+              <li key={item.key} style={{ '--i': i } as React.CSSProperties} className={`${sub === i ? 'is-sub' : ''}${active === item.key ? ' is-on' : ''}`}>
+                <div className="row">
+                  {item.href ? (
+                    <Link href={item.href} prefetch={false} onClick={close}><span className="n">{String(i + 1).padStart(2, '0')}</span>{item.label}</Link>
+                  ) : (
+                    <button type="button" className="lbl" onClick={() => setSub(sub === i ? -1 : i)}><span className="n">{String(i + 1).padStart(2, '0')}</span>{item.label}</button>
+                  )}
+                  {item.menu && (
+                    <button type="button" className="tog" aria-expanded={sub === i} aria-label={`${item.label} pages`} onClick={() => setSub(sub === i ? -1 : i)}><Chevron /></button>
                   )}
                 </div>
-              )
-            })}
-            <a
-              href={appLogin}
-              style={{
-                marginTop: 8,
-                textAlign: 'center',
-                padding: '15px 18px',
-                borderRadius: 13,
-                fontFamily: 'var(--font-lato), Lato, sans-serif',
-                fontWeight: 700,
-                fontSize: 15,
-                color: dark ? '#F7FAFD' : 'var(--ink-1)',
-                background: dark ? 'rgba(var(--ink-inverse-rgb), 0.08)' : 'rgba(var(--ink-inverse-rgb), 0.66)',
-                border: dark ? '1.5px solid rgba(var(--ink-inverse-rgb), 0.18)' : '1.5px solid rgba(var(--ink-inverse-rgb), 0.9)',
-                backdropFilter: 'blur(20px)',
-              }}
-            >
-              Log in
-            </a>
+                {item.menu && (
+                  <ul className="subs">
+                    {item.menu.map((m) => <li key={m.label}><Link href={m.href} prefetch={false} onClick={close}>{m.label}</Link></li>)}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ol>
+          <div className="sh-dcta">
+            <a className="sh-cta sh-cta--block" href={appSignup()} onClick={() => trackEvent('cta_click', { label: 'header_get_started' })}>Get started <Arrow /></a>
+            <a className="sh-wa" href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer">Talk to us on WhatsApp</a>
+            <a className="sh-dlogin" href={appLogin}>Log in</a>
           </div>
-        )}
-      </header>
-    </div>
+        </div>
+      </div>
+    </header>
   )
 }

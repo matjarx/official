@@ -141,15 +141,36 @@ export default function TemplatesShowcase({ items, live = false }: { items: Show
 /* ── Phones: one phone, the templates slide inside it ─────────────────── */
 function PhoneSlider({ items, live }: { items: ShowcaseItem[]; live: boolean }) {
   const [idx, setIdx] = useState(0)
-  // Slides switched to the live site. A slide shows its captured mobile
-  // screenshot (~20 KB, instant) until the reader taps "Try it live"; the
-  // live site is a whole website and takes several seconds on a phone.
+  // The live theme loads into the phone for the slide on screen, once the
+  // section is near (so a visitor who never scrolls here downloads nothing).
+  // Its captured screenshot (~20 KB) shows instantly underneath and stays
+  // until the live site has loaded; then the live site fades in and can be
+  // scrolled and tapped inside the phone.
+  const [near, setNear] = useState(false)
   const [liveOn, setLiveOn] = useState<Set<number>>(() => new Set())
+  const [ready, setReady] = useState<Set<number>>(() => new Set())
+  const box = useRef<HTMLDivElement>(null)
   const track = useRef<HTMLDivElement>(null)
   // Where a tap is heading, so a second quick tap counts from there rather
   // than from the slide still sliding out.
   const tgt = useRef<number | null>(null)
   const anim = useRef(0)
+
+  useEffect(() => {
+    const el = box.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setNear(true); io.disconnect() } }, { rootMargin: '300px 0px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  // Load the slide that is on screen (only ever adds; loading never changes
+  // the slider's layout, so it cannot make the browser re-snap mid-swipe).
+  useEffect(() => {
+    if (!near || !live) return
+    const id = setTimeout(() => setLiveOn((p) => (p.has(idx) ? p : new Set([...p, idx]))), 250)
+    return () => clearTimeout(id)
+  }, [near, live, idx])
 
   useEffect(() => {
     const t = track.current
@@ -187,10 +208,10 @@ function PhoneSlider({ items, live }: { items: ShowcaseItem[]; live: boolean }) 
     anim.current = requestAnimationFrame(tick)
   }
   const cur = items[idx] ?? items[0]
-  const canLive = live && !!cur?.mobile && !liveOn.has(idx)
+  const curReady = ready.has(idx)
 
   return (
-    <div className="hv-ps" aria-roledescription="carousel" aria-label="Template previews on a phone">
+    <div className="hv-ps" ref={box} aria-roledescription="carousel" aria-label="Template previews on a phone">
       <div className="hv-ps-phone">
         <span className="hv-ps-notch" aria-hidden="true" />
         <div className="hv-ps-track" ref={track}>
@@ -202,15 +223,13 @@ function PhoneSlider({ items, live }: { items: ShowcaseItem[]; live: boolean }) 
                 ? <Image src={t.mobileShot} alt={`${t.name} on a phone`} fill sizes="270px" />
                 : <Image src={t.img} alt={`${t.name} preview`} fill sizes="270px" quality={60} style={{ objectFit: 'cover', objectPosition: '0 0' }} />}
               {live && t.mobile && (
-                <iframe src={liveOn.has(i) ? t.mobile : undefined} title={`${t.name}, live on a phone`} scrolling="no" tabIndex={-1} />
+                <iframe src={liveOn.has(i) ? t.mobile : undefined} title={`${t.name}, live on a phone`} className={ready.has(i) ? 'is-ready' : undefined} onLoad={() => { if (liveOn.has(i)) setReady((p) => new Set([...p, i])) }} />
               )}
             </div>
           ))}
         </div>
-        {canLive && (
-          <button type="button" className="hv-ps-live" onClick={() => setLiveOn((p) => new Set([...p, idx]))}>
-            <i aria-hidden="true" />Try it live
-          </button>
+        {live && cur?.mobile && (
+          <span className={`hv-ps-badge${curReady ? ' is-live' : ''}`} aria-live="polite"><i aria-hidden="true" />{curReady ? 'Live · scroll inside' : 'Loading live site…'}</span>
         )}
       </div>
       <div className="hv-ps-meta">

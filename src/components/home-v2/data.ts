@@ -34,7 +34,8 @@ export async function showcase(): Promise<ShowcaseItem[]> {
         img: t.previewImageUrl as string,
         href: t.landingHref || '/templates',
         plan: PLAN[t.minPlan] ?? null,
-        mobile: `${APP_URL}/site/__theme_${t.id}?framed=1`,
+        // The theme's public preview; ?framed=1 drops its preview banner.
+        mobile: t.demoUrl ? `${t.demoUrl}?framed=1` : `${APP_URL}/site/__theme_${t.id}?framed=1`,
         // A captured 390 × 844 screenshot of the theme's live mobile page,
         // when one exists for it: shows instantly where the live site takes
         // ~7 s. Capture new ones into public/home-v2/themes/<id>-mobile.webp.
@@ -47,13 +48,12 @@ export async function showcase(): Promise<ShowcaseItem[]> {
   return TEMPLATE_PREVIEWS.slice(0, 4).map((t) => ({ name: t.name, blurb: '', tags: [], img: t.src, href: '/templates', plan: null, mobile: null, mobileShot: null }))
 }
 
-// The phone previews frame each theme at app.matjarx.com/site/__theme_<id>.
-// That address is used rather than /themes/<key> because /themes/<key> has
-// answered "Theme not found" since 21 Nov 2026: an anon column grant left
-// out themes.cloned_from_theme_id, which that route filters on, while
-// /site/__theme_<id> reads only granted columns. One is probed (HEAD,
-// cached five minutes) so a broken preview is never framed: if it fails,
-// the phone slider falls back to the theme's screenshot.
+// The phone previews frame each theme's public preview,
+// app.matjarx.com/themes/<key>?framed=1. (From 21 Nov to 23 Nov 2026 that
+// route answered "Theme not found" for logged-out visitors, an anon column
+// grant having left out themes.cloned_from_theme_id; fixed in Supabase.)
+// One is probed (HEAD, cached five minutes) so a broken preview is never
+// framed: if it fails, the phone slider keeps showing the screenshot.
 const APP_URL = 'https://app.matjarx.com'
 
 export async function previewsLive(items: ShowcaseItem[]): Promise<boolean> {

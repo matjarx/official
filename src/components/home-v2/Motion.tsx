@@ -152,15 +152,7 @@ export default function Motion() {
       }
     }
 
-    /* ── Folding nav ───────────────────────────── */
-    const nav = root.querySelector<HTMLElement>('[data-hv-nav]')
     const hero = root.querySelector<HTMLElement>('.hero')
-    let lastY = window.scrollY
-    let hoverNav = false
-    let forceOpen = false
-    nav?.addEventListener('mouseenter', () => { hoverNav = true; delete nav.dataset.folded })
-    nav?.addEventListener('mouseleave', () => { hoverNav = false })
-    nav?.querySelector('[data-hv-unfold]')?.addEventListener('click', () => { forceOpen = true; if (nav) delete nav.dataset.folded })
 
     /* ── Hero + editor scroll parallax ───────────────────────────── */
     const frames = [...root.querySelectorAll<HTMLElement>('.hero .bf, .hero .chipf')]
@@ -178,15 +170,6 @@ export default function Motion() {
       raf = 0
       const y = window.scrollY
       const vh = window.innerHeight
-      if (nav) {
-        nav.toggleAttribute('data-scrolled', y > 30)
-        const down = y > lastY + 2
-        const up = y < lastY - 2
-        if (up) forceOpen = false
-        if (down && y > 700 && !hoverNav && !forceOpen) nav.dataset.folded = ''
-        else if (up || y < 700) delete nav.dataset.folded
-      }
-      lastY = y
       pickCurrent()
       if (!reduce) {
         mx = lerp(mx, tmx, 0.12); my = lerp(my, tmy, 0.12)
@@ -252,7 +235,7 @@ export default function Motion() {
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 })
     groups.forEach(([sel, kind]) => {
       root.querySelectorAll<HTMLElement>(sel).forEach((el) => {
-        if (el.closest('.hero') || el.closest('[data-hv-nav]')) return
+        if (el.closest('.hero') || el.closest('.sh')) return
         const sibs = el.parentElement ? [...el.parentElement.children].filter((c) => c.matches(sel)) : [el]
         const idx = Math.max(0, sibs.indexOf(el))
         el.classList.add('rv', `rv-${kind}`)

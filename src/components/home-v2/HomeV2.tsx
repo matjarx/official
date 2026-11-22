@@ -16,7 +16,8 @@
  
 import { Z1, Z3, Z4, Z5, Z6, Z7, Z8, Z9, Z11, Z12, Z13, Z14 } from './V2Markup'
 import { EditorSection, CostSection } from './V2Client'
-import { Ann, Header, type TickerItem } from './Chrome'
+import { Ann, type TickerItem } from './Chrome'
+import SiteHeader from '@/components/SiteHeader'
 import TemplatesShowcase, { type ShowcaseItem } from './TemplatesShowcase'
 import Motion from './Motion'
 import './home-v2.css'
@@ -47,7 +48,7 @@ export default function HomeV2({ templates, announcement, liveDemos = false }: {
   return (
     <div className="v2 hv2">
       <Ann lead={announcement} />
-      <Header />
+      <SiteHeader active="home" />
       <Z1 />
       <EditorSection />
       <Z3 />
