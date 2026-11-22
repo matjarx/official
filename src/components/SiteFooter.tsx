@@ -182,12 +182,17 @@ export default function SiteFooter() {
             </div>
           </div>
 
+          {/* Footer links don't prefetch: there are 37 of them on every page,
+              and prefetching downloaded ~540 KB of other pages' code in the
+              background each visit, mostly for pages nobody opened. Desktop
+              still prefetches on hover; a tap loads on tap. The closing CTA
+              above keeps Next's default. */}
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title} style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
               <span style={{ fontSize: 11, letterSpacing: '1.6px', textTransform: 'uppercase', color: 'rgba(var(--ink-inverse-rgb), 0.62)', fontWeight: 600 }}>{col.title}</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {col.links.map((l) => (
-                  <Link key={l.label} href={l.href} className="footer-link" style={{ fontSize: 13.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>
+                  <Link key={l.label} href={l.href} prefetch={false} className="footer-link" style={{ fontSize: 13.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>
                     {l.label}
                   </Link>
                 ))}
@@ -205,7 +210,7 @@ export default function SiteFooter() {
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px 10px' }}>
             {FOOTER_CITIES.map((c) => (
-              <Link key={c.href} href={c.href} className="footer-link footer-link-tap" style={{ fontSize: 12, color: 'rgba(var(--ink-inverse-rgb), 0.62)', whiteSpace: 'nowrap' }}>
+              <Link key={c.href} href={c.href} prefetch={false} className="footer-link footer-link-tap" style={{ fontSize: 12, color: 'rgba(var(--ink-inverse-rgb), 0.62)', whiteSpace: 'nowrap' }}>
                 {c.label}
               </Link>
             ))}
@@ -215,9 +220,9 @@ export default function SiteFooter() {
         <div style={{ maxWidth: 1360, margin: '44px auto 0', paddingTop: 22, borderTop: '1px solid rgba(var(--ink-inverse-rgb), 0.1)', display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
           <span style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.62)', marginRight: 'auto' }}>&copy; 2018&ndash;2026 MatjarX. All rights reserved.</span>
           <LanguageSwitcher />
-          <Link href={routes.legal('terms')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Terms &amp; conditions</Link>
-          <Link href={routes.legal('refund')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Refund policy</Link>
-          <Link href={routes.legal('privacy')} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Privacy &amp; cookies</Link>
+          <Link href={routes.legal('terms')} prefetch={false} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Terms &amp; conditions</Link>
+          <Link href={routes.legal('refund')} prefetch={false} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Refund policy</Link>
+          <Link href={routes.legal('privacy')} prefetch={false} className="footer-link footer-link-tap" style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>Privacy &amp; cookies</Link>
         </div>
       </footer>
     </div>
