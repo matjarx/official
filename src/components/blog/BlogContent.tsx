@@ -15,7 +15,6 @@ import { BLOG_INDEX_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import NewsletterSignup from './NewsletterSignup'
 import PostCard from './PostCard'
-import { AuthorName } from './AuthorCard'
 import { routes } from '@/lib/routes'
 import { BLOG_CATEGORIES, FEATURED_SLUG, AUTHOR, type BlogCategory, type BlogPost } from '@/lib/blog-data'
 
@@ -82,7 +81,17 @@ export default function BlogContent({ posts, h1 }: { posts: BlogPost[]; h1?: str
                   <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-5)' }}>{featuredPost.excerpt}</p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 4 }}>
                     <span style={{ width: 34, height: 34, borderRadius: '50%', background: 'var(--moss-light)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, color: 'var(--ink-on-butter)' }}>{AUTHOR.initials}</span>
-                    <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}><AuthorName author={featuredPost.author ?? AUTHOR} /> · {featuredPost.date} · {featuredPost.readTime}</span>
+                    {/* Plain text, not <AuthorName>: this card is already a
+                        <Link> (an <a>), and AuthorName renders its own <a>
+                        for any author with a real slug -- an <a> nested in
+                        an <a> is invalid HTML. The browser silently closes
+                        the outer one early while parsing the server HTML,
+                        so React's hydration then finds a DOM shape that
+                        doesn't match what it rendered server-side and
+                        throws error #418 (only when the post's real author
+                        has a slug, never for the slug-less static fallback
+                        -- which is why this never reproduced locally). */}
+                    <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>{(featuredPost.author ?? AUTHOR).name} · {featuredPost.date} · {featuredPost.readTime}</span>
                   </div>
                 </div>
               </Link>
