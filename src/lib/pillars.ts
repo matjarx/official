@@ -148,11 +148,6 @@ export function pillarOf(slug: string): PillarKey | null {
   return PILLAR_OF.get(slug)?.pillar ?? null
 }
 
-/** Every post slug the map knows, for the check script. */
-export function pillarSlugs(): string[] {
-  return [...PILLAR_OF.keys()]
-}
-
 /**
  * Up to `count` posts from the same pillar, never the post itself.
  *

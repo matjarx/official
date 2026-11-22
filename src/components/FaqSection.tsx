@@ -34,20 +34,18 @@ export default function FaqSection({
   title = 'Frequently asked',
   titleMark = 'questions',
   intro = 'Everything you need to use MatjarX like a pro.',
-  dark = false,
 }: {
   faqs: Faq[]
   title?: string
   /** Rendered on the butter highlight, after `title`. */
   titleMark?: string
   intro?: string
-  dark?: boolean
 }) {
   const [open, setOpen] = useState(0)
   if (faqs.length === 0) return null
 
-  const ink = dark ? 'var(--ink-inverse)' : 'var(--ink-1)'
-  const body = dark ? 'rgba(var(--ink-inverse-rgb), 0.72)' : 'var(--ink-4)'
+  const ink = 'var(--ink-1)'
+  const body = 'var(--ink-4)'
 
 
   return (
@@ -62,8 +60,8 @@ export default function FaqSection({
           <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: body }}>{intro}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, paddingTop: 6 }}>
             <span style={{ fontSize: 14, fontWeight: 600, color: ink }}>Still have questions?</span>
-            <a href={TEL_HREF} style={{ fontSize: 14, fontWeight: 600, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>Call us: {BUSINESS_PHONE_DISPLAY}</a>
-            <a href="mailto:office@matjarx.com" style={{ fontSize: 14, fontWeight: 600, color: dark ? 'var(--moss-light)' : 'var(--olive)' }}>office@matjarx.com</a>
+            <a href={TEL_HREF} style={{ fontSize: 14, fontWeight: 600, color: 'var(--olive)' }}>Call us: {BUSINESS_PHONE_DISPLAY}</a>
+            <a href="mailto:office@matjarx.com" style={{ fontSize: 14, fontWeight: 600, color: 'var(--olive)' }}>office@matjarx.com</a>
           </div>
         </div>
 
@@ -72,7 +70,6 @@ export default function FaqSection({
             items={faqs.map((f) => ({ q: f.question, a: f.answer }))}
             openIdx={open}
             onToggle={setOpen}
-            dark={dark}
           />
         </div>
       </div>
