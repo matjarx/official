@@ -19,7 +19,7 @@ import AnnouncementBar from '@/components/AnnouncementBar'
 import ThemeProvider from '@/components/ThemeProvider'
 import CurrencyProvider from '@/components/CurrencyProvider'
 import SitePopup from '@/components/SitePopup'
-import MobileStickyBar from '@/components/MobileStickyBar'
+import FloatingDock from '@/components/FloatingDock'
 import './globals.css'
 
 // Without this, Next's Data Cache would cache the layout's own
@@ -190,7 +190,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             as "the popup is broken". Checking it here at least keeps the
             two in agreement; the admin now warns about it on the way in. */}
           {isWidgetActive(popupConfig) && !!popupConfig.heading && <SitePopup config={popupConfig} />}
-          <MobileStickyBar />
+          <FloatingDock />
         </ThemeProvider>
         </CurrencyProvider>
         <GoogleAnalytics gaId={gaId} />

@@ -1530,44 +1530,31 @@ textarea.input {
   .theme-rail:not(:hover)::-webkit-scrollbar-thumb { transition: background 150ms ease; }
 }
 
-/* Mobile sticky bar (src/components/MobileStickyBar.tsx). Phones only. The
-   body padding is what keeps it from covering the end of any page: forms,
-   the footer, the last FAQ all scroll clear of it. */
-/* Measured via Playwright against the real rendered bar (1px top
-   border + 10px top/bottom padding + content), not eyeballed -- the
-   64px guess this replaced was 1px short, so a page's very last pixel
-   could still end up under the bar. */
-:root { --mobile-bar-h: 65px; }
-.mobile-sticky-bar { display: none; }
-@media (max-width: 767px) {
-  body { padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom)); }
-  .mobile-sticky-bar {
-    display: flex;
-    gap: 10px;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 45;
-    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-    background: rgba(var(--cream-rgb), 0.92);
-    border-top: 1px solid rgba(var(--ink-1-rgb), 0.1);
-    backdrop-filter: blur(18px);
-    box-shadow: 0 -8px 24px rgba(var(--scrim-rgb), 0.08);
-    transition: transform 180ms ease;
-  }
-  .mobile-sticky-bar[data-hidden] { transform: translateY(110%); }
-  .mobile-sticky-bar-btn {
-    flex: 1;
-    display: grid;
-    place-items: center;
-    min-height: 44px;
-    border-radius: 999px;
-    font-family: var(--font-lato), Lato, sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    text-decoration: none;
-  }
-  .mobile-sticky-bar-wa { background: #1F8F4E; color: #fff; }
-  .mobile-sticky-bar-plans { background: var(--navy-deepest); color: #fff; border: 1px solid rgba(255,255,255,0.18); }
+/* Floating CTA dock (src/components/FloatingDock.tsx), every page and
+   every width. It replaced the full-width phone sticky bar. It floats and
+   steps aside at the footer, so unlike that bar it needs no body padding. */
+.fdock { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom)); z-index: 45; display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 18px; border-radius: 999px; background: rgba(4, 18, 31, .9); -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3); color: #fff; border: 1px solid rgba(255, 255, 255, .08); box-shadow: 0 26px 50px -20px rgba(4, 18, 31, .7); transform: translate(-50%, 160%); opacity: 0; transition: transform .7s cubic-bezier(.2, .9, .25, 1.15), opacity .4s; }
+.fdock[data-on] { transform: translate(-50%, 0); opacity: 1; }
+.fdock-l { display: inline-flex; align-items: center; gap: 9px; padding-right: 8px; font-family: var(--font-lato), Lato, sans-serif; font-size: 13.5px; font-weight: 900; white-space: nowrap; }
+.fdock-l i { width: 9px; height: 9px; border-radius: 50%; background: #1fbf5c; animation: fdock-live 2s ease-out infinite; }
+@keyframes fdock-live { 0% { box-shadow: 0 0 0 0 rgba(31, 191, 92, .55); } 70% { box-shadow: 0 0 0 8px rgba(31, 191, 92, 0); } 100% { box-shadow: 0 0 0 0 rgba(31, 191, 92, 0); } }
+.fdock-wa { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: #0b6b38; color: #fff; transition: transform .35s cubic-bezier(.2, .8, .2, 1); }
+.fdock-wa:hover { transform: scale(1.08) rotate(-10deg); }
+.fdock-orb { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; gap: 12px; height: 48px; padding: 0 22px 0 6px; border-radius: 999px; background: #f4f2ae; color: #16210b; font-family: var(--font-lato), Lato, sans-serif; font-size: 15px; font-weight: 900; text-decoration: none; white-space: nowrap; transition: color .35s; }
+.fdock-orb-c { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: #04121f; color: #f4f2ae; }
+.fdock-orb-c::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 50%; background: #003366; transition: transform .6s cubic-bezier(.7, 0, .2, 1); }
+.fdock-orb-c svg { position: relative; transition: transform .35s cubic-bezier(.2, .8, .2, 1); }
+.fdock-orb-t { position: relative; z-index: 1; }
+.fdock-orb:hover { color: #fff; }
+.fdock-orb:hover .fdock-orb-c::before { transform: scale(10); }
+.fdock-orb:hover .fdock-orb-c svg { transform: translateX(3px) rotate(-45deg); }
+.fdock a:focus-visible { outline: 3px solid #f4f2ae; outline-offset: 3px; }
+@media (max-width: 699px) {
+  .fdock { left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); justify-content: space-between; padding-left: 14px; transform: translateY(160%); }
+  .fdock[data-on] { transform: none; }
+  .fdock-l { font-size: 12.5px; padding-right: 0; }
+  .fdock-orb { flex: 1; justify-content: flex-start; }
 }
+@media (max-width: 380px) { .fdock-l { display: none; } }
+@media (prefers-reduced-motion: reduce) { .fdock { transition: opacity .2s; } .fdock-l i { animation: none; } }
+
