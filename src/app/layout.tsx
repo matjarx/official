@@ -58,16 +58,6 @@ const SITE_URL = 'https://matjarx.com'
 
 const DEFAULT_TITLE = 'MatjarX — Done-for-you websites, live in 7 days'
 const DEFAULT_DESCRIPTION = 'MatjarX builds complete small business websites in 7 days, from Rs. 4,500/month + Rs. 22,500 setup — done-for-you design, SEO and growth marketing.'
-const DEFAULT_SOCIALS: Record<string, string> = {
-  Facebook: 'https://www.facebook.com/matjarxpakistan/',
-  Instagram: 'https://www.instagram.com/matjarxpakistan/',
-  X: 'https://x.com/matjar_X',
-  Threads: 'https://www.threads.com/@matjarxpakistan',
-  TikTok: 'https://www.tiktok.com/@matjarxofficial',
-  LinkedIn: 'http://linkedin.com/company/matjarx/',
-  YouTube: 'https://www.youtube.com/@matjarxofficial',
-}
-
 // Static per-page metadata already overrides title/description on nearly
 // every route — this is just the root fallback (and the OG/twitter
 // defaults), so making it async to read the settings override doesn't

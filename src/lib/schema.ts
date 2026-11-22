@@ -35,6 +35,8 @@ export const SOCIAL_PROFILES = [
   'https://www.linkedin.com/company/matjarx/',
   'https://www.tiktok.com/@matjarxofficial',
   'https://www.youtube.com/@matjarxofficial',
+  'https://x.com/matjar_X',
+  'https://www.threads.com/@matjarxpakistan',
 ] as const
 
 /**
