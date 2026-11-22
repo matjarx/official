@@ -114,19 +114,25 @@ const DARK_THEME = {
   tick: 'var(--moss-light)', ctaInk: 'var(--ink-on-butter)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)', savingInk: 'var(--butter)',
 }
 
+// name/pitch come from ALL_PLANS (the single source of truth plan-data.ts
+// documents itself as). base/setup do NOT: they're raw numbers/unprefixed
+// strings this page's own cycle/currency calculator parses directly
+// (fmt(), savingFor(), parsePkr() below), not the pre-formatted "Rs. x,xxx"
+// display strings ALL_PLANS holds for pages that just show a price as-is
+// -- so those two fields stay page-specific rather than spread.
 export const DEFAULT_PLAN_ROWS = [
-  { name: 'Launch', base: 4500, setup: '22,500', pitch: 'We build and launch your website.', cta: 'Choose Launch', theme: LIGHT_THEME, tag: '', inherits: '', href: appSignup('launch'),
+  { ...ALL_PLANS.launch, base: 4500, setup: '22,500', cta: 'Choose Launch', theme: LIGHT_THEME, tag: '', inherits: '', href: appSignup('launch'), why: '',
     features: ['Built-for-you website or online store', 'Personalised design, made for your trade', 'Fast loading, structured to rank on Google', 'Ready in 7 days', 'Custom domain, or connect one you own', 'Professional business email address', 'Easy-to-use editor', '0% fees on sales and bookings', '1-on-1 launch and training call', 'Secure hosting and SSL certificate', 'No long-term contract'],
     bestFor: 'Perfect for: first-time builders and businesses testing the market.' },
-  { name: 'Boost', base: 15600, setup: '22,500', pitch: 'We manage your online presence.', cta: 'Choose Boost', theme: LIGHT_THEME, tag: '', inherits: 'Everything in Launch, plus:', href: appSignup('boost'),
+  { ...ALL_PLANS.boost, base: 15600, setup: '22,500', cta: 'Choose Boost', theme: LIGHT_THEME, tag: '', inherits: 'Everything in Launch, plus:', href: appSignup('boost'),
     features: ['4 business email addresses', 'Advanced SEO to rank on Google', 'Unlimited done-for-you edits (first 30 days)', 'Live chat, lead forms and multimedia added for you', 'Promote products on Google, Facebook and Instagram', 'VIP phone support'],
     why: 'Why Boost works: if your launch website is getting you started but you need more content, better search rankings, and advanced features to attract customers — Boost adds dedicated marketing content and SEO power to compete in your local market.',
     bestFor: 'Best for: restaurants wanting online menus, real estate agents expanding listings, service businesses building credibility, shops selling more products.' },
-  { name: 'Growth', base: 27000, setup: '22,500', pitch: 'We grow your business online.', cta: 'Choose Growth', theme: DARK_THEME, tag: 'Most popular', inherits: 'Everything in Boost, plus:', href: appSignup('growth'),
+  { ...ALL_PLANS.growth, base: 27000, setup: '22,500', cta: 'Choose Growth', theme: DARK_THEME, tag: 'Most popular', inherits: 'Everything in Boost, plus:', href: appSignup('growth'),
     features: ['Dedicated VIP growth team', 'A marketing plan built for your business', '1-on-1 monthly marketing sessions', 'Advice on email, social, ads, SEO and reputation', '3 blog posts written for you every month'],
     why: "Why Growth wins: you're not just getting a website — you're getting a part-time marketing team. A dedicated expert works with you monthly, creating a personalised growth strategy and content plan that turns your website from a digital brochure into a lead-generating machine.",
     bestFor: 'Best for: law firms building reputation, clinics acquiring patients, consultants attracting clients, agencies managing growth — any business serious about generating consistent leads.' },
-  { name: 'Platinum', base: 55000, setup: '140,000', pitch: 'We scale your e-commerce business.', cta: 'Talk to us', theme: LIGHT_THEME, tag: '', inherits: 'Everything in Growth, plus:', href: appSignup('platinum'),
+  { ...ALL_PLANS.platinum, base: 55000, setup: '140,000', cta: 'Talk to us', theme: LIGHT_THEME, tag: '', inherits: 'Everything in Growth, plus:', href: appSignup('platinum'),
     features: ['Custom design built in our own tool', 'Full webstore built for you', '1 ad campaign managed (ad spend under Rs. 50,000, paid by you to the platform)', 'Unlimited products and unlimited edits', 'Sell subscriptions and digital products', 'Manage multi-seat bookings', 'Enhanced marketing integrations'],
     why: "Why Platinum scales: it isn't just for e-commerce — it's for any business serious about owned-channel marketing and growth. You get a complete team of designers, content creators, SEO experts and social media strategists working together to grow your business.",
     bestFor: 'Best for: online stores, subscription businesses, agencies, courses, digital products, multi-location businesses, franchises — anyone serious about digital dominance.' },

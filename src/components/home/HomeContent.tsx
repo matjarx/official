@@ -4,9 +4,6 @@
 // hero: Editor Showcase, category marquee, "Did you know", three options,
 // mascot/urgency panel, editor features + second showcase, how it works,
 // website examples, savings calculator, pricing, trust band, FAQs.
-//
-// Dark theme layer: pass `dark` to render Home Dark (same structure/copy,
-// swapped tokens + Site Header Dark) rather than building a second page.
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -21,6 +18,7 @@ import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes, appSignup } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
+import { ALL_PLANS } from '@/lib/plan-data'
 import type { HomeContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { useTheme } from '@/components/ThemeProvider'
@@ -167,14 +165,19 @@ const DARK_PLAN_THEME = {
   ink: 'var(--ink-inverse)', muted: 'rgba(var(--ink-inverse-rgb), 0.62)', body: 'rgba(var(--ink-inverse-rgb), 0.8)', rule: 'rgba(var(--ink-inverse-rgb), 0.16)',
   tick: 'var(--moss-light)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)',
 }
-const PLAN_ROWS = [
-  { name: 'Launch', pitch: 'We build and launch your website.', price: 'Rs. 4,500', setup: 'Rs. 22,500', cta: 'Choose Launch', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('launch'),
+// name/pitch/price/setup come from ALL_PLANS (the single source of truth
+// plan-data.ts documents itself as) -- only the homepage-card-specific
+// fields (theme, tag, href, and this card's own shorter feature list,
+// distinct from the longer one PLAN_DATA shows on each plan's own detail
+// page) are layered on here, same as HomeMobileContent already does.
+const PLAN_ROWS: { name: string; pitch: string; price: string; setup: string; cta: string; theme: typeof LIGHT_PLAN_THEME; tag: string; href: string; features: string[] }[] = [
+  { ...ALL_PLANS.launch, cta: 'Choose Launch', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('launch'),
     features: ['Multi-page site, written for you', 'Domain + 1 business email', 'Google Business Profile set up', 'Live chat support'] },
-  { name: 'Boost', pitch: 'We manage your online presence.', price: 'Rs. 15,600', setup: 'Rs. 22,500', cta: 'Choose Boost', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('boost'),
+  { ...ALL_PLANS.boost, cta: 'Choose Boost', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('boost'),
     features: ['Everything in Launch', '4 business emails', 'Unlimited edits for 30 days, done by us', 'Advanced SEO + custom logo', 'Sell on Google, Facebook, Instagram'] },
-  { name: 'Growth', pitch: 'We grow your business online.', price: 'Rs. 27,000', setup: 'Rs. 22,500', cta: 'Choose Growth', theme: DARK_PLAN_THEME, tag: 'Most popular', href: appSignup('growth'),
+  { ...ALL_PLANS.growth, cta: 'Choose Growth', theme: DARK_PLAN_THEME, tag: 'Most popular', href: appSignup('growth'),
     features: ['Everything in Boost', 'Dedicated growth team', 'Monthly 1-on-1 marketing session', '3 blog posts a month'] },
-  { name: 'Platinum', pitch: 'We scale your e-commerce business.', price: 'Rs. 55,000', setup: 'Rs. 140,000', cta: 'Talk to us', theme: PREMIUM_PLAN_THEME, tag: '', href: appSignup('platinum'),
+  { ...ALL_PLANS.platinum, cta: 'Talk to us', theme: PREMIUM_PLAN_THEME, tag: '', href: appSignup('platinum'),
     features: ['Everything in Growth', 'Custom design in our own tool', 'Full webstore, unlimited products', 'Subscriptions & digital products', 'Multi-seat bookings'] },
 ]
 
