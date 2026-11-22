@@ -417,7 +417,7 @@ html.hv-lenis.lenis-stopped { overflow: hidden; }
   .hv2 .hero .cf2 span { font-size: 11.5px; }
   .hv2 .hero .cf2 { top: 0; bottom: auto; right: 6px; }
 }
-@media (max-width: 389px) {
+@media (max-width: 449px) {
   .hv2 .assure .as-l { display: none; }
   .hv2 .assure .as-s { display: inline; }
 }
