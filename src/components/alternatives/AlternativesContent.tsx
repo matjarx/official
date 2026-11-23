@@ -14,6 +14,7 @@ import { HERO, GROUPS, WHY_COMPARE, CANT_FIND, CLOSING } from '@/lib/alternative
 import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { useCurrency } from '@/components/CurrencyProvider'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type AlternativesContentShape = { hero: typeof HERO; groups: typeof GROUPS; whyCompare: typeof WHY_COMPARE }
 const DEFAULT_CONTENT: AlternativesContentShape = { hero: HERO, groups: GROUPS, whyCompare: WHY_COMPARE }
@@ -24,7 +25,7 @@ export default function AlternativesContent({ content = DEFAULT_CONTENT }: { con
   const GROUPS_ACTIVE = content.groups
   const WHY_COMPARE_ACTIVE = content.whyCompare
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="resources">
 
       {/* Hero */}

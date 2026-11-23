@@ -23,6 +23,7 @@ import { FaqList } from '@/components/FaqList'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export const DEFAULT_HERO_TICKS = ['Done-for-you service', '5-star support', 'No hidden costs']
 
@@ -186,7 +187,7 @@ export default function PricingContent({ content }: { content: PricingContentSha
   const saveNote = cycle === 'monthly' ? '2 months free on yearly billing' : cycle === 'yearly' ? '2 months free applied' : 'Best value — 25% off every month'
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="pricing">
 
       {/* Hero */}

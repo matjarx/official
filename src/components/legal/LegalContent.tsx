@@ -13,6 +13,7 @@ import { routes } from '@/lib/routes'
 import { LEGAL_DATA, LEGAL_DOC_KEYS, type LegalDoc, type LegalBlock, type LegalDocData } from '@/lib/legal-data'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 function renderInline(text: string): ReactNode {
   const parts = text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean)
@@ -74,7 +75,7 @@ export default function LegalContent({ doc, content }: { doc: LegalDoc; content?
   const d = content ?? LEGAL_DATA[doc]
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="company">
 
       {/* Navy hero */}

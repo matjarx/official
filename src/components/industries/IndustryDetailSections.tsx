@@ -11,7 +11,7 @@ import { useState } from 'react'
 import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data'
 import type { IndustryKey } from '@/lib/industry-data'
 import { FaqList, bullet } from '@/components/FaqList'
-import { H2, BlockList } from '@/components/DetailPrimitives'
+import { H2, BlockList, TestimonialGrid } from '@/components/DetailPrimitives'
 import { useCurrency } from '@/components/CurrencyProvider'
 
 export default function IndustryDetailSections({ industryKey, detail }: { industryKey: IndustryKey; detail?: IndustryDetail | null }) {
@@ -94,15 +94,7 @@ export default function IndustryDetailSections({ industryKey, detail }: { indust
       {d.testimonials && (
         <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{d.testimonials.title}</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
-            {d.testimonials.items.map((t) => (
-              <div key={t.name} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-                <span style={{ display: 'block', marginBottom: 8, fontSize: 13, letterSpacing: 2, color: 'var(--butter-deep)' }}>★★★★★</span>
-                <p style={{ margin: '0 0 10px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-4-alt)' }}>&ldquo;{t.quote}&rdquo;</p>
-                <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-5)' }}>{t.name}</span>
-              </div>
-            ))}
-          </div>
+          <TestimonialGrid items={d.testimonials.items} />
         </section>
       )}
 

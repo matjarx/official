@@ -14,6 +14,7 @@ import { FAQ_GROUPS, FAQ_GROUP_NAMES, type FaqGroupName } from '@/lib/faqs-data'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 type FlatQ = { key: string; question: string; answer: string }
 
@@ -62,7 +63,7 @@ export default function FaqsContent({ content = DEFAULT_CONTENT }: { content?: F
   )
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <FaqSchema faqs={fromPairs(allFaqPairs)} />
       <SiteChrome active="resources">
 

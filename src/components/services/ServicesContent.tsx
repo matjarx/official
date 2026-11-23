@@ -26,6 +26,7 @@ import { useCurrency } from '@/components/CurrencyProvider'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 import { CLAIM, showsClaimTile } from '@/lib/claim'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type ServicesContentShape = ServiceDataEntry
 const DEFAULT_CONTENT: Record<ServiceKey, ServicesContentShape> = SERVICE_DATA
@@ -36,7 +37,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
   const d = content
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="services">

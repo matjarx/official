@@ -25,6 +25,7 @@ import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
 import { ORGANIZATION_ID } from '@/lib/schema'
 import BodyLinks from '@/components/BodyLinks'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type LocationContentShape = (typeof CITY_DATA)[CityKey] & {
   detail: { process: CityProcessStep[]; plans: CityPlanTier[]; whyOver: CityCompareGroup[] }
@@ -76,7 +77,7 @@ export default function LocationContent({ locationKey, content, related = [] }: 
   }
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([
         ['Home', routes.home],
         ['Locations', routes.locations],
