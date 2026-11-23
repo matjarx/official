@@ -12,6 +12,7 @@ import { CAREERS_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { CAREERS_PERKS, CAREERS_ROLES, CAREERS_CATEGORIES } from '@/lib/careers-data'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type CareersContentShape = { perks: typeof CAREERS_PERKS; roles: typeof CAREERS_ROLES }
 const DEFAULT_CONTENT: CareersContentShape = { perks: CAREERS_PERKS, roles: CAREERS_ROLES }
@@ -30,7 +31,7 @@ export default function CareersContent({ content = DEFAULT_CONTENT }: { content?
   const roleCount = `${shown.length} ${shown.length === 1 ? 'role open' : 'roles open'}${filter === 'All' ? ' across five teams' : ` in ${filter}`}`
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="company">
 
       {/* Navy hero */}

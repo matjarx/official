@@ -17,6 +17,7 @@ import NewsletterSignup from './NewsletterSignup'
 import PostCard from './PostCard'
 import { routes } from '@/lib/routes'
 import { BLOG_CATEGORIES, FEATURED_SLUG, AUTHOR, type BlogCategory, type BlogPost } from '@/lib/blog-data'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export default function BlogContent({ posts, h1 }: { posts: BlogPost[]; h1?: string }) {
   const [cat, setCat] = useState<(typeof BLOG_CATEGORIES)[number]>('All')
@@ -42,7 +43,7 @@ export default function BlogContent({ posts, h1 }: { posts: BlogPost[]; h1?: str
   }
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteHeader active="resources" />
       <main>
 

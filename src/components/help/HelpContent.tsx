@@ -15,6 +15,7 @@ import { HELP_TOPICS, HELP_POPULAR, HELP_CHANNELS, HELP_SUBJECTS, HELP_CONTACT_R
 import { FaqList } from '@/components/FaqList'
 import LeadForm from '@/components/LeadForm'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 function slugFor(topic: string) {
   return HELP_TOPICS.find((t) => t.title === topic)?.slug
@@ -30,7 +31,7 @@ export default function HelpContent({ content = DEFAULT_CONTENT }: { content?: H
   const HELP_FAQS_ACTIVE = content.faqs
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="company">

@@ -23,6 +23,7 @@ import {
 } from '@/lib/partner-data'
 import { money } from '@/lib/money'
 import { useCurrency } from '@/components/CurrencyProvider'
+import { PAGE_ROOT } from '@/lib/page-styles'
 import { PARTNER_CATEGORY_ICONS, PARTNER_TOOL_LOGOS } from '@/lib/partner-icons-data'
 import { seoH1 } from '@/lib/seo-h1'
 
@@ -79,7 +80,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
   }
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="company">
 
       {/* Navy hero */}

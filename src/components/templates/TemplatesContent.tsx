@@ -23,6 +23,7 @@ import {
 import { FaqList } from '@/components/FaqList'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 import BodyLinks from '@/components/BodyLinks'
 
 function IconCardGrid({ items, cols = 4 }: { items: IconCard[]; cols?: number }) {
@@ -73,7 +74,7 @@ export default function TemplatesContent({
   const TEMPLATE_FAQS_ACTIVE = content.faqs
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="templates">
 
       {/* Hero */}

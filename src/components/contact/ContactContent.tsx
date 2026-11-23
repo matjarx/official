@@ -14,6 +14,7 @@ import { FaqList } from '@/components/FaqList'
 import LeadForm from '@/components/LeadForm'
 import { WHATSAPP_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type ContactContentShape = { channels: typeof CONTACT_CHANNELS; topics: typeof CONTACT_TOPICS; officeRows: typeof CONTACT_OFFICE_ROWS; faqs: typeof CONTACT_FAQS }
 const DEFAULT_CONTENT: ContactContentShape = { channels: CONTACT_CHANNELS, topics: CONTACT_TOPICS, officeRows: CONTACT_OFFICE_ROWS, faqs: CONTACT_FAQS }
@@ -26,7 +27,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
   const CONTACT_FAQS_ACTIVE = content.faqs
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="company">
 
       {/* Navy hero band */}

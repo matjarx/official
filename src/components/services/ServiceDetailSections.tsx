@@ -9,27 +9,12 @@
 import { useState } from 'react'
 import FaqSchema from '@/components/FaqSchema'
 import type { ServiceKey } from '@/lib/services-data'
-import { DFY, SEO, CONCIERGE, GROWTH, type ServiceDetail, type Testimonial } from '@/lib/service-detail-data'
+import { DFY, SEO, CONCIERGE, GROWTH, type ServiceDetail } from '@/lib/service-detail-data'
 import { FaqList, bullet } from '@/components/FaqList'
-import { H2, BlockList, CompareTable } from '@/components/DetailPrimitives'
+import { H2, BlockList, CompareTable, TestimonialGrid } from '@/components/DetailPrimitives'
 import { useCurrency } from '@/components/CurrencyProvider'
 
 const DETAIL: Record<ServiceKey, ServiceDetail> = { dfy: DFY, seo: SEO, concierge: CONCIERGE, growth: GROWTH }
-
-function TestimonialGrid({ items }: { items: Testimonial[] }) {
-  const { inText } = useCurrency()
-  return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
-      {items.map((t) => (
-        <div key={t.name} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-          <span style={{ display: 'block', marginBottom: 8, fontSize: 13, letterSpacing: 2, color: 'var(--butter-deep)' }}>★★★★★</span>
-          <p style={{ margin: '0 0 10px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-4-alt)' }}>&ldquo;{inText(t.quote)}&rdquo;</p>
-          <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-5)' }}>{t.name}</span>
-        </div>
-      ))}
-    </div>
-  )
-}
 
 export default function ServiceDetailSections({ svc }: { svc: ServiceKey }) {
   // The service pages quote setup fees and monthly figures throughout.

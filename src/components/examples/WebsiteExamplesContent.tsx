@@ -16,6 +16,7 @@ import PortfolioShowcase from './PortfolioShowcase'
 import { EXAMPLES, EXAMPLE_CATEGORIES, EXAMPLE_PILLARS } from '@/lib/examples-data'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type WebsiteExamplesContentShape = { examples: typeof EXAMPLES; categories: typeof EXAMPLE_CATEGORIES; pillars: typeof EXAMPLE_PILLARS }
 const DEFAULT_CONTENT: WebsiteExamplesContentShape = { examples: EXAMPLES, categories: EXAMPLE_CATEGORIES, pillars: EXAMPLE_PILLARS }
@@ -41,7 +42,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
   const resultLine = shown.length + (shown.length === 1 ? ' example' : ' examples') + (filter === 'All' ? ' shown · hover a site to open it' : ` in ${filter} · hover a site to open it`)
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="examples">

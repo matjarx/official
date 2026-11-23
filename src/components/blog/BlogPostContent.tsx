@@ -22,6 +22,7 @@ import { AUTHOR, SHARE_LINKS, type BlogPost, type BodyBlock } from '@/lib/blog-d
 import { richText, plainText } from '@/lib/rich-text'
 import { slugifyCategory } from '@/lib/blog-categories'
 import { FAQ_HEADING } from '@/lib/blog-faq'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 // allPosts comes from the same getBlogPosts() call the page already made
 // for the listing — resolving relatedSlugs against the live table rather
@@ -278,7 +279,7 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
   const seoServiceLine = pillar === 'P3' && !JSON.stringify(post.body).includes(routes.service('seo'))
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="resources">
 
       {/* Navy hero */}

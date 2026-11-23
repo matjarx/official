@@ -18,6 +18,7 @@ import { HELP_CHANNELS } from '@/lib/help-data'
 import { FaqList } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 // Turns the source markdown's inline **bold** and [text](url) into real
 // <strong>/<a> nodes, so the generated data can stay plain strings.
@@ -82,7 +83,7 @@ export default function HelpArticleContent({ slug, content }: { slug: HelpSlug; 
 
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <FaqSchema faqs={fromPairs(d.faqs)} />
       <SiteChrome active="company">
 
