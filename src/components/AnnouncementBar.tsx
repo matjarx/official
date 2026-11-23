@@ -41,6 +41,7 @@
 import { useEffect, useState } from 'react'
 import type { AnnouncementBarConfig } from '@/lib/marketing-content'
 import { BRAND_GRADIENT } from '@/lib/marketing-content'
+import { escapeScriptHtml } from '@/lib/safe-script'
 
 const STORAGE_KEY = 'matjarx-announcement-dismissed'
 const HIDE_ATTR = 'data-mx-announce-dismissed'
@@ -51,7 +52,13 @@ const HIDE_ATTR = 'data-mx-announce-dismissed'
  * or hydration-time check is exactly the flash this replaces.
  */
 function hideScript(key: string) {
-  return `try{if(localStorage.getItem(${JSON.stringify(STORAGE_KEY)})===${JSON.stringify(key)})document.documentElement.setAttribute(${JSON.stringify(HIDE_ATTR)},'1')}catch(e){}`
+  // key is built from the admin's own announcement text (badge_text +
+  // text) -- JSON.stringify below correctly escapes it for JS-string
+  // syntax, but that happens after the HTML parser has already tokenized
+  // this <script>'s body, which splits on a literal "</script>" first.
+  // escapeScriptHtml closes that gap so an announcement containing
+  // "</script><script>..." can't break out of this tag.
+  return escapeScriptHtml(`try{if(localStorage.getItem(${JSON.stringify(STORAGE_KEY)})===${JSON.stringify(key)})document.documentElement.setAttribute(${JSON.stringify(HIDE_ATTR)},'1')}catch(e){}`)
 }
 
 export default function AnnouncementBar({ config }: { config: AnnouncementBarConfig }) {

@@ -14,6 +14,7 @@ import CrossLinkRail from '@/components/CrossLinkRail'
 import { crossLinksForIndustry } from '@/lib/cross-links'
 import { routes } from '@/lib/routes'
 import { breadcrumbJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import { INDUSTRY_DATA, INDUSTRY_SLUGS, otherIndustriesFor, type IndustryKey } from '@/lib/industry-data'
 import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data'
 import IndustryDetailSections from './IndustryDetailSections'
@@ -34,11 +35,11 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
         ['Home', routes.home],
         ['Industries', routes.home],
         [d.name, routes.industry(INDUSTRY_SLUGS[industryKey])],
-      ])) }} />
+      ]))) }} />
       <FaqSchema faqs={fromPairs(d.faqs)} />
       <AmbientOrbs />
       <div className="page-content">

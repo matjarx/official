@@ -42,6 +42,17 @@ function isExternal(href: string): boolean {
   return /^https?:\/\//i.test(href) || href.startsWith('//')
 }
 
+/** The LINK regex only excludes whitespace/parens/brackets from an href,
+ *  which still lets a block's author (or a future compromise of the admin
+ *  account that writes these) type `[text](javascript:...)` -- no parens
+ *  or spaces needed for a one-liner like `javascript:fetch(...)`. Browsers
+ *  run a clicked `javascript:` href in the page's own origin, so this is a
+ *  real click-triggered XSS, not just a bad link. Allowlisting the schemes
+ *  a blog post ever legitimately links to closes it. */
+function isSafeHref(href: string): boolean {
+  return /^(https?:\/\/|\/\/|\/|#|mailto:|tel:)/i.test(href)
+}
+
 /**
  * Render a block's text with any `[label](href)` turned into a real link.
  *
@@ -74,21 +85,29 @@ function links(text: string, keyPrefix = ''): ReactNode {
   while ((m = LINK.exec(text)) !== null) {
     if (m.index > cursor) out.push(text.slice(cursor, m.index))
     const [, label, href, nofollow] = m
-    const external = isExternal(href)
-    const rel = [external && 'noopener noreferrer', nofollow && 'nofollow'].filter(Boolean).join(' ')
-    out.push(
-      <a
-        key={`${keyPrefix}${m.index}-${href}`}
-        href={href}
-        // noopener on external links only. Adding it to an internal link
-        // costs nothing but says something untrue about where it goes.
-        {...(external ? { target: '_blank' } : {})}
-        {...(rel ? { rel } : {})}
-        style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: 2 }}
-      >
-        {label}
-      </a>
-    )
+    if (!isSafeHref(href)) {
+      // Not a scheme a blog post ever legitimately links to (see
+      // isSafeHref) -- render the label as plain text rather than a live
+      // link, the same degrade-gracefully behavior as text that never
+      // matched LINK at all.
+      out.push(label)
+    } else {
+      const external = isExternal(href)
+      const rel = [external && 'noopener noreferrer', nofollow && 'nofollow'].filter(Boolean).join(' ')
+      out.push(
+        <a
+          key={`${keyPrefix}${m.index}-${href}`}
+          href={href}
+          // noopener on external links only. Adding it to an internal link
+          // costs nothing but says something untrue about where it goes.
+          {...(external ? { target: '_blank' } : {})}
+          {...(rel ? { rel } : {})}
+          style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: 2 }}
+        >
+          {label}
+        </a>
+      )
+    }
     cursor = m.index + m[0].length
   }
   if (cursor === 0) return text

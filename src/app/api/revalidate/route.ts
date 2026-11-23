@@ -1,3 +1,4 @@
+import { timingSafeEqual } from 'node:crypto'
 import { revalidatePath } from 'next/cache'
 import { NextResponse, type NextRequest } from 'next/server'
 
@@ -26,6 +27,18 @@ import { NextResponse, type NextRequest } from 'next/server'
 // This repo has had no non-public env var until now.
 
 const SECRET_HEADER = 'x-revalidate-secret'
+
+/** timingSafeEqual throws on a length mismatch rather than just returning
+ *  false, and it needs equal-length buffers either way -- so check that
+ *  first. A plain `!==` here would let an attacker recover the secret
+ *  byte-by-byte via response-time analysis; this always takes the same
+ *  time regardless of how much of the guess is right. */
+function secretMatches(provided: string | null, expected: string): boolean {
+  if (!provided) return false
+  const a = Buffer.from(provided)
+  const b = Buffer.from(expected)
+  return a.length === b.length && timingSafeEqual(a, b)
+}
 
 /** marketing_content.slug is the same string the admin's page-list and
  *  content-schema route already key content by -- it generally equals
@@ -71,7 +84,7 @@ export async function POST(request: NextRequest) {
     // Misconfiguration, not a caller error -- don't leak which is which.
     return NextResponse.json({ revalidated: false, message: 'Not configured' }, { status: 500 })
   }
-  if (request.headers.get(SECRET_HEADER) !== secret) {
+  if (!secretMatches(request.headers.get(SECRET_HEADER), secret)) {
     return NextResponse.json({ revalidated: false, message: 'Invalid secret' }, { status: 401 })
   }
 

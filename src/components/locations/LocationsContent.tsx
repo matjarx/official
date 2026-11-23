@@ -10,6 +10,7 @@ import { CITY_DATA } from '@/lib/location-data'
 import { indexedCitiesByProvince } from '@/lib/location-geo'
 import { PILLAR_CTA } from '@/lib/pillars'
 import { breadcrumbJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
 
 const H1 = 'Website design and development in your city'
 
@@ -18,10 +19,10 @@ export default function LocationsContent() {
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
         ['Home', routes.home],
         ['Locations', routes.locations],
-      ])) }} />
+      ]))) }} />
       <SiteChrome active="services">
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '44px 24px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap', fontSize: 12.5, color: 'var(--ink-muted)' }}>

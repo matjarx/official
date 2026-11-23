@@ -16,6 +16,7 @@ import { PILLAR_CTA } from '@/lib/pillars'
 import type { BlogCard } from '@/lib/marketing-content'
 import { routes } from '@/lib/routes'
 import { breadcrumbJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import { CITY_DATA, otherCitiesFor, type CityKey } from '@/lib/location-data'
 import { CITY_DETAIL, type CityProcessStep, type CityPlanTier, type CityCompareGroup } from '@/lib/location-detail-data'
 import { FaqList, bullet } from '@/components/FaqList'
@@ -77,12 +78,12 @@ export default function LocationContent({ locationKey, content, related = [] }: 
 
   return (
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
         ['Home', routes.home],
         ['Locations', routes.locations],
         [d.name, routes.location(locationKey)],
-      ])) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      ]))) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(serviceJsonLd)) }} />
       <FaqSchema faqs={fromPairs(d.faqs)} />
       <AmbientOrbs />
       <div className="page-content">
