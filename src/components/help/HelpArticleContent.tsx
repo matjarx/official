@@ -18,6 +18,7 @@ import { HELP_CHANNELS } from '@/lib/help-data'
 import { FaqList } from '@/components/FaqList'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import { seoH1 } from '@/lib/seo-h1'
+import { isSafeHref } from '@/lib/rich-text'
 
 // Turns the source markdown's inline **bold** and [text](url) into real
 // <strong>/<a> nodes, so the generated data can stay plain strings.
@@ -30,7 +31,15 @@ function renderInline(text: string): ReactNode {
     const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
     if (linkMatch) {
       const [, label, href] = linkMatch
-      return <Link key={i} href={mapHref(href)} style={{ fontWeight: 600 }}>{label.replace(/\s*→\s*$/, '')}</Link>
+      const resolved = mapHref(href)
+      const cleanLabel = label.replace(/\s*→\s*$/, '')
+      // Same scheme check as rich-text.tsx's link parser (which renders
+      // blog post bodies) -- this is a second, independent markdown-link
+      // parser for help-article content, so it needs the same guard
+      // rather than trusting mapHref's known-path mapping to also double
+      // as a sanitizer for anything it doesn't recognize.
+      if (!isSafeHref(resolved)) return <Fragment key={i}>{cleanLabel}</Fragment>
+      return <Link key={i} href={resolved} style={{ fontWeight: 600 }}>{cleanLabel}</Link>
     }
     return <Fragment key={i}>{part}</Fragment>
   })

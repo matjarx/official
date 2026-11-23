@@ -49,7 +49,7 @@ function isExternal(href: string): boolean {
  *  run a clicked `javascript:` href in the page's own origin, so this is a
  *  real click-triggered XSS, not just a bad link. Allowlisting the schemes
  *  a blog post ever legitimately links to closes it. */
-function isSafeHref(href: string): boolean {
+export function isSafeHref(href: string): boolean {
   return /^(https?:\/\/|\/\/|\/|#|mailto:|tel:)/i.test(href)
 }
 
