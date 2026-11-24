@@ -16,6 +16,7 @@ import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 import { breadcrumbJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type ComparisonContentShape = (typeof RIVAL_DATA)[RivalKey]
@@ -26,11 +27,11 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
 
   return (
     <div style={PAGE_ROOT}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
         ['Home', routes.home],
         ['Alternatives', routes.bestBuilder],
         [`MatjarX vs ${d.name}`, routes.compare(rivalKey)],
-      ])) }} />
+      ]))) }} />
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="resources">

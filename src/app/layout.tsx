@@ -5,6 +5,7 @@ import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { Lato, Open_Sans } from 'next/font/google'
 import PageviewTracker from '@/components/PageviewTracker'
 import WebVitalsReporter from '@/components/WebVitalsReporter'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import {
   getMergedContent,
   isWidgetActive,
@@ -157,8 +158,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     getMergedContent<AnnouncementBarConfig>(ANNOUNCEMENT_BAR_SLUG),
     getMergedContent<PopupConfig>(POPUP_SLUG),
   ])
-  const gaId = settings.ga_measurement_id || DEFAULT_GA_MEASUREMENT_ID
-  const pixelId = settings.meta_pixel_id || DEFAULT_META_PIXEL_ID
+  // Both are admin-editable (Marketing Site > Settings) and get
+  // interpolated raw into a <script> body below (gaId also goes into
+  // @next/third-parties' own GoogleAnalytics component, which does the
+  // same raw interpolation internally) -- not HTML, so escapeScriptHtml
+  // doesn't apply here, but an unvalidated value would let a malicious or
+  // mistaken CMS edit (`'); fetch(...); //`) run arbitrary JS on every
+  // page. A pixel/measurement ID has one legitimate shape each, so
+  // validating it at the source closes the hole regardless of how either
+  // call site embeds it.
+  const gaId = settings.ga_measurement_id && /^G-[A-Z0-9]+$/.test(settings.ga_measurement_id)
+    ? settings.ga_measurement_id
+    : DEFAULT_GA_MEASUREMENT_ID
+  const pixelId = settings.meta_pixel_id && /^\d+$/.test(settings.meta_pixel_id)
+    ? settings.meta_pixel_id
+    : DEFAULT_META_PIXEL_ID
   const description = settings.default_description || DEFAULT_DESCRIPTION
 
   // Organization only; LocalBusiness lives on /contact (lib/schema.ts).
@@ -210,7 +224,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </noscript>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(orgJsonLd)) }}
         />
         <Suspense fallback={null}>
           <PageviewTracker />

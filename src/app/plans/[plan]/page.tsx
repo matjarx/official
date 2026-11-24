@@ -4,6 +4,7 @@ import PlanContent from '@/components/plans/PlanContent'
 import { ALL_PLANS, PLAN_DATA, type PlanKey } from '@/lib/plan-data'
 import { routes } from '@/lib/routes'
 import { getMergedContent, getSeoOverride, type PlanContentShape, pageSeo } from '@/lib/marketing-content'
+import { escapeScriptHtml } from '@/lib/safe-script'
 
 // Re-checks marketing_content at most once a minute rather than only at
 // build time — otherwise an admin edit would need a full redeploy to show
@@ -53,7 +54,7 @@ export default async function PlanPage({ params }: { params: Promise<{ plan: str
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(productJsonLd)) }}
       />
       <PlanContent planKey={plan} content={content} />
     </>

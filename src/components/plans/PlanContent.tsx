@@ -13,6 +13,7 @@ import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appSignup } from '@/lib/routes'
 import { breadcrumbJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import { trackEvent } from '@/lib/analytics'
 import { ALL_PLANS, PLAN_DATA, otherPlansFor, CYCLE_FACTOR, type PlanKey } from '@/lib/plan-data'
 import { money } from '@/lib/money'
@@ -50,11 +51,11 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
 
   return (
     <div style={PAGE_ROOT}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
         ['Home', routes.home],
         ['Plans', routes.pricing],
         [p.name, routes.plan(planKey)],
-      ])) }} />
+      ]))) }} />
       <FaqSchema faqs={fromPairs(d.faqs)} />
       <AmbientOrbs />
       <div className="page-content">

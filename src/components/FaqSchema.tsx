@@ -14,6 +14,8 @@
 // Google reads a closed accordion panel — it is in the DOM either way —
 // so emitting the whole set is correct regardless of what is expanded.
 
+import { escapeScriptHtml } from '@/lib/safe-script'
+
 export type SchemaFaq = { question: string; answer: string }
 
 export default function FaqSchema({ faqs }: { faqs: SchemaFaq[] }) {
@@ -27,7 +29,7 @@ export default function FaqSchema({ faqs }: { faqs: SchemaFaq[] }) {
       acceptedAnswer: { '@type': 'Answer', text: f.answer },
     })),
   }
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }} />
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(json)) }} />
 }
 
 /** For the many data files that store FAQs as `[question, answer]`. */
