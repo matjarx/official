@@ -23,6 +23,7 @@ import {
 } from '@/lib/website-audit-data'
 import { FaqList } from '@/components/FaqList'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 import BodyLinks from '@/components/BodyLinks'
 
 function IntakeForm() {
@@ -100,7 +101,7 @@ export default function WebsiteAuditContent({ content = DEFAULT_CONTENT }: { con
   const [openFaq, setOpenFaq] = useState(0)
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="resources">
 
       {/* Hero + form */}

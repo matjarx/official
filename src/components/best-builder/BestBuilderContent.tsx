@@ -22,6 +22,7 @@ import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 import { CLAIM, showsClaimTile } from '@/lib/claim'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 const TONE_COLOR = { us: 'var(--navy)', ok: 'var(--ink-4-alt)', bad: 'var(--terracotta)' } as const
 
@@ -40,7 +41,7 @@ export default function BestBuilderContent({ content = DEFAULT_CONTENT }: { cont
   const [openProfile, setOpenProfile] = useState(0)
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="resources">

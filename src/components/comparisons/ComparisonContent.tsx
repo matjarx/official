@@ -17,6 +17,7 @@ import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 import { breadcrumbJsonLd } from '@/lib/schema'
 import { escapeScriptHtml } from '@/lib/safe-script'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type ComparisonContentShape = (typeof RIVAL_DATA)[RivalKey]
 
@@ -25,7 +26,7 @@ export default function ComparisonContent({ rivalKey, content }: { rivalKey: Riv
   const others = otherComparisonsFor(rivalKey)
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
         ['Home', routes.home],
         ['Alternatives', routes.bestBuilder],

@@ -1,4 +1,4 @@
-// The three pieces that /plans, /services and the industry pages were each
+// The pieces that /plans, /services and the industry pages were each
 // keeping their own copy of.
 //
 // PlanDetailSections, ServiceDetailSections and IndustryDetailSections all
@@ -7,6 +7,9 @@
 // of plan-detail-data. Each file had its own `BlockList`, and two of them had
 // a byte-identical table under two different names (`TableEl` and
 // `CompareTableEl`). The `H2` const was the same 180 characters three times.
+// ServiceDetailSections and IndustryDetailSections also each had their own
+// testimonial-grid card, one calling inText() on the quote and the other
+// not -- the kind of drift a byte-identical copy always starts collecting.
 //
 // The copies had already begun to drift: the plans one used a 14px stack gap
 // and collapsed the sub-list margin when the block had no heading, while the
@@ -47,6 +50,22 @@ export function BlockList({ blocks, gap = 12, tightSub = false }: {
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, j) => bullet(it, j))}</ul>
             </div>
           ))}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+/** The testimonial grid on /services and industry pages. */
+export function TestimonialGrid({ items }: { items: { quote: string; name: string }[] }) {
+  const { inText } = useCurrency()
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
+      {items.map((t) => (
+        <div key={t.name} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
+          <span style={{ display: 'block', marginBottom: 8, fontSize: 13, letterSpacing: 2, color: 'var(--butter-deep)' }}>★★★★★</span>
+          <p style={{ margin: '0 0 10px', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-4-alt)' }}>&ldquo;{inText(t.quote)}&rdquo;</p>
+          <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--ink-5)' }}>{t.name}</span>
         </div>
       ))}
     </div>

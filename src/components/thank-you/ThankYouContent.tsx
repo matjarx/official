@@ -8,6 +8,7 @@ import AmbientOrbs from '@/components/AmbientOrbs'
 import { THANK_YOU_STEPS, THANK_YOU_LINKS } from '@/lib/thank-you-data'
 import { BUSINESS_PHONE_DISPLAY, TEL_HREF, WHATSAPP_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type ThankYouContentShape = { steps: typeof THANK_YOU_STEPS; links: typeof THANK_YOU_LINKS }
 const DEFAULT_CONTENT: ThankYouContentShape = { steps: THANK_YOU_STEPS, links: THANK_YOU_LINKS }
@@ -28,7 +29,7 @@ export default function ThankYouContent({ content = DEFAULT_CONTENT, source }: {
   const THANK_YOU_LINKS_ACTIVE = content.links
   const subtitle = (source && SOURCE_SUBTITLE[source]) || DEFAULT_SUBTITLE
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="home">
 
       {/* Navy hero */}

@@ -11,6 +11,7 @@ import { indexedCitiesByProvince } from '@/lib/location-geo'
 import { PILLAR_CTA } from '@/lib/pillars'
 import { breadcrumbJsonLd } from '@/lib/schema'
 import { escapeScriptHtml } from '@/lib/safe-script'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 const H1 = 'Website design and development in your city'
 
@@ -18,7 +19,7 @@ export default function LocationsContent() {
   const groups = indexedCitiesByProvince()
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
         ['Home', routes.home],
         ['Locations', routes.locations],

@@ -18,6 +18,7 @@ import { INTEGRATION_ICONS, SOCIAL_FEED_ICONS, ENGAGEMENT_ICONS } from '@/lib/fe
 import type { FeaturesContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 const TAB_KEYS = Object.keys(FEATURE_GROUPS) as FeatureGroupKey[]
 const DEFAULT_CONTENT: FeaturesContentShape = { groups: FEATURE_GROUPS, alwaysOn: ALWAYS_ON, faqs: FEATURES_FAQ }
@@ -32,7 +33,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
   const FEATURES_FAQ_ACTIVE = content.faqs
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="pricing">

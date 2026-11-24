@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import Script from 'next/script'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { Lato, Open_Sans } from 'next/font/google'
 import PageviewTracker from '@/components/PageviewTracker'
 import WebVitalsReporter from '@/components/WebVitalsReporter'
@@ -37,6 +37,10 @@ export const revalidate = 60
 // unreachable, so nothing regresses.
 const DEFAULT_GA_MEASUREMENT_ID = 'G-FPFM7MMEDB'
 const DEFAULT_META_PIXEL_ID = '1082965164297632'
+// The GTM container Meta/TikTok/LinkedIn now live in -- see GTM_SETUP.md for
+// the tag configuration (this app has no access to the GTM account itself,
+// so those tags are set up by hand in the GTM web UI, not by this code).
+const GTM_CONTAINER_ID = 'GTM-KWD8DJX2'
 
 const lato = Lato({
   subsets: ['latin'],
@@ -180,6 +184,44 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang={locale} dir={dir} className={`${lato.variable} ${openSans.variable}`}>
       <body>
+        {/* Consent Mode v2 defaults -- must run before GTM (or any tag)
+            loads, so every tag already has a consent state to check against
+            on its very first fire rather than firing unconditionally for an
+            instant first. Set to 'granted' site-wide for now: there is no
+            cookie banner yet to call gtag('consent','update', ...) when a
+            visitor actually chooses, so a 'denied' default would just mean
+            nothing is ever measured. Revisit when a real banner exists. */}
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'granted',
+              ad_user_data: 'granted',
+              ad_personalization: 'granted',
+              analytics_storage: 'granted'
+            });
+          `}
+        </Script>
+        {/* Meta/TikTok/LinkedIn are configured as tags inside this GTM
+            container (see GTM_SETUP.md) -- not in this app's code. GA4
+            stays on its own direct gtag.js load below rather than moving
+            into a GTM-native tag: analytics.ts's trackEvent() calls
+            window.gtag(...) directly for the 9 real interactions already
+            instrumented site-wide, and GTM's own dataLayer.push model
+            does not define that function -- moving GA4 in here would
+            silently stop every one of those events without erroring. */}
+        <GoogleTagManager gtmId={GTM_CONTAINER_ID} dataLayer={{ meta_pixel_id: pixelId }} />
+        {/* GTM's own required noscript fallback. */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+            title="GTM"
+          />
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(orgJsonLd)) }}
@@ -208,31 +250,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </ThemeProvider>
         </CurrencyProvider>
         <GoogleAnalytics gaId={gaId} />
-        {/* Meta Pixel — base code + PageView, per Meta's own snippet. */}
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${pixelId}');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
-            alt=""
-          />
-        </noscript>
       </body>
     </html>
   )

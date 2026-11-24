@@ -21,6 +21,7 @@ import PostCard from './PostCard'
 import { routes } from '@/lib/routes'
 import type { BlogCard } from '@/lib/marketing-content'
 import { type BlogAuthor, authorInitials, avatarSrc } from '@/lib/blog-data'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 function AuthorHeader({ author, postCount, h1 }: { author: BlogAuthor; postCount: number; h1?: string }) {
   const socials = Object.entries(author.socials || {}).filter(([, url]) => url)
@@ -99,7 +100,7 @@ export default function BlogArchive({
   posts: BlogCard[]
 }) {
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="resources">
