@@ -1,25 +1,12 @@
-// Server-side data for the homepage: the ticker's lead announcement, the
-// four templates in the showcase, and whether the live phone previews are
-// serving.
+// Server-side data for the homepage: the four templates in the showcase,
+// and whether the live phone previews are serving. The announcement
+// ticker's own data now comes from the root layout's shared
+// AnnouncementBar fetch, not a second copy here.
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
-import type { TickerItem } from './Chrome'
 import type { ShowcaseItem } from './TemplatesShowcase'
 import { getThemes } from '@/lib/theme-catalogue'
 import { TEMPLATE_PREVIEWS } from '@/lib/templates-data'
-import { getMergedContent, isWidgetActive, ANNOUNCEMENT_BAR_SLUG, type AnnouncementBarConfig } from '@/lib/marketing-content'
-
-// The admin's announcement, as the ticker's lead item. Same source and the
-// same on/off/date rules as the sitewide bar it replaces on this page.
-export async function announcement(): Promise<TickerItem | null> {
-  try {
-    const c = await getMergedContent<AnnouncementBarConfig>(ANNOUNCEMENT_BAR_SLUG)
-    if (!isWidgetActive(c) || !c.text) return null
-    return { badge: c.badge_text || undefined, t: c.text.replace(/[:\s]+$/, ''), cta: c.link_text || undefined, href: c.link_url || undefined }
-  } catch {
-    return null
-  }
-}
 
 const PLAN: Record<string, string> = { launch: 'Launch', boost: 'Boost', growth: 'Growth', platinum: 'Platinum' }
 

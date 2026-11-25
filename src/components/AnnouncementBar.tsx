@@ -1,25 +1,26 @@
 'use client'
 
-// The strip above the header. Content, colours and schedule come from the
-// admin's Marketing Site > Announcements tab.
+// The strip above the header, on every page -- the rotating ticker built
+// for the new homepage, now the one shared bar site-wide instead of two
+// different bars (this page's old plain one-line strip, and home's own
+// ticker). Content, colours and schedule for the LEAD item still come from
+// the admin's Marketing Site > Announcements tab; two standing marketing
+// lines fill the rotation around it, same as they already did on home.
 //
 // ── One bar, not two ─────────────────────────────────────────────────
-// This markup used to live twice. SiteHeader carried a hardcoded copy --
-// the brand gradient, the dotted badge, the divider, the second line --
-// and the root layout rendered this component underneath it. So the site
-// showed two announcement strips stacked, the admin could only edit the
-// lower one, and editing it looked like it had done nothing useful.
-//
-// The hardcoded strip's design is now this component's design, and
-// SiteHeader no longer renders one. Everything the old strip showed is a
-// field, and DEFAULT_ANNOUNCEMENT (marketing-content.ts) holds exactly
-// the copy that was hardcoded -- so with an empty database row the site
-// renders precisely what it rendered before.
+// This used to literally be two components: this file (a plain strip,
+// hidden by CSS on the homepage specifically) and home-v2/Chrome.tsx's
+// `Ann` (a rotating ticker, home-only). Keeping both meant every visual
+// change to the "same" announcement had to be made twice, and already had
+// drifted once (home's version never had this one's dismiss button at
+// all). This is that ticker, promoted here so every page gets it.
 //
 // ── Dismissal ────────────────────────────────────────────────────────
-// Keyed by the announcement's own text, not a flat boolean, so
+// Keyed by the admin announcement's own text, not a flat boolean, so
 // publishing a new announcement shows again even to a visitor who
-// dismissed the previous one.
+// dismissed the previous one. Dismissing hides the whole ticker,
+// standing items included, until a new announcement changes the key --
+// same as before, when there was always real content to lose.
 //
 // ── Why the bar renders on the server and hides in CSS ───────────────
 // It used to start `dismissed = true` and flip to false in an effect, to
@@ -30,7 +31,7 @@
 //     offer was invisible to anything that does not run React -- every
 //     crawler, every preview card, `curl`;
 //   * and it appeared after hydration, on every page, pushing the whole
-//     document down 40px. A layout shift on first paint, sitewide.
+//     document down, a layout shift on first paint, sitewide.
 //
 // So the bar is server-rendered and a tiny blocking script -- before
 // first paint, ahead of React -- marks <html> when storage says this
@@ -39,12 +40,32 @@
 // React's own state so the node actually unmounts.
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import type { AnnouncementBarConfig } from '@/lib/marketing-content'
-import { BRAND_GRADIENT } from '@/lib/marketing-content'
 import { escapeScriptHtml } from '@/lib/safe-script'
+import { WHATSAPP_HREF } from '@/lib/contact-details'
+import { Arrow } from '@/components/home-v2/icons'
 
 const STORAGE_KEY = 'matjarx-announcement-dismissed'
 const HIDE_ATTR = 'data-mx-announce-dismissed'
+
+type TickerItem = { badge?: string; t: string; cta?: string; href?: string }
+
+/** Evergreen marketing lines that fill the rotation around the admin's own
+ *  announcement, so the ticker is never empty between campaigns. */
+const STANDING: TickerItem[] = [
+  { t: 'Your website, live in 7 days — Rs. 22,500 setup', cta: 'See plans', href: '/pricing' },
+  { t: 'Questions? A real person answers on WhatsApp', cta: 'Chat now', href: WHATSAPP_HREF },
+]
+
+const isInternal = (h?: string) => !!h && h.startsWith('/')
+
+function TickLink({ href, className, children, ...rest }: { href?: string; className?: string; children: React.ReactNode; tabIndex?: number; 'aria-hidden'?: boolean }) {
+  if (!href) return <span className={className} {...rest}>{children}</span>
+  return isInternal(href)
+    ? <Link href={href} className={className} {...rest}>{children}</Link>
+    : <a href={href} className={className} target="_blank" rel="noopener noreferrer" {...rest}>{children}</a>
+}
 
 /**
  * Runs before first paint, so it must not depend on anything React has
@@ -65,6 +86,13 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
   // Starts visible: the pre-paint script below has already hidden it in
   // CSS if this visitor dismissed it, so there is nothing to hide here.
   const [dismissed, setDismissed] = useState(false)
+  const [i, setI] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  const lead: TickerItem | null = config.text
+    ? { badge: config.badge_text || undefined, t: config.text.replace(/[:\s]+$/, ''), cta: config.link_text || undefined, href: config.link_url || undefined }
+    : null
+  const items = lead ? [lead, ...STANDING] : STANDING
 
   // Identity for the dismissal, across both lines — changing either one
   // is a new announcement and deserves a fresh showing.
@@ -83,7 +111,13 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
     }
   }, [key, config.dismissible])
 
-  if ((!config.badge_text && !config.text) || dismissed) return null
+  useEffect(() => {
+    if (paused || dismissed) return
+    const id = setInterval(() => setI((n) => (n + 1) % items.length), 4200)
+    return () => clearInterval(id)
+  }, [paused, dismissed, items.length])
+
+  if (dismissed) return null
 
   function dismiss() {
     setDismissed(true)
@@ -94,12 +128,8 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
     }
   }
 
-  // `bg_color` holds any CSS background value, not only a hex — the
-  // default is the six-stop brand gradient, and a solid colour picked in
-  // the admin is just a shorter string in the same field.
-  const background = config.bg_color || BRAND_GRADIENT
-  const color = config.text_color || 'var(--ink-inverse)'
   const dismissible = config.dismissible !== false
+  const badge = items[i].badge || 'New'
 
   return (
     <>
@@ -114,51 +144,21 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
           <script dangerouslySetInnerHTML={{ __html: hideScript(key) }} />
         </>
       )}
-      <div
-        id="mx-announcement-bar"
-        style={{
-          background,
-          padding: dismissible ? '10px 44px 10px 20px' : '10px 20px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '10px 18px',
-          flexWrap: 'wrap',
-          textAlign: 'center',
-          position: 'relative',
-          color,
-        }}
-      >
-        {config.badge_text && (
-          <span style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 14px', borderRadius: 999, background: 'rgba(var(--shadow-rgb), 0.26)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.32)', backdropFilter: 'blur(10px)' }}>
-            <span style={{ width: 6, height: 6, flex: '0 0 auto', borderRadius: '50%', background: 'var(--butter)' }} />
-            <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 12.5, letterSpacing: 0.2, color: 'inherit' }}>
-              {config.badge_text}
-            </span>
-          </span>
-        )}
-
-        {config.badge_text && config.text && (
-          <span aria-hidden="true" style={{ width: 1, height: 16, background: 'rgba(var(--surface-rgb), 0.36)' }} />
-        )}
-
-        {config.text && (
-          <span style={{ fontSize: 12.5, fontWeight: 600, color: 'inherit', opacity: 0.95, textShadow: '0 1px 4px rgba(var(--shadow-rgb), 0.3)' }}>
-            {config.text}
-          </span>
-        )}
-
-        {config.link_url && config.link_text && (
-          <a href={config.link_url} style={{ color: 'inherit', fontWeight: 700, fontSize: 12.5, textDecoration: 'underline' }}>
-            {config.link_text}
-          </a>
-        )}
-
+      <div id="mx-announcement-bar" className="hv-ann" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+        <span className="hv-ann-tag"><i />{badge}</span>
+        <div className="hv-ann-win" aria-live="polite">
+          {items.map((a, n) => (
+            <TickLink key={a.t} href={a.href} className={n === i ? 'is-on' : n === (i + items.length - 1) % items.length ? 'is-out' : ''} aria-hidden={n !== i} tabIndex={n === i ? 0 : -1}>
+              <span className="hv-ann-t">{a.t}</span>{a.cta && <span className="hv-ann-cta">{a.cta} <Arrow size={14} /></span>}
+            </TickLink>
+          ))}
+        </div>
+        <span className="hv-ann-n" aria-hidden="true">{String(i + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</span>
         {dismissible && (
           <button
             onClick={dismiss}
             aria-label="Dismiss"
-            style={{ position: 'absolute', right: 4, top: '50%', transform: 'translateY(-50%)', width: 44, height: 44, display: 'grid', placeItems: 'center', color: 'inherit', opacity: 0.7, background: 'none', border: 'none', cursor: 'pointer', lineHeight: 0 }}
+            className="hv-ann-x"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
           </button>
