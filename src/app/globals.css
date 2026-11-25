@@ -812,6 +812,32 @@ textarea.input {
   .mx-marquee { animation: none; }
 }
 
+/* ── Announcement bar (src/components/AnnouncementBar.tsx), every page ──
+   Built for the homepage, now the one shared ticker site-wide -- these
+   rules used to be scoped under .hv2 (home's own wrapper) since nothing
+   else rendered the ticker yet. */
+.hv-ann { position: relative; z-index: 41; display: flex; align-items: center; gap: 16px; height: 40px; padding: 0 44px 0 24px; background: #04121f; color: #e2ecf5; font-size: 14px; font-weight: 700; overflow: hidden; }
+.hv-ann-tag { flex: none; display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border-radius: 999px; background: #f4f2ae; color: #16210b; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+.hv-ann-tag i { width: 6px; height: 6px; border-radius: 50%; background: #0b6b38; animation: fdock-live 2s ease-out infinite; }
+.hv-ann-win { position: relative; flex: 1; align-self: stretch; }
+.hv-ann-win a { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 12px; color: inherit; text-decoration: none; white-space: nowrap; transform: translateY(100%); opacity: 0; transition: transform .7s cubic-bezier(.7, 0, .2, 1), opacity .5s; }
+.hv-ann-win a.is-on { transform: none; opacity: 1; }
+.hv-ann-win a.is-out { transform: translateY(-100%); }
+.hv-ann-cta { display: inline-flex; align-items: center; gap: 6px; color: #f4f2ae; }
+.hv-ann-win a:hover .hv-ann-cta .ic { transform: translateX(3px); }
+.hv-ann-cta .ic { transition: transform .3s; }
+.hv-ann-n { flex: none; font-size: 11.5px; font-weight: 900; letter-spacing: .14em; color: #8ea3b6; font-variant-numeric: tabular-nums; }
+.hv-ann-x { all: unset; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); z-index: 2; color: inherit; opacity: .7; cursor: pointer; padding: 4px; line-height: 0; }
+.hv-ann-x:hover { opacity: 1; }
+@media (max-width: 699px) {
+  .hv-ann { padding: 0 38px 0 14px; gap: 10px; font-size: 13px; }
+  .hv-ann-n { display: none; }
+  .hv-ann-win a { justify-content: flex-start; gap: 8px; }
+  .hv-ann-t { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .hv-ann-cta { flex: none; font-size: 0; gap: 0; }
+  .hv-ann-cta .ic { width: 16px; height: 16px; }
+}
+
 /* ── Site header (src/components/SiteHeader.tsx), every page ─────────
    Desktop pill vs phone menu is decided here in CSS, never by JS state:
    a JS-driven swap after hydration once caused a 0.78 mobile CLS. */
