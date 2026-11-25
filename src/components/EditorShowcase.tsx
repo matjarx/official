@@ -301,7 +301,7 @@ function CanvasPreview({ t, domain, stripSrc }: { t: ShowcaseTheme; domain: stri
 
             <div style={{ position: 'relative', zIndex: 2, minWidth: 0, display: 'flex', justifyContent: 'center' }}>
               <span style={{ display: 'block', width: '100%', maxWidth: 176, aspectRatio: '1 / 1.04', borderRadius: 10, overflow: 'hidden', boxShadow: '0 14px 34px rgba(var(--shadow-rgb), 0.3)', position: 'relative' }}>
-                <Image src={t.inlineImg} alt="" fill sizes="220px" priority style={{ objectFit: 'cover', objectPosition: '50% 45%' }} />
+                <Image src={t.inlineImg} alt={`${t.siteName} product photo in the editor demo`} fill sizes="220px" priority style={{ objectFit: 'cover', objectPosition: '50% 45%' }} />
               </span>
             </div>
           </div>

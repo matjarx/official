@@ -100,7 +100,7 @@ export default function SitePopup({ config }: { config: PopupConfig }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={config.image_url}
-              alt={config.image_alt || ''}
+              alt={config.image_alt || config.heading}
               width={420}
               height={180}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
