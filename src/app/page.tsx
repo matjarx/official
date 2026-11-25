@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import HomeV2 from '@/components/home-v2/HomeV2'
-import { announcement, previewsLive, showcase } from '@/components/home-v2/data'
+import { previewsLive, showcase } from '@/components/home-v2/data'
 import { HOME_FAQ } from '@/components/home-v2/faq'
 import FaqSchema from '@/components/FaqSchema'
 import SiteFooter from '@/components/SiteFooter'
 import { getSeoOverride, pageSeo } from '@/lib/marketing-content'
 
-// Re-checks the admin's announcement and SEO override at most once a minute,
-// so an edit in the admin shows up without a redeploy.
+// Re-checks the SEO override at most once a minute, so an edit in the
+// admin shows up without a redeploy.
 export const revalidate = 60
 
 // Falls back to the root layout's own defaults (title/description), which
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [templates, ann] = await Promise.all([showcase(), announcement()])
+  const templates = await showcase()
   const live = await previewsLive(templates)
   return (
     <>
@@ -30,7 +30,7 @@ export default async function HomePage() {
           layout sets no canonical, so this is the only one on the page. */}
       <link rel="canonical" href="https://matjarx.com/" />
       <FaqSchema faqs={HOME_FAQ} />
-      <HomeV2 templates={templates} announcement={ann} liveDemos={live} />
+      <HomeV2 templates={templates} liveDemos={live} />
       <SiteFooter />
     </>
   )

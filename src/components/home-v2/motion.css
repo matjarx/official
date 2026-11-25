@@ -10,9 +10,6 @@
 .hv2 { overflow: visible; overflow-x: clip; }
 .hv2 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-/* The ticker carries the announcement on this page. */
-body:has(.hv2) #mx-announcement-bar { display: none !important; }
-
 /* ── Page colour change (burgundy) ─────────────────────────────────── */
 /* Motion.tsx sets --hv-page to the colour of the section at 60% of the
    viewport. Sections hand their own background over to it, except the
@@ -24,26 +21,8 @@ body:has(.hv2) #mx-announcement-bar { display: none !important; }
 .hv2.hv-morph > section.hv-dim > * { opacity: .1; }
 .hv2 .faq-side { top: 96px; }
 
-/* ── Announcement ticker (segmentsix) ──────────────────────────────── */
-.hv2 .hv-ann { position: relative; z-index: 41; display: flex; align-items: center; gap: 16px; height: 40px; padding: 0 24px; background: #04121f; color: #e2ecf5; font-size: 14px; font-weight: 700; overflow: hidden; }
-.hv2 .hv-ann-tag { flex: none; display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border-radius: 999px; background: #f4f2ae; color: #16210b; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
-.hv2 .hv-ann-tag i { width: 6px; height: 6px; border-radius: 50%; background: #0b6b38; animation: hv2-mx-live 2s ease-out infinite; }
-.hv2 .hv-ann-win { position: relative; flex: 1; align-self: stretch; }
-.hv2 .hv-ann-win a { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 12px; color: inherit; text-decoration: none; white-space: nowrap; transform: translateY(100%); opacity: 0; transition: transform .7s cubic-bezier(.7, 0, .2, 1), opacity .5s; }
-.hv2 .hv-ann-win a.is-on { transform: none; opacity: 1; }
-.hv2 .hv-ann-win a.is-out { transform: translateY(-100%); }
-.hv2 .hv-ann-cta { display: inline-flex; align-items: center; gap: 6px; color: #f4f2ae; }
-.hv2 .hv-ann-win a:hover .hv-ann-cta .ic { transform: translateX(3px); }
-.hv2 .hv-ann-cta .ic { transition: transform .3s; }
-.hv2 .hv-ann-n { flex: none; font-size: 11.5px; font-weight: 900; letter-spacing: .14em; color: #8ea3b6; font-variant-numeric: tabular-nums; }
-@media (max-width: 699px) {
-  .hv2 .hv-ann { padding: 0 14px; gap: 10px; font-size: 13px; }
-  .hv2 .hv-ann-n { display: none; }
-  .hv2 .hv-ann-win a { justify-content: flex-start; gap: 8px; }
-  .hv2 .hv-ann-t { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-  .hv2 .hv-ann-cta { flex: none; font-size: 0; gap: 0; }
-  .hv2 .hv-ann-cta .ic { width: 16px; height: 16px; }
-}
+/* The announcement ticker moved to globals.css -- src/components/
+   AnnouncementBar.tsx, shared by every page now, not just this one. */
 
 /* ── Header: sticky, glass when scrolled, pill folds on scroll-down ── */
 
