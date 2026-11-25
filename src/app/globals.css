@@ -827,7 +827,7 @@ textarea.input {
 .hv-ann-win a:hover .hv-ann-cta .ic { transform: translateX(3px); }
 .hv-ann-cta .ic { transition: transform .3s; }
 .hv-ann-n { flex: none; font-size: 11.5px; font-weight: 900; letter-spacing: .14em; color: #8ea3b6; font-variant-numeric: tabular-nums; }
-.hv-ann-x { all: unset; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); z-index: 2; color: inherit; opacity: .7; cursor: pointer; padding: 4px; line-height: 0; }
+.hv-ann-x { all: unset; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; display: grid; place-items: center; color: inherit; opacity: .7; cursor: pointer; line-height: 0; }
 .hv-ann-x:hover { opacity: 1; }
 @media (max-width: 699px) {
   .hv-ann { padding: 0 38px 0 14px; gap: 10px; font-size: 13px; }
@@ -853,7 +853,7 @@ textarea.input {
 .sh-item { position: relative; display: flex; align-items: center; max-width: 220px; transition: max-width .55s cubic-bezier(.7, 0, .2, 1), opacity .3s; }
 .sh-link { all: unset; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; padding: 10px 16px; border-radius: 999px; font-size: 15px; font-weight: 700; color: #24384a; white-space: nowrap; text-decoration: none; transition: background-color .2s, color .2s; }
 .sh-item:has(.sh-caret) .sh-link { padding-right: 4px; }
-.sh-caret { all: unset; cursor: pointer; display: flex; align-items: center; padding: 10px 12px 10px 4px; border-radius: 999px; color: #24384a; }
+.sh-caret { all: unset; cursor: pointer; display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 10px 12px 10px 4px; border-radius: 999px; color: #24384a; }
 .sh-chev { transition: transform .3s; }
 .sh-item.is-open .sh-chev, .sh-caret:hover .sh-chev { transform: rotate(180deg); }
 .sh-link:hover, .sh-item.is-open .sh-link { background: #f2eee2; color: #04121f; }
@@ -914,7 +914,7 @@ textarea.input {
 .sh-dcta { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 28px; }
 .sh-cta--block { display: flex; width: 100%; height: 56px; }
 .sh-wa { display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; border: 2px solid #0b6b38; background: #fff; color: #0b6b38; font-size: 16px; font-weight: 700; text-decoration: none; }
-.sh-dlogin { display: block; padding: 10px; text-align: center; color: #b7c6d3; font-size: 15px; font-weight: 700; text-decoration: none; }
+.sh-dlogin { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px; text-align: center; color: #b7c6d3; font-size: 15px; font-weight: 700; text-decoration: none; }
 .sh-dlogin:hover { color: #fff; }
 
 @media (max-width: 1099px) {
@@ -1193,8 +1193,8 @@ textarea.input {
   padding: 15px 17px 17px;
 }
 .industry-rail-arrow {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
   border: 1.5px solid;
   display: grid;

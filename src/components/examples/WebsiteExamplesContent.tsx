@@ -62,7 +62,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         {/* Category rail */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '40px 24px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <button type="button" onClick={() => scrollRail(-1)} title="Previous categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
+            <button type="button" onClick={() => scrollRail(-1)} title="Previous categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 44, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--ink-1)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m14 6-6 6 6 6" /></svg>
             </button>
 
@@ -84,7 +84,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
               </div>
             </div>
 
-            <button type="button" onClick={() => scrollRail(1)} title="More categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
+            <button type="button" onClick={() => scrollRail(1)} title="More categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 44, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--ink-1)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m10 6 6 6-6 6" /></svg>
             </button>
           </div>

@@ -21,8 +21,10 @@ export type BodyBlock =
   | { t: 'l'; items: string[] }
   /** Numbered. Same shape as 'l'; the renderer counts. */
   | { t: 'ol'; items: string[] }
-  /** An image inside the body, distinct from the post's cover. */
-  | { t: 'img'; src: string; alt: string; caption?: string }
+  /** An image inside the body, distinct from the post's cover. width/height
+   *  (intrinsic, same convention as coverImage) let the renderer reserve
+   *  layout space before the image loads; older rows may not have them. */
+  | { t: 'img'; src: string; alt: string; caption?: string; width?: number; height?: number }
   /** A data table. `head` is the header row; each row has one string per
    *  column. Cells take the same inline syntax as a paragraph (links, bold).
    *  A deploy that predates this type renders nothing for it, never a crash. */

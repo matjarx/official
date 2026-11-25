@@ -82,7 +82,7 @@ export default function SitePopup({ config }: { config: PopupConfig }) {
         <button
           onClick={close}
           aria-label="Close"
-          style={{ position: 'absolute', right: 14, top: 14, width: 30, height: 30, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--scrim-rgb), 0.06)', border: 'none', cursor: 'pointer', zIndex: 1 }}
+          style={{ position: 'absolute', right: 8, top: 8, width: 44, height: 44, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--scrim-rgb), 0.06)', border: 'none', cursor: 'pointer', zIndex: 1 }}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-1)" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
         </button>

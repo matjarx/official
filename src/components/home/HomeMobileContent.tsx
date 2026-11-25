@@ -103,13 +103,13 @@ export default function HomeMobileContent() {
           <span style={{ position: 'relative', width: 104, height: 30, flex: '0 0 auto', marginRight: 'auto' }}>
             <Image src={theme.logo} alt="MatjarX" fill style={{ objectFit: 'contain', objectPosition: 'left center' }} />
           </span>
-          <button type="button" onClick={() => setSkin(dark ? 'light' : 'dark')} title="Switch skin" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 38, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center', background: theme.chipBg, border: `1px solid ${theme.chipLine}` }}>
+          <button type="button" onClick={() => setSkin(dark ? 'light' : 'dark')} title="Switch skin" style={{ all: 'unset', cursor: 'pointer', width: 44, height: 44, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center', background: theme.chipBg, border: `1px solid ${theme.chipLine}` }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke={theme.iconInk} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={theme.skinIcon} /></svg>
           </button>
-          <a href={appLogin} title="Log in" style={{ width: 38, height: 38, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'linear-gradient(160deg, #0A4278, #002E5C)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22)' }}>
+          <a href={appLogin} title="Log in" style={{ width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'linear-gradient(160deg, #0A4278, #002E5C)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.22)' }}>
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="var(--butter)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2ZM5 20a7 7 0 0 1 14 0" /></svg>
           </a>
-          <button type="button" onClick={() => setMenuOpen((v) => !v)} title="Menu" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 38, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center', background: theme.chipBg, border: `1px solid ${theme.chipLine}` }}>
+          <button type="button" onClick={() => setMenuOpen((v) => !v)} title="Menu" style={{ all: 'unset', cursor: 'pointer', width: 44, height: 44, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center', background: theme.chipBg, border: `1px solid ${theme.chipLine}` }}>
             <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke={theme.iconInk} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={menuOpen ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16'} /></svg>
           </button>
         </header>

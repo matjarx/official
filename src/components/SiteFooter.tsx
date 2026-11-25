@@ -174,7 +174,7 @@ export default function SiteFooter() {
                   target={s.href.startsWith('http') ? '_blank' : undefined}
                   rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="footer-social"
-                  style={{ width: 34, height: 34, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--surface-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}
+                  style={{ width: 44, height: 44, flex: '0 0 auto', borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'rgba(var(--surface-rgb), 0.07)', border: '1px solid rgba(var(--ink-inverse-rgb), 0.14)', backdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(var(--ink-inverse-rgb), 0.16)' }}
                 >
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="rgba(var(--ink-inverse-rgb), 0.72)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
                 </a>

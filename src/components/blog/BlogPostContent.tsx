@@ -173,7 +173,7 @@ function renderBlock(b: BodyBlock, i: number): ReactNode {
   if (b.t === 'img') return (
     <figure key={i} style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={b.src} alt={b.alt} loading="lazy" style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
+      <img src={b.src} alt={b.alt} loading="lazy" {...(b.width && b.height ? { width: b.width, height: b.height } : {})} style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
       {b.caption && (
         <figcaption style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-3-alt)' }}>{richText(b.caption)}</figcaption>
       )}
