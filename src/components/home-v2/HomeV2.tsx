@@ -10,20 +10,19 @@
 //   ksenpanchenko.com sticky numbered index beside stacking work cards
 //
 // A server component: static sections ship as HTML only. The interactive
-// parts are client islands: Chrome (ticker, header, menu), V2Client (editor
-// demo, cost calculator), TemplatesShowcase, MarqToggle, StepsNav, Motion.
+// parts are client islands: V2Client (editor demo, cost calculator),
+// TemplatesShowcase, MarqToggle, StepsNav, Motion. The announcement ticker
+// (segmentsix) is the shared AnnouncementBar now, rendered by the root
+// layout above every page, not by this one specifically.
 
- 
+
 import { Z1, Z3, Z4, Z5, Z6, Z7, Z8, Z9, Z11, Z12, Z13, Z14 } from './V2Markup'
 import { EditorSection, CostSection } from './V2Client'
-import { Ann, type TickerItem } from './Chrome'
 import SiteHeader from '@/components/SiteHeader'
 import TemplatesShowcase, { type ShowcaseItem } from './TemplatesShowcase'
 import Motion from './Motion'
 import './home-v2.css'
 import './motion.css'
-
-export type { TickerItem }
 
 /* ── Scroll-driven word marquee (segmentsix) ──────────────────────── */
 const WORDS = ['Websites', 'Online stores', 'Bookings', 'SEO', 'Growth marketing', 'Live in 7 days']
@@ -44,10 +43,9 @@ function WordMarquee() {
   )
 }
 
-export default function HomeV2({ templates, announcement, liveDemos = false }: { templates: ShowcaseItem[]; announcement: TickerItem | null; liveDemos?: boolean }) {
+export default function HomeV2({ templates, liveDemos = false }: { templates: ShowcaseItem[]; liveDemos?: boolean }) {
   return (
     <div className="v2 hv2">
-      <Ann lead={announcement} />
       <SiteHeader active="home" />
       <Z1 />
       <EditorSection />
