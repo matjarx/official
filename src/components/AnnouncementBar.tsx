@@ -158,7 +158,7 @@ export default function AnnouncementBar({ config }: { config: AnnouncementBarCon
           <button
             onClick={dismiss}
             aria-label="Dismiss"
-            style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', color: 'inherit', opacity: 0.7, background: 'none', border: 'none', cursor: 'pointer', padding: 4, lineHeight: 0 }}
+            style={{ position: 'absolute', right: 4, top: '50%', transform: 'translateY(-50%)', width: 44, height: 44, display: 'grid', placeItems: 'center', color: 'inherit', opacity: 0.7, background: 'none', border: 'none', cursor: 'pointer', lineHeight: 0 }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
           </button>

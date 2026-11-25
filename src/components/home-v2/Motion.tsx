@@ -351,7 +351,7 @@ export default function Motion() {
         </ol>
       </nav>
       <div className="hv-cursor" ref={cursor} aria-hidden="true"><span>View</span></div>
-      <div className="hv-peek" ref={peek} aria-hidden="true"><img alt="" src="/home-v2/ccb90c285cdc81228a9ee712af33dabb.webp" /></div>
+      <div className="hv-peek" ref={peek} aria-hidden="true"><img width={828} height={517} alt="" src="/home-v2/ccb90c285cdc81228a9ee712af33dabb.webp" /></div>
     </>
   )
 }
