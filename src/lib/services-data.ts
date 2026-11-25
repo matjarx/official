@@ -74,10 +74,10 @@ export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
         tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Google Business Profile', image: { src: '/services/google-business-profile.webp', alt: 'A professional business website presented cleanly', width: 451, height: 372 } },
       { stat: '93% of consumers use Google Maps to find a business', titleLead: 'Launch on', titleMark: 'Google Maps',
         points: ['We create and verify your Maps listing', "Get found in 'near me' searches", 'Receive and reply to Google Business messages', 'Stand out with reviews, services and product info'],
-        tint: 'linear-gradient(150deg, #1B7A3D, #0C4522)', mediaLabel: 'Google Maps listing', image: { src: '/services/google-maps-listing.webp', alt: 'A dashboard tracking website traffic and lead capture', width: 1190, height: 980 } },
+        tint: 'linear-gradient(150deg, #1B7A3D, #0C4522)', mediaLabel: 'Google Maps listing', image: { src: '/services/google-maps-listing.webp', alt: 'A Google Maps business listing with ratings and directions', width: 1190, height: 980 } },
       { stat: '81% of consumers read Google reviews before buying', titleLead: 'Collect Google reviews with', titleMark: 'one click',
         points: ['Invite every customer to review your business', 'Reviews shown automatically on your website', 'Build a five-star reputation customers trust', 'Ongoing SEO work to rank higher every month'],
-        tint: 'linear-gradient(150deg, #696D34, #C6CB8A)', mediaLabel: 'Review collection', image: { src: '/services/review-collection.webp', alt: 'A dashboard tracking website traffic and lead capture', width: 1190, height: 980 } },
+        tint: 'linear-gradient(150deg, #696D34, #C6CB8A)', mediaLabel: 'Review collection', image: { src: '/services/review-collection.webp', alt: 'A dashboard showing customer reviews being collected and displayed', width: 1190, height: 980 } },
     ],
     gridTitle: "Plus, every month you'll get",
     gridItems: [
@@ -105,13 +105,13 @@ export const SERVICE_DATA: Record<ServiceKey, ServiceDataEntry> = {
     blocks: [
       { stat: 'Edits done by our team, as agreed in your plan', titleLead: 'Ask for anything, and', titleMark: 'we do it',
         points: ['Change a photo, a price, a phone number, a whole page', 'Add a new section, gallery or form', 'Seasonal campaigns and Ramzan offers set up for you', 'No ticket queues — a named person who knows your business'],
-        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Edits done by our team, as agreed in your plan', image: { src: '/services/unlimited-edits.webp', alt: 'A website design editor with font and color controls', width: 1190, height: 980 } },
+        tint: 'linear-gradient(150deg, #003366, #2E6EA8)', mediaLabel: 'Edits done by our team, as agreed in your plan', image: { src: '/services/unlimited-edits.webp', alt: 'Our team making a live edit to a client website', width: 1190, height: 980 } },
       { stat: 'Rich multimedia', titleLead: "We'll make your website", titleMark: 'come to life',
         points: ['Photo and video galleries, sliders and lightboxes', 'Instagram, TikTok, Facebook and YouTube feeds embedded', 'Countdown timers, discount pop-ups and scratch-and-win', 'Audio and podcast players, live streaming blocks'],
         tint: 'linear-gradient(150deg, #696D34, #C6CB8A)', mediaLabel: 'Galleries, feeds & multimedia', image: { src: '/services/galleries-feeds.webp', alt: 'A product gallery with color-palette customization', width: 712, height: 508 } },
       { stat: 'Tools, connected for you', titleLead: 'Tracking, chat and', titleMark: 'lead capture',
         points: ['Google Analytics, Search Console and Tag Manager', 'Meta Pixel and TikTok tracking for your ads', 'WhatsApp, Messenger and live chat buttons', 'Newsletter signup and lead forms wired to your inbox'],
-        tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', mediaLabel: 'Integrations & tracking', image: { src: '/services/integrations-tracking.webp', alt: 'A dashboard tracking website traffic and lead capture', width: 1190, height: 980 } },
+        tint: 'linear-gradient(150deg, #8E1B22, #3A0A0E)', mediaLabel: 'Integrations & tracking', image: { src: '/services/integrations-tracking.webp', alt: 'A dashboard showing analytics and marketing tools connected to a website', width: 1190, height: 980 } },
     ],
     gridTitle: 'A few popular requests',
     gridItems: [
