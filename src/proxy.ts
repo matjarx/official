@@ -65,11 +65,23 @@ const GONE_EXACT = new Set([
   '/my-account',
   '/checkout',
   '/cart',
-  '/newsletter',
   '/testing-form',
   '/404-2',
   '/matjar-x-home-copy',
 ])
+
+/** Matches a bare WordPress post-ID query string like `/?p=334` -- the
+ *  pathname alone is `/`, so GONE_PREFIXES/GONE_EXACT (which only look at
+ *  path segments) never see it and it was silently serving the homepage
+ *  as a 200, a duplicate-content soft-404. Numeric-only so it can't catch
+ *  a real query param that merely happens to be named `p`, and checked
+ *  as its own condition (not folded into the GONE_EXACT path check)
+ *  so `/?utm_source=...` and every other homepage query string is
+ *  untouched. */
+function isWordpressPostIdQuery(url: URL): boolean {
+  const p = url.searchParams.get('p')
+  return url.pathname === '/' && p !== null && /^\d+$/.test(p)
+}
 
 export function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname.replace(/\/+$/, '') || '/'
@@ -79,7 +91,7 @@ export function proxy(request: NextRequest) {
   // that shape still arriving here had no matching post, so it is gone.
   const first = path.split('/')[1] || ''
 
-  if (GONE_EXACT.has(path) || GONE_PREFIXES.includes(first)) {
+  if (GONE_EXACT.has(path) || GONE_PREFIXES.includes(first) || isWordpressPostIdQuery(request.nextUrl)) {
     return new NextResponse(null, {
       status: 410,
       headers: {
