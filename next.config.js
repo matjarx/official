@@ -98,6 +98,34 @@ const nextConfig = {
       // Was a 410 in src/proxy.ts; it has a real successor, so it keeps
       // whatever authority it had by pointing there instead.
       { source: '/web-development-karachi', destination: '/website-design-karachi', permanent: true },
+
+      // December SEO cleanup: real old-WordPress URLs with a genuine
+      // successor, found still 404ing/410ing in Search Console. Each is
+      // carved out of the proxy.ts GONE_PREFIXES/GONE_EXACT catch-all
+      // below it would otherwise fall into -- that file's own comment
+      // says to check here first before adding to that list, and these
+      // are exactly that case: a prefix whose specific subpaths turned
+      // out to have search demand and a real successor, unlike the rest
+      // of that same prefix (e.g. /tag/tattoo has no successor and stays
+      // 410; /tag/tools and /tag/resources do and are redirected here).
+      { source: '/category/blog', destination: '/blogs', permanent: true },
+      { source: '/category/resources-tools', destination: '/blogs', permanent: true },
+      { source: '/faq_category/:path*', destination: '/faqs', permanent: true },
+      { source: '/newsletter', destination: '/blogs', permanent: true },
+      { source: '/tag/resources', destination: '/blogs', permanent: true },
+      { source: '/tag/resources/:path*', destination: '/blogs', permanent: true },
+      { source: '/tag/tools', destination: '/blogs', permanent: true },
+      { source: '/plans', destination: '/pricing', permanent: true },
+      { source: '/privacy-policy', destination: '/legal/privacy', permanent: true },
+      // Old WordPress comment-feed URLs, two segments deep -- the generic
+      // /blog/:slug and bare-slug redirects below only capture one
+      // segment, so these specific /<slug>/feed shapes need their own
+      // entry or they fall all the way through to a 404.
+      { source: '/blog/cod-optimization-reduce-rto/feed', destination: '/blogs/cod-optimization-reduce-rto', permanent: true },
+      { source: '/blog/setup-jazzcash-jazz-business-website/feed', destination: '/blogs/setup-jazzcash-jazz-business-website', permanent: true },
+      { source: '/blog/setup-sadapay-sadabiz-website/feed', destination: '/blogs/setup-sadapay-sadabiz-website', permanent: true },
+      { source: '/set-up-tiktok-ads/feed', destination: '/blogs/set-up-tiktok-ads', permanent: true },
+      { source: '/setup-jazzcash-jazz-business-website/feed', destination: '/blogs/setup-jazzcash-jazz-business-website', permanent: true },
       // Duplicate of the clinics-and-healthcare page. The route file stays
       // (nothing is deleted), but this redirect runs before routing, so
       // the duplicate is never served.
