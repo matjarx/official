@@ -105,6 +105,7 @@ export default function ContactContent({ content = DEFAULT_CONTENT }: { content?
                   style={{ padding: 'clamp(24px, 3.5vw, 34px) clamp(20px, 3vw, 34px) clamp(26px, 3.5vw, 36px)', borderRadius: 24, display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}
                   submitClassName="btn-navy"
                   chipBg="var(--surface)"
+                  gaFormName="contact_us"
                 />
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}>
