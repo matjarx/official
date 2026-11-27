@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { routes } from '@/lib/routes'
 
 // Called by a Supabase Database Webhook on insert/update of
@@ -36,6 +36,11 @@ export async function POST(request: Request) {
   if (slug) paths.unshift(routes.blogPost(slug))
 
   for (const path of paths) revalidatePath(path)
+  // Busts the getBlogPost/getBlogPosts unstable_cache entries directly --
+  // the route-level revalidatePath above only clears the rendered-page
+  // cache, not the underlying data cache those functions actually read
+  // from, which has its own independent 60s window.
+  revalidateTag('blog-posts', { expire: 0 })
 
-  return NextResponse.json({ revalidated: paths })
+  return NextResponse.json({ revalidated: paths, tags: ['blog-posts'] })
 }

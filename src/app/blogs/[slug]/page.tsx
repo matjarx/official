@@ -24,6 +24,19 @@ import { faqFromBody } from '@/lib/blog-faq'
 // it's just a few needless database reads on every single view.
 export const revalidate = 60
 
+// Without this, the route has NO generateStaticParams entries at all --
+// verified locally that this, not force-dynamic vs revalidate, is what
+// actually kept every blog page fully dynamic: Next only puts a dynamic
+// segment's rendered output in the Full Route Cache for params this
+// returns. A param outside this list still works (dynamicParams defaults
+// to true) and renders on its first request -- which is also exactly what
+// lets a brand new post 404 correctly before its row exists, then render
+// and get cached from its first real request on.
+export async function generateStaticParams() {
+  const posts = await getBlogPosts()
+  return posts.map((p) => ({ slug: p.slug }))
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const [post, seo] = await Promise.all([getBlogPost(slug), getSeoOverride(`blog/${slug}`)])

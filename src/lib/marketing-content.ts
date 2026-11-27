@@ -10,6 +10,7 @@
 // objects each page already renders from, so there is exactly one copy of
 // the real content, not a duplicate maintained here.
 
+import { unstable_cache } from 'next/cache'
 import { supabase } from './supabase'
 import SEO_MAP from './generated/seo-map.json'
 import { CITY_DATA, type CityKey } from './location-data'
@@ -230,16 +231,27 @@ function withSheetSeo<T>(slug: string, content: T): T {
   return { ...content, __seo: merged } as T
 }
 
-export async function getSeoOverride(slug: string): Promise<SeoOverride | null> {
-  const sheet = SHEET_BY_SLUG[slug]
-  try {
-    const { data, error } = await supabase.from('marketing_content').select('data, published').eq('slug', slug).maybeSingle()
-    if (error || !data || data.published === false) return layerSeo(sheet, null)
-    return layerSeo(sheet, (data.data as { __seo?: SeoOverride })?.__seo)
-  } catch {
-    return layerSeo(sheet, null)
-  }
-}
+// unstable_cache, not a bare async function: a plain fetch through
+// supabase-js never opts into Next's fetch cache on its own, so a page
+// declaring `revalidate = 60` was still fully dynamic underneath it --
+// verified locally (no x-nextjs-cache header, Cache-Control: no-store,
+// same cost on every request as force-dynamic). This is what actually
+// makes that revalidate window do anything. One shared tag rather than a
+// per-slug one: simpler, and the webhook's bust is cheap regardless.
+export const getSeoOverride = unstable_cache(
+  async (slug: string): Promise<SeoOverride | null> => {
+    const sheet = SHEET_BY_SLUG[slug]
+    try {
+      const { data, error } = await supabase.from('marketing_content').select('data, published').eq('slug', slug).maybeSingle()
+      if (error || !data || data.published === false) return layerSeo(sheet, null)
+      return layerSeo(sheet, (data.data as { __seo?: SeoOverride })?.__seo)
+    } catch {
+      return layerSeo(sheet, null)
+    }
+  },
+  ['seo-override'],
+  { revalidate: 60, tags: ['content-overrides'] }
+)
 
 // Every page's own title — the seo override above, or its hardcoded
 // default — already writes "MatjarX" into the string itself for most
@@ -575,37 +587,43 @@ function isMissingLayoutColumn(error: { message?: string; code?: string } | null
   return error.code === '42703' && /layout/i.test(error.message || '')
 }
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  try {
-    // Ordered by created_at, not the `date` column — `date` is a
-    // free-form display string ("1 Sep 2026"), not a real date type, so
-    // sorting on it alphabetically scrambles the actual chronological
-    // order (e.g. "9 Jun 2026" sorts before "8 Aug 2026"). The 28 seeded
-    // posts had created_at backfilled to match their real authored date
-    // one time at seed; a post created through the admin from here on
-    // gets a real created_at of "now" automatically, so it correctly
-    // sorts to the top without needing the same backfill again.
-    const query = (columns: string) =>
-      supabase
-        .from('marketing_blog_posts')
-        .select(columns)
-        .eq('published', true)
-        .order('created_at', { ascending: false })
+// unstable_cache -- see getSeoOverride above for why a bare async function
+// here never actually got cached despite the page's revalidate=60.
+export const getBlogPosts = unstable_cache(
+  async (): Promise<BlogPost[]> => {
+    try {
+      // Ordered by created_at, not the `date` column — `date` is a
+      // free-form display string ("1 Sep 2026"), not a real date type, so
+      // sorting on it alphabetically scrambles the actual chronological
+      // order (e.g. "9 Jun 2026" sorts before "8 Aug 2026"). The 28 seeded
+      // posts had created_at backfilled to match their real authored date
+      // one time at seed; a post created through the admin from here on
+      // gets a real created_at of "now" automatically, so it correctly
+      // sorts to the top without needing the same backfill again.
+      const query = (columns: string) =>
+        supabase
+          .from('marketing_blog_posts')
+          .select(columns)
+          .eq('published', true)
+          .order('created_at', { ascending: false })
 
-    let { data, error } = await query(BLOG_COLUMNS)
-    if (isMissingLayoutColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_NO_LAYOUT))
-    if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
-    if (error || !data || data.length === 0) return BLOG_POSTS
-    // Resolved here rather than at the call sites, because every consumer
-    // needs it and only one of them would have remembered: the post page
-    // builds its BlogPosting author from post.author, so a post with an
-    // author picked but no legacy blob would have published the house
-    // byline while the admin showed a named writer.
-    return withAuthors((data as unknown as BlogPostRow[]).map(rowToBlogPost), await getBlogAuthors())
-  } catch {
-    return BLOG_POSTS
-  }
-}
+      let { data, error } = await query(BLOG_COLUMNS)
+      if (isMissingLayoutColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_NO_LAYOUT))
+      if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
+      if (error || !data || data.length === 0) return BLOG_POSTS
+      // Resolved here rather than at the call sites, because every consumer
+      // needs it and only one of them would have remembered: the post page
+      // builds its BlogPosting author from post.author, so a post with an
+      // author picked but no legacy blob would have published the house
+      // byline while the admin showed a named writer.
+      return withAuthors((data as unknown as BlogPostRow[]).map(rowToBlogPost), await getBlogAuthors())
+    } catch {
+      return BLOG_POSTS
+    }
+  },
+  ['blog-posts'],
+  { revalidate: 60, tags: ['blog-posts'] }
+)
 
 /**
  * A post with its body removed.
@@ -622,28 +640,36 @@ export function toCard(p: BlogPost): BlogCard {
   return { ...p, body: [] }
 }
 
-export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  try {
-    const query = (columns: string) =>
-      supabase
-        .from('marketing_blog_posts')
-        .select(columns)
-        .eq('slug', slug)
-        .eq('published', true)
-        .maybeSingle()
+// unstable_cache, keyed on slug -- also what the generateMetadata +
+// page-body pair now dedupes through (both call getBlogPost(slug) once
+// per request; previously two live DB reads, now the second is served
+// from the Data Cache entry the first just wrote).
+export const getBlogPost = unstable_cache(
+  async (slug: string): Promise<BlogPost | null> => {
+    try {
+      const query = (columns: string) =>
+        supabase
+          .from('marketing_blog_posts')
+          .select(columns)
+          .eq('slug', slug)
+          .eq('published', true)
+          .maybeSingle()
 
-    let { data, error } = await query(BLOG_COLUMNS)
-    if (isMissingLayoutColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_NO_LAYOUT))
-    if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
-    if (error || !data) return BLOG_POSTS.find((p) => p.slug === slug) || null
-    // Same resolution as getBlogPosts -- this is the page that publishes the
-    // BlogPosting author, so it is the one that must not miss it.
-    const [post] = withAuthors([rowToBlogPost(data as unknown as BlogPostRow)], await getBlogAuthors())
-    return post
-  } catch {
-    return BLOG_POSTS.find((p) => p.slug === slug) || null
-  }
-}
+      let { data, error } = await query(BLOG_COLUMNS)
+      if (isMissingLayoutColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_NO_LAYOUT))
+      if (isMissingAuthorColumn(error)) ({ data, error } = await query(BLOG_COLUMNS_LEGACY))
+      if (error || !data) return BLOG_POSTS.find((p) => p.slug === slug) || null
+      // Same resolution as getBlogPosts -- this is the page that publishes the
+      // BlogPosting author, so it is the one that must not miss it.
+      const [post] = withAuthors([rowToBlogPost(data as unknown as BlogPostRow)], await getBlogAuthors())
+      return post
+    } catch {
+      return BLOG_POSTS.find((p) => p.slug === slug) || null
+    }
+  },
+  ['blog-post'],
+  { revalidate: 60, tags: ['blog-posts'] }
+)
 
 export type Testimonial = { quote: string; name: string; company: string; initials: string; tint: string }
 export type QA = { q: string; a: string }
