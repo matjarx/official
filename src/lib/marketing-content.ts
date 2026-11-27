@@ -10,6 +10,7 @@
 // objects each page already renders from, so there is exactly one copy of
 // the real content, not a duplicate maintained here.
 
+import { cache } from 'react'
 import { supabase } from './supabase'
 import SEO_MAP from './generated/seo-map.json'
 import { CITY_DATA, type CityKey } from './location-data'
@@ -230,7 +231,14 @@ function withSheetSeo<T>(slug: string, content: T): T {
   return { ...content, __seo: merged } as T
 }
 
-export async function getSeoOverride(slug: string): Promise<SeoOverride | null> {
+// React's cache() dedupes this within a single render pass -- blog post
+// pages call this twice (generateMetadata, then the page body itself)
+// with the same slug, which without this was two separate Supabase round
+// trips for identical data on every single request. This is a per-request
+// memo only, not a cross-request cache: it does not reintroduce the ISR
+// stale-404 bug this route's `dynamic = 'force-dynamic'` exists to avoid
+// (see that export's comment) -- a fresh request still re-runs the query.
+export const getSeoOverride = cache(async (slug: string): Promise<SeoOverride | null> => {
   const sheet = SHEET_BY_SLUG[slug]
   try {
     const { data, error } = await supabase.from('marketing_content').select('data, published').eq('slug', slug).maybeSingle()
@@ -239,7 +247,7 @@ export async function getSeoOverride(slug: string): Promise<SeoOverride | null> 
   } catch {
     return layerSeo(sheet, null)
   }
-}
+})
 
 // Every page's own title — the seo override above, or its hardcoded
 // default — already writes "MatjarX" into the string itself for most
@@ -622,7 +630,13 @@ export function toCard(p: BlogPost): BlogCard {
   return { ...p, body: [] }
 }
 
-export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+// cache()'d for the same reason as getSeoOverride above: the blog post
+// page calls this once in generateMetadata and again in the page body,
+// same slug both times -- this dedupes that within one request instead
+// of hitting Supabase (and getBlogAuthors' own query) twice. Still a
+// per-request memo only; does not affect the force-dynamic/no-ISR
+// behavior this route relies on.
+export const getBlogPost = cache(async (slug: string): Promise<BlogPost | null> => {
   try {
     const query = (columns: string) =>
       supabase
@@ -643,7 +657,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   } catch {
     return BLOG_POSTS.find((p) => p.slug === slug) || null
   }
-}
+})
 
 export type Testimonial = { quote: string; name: string; company: string; initials: string; tint: string }
 export type QA = { q: string; a: string }
