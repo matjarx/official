@@ -16,7 +16,7 @@ import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { supabase } from '@/lib/supabase'
-import { trackEvent } from '@/lib/analytics'
+import { trackEvent, trackGA4Event } from '@/lib/analytics'
 import {
   HERO, PROBLEMS, AUDIT_INTRO, WHAT_IS_AUDIT, WHY_NEEDED, AUDIT_AREAS, PROCESS_STEPS,
   TIMELINE_ROWS, TIMELINE_TOTAL, RUSH_NOTE, OUTCOMES, BENEFITS, COMPARISON_TABLE, AUDIT_FAQS, CHANNELS,
@@ -47,6 +47,7 @@ function IntakeForm() {
       return
     }
     trackEvent('form_submit', { label: 'website_audit' })
+    trackGA4Event('generate_lead', { form_name: 'website_audit' })
     router.push('/thank-you?source=website_form')
   }
 

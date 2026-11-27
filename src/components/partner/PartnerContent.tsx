@@ -16,7 +16,7 @@ import { PARTNER_FAQS } from '@/lib/page-faqs'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes } from '@/lib/routes'
 import { supabase } from '@/lib/supabase'
-import { trackEvent } from '@/lib/analytics'
+import { trackEvent, trackGA4Event } from '@/lib/analytics'
 import {
   PARTNER_TIERS, PARTNER_STEPS, PARTNER_CLIENT_STEPS, PARTNER_PLAN_PICKS, PARTNER_TYPES,
   PARTNER_PLAN_RATES, PARTNER_COMMISSION_PCT, type PlanKey,
@@ -76,6 +76,7 @@ export default function PartnerContent({ content = DEFAULT_CONTENT }: { content?
       return
     }
     trackEvent('form_submit', { label: 'partner_program' })
+    trackGA4Event('generate_lead', { form_name: 'become_a_partner' })
     router.push('/thank-you?source=partner_program')
   }
 

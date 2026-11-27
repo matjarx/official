@@ -22,7 +22,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
-import { trackEvent } from '@/lib/analytics'
+import { trackEvent, trackGA4Event } from '@/lib/analytics'
 import { routes } from '@/lib/routes'
 
 const LABEL: React.CSSProperties = {
@@ -47,6 +47,7 @@ export default function LeadForm({
   style,
   submitClassName,
   chipBg,
+  gaFormName,
 }: {
   /** Written to marketing_leads.source, and the ?source= on /thank-you. */
   source: string
@@ -64,6 +65,9 @@ export default function LeadForm({
    *  --surface; /help sits on --cream and matched it. They are different
    *  colours (#FFFFFF vs #FCFAF3), so this is not a detail to unify. */
   chipBg: string
+  /** Opt-in: fires GA4 generate_lead with this form_name on success.
+   *  Omitted callers (e.g. /help) don't get it — only the forms asked for. */
+  gaFormName?: string
 }) {
   const [name, setName] = useState('')
   const [businessName, setBusinessName] = useState('')
@@ -86,6 +90,7 @@ export default function LeadForm({
       return
     }
     trackEvent('form_submit', { label: source })
+    if (gaFormName) trackGA4Event('generate_lead', { form_name: gaFormName })
     router.push(`/thank-you?source=${source}`)
   }
 
