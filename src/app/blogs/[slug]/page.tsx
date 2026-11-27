@@ -10,20 +10,34 @@ import { ORGANIZATION_ID, breadcrumbJsonLd } from '@/lib/schema'
 import { faqFromBody } from '@/lib/blog-faq'
 import { escapeScriptHtml } from '@/lib/safe-script'
 
-// Rendered per request, not cached (ISR) -- so a post shows, with its own
-// title and description, the moment its row exists.
-//
-// Under ISR, a URL requested before its row existed was cached as a 404.
-// When the row appeared, the background regeneration that replaced that
-// entry ran with the cached 404 status still set, and Next 16 picks the
-// metadata from the status (is404 -> the not-found boundary's): the post's
-// body went out under "Page Not Found" and noindex until a SECOND
-// regeneration. That is what /blogs/website-price-in-pakistan served on
-// 15 Oct. Calling connection() on a miss is not an option either: switching
-// an ISR route to dynamic at runtime is a 500. Rendering per request has no
-// cached 404 to inherit. Hostinger's CDN does not cache these pages anyway
-// (x-hcdn-cache-status: DYNAMIC), so the cost is a few database reads per view.
-export const dynamic = 'force-dynamic'
+// Back to ISR (revalidate=60) now that publishing/editing a post calls
+// POST /api/revalidate explicitly (src/app/api/revalidate/route.ts -- a
+// Supabase Database Webhook, configured in the Supabase dashboard under
+// Database > Webhooks, firing on insert/update of marketing_blog_posts).
+// That's what actually avoids the 15 Oct bug class --
+// a URL requested before its row existed got cached as a 404, and even the
+// regeneration after the row appeared inherited that cached 404 status for
+// metadata purposes, needing a second regeneration to self-correct. A time-
+// based revalidate=60 alone doesn't fix that (the stale 404 just waits out
+// the same window before quietly self-correcting); revalidatePath, called
+// the moment the row is written, forces the very next request to render
+// fresh rather than serve or extend the stale entry. force-dynamic was the
+// blunt fix while nothing called revalidatePath; now that something does,
+// it's just a few needless database reads on every single view.
+export const revalidate = 60
+
+// Without this, the route has NO generateStaticParams entries at all --
+// verified locally that this, not force-dynamic vs revalidate, is what
+// actually kept every blog page fully dynamic: Next only puts a dynamic
+// segment's rendered output in the Full Route Cache for params this
+// returns. A param outside this list still works (dynamicParams defaults
+// to true) and renders on its first request -- which is also exactly what
+// lets a brand new post 404 correctly before its row exists, then render
+// and get cached from its first real request on.
+export async function generateStaticParams() {
+  const posts = await getBlogPosts()
+  return posts.map((p) => ({ slug: p.slug }))
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
