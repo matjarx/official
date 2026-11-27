@@ -119,8 +119,18 @@ export function FaqList({
               <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, lineHeight: 1.35, color: ink, marginRight: 'auto', textAlign: 'left' }}>{inText(f.q)}</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={chev} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: '0 0 auto', marginTop: 3, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
             </button>
-            {open && (
-              bullets ? (
+            {/* Always rendered, hidden with CSS when closed -- not conditionally
+                mounted. `{open && ...}` kept the answer out of the DOM (and so
+                out of the raw HTML a crawler reads) for every item but the one
+                already open, on every FAQ on the site: the FAQPage schema (read
+                from the same body blocks) carried a question's full answer
+                while the rendered page had none of it, for anyone who didn't
+                click. display:none is a long-settled fine pattern for an
+                accordion -- the content is still in the DOM, just not shown;
+                aria-hidden keeps an assistive reader from announcing it while
+                collapsed. */}
+            <div style={{ display: open ? undefined : 'none' }} aria-hidden={!open}>
+              {bullets ? (
                 <div style={{ padding: '0 22px 20px' }}>
                   <p style={{ margin: f.items ? '0 0 8px' : 0, fontSize: 14.5, lineHeight: 1.68, color: body }}>{typeof f.a === 'string' ? inText(f.a) : f.a}{answerLink(f)}</p>
                   {f.items && <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{f.items.map((it, j) => bullet(it, j))}</ul>}
@@ -129,8 +139,8 @@ export function FaqList({
                 <p style={{ margin: 0, padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: body }}>{inText(f.a)}{answerLink(f)}</p>
               ) : (
                 <div style={{ padding: '0 22px 20px', fontSize: 14.5, lineHeight: 1.68, color: body, display: 'flex', flexDirection: 'column', gap: 10 }}>{f.a}{answerLink(f)}</div>
-              )
-            )}
+              )}
+            </div>
           </div>
         )
       })}
