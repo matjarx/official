@@ -11,9 +11,10 @@ import { faqFromBody } from '@/lib/blog-faq'
 import { escapeScriptHtml } from '@/lib/safe-script'
 
 // Back to ISR (revalidate=60) now that publishing/editing a post calls
-// POST /api/revalidate explicitly (see supabase/revalidate-webhook.sql, a
-// Supabase Database Webhook firing on insert/update of
-// marketing_blog_posts). That's what actually avoids the 15 Oct bug class --
+// POST /api/revalidate explicitly (src/app/api/revalidate/route.ts -- a
+// Supabase Database Webhook, configured in the Supabase dashboard under
+// Database > Webhooks, firing on insert/update of marketing_blog_posts).
+// That's what actually avoids the 15 Oct bug class --
 // a URL requested before its row existed got cached as a 404, and even the
 // regeneration after the row appeared inherited that cached 404 status for
 // metadata purposes, needing a second regeneration to self-correct. A time-
