@@ -13,6 +13,8 @@ import TestimonialColumn from '@/components/TestimonialColumn'
 import CrossLinkRail from '@/components/CrossLinkRail'
 import { crossLinksForIndustry } from '@/lib/cross-links'
 import { routes } from '@/lib/routes'
+import { breadcrumbJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import { INDUSTRY_DATA, INDUSTRY_SLUGS, otherIndustriesFor, type IndustryKey } from '@/lib/industry-data'
 import { INDUSTRY_DETAIL, type IndustryDetail } from '@/lib/industry-detail-data'
 import IndustryDetailSections from './IndustryDetailSections'
@@ -22,6 +24,7 @@ import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type IndustryContentShape = (typeof INDUSTRY_DATA)[IndustryKey] & { detail?: IndustryDetail | null }
 
@@ -30,21 +33,14 @@ export default function IndustryContent({ industryKey, content }: { industryKey:
   const [openFaq, setOpenFaq] = useState(0)
   const d = content ?? { ...INDUSTRY_DATA[industryKey], detail: INDUSTRY_DETAIL[industryKey] }
   const others = otherIndustriesFor(industryKey)
-  const pageUrl = `https://matjarx.com${routes.industry(INDUSTRY_SLUGS[industryKey])}`
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
-      { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://matjarx.com' + routes.home },
-      { '@type': 'ListItem', position: 3, name: d.name, item: pageUrl },
-    ],
-  }
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+    <div style={PAGE_ROOT}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
+        ['Home', routes.home],
+        ['Industries', routes.home],
+        [d.name, routes.industry(INDUSTRY_SLUGS[industryKey])],
+      ]))) }} />
       <FaqSchema faqs={fromPairs(d.faqs)} />
       <AmbientOrbs />
       <div className="page-content">

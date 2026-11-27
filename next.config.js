@@ -54,6 +54,8 @@ const RENAMED_BLOG_SLUGS = {
 const nextConfig = {
   experimental: {
     cpus: 2,
+    // Marks this app for Next.js's security-only upgrade agent.
+    agentUpgrade: 'security',
   },
   // Next's own trailing-slash 308 runs BEFORE these redirects, so a URL
   // like /pricing-table/ used to take two hops: slash strip, then the
@@ -96,6 +98,34 @@ const nextConfig = {
       // Was a 410 in src/proxy.ts; it has a real successor, so it keeps
       // whatever authority it had by pointing there instead.
       { source: '/web-development-karachi', destination: '/website-design-karachi', permanent: true },
+
+      // December SEO cleanup: real old-WordPress URLs with a genuine
+      // successor, found still 404ing/410ing in Search Console. Each is
+      // carved out of the proxy.ts GONE_PREFIXES/GONE_EXACT catch-all
+      // below it would otherwise fall into -- that file's own comment
+      // says to check here first before adding to that list, and these
+      // are exactly that case: a prefix whose specific subpaths turned
+      // out to have search demand and a real successor, unlike the rest
+      // of that same prefix (e.g. /tag/tattoo has no successor and stays
+      // 410; /tag/tools and /tag/resources do and are redirected here).
+      { source: '/category/blog', destination: '/blogs', permanent: true },
+      { source: '/category/resources-tools', destination: '/blogs', permanent: true },
+      { source: '/faq_category/:path*', destination: '/faqs', permanent: true },
+      { source: '/newsletter', destination: '/blogs', permanent: true },
+      { source: '/tag/resources', destination: '/blogs', permanent: true },
+      { source: '/tag/resources/:path*', destination: '/blogs', permanent: true },
+      { source: '/tag/tools', destination: '/blogs', permanent: true },
+      { source: '/plans', destination: '/pricing', permanent: true },
+      { source: '/privacy-policy', destination: '/legal/privacy', permanent: true },
+      // Old WordPress comment-feed URLs, two segments deep -- the generic
+      // /blog/:slug and bare-slug redirects below only capture one
+      // segment, so these specific /<slug>/feed shapes need their own
+      // entry or they fall all the way through to a 404.
+      { source: '/blog/cod-optimization-reduce-rto/feed', destination: '/blogs/cod-optimization-reduce-rto', permanent: true },
+      { source: '/blog/setup-jazzcash-jazz-business-website/feed', destination: '/blogs/setup-jazzcash-jazz-business-website', permanent: true },
+      { source: '/blog/setup-sadapay-sadabiz-website/feed', destination: '/blogs/setup-sadapay-sadabiz-website', permanent: true },
+      { source: '/set-up-tiktok-ads/feed', destination: '/blogs/set-up-tiktok-ads', permanent: true },
+      { source: '/setup-jazzcash-jazz-business-website/feed', destination: '/blogs/setup-jazzcash-jazz-business-website', permanent: true },
       // Duplicate of the clinics-and-healthcare page. The route file stays
       // (nothing is deleted), but this redirect runs before routing, so
       // the duplicate is never served.
@@ -178,6 +208,27 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'tbgywxuebckwhxukfkdx.supabase.co',
         pathname: '/storage/v1/object/public/**',
+      },
+      // Some marketing_blog_posts rows store cover_image.src as a full
+      // self-referencing URL (https://matjarx.com/blog/...) instead of a
+      // relative path. next/image treats any absolute URL as remote and
+      // 400s it unless the host is allow-listed here, even when it points
+      // back at this same site -- this covers that case so a row written
+      // either way renders.
+      {
+        protocol: 'https',
+        hostname: 'matjarx.com',
+        pathname: '/blog/**',
+      },
+      // A post with a video cover banner but no dedicated cover photo
+      // (coverImage.videoId set, no real src of its own) falls back to
+      // that video's own YouTube thumbnail as cover_image.src -- read
+      // wherever a post's cover normally would be (og:image, related-post
+      // cards), so it needs the same remote-pattern allowance.
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+        pathname: '/vi/**',
       },
     ],
     // AVIF first: for photographic showcase/example images it typically

@@ -54,6 +54,20 @@ function getSessionId(): string {
   }
 }
 
+// Fires a GA4 event directly, with its own event name and params — for
+// cases that need GA4's own semantics (generate_lead + form_name) rather
+// than trackEvent's event/label shape, which also writes to our
+// first-party table every time.
+export function trackGA4Event(event: string, params?: Record<string, string>) {
+  try {
+    const gtag = (window as GtagWindow).gtag
+    if (typeof gtag !== 'function') return
+    gtag('event', event, params)
+  } catch {
+    // gtag not ready yet, blocked, or anything else — never break the page
+  }
+}
+
 export function trackEvent(event: string, opts?: { label?: string; path?: string }) {
   if (typeof window === 'undefined') return
   const path = opts?.path ?? window.location.pathname

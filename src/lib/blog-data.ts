@@ -21,12 +21,19 @@ export type BodyBlock =
   | { t: 'l'; items: string[] }
   /** Numbered. Same shape as 'l'; the renderer counts. */
   | { t: 'ol'; items: string[] }
-  /** An image inside the body, distinct from the post's cover. */
-  | { t: 'img'; src: string; alt: string; caption?: string }
+  /** An image inside the body, distinct from the post's cover. width/height
+   *  (intrinsic, same convention as coverImage) let the renderer reserve
+   *  layout space before the image loads; older rows may not have them. */
+  | { t: 'img'; src: string; alt: string; caption?: string; width?: number; height?: number }
   /** A data table. `head` is the header row; each row has one string per
    *  column. Cells take the same inline syntax as a paragraph (links, bold).
    *  A deploy that predates this type renders nothing for it, never a crash. */
   | { t: 'table'; head: string[]; rows: string[][]; caption?: string }
+  /** An embedded YouTube video. `videoId` is just the id (the part after
+   *  `v=` or `youtu.be/`), not a full URL -- the renderer builds the
+   *  embed/thumbnail URLs itself, on youtube-nocookie.com so no tracking
+   *  cookie is set until the viewer presses play. */
+  | { t: 'youtube'; videoId: string; caption?: string }
 
 export type BlogPost = {
   slug: string; title: string; category: BlogCategory; excerpt: string
@@ -45,6 +52,18 @@ export type BlogPost = {
      *  box cuts into it. 'top' keeps the full banner visible; every other
      *  cover is unaffected. */
     focalPosition?: string
+    /** When set, the hero banner shows this video (as a click-to-play
+     *  facade, same component as an in-body youtube block) instead of the
+     *  static image. `src`/`alt`/`width`/`height` stay required and
+     *  unaffected either way -- og:image, Twitter cards and the
+     *  ImageObject in JSON-LD all keep describing the real image, since
+     *  most share surfaces render a static preview, not the video. */
+    videoId?: string
+    /** Caption shown under the banner when videoId is set. Falls back to
+     *  `caption` (the image's own) if left unset. Separate field because
+     *  the image's caption describes the photo for search/share purposes
+     *  even while the video plays in its place. */
+    videoCaption?: string
   }
   /** Per-post byline. Falls back to AUTHOR when unset. */
   author?: BlogAuthor

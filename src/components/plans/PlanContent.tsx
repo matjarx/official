@@ -12,6 +12,8 @@ import Image from 'next/image'
 import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
 import { routes, appSignup } from '@/lib/routes'
+import { breadcrumbJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import { trackEvent } from '@/lib/analytics'
 import { ALL_PLANS, PLAN_DATA, otherPlansFor, CYCLE_FACTOR, type PlanKey } from '@/lib/plan-data'
 import { money } from '@/lib/money'
@@ -24,6 +26,7 @@ import { useCurrency } from '@/components/CurrencyProvider'
 import { BUSINESS_PHONE_DISPLAY, WHATSAPP_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 const DEFAULT_CONTENT: Record<PlanKey, PlanContentShape> = (Object.keys(ALL_PLANS) as PlanKey[]).reduce((acc, key) => {
   acc[key] = { ...ALL_PLANS[key], ...PLAN_DATA[key], detail: undefined }
@@ -45,21 +48,14 @@ export default function PlanContent({ planKey, content = DEFAULT_CONTENT[planKey
   const p = content
   const d = content
   const others = otherPlansFor(planKey)
-  const pageUrl = `https://matjarx.com${routes.plan(planKey)}`
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
-      { '@type': 'ListItem', position: 2, name: 'Plans', item: 'https://matjarx.com' + routes.pricing },
-      { '@type': 'ListItem', position: 3, name: p.name, item: pageUrl },
-    ],
-  }
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+    <div style={PAGE_ROOT}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
+        ['Home', routes.home],
+        ['Plans', routes.pricing],
+        [p.name, routes.plan(planKey)],
+      ]))) }} />
       <FaqSchema faqs={fromPairs(d.faqs)} />
       <AmbientOrbs />
       <div className="page-content">

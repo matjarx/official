@@ -8,6 +8,14 @@
 // annual savings, real examples, the build process, the full FAQ set, the
 // plan-comparison table, and closing/bottom-line copy. Appended after
 // PlanContent's existing sections rather than replacing them.
+//
+// StandardDetail and CustomDetail used to each be one return with a dozen
+// inline <section>s back to back -- every one of those is now its own
+// named function below, taking only the slice of `d` it reads. Pure
+// extraction: no style, markup or logic changed by the split. AllPlansLinks
+// is the one piece both plan families actually share (same `allPlans`
+// shape), so it is a real component rather than two copies of the same
+// JSX, same as it would have been found and merged in a duplication pass.
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -48,30 +56,45 @@ function FaqAccordion({ faqs, openIdx, setOpenIdx }: { faqs: PlanFaq[]; openIdx:
   )
 }
 
-function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKey }) {
-  // Same currency as the hero above it. A page showing "AED 360/mo" at the
-  // top and "PKR 22,500" in its own breakdown reads as a mistake.
-  const { display, inText } = useCurrency()
-  const [openFaq, setOpenFaq] = useState(-1)
+/** The chips linking to the other plans' own pages, at the bottom of every
+ *  plan detail page (standard or custom) -- the one section both families
+ *  share verbatim. */
+function AllPlansLinks({ allPlans }: { allPlans: { name: string; desc: string }[] }) {
+  return (
+    <section style={{ maxWidth: 900, margin: '0 auto', padding: '46px 24px 0', display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
+      {allPlans.map((pl) => (
+        <Link key={pl.name} href={routes.plan(pl.name.toLowerCase() as PlanKey)} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--olive)', background: 'rgba(var(--olive-rgb), 0.1)' }}>{pl.name} — {pl.desc}</Link>
+      ))}
+    </section>
+  )
+}
+
+/* ────────────────────────── Standard plan sections ────────────────────────── */
+
+function WhatYouGetSection({ d }: { d: StandardPlanDetail }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '76px 24px 0' }}>
+      <span style={EYEBROW}>{d.quickOverview.title}</span>
+      <h2 style={H2}>{d.whatYouGet.title}</h2>
+      <p style={{ margin: '-10px 0 26px', fontSize: 15, color: 'var(--ink-4)' }}>{d.quickOverview.intro}</p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 18 }}>
+        {d.whatYouGet.sections.map((s) => (
+          <div key={s.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
+            <h3 style={{ margin: '0 0 14px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{s.title}</h3>
+            <BlockList blocks={s.blocks} gap={14} tightSub />
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/** Boost/Growth/Platinum only -- Launch has no extraSections. */
+function ExtraSections({ d }: { d: StandardPlanDetail }) {
+  if (!d.extraSections) return null
   return (
     <>
-      {/* What You Get detail */}
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '76px 24px 0' }}>
-        <span style={EYEBROW}>{d.quickOverview.title}</span>
-        <h2 style={H2}>{d.whatYouGet.title}</h2>
-        <p style={{ margin: '-10px 0 26px', fontSize: 15, color: 'var(--ink-4)' }}>{d.quickOverview.intro}</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 18 }}>
-          {d.whatYouGet.sections.map((s) => (
-            <div key={s.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-              <h3 style={{ margin: '0 0 14px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 16.5, color: 'var(--ink-1)' }}>{s.title}</h3>
-              <BlockList blocks={s.blocks} gap={14} tightSub />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Extra narrative sections (Boost/Growth/Platinum only) */}
-      {d.extraSections?.map((s) => (
+      {d.extraSections.map((s) => (
         <section key={s.title} style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
           <h2 style={H2}>{s.title}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 18 }}>
@@ -83,153 +106,405 @@ function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKe
           </div>
         </section>
       ))}
+    </>
+  )
+}
 
-      {/* At a glance */}
-      <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.glance.title}</h2>
-        <CompareTable headers={['Feature', planKey.charAt(0).toUpperCase() + planKey.slice(1)]} rows={d.glance.rows} />
-      </section>
+function AtAGlanceSection({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKey }) {
+  return (
+    <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.glance.title}</h2>
+      <CompareTable headers={['Feature', planKey.charAt(0).toUpperCase() + planKey.slice(1)]} rows={d.glance.rows} />
+    </section>
+  )
+}
 
-      {/* Best for */}
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.bestFor.title}</h2>
-        <GroupGrid groups={d.bestFor.groups} />
-      </section>
+function BestForSection({ d }: { d: StandardPlanDetail }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.bestFor.title}</h2>
+      <GroupGrid groups={d.bestFor.groups} />
+    </section>
+  )
+}
 
-      {/* Pricing detail */}
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>Pricing, in full</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18, marginBottom: 22 }}>
-          <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' }}>One-time setup</span>
-            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{display(d.pricing.setupFee)}</span>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.setupItems.map((it, i) => bullet(it, i))}</ul>
-          </div>
-          <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-            <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' }}>Monthly fee</span>
-            <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{display(d.pricing.monthlyFee)}</span>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.monthlyItems.map((it, i) => bullet(it, i))}</ul>
-          </div>
+function PricingDetailSection({ d, display, inText }: { d: StandardPlanDetail; display: (v: string) => string; inText: (v: string) => string }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>Pricing, in full</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18, marginBottom: 22 }}>
+        <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
+          <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' }}>One-time setup</span>
+          <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{display(d.pricing.setupFee)}</span>
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.setupItems.map((it, i) => bullet(it, i))}</ul>
         </div>
-
-        {d.pricing.blogNote && (
-          <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
-            <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>What does each blog post cost?</h3>
-            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>Included in plan: {d.pricing.blogNote.included} · Additional blog posts: {inText(d.pricing.blogNote.extra)}</p>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.blogNote.whyMatters.map((it, i) => bullet(it, i))}</ul>
-          </div>
-        )}
-
-        {d.pricing.perMonthValue && (
-          <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
-            <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{inText(d.pricing.perMonthValue.intro)}</h3>
-            <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {d.pricing.perMonthValue.items.map((it, i) => (
-                <li key={i} style={{ display: 'flex', justifyContent: 'space-between', gap: 10, fontSize: 13.5, color: 'var(--ink-5)' }}>
-                  <span>{it.label}</span>{it.value && <span style={{ fontWeight: 600, color: 'var(--olive)', whiteSpace: 'nowrap' }}>{inText(it.value)}</span>}
-                </li>
-              ))}
-            </ul>
-            <span style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{inText(d.pricing.perMonthValue.total)}</span>
-          </div>
-        )}
-
-        <span style={{ display: 'block', marginBottom: 12, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)' }}>Annual savings</span>
-        <CompareTable headers={d.pricing.savings.headers} rows={d.pricing.savings.rows} />
-
-        {d.pricing.roi && (
-          <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginTop: 22 }}>
-            <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>ROI calculation</h3>
-            <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>{inText(d.pricing.roi.intro)}</p>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.roi.lines.map((it, i) => bullet(inText(it), i))}</ul>
-          </div>
-        )}
-
-        {d.pricing.notIncluded.length > 0 && (
-          <div style={{ marginTop: 22 }}>
-            <span style={{ display: 'block', marginBottom: 10, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)' }}>What&apos;s NOT included</span>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {d.pricing.notIncluded.map((it, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: 'var(--ink-5)' }}>
-                  <span style={{ color: '#B0473F', flex: '0 0 auto' }}>✕</span>{inText(it)}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </section>
-
-      {/* Real examples -- only when the plan has real, named clients to show */}
-      {d.examples && d.examples.items.length > 0 && (
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.examples.title}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
-          {d.examples.items.map((ex) => (
-            <div key={ex.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-              <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: 'var(--ink-1)' }}>{ex.title}</h3>
-              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{ex.lines.map((it, i) => bullet(it, i))}</ul>
-            </div>
-          ))}
+        <div className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
+          <span style={{ display: 'block', marginBottom: 4, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' }}>Monthly fee</span>
+          <span style={{ display: 'block', marginBottom: 12, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 24, color: 'var(--ink-1)' }}>{display(d.pricing.monthlyFee)}</span>
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.monthlyItems.map((it, i) => bullet(it, i))}</ul>
         </div>
-      </section>
+      </div>
+
+      {d.pricing.blogNote && (
+        <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
+          <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>What does each blog post cost?</h3>
+          <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>Included in plan: {d.pricing.blogNote.included} · Additional blog posts: {inText(d.pricing.blogNote.extra)}</p>
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.blogNote.whyMatters.map((it, i) => bullet(it, i))}</ul>
+        </div>
       )}
 
-      {/* Process */}
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.process.title}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
-          {d.process.phases.map((ph) => (
-            <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{ph.title}</h3>
-              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
-            </div>
-          ))}
+      {d.pricing.perMonthValue && (
+        <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginBottom: 22 }}>
+          <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{inText(d.pricing.perMonthValue.intro)}</h3>
+          <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {d.pricing.perMonthValue.items.map((it, i) => (
+              <li key={i} style={{ display: 'flex', justifyContent: 'space-between', gap: 10, fontSize: 13.5, color: 'var(--ink-5)' }}>
+                <span>{it.label}</span>{it.value && <span style={{ fontWeight: 600, color: 'var(--olive)', whiteSpace: 'nowrap' }}>{inText(it.value)}</span>}
+              </li>
+            ))}
+          </ul>
+          <span style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--ink-1)' }}>{inText(d.pricing.perMonthValue.total)}</span>
         </div>
-        {d.process.closing && <p style={{ margin: '20px 0 0', textAlign: 'center', fontSize: 14.5, fontWeight: 600, color: 'var(--olive)' }}>{d.process.closing}</p>}
-      </section>
+      )}
 
-      {/* Full FAQ */}
-      <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={{ ...H2, textAlign: 'center' }}>Everything else you might ask</h2>
-        <FaqAccordion faqs={d.faqs} openIdx={openFaq} setOpenIdx={setOpenFaq} />
-      </section>
+      <span style={{ display: 'block', marginBottom: 12, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)' }}>Annual savings</span>
+      <CompareTable headers={d.pricing.savings.headers} rows={d.pricing.savings.rows} />
 
-      {/* Compare table + upgrade guides */}
-      <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.compareTitle}</h2>
-        {d.compareTable && <div style={{ marginBottom: 22 }}><CompareTable headers={d.compareTable.headers} rows={d.compareTable.rows} /></div>}
-        {d.upgradeGroups && <GroupGrid groups={d.upgradeGroups} />}
-      </section>
-
-      {/* Closing + bottom line + guarantee */}
-      <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
-        <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
-          <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{d.closing.eyebrow}</span>
-          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: 'var(--ink-inverse)' }}>{d.closing.title}</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {d.closing.priceLines.map((l) => <span key={l} style={{ fontSize: 14, color: 'rgba(var(--ink-inverse-rgb), 0.7)' }}>{inText(l)}</span>)}
-          </div>
-          <a href={appSignup(planKey === 'custom' ? undefined : (planKey as 'launch' | 'boost' | 'growth' | 'platinum'))} className="btn-primary">{d.closing.cta}</a>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', paddingTop: 10 }}>
-            {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
-          </div>
-          <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp {BUSINESS_PHONE_DISPLAY}</a>
+      {d.pricing.roi && (
+        <div className="glass-card" style={{ padding: '20px 22px', borderRadius: 18, marginTop: 22 }}>
+          <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>ROI calculation</h3>
+          <p style={{ margin: '0 0 8px', fontSize: 13.5, color: 'var(--ink-5)' }}>{inText(d.pricing.roi.intro)}</p>
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.roi.lines.map((it, i) => bullet(inText(it), i))}</ul>
         </div>
-      </section>
+      )}
 
-      <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
-        <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{d.bottomLine.title}</h3>
-        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{inText(p)}</p>)}
-        <p style={{ margin: '10px 0 0', fontSize: 12.5, color: 'var(--ink-5)' }}>100% refund within 24 hours if we haven&apos;t substantially started work.</p>
-      </section>
+      {d.pricing.notIncluded.length > 0 && (
+        <div style={{ marginTop: 22 }}>
+          <span style={{ display: 'block', marginBottom: 10, fontSize: 13.5, fontWeight: 600, color: 'var(--ink-1)' }}>What&apos;s NOT included</span>
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {d.pricing.notIncluded.map((it, i) => (
+              <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13.5, color: 'var(--ink-5)' }}>
+                <span style={{ color: '#B0473F', flex: '0 0 auto' }}>✕</span>{inText(it)}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )
+}
 
-      {/* Compare all plans */}
-      <section style={{ maxWidth: 900, margin: '0 auto', padding: '46px 24px 0', display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
-        {d.allPlans.map((pl) => (
-          <Link key={pl.name} href={routes.plan(pl.name.toLowerCase() as PlanKey)} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--olive)', background: 'rgba(var(--olive-rgb), 0.1)' }}>{pl.name} — {pl.desc}</Link>
+/** Only when the plan has real, named clients to show. */
+function ExamplesSection({ d }: { d: StandardPlanDetail }) {
+  if (!d.examples || d.examples.items.length === 0) return null
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.examples.title}</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
+        {d.examples.items.map((ex) => (
+          <div key={ex.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
+            <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16.5, color: 'var(--ink-1)' }}>{ex.title}</h3>
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>{ex.lines.map((it, i) => bullet(it, i))}</ul>
+          </div>
         ))}
-      </section>
+      </div>
+    </section>
+  )
+}
+
+function ProcessSection({ d }: { d: StandardPlanDetail }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.process.title}</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16 }}>
+        {d.process.phases.map((ph) => (
+          <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
+            <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{ph.title}</h3>
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
+          </div>
+        ))}
+      </div>
+      {d.process.closing && <p style={{ margin: '20px 0 0', textAlign: 'center', fontSize: 14.5, fontWeight: 600, color: 'var(--olive)' }}>{d.process.closing}</p>}
+    </section>
+  )
+}
+
+function FullFaqSection({ faqs, title, openFaq, setOpenFaq }: { faqs: PlanFaq[]; title: string; openFaq: number; setOpenFaq: (n: number) => void }) {
+  return (
+    <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={{ ...H2, textAlign: 'center' }}>{title}</h2>
+      <FaqAccordion faqs={faqs} openIdx={openFaq} setOpenIdx={setOpenFaq} />
+    </section>
+  )
+}
+
+function CompareSection({ d }: { d: StandardPlanDetail }) {
+  return (
+    <section style={{ maxWidth: 1160, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.compareTitle}</h2>
+      {d.compareTable && <div style={{ marginBottom: 22 }}><CompareTable headers={d.compareTable.headers} rows={d.compareTable.rows} /></div>}
+      {d.upgradeGroups && <GroupGrid groups={d.upgradeGroups} />}
+    </section>
+  )
+}
+
+function StandardClosingSection({ d, planKey, inText }: { d: StandardPlanDetail; planKey: PlanKey; inText: (v: string) => string }) {
+  return (
+    <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
+      <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
+        <span style={{ fontSize: 12, letterSpacing: '2.2px', textTransform: 'uppercase', color: 'var(--moss-light)', fontWeight: 600 }}>{d.closing.eyebrow}</span>
+        <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: 'var(--ink-inverse)' }}>{d.closing.title}</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          {d.closing.priceLines.map((l) => <span key={l} style={{ fontSize: 14, color: 'rgba(var(--ink-inverse-rgb), 0.7)' }}>{inText(l)}</span>)}
+        </div>
+        <a href={appSignup(planKey === 'custom' ? undefined : (planKey as 'launch' | 'boost' | 'growth' | 'platinum'))} className="btn-primary">{d.closing.cta}</a>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', paddingTop: 10 }}>
+          {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
+        </div>
+        <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp {BUSINESS_PHONE_DISPLAY}</a>
+      </div>
+    </section>
+  )
+}
+
+function BottomLineSection({ title, body, finalNote, inText }: { title: string; body: string[]; finalNote: string; inText: (v: string) => string }) {
+  return (
+    <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
+      <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{title}</h3>
+      {body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{inText(p)}</p>)}
+      <p style={{ margin: '10px 0 0', fontSize: 12.5, color: 'var(--ink-5)' }}>{finalNote}</p>
+    </section>
+  )
+}
+
+function StandardDetail({ d, planKey }: { d: StandardPlanDetail; planKey: PlanKey }) {
+  // Same currency as the hero above it. A page showing "AED 360/mo" at the
+  // top and "PKR 22,500" in its own breakdown reads as a mistake.
+  const { display, inText } = useCurrency()
+  const [openFaq, setOpenFaq] = useState(-1)
+  return (
+    <>
+      <WhatYouGetSection d={d} />
+      <ExtraSections d={d} />
+      <AtAGlanceSection d={d} planKey={planKey} />
+      <BestForSection d={d} />
+      <PricingDetailSection d={d} display={display} inText={inText} />
+      <ExamplesSection d={d} />
+      <ProcessSection d={d} />
+      <FullFaqSection faqs={d.faqs} title="Everything else you might ask" openFaq={openFaq} setOpenFaq={setOpenFaq} />
+      <CompareSection d={d} />
+      <StandardClosingSection d={d} planKey={planKey} inText={inText} />
+      <BottomLineSection
+        title={d.bottomLine.title}
+        body={d.bottomLine.body}
+        finalNote="100% refund within 24 hours if we haven't substantially started work."
+        inText={inText}
+      />
+      <AllPlansLinks allPlans={d.allPlans} />
     </>
+  )
+}
+
+/* ─────────────────────────── Custom plan sections ─────────────────────────── */
+
+type CustomData = typeof CUSTOM
+
+function CustomOverviewSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1160, margin: '0 auto', padding: '76px 24px 0' }}>
+      <span style={EYEBROW}>How it works</span>
+      <h2 style={H2}>{d.quickOverview.title}</h2>
+      <p style={{ margin: '-10px 0 20px', fontSize: 15, color: 'var(--ink-4)' }}>{d.quickOverview.intro}</p>
+      <ol style={{ margin: 0, padding: '0 0 0 22px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {d.quickOverview.howItWorks.map((s) => <li key={s} style={{ fontSize: 14.5, color: 'var(--ink-5)' }}>{s}</li>)}
+      </ol>
+    </section>
+  )
+}
+
+function CustomWhoNeedsSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.whoNeeds.title}</h2>
+      <GroupGrid groups={d.whoNeeds.groups} />
+    </section>
+  )
+}
+
+/** Example builds removed 13 Oct (no real, named clients); kept optional. */
+function CustomExamplesSection({ examples }: { examples?: { title: string; items: ExampleSolution[] } }) {
+  if (!examples || examples.items.length === 0) return null
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{examples.title}</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
+        {examples.items.map((ex) => (
+          <div key={ex.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
+            <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, color: 'var(--ink-1)' }}>{ex.title}</h3>
+            <p style={{ margin: '0 0 10px', fontSize: 12.5, color: 'var(--ink-5)' }}>{ex.business}</p>
+            <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ex.needs.map((it, i) => bullet(it, i))}</ul>
+            <p style={{ margin: '0 0 4px', fontSize: 13, color: 'var(--ink-5)' }}><strong>Solution:</strong> {ex.solution}</p>
+            <p style={{ margin: 0, fontSize: 13, color: 'var(--ink-5)' }}><strong>Timeline:</strong> {ex.timeline} · <strong>Price:</strong> {ex.price}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function CustomDiscoverySection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.discovery.title}</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
+        {d.discovery.phases.map((ph) => (
+          <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
+            <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{ph.title}</h3>
+            {ph.body && <p style={{ margin: '0 0 8px', fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{ph.body}</p>}
+            <ul style={{ margin: '0 0 8px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
+            {ph.deliverable && <p style={{ margin: 0, fontSize: 12, color: 'var(--ink-5)' }}>Deliverable: {ph.deliverable}</p>}
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function CustomPricingSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>Custom Pricing</h2>
+      <p style={{ margin: '-10px 0 20px', fontSize: 14.5, color: 'var(--ink-5)' }}>{d.pricing.intro}</p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16, marginBottom: 22 }}>
+        {d.pricing.tiers.map((t) => (
+          <div key={t.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
+            <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{t.title}</h3>
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{t.body.map((it, i) => bullet(it, i))}</ul>
+          </div>
+        ))}
+      </div>
+      <p style={{ margin: '0 0 20px', fontSize: 13.5, fontWeight: 600, color: 'var(--olive)' }}>{d.pricing.ongoingSupport}</p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
+        <div><span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>What increases cost</span><ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.increaseCost.map((it, i) => bullet(it, i))}</ul></div>
+        <div><span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>What decreases cost</span><ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.decreaseCost.map((it, i) => bullet(it, i))}</ul></div>
+      </div>
+    </section>
+  )
+}
+
+function CustomFeaturesSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.features.title}</h2>
+      <GroupGrid groups={d.features.groups} />
+    </section>
+  )
+}
+
+function CustomWhySection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.whyCustom.title}</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
+        {d.whyCustom.items.map((it) => (
+          <div key={it.h} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
+            <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{it.h}</h3>
+            <p style={{ margin: '0 0 6px', fontSize: 13.5, color: 'var(--ink-5)' }}>{it.p}</p>
+            <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{it.result}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function CustomTeamSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.team.title}</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
+        {d.team.roles.map((r) => (
+          <div key={r.title} className="glass-card" style={{ padding: '18px 20px 20px', borderRadius: 18 }}>
+            <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{r.title}</h3>
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{r.items.map((it, i) => bullet(it, i))}</ul>
+          </div>
+        ))}
+      </div>
+      <p style={{ margin: '18px 0 0', textAlign: 'center', fontSize: 14, fontWeight: 600, color: 'var(--olive)' }}>{d.team.note}</p>
+    </section>
+  )
+}
+
+function CustomTimelineSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.timeline.title}</h2>
+      <CompareTable headers={['Project size', 'Timeline']} rows={d.timeline.rows} />
+      <p style={{ margin: '16px 0 0', fontSize: 13, color: 'var(--ink-5)' }}>Factors affecting timeline: {d.timeline.factors.join(', ')}.</p>
+    </section>
+  )
+}
+
+function CustomSupportSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.support.title}</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16, marginBottom: 20 }}>
+        {d.support.options.map((o) => (
+          <div key={o.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
+            <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{o.title}</h3>
+            <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{o.items.map((it, i) => bullet(it, i))}</ul>
+            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{o.cost}</span>
+          </div>
+        ))}
+      </div>
+      <span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>Add-on services available</span>
+      <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.support.addOns.map((it, i) => bullet(it, i))}</ul>
+    </section>
+  )
+}
+
+function CustomGettingStartedSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
+      <h2 style={H2}>{d.gettingStarted.title}</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
+        {d.gettingStarted.steps.map((s) => (
+          <div key={s.title} className="glass-card" style={{ padding: '18px 20px 20px', borderRadius: 18 }}>
+            <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{s.title}</h3>
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, i) => bullet(it, i))}</ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function CustomShowcaseSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0', textAlign: 'center' }}>
+      <span style={EYEBROW}>{d.showcase.title}</span>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 10 }}>
+        {d.showcase.items.map((it) => <span key={it} style={{ padding: '8px 14px', borderRadius: 999, fontSize: 13, background: 'rgba(var(--scrim-rgb), 0.06)', color: 'var(--ink-1)' }}>{it}</span>)}
+      </div>
+      <p style={{ margin: 0, fontSize: 13, color: 'var(--ink-5)' }}>{d.showcase.note}</p>
+    </section>
+  )
+}
+
+function CustomClosingSection({ d }: { d: CustomData }) {
+  return (
+    <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
+      <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
+        <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: 'var(--ink-inverse)' }}>{d.closing.title}</h2>
+        <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(var(--ink-inverse-rgb), 0.68)' }}>{d.closing.body}</p>
+        <Link href={routes.contact} className="btn-primary">{d.closing.cta}</Link>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', paddingTop: 10 }}>
+          {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
+        </div>
+        <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp {BUSINESS_PHONE_DISPLAY}</a>
+      </div>
+    </section>
   )
 }
 
@@ -241,170 +516,22 @@ function CustomDetail() {
   const examples = (d as { examples?: { title: string; items: ExampleSolution[] } }).examples
   return (
     <>
-      <section style={{ maxWidth: 1160, margin: '0 auto', padding: '76px 24px 0' }}>
-        <span style={EYEBROW}>How it works</span>
-        <h2 style={H2}>{d.quickOverview.title}</h2>
-        <p style={{ margin: '-10px 0 20px', fontSize: 15, color: 'var(--ink-4)' }}>{d.quickOverview.intro}</p>
-        <ol style={{ margin: 0, padding: '0 0 0 22px', display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {d.quickOverview.howItWorks.map((s) => <li key={s} style={{ fontSize: 14.5, color: 'var(--ink-5)' }}>{s}</li>)}
-        </ol>
-      </section>
-
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.whoNeeds.title}</h2>
-        <GroupGrid groups={d.whoNeeds.groups} />
-      </section>
-
-      {/* Example builds -- only when there are real, named ones to show */}
-      {examples && examples.items.length > 0 && (
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{examples.title}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18 }}>
-          {examples.items.map((ex) => (
-            <div key={ex.title} className="glass-card" style={{ padding: '22px 24px 24px', borderRadius: 20 }}>
-              <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 16, color: 'var(--ink-1)' }}>{ex.title}</h3>
-              <p style={{ margin: '0 0 10px', fontSize: 12.5, color: 'var(--ink-5)' }}>{ex.business}</p>
-              <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ex.needs.map((it, i) => bullet(it, i))}</ul>
-              <p style={{ margin: '0 0 4px', fontSize: 13, color: 'var(--ink-5)' }}><strong>Solution:</strong> {ex.solution}</p>
-              <p style={{ margin: 0, fontSize: 13, color: 'var(--ink-5)' }}><strong>Timeline:</strong> {ex.timeline} · <strong>Price:</strong> {ex.price}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      )}
-
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.discovery.title}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
-          {d.discovery.phases.map((ph) => (
-            <div key={ph.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 4px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{ph.title}</h3>
-              {ph.body && <p style={{ margin: '0 0 8px', fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{ph.body}</p>}
-              <ul style={{ margin: '0 0 8px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{ph.items.map((it, i) => bullet(it, i))}</ul>
-              {ph.deliverable && <p style={{ margin: 0, fontSize: 12, color: 'var(--ink-5)' }}>Deliverable: {ph.deliverable}</p>}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>Custom Pricing</h2>
-        <p style={{ margin: '-10px 0 20px', fontSize: 14.5, color: 'var(--ink-5)' }}>{d.pricing.intro}</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 16, marginBottom: 22 }}>
-          {d.pricing.tiers.map((t) => (
-            <div key={t.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 15, color: 'var(--ink-1)' }}>{t.title}</h3>
-              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{t.body.map((it, i) => bullet(it, i))}</ul>
-            </div>
-          ))}
-        </div>
-        <p style={{ margin: '0 0 20px', fontSize: 13.5, fontWeight: 600, color: 'var(--olive)' }}>{d.pricing.ongoingSupport}</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
-          <div><span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>What increases cost</span><ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.increaseCost.map((it, i) => bullet(it, i))}</ul></div>
-          <div><span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>What decreases cost</span><ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.pricing.decreaseCost.map((it, i) => bullet(it, i))}</ul></div>
-        </div>
-      </section>
-
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.features.title}</h2>
-        <GroupGrid groups={d.features.groups} />
-      </section>
-
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.whyCustom.title}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
-          {d.whyCustom.items.map((it) => (
-            <div key={it.h} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 6px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{it.h}</h3>
-              <p style={{ margin: '0 0 6px', fontSize: 13.5, color: 'var(--ink-5)' }}>{it.p}</p>
-              <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{it.result}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.team.title}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
-          {d.team.roles.map((r) => (
-            <div key={r.title} className="glass-card" style={{ padding: '18px 20px 20px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{r.title}</h3>
-              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{r.items.map((it, i) => bullet(it, i))}</ul>
-            </div>
-          ))}
-        </div>
-        <p style={{ margin: '18px 0 0', textAlign: 'center', fontSize: 14, fontWeight: 600, color: 'var(--olive)' }}>{d.team.note}</p>
-      </section>
-
-      <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.timeline.title}</h2>
-        <CompareTable headers={['Project size', 'Timeline']} rows={d.timeline.rows} />
-        <p style={{ margin: '16px 0 0', fontSize: 13, color: 'var(--ink-5)' }}>Factors affecting timeline: {d.timeline.factors.join(', ')}.</p>
-      </section>
-
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.support.title}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 16, marginBottom: 20 }}>
-          {d.support.options.map((o) => (
-            <div key={o.title} className="glass-card" style={{ padding: '20px 22px 22px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 10px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14.5, color: 'var(--ink-1)' }}>{o.title}</h3>
-              <ul style={{ margin: '0 0 10px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{o.items.map((it, i) => bullet(it, i))}</ul>
-              <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--olive)' }}>{o.cost}</span>
-            </div>
-          ))}
-        </div>
-        <span style={{ display: 'block', marginBottom: 8, fontSize: 12.5, fontWeight: 600, color: 'var(--ink-1)' }}>Add-on services available</span>
-        <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{d.support.addOns.map((it, i) => bullet(it, i))}</ul>
-      </section>
-
-      <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={{ ...H2, textAlign: 'center' }}>Custom Plan Questions</h2>
-        <FaqAccordion faqs={d.faqs} openIdx={openFaq} setOpenIdx={setOpenFaq} />
-      </section>
-
-      <section style={{ maxWidth: 1260, margin: '0 auto', padding: '66px 24px 0' }}>
-        <h2 style={H2}>{d.gettingStarted.title}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
-          {d.gettingStarted.steps.map((s) => (
-            <div key={s.title} className="glass-card" style={{ padding: '18px 20px 20px', borderRadius: 18 }}>
-              <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--ink-1)' }}>{s.title}</h3>
-              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 5 }}>{s.items.map((it, i) => bullet(it, i))}</ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section style={{ maxWidth: 820, margin: '0 auto', padding: '66px 24px 0', textAlign: 'center' }}>
-        <span style={EYEBROW}>{d.showcase.title}</span>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 10 }}>
-          {d.showcase.items.map((it) => <span key={it} style={{ padding: '8px 14px', borderRadius: 999, fontSize: 13, background: 'rgba(var(--scrim-rgb), 0.06)', color: 'var(--ink-1)' }}>{it}</span>)}
-        </div>
-        <p style={{ margin: 0, fontSize: 13, color: 'var(--ink-5)' }}>{d.showcase.note}</p>
-      </section>
-
-      <section style={{ maxWidth: 1400, margin: '0 auto', padding: '66px 24px 0' }}>
-        <div style={{ padding: 'clamp(28px, 4vw, 44px)', borderRadius: 26, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center' }}>
-          <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 'clamp(24px, 3.6vw, 32px)', color: 'var(--ink-inverse)' }}>{d.closing.title}</h2>
-          <p style={{ margin: 0, maxWidth: '34em', fontSize: 14.5, color: 'rgba(var(--ink-inverse-rgb), 0.68)' }}>{d.closing.body}</p>
-          <Link href={routes.contact} className="btn-primary">{d.closing.cta}</Link>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', paddingTop: 10 }}>
-            {d.closing.steps.map((s, i) => <span key={s} style={{ fontSize: 12.5, color: 'rgba(var(--ink-inverse-rgb), 0.72)' }}>{i + 1}. {s}{i < d.closing.steps.length - 1 ? '  ·' : ''}</span>)}
-          </div>
-          <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: 'var(--moss-light)' }}>{d.closing.scheduleCta} — WhatsApp {BUSINESS_PHONE_DISPLAY}</a>
-        </div>
-      </section>
-
-      <section style={{ maxWidth: 820, margin: '0 auto', padding: '46px 24px 0', textAlign: 'center' }}>
-        <h3 style={{ margin: '0 0 8px', fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 800, fontSize: 'clamp(20px, 2.8vw, 26px)', color: 'var(--ink-1)' }}>{d.bottomLine.title}</h3>
-        {d.bottomLine.body.map((p) => <p key={p} style={{ margin: '0 0 6px', fontSize: 14.5, color: 'var(--ink-5)' }}>{inText(p)}</p>)}
-        <p style={{ margin: '10px 0 0', fontSize: 12.5, color: 'var(--ink-5)' }}>{d.guarantee}</p>
-      </section>
-
-      <section style={{ maxWidth: 900, margin: '0 auto', padding: '46px 24px 0', display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
-        {d.allPlans.map((pl) => (
-          <Link key={pl.name} href={routes.plan(pl.name.toLowerCase() as PlanKey)} style={{ padding: '10px 16px', borderRadius: 999, fontSize: 13, fontWeight: 600, color: 'var(--olive)', background: 'rgba(var(--olive-rgb), 0.1)' }}>{pl.name} — {pl.desc}</Link>
-        ))}
-      </section>
+      <CustomOverviewSection d={d} />
+      <CustomWhoNeedsSection d={d} />
+      <CustomExamplesSection examples={examples} />
+      <CustomDiscoverySection d={d} />
+      <CustomPricingSection d={d} />
+      <CustomFeaturesSection d={d} />
+      <CustomWhySection d={d} />
+      <CustomTeamSection d={d} />
+      <CustomTimelineSection d={d} />
+      <CustomSupportSection d={d} />
+      <FullFaqSection faqs={d.faqs} title="Custom Plan Questions" openFaq={openFaq} setOpenFaq={setOpenFaq} />
+      <CustomGettingStartedSection d={d} />
+      <CustomShowcaseSection d={d} />
+      <CustomClosingSection d={d} />
+      <BottomLineSection title={d.bottomLine.title} body={d.bottomLine.body} finalNote={d.guarantee} inText={inText} />
+      <AllPlansLinks allPlans={d.allPlans} />
     </>
   )
 }

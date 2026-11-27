@@ -5,22 +5,31 @@
 // "included on every plan" strip, and FAQs.
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Image from 'next/image'
 import SiteChrome from '@/components/SiteChrome'
 import FaqSchema, { fromPairs } from '@/components/FaqSchema'
 import AmbientOrbs from '@/components/AmbientOrbs'
-import EditorShowcase from '@/components/EditorShowcase'
-import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes } from '@/lib/routes'
 import { FEATURE_GROUPS, ALWAYS_ON, FEATURES_FAQ, type FeatureGroupKey } from '@/lib/features-data'
 import { INTEGRATION_ICONS, SOCIAL_FEED_ICONS, ENGAGEMENT_ICONS } from '@/lib/feature-icons-data'
 import type { FeaturesContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 const TAB_KEYS = Object.keys(FEATURE_GROUPS) as FeatureGroupKey[]
 const DEFAULT_CONTENT: FeaturesContentShape = { groups: FEATURE_GROUPS, alwaysOn: ALWAYS_ON, faqs: FEATURES_FAQ }
+
+// Deferred: a below-the-fold, client-only interactive mockup with several
+// images, the same way HomeContent.tsx already defers SavingsCalculator.
+// ssr:false would drop it from the server HTML entirely (the CSS toggle
+// between the two is how one of them is hidden per breakpoint, so both
+// need to exist server-side), so this only keeps the toggle's own JS out
+// of the page's initial bundle.
+const EditorShowcase = dynamic(() => import('@/components/EditorShowcase'))
+const EditorShowcaseMobile = dynamic(() => import('@/components/EditorShowcaseMobile'))
 
 export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content?: FeaturesContentShape }) {
   const [tab, setTab] = useState<FeatureGroupKey>('website')
@@ -32,7 +41,7 @@ export default function FeaturesContent({ content = DEFAULT_CONTENT }: { content
   const FEATURES_FAQ_ACTIVE = content.faqs
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="pricing">

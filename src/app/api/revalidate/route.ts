@@ -1,46 +1,129 @@
-import { NextResponse } from 'next/server'
-import { revalidatePath, revalidateTag } from 'next/cache'
-import { routes } from '@/lib/routes'
+import { timingSafeEqual } from 'node:crypto'
+import { revalidatePath } from 'next/cache'
+import { NextResponse, type NextRequest } from 'next/server'
 
-// Called by a Supabase Database Webhook on insert/update of
-// marketing_blog_posts (see supabase/revalidate-webhook.sql) so a published
-// or edited post shows within seconds, without waiting for the blog page's
-// own revalidate=60 window and without a redeploy.
+// On-demand cache-busting for the Supabase-backed content this site reads
+// (marketing_content, marketing_blog_posts, marketing_blog_authors).
+// This repo has no write path of its own -- every page relies purely on
+// its own `export const revalidate = 60` (or similar) for freshness, so a
+// save made elsewhere (the matjarx-platform admin, or a hand-run SQL
+// migration) can take up to that long to show up live, with no way to
+// force it sooner. This route is an ADDITION, not a replacement: it just
+// lets whichever system actually writes the data ask for a path's cache
+// to be dropped immediately, while every page's own revalidate value
+// keeps working exactly as before if this is never called.
 //
-// Secret-protected: anyone who can reach this URL can force a regeneration,
-// which is cheap, but Supabase's own webhook config lets it be set as a
-// plain custom header on every call, so there's no reason not to check one.
-const SECRET = process.env.REVALIDATE_SECRET
+// Two ways to call it:
+//   1. Supabase Database Webhook, configured per-table in the Supabase
+//      dashboard (Database > Webhooks) to POST here on insert/update,
+//      with the secret set as a custom HTTP header (see README below).
+//      Its payload shape is fixed by Supabase: { table, record, ... }.
+//   2. Direct call from any other system (e.g. matjarx-platform, after
+//      its own save) with an explicit list of paths -- simplest and most
+//      flexible, since the caller already knows exactly what changed.
+//
+// Needs a REVALIDATE_SECRET env var (not public -- never prefix it
+// NEXT_PUBLIC_) added wherever this app's env vars are configured.
+// This repo has had no non-public env var until now.
 
-export async function POST(request: Request) {
-  if (!SECRET) {
-    return NextResponse.json({ error: 'REVALIDATE_SECRET not configured' }, { status: 500 })
+const SECRET_HEADER = 'x-revalidate-secret'
+
+/** timingSafeEqual throws on a length mismatch rather than just returning
+ *  false, and it needs equal-length buffers either way -- so check that
+ *  first. A plain `!==` here would let an attacker recover the secret
+ *  byte-by-byte via response-time analysis; this always takes the same
+ *  time regardless of how much of the guess is right. */
+function secretMatches(provided: string | null, expected: string): boolean {
+  if (!provided) return false
+  const a = Buffer.from(provided)
+  const b = Buffer.from(expected)
+  return a.length === b.length && timingSafeEqual(a, b)
+}
+
+/** marketing_content.slug is the same string the admin's page-list and
+ *  content-schema route already key content by -- it generally equals
+ *  the real route path 1:1 (e.g. 'pricing' -> /pricing), except blog
+ *  content overrides, which are namespaced 'blog/<slug>' to the post's
+ *  own page rather than a top-level route. */
+function pathsForContentSlug(slug: string): string[] {
+  if (slug.startsWith('blog/')) {
+    // This site's real route is /blogs/<slug> (plural) -- /blog/<slug>
+    // (singular) is only a legacy redirect, never the actual page.
+    return [`/blogs/${slug.slice('blog/'.length)}`]
   }
-  if (request.headers.get('x-revalidate-secret') !== SECRET) {
-    return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
+  return [`/${slug.replace(/^\/+/, '')}`]
+}
+
+function pathsForBlogPostRow(record: Record<string, unknown>): string[] {
+  const paths = ['/blogs']
+  if (typeof record.slug === 'string' && record.slug) {
+    paths.push(`/blogs/${record.slug}`)
+  }
+  if (typeof record.author_slug === 'string' && record.author_slug) {
+    paths.push(`/blogs/author/${record.author_slug}`)
+  }
+  return paths
+}
+
+function pathsForBlogAuthorRow(record: Record<string, unknown>): string[] {
+  const paths = ['/blogs']
+  if (typeof record.slug === 'string' && record.slug) {
+    paths.push(`/blogs/author/${record.slug}`)
+  }
+  return paths
+}
+
+/** A Supabase Database Webhook payload: { type, table, schema, record, old_record }. */
+function isSupabaseWebhookPayload(body: unknown): body is { table: string; record?: Record<string, unknown> } {
+  return !!body && typeof body === 'object' && 'table' in body && typeof (body as { table: unknown }).table === 'string'
+}
+
+export async function POST(request: NextRequest) {
+  const secret = process.env.REVALIDATE_SECRET
+  if (!secret) {
+    // Misconfiguration, not a caller error -- don't leak which is which.
+    return NextResponse.json({ revalidated: false, message: 'Not configured' }, { status: 500 })
+  }
+  if (!secretMatches(request.headers.get(SECRET_HEADER), secret)) {
+    return NextResponse.json({ revalidated: false, message: 'Invalid secret' }, { status: 401 })
   }
 
-  let slug: string | undefined
+  let body: unknown
   try {
-    const body = await request.json()
-    // Supabase's webhook payload nests the changed row under `record` (and
-    // the pre-image under `old_record` for updates/deletes) -- slug is the
-    // same on both, so either works for insert, update or delete.
-    slug = body?.record?.slug ?? body?.old_record?.slug
+    body = await request.json()
   } catch {
-    // No/invalid JSON body -- fall through and still revalidate the index
-    // and sitemap, just not a specific post path.
+    return NextResponse.json({ revalidated: false, message: 'Invalid JSON body' }, { status: 400 })
   }
 
-  const paths = ['/blogs', '/sitemap/blog.xml']
-  if (slug) paths.unshift(routes.blogPost(slug))
+  let paths: string[]
 
-  for (const path of paths) revalidatePath(path)
-  // Busts the getBlogPost/getBlogPosts unstable_cache entries directly --
-  // the route-level revalidatePath above only clears the rendered-page
-  // cache, not the underlying data cache those functions actually read
-  // from, which has its own independent 60s window.
-  revalidateTag('blog-posts', { expire: 0 })
+  if (isSupabaseWebhookPayload(body)) {
+    const record = body.record ?? {}
+    if (body.table === 'marketing_blog_posts') {
+      paths = pathsForBlogPostRow(record)
+    } else if (body.table === 'marketing_blog_authors') {
+      paths = pathsForBlogAuthorRow(record)
+    } else if (body.table === 'marketing_content' && typeof record.slug === 'string') {
+      paths = pathsForContentSlug(record.slug)
+    } else {
+      return NextResponse.json({ revalidated: false, message: `Unknown table: ${body.table}` }, { status: 400 })
+    }
+  } else if (body && typeof body === 'object' && 'paths' in body && Array.isArray((body as { paths: unknown }).paths)) {
+    paths = (body as { paths: string[] }).paths.filter((p) => typeof p === 'string' && p.startsWith('/'))
+  } else {
+    return NextResponse.json(
+      { revalidated: false, message: "Expected a Supabase webhook payload ({ table, record }) or { paths: string[] }" },
+      { status: 400 },
+    )
+  }
 
-  return NextResponse.json({ revalidated: paths, tags: ['blog-posts'] })
+  if (paths.length === 0) {
+    return NextResponse.json({ revalidated: false, message: 'Nothing to revalidate' }, { status: 400 })
+  }
+
+  for (const path of paths) {
+    revalidatePath(path)
+  }
+
+  return NextResponse.json({ revalidated: true, paths })
 }

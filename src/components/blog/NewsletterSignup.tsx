@@ -17,12 +17,17 @@
 // Contact, Help and Become a Partner use, so a subscriber shows up in
 // the admin's Marketing Site > Leads list beside every other enquiry
 // rather than in a list of its own.
+//
+// `dark` (the navy sidebar box) and `light` (the butter panel on the
+// index) share the form state and submit handler below, but each gets
+// its own complete, ternary-free JSX branch rather than one return
+// threading a `light ?` through every style and string -- the two
+// variants don't actually share markup, only the backing logic.
 
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { trackEvent } from '@/lib/analytics'
 
-/** `dark` is the navy sidebar box; `light` is the butter panel on the index. */
 export default function NewsletterSignup({
   postSlug,
   variant = 'dark',
@@ -30,7 +35,6 @@ export default function NewsletterSignup({
   postSlug?: string
   variant?: 'dark' | 'light'
 }) {
-  const light = variant === 'light'
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle')
 
@@ -56,32 +60,63 @@ export default function NewsletterSignup({
     setEmail('')
   }
 
-  return (
-    <div
-      style={
-        light
-          ? { padding: '34px 32px', borderRadius: 24, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 16, justifyContent: 'center' }
-          : { padding: '24px 26px', borderRadius: 20, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', gap: 12 }
-      }
-    >
-      {light && (
+  if (variant === 'light') {
+    return (
+      <div style={{ padding: '34px 32px', borderRadius: 24, background: 'linear-gradient(150deg, var(--butter), var(--moss-light))', display: 'flex', flexDirection: 'column', gap: 16, justifyContent: 'center' }}>
         <span style={{ fontSize: 12, letterSpacing: '1.8px', textTransform: 'uppercase', color: '#4A5518', fontWeight: 700 }}>Newsletter</span>
-      )}
-      {light ? (
         <h2 style={{ margin: 0, fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 900, fontSize: 30, lineHeight: 1.12, letterSpacing: '-1px', color: '#1F2A08' }}>
           Get monthly advice and exclusive deals
         </h2>
-      ) : (
-        <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: 'var(--ink-inverse)' }}>Get one email a month</span>
-      )}
-      <p style={{ margin: 0, fontSize: light ? 14.5 : 13.5, lineHeight: 1.6, color: light ? '#3D4A16' : 'rgba(var(--ink-inverse-rgb), 0.6)' }}>
-        {light
-          ? 'One email a month: what\u2019s working for businesses like yours, plus partner offers.'
-          : 'Practical advice for growing a business online in Pakistan and the Gulf.'}
-      </p>
+        <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: '#3D4A16' }}>
+          One email a month: what&rsquo;s working for businesses like yours, plus partner offers.
+        </p>
+        {status === 'done' ? (
+          <p style={{ margin: '4px 0 0', fontSize: 13.5, lineHeight: 1.6, color: '#1F2A08' }}>
+            You&rsquo;re on the list. Look out for the next one.
+          </p>
+        ) : (
+          <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 4 }}>
+            <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              required
+              autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@yourbusiness.pk"
+              style={{ width: '100%', padding: '15px 17px', borderRadius: 13, fontFamily: 'inherit', fontSize: 14.5, color: '#1F2A08', background: 'rgba(var(--surface-rgb), 0.75)', border: '1.5px solid rgba(31,42,8,0.18)', outline: 'none' }}
+            />
+            <button
+              type="submit"
+              disabled={status === 'submitting'}
+              className="btn-navy"
+              style={{ textAlign: 'center', cursor: status === 'submitting' ? 'default' : 'pointer', opacity: status === 'submitting' ? 0.7 : 1 }}
+            >
+              {status === 'submitting' ? 'Subscribing…' : 'Subscribe'}
+            </button>
+            <span style={{ fontSize: 11.5, lineHeight: 1.5, color: '#4A5518' }}>
+              By subscribing you agree to the MatjarX privacy policy. Unsubscribe any time.
+            </span>
+            {status === 'error' && (
+              <span style={{ fontSize: 12.5, color: '#7A2E1B' }}>
+                That didn&rsquo;t go through. Try again, or email office@matjarx.com.
+              </span>
+            )}
+          </form>
+        )}
+      </div>
+    )
+  }
 
+  return (
+    <div style={{ padding: '24px 26px', borderRadius: 20, background: 'var(--navy-deepest)', display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <span style={{ fontFamily: 'var(--font-lato), Lato, sans-serif', fontWeight: 700, fontSize: 17, color: 'var(--ink-inverse)' }}>Get one email a month</span>
+      <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'rgba(var(--ink-inverse-rgb), 0.6)' }}>
+        Practical advice for growing a business online in Pakistan and the Gulf.
+      </p>
       {status === 'done' ? (
-        <p style={{ margin: '4px 0 0', fontSize: 13.5, lineHeight: 1.6, color: light ? '#1F2A08' : 'var(--butter)' }}>
+        <p style={{ margin: '4px 0 0', fontSize: 13.5, lineHeight: 1.6, color: 'var(--butter)' }}>
           You&rsquo;re on the list. Look out for the next one.
         </p>
       ) : (
@@ -94,43 +129,29 @@ export default function NewsletterSignup({
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder={light ? 'you@yourbusiness.pk' : 'you@yourbusiness.com'}
-            style={
-              light
-                ? { width: '100%', padding: '15px 17px', borderRadius: 13, fontFamily: 'inherit', fontSize: 14.5, color: '#1F2A08', background: 'rgba(var(--surface-rgb), 0.75)', border: '1.5px solid rgba(31,42,8,0.18)', outline: 'none' }
-                : { padding: '12px 14px', borderRadius: 12, border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', background: 'rgba(var(--surface-rgb), 0.07)', color: 'var(--surface)', fontSize: 14, fontFamily: 'inherit' }
-            }
+            placeholder="you@yourbusiness.com"
+            style={{ padding: '12px 14px', borderRadius: 12, border: '1px solid rgba(var(--ink-inverse-rgb), 0.18)', background: 'rgba(var(--surface-rgb), 0.07)', color: 'var(--surface)', fontSize: 14, fontFamily: 'inherit' }}
           />
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className={light ? 'btn-navy' : undefined}
-            style={
-              light
-                ? { textAlign: 'center', cursor: status === 'submitting' ? 'default' : 'pointer', opacity: status === 'submitting' ? 0.7 : 1 }
-                : {
-                    padding: '13px 18px',
-                    borderRadius: 12,
-                    border: 'none',
-                    fontFamily: 'var(--font-lato), Lato, sans-serif',
-                    fontWeight: 700,
-                    fontSize: 13.5,
-                    color: 'var(--ink-on-butter)',
-                    background: 'var(--butter)',
-                    cursor: status === 'submitting' ? 'default' : 'pointer',
-                    opacity: status === 'submitting' ? 0.7 : 1,
-                  }
-            }
+            style={{
+              padding: '13px 18px',
+              borderRadius: 12,
+              border: 'none',
+              fontFamily: 'var(--font-lato), Lato, sans-serif',
+              fontWeight: 700,
+              fontSize: 13.5,
+              color: 'var(--ink-on-butter)',
+              background: 'var(--butter)',
+              cursor: status === 'submitting' ? 'default' : 'pointer',
+              opacity: status === 'submitting' ? 0.7 : 1,
+            }}
           >
             {status === 'submitting' ? 'Subscribing…' : 'Subscribe'}
           </button>
-          {light && (
-            <span style={{ fontSize: 11.5, lineHeight: 1.5, color: '#4A5518' }}>
-              By subscribing you agree to the MatjarX privacy policy. Unsubscribe any time.
-            </span>
-          )}
           {status === 'error' && (
-            <span style={{ fontSize: 12.5, color: light ? '#7A2E1B' : '#FFB4A8' }}>
+            <span style={{ fontSize: 12.5, color: '#FFB4A8' }}>
               That didn&rsquo;t go through. Try again, or email office@matjarx.com.
             </span>
           )}

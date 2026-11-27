@@ -16,6 +16,7 @@ import PortfolioShowcase from './PortfolioShowcase'
 import { EXAMPLES, EXAMPLE_CATEGORIES, EXAMPLE_PILLARS } from '@/lib/examples-data'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type WebsiteExamplesContentShape = { examples: typeof EXAMPLES; categories: typeof EXAMPLE_CATEGORIES; pillars: typeof EXAMPLE_PILLARS }
 const DEFAULT_CONTENT: WebsiteExamplesContentShape = { examples: EXAMPLES, categories: EXAMPLE_CATEGORIES, pillars: EXAMPLE_PILLARS }
@@ -41,7 +42,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
   const resultLine = shown.length + (shown.length === 1 ? ' example' : ' examples') + (filter === 'All' ? ' shown · hover a site to open it' : ` in ${filter} · hover a site to open it`)
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="examples">
@@ -61,7 +62,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
         {/* Category rail */}
         <section style={{ maxWidth: 1400, margin: '0 auto', padding: '40px 24px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <button type="button" onClick={() => scrollRail(-1)} title="Previous categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
+            <button type="button" onClick={() => scrollRail(-1)} title="Previous categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 44, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--ink-1)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m14 6-6 6 6 6" /></svg>
             </button>
 
@@ -83,7 +84,7 @@ export default function WebsiteExamplesContent({ content = DEFAULT_CONTENT }: { 
               </div>
             </div>
 
-            <button type="button" onClick={() => scrollRail(1)} title="More categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 38, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
+            <button type="button" onClick={() => scrollRail(1)} title="More categories" className="mx-rail-arrow glass-chip" style={{ all: 'unset', cursor: 'pointer', width: 44, height: 66, flex: '0 0 auto', borderRadius: 12, display: 'grid', placeItems: 'center' }}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--ink-1)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m10 6 6 6-6 6" /></svg>
             </button>
           </div>

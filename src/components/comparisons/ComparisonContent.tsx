@@ -15,27 +15,23 @@ import { RIVAL_DATA, otherComparisonsFor, type RivalKey } from '@/lib/comparison
 import { PLATFORM_LOGOS } from '@/lib/platform-logos-data'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
+import { breadcrumbJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type ComparisonContentShape = (typeof RIVAL_DATA)[RivalKey]
 
 export default function ComparisonContent({ rivalKey, content }: { rivalKey: RivalKey; content?: ComparisonContentShape }) {
   const d = content ?? RIVAL_DATA[rivalKey]
   const others = otherComparisonsFor(rivalKey)
-  const pageUrl = `https://matjarx.com${routes.compare(rivalKey)}`
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
-      { '@type': 'ListItem', position: 2, name: 'Alternatives', item: 'https://matjarx.com' + routes.bestBuilder },
-      { '@type': 'ListItem', position: 3, name: `MatjarX vs ${d.name}`, item: pageUrl },
-    ],
-  }
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+    <div style={PAGE_ROOT}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
+        ['Home', routes.home],
+        ['Alternatives', routes.bestBuilder],
+        [`MatjarX vs ${d.name}`, routes.compare(rivalKey)],
+      ]))) }} />
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="resources">

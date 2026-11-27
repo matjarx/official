@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import Script from 'next/script'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { Lato, Open_Sans } from 'next/font/google'
 import PageviewTracker from '@/components/PageviewTracker'
 import WebVitalsReporter from '@/components/WebVitalsReporter'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import {
   getMergedContent,
   isWidgetActive,
@@ -19,7 +20,7 @@ import AnnouncementBar from '@/components/AnnouncementBar'
 import ThemeProvider from '@/components/ThemeProvider'
 import CurrencyProvider from '@/components/CurrencyProvider'
 import SitePopup from '@/components/SitePopup'
-import MobileStickyBar from '@/components/MobileStickyBar'
+import FloatingDock from '@/components/FloatingDock'
 import './globals.css'
 
 // Without this, Next's Data Cache would cache the layout's own
@@ -36,6 +37,10 @@ export const revalidate = 60
 // unreachable, so nothing regresses.
 const DEFAULT_GA_MEASUREMENT_ID = 'G-FPFM7MMEDB'
 const DEFAULT_META_PIXEL_ID = '1082965164297632'
+// The GTM container Meta/TikTok/LinkedIn now live in -- see GTM_SETUP.md for
+// the tag configuration (this app has no access to the GTM account itself,
+// so those tags are set up by hand in the GTM web UI, not by this code).
+const GTM_CONTAINER_ID = 'GTM-KWD8DJX2'
 
 const lato = Lato({
   subsets: ['latin'],
@@ -58,16 +63,6 @@ const SITE_URL = 'https://matjarx.com'
 
 const DEFAULT_TITLE = 'MatjarX — Done-for-you websites, live in 7 days'
 const DEFAULT_DESCRIPTION = 'MatjarX builds complete small business websites in 7 days, from Rs. 4,500/month + Rs. 22,500 setup — done-for-you design, SEO and growth marketing.'
-const DEFAULT_SOCIALS: Record<string, string> = {
-  Facebook: 'https://www.facebook.com/matjarxpakistan/',
-  Instagram: 'https://www.instagram.com/matjarxpakistan/',
-  X: 'https://x.com/matjar_X',
-  Threads: 'https://www.threads.com/@matjarxpakistan',
-  TikTok: 'https://www.tiktok.com/@matjarxofficial',
-  LinkedIn: 'http://linkedin.com/company/matjarx/',
-  YouTube: 'https://www.youtube.com/@matjarxofficial',
-}
-
 // Static per-page metadata already overrides title/description on nearly
 // every route — this is just the root fallback (and the OG/twitter
 // defaults), so making it async to read the settings override doesn't
@@ -82,6 +77,16 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = settings.default_description || DEFAULT_DESCRIPTION
   return {
     metadataBase: new URL(SITE_URL),
+    // Plain public/icon.png, not the app/icon.png convention file it used
+    // to be -- that convention auto-generates a dynamic route that
+    // defaults to `Cache-Control: public, max-age=0, must-revalidate`
+    // even for a static source image that never changes. Confirmed live:
+    // every single request re-fetched it, no caching at all, same root
+    // cause class as app.matjarx.com's own favicon bug (fixed there
+    // 2026-11-13). A plain public/ file gets normal long-lived static
+    // caching for free and is served before any redirect logic runs
+    // (see next.config.js's own note on this for blog cover images).
+    icons: { icon: '/icon.png' },
     title: {
       default: title,
       // Every real page wraps its own title with pageTitle() (see
@@ -104,9 +109,9 @@ export async function generateMetadata(): Promise<Metadata> {
     // one. So the homepage renders its own <link> instead, and this fallback
     // is removed rather than left to emit a second, conflicting canonical.
     //
-    // Nothing else depended on it: 151 of the 153 routes set their own, and
-    // the two that do not (home-dark, home-mobile) are noindex,nofollow and
-    // absent from the sitemap.
+    // Nothing else depended on it: all routes but one set their own, and
+    // the one that does not (home-mobile) is noindex,nofollow and absent
+    // from the sitemap.
     openGraph: {
       type: 'website',
       siteName: 'MatjarX',
@@ -153,8 +158,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     getMergedContent<AnnouncementBarConfig>(ANNOUNCEMENT_BAR_SLUG),
     getMergedContent<PopupConfig>(POPUP_SLUG),
   ])
-  const gaId = settings.ga_measurement_id || DEFAULT_GA_MEASUREMENT_ID
-  const pixelId = settings.meta_pixel_id || DEFAULT_META_PIXEL_ID
+  // Both are admin-editable (Marketing Site > Settings) and get
+  // interpolated raw into a <script> body below (gaId also goes into
+  // @next/third-parties' own GoogleAnalytics component, which does the
+  // same raw interpolation internally) -- not HTML, so escapeScriptHtml
+  // doesn't apply here, but an unvalidated value would let a malicious or
+  // mistaken CMS edit (`'); fetch(...); //`) run arbitrary JS on every
+  // page. A pixel/measurement ID has one legitimate shape each, so
+  // validating it at the source closes the hole regardless of how either
+  // call site embeds it.
+  const gaId = settings.ga_measurement_id && /^G-[A-Z0-9]+$/.test(settings.ga_measurement_id)
+    ? settings.ga_measurement_id
+    : DEFAULT_GA_MEASUREMENT_ID
+  const pixelId = settings.meta_pixel_id && /^\d+$/.test(settings.meta_pixel_id)
+    ? settings.meta_pixel_id
+    : DEFAULT_META_PIXEL_ID
   const description = settings.default_description || DEFAULT_DESCRIPTION
 
   // Organization only; LocalBusiness lives on /contact (lib/schema.ts).
@@ -166,9 +184,47 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang={locale} dir={dir} className={`${lato.variable} ${openSans.variable}`}>
       <body>
+        {/* Consent Mode v2 defaults -- must run before GTM (or any tag)
+            loads, so every tag already has a consent state to check against
+            on its very first fire rather than firing unconditionally for an
+            instant first. Set to 'granted' site-wide for now: there is no
+            cookie banner yet to call gtag('consent','update', ...) when a
+            visitor actually chooses, so a 'denied' default would just mean
+            nothing is ever measured. Revisit when a real banner exists. */}
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'granted',
+              ad_user_data: 'granted',
+              ad_personalization: 'granted',
+              analytics_storage: 'granted'
+            });
+          `}
+        </Script>
+        {/* Meta/TikTok/LinkedIn are configured as tags inside this GTM
+            container (see GTM_SETUP.md) -- not in this app's code. GA4
+            stays on its own direct gtag.js load below rather than moving
+            into a GTM-native tag: analytics.ts's trackEvent() calls
+            window.gtag(...) directly for the 9 real interactions already
+            instrumented site-wide, and GTM's own dataLayer.push model
+            does not define that function -- moving GA4 in here would
+            silently stop every one of those events without erroring. */}
+        <GoogleTagManager gtmId={GTM_CONTAINER_ID} dataLayer={{ meta_pixel_id: pixelId }} />
+        {/* GTM's own required noscript fallback. */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+            title="GTM"
+          />
+        </noscript>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(orgJsonLd)) }}
         />
         <Suspense fallback={null}>
           <PageviewTracker />
@@ -190,35 +246,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             as "the popup is broken". Checking it here at least keeps the
             two in agreement; the admin now warns about it on the way in. */}
           {isWidgetActive(popupConfig) && !!popupConfig.heading && <SitePopup config={popupConfig} />}
-          <MobileStickyBar />
+          <FloatingDock />
         </ThemeProvider>
         </CurrencyProvider>
         <GoogleAnalytics gaId={gaId} />
-        {/* Meta Pixel — base code + PageView, per Meta's own snippet. */}
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${pixelId}');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
-            alt=""
-          />
-        </noscript>
       </body>
     </html>
   )

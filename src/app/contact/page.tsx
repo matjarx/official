@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import ContactContent, { type ContactContentShape } from '@/components/contact/ContactContent'
 import { getMergedContent, getSeoOverride, pageSeo } from '@/lib/marketing-content'
 import { localBusinessJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import { CITY_DATA, CITY_SLUGS } from '@/lib/location-data'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,7 +25,7 @@ export default async function Page() {
   ])
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(localBusiness)) }} />
       <ContactContent content={content} />
     </>
   )

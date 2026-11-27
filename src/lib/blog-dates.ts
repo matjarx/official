@@ -16,6 +16,18 @@ function parse(value: Date | string | null | undefined): Date | undefined {
   return Number.isNaN(d.getTime()) ? undefined : d
 }
 
+// A "last modified" in the future is never correct, whatever produced it --
+// a post pre-dated for a later publish while already marked published, a
+// stray future updated_at from a bad clock, anything. Clamping here means
+// every reader of postLastModified (the sitemap's <lastmod>, the Article
+// schema's dateModified) is protected in one place, rather than guarding
+// each call site separately.
+export function clampToNow(d: Date | undefined): Date | undefined {
+  if (!d) return d
+  const now = new Date()
+  return d > now ? now : d
+}
+
 /**
  * @param published the post's publish date (`date`, e.g. "1 Sep 2026")
  * @param updatedAt marketing_blog_posts.updated_at, when the database is reachable
@@ -23,9 +35,9 @@ function parse(value: Date | string | null | undefined): Date | undefined {
 export function postLastModified(published: string | null | undefined, updatedAt: Date | string | null | undefined): Date | undefined {
   const pub = parse(published)
   const upd = parse(updatedAt)
-  if (!upd || upd.toISOString().slice(0, 10) === BLOG_IMPORT_DAY) return pub
-  if (!pub) return upd
-  return upd > pub ? upd : pub
+  if (!upd || upd.toISOString().slice(0, 10) === BLOG_IMPORT_DAY) return clampToNow(pub)
+  if (!pub) return clampToNow(upd)
+  return clampToNow(upd > pub ? upd : pub)
 }
 
 const MONTHS: Record<string, string> = {

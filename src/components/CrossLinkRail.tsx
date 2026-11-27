@@ -1,5 +1,5 @@
-// The "where to next" rail, shared by blog posts, city pages and industry
-// pages. See src/lib/cross-links.ts for why these links exist at all.
+// The "where to next" rail, used on industry pages. See
+// src/lib/cross-links.ts for why these links exist at all.
 //
 // Deliberately compact. Every one of these pages is already long, and the
 // point of the rail is to be scanned in two seconds on the way out -- not
@@ -20,9 +20,6 @@ const KIND_LABEL: Record<CrossLink['kind'], string> = {
 }
 
 const KIND_TINT: Record<CrossLink['kind'], string> = {
-  // Every tint here is a small eyebrow label, so each must flip with the
-  // theme. --navy and the pinned red did not: on a dark card they rendered
-  // dark-on-dark, "LOCATION" at 1.47.
   service: 'var(--accent-ink)',
   industry: 'var(--olive)',
   city: 'var(--terracotta-ink)',
@@ -35,19 +32,17 @@ export default function CrossLinkRail({
   links,
   title = 'Where to next',
   subtitle,
-  dark = false,
 }: {
   links: CrossLink[]
   title?: string
   subtitle?: string
-  dark?: boolean
 }) {
   if (links.length === 0) return null
 
-  const ink = dark ? 'var(--ink-inverse)' : 'var(--ink-1)'
-  const muted = dark ? 'rgba(var(--ink-inverse-rgb), 0.62)' : 'var(--ink-muted)'
-  const cardBg = dark ? 'rgba(var(--ink-inverse-rgb), 0.05)' : 'var(--surface)'
-  const cardLine = dark ? 'rgba(var(--ink-inverse-rgb), 0.13)' : 'rgba(var(--ink-1-rgb), 0.09)'
+  const ink = 'var(--ink-1)'
+  const muted = 'var(--ink-muted)'
+  const cardBg = 'var(--surface)'
+  const cardLine = 'rgba(var(--ink-1-rgb), 0.09)'
 
   return (
     <section

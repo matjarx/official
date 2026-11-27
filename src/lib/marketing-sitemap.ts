@@ -1,7 +1,7 @@
 import { routes } from '@/lib/routes'
 import { getBlogPosts, getBlogAuthors, getContentUpdatedAt } from '@/lib/marketing-content'
 import { isNoindex } from '@/lib/seo-indexing'
-import { postLastModified } from '@/lib/blog-dates'
+import { postLastModified, clampToNow } from '@/lib/blog-dates'
 import ROUTE_LASTMOD from '@/lib/generated/route-lastmod.json'
 import { CATEGORY_SLUGS, slugifyCategory } from '@/lib/blog-categories'
 import { RIVAL_DATA } from '@/lib/comparison-data'
@@ -76,7 +76,7 @@ function latest(...dates: (Date | string | undefined | null)[]): Date | undefine
 export async function urlsForSection(id: string): Promise<MetadataRouteSitemap> {
   const { content: contentDates, blog: blogDates } = await getContentUpdatedAt()
   /** `route` is the app/ folder ('/plans/[plan]'), `slug` the marketing_content row. */
-  const dated = (route: string, slug?: string) => latest(ROUTE_DATES[route], slug ? contentDates.get(slug) : undefined)
+  const dated = (route: string, slug?: string) => clampToNow(latest(ROUTE_DATES[route], slug ? contentDates.get(slug) : undefined))
 
   const staticRoutes = [
     { url: routes.home, slug: 'home', changeFrequency: 'weekly', priority: 1 },

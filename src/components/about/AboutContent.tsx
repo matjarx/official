@@ -16,6 +16,7 @@ import { ABOUT_STATS, ABOUT_VALUES, ABOUT_TEAM, ABOUT_FAQS } from '@/lib/about-d
 import { FaqList } from '@/components/FaqList'
 import { seoH1 } from '@/lib/seo-h1'
 import { CLAIM, showsClaimTile } from '@/lib/claim'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type AboutContentShape = { stats: typeof ABOUT_STATS; values: typeof ABOUT_VALUES; team: typeof ABOUT_TEAM; faqs: typeof ABOUT_FAQS }
 const DEFAULT_CONTENT: AboutContentShape = { stats: ABOUT_STATS, values: ABOUT_VALUES, team: ABOUT_TEAM, faqs: ABOUT_FAQS }
@@ -25,7 +26,7 @@ export default function AboutContent({ content = DEFAULT_CONTENT }: { content?: 
   const { stats: ABOUT_STATS_ACTIVE, values: ABOUT_VALUES_ACTIVE, team: ABOUT_TEAM_ACTIVE, faqs: ABOUT_FAQS_ACTIVE } = content
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="company">
 
       {/* Navy hero */}

@@ -15,10 +15,9 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import SiteChrome from '@/components/SiteChrome'
 import AmbientOrbs from '@/components/AmbientOrbs'
-import EditorShowcase from '@/components/EditorShowcase'
-import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes, SERVICE_ROUTES } from '@/lib/routes'
 import { SERVICE_TABS, SERVICE_DATA, type ServiceKey, type ServiceDataEntry } from '@/lib/services-data'
 import ServiceDetailSections from './ServiceDetailSections'
@@ -26,9 +25,19 @@ import { useCurrency } from '@/components/CurrencyProvider'
 import { seoH1 } from '@/lib/seo-h1'
 import BodyLinks from '@/components/BodyLinks'
 import { CLAIM, showsClaimTile } from '@/lib/claim'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type ServicesContentShape = ServiceDataEntry
 const DEFAULT_CONTENT: Record<ServiceKey, ServicesContentShape> = SERVICE_DATA
+
+// Deferred: a below-the-fold, client-only interactive mockup with several
+// images, the same way HomeContent.tsx already defers SavingsCalculator.
+// ssr:false would drop it from the server HTML entirely (the CSS toggle
+// between the two is how one of them is hidden per breakpoint, so both
+// need to exist server-side), so this only keeps the toggle's own JS out
+// of the page's initial bundle.
+const EditorShowcase = dynamic(() => import('@/components/EditorShowcase'))
+const EditorShowcaseMobile = dynamic(() => import('@/components/EditorShowcaseMobile'))
 
 export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[serviceKey] }: { serviceKey: ServiceKey; content?: ServicesContentShape }) {
   const { inText } = useCurrency()
@@ -36,7 +45,7 @@ export default function ServicesContent({ serviceKey, content = DEFAULT_CONTENT[
   const d = content
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <AmbientOrbs />
       <div className="page-content">
         <SiteChrome active="services">

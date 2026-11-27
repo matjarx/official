@@ -22,6 +22,7 @@ import {
 } from '@/lib/videos-data'
 import { FaqList } from '@/components/FaqList'
 import { seoH1 } from '@/lib/seo-h1'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 function VideoCard({ video }: { video: (typeof VIDEO_SECTIONS)[number]['videos'][number] }) {
   return (
@@ -74,7 +75,7 @@ export default function VideosContent({ content = DEFAULT_CONTENT }: { content?:
   const VIDEO_FAQS_ACTIVE = content.faqs
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="resources">
 
       {/* Hero */}

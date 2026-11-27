@@ -131,6 +131,6 @@ export const FOOTER_SOCIALS = [
   { name: 'Threads', href: 'https://www.threads.com/@matjarxpakistan', icon: 'M12 3.5a8.5 8.5 0 1 0 0 17c2.3 0 3.9-.7 4.9-1.8.9-1 1.3-2.3 1.1-3.7-.2-1.5-1.2-2.5-2.7-2.9-1.1-.3-2.3-.2-3.2.3M12 8a3 3 0 1 0 0 6 3 3 0 0 0 3-2.7' },
   { name: 'Google Business Profile', href: 'https://share.google/YaxpOFsUcIr1elr7G', icon: 'M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Zm0-8.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z' },
   { name: 'TikTok', href: 'https://www.tiktok.com/@matjarxofficial', icon: 'M14 3.5v10.8a3.6 3.6 0 1 1-3.6-3.6M14 3.5a5 5 0 0 0 5 5' },
-  { name: 'LinkedIn', href: 'http://linkedin.com/company/matjarx/', icon: 'M5 9.5v10M5 5.6h.01M10.5 19.5v-10M10.5 13.2c0-2 1.4-3.7 3.4-3.7s3.6 1.7 3.6 3.7v6.3' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/matjarx/', icon: 'M5 9.5v10M5 5.6h.01M10.5 19.5v-10M10.5 13.2c0-2 1.4-3.7 3.4-3.7s3.6 1.7 3.6 3.7v6.3' },
   { name: 'YouTube', href: 'https://www.youtube.com/@matjarxofficial', icon: 'M3.5 8.5a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-11a3 3 0 0 1-3-3ZM10.5 9.5l4 2.5-4 2.5Z' },
 ]

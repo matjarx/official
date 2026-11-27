@@ -15,12 +15,14 @@ import ArticleToc from './ArticleToc'
 import AuthorCard, { AuthorByline } from './AuthorCard'
 import NewsletterSignup from './NewsletterSignup'
 import BlogFaqAccordion from './BlogFaqAccordion'
+import YouTubeEmbed from './YouTubeEmbed'
 import type { FaqEntry } from '@/components/FaqList'
 import { routes } from '@/lib/routes'
 import { AUTHOR, SHARE_LINKS, type BlogPost, type BodyBlock } from '@/lib/blog-data'
 import { richText, plainText } from '@/lib/rich-text'
 import { slugifyCategory } from '@/lib/blog-categories'
 import { FAQ_HEADING } from '@/lib/blog-faq'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 // allPosts comes from the same getBlogPosts() call the page already made
 // for the listing — resolving relatedSlugs against the live table rather
@@ -171,12 +173,13 @@ function renderBlock(b: BodyBlock, i: number): ReactNode {
   if (b.t === 'img') return (
     <figure key={i} style={{ margin: '8px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={b.src} alt={b.alt} loading="lazy" style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
+      <img src={b.src} alt={b.alt} loading="lazy" {...(b.width && b.height ? { width: b.width, height: b.height } : {})} style={{ width: '100%', height: 'auto', borderRadius: 18, display: 'block' }} />
       {b.caption && (
         <figcaption style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-3-alt)' }}>{richText(b.caption)}</figcaption>
       )}
     </figure>
   )
+  if (b.t === 'youtube') return <YouTubeEmbed key={i} videoId={b.videoId} caption={b.caption} />
   if (b.t === 'table') return <TableBlock key={i} block={b} />
   if (b.t === 'ol') return (
     // Real <ol>/<li> (a screen reader still announces list length and
@@ -276,7 +279,7 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
   const seoServiceLine = pillar === 'P3' && !JSON.stringify(post.body).includes(routes.service('seo'))
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
+    <div style={PAGE_ROOT}>
       <SiteChrome active="resources">
 
       {/* Navy hero */}
@@ -312,7 +315,15 @@ export default function BlogPostContent({ post, allPosts, h1 }: { post: BlogPost
 
           {/* Cover image — real photo/graphic from matjarx.com's media library when available */}
           <section style={{ maxWidth: 1300, margin: '0 auto', padding: '46px 24px 0' }}>
-            {post.coverImage ? (
+            {post.coverImage?.videoId ? (
+              <YouTubeEmbed
+                videoId={post.coverImage.videoId}
+                caption={post.coverImage.videoCaption ?? post.coverImage.caption}
+                aspectRatio="1200 / 630"
+                borderRadius={24}
+                boxShadow="0 22px 50px rgba(var(--scrim-rgb), 0.16)"
+              />
+            ) : post.coverImage ? (
               <figure style={{ margin: 0 }}>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '1200 / 630', borderRadius: 24, overflow: 'hidden', boxShadow: '0 22px 50px rgba(var(--scrim-rgb), 0.16)' }}>
                   <Image

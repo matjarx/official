@@ -8,6 +8,7 @@ import { isoPublishDate, postLastModified } from '@/lib/blog-dates'
 import { slugifyCategory } from '@/lib/blog-categories'
 import { ORGANIZATION_ID, breadcrumbJsonLd } from '@/lib/schema'
 import { faqFromBody } from '@/lib/blog-faq'
+import { escapeScriptHtml } from '@/lib/safe-script'
 
 // Back to ISR (revalidate=60) now that publishing/editing a post calls
 // POST /api/revalidate explicitly (see supabase/revalidate-webhook.sql, a
@@ -132,21 +133,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(articleJsonLd)) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([
+        dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
           ['Home', routes.home],
           ['Blog', routes.blog],
           [post.category, routes.blogCategory(slugifyCategory(post.category))],
           [post.title, routes.blogPost(post.slug)],
-        ])) }}
+        ]))) }}
       />
       {faqJsonLd && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(faqJsonLd)) }}
         />
       )}
       {/* allPosts only resolves relatedSlugs to a title and a cover.

@@ -4,11 +4,8 @@
 // hero: Editor Showcase, category marquee, "Did you know", three options,
 // mascot/urgency panel, editor features + second showcase, how it works,
 // website examples, savings calculator, pricing, trust band, FAQs.
-//
-// Dark theme layer: pass `dark` to render Home Dark (same structure/copy,
-// swapped tokens + Site Header Dark) rather than building a second page.
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
@@ -21,6 +18,7 @@ import EditorShowcase from '@/components/EditorShowcase'
 import EditorShowcaseMobile from '@/components/EditorShowcaseMobile'
 import { routes, appSignup } from '@/lib/routes'
 import { RATING_BADGES, VOICES } from '@/lib/home-data'
+import { ALL_PLANS } from '@/lib/plan-data'
 import type { HomeContentShape } from '@/lib/marketing-content'
 import { FaqList } from '@/components/FaqList'
 import { useTheme } from '@/components/ThemeProvider'
@@ -167,51 +165,38 @@ const DARK_PLAN_THEME = {
   ink: 'var(--ink-inverse)', muted: 'rgba(var(--ink-inverse-rgb), 0.62)', body: 'rgba(var(--ink-inverse-rgb), 0.8)', rule: 'rgba(var(--ink-inverse-rgb), 0.16)',
   tick: 'var(--moss-light)', ctaInk: 'var(--navy-deepest)', ctaBg: 'var(--butter)', ctaBorder: 'var(--butter)',
 }
-const PLAN_ROWS = [
-  { name: 'Launch', pitch: 'We build and launch your website.', price: 'Rs. 4,500', setup: 'Rs. 22,500', cta: 'Choose Launch', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('launch'),
+// name/pitch/price/setup come from ALL_PLANS (the single source of truth
+// plan-data.ts documents itself as) -- only the homepage-card-specific
+// fields (theme, tag, href, and this card's own shorter feature list,
+// distinct from the longer one PLAN_DATA shows on each plan's own detail
+// page) are layered on here, same as HomeMobileContent already does.
+const PLAN_ROWS: { name: string; pitch: string; price: string; setup: string; cta: string; theme: typeof LIGHT_PLAN_THEME; tag: string; href: string; features: string[] }[] = [
+  { ...ALL_PLANS.launch, cta: 'Choose Launch', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('launch'),
     features: ['Multi-page site, written for you', 'Domain + 1 business email', 'Google Business Profile set up', 'Live chat support'] },
-  { name: 'Boost', pitch: 'We manage your online presence.', price: 'Rs. 15,600', setup: 'Rs. 22,500', cta: 'Choose Boost', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('boost'),
+  { ...ALL_PLANS.boost, cta: 'Choose Boost', theme: LIGHT_PLAN_THEME, tag: '', href: appSignup('boost'),
     features: ['Everything in Launch', '4 business emails', 'Unlimited edits for 30 days, done by us', 'Advanced SEO + custom logo', 'Sell on Google, Facebook, Instagram'] },
-  { name: 'Growth', pitch: 'We grow your business online.', price: 'Rs. 27,000', setup: 'Rs. 22,500', cta: 'Choose Growth', theme: DARK_PLAN_THEME, tag: 'Most popular', href: appSignup('growth'),
+  { ...ALL_PLANS.growth, cta: 'Choose Growth', theme: DARK_PLAN_THEME, tag: 'Most popular', href: appSignup('growth'),
     features: ['Everything in Boost', 'Dedicated growth team', 'Monthly 1-on-1 marketing session', '3 blog posts a month'] },
-  { name: 'Platinum', pitch: 'We scale your e-commerce business.', price: 'Rs. 55,000', setup: 'Rs. 140,000', cta: 'Talk to us', theme: PREMIUM_PLAN_THEME, tag: '', href: appSignup('platinum'),
+  { ...ALL_PLANS.platinum, cta: 'Talk to us', theme: PREMIUM_PLAN_THEME, tag: '', href: appSignup('platinum'),
     features: ['Everything in Growth', 'Custom design in our own tool', 'Full webstore, unlimited products', 'Subscriptions & digital products', 'Multi-seat bookings'] },
 ]
 
-// /home-dark and /home-mobile (noindex design-review surfaces, not the
-// canonical page) render this without fetching content — they keep using
-// the hardcoded defaults, which is fine since they're not what admins edit.
+// /home-mobile (a noindex design-review surface, not the canonical page)
+// renders this without fetching content — it keeps using the hardcoded
+// defaults, which is fine since it's not what admins edit.
 const DEFAULT_CONTENT: HomeContentShape = { faqs: DEFAULT_FAQ_DATA, voices: VOICES }
 
-export default function HomeContent({ dark: initialDark = false, content = DEFAULT_CONTENT }: { dark?: boolean; content?: HomeContentShape }) {
-  // Real toggle, not a fixed prop: the design handoff's own instruction is to
-  // treat dark as "a theme layer over one page component, not a second
-  // page" — a live switch in the header delivers that better than a
-  // separate /home-dark URL ever could. /home-dark still works (renders
-  // with dark as the starting state) and now also gets a working toggle.
-  // The shared theme, not a second copy of it.
-  //
-  // This was `useState(initialDark)`, and the header's toggle flipped it --
-  // which moved AmbientOrbs, IndustryRail and the header's own inline styles
-  // while never touching ThemeProvider. So on the home page the button
-  // changed some of the page and left <html class="dark-theme"> and the
-  // stored preference exactly as they were: every token-driven surface,
-  // which is most of the site, stayed in the other mode.
-  //
-  // It also let the two disagree outright. Arriving with a stored dark
-  // preference, the provider set the class while this state was still false,
-  // so the button read "Switch to dark" on an already-dark page.
+export default function HomeContent({ content = DEFAULT_CONTENT }: { content?: HomeContentShape }) {
+  // Dark mode has been removed sitewide (no toggle, no /home-dark review
+  // route) -- theme.dark is permanently false now, kept only so the
+  // dark-branch styling below (ink1/ink4/cream/bgGradient and everything
+  // downstream) doesn't need to be unpicked from every section in the same
+  // change as removing the switch itself.
   const theme = useTheme()
   // Prices on this page follow the footer's selector like every other page.
   const { display, inText } = useCurrency()
   const dark = theme.dark
   const [openFaq, setOpenFaq] = useState(0)
-
-  // /home-dark asks for dark as a starting state rather than a preference.
-  // Told to the provider once, so there is still only one source of truth.
-  useEffect(() => {
-    if (initialDark) theme.setDark(true)
-  }, [initialDark, theme])
 
   const FAQ_DATA = content.faqs
   const VOICES_ACTIVE = content.voices
@@ -227,7 +212,7 @@ export default function HomeContent({ dark: initialDark = false, content = DEFAU
     <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: bgGradient ?? cream, color: dark ? '#E9EFF5' : 'var(--ink-2)', overflowX: 'clip' }}>
       <AmbientOrbs dark={dark} />
       <div className="page-content">
-        <SiteHeader active="home" dark={dark} onToggleDark={theme.toggle} />
+        <SiteHeader active="home" dark={dark} />
 
         <main>
         {/* Hero */}

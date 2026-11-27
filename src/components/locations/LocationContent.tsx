@@ -15,6 +15,8 @@ import PillarCta from '@/components/PillarCta'
 import { PILLAR_CTA } from '@/lib/pillars'
 import type { BlogCard } from '@/lib/marketing-content'
 import { routes } from '@/lib/routes'
+import { breadcrumbJsonLd } from '@/lib/schema'
+import { escapeScriptHtml } from '@/lib/safe-script'
 import { CITY_DATA, otherCitiesFor, type CityKey } from '@/lib/location-data'
 import { CITY_DETAIL, type CityProcessStep, type CityPlanTier, type CityCompareGroup } from '@/lib/location-detail-data'
 import { FaqList, bullet } from '@/components/FaqList'
@@ -24,6 +26,7 @@ import { BUSINESS_PHONE_DISPLAY, TEL_HREF } from '@/lib/contact-details'
 import { seoH1 } from '@/lib/seo-h1'
 import { ORGANIZATION_ID } from '@/lib/schema'
 import BodyLinks from '@/components/BodyLinks'
+import { PAGE_ROOT } from '@/lib/page-styles'
 
 export type LocationContentShape = (typeof CITY_DATA)[CityKey] & {
   detail: { process: CityProcessStep[]; plans: CityPlanTier[]; whyOver: CityCompareGroup[] }
@@ -39,16 +42,6 @@ export default function LocationContent({ locationKey, content, related = [] }: 
   const detail = d.detail
   const others = otherCitiesFor(locationKey)
   const pageUrl = `https://matjarx.com${routes.location(locationKey)}`
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://matjarx.com' + routes.home },
-      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://matjarx.com' + routes.locations },
-      { '@type': 'ListItem', position: 3, name: d.name, item: pageUrl },
-    ],
-  }
 
   // What this page is actually offering, and where.
   //
@@ -85,9 +78,13 @@ export default function LocationContent({ locationKey, content, related = [] }: 
   }
 
   return (
-    <div style={{ position: 'relative', fontFamily: 'var(--font-open-sans), "Open Sans", Arial, sans-serif', background: 'var(--cream)', color: 'var(--ink-2)', overflowX: 'clip' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+    <div style={PAGE_ROOT}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(breadcrumbJsonLd([
+        ['Home', routes.home],
+        ['Locations', routes.locations],
+        [d.name, routes.location(locationKey)],
+      ]))) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeScriptHtml(JSON.stringify(serviceJsonLd)) }} />
       <FaqSchema faqs={fromPairs(d.faqs)} />
       <AmbientOrbs />
       <div className="page-content">
